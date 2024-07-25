@@ -142,12 +142,6 @@ function PlasmicHomepage__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
       },
       {
-        path: "clCalculatorStatus",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => true
-      },
-      {
         path: "txtUserName",
         type: "private",
         variableType: "text",
@@ -436,7 +430,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       }
                       className={classNames("__wab_instance", sty.btnLogin)}
                       link={
-                        "https://www.paziresh24.com/login/?redirect_url=https://pricing.paziresh24.com/"
+                        "https://www.paziresh24.com/login/?redirect_url=https://chortke.paziresh24.com/"
                       }
                       outline={true}
                     />
@@ -652,26 +646,20 @@ function PlasmicHomepage__RenderFunc(props: {
                   $steps.checkUser.status != 200
                     ? (() => {
                         const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["btnLoginShow"]
-                          },
-                          operation: 0,
-                          value: true
+                          destination:
+                            "https://www.paziresh24.com/login/?redirect_url=https://chortke.paziresh24.com"
                         };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
                           }
-                          const { objRoot, variablePath } = variable;
-
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
                         })?.apply(null, [actionArgs]);
                       })()
                     : undefined;
@@ -716,23 +704,6 @@ function PlasmicHomepage__RenderFunc(props: {
                   typeof $steps["btnLogout"].then === "function"
                 ) {
                   $steps["btnLogout"] = await $steps["btnLogout"];
-                }
-
-                $steps["updateUser3"] = true
-                  ? (() => {
-                      const actionArgs = { args: [] };
-                      return $globalActions["Fragment.apiRequest"]?.apply(
-                        null,
-                        [...actionArgs.args]
-                      );
-                    })()
-                  : undefined;
-                if (
-                  $steps["updateUser3"] != null &&
-                  typeof $steps["updateUser3"] === "object" &&
-                  typeof $steps["updateUser3"].then === "function"
-                ) {
-                  $steps["updateUser3"] = await $steps["updateUser3"];
                 }
               }}
             />
@@ -873,7 +844,7 @@ export const PlasmicHomepage = Object.assign(
 
     // Page metadata
     pageMetadata: {
-      title: "برآورد قیمت پنل پذیرش۲۴",
+      title: "چرتکه، مدیریت امور مالی",
       description: "ماژول ها وشیوه قیمت گذاری محصولات پذیرش24",
       ogImageSrc:
         "https://site-assets.plasmic.app/49b5e4e62d4fd1407285906a0f5e6382.svg",
