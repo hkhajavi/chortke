@@ -62,6 +62,7 @@ import {
 import Button from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
 import Select from "../../Select"; // plasmic-import: 7wkEfmUYAcMf/component
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
+import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import { useScreenVariants as useScreenVariants_7Bs7RtJcMv9T } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: 7BS7RtJcMv9t/globalVariant
 
@@ -99,7 +100,6 @@ export type PlasmicHomepage__OverridesType = {
   section?: Flex__<"section">;
   gridCalculator2?: Flex__<"div">;
   cbProductlist?: Flex__<typeof Select>;
-  sideCbProductList?: Flex__<typeof SideEffect>;
   button?: Flex__<typeof Button>;
   gridInvoice1?: Flex__<"div">;
   gridInvoice12?: Flex__<"div">;
@@ -174,8 +174,14 @@ function PlasmicHomepage__RenderFunc(props: {
       {
         path: "productList",
         type: "private",
-        variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "userid",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "hkk"
       }
     ],
     [$props, $ctx, $refs]
@@ -557,6 +563,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     aria-label={"name"}
                     aria-labelledby={"productid"}
                     className={classNames("__wab_instance", sty.cbProductlist)}
+                    name={"productlist"}
                     onChange={(...eventArgs) => {
                       generateStateOnChangeProp($state, [
                         "cbProductlist",
@@ -565,16 +572,16 @@ function PlasmicHomepage__RenderFunc(props: {
                     }}
                     options={(() => {
                       try {
-                        return $state.productList;
+                        return $state.productList.map(item => ({
+                          value: item.productid.toString(),
+                          label: item.name
+                        }));
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
                           e?.plasmicType === "PlasmicUndefinedDataError"
                         ) {
-                          return [
-                            { value: "option1", label: "Option 1" },
-                            { value: "option2", label: "Option 2" }
-                          ];
+                          return undefined;
                         }
                         throw e;
                       }
@@ -587,68 +594,6 @@ function PlasmicHomepage__RenderFunc(props: {
                       "value"
                     ])}
                   />
-
-                  <SideEffect
-                    data-plasmic-name={"sideCbProductList"}
-                    data-plasmic-override={overrides.sideCbProductList}
-                    className={classNames(
-                      "__wab_instance",
-                      sty.sideCbProductList
-                    )}
-                    deps={(() => {
-                      try {
-                        return $state.cbProductlist.value;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return undefined;
-                        }
-                        throw e;
-                      }
-                    })()}
-                    onMount={async () => {
-                      const $steps = {};
-
-                      $steps["invokeGlobalAction"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              args: [
-                                undefined,
-                                (() => {
-                                  try {
-                                    return $state.cbProductlist.value;
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
-                                    }
-                                    throw e;
-                                  }
-                                })()
-                              ]
-                            };
-                            return $globalActions["Fragment.showToast"]?.apply(
-                              null,
-                              [...actionArgs.args]
-                            );
-                          })()
-                        : undefined;
-                      if (
-                        $steps["invokeGlobalAction"] != null &&
-                        typeof $steps["invokeGlobalAction"] === "object" &&
-                        typeof $steps["invokeGlobalAction"].then === "function"
-                      ) {
-                        $steps["invokeGlobalAction"] = await $steps[
-                          "invokeGlobalAction"
-                        ];
-                      }
-                    }}
-                  />
                 </div>
                 <div
                   className={classNames(
@@ -657,8 +602,31 @@ function PlasmicHomepage__RenderFunc(props: {
                     "grid_calculator"
                   )}
                   id={"grid_calculator"}
-                />
-
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___9PPby
+                    )}
+                  >
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return $state.productList.toString();
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
+                  </div>
+                </div>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -950,7 +918,7 @@ function PlasmicHomepage__RenderFunc(props: {
                   $steps["updateUser"] = await $steps["updateUser"];
                 }
 
-                $steps["updateUser2"] =
+                $steps["setFnameLname"] =
                   $steps.checkUser.status == 200
                     ? (() => {
                         const actionArgs = {
@@ -978,40 +946,11 @@ function PlasmicHomepage__RenderFunc(props: {
                       })()
                     : undefined;
                 if (
-                  $steps["updateUser2"] != null &&
-                  typeof $steps["updateUser2"] === "object" &&
-                  typeof $steps["updateUser2"].then === "function"
+                  $steps["setFnameLname"] != null &&
+                  typeof $steps["setFnameLname"] === "object" &&
+                  typeof $steps["setFnameLname"].then === "function"
                 ) {
-                  $steps["updateUser2"] = await $steps["updateUser2"];
-                }
-
-                $steps["updateUser4"] =
-                  $steps.checkUser.status != 200
-                    ? (() => {
-                        const actionArgs = {
-                          destination:
-                            "https://www.paziresh24.com/login/?redirect_url=https://chortke.paziresh24.com"
-                        };
-                        return (({ destination }) => {
-                          if (
-                            typeof destination === "string" &&
-                            destination.startsWith("#")
-                          ) {
-                            document
-                              .getElementById(destination.substr(1))
-                              .scrollIntoView({ behavior: "smooth" });
-                          } else {
-                            __nextRouter?.push(destination);
-                          }
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                if (
-                  $steps["updateUser4"] != null &&
-                  typeof $steps["updateUser4"] === "object" &&
-                  typeof $steps["updateUser4"].then === "function"
-                ) {
-                  $steps["updateUser4"] = await $steps["updateUser4"];
+                  $steps["setFnameLname"] = await $steps["setFnameLname"];
                 }
 
                 $steps["btnLogout"] =
@@ -1049,34 +988,36 @@ function PlasmicHomepage__RenderFunc(props: {
                   $steps["btnLogout"] = await $steps["btnLogout"];
                 }
 
-                $steps["getProductList"] =
-                  $steps.checkUser.status == 200
-                    ? (() => {
-                        const actionArgs = {
-                          args: [
-                            undefined,
-                            "https://apigw.paziresh24.com/transaction/v1/productlist",
-                            (() => {
-                              try {
-                                return $steps.checkUser.data.users[0].id;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return undefined;
-                                }
-                                throw e;
+                $steps["getProductList"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          undefined,
+                          (() => {
+                            try {
+                              return (
+                                "https://apigw.paziresh24.com/transaction/v1/productlist?userid=" +
+                                $state.userid
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
                               }
-                            })()
-                          ]
-                        };
-                        return $globalActions["Fragment.apiRequest"]?.apply(
-                          null,
-                          [...actionArgs.args]
-                        );
-                      })()
-                    : undefined;
+                              throw e;
+                            }
+                          })(),
+                          undefined
+                        ]
+                      };
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
+                    })()
+                  : undefined;
                 if (
                   $steps["getProductList"] != null &&
                   typeof $steps["getProductList"] === "object" &&
@@ -1085,7 +1026,7 @@ function PlasmicHomepage__RenderFunc(props: {
                   $steps["getProductList"] = await $steps["getProductList"];
                 }
 
-                $steps["updateUser3"] = ($steps.getProductList.status = true)
+                $steps["updateProductListVariable"] = true
                   ? (() => {
                       const actionArgs = {
                         variable: {
@@ -1093,7 +1034,7 @@ function PlasmicHomepage__RenderFunc(props: {
                           variablePath: ["productList"]
                         },
                         operation: 0,
-                        value: $steps.getProductList.data
+                        value: $steps.getProductList
                       };
                       return (({
                         variable,
@@ -1112,11 +1053,13 @@ function PlasmicHomepage__RenderFunc(props: {
                     })()
                   : undefined;
                 if (
-                  $steps["updateUser3"] != null &&
-                  typeof $steps["updateUser3"] === "object" &&
-                  typeof $steps["updateUser3"].then === "function"
+                  $steps["updateProductListVariable"] != null &&
+                  typeof $steps["updateProductListVariable"] === "object" &&
+                  typeof $steps["updateProductListVariable"].then === "function"
                 ) {
-                  $steps["updateUser3"] = await $steps["updateUser3"];
+                  $steps["updateProductListVariable"] = await $steps[
+                    "updateProductListVariable"
+                  ];
                 }
               }}
             />
@@ -1138,7 +1081,6 @@ const PlasmicDescendants = {
     "section",
     "gridCalculator2",
     "cbProductlist",
-    "sideCbProductList",
     "button",
     "gridInvoice1",
     "gridInvoice12",
@@ -1153,19 +1095,12 @@ const PlasmicDescendants = {
     "section",
     "gridCalculator2",
     "cbProductlist",
-    "sideCbProductList",
     "button",
     "gridInvoice1",
     "gridInvoice12"
   ],
-  gridCalculator2: [
-    "gridCalculator2",
-    "cbProductlist",
-    "sideCbProductList",
-    "button"
-  ],
+  gridCalculator2: ["gridCalculator2", "cbProductlist", "button"],
   cbProductlist: ["cbProductlist"],
-  sideCbProductList: ["sideCbProductList"],
   button: ["button"],
   gridInvoice1: ["gridInvoice1"],
   gridInvoice12: ["gridInvoice12"],
@@ -1184,7 +1119,6 @@ type NodeDefaultElementType = {
   section: "section";
   gridCalculator2: "div";
   cbProductlist: typeof Select;
-  sideCbProductList: typeof SideEffect;
   button: typeof Button;
   gridInvoice1: "div";
   gridInvoice12: "div";
@@ -1259,7 +1193,6 @@ export const PlasmicHomepage = Object.assign(
     section: makeNodeComponent("section"),
     gridCalculator2: makeNodeComponent("gridCalculator2"),
     cbProductlist: makeNodeComponent("cbProductlist"),
-    sideCbProductList: makeNodeComponent("sideCbProductList"),
     button: makeNodeComponent("button"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     gridInvoice12: makeNodeComponent("gridInvoice12"),
