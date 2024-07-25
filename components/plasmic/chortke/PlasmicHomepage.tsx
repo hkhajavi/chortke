@@ -642,6 +642,46 @@ function PlasmicHomepage__RenderFunc(props: {
                     className={classNames("__wab_instance", sty.button)}
                     onClick={async event => {
                       const $steps = {};
+
+                      $steps["getProductList"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                undefined,
+                                (() => {
+                                  try {
+                                    return (
+                                      "https://apigw.paziresh24.com/transaction/v1/productlist?userid=" +
+                                      $state.userid
+                                    );
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()
+                              ]
+                            };
+                            return $globalActions["Fragment.apiRequest"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
+                      if (
+                        $steps["getProductList"] != null &&
+                        typeof $steps["getProductList"] === "object" &&
+                        typeof $steps["getProductList"].then === "function"
+                      ) {
+                        $steps["getProductList"] = await $steps[
+                          "getProductList"
+                        ];
+                      }
                     }}
                   />
                 </div>
@@ -1018,7 +1058,7 @@ function PlasmicHomepage__RenderFunc(props: {
                           variablePath: ["productList"]
                         },
                         operation: 0,
-                        value: $steps.getProductList
+                        value: $steps.getProductList.data
                       };
                       return (({
                         variable,
