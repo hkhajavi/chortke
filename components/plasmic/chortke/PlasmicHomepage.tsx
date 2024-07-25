@@ -68,6 +68,8 @@ import { useScreenVariants as useScreenVariants_7Bs7RtJcMv9T } from "./PlasmicGl
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_fragment_design_system_css from "../fragment_design_system/plasmic.module.css"; // plasmic-import: h9Dbk9ygddw7UVEq1NNhKi/projectcss
+import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
+import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicHomepage.module.css"; // plasmic-import: XSAvgKpp1Uaz/css
 
@@ -98,8 +100,8 @@ export type PlasmicHomepage__OverridesType = {
   gridCalculator2?: Flex__<"div">;
   select?: Flex__<typeof Select>;
   button?: Flex__<typeof Button>;
-  gridCalculator3?: Flex__<"div">;
   gridInvoice1?: Flex__<"div">;
+  gridInvoice12?: Flex__<"div">;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
 };
 
@@ -167,6 +169,12 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "productList",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
       }
     ],
     [$props, $ctx, $refs]
@@ -256,6 +264,8 @@ function PlasmicHomepage__RenderFunc(props: {
               projectcss.plasmic_mixins,
               projectcss.plasmic_tokens,
               plasmic_fragment_design_system_css.plasmic_tokens,
+              plasmic_antd_5_hostless_css.plasmic_tokens,
+              plasmic_plasmic_rich_components_css.plasmic_tokens,
               sty.root
             )}
             dir={"rtl"}
@@ -549,10 +559,22 @@ function PlasmicHomepage__RenderFunc(props: {
                         eventArgs[0]
                       );
                     }}
-                    options={[
-                      { value: "option1", label: "Option 1" },
-                      { value: "option2", label: "Option 2" }
-                    ]}
+                    options={(() => {
+                      try {
+                        return undefined;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [
+                            { value: "option1", label: "Option 1" },
+                            { value: "option2", label: "Option 2" }
+                          ];
+                        }
+                        throw e;
+                      }
+                    })()}
                     placeholder={
                       "\u0627\u0628\u062a\u062f\u0627 \u062f\u067e\u0627\u0631\u062a\u0645\u0627\u0646 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
                     }
@@ -603,15 +625,6 @@ function PlasmicHomepage__RenderFunc(props: {
                 </div>
               </div>
               <div
-                data-plasmic-name={"gridCalculator3"}
-                data-plasmic-override={overrides.gridCalculator3}
-                className={classNames(projectcss.all, sty.gridCalculator3)}
-              >
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__yLjts)}
-                />
-              </div>
-              <div
                 data-plasmic-name={"gridInvoice1"}
                 data-plasmic-override={overrides.gridInvoice1}
                 className={classNames(projectcss.all, sty.gridInvoice1)}
@@ -623,7 +636,185 @@ function PlasmicHomepage__RenderFunc(props: {
                     "grid_calculator"
                   )}
                   id={"grid_calculator"}
-                />
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__ecZ3V
+                    )}
+                  >
+                    {"\u0631\u062f\u06cc\u0641"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    sty.freeBox___2NkoK,
+                    "grid_calculator"
+                  )}
+                  id={"grid_calculator"}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__spZ98
+                    )}
+                  >
+                    {"\u062a\u0627\u0631\u06cc\u062e"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    sty.freeBox__e7Ml0,
+                    "grid_calculator"
+                  )}
+                  id={"grid_calculator"}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__gmjpK
+                    )}
+                  >
+                    {"\u0639\u0646\u0648\u0627\u0646"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    sty.freeBox__piKZ,
+                    "grid_calculator"
+                  )}
+                  id={"grid_calculator"}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__cj3GE
+                    )}
+                  >
+                    {"\u0642\u06cc\u0645\u062a"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    sty.freeBox__ydgyO,
+                    "grid_calculator"
+                  )}
+                  id={"grid_calculator"}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__hbBO
+                    )}
+                  >
+                    {"\u062c\u0632\u0626\u06cc\u0627\u062a"}
+                  </div>
+                </div>
+              </div>
+              <div
+                data-plasmic-name={"gridInvoice12"}
+                data-plasmic-override={overrides.gridInvoice12}
+                className={classNames(projectcss.all, sty.gridInvoice12)}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    sty.freeBox___7L5Fd,
+                    "grid_calculator"
+                  )}
+                  id={"grid_calculator"}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__b9TAi
+                    )}
+                  >
+                    {"\u0631\u062f\u06cc\u0641"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    sty.freeBox__yy3L,
+                    "grid_calculator"
+                  )}
+                  id={"grid_calculator"}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__k5RNe
+                    )}
+                  >
+                    {"\u062a\u0627\u0631\u06cc\u062e"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    sty.freeBox___5KBuV,
+                    "grid_calculator"
+                  )}
+                  id={"grid_calculator"}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__mS8Qi
+                    )}
+                  >
+                    {"\u0639\u0646\u0648\u0627\u0646"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    sty.freeBox__kPny5,
+                    "grid_calculator"
+                  )}
+                  id={"grid_calculator"}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___07T8
+                    )}
+                  >
+                    {"\u0642\u06cc\u0645\u062a"}
+                  </div>
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    sty.freeBox__wy9LE,
+                    "grid_calculator"
+                  )}
+                  id={"grid_calculator"}
+                >
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__a8Fe4
+                    )}
+                  >
+                    {"\u062c\u0632\u0626\u06cc\u0627\u062a"}
+                  </div>
+                </div>
               </div>
             </section>
             <SideEffect
@@ -788,6 +979,76 @@ function PlasmicHomepage__RenderFunc(props: {
                 ) {
                   $steps["btnLogout"] = await $steps["btnLogout"];
                 }
+
+                $steps["getProductList"] =
+                  $steps.checkUser.status == 200
+                    ? (() => {
+                        const actionArgs = {
+                          args: [
+                            undefined,
+                            "https://apigw.paziresh24.com/transaction/v1/productlist",
+                            (() => {
+                              try {
+                                return $steps.checkUser.data.users[0].id;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })()
+                          ]
+                        };
+                        return $globalActions["Fragment.apiRequest"]?.apply(
+                          null,
+                          [...actionArgs.args]
+                        );
+                      })()
+                    : undefined;
+                if (
+                  $steps["getProductList"] != null &&
+                  typeof $steps["getProductList"] === "object" &&
+                  typeof $steps["getProductList"].then === "function"
+                ) {
+                  $steps["getProductList"] = await $steps["getProductList"];
+                }
+
+                $steps["updateUser3"] = ($steps.getProductList.status = true)
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["productList"]
+                        },
+                        operation: 0,
+                        value: $steps.getProductList.data
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateUser3"] != null &&
+                  typeof $steps["updateUser3"] === "object" &&
+                  typeof $steps["updateUser3"].then === "function"
+                ) {
+                  $steps["updateUser3"] = await $steps["updateUser3"];
+                }
               }}
             />
           </div>
@@ -809,8 +1070,8 @@ const PlasmicDescendants = {
     "gridCalculator2",
     "select",
     "button",
-    "gridCalculator3",
     "gridInvoice1",
+    "gridInvoice12",
     "sideEffectPageLoad"
   ],
   h1: ["h1"],
@@ -823,14 +1084,14 @@ const PlasmicDescendants = {
     "gridCalculator2",
     "select",
     "button",
-    "gridCalculator3",
-    "gridInvoice1"
+    "gridInvoice1",
+    "gridInvoice12"
   ],
   gridCalculator2: ["gridCalculator2", "select", "button"],
   select: ["select"],
   button: ["button"],
-  gridCalculator3: ["gridCalculator3"],
   gridInvoice1: ["gridInvoice1"],
+  gridInvoice12: ["gridInvoice12"],
   sideEffectPageLoad: ["sideEffectPageLoad"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -847,8 +1108,8 @@ type NodeDefaultElementType = {
   gridCalculator2: "div";
   select: typeof Select;
   button: typeof Button;
-  gridCalculator3: "div";
   gridInvoice1: "div";
+  gridInvoice12: "div";
   sideEffectPageLoad: typeof SideEffect;
 };
 
@@ -921,8 +1182,8 @@ export const PlasmicHomepage = Object.assign(
     gridCalculator2: makeNodeComponent("gridCalculator2"),
     select: makeNodeComponent("select"),
     button: makeNodeComponent("button"),
-    gridCalculator3: makeNodeComponent("gridCalculator3"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
+    gridInvoice12: makeNodeComponent("gridInvoice12"),
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
 
     // Metadata about props expected for PlasmicHomepage
