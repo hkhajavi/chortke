@@ -98,7 +98,8 @@ export type PlasmicHomepage__OverridesType = {
   btnLogin?: Flex__<typeof Button>;
   section?: Flex__<"section">;
   gridCalculator2?: Flex__<"div">;
-  select?: Flex__<typeof Select>;
+  cbProductlist?: Flex__<typeof Select>;
+  sideCbProductList?: Flex__<typeof SideEffect>;
   button?: Flex__<typeof Button>;
   gridInvoice1?: Flex__<"div">;
   gridInvoice12?: Flex__<"div">;
@@ -165,7 +166,7 @@ function PlasmicHomepage__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
-        path: "select.value",
+        path: "cbProductlist.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
@@ -551,17 +552,20 @@ function PlasmicHomepage__RenderFunc(props: {
                   id={"grid_calculator"}
                 >
                   <Select
-                    data-plasmic-name={"select"}
-                    data-plasmic-override={overrides.select}
-                    className={classNames("__wab_instance", sty.select)}
+                    data-plasmic-name={"cbProductlist"}
+                    data-plasmic-override={overrides.cbProductlist}
+                    aria-label={"name"}
+                    aria-labelledby={"productid"}
+                    className={classNames("__wab_instance", sty.cbProductlist)}
                     onChange={(...eventArgs) => {
-                      generateStateOnChangeProp($state, ["select", "value"])(
-                        eventArgs[0]
-                      );
+                      generateStateOnChangeProp($state, [
+                        "cbProductlist",
+                        "value"
+                      ])(eventArgs[0]);
                     }}
                     options={(() => {
                       try {
-                        return undefined;
+                        return $state.productList;
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
@@ -578,7 +582,72 @@ function PlasmicHomepage__RenderFunc(props: {
                     placeholder={
                       "\u0627\u0628\u062a\u062f\u0627 \u062f\u067e\u0627\u0631\u062a\u0645\u0627\u0646 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
                     }
-                    value={generateStateValueProp($state, ["select", "value"])}
+                    value={generateStateValueProp($state, [
+                      "cbProductlist",
+                      "value"
+                    ])}
+                  />
+
+                  <SideEffect
+                    data-plasmic-name={"sideCbProductList"}
+                    data-plasmic-override={overrides.sideCbProductList}
+                    className={classNames(
+                      "__wab_instance",
+                      sty.sideCbProductList
+                    )}
+                    deps={(() => {
+                      try {
+                        return $state.cbProductlist.value;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()}
+                    onMount={async () => {
+                      const $steps = {};
+
+                      $steps["invokeGlobalAction"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                undefined,
+                                (() => {
+                                  try {
+                                    return $state.cbProductlist.value;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()
+                              ]
+                            };
+                            return $globalActions["Fragment.showToast"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
+                      if (
+                        $steps["invokeGlobalAction"] != null &&
+                        typeof $steps["invokeGlobalAction"] === "object" &&
+                        typeof $steps["invokeGlobalAction"].then === "function"
+                      ) {
+                        $steps["invokeGlobalAction"] = await $steps[
+                          "invokeGlobalAction"
+                        ];
+                      }
+                    }}
                   />
                 </div>
                 <div
@@ -1068,7 +1137,8 @@ const PlasmicDescendants = {
     "btnLogin",
     "section",
     "gridCalculator2",
-    "select",
+    "cbProductlist",
+    "sideCbProductList",
     "button",
     "gridInvoice1",
     "gridInvoice12",
@@ -1082,13 +1152,20 @@ const PlasmicDescendants = {
   section: [
     "section",
     "gridCalculator2",
-    "select",
+    "cbProductlist",
+    "sideCbProductList",
     "button",
     "gridInvoice1",
     "gridInvoice12"
   ],
-  gridCalculator2: ["gridCalculator2", "select", "button"],
-  select: ["select"],
+  gridCalculator2: [
+    "gridCalculator2",
+    "cbProductlist",
+    "sideCbProductList",
+    "button"
+  ],
+  cbProductlist: ["cbProductlist"],
+  sideCbProductList: ["sideCbProductList"],
   button: ["button"],
   gridInvoice1: ["gridInvoice1"],
   gridInvoice12: ["gridInvoice12"],
@@ -1106,7 +1183,8 @@ type NodeDefaultElementType = {
   btnLogin: typeof Button;
   section: "section";
   gridCalculator2: "div";
-  select: typeof Select;
+  cbProductlist: typeof Select;
+  sideCbProductList: typeof SideEffect;
   button: typeof Button;
   gridInvoice1: "div";
   gridInvoice12: "div";
@@ -1180,7 +1258,8 @@ export const PlasmicHomepage = Object.assign(
     btnLogin: makeNodeComponent("btnLogin"),
     section: makeNodeComponent("section"),
     gridCalculator2: makeNodeComponent("gridCalculator2"),
-    select: makeNodeComponent("select"),
+    cbProductlist: makeNodeComponent("cbProductlist"),
+    sideCbProductList: makeNodeComponent("sideCbProductList"),
     button: makeNodeComponent("button"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     gridInvoice12: makeNodeComponent("gridInvoice12"),
