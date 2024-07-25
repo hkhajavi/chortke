@@ -63,6 +63,8 @@ import Button from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
 import Select from "../../Select"; // plasmic-import: 7wkEfmUYAcMf/component
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 
+import { useScreenVariants as useScreenVariants_7Bs7RtJcMv9T } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: 7BS7RtJcMv9t/globalVariant
+
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_fragment_design_system_css from "../fragment_design_system/plasmic.module.css"; // plasmic-import: h9Dbk9ygddw7UVEq1NNhKi/projectcss
@@ -90,6 +92,7 @@ export type PlasmicHomepage__OverridesType = {
   h1?: Flex__<"h1">;
   btnDashboard3?: Flex__<"div">;
   lblUser?: Flex__<"div">;
+  btnLogout?: Flex__<"a"> & Partial<LinkProps>;
   btnLogin?: Flex__<typeof Button>;
   section?: Flex__<"section">;
   gridCalculator2?: Flex__<"div">;
@@ -173,6 +176,10 @@ function PlasmicHomepage__RenderFunc(props: {
     $ctx,
     $queries: {},
     $refs
+  });
+
+  const globalVariants = ensureGlobalVariants({
+    screen: useScreenVariants_7Bs7RtJcMv9T()
   });
 
   return (
@@ -401,6 +408,82 @@ function PlasmicHomepage__RenderFunc(props: {
                       })()}
                     </React.Fragment>
                   </div>
+                  {(() => {
+                    try {
+                      return $state.btnLogoutShow;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <PlasmicLink__
+                      data-plasmic-name={"btnLogout"}
+                      data-plasmic-override={overrides.btnLogout}
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.a,
+                        projectcss.__wab_text,
+                        sty.btnLogout
+                      )}
+                      component={Link}
+                      href={
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? ""
+                          : undefined
+                      }
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps[
+                          "goToHttpspaziresh24Comlogouturlhttpschortkepaziresh24Com"
+                        ] = true
+                          ? (() => {
+                              const actionArgs = {
+                                destination:
+                                  "https://paziresh24.com/logout?url=https://chortke.paziresh24.com"
+                              };
+                              return (({ destination }) => {
+                                if (
+                                  typeof destination === "string" &&
+                                  destination.startsWith("#")
+                                ) {
+                                  document
+                                    .getElementById(destination.substr(1))
+                                    .scrollIntoView({ behavior: "smooth" });
+                                } else {
+                                  __nextRouter?.push(destination);
+                                }
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps[
+                            "goToHttpspaziresh24Comlogouturlhttpschortkepaziresh24Com"
+                          ] != null &&
+                          typeof $steps[
+                            "goToHttpspaziresh24Comlogouturlhttpschortkepaziresh24Com"
+                          ] === "object" &&
+                          typeof $steps[
+                            "goToHttpspaziresh24Comlogouturlhttpschortkepaziresh24Com"
+                          ].then === "function"
+                        ) {
+                          $steps[
+                            "goToHttpspaziresh24Comlogouturlhttpschortkepaziresh24Com"
+                          ] = await $steps[
+                            "goToHttpspaziresh24Comlogouturlhttpschortkepaziresh24Com"
+                          ];
+                        }
+                      }}
+                      platform={"nextjs"}
+                    >
+                      {"\u062e\u0631\u0648\u062c"}
+                    </PlasmicLink__>
+                  ) : null}
                   {(() => {
                     try {
                       return $state.btnLoginShow;
@@ -720,6 +803,7 @@ const PlasmicDescendants = {
     "h1",
     "btnDashboard3",
     "lblUser",
+    "btnLogout",
     "btnLogin",
     "section",
     "gridCalculator2",
@@ -732,6 +816,7 @@ const PlasmicDescendants = {
   h1: ["h1"],
   btnDashboard3: ["btnDashboard3"],
   lblUser: ["lblUser"],
+  btnLogout: ["btnLogout"],
   btnLogin: ["btnLogin"],
   section: [
     "section",
@@ -756,6 +841,7 @@ type NodeDefaultElementType = {
   h1: "h1";
   btnDashboard3: "div";
   lblUser: "div";
+  btnLogout: "a";
   btnLogin: typeof Button;
   section: "section";
   gridCalculator2: "div";
@@ -829,6 +915,7 @@ export const PlasmicHomepage = Object.assign(
     h1: makeNodeComponent("h1"),
     btnDashboard3: makeNodeComponent("btnDashboard3"),
     lblUser: makeNodeComponent("lblUser"),
+    btnLogout: makeNodeComponent("btnLogout"),
     btnLogin: makeNodeComponent("btnLogin"),
     section: makeNodeComponent("section"),
     gridCalculator2: makeNodeComponent("gridCalculator2"),
