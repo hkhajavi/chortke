@@ -174,8 +174,13 @@ function PlasmicHomepage__RenderFunc(props: {
       {
         path: "productList",
         type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => [
+          {
+            productid: 0,
+            name: "\u0645\u062d\u0635\u0648\u0644\u06cc \u062c\u0647\u062a \u0627\u0646\u062a\u062e\u0627\u0628 \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f"
+          }
+        ]
       },
       {
         path: "userid",
@@ -587,7 +592,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       }
                     })()}
                     placeholder={
-                      "\u0627\u0628\u062a\u062f\u0627 \u062f\u067e\u0627\u0631\u062a\u0645\u0627\u0646 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                      "\u0628\u062e\u0634 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
                     }
                     value={generateStateValueProp($state, [
                       "cbProductlist",
@@ -602,31 +607,8 @@ function PlasmicHomepage__RenderFunc(props: {
                     "grid_calculator"
                   )}
                   id={"grid_calculator"}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___9PPby
-                    )}
-                  >
-                    <React.Fragment>
-                      {(() => {
-                        try {
-                          return $state.productList.toString();
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return "";
-                          }
-                          throw e;
-                        }
-                      })()}
-                    </React.Fragment>
-                  </div>
-                </div>
+                />
+
                 <div
                   className={classNames(
                     projectcss.all,
@@ -658,6 +640,9 @@ function PlasmicHomepage__RenderFunc(props: {
                     data-plasmic-override={overrides.button}
                     children2={"\u067e\u0631\u062f\u0627\u062e\u062a"}
                     className={classNames("__wab_instance", sty.button)}
+                    onClick={async event => {
+                      const $steps = {};
+                    }}
                   />
                 </div>
               </div>
@@ -1008,8 +993,7 @@ function PlasmicHomepage__RenderFunc(props: {
                               }
                               throw e;
                             }
-                          })(),
-                          undefined
+                          })()
                         ]
                       };
                       return $globalActions["Fragment.apiRequest"]?.apply(
@@ -1026,7 +1010,7 @@ function PlasmicHomepage__RenderFunc(props: {
                   $steps["getProductList"] = await $steps["getProductList"];
                 }
 
-                $steps["updateProductListVariable"] = true
+                $steps["setProductListVariable"] = true
                   ? (() => {
                       const actionArgs = {
                         variable: {
@@ -1053,12 +1037,12 @@ function PlasmicHomepage__RenderFunc(props: {
                     })()
                   : undefined;
                 if (
-                  $steps["updateProductListVariable"] != null &&
-                  typeof $steps["updateProductListVariable"] === "object" &&
-                  typeof $steps["updateProductListVariable"].then === "function"
+                  $steps["setProductListVariable"] != null &&
+                  typeof $steps["setProductListVariable"] === "object" &&
+                  typeof $steps["setProductListVariable"].then === "function"
                 ) {
-                  $steps["updateProductListVariable"] = await $steps[
-                    "updateProductListVariable"
+                  $steps["setProductListVariable"] = await $steps[
+                    "setProductListVariable"
                   ];
                 }
               }}
