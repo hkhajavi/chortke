@@ -1162,10 +1162,7 @@ function PlasmicHomepage__RenderFunc(props: {
                           undefined,
                           (() => {
                             try {
-                              return (
-                                "https://apigw.paziresh24.com/transaction/v1/userproduct?type=getproductlistuserid=" +
-                                $state.userid
-                              );
+                              return "https://apigw.paziresh24.com/transaction/v1/userproductlist";
                             } catch (e) {
                               if (
                                 e instanceof TypeError ||
