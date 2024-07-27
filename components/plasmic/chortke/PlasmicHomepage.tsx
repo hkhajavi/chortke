@@ -694,21 +694,22 @@ function PlasmicHomepage__RenderFunc(props: {
                           ];
                         }
 
-                        $steps["runCode"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                customFunction: async () => {
-                                  return ($state.btnPayShow = !(
-                                    $steps.getProductWallet.data.data.balance >
-                                    0
-                                  ));
-                                }
-                              };
-                              return (({ customFunction }) => {
-                                return customFunction();
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
+                        $steps["runCode"] =
+                          ($steps.getProductWallet.data.status = true)
+                            ? (() => {
+                                const actionArgs = {
+                                  customFunction: async () => {
+                                    return ($state.btnPayShow = !(
+                                      $steps.getProductWallet.data.data
+                                        .balance > 0
+                                    ));
+                                  }
+                                };
+                                return (({ customFunction }) => {
+                                  return customFunction();
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
                         if (
                           $steps["runCode"] != null &&
                           typeof $steps["runCode"] === "object" &&
@@ -717,23 +718,24 @@ function PlasmicHomepage__RenderFunc(props: {
                           $steps["runCode"] = await $steps["runCode"];
                         }
 
-                        $steps["txtRemainingText"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                customFunction: async () => {
-                                  return $steps.getProductWallet.data.data
-                                    .balance >= 0
-                                    ? ($state.txtReminderTextValue =
-                                        "موجودی حساب: ")
-                                    : ($state.txtReminderTextValue =
-                                        "بدهی شما: ");
-                                }
-                              };
-                              return (({ customFunction }) => {
-                                return customFunction();
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
+                        $steps["txtRemainingText"] =
+                          ($steps.getProductWallet.data.status = true)
+                            ? (() => {
+                                const actionArgs = {
+                                  customFunction: async () => {
+                                    return $steps.getProductWallet.data.data
+                                      .balance >= 0
+                                      ? ($state.txtReminderTextValue =
+                                          "موجودی حساب: ")
+                                      : ($state.txtReminderTextValue =
+                                          "بدهی شما: ");
+                                  }
+                                };
+                                return (({ customFunction }) => {
+                                  return customFunction();
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
                         if (
                           $steps["txtRemainingText"] != null &&
                           typeof $steps["txtRemainingText"] === "object" &&
@@ -741,6 +743,35 @@ function PlasmicHomepage__RenderFunc(props: {
                         ) {
                           $steps["txtRemainingText"] = await $steps[
                             "txtRemainingText"
+                          ];
+                        }
+
+                        $steps["txtReminderValue"] =
+                          ($steps.getProductWallet.data.status = true)
+                            ? (() => {
+                                const actionArgs = {
+                                  customFunction: async () => {
+                                    return (() => {
+                                      return ($state.txtReminderValue =
+                                        new Intl.NumberFormat("fa-IR").format(
+                                          $steps.getProductWallet.data.data
+                                            .balance
+                                        ));
+                                    })();
+                                  }
+                                };
+                                return (({ customFunction }) => {
+                                  return customFunction();
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                        if (
+                          $steps["txtReminderValue"] != null &&
+                          typeof $steps["txtReminderValue"] === "object" &&
+                          typeof $steps["txtReminderValue"].then === "function"
+                        ) {
+                          $steps["txtReminderValue"] = await $steps[
+                            "txtReminderValue"
                           ];
                         }
 
