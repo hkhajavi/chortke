@@ -1163,7 +1163,7 @@ function PlasmicHomepage__RenderFunc(props: {
                           (() => {
                             try {
                               return (
-                                "https://apigw.paziresh24.com/transaction/v1/productlist?userid=" +
+                                "https://apigw.paziresh24.com/transaction/v1/userproduct?type=getproductlist&?userid=" +
                                 $state.userid
                               );
                             } catch (e) {
