@@ -660,10 +660,23 @@ function PlasmicHomepage__RenderFunc(props: {
                               const actionArgs = {
                                 args: [
                                   undefined,
-                                  `https://apigw.paziresh24.com/transaction/v1/productwallet?productid=${
-                                    "https://apigw.paziresh24.com/transaction/v1/productwallet?productid=" +
-                                    $state.cbProductlist.value
-                                  }`
+                                  (() => {
+                                    try {
+                                      return (
+                                        "https://apigw.paziresh24.com/transaction/v1/productwallet?productid=" +
+                                        $state.cbProductlist.value
+                                      );
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()
                                 ]
                               };
                               return $globalActions[
@@ -709,11 +722,11 @@ function PlasmicHomepage__RenderFunc(props: {
                               const actionArgs = {
                                 customFunction: async () => {
                                   return $steps.getProductWallet.data.data
-                                    .balance > 0
+                                    .balance >= 0
                                     ? ($state.txtReminderTextValue =
                                         "موجودی حساب: ")
                                     : ($state.txtReminderTextValue =
-                                        "مانده حساب: ");
+                                        "بدهی شما: ");
                                 }
                               };
                               return (({ customFunction }) => {
