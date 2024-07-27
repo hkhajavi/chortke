@@ -21,6 +21,16 @@
       }
     },
     {
+      "name": "10px",
+      "type": "fontsize",
+      "value": "16px",
+      "category": "fontsize",
+      "meta": {
+        "projectId": "afXULSfGYmou2jFpEc2QWJ",
+        "id": "A5TMwx8qQHfL"
+      }
+    },
+    {
       "name": "2",
       "type": "spacing",
       "value": "0.5rem",

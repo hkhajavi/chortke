@@ -78,6 +78,7 @@ import Icon11Icon from "./icons/PlasmicIcon__Icon11"; // plasmic-import: sdf49At
 import Icon6Icon from "./icons/PlasmicIcon__Icon6"; // plasmic-import: 7-KwYGGksEHB/icon
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
 import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
+import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
 
 createPlasmicElementProxy;
 
@@ -100,10 +101,14 @@ export type PlasmicHomepage__OverridesType = {
   section?: Flex__<"section">;
   gridCalculator2?: Flex__<"div">;
   cbProductlist?: Flex__<typeof Select>;
-  button?: Flex__<typeof Button>;
+  txtRemainingText?: Flex__<"div">;
+  txtRemainingValue?: Flex__<"div">;
+  btnPay?: Flex__<typeof Button>;
   gridInvoice1?: Flex__<"div">;
   gridInvoice12?: Flex__<"div">;
+  btnInvoiceInfo?: Flex__<typeof Button>;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
+  waitingIcon?: Flex__<"svg">;
 };
 
 export interface DefaultHomepageProps {}
@@ -178,7 +183,7 @@ function PlasmicHomepage__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => [
           {
             productid: 0,
-            name: "\u0645\u062d\u0635\u0648\u0644\u06cc \u062c\u0647\u062a \u0627\u0646\u062a\u062e\u0627\u0628 \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f"
+            name: "\u0644\u0637\u0641\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
           }
         ]
       },
@@ -187,6 +192,18 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => "hkk"
+      },
+      {
+        path: "txtTest2",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "waiting",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -569,11 +586,84 @@ function PlasmicHomepage__RenderFunc(props: {
                     aria-labelledby={"productid"}
                     className={classNames("__wab_instance", sty.cbProductlist)}
                     name={"productlist"}
-                    onChange={(...eventArgs) => {
-                      generateStateOnChangeProp($state, [
-                        "cbProductlist",
-                        "value"
-                      ])(eventArgs[0]);
+                    onChange={async (...eventArgs: any) => {
+                      ((...eventArgs) => {
+                        generateStateOnChangeProp($state, [
+                          "cbProductlist",
+                          "value"
+                        ])(eventArgs[0]);
+                      }).apply(null, eventArgs);
+                      (async value => {
+                        const $steps = {};
+
+                        $steps["showWaiting"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["waiting"]
+                                },
+                                operation: 0,
+                                value: true
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["showWaiting"] != null &&
+                          typeof $steps["showWaiting"] === "object" &&
+                          typeof $steps["showWaiting"].then === "function"
+                        ) {
+                          $steps["showWaiting"] = await $steps["showWaiting"];
+                        }
+
+                        $steps["hideWaiting"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["waiting"]
+                                },
+                                operation: 0,
+                                value: false
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["hideWaiting"] != null &&
+                          typeof $steps["hideWaiting"] === "object" &&
+                          typeof $steps["hideWaiting"].then === "function"
+                        ) {
+                          $steps["hideWaiting"] = await $steps["hideWaiting"];
+                        }
+                      }).apply(null, eventArgs);
                     }}
                     options={(() => {
                       try {
@@ -592,7 +682,17 @@ function PlasmicHomepage__RenderFunc(props: {
                       }
                     })()}
                     placeholder={
-                      "\u0628\u062e\u0634 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__lX8IZ
+                        )}
+                      >
+                        {
+                          "\u0628\u062e\u0634 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                        }
+                      </div>
                     }
                     value={generateStateValueProp($state, [
                       "cbProductlist",
@@ -618,70 +718,44 @@ function PlasmicHomepage__RenderFunc(props: {
                   id={"grid_calculator"}
                 >
                   <div
+                    data-plasmic-name={"txtRemainingText"}
+                    data-plasmic-override={overrides.txtRemainingText}
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__sgVno
+                      sty.txtRemainingText
                     )}
                   >
                     {"\u0645\u0627\u0646\u062f\u0647 \u0628\u062f\u0647\u06cc:"}
                   </div>
                   <div
+                    data-plasmic-name={"txtRemainingValue"}
+                    data-plasmic-override={overrides.txtRemainingValue}
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text___5MXsj
+                      sty.txtRemainingValue
                     )}
                   >
-                    {"5.120.000.000 \u0631\u06cc\u0627\u0644"}
+                    {"0"}
                   </div>
                   <Button
-                    data-plasmic-name={"button"}
-                    data-plasmic-override={overrides.button}
-                    children2={"\u067e\u0631\u062f\u0627\u062e\u062a"}
-                    className={classNames("__wab_instance", sty.button)}
+                    data-plasmic-name={"btnPay"}
+                    data-plasmic-override={overrides.btnPay}
+                    children2={
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___6C57K
+                        )}
+                      >
+                        {"\u067e\u0631\u062f\u0627\u062e\u062a"}
+                      </div>
+                    }
+                    className={classNames("__wab_instance", sty.btnPay)}
                     onClick={async event => {
                       const $steps = {};
-
-                      $steps["getProductList"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              args: [
-                                undefined,
-                                (() => {
-                                  try {
-                                    return (
-                                      "https://apigw.paziresh24.com/transaction/v1/productlist?userid=" +
-                                      $state.userid
-                                    );
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
-                                    }
-                                    throw e;
-                                  }
-                                })()
-                              ]
-                            };
-                            return $globalActions["Fragment.apiRequest"]?.apply(
-                              null,
-                              [...actionArgs.args]
-                            );
-                          })()
-                        : undefined;
-                      if (
-                        $steps["getProductList"] != null &&
-                        typeof $steps["getProductList"] === "object" &&
-                        typeof $steps["getProductList"].then === "function"
-                      ) {
-                        $steps["getProductList"] = await $steps[
-                          "getProductList"
-                        ];
-                      }
                     }}
                   />
                 </div>
@@ -760,7 +834,9 @@ function PlasmicHomepage__RenderFunc(props: {
                       sty.text__cj3GE
                     )}
                   >
-                    {"\u0642\u06cc\u0645\u062a"}
+                    {hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "\u0642\u06cc\u0645\u062a "
+                      : "\u0642\u06cc\u0645\u062a (\u0631\u06cc\u0627\u0644)"}
                   </div>
                 </div>
                 <div
@@ -802,7 +878,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       sty.text__b9TAi
                     )}
                   >
-                    {"\u0631\u062f\u06cc\u0641"}
+                    {"1"}
                   </div>
                 </div>
                 <div
@@ -820,7 +896,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       sty.text__k5RNe
                     )}
                   >
-                    {"\u062a\u0627\u0631\u06cc\u062e"}
+                    {"1403/05/01"}
                   </div>
                 </div>
                 <div
@@ -838,7 +914,9 @@ function PlasmicHomepage__RenderFunc(props: {
                       sty.text__mS8Qi
                     )}
                   >
-                    {"\u0639\u0646\u0648\u0627\u0646"}
+                    {
+                      "\u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628 \u0647\u0632\u06cc\u0646\u0647 \u0646\u0648\u0628\u062a \u062f\u0647\u06cc \u062a\u06cc\u0631 \u0645\u0627\u0647 1403"
+                    }
                   </div>
                 </div>
                 <div
@@ -856,7 +934,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       sty.text___07T8
                     )}
                   >
-                    {"\u0642\u06cc\u0645\u062a"}
+                    {"25.300.000"}
                   </div>
                 </div>
                 <div
@@ -867,15 +945,23 @@ function PlasmicHomepage__RenderFunc(props: {
                   )}
                   id={"grid_calculator"}
                 >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__a8Fe4
-                    )}
-                  >
-                    {"\u062c\u0632\u0626\u06cc\u0627\u062a"}
-                  </div>
+                  <Button
+                    data-plasmic-name={"btnInvoiceInfo"}
+                    data-plasmic-override={overrides.btnInvoiceInfo}
+                    children2={
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__zgEzb
+                        )}
+                      >
+                        {"\u062c\u0632\u0626\u06cc\u0627\u062a"}
+                      </div>
+                    }
+                    className={classNames("__wab_instance", sty.btnInvoiceInfo)}
+                    color={"green"}
+                  />
                 </div>
               </div>
             </section>
@@ -885,6 +971,40 @@ function PlasmicHomepage__RenderFunc(props: {
               className={classNames("__wab_instance", sty.sideEffectPageLoad)}
               onMount={async () => {
                 const $steps = {};
+
+                $steps["showWaiting"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["waiting"]
+                        },
+                        operation: 0,
+                        value: true
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["showWaiting"] != null &&
+                  typeof $steps["showWaiting"] === "object" &&
+                  typeof $steps["showWaiting"].then === "function"
+                ) {
+                  $steps["showWaiting"] = await $steps["showWaiting"];
+                }
 
                 $steps["checkUser"] = true
                   ? (() => {
@@ -1058,7 +1178,7 @@ function PlasmicHomepage__RenderFunc(props: {
                           variablePath: ["productList"]
                         },
                         operation: 0,
-                        value: $steps.getProductList.data
+                        value: $steps.getProductList.data.data
                       };
                       return (({
                         variable,
@@ -1085,8 +1205,63 @@ function PlasmicHomepage__RenderFunc(props: {
                     "setProductListVariable"
                   ];
                 }
+
+                $steps["hideWaiting"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["waiting"]
+                        },
+                        operation: 0,
+                        value: false
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["hideWaiting"] != null &&
+                  typeof $steps["hideWaiting"] === "object" &&
+                  typeof $steps["hideWaiting"].then === "function"
+                ) {
+                  $steps["hideWaiting"] = await $steps["hideWaiting"];
+                }
               }}
             />
+
+            {(() => {
+              try {
+                return $state.waiting;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })() ? (
+              <Icon2Icon
+                data-plasmic-name={"waitingIcon"}
+                data-plasmic-override={overrides.waitingIcon}
+                className={classNames(projectcss.all, sty.waitingIcon)}
+                role={"img"}
+              />
+            ) : null}
           </div>
         ) : null}
       </div>
@@ -1105,10 +1280,14 @@ const PlasmicDescendants = {
     "section",
     "gridCalculator2",
     "cbProductlist",
-    "button",
+    "txtRemainingText",
+    "txtRemainingValue",
+    "btnPay",
     "gridInvoice1",
     "gridInvoice12",
-    "sideEffectPageLoad"
+    "btnInvoiceInfo",
+    "sideEffectPageLoad",
+    "waitingIcon"
   ],
   h1: ["h1"],
   btnDashboard3: ["btnDashboard3"],
@@ -1119,16 +1298,29 @@ const PlasmicDescendants = {
     "section",
     "gridCalculator2",
     "cbProductlist",
-    "button",
+    "txtRemainingText",
+    "txtRemainingValue",
+    "btnPay",
     "gridInvoice1",
-    "gridInvoice12"
+    "gridInvoice12",
+    "btnInvoiceInfo"
   ],
-  gridCalculator2: ["gridCalculator2", "cbProductlist", "button"],
+  gridCalculator2: [
+    "gridCalculator2",
+    "cbProductlist",
+    "txtRemainingText",
+    "txtRemainingValue",
+    "btnPay"
+  ],
   cbProductlist: ["cbProductlist"],
-  button: ["button"],
+  txtRemainingText: ["txtRemainingText"],
+  txtRemainingValue: ["txtRemainingValue"],
+  btnPay: ["btnPay"],
   gridInvoice1: ["gridInvoice1"],
-  gridInvoice12: ["gridInvoice12"],
-  sideEffectPageLoad: ["sideEffectPageLoad"]
+  gridInvoice12: ["gridInvoice12", "btnInvoiceInfo"],
+  btnInvoiceInfo: ["btnInvoiceInfo"],
+  sideEffectPageLoad: ["sideEffectPageLoad"],
+  waitingIcon: ["waitingIcon"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1143,10 +1335,14 @@ type NodeDefaultElementType = {
   section: "section";
   gridCalculator2: "div";
   cbProductlist: typeof Select;
-  button: typeof Button;
+  txtRemainingText: "div";
+  txtRemainingValue: "div";
+  btnPay: typeof Button;
   gridInvoice1: "div";
   gridInvoice12: "div";
+  btnInvoiceInfo: typeof Button;
   sideEffectPageLoad: typeof SideEffect;
+  waitingIcon: "svg";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1217,10 +1413,14 @@ export const PlasmicHomepage = Object.assign(
     section: makeNodeComponent("section"),
     gridCalculator2: makeNodeComponent("gridCalculator2"),
     cbProductlist: makeNodeComponent("cbProductlist"),
-    button: makeNodeComponent("button"),
+    txtRemainingText: makeNodeComponent("txtRemainingText"),
+    txtRemainingValue: makeNodeComponent("txtRemainingValue"),
+    btnPay: makeNodeComponent("btnPay"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     gridInvoice12: makeNodeComponent("gridInvoice12"),
+    btnInvoiceInfo: makeNodeComponent("btnInvoiceInfo"),
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
+    waitingIcon: makeNodeComponent("waitingIcon"),
 
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,
