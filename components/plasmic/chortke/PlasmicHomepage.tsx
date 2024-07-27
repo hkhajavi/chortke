@@ -204,6 +204,31 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "variable",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "btnPayShow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => true
+      },
+      {
+        path: "txtReminderTextValue",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          "\u0645\u0627\u0646\u062f\u0647 \u0628\u062f\u0647\u06cc: "
+      },
+      {
+        path: "txtReminderValue",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
@@ -630,6 +655,82 @@ function PlasmicHomepage__RenderFunc(props: {
                           $steps["showWaiting"] = await $steps["showWaiting"];
                         }
 
+                        $steps["getProductWallet"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  undefined,
+                                  `https://apigw.paziresh24.com/transaction/v1/productwallet?productid=${
+                                    "https://apigw.paziresh24.com/transaction/v1/productwallet?productid=" +
+                                    $state.cbProductlist.value
+                                  }`
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.apiRequest"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["getProductWallet"] != null &&
+                          typeof $steps["getProductWallet"] === "object" &&
+                          typeof $steps["getProductWallet"].then === "function"
+                        ) {
+                          $steps["getProductWallet"] = await $steps[
+                            "getProductWallet"
+                          ];
+                        }
+
+                        $steps["runCode"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                customFunction: async () => {
+                                  return ($state.btnPayShow = !(
+                                    $steps.getProductWallet.data.data.balance >
+                                    0
+                                  ));
+                                }
+                              };
+                              return (({ customFunction }) => {
+                                return customFunction();
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["runCode"] != null &&
+                          typeof $steps["runCode"] === "object" &&
+                          typeof $steps["runCode"].then === "function"
+                        ) {
+                          $steps["runCode"] = await $steps["runCode"];
+                        }
+
+                        $steps["txtRemainingText"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                customFunction: async () => {
+                                  return $steps.getProductWallet.data.data
+                                    .balance > 0
+                                    ? ($state.txtReminderTextValue =
+                                        "موجودی حساب: ")
+                                    : ($state.txtReminderTextValue =
+                                        "مانده حساب: ");
+                                }
+                              };
+                              return (({ customFunction }) => {
+                                return customFunction();
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["txtRemainingText"] != null &&
+                          typeof $steps["txtRemainingText"] === "object" &&
+                          typeof $steps["txtRemainingText"].then === "function"
+                        ) {
+                          $steps["txtRemainingText"] = await $steps[
+                            "txtRemainingText"
+                          ];
+                        }
+
                         $steps["hideWaiting"] = true
                           ? (() => {
                               const actionArgs = {
@@ -726,7 +827,21 @@ function PlasmicHomepage__RenderFunc(props: {
                       sty.txtRemainingText
                     )}
                   >
-                    {"\u0645\u0627\u0646\u062f\u0647 \u0628\u062f\u0647\u06cc:"}
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return $state.txtReminderTextValue;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "\u0645\u0627\u0646\u062f\u0647 \u0628\u062f\u0647\u06cc:";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
                   </div>
                   <div
                     data-plasmic-name={"txtRemainingValue"}
@@ -739,47 +854,60 @@ function PlasmicHomepage__RenderFunc(props: {
                   >
                     {"0"}
                   </div>
-                  <Button
-                    data-plasmic-name={"btnPay"}
-                    data-plasmic-override={overrides.btnPay}
-                    children2={
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___6C57K
-                        )}
-                      >
-                        {"\u067e\u0631\u062f\u0627\u062e\u062a"}
-                      </div>
-                    }
-                    className={classNames("__wab_instance", sty.btnPay)}
-                    onClick={async event => {
-                      const $steps = {};
-
-                      $steps["userProduct"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              args: [
-                                undefined,
-                                "https://apigw.paziresh24.com/transaction/v1/userproduct"
-                              ]
-                            };
-                            return $globalActions["Fragment.apiRequest"]?.apply(
-                              null,
-                              [...actionArgs.args]
-                            );
-                          })()
-                        : undefined;
+                  {(() => {
+                    try {
+                      return $state.btnPayShow;
+                    } catch (e) {
                       if (
-                        $steps["userProduct"] != null &&
-                        typeof $steps["userProduct"] === "object" &&
-                        typeof $steps["userProduct"].then === "function"
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
                       ) {
-                        $steps["userProduct"] = await $steps["userProduct"];
+                        return true;
                       }
-                    }}
-                  />
+                      throw e;
+                    }
+                  })() ? (
+                    <Button
+                      data-plasmic-name={"btnPay"}
+                      data-plasmic-override={overrides.btnPay}
+                      children2={
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___6C57K
+                          )}
+                        >
+                          {"\u067e\u0631\u062f\u0627\u062e\u062a"}
+                        </div>
+                      }
+                      className={classNames("__wab_instance", sty.btnPay)}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["userProduct"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  undefined,
+                                  "https://apigw.paziresh24.com/transaction/v1/userproduct"
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.apiRequest"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["userProduct"] != null &&
+                          typeof $steps["userProduct"] === "object" &&
+                          typeof $steps["userProduct"].then === "function"
+                        ) {
+                          $steps["userProduct"] = await $steps["userProduct"];
+                        }
+                      }}
+                    />
+                  ) : null}
                 </div>
               </div>
               <div
