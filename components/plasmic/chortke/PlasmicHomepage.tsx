@@ -756,6 +756,28 @@ function PlasmicHomepage__RenderFunc(props: {
                     className={classNames("__wab_instance", sty.btnPay)}
                     onClick={async event => {
                       const $steps = {};
+
+                      $steps["userProduct"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                undefined,
+                                "https://apigw.paziresh24.com/transaction/v1/userproduct"
+                              ]
+                            };
+                            return $globalActions["Fragment.apiRequest"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
+                      if (
+                        $steps["userProduct"] != null &&
+                        typeof $steps["userProduct"] === "object" &&
+                        typeof $steps["userProduct"].then === "function"
+                      ) {
+                        $steps["userProduct"] = await $steps["userProduct"];
+                      }
                     }}
                   />
                 </div>
