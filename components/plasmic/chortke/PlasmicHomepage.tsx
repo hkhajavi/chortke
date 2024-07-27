@@ -229,6 +229,12 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "invoicelist",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => []
       }
     ],
     [$props, $ctx, $refs]
@@ -655,6 +661,82 @@ function PlasmicHomepage__RenderFunc(props: {
                           $steps["showWaiting"] = await $steps["showWaiting"];
                         }
 
+                        $steps["getInvoiceList"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  undefined,
+                                  (() => {
+                                    try {
+                                      return (
+                                        "https://apigw.paziresh24.com/transaction/v1/userinvoicelist?productid=" +
+                                        $state.cbProductlist.value
+                                      );
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.apiRequest"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["getInvoiceList"] != null &&
+                          typeof $steps["getInvoiceList"] === "object" &&
+                          typeof $steps["getInvoiceList"].then === "function"
+                        ) {
+                          $steps["getInvoiceList"] = await $steps[
+                            "getInvoiceList"
+                          ];
+                        }
+
+                        $steps["updateInvoicelist"] =
+                          ($steps.getInvoiceList.data.status = true)
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["invoicelist"]
+                                  },
+                                  operation: 0,
+                                  value: $steps.getInvoiceList.data.data
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                        if (
+                          $steps["updateInvoicelist"] != null &&
+                          typeof $steps["updateInvoicelist"] === "object" &&
+                          typeof $steps["updateInvoicelist"].then === "function"
+                        ) {
+                          $steps["updateInvoicelist"] = await $steps[
+                            "updateInvoicelist"
+                          ];
+                        }
+
                         $steps["getProductWallet"] = true
                           ? (() => {
                               const actionArgs = {
@@ -694,30 +776,6 @@ function PlasmicHomepage__RenderFunc(props: {
                           ];
                         }
 
-                        $steps["runCode"] =
-                          ($steps.getProductWallet.data.status = true)
-                            ? (() => {
-                                const actionArgs = {
-                                  customFunction: async () => {
-                                    return ($state.btnPayShow = !(
-                                      $steps.getProductWallet.data.data
-                                        .balance > 0
-                                    ));
-                                  }
-                                };
-                                return (({ customFunction }) => {
-                                  return customFunction();
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                        if (
-                          $steps["runCode"] != null &&
-                          typeof $steps["runCode"] === "object" &&
-                          typeof $steps["runCode"].then === "function"
-                        ) {
-                          $steps["runCode"] = await $steps["runCode"];
-                        }
-
                         $steps["txtRemainingText"] =
                           ($steps.getProductWallet.data.status = true)
                             ? (() => {
@@ -751,13 +809,11 @@ function PlasmicHomepage__RenderFunc(props: {
                             ? (() => {
                                 const actionArgs = {
                                   customFunction: async () => {
-                                    return (() => {
-                                      return ($state.txtReminderValue =
-                                        new Intl.NumberFormat("fa-IR").format(
-                                          $steps.getProductWallet.data.data
-                                            .balance
-                                        ));
-                                    })();
+                                    return ($state.txtReminderValue =
+                                      new Intl.NumberFormat("fa-IR").format(
+                                        $steps.getProductWallet.data.data
+                                          .balance
+                                      ));
                                   }
                                 };
                                 return (({ customFunction }) => {
@@ -896,7 +952,25 @@ function PlasmicHomepage__RenderFunc(props: {
                       sty.txtRemainingValue
                     )}
                   >
-                    {"0"}
+                    <React.Fragment>
+                      {(() => {
+                        try {
+                          return (
+                            $state.txtReminderValue
+                              .toString()
+                              .replace(/\B(?=(\d{3})+(?!\d))/g, ",") + " ریال"
+                          );
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "0";
+                          }
+                          throw e;
+                        }
+                      })()}
+                    </React.Fragment>
                   </div>
                   {(() => {
                     try {
@@ -1052,112 +1126,136 @@ function PlasmicHomepage__RenderFunc(props: {
                   </div>
                 </div>
               </div>
-              <div
-                data-plasmic-name={"gridInvoice12"}
-                data-plasmic-override={overrides.gridInvoice12}
-                className={classNames(projectcss.all, sty.gridInvoice12)}
-              >
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    sty.freeBox___7L5Fd,
-                    "grid_calculator"
-                  )}
-                  id={"grid_calculator"}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__b9TAi
-                    )}
-                  >
-                    {"1"}
-                  </div>
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    sty.freeBox__yy3L,
-                    "grid_calculator"
-                  )}
-                  id={"grid_calculator"}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__k5RNe
-                    )}
-                  >
-                    {"1403/05/01"}
-                  </div>
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    sty.freeBox___5KBuV,
-                    "grid_calculator"
-                  )}
-                  id={"grid_calculator"}
-                >
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__mS8Qi
-                    )}
-                  >
-                    {
-                      "\u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628 \u0647\u0632\u06cc\u0646\u0647 \u0646\u0648\u0628\u062a \u062f\u0647\u06cc \u062a\u06cc\u0631 \u0645\u0627\u0647 1403"
+              {(_par => (!_par ? [] : Array.isArray(_par) ? _par : [_par]))(
+                (() => {
+                  try {
+                    return $state.invoicelist;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return [];
                     }
-                  </div>
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    sty.freeBox__kPny5,
-                    "grid_calculator"
-                  )}
-                  id={"grid_calculator"}
-                >
+                    throw e;
+                  }
+                })()
+              ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                const currentItem = __plasmic_item_0;
+                const currentIndex = __plasmic_idx_0;
+                return (
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___07T8
-                    )}
+                    data-plasmic-name={"gridInvoice12"}
+                    data-plasmic-override={overrides.gridInvoice12}
+                    className={classNames(projectcss.all, sty.gridInvoice12)}
+                    key={currentIndex}
                   >
-                    {"25.300.000"}
-                  </div>
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    sty.freeBox__wy9LE,
-                    "grid_calculator"
-                  )}
-                  id={"grid_calculator"}
-                >
-                  <Button
-                    data-plasmic-name={"btnInvoiceInfo"}
-                    data-plasmic-override={overrides.btnInvoiceInfo}
-                    children2={
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___7L5Fd,
+                        "grid_calculator"
+                      )}
+                      id={"grid_calculator"}
+                    >
                       <div
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__zgEzb
+                          sty.text__b9TAi
                         )}
                       >
-                        {"\u062c\u0632\u0626\u06cc\u0627\u062a"}
+                        {"1"}
                       </div>
-                    }
-                    className={classNames("__wab_instance", sty.btnInvoiceInfo)}
-                    color={"green"}
-                  />
-                </div>
-              </div>
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__yy3L,
+                        "grid_calculator"
+                      )}
+                      id={"grid_calculator"}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__k5RNe
+                        )}
+                      >
+                        {"1403/05/01"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___5KBuV,
+                        "grid_calculator"
+                      )}
+                      id={"grid_calculator"}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__mS8Qi
+                        )}
+                      >
+                        {
+                          "\u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628 \u0647\u0632\u06cc\u0646\u0647 \u0646\u0648\u0628\u062a \u062f\u0647\u06cc \u062a\u06cc\u0631 \u0645\u0627\u0647 1403"
+                        }
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__kPny5,
+                        "grid_calculator"
+                      )}
+                      id={"grid_calculator"}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___07T8
+                        )}
+                      >
+                        {"25.300.000"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox__wy9LE,
+                        "grid_calculator"
+                      )}
+                      id={"grid_calculator"}
+                    >
+                      <Button
+                        data-plasmic-name={"btnInvoiceInfo"}
+                        data-plasmic-override={overrides.btnInvoiceInfo}
+                        children2={
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__zgEzb
+                            )}
+                          >
+                            {"\u062c\u0632\u0626\u06cc\u0627\u062a"}
+                          </div>
+                        }
+                        className={classNames(
+                          "__wab_instance",
+                          sty.btnInvoiceInfo
+                        )}
+                        color={"green"}
+                      />
+                    </div>
+                  </div>
+                );
+              })}
             </section>
             <SideEffect
               data-plasmic-name={"sideEffectPageLoad"}

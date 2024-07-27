@@ -27,6 +27,7 @@
   }
 }
 .freeBox__wgrRs {
+  display: flex;
   position: relative;
   flex-direction: row;
   width: 100%;
@@ -34,7 +35,6 @@
   background: #ffffff;
   grid-column-start: 1 !important;
   grid-column-end: -1 !important;
-  display: none;
   padding: 0px 18px;
 }
 .freeBox__wgrRs > :global(.__wab_flex-container) {
@@ -908,11 +908,11 @@
   width: 100%;
   height: 35px;
   position: fixed;
+  margin-top: 20px;
   left: 0;
+  right: 0;
   top: 0;
   z-index: 1;
-  right: 0;
-  margin-top: 20px;
   grid-column-start: 1 !important;
   grid-column-end: -1 !important;
 }
