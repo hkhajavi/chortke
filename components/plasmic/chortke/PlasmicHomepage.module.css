@@ -27,7 +27,6 @@
   }
 }
 .freeBox__wgrRs {
-  display: flex;
   position: relative;
   flex-direction: row;
   width: 100%;
@@ -35,6 +34,7 @@
   background: #ffffff;
   grid-column-start: 1 !important;
   grid-column-end: -1 !important;
+  display: none;
   padding: 0px 18px;
 }
 .freeBox__wgrRs > :global(.__wab_flex-container) {
@@ -464,7 +464,7 @@
   max-width: 100%;
   left: auto;
   top: auto;
-  margin-right: 10px;
+  margin-right: 2px;
   margin-left: 10px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -483,6 +483,7 @@
   position: relative;
   left: auto;
   top: auto;
+  height: 30px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .btnPay:global(.__wab_instance) {
@@ -904,6 +905,52 @@
   width: auto;
   height: 1em;
 }
+.freeBox___2D3Ga {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px;
+}
+.freeBox__xbkv {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 8px;
+}
+.freeBox__znizp {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-end;
+  align-items: center;
+  min-width: 0;
+  padding: 8px;
+}
+.waitingIcon3 {
+  object-fit: cover;
+  max-width: 100%;
+  width: auto;
+  height: 35px;
+  position: relative;
+  margin-top: 20px;
+  left: auto;
+  top: auto;
+  z-index: 1;
+  right: auto;
+}
 .freeBox__xFOpB {
   display: grid;
   position: relative;
@@ -947,6 +994,13 @@
   padding: 8px;
 }
 .text__bdf2M {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.text__iXUcm {
   position: relative;
   width: 100%;
   height: auto;
