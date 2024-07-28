@@ -582,6 +582,46 @@
           "cssFilePath": "plasmic/chortke/PlasmicMenuFeature.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "FYVyu1h3mPQf",
+          "name": "InvoiceDetails",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/chortke/PlasmicInvoiceDetails.tsx",
+          "importSpec": {
+            "modulePath": "InvoiceDetails.tsx"
+          },
+          "cssFilePath": "plasmic/chortke/PlasmicInvoiceDetails.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "oMlyAE-sgBTl",
+          "name": "Button",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/chortke/PlasmicButton.tsx",
+          "importSpec": {
+            "modulePath": "Button.tsx"
+          },
+          "cssFilePath": "plasmic/chortke/PlasmicButton.module.css",
+          "scheme": "blackbox",
+          "componentType": "component",
+          "plumeType": "button"
+        },
+        {
+          "id": "3p5lHK1MOgje",
+          "name": "Dialog",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/chortke/PlasmicDialog.tsx",
+          "importSpec": {
+            "modulePath": "Dialog.tsx"
+          },
+          "cssFilePath": "plasmic/chortke/PlasmicDialog.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -714,6 +754,11 @@
           "id": "HJ2LX2Z4Nt5V",
           "name": "Icon19Icon",
           "moduleFilePath": "plasmic/chortke/icons/PlasmicIcon__Icon19.tsx"
+        },
+        {
+          "id": "hs1r53dOSjtc",
+          "name": "Icon20Icon",
+          "moduleFilePath": "plasmic/chortke/icons/PlasmicIcon__Icon20.tsx"
         }
       ],
       "images": [
