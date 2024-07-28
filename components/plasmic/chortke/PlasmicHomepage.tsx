@@ -304,6 +304,12 @@ function PlasmicHomepage__RenderFunc(props: {
         path: "dialog[].open",
         type: "private",
         variableType: "boolean"
+      },
+      {
+        path: "invoiceHasOnlinePayment",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => true
       }
     ],
     [$props, $ctx, $refs]
@@ -1582,7 +1588,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                       "mobileOnly"
                                     )
                                       ? "\u062a\u0648\u0636\u06cc\u062d\u0627\u062a:"
-                                      : "\u0639\u0646\u0648\u0627\u0646:"}
+                                      : "\u062a\u0648\u0636\u06cc\u062d\u0627\u062a:"}
                                   </div>
                                 </div>
                                 <div
@@ -1763,88 +1769,108 @@ function PlasmicHomepage__RenderFunc(props: {
                                   })}
                                 </div>
                               </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.freeBox__qipT
-                                )}
-                              >
+                              {(() => {
+                                try {
+                                  return $state.invoiceHasOnlinePayment;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return true;
+                                  }
+                                  throw e;
+                                }
+                              })() ? (
                                 <div
                                   className={classNames(
                                     projectcss.all,
-                                    sty.freeBox__hhpNy
+                                    sty.freeBox__qipT
                                   )}
                                 >
                                   <div
                                     className={classNames(
                                       projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__wFukn
+                                      sty.freeBox__hhpNy
                                     )}
                                   >
-                                    {"\u062c\u0632\u0626\u06cc\u0627\u062a:"}
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__wFukn
+                                      )}
+                                    >
+                                      {
+                                        "\u0634\u0646\u0627\u0633\u0647 \u062a\u0631\u0627\u06a9\u0646\u0634 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a:"
+                                      }
+                                    </div>
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__sfHae
+                                    )}
+                                  >
+                                    {(_par =>
+                                      !_par
+                                        ? []
+                                        : Array.isArray(_par)
+                                        ? _par
+                                        : [_par])(
+                                      (() => {
+                                        try {
+                                          return $state.invoiceDetials.data
+                                            .services;
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return [];
+                                          }
+                                          throw e;
+                                        }
+                                      })()
+                                    ).map(
+                                      (__plasmic_item_1, __plasmic_idx_1) => {
+                                        const currentItem = __plasmic_item_1;
+                                        const currentIndex = __plasmic_idx_1;
+                                        return (
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text___9EnGs
+                                            )}
+                                            key={currentIndex}
+                                          >
+                                            <React.Fragment>
+                                              {(() => {
+                                                try {
+                                                  return $state.invoiceDetials
+                                                    .data.meta.ResNum;
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return "";
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()}
+                                            </React.Fragment>
+                                          </div>
+                                        );
+                                      }
+                                    )}
                                   </div>
                                 </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.freeBox__sfHae
-                                  )}
-                                >
-                                  {(_par =>
-                                    !_par
-                                      ? []
-                                      : Array.isArray(_par)
-                                      ? _par
-                                      : [_par])(
-                                    (() => {
-                                      try {
-                                        return $state.invoiceDetials.data
-                                          .services;
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return [];
-                                        }
-                                        throw e;
-                                      }
-                                    })()
-                                  ).map((__plasmic_item_1, __plasmic_idx_1) => {
-                                    const currentItem = __plasmic_item_1;
-                                    const currentIndex = __plasmic_idx_1;
-                                    return (
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
-                                          sty.text___9EnGs
-                                        )}
-                                        key={currentIndex}
-                                      >
-                                        <React.Fragment>
-                                          {(() => {
-                                            try {
-                                              return currentItem.service;
-                                            } catch (e) {
-                                              if (
-                                                e instanceof TypeError ||
-                                                e?.plasmicType ===
-                                                  "PlasmicUndefinedDataError"
-                                              ) {
-                                                return "";
-                                              }
-                                              throw e;
-                                            }
-                                          })()}
-                                        </React.Fragment>
-                                      </div>
-                                    );
-                                  })}
-                                </div>
-                              </div>
+                              ) : null}
                             </React.Fragment>
                           ),
                           noTrigger: (() => {
@@ -2121,6 +2147,36 @@ function PlasmicHomepage__RenderFunc(props: {
                                     await $steps[
                                       "setInvoiceDetailsToComponent"
                                     ];
+                                }
+
+                                $steps["hasOnlinePayment"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        customFunction: async () => {
+                                          return (() => {
+                                            return ($state.invoiceHasOnlinePayment =
+                                              $state.invoiceDetials.data.meta
+                                                .ResNum
+                                                ? true
+                                                : false);
+                                          })();
+                                        }
+                                      };
+                                      return (({ customFunction }) => {
+                                        return customFunction();
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["hasOnlinePayment"] != null &&
+                                  typeof $steps["hasOnlinePayment"] ===
+                                    "object" &&
+                                  typeof $steps["hasOnlinePayment"].then ===
+                                    "function"
+                                ) {
+                                  $steps["hasOnlinePayment"] = await $steps[
+                                    "hasOnlinePayment"
+                                  ];
                                 }
 
                                 $steps["showDialog"] =
