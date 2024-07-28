@@ -109,6 +109,7 @@ export type PlasmicHomepage__OverridesType = {
   btnInvoiceInfo?: Flex__<typeof Button>;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
   waitingIcon?: Flex__<"svg">;
+  sideEffectFirstLoad?: Flex__<typeof SideEffect>;
 };
 
 export interface DefaultHomepageProps {}
@@ -234,7 +235,21 @@ function PlasmicHomepage__RenderFunc(props: {
         path: "invoicelist",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => []
+        initFunc: ({ $props, $state, $queries, $ctx }) => [
+          {
+            invoiceid: 194,
+            userid: "15594550",
+            status: "registered",
+            type: "sale",
+            sumprice: 75030,
+            finalprice: 66026,
+            vatpercent: 10,
+            discountpercent: 20,
+            title: "5545",
+            description: "hgugt",
+            registerdate: "2024-07-24"
+          }
+        ]
       }
     ],
     [$props, $ctx, $refs]
@@ -1165,7 +1180,27 @@ function PlasmicHomepage__RenderFunc(props: {
                           sty.text__b9TAi
                         )}
                       >
-                        {"1"}
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return (
+                                $state.invoicelist.findIndex(
+                                  item =>
+                                    item.invoiceid ===
+                                    $state.invoicelist[currentIndex].invoiceid
+                                ) + 1
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "1";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
                       </div>
                     </div>
                     <div
@@ -1183,7 +1218,23 @@ function PlasmicHomepage__RenderFunc(props: {
                           sty.text__k5RNe
                         )}
                       >
-                        {"1403/05/01"}
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return new Date(
+                                $state.invoicelist[currentIndex].registerdate
+                              ).toLocaleDateString("fa-IR");
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "1403/05/01";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
                       </div>
                     </div>
                     <div
@@ -1201,9 +1252,21 @@ function PlasmicHomepage__RenderFunc(props: {
                           sty.text__mS8Qi
                         )}
                       >
-                        {
-                          "\u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628 \u0647\u0632\u06cc\u0646\u0647 \u0646\u0648\u0628\u062a \u062f\u0647\u06cc \u062a\u06cc\u0631 \u0645\u0627\u0647 1403"
-                        }
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return $state.invoicelist[currentIndex].title;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "\u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628 \u0647\u0632\u06cc\u0646\u0647 \u0646\u0648\u0628\u062a \u062f\u0647\u06cc \u062a\u06cc\u0631 \u0645\u0627\u0647 1403";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
                       </div>
                     </div>
                     <div
@@ -1221,7 +1284,23 @@ function PlasmicHomepage__RenderFunc(props: {
                           sty.text___07T8
                         )}
                       >
-                        {"25.300.000"}
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return new Intl.NumberFormat("fa-IR").format(
+                                $state.invoicelist[currentIndex].finalprice
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "25.300.000";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
                       </div>
                     </div>
                     <div
@@ -1551,6 +1630,50 @@ function PlasmicHomepage__RenderFunc(props: {
                 role={"img"}
               />
             ) : null}
+            <SideEffect
+              data-plasmic-name={"sideEffectFirstLoad"}
+              data-plasmic-override={overrides.sideEffectFirstLoad}
+              className={classNames("__wab_instance", sty.sideEffectFirstLoad)}
+              onMount={async () => {
+                const $steps = {};
+
+                $steps["updateInvoicelist"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["invoicelist"]
+                        },
+                        operation: 0,
+                        value: []
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["updateInvoicelist"] != null &&
+                  typeof $steps["updateInvoicelist"] === "object" &&
+                  typeof $steps["updateInvoicelist"].then === "function"
+                ) {
+                  $steps["updateInvoicelist"] = await $steps[
+                    "updateInvoicelist"
+                  ];
+                }
+              }}
+            />
           </div>
         ) : null}
       </div>
@@ -1576,7 +1699,8 @@ const PlasmicDescendants = {
     "gridInvoice12",
     "btnInvoiceInfo",
     "sideEffectPageLoad",
-    "waitingIcon"
+    "waitingIcon",
+    "sideEffectFirstLoad"
   ],
   h1: ["h1"],
   btnDashboard3: ["btnDashboard3"],
@@ -1609,7 +1733,8 @@ const PlasmicDescendants = {
   gridInvoice12: ["gridInvoice12", "btnInvoiceInfo"],
   btnInvoiceInfo: ["btnInvoiceInfo"],
   sideEffectPageLoad: ["sideEffectPageLoad"],
-  waitingIcon: ["waitingIcon"]
+  waitingIcon: ["waitingIcon"],
+  sideEffectFirstLoad: ["sideEffectFirstLoad"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1632,6 +1757,7 @@ type NodeDefaultElementType = {
   btnInvoiceInfo: typeof Button;
   sideEffectPageLoad: typeof SideEffect;
   waitingIcon: "svg";
+  sideEffectFirstLoad: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1710,6 +1836,7 @@ export const PlasmicHomepage = Object.assign(
     btnInvoiceInfo: makeNodeComponent("btnInvoiceInfo"),
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
     waitingIcon: makeNodeComponent("waitingIcon"),
+    sideEffectFirstLoad: makeNodeComponent("sideEffectFirstLoad"),
 
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,
