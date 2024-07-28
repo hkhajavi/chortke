@@ -2021,6 +2021,46 @@ function PlasmicHomepage__RenderFunc(props: {
                                   ];
                                 }
 
+                                $steps["invoiceHasOnlinePayment"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: [
+                                            "invoiceHasOnlinePayment"
+                                          ]
+                                        },
+                                        operation: 0,
+                                        value: false
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        $stateSet(objRoot, variablePath, value);
+                                        return value;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["invoiceHasOnlinePayment"] != null &&
+                                  typeof $steps["invoiceHasOnlinePayment"] ===
+                                    "object" &&
+                                  typeof $steps["invoiceHasOnlinePayment"]
+                                    .then === "function"
+                                ) {
+                                  $steps["invoiceHasOnlinePayment"] =
+                                    await $steps["invoiceHasOnlinePayment"];
+                                }
+
                                 $steps["clearInvoiceDetails"] = true
                                   ? (() => {
                                       const actionArgs = {
@@ -2153,13 +2193,15 @@ function PlasmicHomepage__RenderFunc(props: {
                                   ? (() => {
                                       const actionArgs = {
                                         customFunction: async () => {
-                                          return (() => {
-                                            return ($state.invoiceHasOnlinePayment =
-                                              $state.invoiceDetials.data.meta
-                                                .ResNum
-                                                ? true
-                                                : false);
-                                          })();
+                                          return ($state.invoiceHasOnlinePayment =
+                                            $state.invoiceDetials.data !==
+                                              undefined &&
+                                            $state.invoiceDetials.data.meta !==
+                                              undefined &&
+                                            $state.invoiceDetials.data.meta
+                                              .ResNum !== undefined
+                                              ? true
+                                              : false);
                                         }
                                       };
                                       return (({ customFunction }) => {
@@ -2176,30 +2218,6 @@ function PlasmicHomepage__RenderFunc(props: {
                                 ) {
                                   $steps["hasOnlinePayment"] = await $steps[
                                     "hasOnlinePayment"
-                                  ];
-                                }
-
-                                $steps["showDialog"] =
-                                  ($steps.getinvoiceDetails.data.status = true)
-                                    ? (() => {
-                                        const actionArgs = {
-                                          customFunction: async () => {
-                                            return ($state.isDialogOpen = true);
-                                          }
-                                        };
-                                        return (({ customFunction }) => {
-                                          return customFunction();
-                                        })?.apply(null, [actionArgs]);
-                                      })()
-                                    : undefined;
-                                if (
-                                  $steps["showDialog"] != null &&
-                                  typeof $steps["showDialog"] === "object" &&
-                                  typeof $steps["showDialog"].then ===
-                                    "function"
-                                ) {
-                                  $steps["showDialog"] = await $steps[
-                                    "showDialog"
                                   ];
                                 }
 
