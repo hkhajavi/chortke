@@ -597,33 +597,6 @@
           "componentType": "component"
         },
         {
-          "id": "oMlyAE-sgBTl",
-          "name": "Button",
-          "type": "managed",
-          "projectId": "afXULSfGYmou2jFpEc2QWJ",
-          "renderModuleFilePath": "plasmic/chortke/PlasmicButton.tsx",
-          "importSpec": {
-            "modulePath": "Button.tsx"
-          },
-          "cssFilePath": "plasmic/chortke/PlasmicButton.module.css",
-          "scheme": "blackbox",
-          "componentType": "component",
-          "plumeType": "button"
-        },
-        {
-          "id": "3p5lHK1MOgje",
-          "name": "Dialog",
-          "type": "managed",
-          "projectId": "afXULSfGYmou2jFpEc2QWJ",
-          "renderModuleFilePath": "plasmic/chortke/PlasmicDialog.tsx",
-          "importSpec": {
-            "modulePath": "Dialog.tsx"
-          },
-          "cssFilePath": "plasmic/chortke/PlasmicDialog.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
           "id": "Fv4gHFY9Rirl",
           "name": "Dialog2",
           "type": "managed",

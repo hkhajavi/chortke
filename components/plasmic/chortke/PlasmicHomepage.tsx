@@ -3025,7 +3025,7 @@ function PlasmicHomepage__RenderFunc(props: {
                           [
                             {
                               name: "dialogNewInvoiceDetails[].open",
-                              initFunc: ({ $props, $state, $queries }) => false
+                              initFunc: ({ $props, $state, $queries }) => true
                             }
                           ],
                           [__plasmic_idx_0]
