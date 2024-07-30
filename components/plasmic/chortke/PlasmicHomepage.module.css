@@ -531,13 +531,15 @@
   min-width: 0;
   padding: 0px 2px;
 }
+.dialogIncreaseRemaining:global(.__wab_instance):global(.__wab_instance) {
+  max-width: 100%;
+}
 .btnPay:global(.__wab_instance) {
   max-width: 100%;
   position: relative;
   left: auto;
   top: auto;
   height: 30px;
-  flex-shrink: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .btnPay:global(.__wab_instance) {
@@ -545,7 +547,6 @@
     height: 15px;
     left: auto;
     top: auto;
-    flex-shrink: 0;
   }
 }
 .svg___53RZw {
@@ -565,6 +566,201 @@
   object-fit: cover;
   width: auto;
   height: 1em;
+}
+.freeBox__f3Erv {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0px 8px;
+}
+.freeBox__aeDeu {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  grid-column-end: span 2;
+  min-width: 0;
+  padding: 8px;
+}
+.text__keYhm {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: right;
+  min-width: 0;
+}
+.freeBox__obaAa {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0px 8px;
+}
+.freeBox__gvTHy {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  grid-column-end: span 2;
+  min-width: 0;
+  padding: 8px;
+}
+.btnSelectAmount:global(.__wab_instance) {
+  max-width: 100%;
+  margin-left: 10px;
+  height: 30px;
+}
+.svg__jqp21 {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.svg__gIsw {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.button__labRk:global(.__wab_instance) {
+  max-width: 100%;
+  height: 30px;
+}
+.svg__eiUOg {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.svg__tzmId {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.gridMyAmount {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0px 8px;
+}
+.freeBox__hvwig {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  grid-column-end: span 1;
+  min-width: 0;
+  padding: 8px;
+}
+.freeBox__ecXK {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  grid-column-end: span 4;
+  min-width: 0;
+  padding: 8px;
+}
+.txtNewPaymentAmount:global(.__wab_instance) {
+  max-width: 100%;
+  align-self: center;
+}
+.svg__zbKq3 {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.svg__kjZuI {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.freeBox__jlOh6 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  grid-column-end: span 1;
+  min-width: 0;
+  padding: 8px;
+}
+.freeBox__zGcd {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0px 8px;
+}
+.freeBox__q4Ac {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  grid-column-end: span 2;
+  min-width: 0;
+  padding: 8px;
+}
+.button__zzG7G:global(.__wab_instance) {
+  max-width: 100%;
+}
+.svg__zKhMo {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.svg__zxdnI {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.svg__sTpDg {
+  color: #535353;
+  width: 35px;
+  height: 35px;
+  flex-shrink: 0;
 }
 .gridInvoice1 {
   display: grid;
@@ -933,6 +1129,9 @@
     justify-content: center;
   }
 }
+.dialogNewInvoiceDetails:global(.__wab_instance):global(.__wab_instance) {
+  max-width: 100%;
+}
 .btnInvoiceInfo:global(.__wab_instance) {
   max-width: 100%;
   height: 30px;
@@ -1027,6 +1226,8 @@
   max-width: 100%;
   min-width: 0;
   padding: 0px 8px;
+  border-width: 1px;
+  border-style: solid;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__xFOpB {
@@ -1074,8 +1275,9 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
+  grid-column-end: span 3;
   min-width: 0;
   padding: 8px;
 }
@@ -1094,9 +1296,10 @@
 }
 .text__bdf2M {
   position: relative;
-  width: 100%;
   height: auto;
   max-width: 100%;
+  text-align: right;
+  width: 100%;
   min-width: 0;
 }
 .freeBox__nCeRw {
@@ -1108,6 +1311,8 @@
   max-width: 100%;
   min-width: 0;
   padding: 0px 8px;
+  border-width: 1px;
+  border-style: solid;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__nCeRw {
@@ -1157,6 +1362,7 @@
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
+  grid-column-end: span 3;
   min-width: 0;
   padding: 8px;
 }
@@ -1189,6 +1395,8 @@
   max-width: 100%;
   min-width: 0;
   padding: 0px 8px;
+  border-width: 1px;
+  border-style: solid;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__lsUFj {
@@ -1240,6 +1448,7 @@
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
+  grid-column-end: span 3;
   min-width: 0;
   padding: 8px;
 }
@@ -1272,6 +1481,8 @@
   max-width: 100%;
   min-width: 0;
   padding: 0px 8px;
+  border-width: 1px;
+  border-style: solid;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__mEp8K {
@@ -1367,6 +1578,8 @@
   max-width: 100%;
   min-width: 0;
   padding: 0px 8px;
+  border-width: 1px;
+  border-style: solid;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__qipT {

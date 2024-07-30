@@ -622,6 +622,20 @@
           "cssFilePath": "plasmic/chortke/PlasmicDialog.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "Fv4gHFY9Rirl",
+          "name": "Dialog2",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/chortke/PlasmicDialog2.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/dialog.tsx"
+          },
+          "cssFilePath": "plasmic/chortke/PlasmicDialog2.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/dialog"
         }
       ],
       "icons": [

@@ -61,7 +61,8 @@ import {
 
 import Button from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
 import Select from "../../Select"; // plasmic-import: 7wkEfmUYAcMf/component
-import Dialog from "../../Dialog"; // plasmic-import: 3p5lHK1MOgje/component
+import Dialog from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
+import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
@@ -79,6 +80,8 @@ import Icon11Icon from "./icons/PlasmicIcon__Icon11"; // plasmic-import: sdf49At
 import Icon6Icon from "./icons/PlasmicIcon__Icon6"; // plasmic-import: 7-KwYGGksEHB/icon
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
 import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
+import SearchsvgIcon from "./icons/PlasmicIcon__Searchsvg"; // plasmic-import: fjupp6w2fUeo/icon
+import ChecksvgIcon from "./icons/PlasmicIcon__Checksvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
 
 createPlasmicElementProxy;
@@ -104,10 +107,14 @@ export type PlasmicHomepage__OverridesType = {
   cbProductlist?: Flex__<typeof Select>;
   txtRemainingText?: Flex__<"div">;
   txtRemainingValue?: Flex__<"div">;
+  dialogIncreaseRemaining?: Flex__<typeof Dialog>;
   btnPay?: Flex__<typeof Button>;
+  btnSelectAmount?: Flex__<typeof Button>;
+  gridMyAmount?: Flex__<"div">;
+  txtNewPaymentAmount?: Flex__<typeof TextInput>;
   gridInvoice1?: Flex__<"div">;
   gridInvoice12?: Flex__<"div">;
-  dialog?: Flex__<typeof Dialog>;
+  dialogNewInvoiceDetails?: Flex__<typeof Dialog>;
   btnInvoiceInfo?: Flex__<typeof Button>;
   waitingIcon3?: Flex__<"svg">;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
@@ -301,15 +308,65 @@ function PlasmicHomepage__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
-        path: "dialog[].open",
-        type: "private",
-        variableType: "boolean"
-      },
-      {
         path: "invoiceHasOnlinePayment",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => true
+      },
+      {
+        path: "dialogIncreaseRemaining.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "dialogNewInvoiceDetails[].open",
+        type: "private",
+        variableType: "boolean"
+      },
+      {
+        path: "waitingInvoiceDetails",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "increaseButtonList",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => [
+          2000000, 3500000, 5000000
+        ]
+      },
+      {
+        path: "waitingPayment",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "paymentAmount",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "txtNewPaymentAmount.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "showMyAmount",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "isShowPaymentButton",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -1051,6 +1108,29 @@ function PlasmicHomepage__RenderFunc(props: {
                         ) {
                           $steps["hideWaiting"] = await $steps["hideWaiting"];
                         }
+
+                        $steps["runCode"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                customFunction: async () => {
+                                  return (() => {
+                                    return ($state.isShowPaymentButton =
+                                      $state.cbProductlist.value > 0);
+                                  })();
+                                }
+                              };
+                              return (({ customFunction }) => {
+                                return customFunction();
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["runCode"] != null &&
+                          typeof $steps["runCode"] === "object" &&
+                          typeof $steps["runCode"].then === "function"
+                        ) {
+                          $steps["runCode"] = await $steps["runCode"];
+                        }
                       }).apply(null, eventArgs);
                     }}
                     options={(() => {
@@ -1176,62 +1256,509 @@ function PlasmicHomepage__RenderFunc(props: {
                     <div
                       className={classNames(projectcss.all, sty.freeBox__dLpxl)}
                     >
-                      {(() => {
-                        try {
-                          return $state.btnPayShow;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
+                      <Dialog
+                        data-plasmic-name={"dialogIncreaseRemaining"}
+                        data-plasmic-override={
+                          overrides.dialogIncreaseRemaining
                         }
-                      })() ? (
-                        <Button
-                          data-plasmic-name={"btnPay"}
-                          data-plasmic-override={overrides.btnPay}
-                          children2={
+                        body={
+                          <React.Fragment>
                             <div
                               className={classNames(
                                 projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___6C57K
+                                sty.freeBox__f3Erv
                               )}
                             >
-                              {"\u067e\u0631\u062f\u0627\u062e\u062a"}
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__aeDeu
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__keYhm
+                                  )}
+                                >
+                                  {
+                                    '\u0627\u0628\u062a\u062f\u0627 \u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 "\u0627\u0631\u0633\u0627\u0644 \u0628\u0647 \u062f\u0631\u06af\u0627\u0647" \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f:'
+                                  }
+                                </div>
+                              </div>
                             </div>
-                          }
-                          className={classNames("__wab_instance", sty.btnPay)}
-                          onClick={async event => {
-                            const $steps = {};
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__obaAa
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__gvTHy
+                                )}
+                              >
+                                {(_par =>
+                                  !_par
+                                    ? []
+                                    : Array.isArray(_par)
+                                    ? _par
+                                    : [_par])(
+                                  (() => {
+                                    try {
+                                      return $state.increaseButtonList;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return [];
+                                      }
+                                      throw e;
+                                    }
+                                  })()
+                                ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                                  const currentItem = __plasmic_item_0;
+                                  const currentIndex = __plasmic_idx_0;
+                                  return (
+                                    <Button
+                                      data-plasmic-name={"btnSelectAmount"}
+                                      data-plasmic-override={
+                                        overrides.btnSelectAmount
+                                      }
+                                      children2={
+                                        <React.Fragment>
+                                          {(() => {
+                                            try {
+                                              return (
+                                                new Intl.NumberFormat(
+                                                  "fa-IR"
+                                                ).format(
+                                                  $state.increaseButtonList[
+                                                    currentIndex
+                                                  ]
+                                                ) + " ریال"
+                                              );
+                                            } catch (e) {
+                                              if (
+                                                e instanceof TypeError ||
+                                                e?.plasmicType ===
+                                                  "PlasmicUndefinedDataError"
+                                              ) {
+                                                return "Button";
+                                              }
+                                              throw e;
+                                            }
+                                          })()}
+                                        </React.Fragment>
+                                      }
+                                      className={classNames(
+                                        "__wab_instance",
+                                        sty.btnSelectAmount
+                                      )}
+                                      color={"green"}
+                                      key={currentIndex}
+                                      onClick={async event => {
+                                        const $steps = {};
 
-                            $steps["userProduct"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    args: [
-                                      undefined,
-                                      "https://apigw.paziresh24.com/transaction/v1/userproduct"
-                                    ]
-                                  };
-                                  return $globalActions[
-                                    "Fragment.apiRequest"
-                                  ]?.apply(null, [...actionArgs.args]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["userProduct"] != null &&
-                              typeof $steps["userProduct"] === "object" &&
-                              typeof $steps["userProduct"].then === "function"
-                            ) {
-                              $steps["userProduct"] = await $steps[
-                                "userProduct"
-                              ];
+                                        $steps["updatePaymentAmount"] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                variable: {
+                                                  objRoot: $state,
+                                                  variablePath: [
+                                                    "paymentAmount"
+                                                  ]
+                                                },
+                                                operation: 0,
+                                                value:
+                                                  $state.increaseButtonList[
+                                                    currentIndex
+                                                  ]
+                                              };
+                                              return (({
+                                                variable,
+                                                value,
+                                                startIndex,
+                                                deleteCount
+                                              }) => {
+                                                if (!variable) {
+                                                  return;
+                                                }
+                                                const {
+                                                  objRoot,
+                                                  variablePath
+                                                } = variable;
+
+                                                $stateSet(
+                                                  objRoot,
+                                                  variablePath,
+                                                  value
+                                                );
+                                                return value;
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["updatePaymentAmount"] !=
+                                            null &&
+                                          typeof $steps[
+                                            "updatePaymentAmount"
+                                          ] === "object" &&
+                                          typeof $steps["updatePaymentAmount"]
+                                            .then === "function"
+                                        ) {
+                                          $steps["updatePaymentAmount"] =
+                                            await $steps["updatePaymentAmount"];
+                                        }
+
+                                        $steps["runCode"] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                customFunction: async () => {
+                                                  return ($state.txtNewPaymentAmount.value =
+                                                    $state.increaseButtonList[
+                                                      currentIndex
+                                                    ]);
+                                                }
+                                              };
+                                              return (({ customFunction }) => {
+                                                return customFunction();
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["runCode"] != null &&
+                                          typeof $steps["runCode"] ===
+                                            "object" &&
+                                          typeof $steps["runCode"].then ===
+                                            "function"
+                                        ) {
+                                          $steps["runCode"] = await $steps[
+                                            "runCode"
+                                          ];
+                                        }
+                                      }}
+                                    />
+                                  );
+                                })}
+                                <Button
+                                  children2={"..."}
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.button__labRk
+                                  )}
+                                  color={"green"}
+                                  onClick={async event => {
+                                    const $steps = {};
+
+                                    $steps["runCode"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            customFunction: async () => {
+                                              return ($state.showMyAmount =
+                                                !$state.showMyAmount);
+                                            }
+                                          };
+                                          return (({ customFunction }) => {
+                                            return customFunction();
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["runCode"] != null &&
+                                      typeof $steps["runCode"] === "object" &&
+                                      typeof $steps["runCode"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["runCode"] = await $steps[
+                                        "runCode"
+                                      ];
+                                    }
+                                  }}
+                                />
+                              </div>
+                            </div>
+                            {(() => {
+                              try {
+                                return $state.showMyAmount;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })() ? (
+                              <div
+                                data-plasmic-name={"gridMyAmount"}
+                                data-plasmic-override={overrides.gridMyAmount}
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.gridMyAmount
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__hvwig
+                                  )}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__ecXK
+                                  )}
+                                  dir={"rtl"}
+                                >
+                                  <TextInput
+                                    data-plasmic-name={"txtNewPaymentAmount"}
+                                    data-plasmic-override={
+                                      overrides.txtNewPaymentAmount
+                                    }
+                                    className={classNames(
+                                      "__wab_instance",
+                                      sty.txtNewPaymentAmount
+                                    )}
+                                    onChange={async (...eventArgs: any) => {
+                                      ((...eventArgs) => {
+                                        generateStateOnChangeProp($state, [
+                                          "txtNewPaymentAmount",
+                                          "value"
+                                        ])(
+                                          (e => e.target?.value).apply(
+                                            null,
+                                            eventArgs
+                                          )
+                                        );
+                                      }).apply(null, eventArgs);
+                                      (async event => {
+                                        const $steps = {};
+
+                                        $steps["updatePaymentAmount"] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                variable: {
+                                                  objRoot: $state,
+                                                  variablePath: [
+                                                    "paymentAmount"
+                                                  ]
+                                                },
+                                                operation: 0,
+                                                value:
+                                                  $state.txtNewPaymentAmount
+                                                    .value
+                                              };
+                                              return (({
+                                                variable,
+                                                value,
+                                                startIndex,
+                                                deleteCount
+                                              }) => {
+                                                if (!variable) {
+                                                  return;
+                                                }
+                                                const {
+                                                  objRoot,
+                                                  variablePath
+                                                } = variable;
+
+                                                $stateSet(
+                                                  objRoot,
+                                                  variablePath,
+                                                  value
+                                                );
+                                                return value;
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["updatePaymentAmount"] !=
+                                            null &&
+                                          typeof $steps[
+                                            "updatePaymentAmount"
+                                          ] === "object" &&
+                                          typeof $steps["updatePaymentAmount"]
+                                            .then === "function"
+                                        ) {
+                                          $steps["updatePaymentAmount"] =
+                                            await $steps["updatePaymentAmount"];
+                                        }
+                                      }).apply(null, eventArgs);
+                                    }}
+                                    placeholder={
+                                      "\u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                                    }
+                                    type={"number"}
+                                    value={
+                                      generateStateValueProp($state, [
+                                        "txtNewPaymentAmount",
+                                        "value"
+                                      ]) ?? ""
+                                    }
+                                  />
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__jlOh6
+                                  )}
+                                />
+                              </div>
+                            ) : null}
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__zGcd
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__q4Ac
+                                )}
+                              >
+                                <Button
+                                  children2={
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return (
+                                            new Intl.NumberFormat(
+                                              "fa-IR"
+                                            ).format($state.paymentAmount) +
+                                            " ریال" +
+                                            " - ارسال به درگاه"
+                                          );
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "\u0627\u0631\u0633\u0627\u0644 \u0628\u0647 \u062f\u0631\u06af\u0627\u0647";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  }
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.button__zzG7G
+                                  )}
+                                />
+
+                                {(() => {
+                                  try {
+                                    return $state.waitingPayment;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return true;
+                                    }
+                                    throw e;
+                                  }
+                                })() ? (
+                                  <Icon2Icon
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.svg__sTpDg
+                                    )}
+                                    role={"img"}
+                                  />
+                                ) : null}
+                              </div>
+                            </div>
+                          </React.Fragment>
+                        }
+                        className={classNames(
+                          "__wab_instance",
+                          sty.dialogIncreaseRemaining
+                        )}
+                        onOpenChange={generateStateOnChangeProp($state, [
+                          "dialogIncreaseRemaining",
+                          "open"
+                        ])}
+                        open={generateStateValueProp($state, [
+                          "dialogIncreaseRemaining",
+                          "open"
+                        ])}
+                        title={
+                          "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc:"
+                        }
+                        trigger={
+                          (() => {
+                            try {
+                              return $state.isShowPaymentButton;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
                             }
-                          }}
-                        />
-                      ) : null}
+                          })() ? (
+                            <Button
+                              data-plasmic-name={"btnPay"}
+                              data-plasmic-override={overrides.btnPay}
+                              children2={
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text___6C57K
+                                  )}
+                                >
+                                  {"\u067e\u0631\u062f\u0627\u062e\u062a"}
+                                </div>
+                              }
+                              className={classNames(
+                                "__wab_instance",
+                                sty.btnPay
+                              )}
+                              onClick={async event => {
+                                const $steps = {};
+
+                                $steps["userProduct"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        args: [
+                                          undefined,
+                                          "https://apigw.paziresh24.com/transaction/v1/userproduct"
+                                        ]
+                                      };
+                                      return $globalActions[
+                                        "Fragment.apiRequest"
+                                      ]?.apply(null, [...actionArgs.args]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["userProduct"] != null &&
+                                  typeof $steps["userProduct"] === "object" &&
+                                  typeof $steps["userProduct"].then ===
+                                    "function"
+                                ) {
+                                  $steps["userProduct"] = await $steps[
+                                    "userProduct"
+                                  ];
+                                }
+                              }}
+                            />
+                          ) : null
+                        }
+                      />
                     </div>
                   </div>
                 </div>
@@ -1803,7 +2330,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                       )}
                                     >
                                       {
-                                        "\u0634\u0646\u0627\u0633\u0647 \u062a\u0631\u0627\u06a9\u0646\u0634 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a:"
+                                        "\u0634\u0646\u0627\u0633\u0647 \u067e\u0631\u062f\u0627\u062e\u062a:"
                                       }
                                     </div>
                                   </div>
@@ -1873,26 +2400,17 @@ function PlasmicHomepage__RenderFunc(props: {
                               ) : null}
                             </React.Fragment>
                           ),
-                          noTrigger: (() => {
-                            try {
-                              return undefined;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return [];
-                              }
-                              throw e;
-                            }
-                          })(),
+                          className: classNames(
+                            "__wab_instance",
+                            sty.dialogNewInvoiceDetails
+                          ),
                           onOpenChange: generateStateOnChangeProp($state, [
-                            "dialog",
+                            "dialogNewInvoiceDetails",
                             __plasmic_idx_0,
                             "open"
                           ]),
                           open: generateStateValueProp($state, [
-                            "dialog",
+                            "dialogNewInvoiceDetails",
                             __plasmic_idx_0,
                             "open"
                           ]),
@@ -1933,7 +2451,7 @@ function PlasmicHomepage__RenderFunc(props: {
                               >
                                 {(() => {
                                   try {
-                                    return $state.waiting;
+                                    return $state.waitingInvoiceDetails;
                                   } catch (e) {
                                     if (
                                       e instanceof TypeError ||
@@ -1988,7 +2506,9 @@ function PlasmicHomepage__RenderFunc(props: {
                                       const actionArgs = {
                                         variable: {
                                           objRoot: $state,
-                                          variablePath: ["waiting"]
+                                          variablePath: [
+                                            "waitingInvoiceDetails"
+                                          ]
                                         },
                                         operation: 0,
                                         value: true
@@ -2226,7 +2746,9 @@ function PlasmicHomepage__RenderFunc(props: {
                                       const actionArgs = {
                                         variable: {
                                           objRoot: $state,
-                                          variablePath: ["waiting"]
+                                          variablePath: [
+                                            "waitingInvoiceDetails"
+                                          ]
                                         },
                                         operation: 0,
                                         value: false
@@ -2267,7 +2789,7 @@ function PlasmicHomepage__RenderFunc(props: {
                           $state,
                           [
                             {
-                              name: "dialog[].open",
+                              name: "dialogNewInvoiceDetails[].open",
                               initFunc: ({ $props, $state, $queries }) => false
                             }
                           ],
@@ -2275,8 +2797,10 @@ function PlasmicHomepage__RenderFunc(props: {
                         );
                         return (
                           <Dialog
-                            data-plasmic-name={"dialog"}
-                            data-plasmic-override={overrides.dialog}
+                            data-plasmic-name={"dialogNewInvoiceDetails"}
+                            data-plasmic-override={
+                              overrides.dialogNewInvoiceDetails
+                            }
                             {...child$Props}
                           />
                         );
@@ -2488,32 +3012,33 @@ function PlasmicHomepage__RenderFunc(props: {
                   $steps["getProductList"] = await $steps["getProductList"];
                 }
 
-                $steps["setProductListVariable"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["productList"]
-                        },
-                        operation: 0,
-                        value: $steps.getProductList.data.data
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
+                $steps["setProductListVariable"] =
+                  ($steps.getProductList.status = 200)
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["productList"]
+                          },
+                          operation: 0,
+                          value: $steps.getProductList.data.data
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
 
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
                 if (
                   $steps["setProductListVariable"] != null &&
                   typeof $steps["setProductListVariable"] === "object" &&
@@ -2680,10 +3205,14 @@ const PlasmicDescendants = {
     "cbProductlist",
     "txtRemainingText",
     "txtRemainingValue",
+    "dialogIncreaseRemaining",
     "btnPay",
+    "btnSelectAmount",
+    "gridMyAmount",
+    "txtNewPaymentAmount",
     "gridInvoice1",
     "gridInvoice12",
-    "dialog",
+    "dialogNewInvoiceDetails",
     "btnInvoiceInfo",
     "waitingIcon3",
     "sideEffectPageLoad",
@@ -2701,10 +3230,14 @@ const PlasmicDescendants = {
     "cbProductlist",
     "txtRemainingText",
     "txtRemainingValue",
+    "dialogIncreaseRemaining",
     "btnPay",
+    "btnSelectAmount",
+    "gridMyAmount",
+    "txtNewPaymentAmount",
     "gridInvoice1",
     "gridInvoice12",
-    "dialog",
+    "dialogNewInvoiceDetails",
     "btnInvoiceInfo",
     "waitingIcon3"
   ],
@@ -2713,15 +3246,38 @@ const PlasmicDescendants = {
     "cbProductlist",
     "txtRemainingText",
     "txtRemainingValue",
-    "btnPay"
+    "dialogIncreaseRemaining",
+    "btnPay",
+    "btnSelectAmount",
+    "gridMyAmount",
+    "txtNewPaymentAmount"
   ],
   cbProductlist: ["cbProductlist"],
   txtRemainingText: ["txtRemainingText"],
   txtRemainingValue: ["txtRemainingValue"],
+  dialogIncreaseRemaining: [
+    "dialogIncreaseRemaining",
+    "btnPay",
+    "btnSelectAmount",
+    "gridMyAmount",
+    "txtNewPaymentAmount"
+  ],
   btnPay: ["btnPay"],
+  btnSelectAmount: ["btnSelectAmount"],
+  gridMyAmount: ["gridMyAmount", "txtNewPaymentAmount"],
+  txtNewPaymentAmount: ["txtNewPaymentAmount"],
   gridInvoice1: ["gridInvoice1"],
-  gridInvoice12: ["gridInvoice12", "dialog", "btnInvoiceInfo", "waitingIcon3"],
-  dialog: ["dialog", "btnInvoiceInfo", "waitingIcon3"],
+  gridInvoice12: [
+    "gridInvoice12",
+    "dialogNewInvoiceDetails",
+    "btnInvoiceInfo",
+    "waitingIcon3"
+  ],
+  dialogNewInvoiceDetails: [
+    "dialogNewInvoiceDetails",
+    "btnInvoiceInfo",
+    "waitingIcon3"
+  ],
   btnInvoiceInfo: ["btnInvoiceInfo"],
   waitingIcon3: ["waitingIcon3"],
   sideEffectPageLoad: ["sideEffectPageLoad"],
@@ -2743,10 +3299,14 @@ type NodeDefaultElementType = {
   cbProductlist: typeof Select;
   txtRemainingText: "div";
   txtRemainingValue: "div";
+  dialogIncreaseRemaining: typeof Dialog;
   btnPay: typeof Button;
+  btnSelectAmount: typeof Button;
+  gridMyAmount: "div";
+  txtNewPaymentAmount: typeof TextInput;
   gridInvoice1: "div";
   gridInvoice12: "div";
-  dialog: typeof Dialog;
+  dialogNewInvoiceDetails: typeof Dialog;
   btnInvoiceInfo: typeof Button;
   waitingIcon3: "svg";
   sideEffectPageLoad: typeof SideEffect;
@@ -2824,10 +3384,14 @@ export const PlasmicHomepage = Object.assign(
     cbProductlist: makeNodeComponent("cbProductlist"),
     txtRemainingText: makeNodeComponent("txtRemainingText"),
     txtRemainingValue: makeNodeComponent("txtRemainingValue"),
+    dialogIncreaseRemaining: makeNodeComponent("dialogIncreaseRemaining"),
     btnPay: makeNodeComponent("btnPay"),
+    btnSelectAmount: makeNodeComponent("btnSelectAmount"),
+    gridMyAmount: makeNodeComponent("gridMyAmount"),
+    txtNewPaymentAmount: makeNodeComponent("txtNewPaymentAmount"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     gridInvoice12: makeNodeComponent("gridInvoice12"),
-    dialog: makeNodeComponent("dialog"),
+    dialogNewInvoiceDetails: makeNodeComponent("dialogNewInvoiceDetails"),
     btnInvoiceInfo: makeNodeComponent("btnInvoiceInfo"),
     waitingIcon3: makeNodeComponent("waitingIcon3"),
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
