@@ -322,7 +322,8 @@ function PlasmicHomepage__RenderFunc(props: {
         path: "dialogIncreaseRemaining.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          hasVariant(globalVariants, "screen", "mobileOnly") ? true : false
       },
       {
         path: "dialogNewInvoiceDetails[].open",
@@ -3294,7 +3295,14 @@ function PlasmicHomepage__RenderFunc(props: {
                           [
                             {
                               name: "dialogNewInvoiceDetails[].open",
-                              initFunc: ({ $props, $state, $queries }) => false
+                              initFunc: ({ $props, $state, $queries }) =>
+                                hasVariant(
+                                  globalVariants,
+                                  "screen",
+                                  "mobileOnly"
+                                )
+                                  ? false
+                                  : false
                             }
                           ],
                           [__plasmic_idx_0]
