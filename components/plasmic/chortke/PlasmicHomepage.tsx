@@ -2082,6 +2082,45 @@ function PlasmicHomepage__RenderFunc(props: {
                               onClick={async event => {
                                 const $steps = {};
 
+                                $steps["updateShowMyAmount"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: ["showMyAmount"]
+                                        },
+                                        operation: 0,
+                                        value: false
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        $stateSet(objRoot, variablePath, value);
+                                        return value;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["updateShowMyAmount"] != null &&
+                                  typeof $steps["updateShowMyAmount"] ===
+                                    "object" &&
+                                  typeof $steps["updateShowMyAmount"].then ===
+                                    "function"
+                                ) {
+                                  $steps["updateShowMyAmount"] = await $steps[
+                                    "updateShowMyAmount"
+                                  ];
+                                }
+
                                 $steps["buttonList"] = true
                                   ? (() => {
                                       const actionArgs = {
