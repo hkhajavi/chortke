@@ -77,8 +77,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-basic-components"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "oBJtsp5RgVpcN6KCrDTuQT",
@@ -218,8 +217,7 @@
           "componentImportPath": "@plasmicapp/react-web/lib/data-sources"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "sqPBLwEBBKHA2WDuGb17eV",
@@ -309,8 +307,7 @@
           "componentImportPath": "@plasmicpkgs/radix-ui"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "8PtdGodUbexNYgkuyBUcWu",
@@ -332,8 +329,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-embed-css"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "h9Dbk9ygddw7UVEq1NNhKi",
@@ -352,33 +348,6 @@
             "modulePath": "Avatar.tsx"
           },
           "cssFilePath": "plasmic/fragment_design_system/PlasmicAvatar.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
-          "id": "oVzoHzMf1TLl",
-          "name": "Button",
-          "type": "managed",
-          "projectId": "h9Dbk9ygddw7UVEq1NNhKi",
-          "renderModuleFilePath": "plasmic/fragment_design_system/PlasmicButton.tsx",
-          "importSpec": {
-            "modulePath": "Button.tsx"
-          },
-          "cssFilePath": "plasmic/fragment_design_system/PlasmicButton.module.css",
-          "scheme": "blackbox",
-          "componentType": "component",
-          "plumeType": "button"
-        },
-        {
-          "id": "FJiI2-N1is_F",
-          "name": "Dialog",
-          "type": "managed",
-          "projectId": "h9Dbk9ygddw7UVEq1NNhKi",
-          "renderModuleFilePath": "plasmic/fragment_design_system/PlasmicDialog.tsx",
-          "importSpec": {
-            "modulePath": "Dialog.tsx"
-          },
-          "cssFilePath": "plasmic/fragment_design_system/PlasmicDialog.module.css",
           "scheme": "blackbox",
           "componentType": "component"
         },
@@ -418,6 +387,33 @@
             "modulePath": "MultilineTextInput.tsx"
           },
           "cssFilePath": "plasmic/fragment_design_system/PlasmicMultilineTextInput.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "oVzoHzMf1TLl",
+          "name": "Button",
+          "type": "managed",
+          "projectId": "h9Dbk9ygddw7UVEq1NNhKi",
+          "renderModuleFilePath": "plasmic/fragment_design_system/PlasmicButton.tsx",
+          "importSpec": {
+            "modulePath": "Button.tsx"
+          },
+          "cssFilePath": "plasmic/fragment_design_system/PlasmicButton.module.css",
+          "scheme": "blackbox",
+          "componentType": "component",
+          "plumeType": "button"
+        },
+        {
+          "id": "FJiI2-N1is_F",
+          "name": "Dialog",
+          "type": "managed",
+          "projectId": "h9Dbk9ygddw7UVEq1NNhKi",
+          "renderModuleFilePath": "plasmic/fragment_design_system/PlasmicDialog.tsx",
+          "importSpec": {
+            "modulePath": "Dialog.tsx"
+          },
+          "cssFilePath": "plasmic/fragment_design_system/PlasmicDialog.module.css",
           "scheme": "blackbox",
           "componentType": "component"
         }
@@ -462,8 +458,7 @@
           "componentImportPath": "@plasmicapp/react-web/lib/data-sources"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "afXULSfGYmou2jFpEc2QWJ",
@@ -595,20 +590,6 @@
           "cssFilePath": "plasmic/chortke/PlasmicInvoiceDetails.module.css",
           "scheme": "blackbox",
           "componentType": "component"
-        },
-        {
-          "id": "Fv4gHFY9Rirl",
-          "name": "Dialog2",
-          "type": "managed",
-          "projectId": "afXULSfGYmou2jFpEc2QWJ",
-          "renderModuleFilePath": "plasmic/chortke/PlasmicDialog2.tsx",
-          "importSpec": {
-            "modulePath": "../src/pages/dialog.tsx"
-          },
-          "cssFilePath": "plasmic/chortke/PlasmicDialog2.module.css",
-          "scheme": "blackbox",
-          "componentType": "page",
-          "path": "/dialog"
         }
       ],
       "icons": [
@@ -903,8 +884,7 @@
           }
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "ohDidvG9XsCeFumugENU3J",
@@ -1304,8 +1284,7 @@
           "componentImportPath": "@plasmicpkgs/antd5/skinny/registerBreadcrumb"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "YUiM7yqBWAqsh8KSnrdj7",
@@ -1333,8 +1312,7 @@
           "componentImportPath": "@plasmicpkgs/plasmic-query"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     }
   ],
   "globalVariants": {
