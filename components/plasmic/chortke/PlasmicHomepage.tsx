@@ -3377,6 +3377,35 @@ function PlasmicHomepage__RenderFunc(props: {
                   $steps["checkUser"] = await $steps["checkUser"];
                 }
 
+                $steps["loginUser"] =
+                  $steps.checkUser.status != 200
+                    ? (() => {
+                        const actionArgs = {
+                          destination:
+                            "https://www.paziresh24.com/login/?redirect_url=https://chortke.paziresh24.com/"
+                        };
+                        return (({ destination }) => {
+                          if (
+                            typeof destination === "string" &&
+                            destination.startsWith("#")
+                          ) {
+                            document
+                              .getElementById(destination.substr(1))
+                              .scrollIntoView({ behavior: "smooth" });
+                          } else {
+                            __nextRouter?.push(destination);
+                          }
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["loginUser"] != null &&
+                  typeof $steps["loginUser"] === "object" &&
+                  typeof $steps["loginUser"].then === "function"
+                ) {
+                  $steps["loginUser"] = await $steps["loginUser"];
+                }
+
                 $steps["updateUser"] =
                   $steps.checkUser.status == 200
                     ? (() => {
