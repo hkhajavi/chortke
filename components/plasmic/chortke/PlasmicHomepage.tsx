@@ -2137,11 +2137,9 @@ function PlasmicHomepage__RenderFunc(props: {
                                                 : $state.increaseButtonListBase;
                                             $state.paymentAmount =
                                               $state.reminderWallet < 0
-                                                ? [
-                                                    Math.abs(
-                                                      $state.reminderWallet
-                                                    )
-                                                  ]
+                                                ? Math.abs(
+                                                    $state.reminderWallet
+                                                  )
                                                 : $state
                                                     .increaseButtonListBase[0];
                                             return ($state.showSelectPriceGrid =

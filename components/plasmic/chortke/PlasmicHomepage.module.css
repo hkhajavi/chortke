@@ -607,6 +607,13 @@
   min-width: 0;
   padding: 0px 8px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .gridSelectprice {
+    width: 100%;
+    flex-shrink: 1;
+    min-width: 0;
+  }
+}
 .freeBox__gvTHy {
   display: flex;
   flex-direction: row;
