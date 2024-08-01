@@ -1398,6 +1398,17 @@ function PlasmicHomepage__RenderFunc(props: {
                                     className={classNames(
                                       projectcss.all,
                                       projectcss.__wab_text,
+                                      sty.text__dycd
+                                    )}
+                                  >
+                                    {
+                                      "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc:"
+                                    }
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
                                       sty.text__keYhm
                                     )}
                                   >
@@ -2078,19 +2089,7 @@ function PlasmicHomepage__RenderFunc(props: {
                           "dialogIncreaseRemaining",
                           "open"
                         ])}
-                        title={
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__dycd
-                            )}
-                          >
-                            {
-                              "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc:"
-                            }
-                          </div>
-                        }
+                        title={null}
                         trigger={
                           (() => {
                             try {
@@ -2691,7 +2690,29 @@ function PlasmicHomepage__RenderFunc(props: {
                                     className={classNames(
                                       projectcss.all,
                                       projectcss.__wab_text,
-                                      sty.text__wkIla
+                                      sty.text__tjLdX
+                                    )}
+                                  >
+                                    {hasVariant(
+                                      globalVariants,
+                                      "screen",
+                                      "mobileOnly"
+                                    )
+                                      ? "\u062a\u0648\u0636\u06cc\u062d\u0627\u062a:"
+                                      : "\u0639\u0646\u0648\u0627\u0646:"}
+                                  </div>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__xdjgL
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__meUxR
                                     )}
                                   >
                                     <React.Fragment>
@@ -2724,57 +2745,6 @@ function PlasmicHomepage__RenderFunc(props: {
                                 <div
                                   className={classNames(
                                     projectcss.all,
-                                    sty.freeBox__enHqe
-                                  )}
-                                >
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__lrloq
-                                    )}
-                                  >
-                                    {"\u06a9\u062f:"}
-                                  </div>
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.freeBox__equS9
-                                  )}
-                                >
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__jMk9U
-                                    )}
-                                  >
-                                    <React.Fragment>
-                                      {(() => {
-                                        try {
-                                          return (() => {
-                                            return $state.detailsDataApiRequest[
-                                              currentIndex
-                                            ].data.data.invoiceid;
-                                          })();
-                                        } catch (e) {
-                                          if (
-                                            e instanceof TypeError ||
-                                            e?.plasmicType ===
-                                              "PlasmicUndefinedDataError"
-                                          ) {
-                                            return "";
-                                          }
-                                          throw e;
-                                        }
-                                      })()}
-                                    </React.Fragment>
-                                  </div>
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
                                     sty.freeBox__occ4F
                                   )}
                                 >
@@ -2785,7 +2755,13 @@ function PlasmicHomepage__RenderFunc(props: {
                                       sty.text__dlTad
                                     )}
                                   >
-                                    {"\u062a\u0627\u0631\u06cc\u062e:"}
+                                    {hasVariant(
+                                      globalVariants,
+                                      "screen",
+                                      "mobileOnly"
+                                    )
+                                      ? "\u06a9\u062f:"
+                                      : "\u062a\u0627\u0631\u06cc\u062e:"}
                                   </div>
                                 </div>
                                 <div
@@ -2799,6 +2775,96 @@ function PlasmicHomepage__RenderFunc(props: {
                                       projectcss.all,
                                       projectcss.__wab_text,
                                       sty.text___4Z2Gp
+                                    )}
+                                  >
+                                    {hasVariant(
+                                      globalVariants,
+                                      "screen",
+                                      "mobileOnly"
+                                    ) ? (
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return $state.detailsDataApiRequest[
+                                              currentIndex
+                                            ].data.data.invoiceid;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
+                                    ) : (
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return (() => {
+                                              const gregorianDate = new Date(
+                                                $state.detailsDataApiRequest[
+                                                  currentIndex
+                                                ].data.data.registerdate
+                                              );
+                                              const persianDate =
+                                                new Intl.DateTimeFormat(
+                                                  "fa-IR"
+                                                ).format(gregorianDate);
+                                              return persianDate;
+                                            })();
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__nfJkR
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__m72F7
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text___5TAx2
+                                    )}
+                                  >
+                                    {"\u062a\u0627\u0631\u06cc\u062e:"}
+                                  </div>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__omXkz
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__yVKH
                                     )}
                                   >
                                     <React.Fragment>
