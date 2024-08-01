@@ -1979,11 +1979,8 @@ function PlasmicHomepage__RenderFunc(props: {
                                             const actionArgs = {
                                               destination: (() => {
                                                 try {
-                                                  return (
-                                                    "https://sep.shaparak.ir/OnlinePG/SendToken?token=" +
-                                                    $steps.paymentRequest.data
-                                                      .data.samantoken
-                                                  );
+                                                  return $steps.paymentRequest
+                                                    .data.data.link;
                                                 } catch (e) {
                                                   if (
                                                     e instanceof TypeError ||
