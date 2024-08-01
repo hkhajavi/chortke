@@ -7,7 +7,7 @@
 
 @media (min-width: 0px) and (max-width: 768px) {
   .plasmic_tokens {
-    --token-A5TMwx8qQHfL: 10px;
+    --token-A5TMwx8qQHfL: 12px;
     --plasmic-token-10-px: var(--token-A5TMwx8qQHfL);
   }
 }

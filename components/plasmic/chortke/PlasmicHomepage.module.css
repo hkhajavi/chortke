@@ -534,6 +534,12 @@
 .dialogIncreaseRemaining:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .dialogIncreaseRemaining:global(.__wab_instance):global(.__wab_instance) {
+    flex-grow: 0;
+    align-self: center;
+  }
+}
 .btnPay:global(.__wab_instance) {
   max-width: 100%;
   position: relative;
@@ -567,6 +573,11 @@
   width: auto;
   height: 1em;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__dycd {
+    align-self: center;
+  }
+}
 .freeBox__f3Erv {
   display: grid;
   position: relative;
@@ -597,6 +608,12 @@
   text-align: right;
   min-width: 0;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__keYhm {
+    font-size: 12px;
+    text-align: center;
+  }
+}
 .gridSelectprice {
   display: grid;
   position: relative;
@@ -609,9 +626,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .gridSelectprice {
-    width: 100%;
     flex-shrink: 1;
-    min-width: 0;
   }
 }
 .freeBox__gvTHy {
@@ -627,16 +642,36 @@
   min-width: 0;
   padding: 8px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__gvTHy {
+    flex-wrap: nowrap;
+    align-items: stretch;
+    align-content: stretch;
+  }
+}
 .btnSelectAmount:global(.__wab_instance) {
   max-width: 100%;
   margin-left: 10px;
   height: 30px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .btnSelectAmount:global(.__wab_instance) {
+    margin-left: 5px;
+    max-width: 100px;
+  }
 }
 .svg__jqp21 {
   position: relative;
   object-fit: cover;
   width: auto;
   height: 1em;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__o8Xxn {
+    font-size: 9px;
+    white-space: pre-wrap;
+    text-align: center;
+  }
 }
 .svg__gIsw {
   position: relative;
@@ -670,6 +705,13 @@
   min-width: 0;
   padding: 0px 8px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .gridMyAmount {
+    width: auto;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    display: grid;
+  }
+}
 .freeBox__hvwig {
   display: flex;
   flex-direction: column;
@@ -682,6 +724,11 @@
   grid-column-end: span 2;
   min-width: 0;
   padding: 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__hvwig {
+    display: none;
+  }
 }
 .freeBox__ecXK {
   display: flex;
@@ -696,9 +743,20 @@
   min-width: 0;
   padding: 8px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__ecXK {
+    width: auto;
+    grid-column-end: span 1;
+  }
+}
 .txtNewPaymentAmount:global(.__wab_instance) {
   max-width: 100%;
   align-self: center;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .txtNewPaymentAmount:global(.__wab_instance) {
+    width: auto;
+  }
 }
 .svg__zbKq3 {
   position: relative;
@@ -725,6 +783,11 @@
   min-width: 0;
   padding: 8px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__jlOh6 {
+    display: none;
+  }
+}
 .freeBox__zGcd {
   display: grid;
   position: relative;
@@ -748,6 +811,11 @@
   min-width: 0;
   padding: 8px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__q4Ac {
+    width: auto;
+  }
+}
 .button__zzG7G:global(.__wab_instance) {
   max-width: 100%;
 }
@@ -756,6 +824,11 @@
   object-fit: cover;
   width: auto;
   height: 1em;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__hFy2M {
+    font-size: var(--token-A5TMwx8qQHfL);
+  }
 }
 .svg__zxdnI {
   position: relative;
@@ -951,6 +1024,64 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__hbBO {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    padding-bottom: 0px;
+    font-size: 10px;
+    text-align: center;
+    min-width: 0;
+  }
+}
+.gridNoData {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  grid-column-gap: 10px;
+  background: #ffffff;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-end;
+  align-content: stretch;
+  justify-self: flex-start;
+  grid-column-start: 1 !important;
+  grid-column-end: -1 !important;
+  padding: 8px;
+  border-width: 1px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .gridNoData {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+.freeBox__jr5Zj {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  align-content: stretch;
+  min-width: 0;
+}
+.text__dztzd {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  padding-top: 0px;
+  text-align: center;
+  min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__dztzd {
     width: 100%;
     height: auto;
     max-width: 100%;
