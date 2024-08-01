@@ -1336,29 +1336,55 @@ function PlasmicHomepage__RenderFunc(props: {
                           sty.txtRemainingValue
                         )}
                       >
-                        <React.Fragment>
-                          {(() => {
-                            try {
-                              return (() => {
-                                return (
-                                  $state.txtReminderValue
-                                    .toString()
-                                    .replace("\u2212", "")
-                                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
-                                  " ریال"
-                                );
-                              })();
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "0";
+                        {hasVariant(globalVariants, "screen", "mobileOnly") ? (
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return (() => {
+                                  return $state.txtReminderValue == 0
+                                    ? ""
+                                    : $state.txtReminderValue
+                                        .toString()
+                                        .replace("\u2212", "")
+                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
+                                        " ریال";
+                                })();
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "0";
+                                }
+                                throw e;
                               }
-                              throw e;
-                            }
-                          })()}
-                        </React.Fragment>
+                            })()}
+                          </React.Fragment>
+                        ) : (
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return (() => {
+                                  return (
+                                    $state.txtReminderValue
+                                      .toString()
+                                      .replace("\u2212", "")
+                                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
+                                    " ریال"
+                                  );
+                                })();
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "0";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        )}
                       </div>
                     </div>
                     <div
@@ -3508,6 +3534,78 @@ function PlasmicHomepage__RenderFunc(props: {
                   typeof $steps["showWaiting"].then === "function"
                 ) {
                   $steps["showWaiting"] = await $steps["showWaiting"];
+                }
+
+                $steps["emptyTxtReminderTextVal"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["txtReminderTextValue"]
+                        },
+                        operation: 0,
+                        value: ""
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["emptyTxtReminderTextVal"] != null &&
+                  typeof $steps["emptyTxtReminderTextVal"] === "object" &&
+                  typeof $steps["emptyTxtReminderTextVal"].then === "function"
+                ) {
+                  $steps["emptyTxtReminderTextVal"] = await $steps[
+                    "emptyTxtReminderTextVal"
+                  ];
+                }
+
+                $steps["emptyReminderValue"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["txtReminderValue"]
+                        },
+                        operation: 0,
+                        value: ""
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["emptyReminderValue"] != null &&
+                  typeof $steps["emptyReminderValue"] === "object" &&
+                  typeof $steps["emptyReminderValue"].then === "function"
+                ) {
+                  $steps["emptyReminderValue"] = await $steps[
+                    "emptyReminderValue"
+                  ];
                 }
 
                 $steps["checkUser"] = true
