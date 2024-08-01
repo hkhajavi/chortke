@@ -2683,28 +2683,6 @@ function PlasmicHomepage__RenderFunc(props: {
                                 <div
                                   className={classNames(
                                     projectcss.all,
-                                    sty.freeBox__a3M6J
-                                  )}
-                                >
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__tjLdX
-                                    )}
-                                  >
-                                    {hasVariant(
-                                      globalVariants,
-                                      "screen",
-                                      "mobileOnly"
-                                    )
-                                      ? "\u062a\u0648\u0636\u06cc\u062d\u0627\u062a:"
-                                      : "\u0639\u0646\u0648\u0627\u0646:"}
-                                  </div>
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
                                     sty.freeBox__xdjgL
                                   )}
                                 >
@@ -2761,7 +2739,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                       "mobileOnly"
                                     )
                                       ? "\u06a9\u062f:"
-                                      : "\u062a\u0627\u0631\u06cc\u062e:"}
+                                      : "\u06a9\u062f:"}
                                   </div>
                                 </div>
                                 <div
@@ -2804,18 +2782,9 @@ function PlasmicHomepage__RenderFunc(props: {
                                       <React.Fragment>
                                         {(() => {
                                           try {
-                                            return (() => {
-                                              const gregorianDate = new Date(
-                                                $state.detailsDataApiRequest[
-                                                  currentIndex
-                                                ].data.data.registerdate
-                                              );
-                                              const persianDate =
-                                                new Intl.DateTimeFormat(
-                                                  "fa-IR"
-                                                ).format(gregorianDate);
-                                              return persianDate;
-                                            })();
+                                            return $state.detailsDataApiRequest[
+                                              currentIndex
+                                            ].data.data.invoiceid;
                                           } catch (e) {
                                             if (
                                               e instanceof TypeError ||
