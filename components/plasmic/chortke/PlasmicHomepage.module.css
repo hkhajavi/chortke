@@ -2469,6 +2469,12 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text__wFukn {
     margin-top: 3px;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    font-size: 12px;
+    text-align: left;
+    min-width: 0;
   }
 }
 .freeBox__sfHae {
@@ -2507,6 +2513,11 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text___9EnGs {
     margin-top: 3px;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    font-size: 12px;
+    min-width: 0;
   }
 }
 .sideEffectPageLoad:global(.__wab_instance) {
