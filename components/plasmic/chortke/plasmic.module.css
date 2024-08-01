@@ -3,6 +3,31 @@
 .plasmic_tokens {
   --token-A5TMwx8qQHfL: 16px;
   --plasmic-token-10-px: var(--token-A5TMwx8qQHfL);
+  --token-vKd5iqKCSV_B: 0.75rem;
+  --plasmic-token-3: var(--token-vKd5iqKCSV_B);
+  --token-5Ye_3XTSaP9X: 0.875rem;
+  --plasmic-token-small: var(--token-5Ye_3XTSaP9X);
+  --token-S9chob8ToCvC: #3861fb;
+  --plasmic-token-primary: var(--token-S9chob8ToCvC);
+  --token-O6dAEo4xtM-4: #2b4dcc;
+  --plasmic-token-primary-dark: var(--token-O6dAEo4xtM-4);
+  --token-1v_QumsuotEo: #2b2f33;
+  --plasmic-token-base-text: var(--token-1v_QumsuotEo);
+  --token-Hl5_5JUiW18_: 1rem;
+  --plasmic-token-4: var(--token-Hl5_5JUiW18_);
+  --token-TQJ-rnRNtYde: 1rem;
+  --plasmic-token-base: var(--token-TQJ-rnRNtYde);
+  --token-8bH1BcrDPs2U: 12px;
+  --plasmic-token-8-px: var(--token-8bH1BcrDPs2U);
+}
+
+@media (min-width: 0px) and (max-width: 768px) {
+  .plasmic_tokens {
+    --token-A5TMwx8qQHfL: 12px;
+    --plasmic-token-10-px: var(--token-A5TMwx8qQHfL);
+    --token-8bH1BcrDPs2U: 8px;
+    --plasmic-token-8-px: var(--token-8bH1BcrDPs2U);
+  }
 }
 
 @media (min-width: 0px) and (max-width: 768px) {

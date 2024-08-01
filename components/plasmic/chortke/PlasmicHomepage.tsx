@@ -59,22 +59,23 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
-import Button from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
+import Button from "../../Button"; // plasmic-import: 0wu_ZE1f8SuT/component
 import Select from "../../Select"; // plasmic-import: 7wkEfmUYAcMf/component
-import Dialog from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
+import Dialog from "../../Dialog"; // plasmic-import: nYtkLnbqtkXY/component
 import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: hVBOtSJvmbc4/codeComponent
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
+import { useScreenVariants as useScreenVariantsbr2UhI7UlpvR } from "../fragment_icons/PlasmicGlobalVariant__Screen"; // plasmic-import: BR2UhI7ulpvR/globalVariant
 import { useScreenVariants as useScreenVariants_7Bs7RtJcMv9T } from "./PlasmicGlobalVariant__Screen"; // plasmic-import: 7BS7RtJcMv9t/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import plasmic_fragment_design_system_css from "../fragment_design_system/plasmic.module.css"; // plasmic-import: h9Dbk9ygddw7UVEq1NNhKi/projectcss
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
 import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plasmic.module.css"; // plasmic-import: jkU633o1Cz7HrJdwdxhVHk/projectcss
+import plasmic_fragment_design_system_css from "../fragment_design_system/plasmic.module.css"; // plasmic-import: h9Dbk9ygddw7UVEq1NNhKi/projectcss
 import projectcss from "./plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicHomepage.module.css"; // plasmic-import: XSAvgKpp1Uaz/css
 
@@ -306,18 +307,6 @@ function PlasmicHomepage__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => true
       },
       {
-        path: "dialogIncreaseRemaining.open",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant(globalVariants, "screen", "mobileOnly") ? true : false
-      },
-      {
-        path: "dialogNewInvoiceDetails[].open",
-        type: "private",
-        variableType: "boolean"
-      },
-      {
         path: "waitingInvoiceDetails",
         type: "private",
         variableType: "boolean",
@@ -395,6 +384,18 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => true
+      },
+      {
+        path: "dialogIncreaseRemaining.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
+      },
+      {
+        path: "dialogNewInvoiceDetails[].open",
+        type: "private",
+        variableType: "boolean"
       }
     ],
     [$props, $ctx, $refs]
@@ -407,6 +408,7 @@ function PlasmicHomepage__RenderFunc(props: {
   });
 
   const globalVariants = ensureGlobalVariants({
+    screen: useScreenVariantsbr2UhI7UlpvR(),
     screen: useScreenVariants_7Bs7RtJcMv9T()
   });
 
@@ -483,9 +485,9 @@ function PlasmicHomepage__RenderFunc(props: {
               projectcss.plasmic_default_styles,
               projectcss.plasmic_mixins,
               projectcss.plasmic_tokens,
-              plasmic_fragment_design_system_css.plasmic_tokens,
               plasmic_antd_5_hostless_css.plasmic_tokens,
               plasmic_plasmic_rich_components_css.plasmic_tokens,
+              plasmic_fragment_design_system_css.plasmic_tokens,
               sty.root
             )}
             dir={"rtl"}
@@ -1387,37 +1389,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                   projectcss.all,
                                   sty.freeBox__f3Erv
                                 )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.freeBox__aeDeu
-                                  )}
-                                >
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__dycd
-                                    )}
-                                  >
-                                    {
-                                      "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc:"
-                                    }
-                                  </div>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__keYhm
-                                    )}
-                                  >
-                                    {
-                                      '\u0627\u0628\u062a\u062f\u0627 \u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 "\u0627\u0631\u0633\u0627\u0644 \u0628\u0647 \u062f\u0631\u06af\u0627\u0647" \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f:'
-                                    }
-                                  </div>
-                                </div>
-                              </div>
+                              />
                             ) : null}
                             {(() => {
                               try {
@@ -1485,30 +1457,60 @@ function PlasmicHomepage__RenderFunc(props: {
                                               sty.text__o8Xxn
                                             )}
                                           >
-                                            <React.Fragment>
-                                              {(() => {
-                                                try {
-                                                  return (
-                                                    new Intl.NumberFormat(
+                                            {hasVariant(
+                                              globalVariants,
+                                              "screen",
+                                              "mobileOnly"
+                                            ) ? (
+                                              <React.Fragment>
+                                                {(() => {
+                                                  try {
+                                                    return new Intl.NumberFormat(
                                                       "fa-IR"
                                                     ).format(
                                                       $state.increaseButtonList[
                                                         currentIndex
                                                       ]
-                                                    ) + " ریال"
-                                                  );
-                                                } catch (e) {
-                                                  if (
-                                                    e instanceof TypeError ||
-                                                    e?.plasmicType ===
-                                                      "PlasmicUndefinedDataError"
-                                                  ) {
-                                                    return "Button";
+                                                    );
+                                                  } catch (e) {
+                                                    if (
+                                                      e instanceof TypeError ||
+                                                      e?.plasmicType ===
+                                                        "PlasmicUndefinedDataError"
+                                                    ) {
+                                                      return "Button";
+                                                    }
+                                                    throw e;
                                                   }
-                                                  throw e;
-                                                }
-                                              })()}
-                                            </React.Fragment>
+                                                })()}
+                                              </React.Fragment>
+                                            ) : (
+                                              <React.Fragment>
+                                                {(() => {
+                                                  try {
+                                                    return (
+                                                      new Intl.NumberFormat(
+                                                        "fa-IR"
+                                                      ).format(
+                                                        $state
+                                                          .increaseButtonList[
+                                                          currentIndex
+                                                        ]
+                                                      ) + " ریال"
+                                                    );
+                                                  } catch (e) {
+                                                    if (
+                                                      e instanceof TypeError ||
+                                                      e?.plasmicType ===
+                                                        "PlasmicUndefinedDataError"
+                                                    ) {
+                                                      return "Button";
+                                                    }
+                                                    throw e;
+                                                  }
+                                                })()}
+                                              </React.Fragment>
+                                            )}
                                           </div>
                                         }
                                         className={classNames(
@@ -2089,7 +2091,37 @@ function PlasmicHomepage__RenderFunc(props: {
                           "dialogIncreaseRemaining",
                           "open"
                         ])}
-                        title={null}
+                        title={
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__aeDeu
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__dycd
+                              )}
+                            >
+                              {
+                                "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc:"
+                              }
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__keYhm
+                              )}
+                            >
+                              {
+                                '\u0627\u0628\u062a\u062f\u0627 \u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 "\u0627\u0631\u0633\u0627\u0644 \u0628\u0647 \u062f\u0631\u06af\u0627\u0647" \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f:'
+                              }
+                            </div>
+                          </div>
+                        }
                         trigger={
                           (() => {
                             try {
@@ -2742,7 +2774,9 @@ function PlasmicHomepage__RenderFunc(props: {
                                       : "\u06a9\u062f:"}
                                   </div>
                                 </div>
-                                <div
+                                <Stack__
+                                  as={"div"}
+                                  hasGap={true}
                                   className={classNames(
                                     projectcss.all,
                                     sty.freeBox__w6YQy
@@ -2799,14 +2833,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                       </React.Fragment>
                                     )}
                                   </div>
-                                </div>
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.freeBox__nfJkR
-                                )}
-                              >
+                                </Stack__>
                                 <div
                                   className={classNames(
                                     projectcss.all,
@@ -2961,7 +2988,9 @@ function PlasmicHomepage__RenderFunc(props: {
                                         </React.Fragment>
                                       </div>
                                     </div>
-                                    <div
+                                    <Stack__
+                                      as={"div"}
+                                      hasGap={true}
                                       className={classNames(
                                         projectcss.all,
                                         sty.freeBox___6Stbl
@@ -2976,7 +3005,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                       >
                                         {"\u0645\u0628\u0644\u063a:"}
                                       </div>
-                                    </div>
+                                    </Stack__>
                                     <div
                                       className={classNames(
                                         projectcss.all,
@@ -3745,19 +3774,35 @@ function PlasmicHomepage__RenderFunc(props: {
               }}
             />
 
-            {(() => {
-              try {
-                return $state.waiting;
-              } catch (e) {
-                if (
-                  e instanceof TypeError ||
-                  e?.plasmicType === "PlasmicUndefinedDataError"
-                ) {
-                  return true;
-                }
-                throw e;
-              }
-            })() ? (
+            {(
+              hasVariant(globalVariants, "screen", "mobileOnly")
+                ? (() => {
+                    try {
+                      return $state.waiting;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })()
+                : (() => {
+                    try {
+                      return $state.waiting;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })()
+            ) ? (
               <Icon2Icon
                 data-plasmic-name={"waitingIcon"}
                 data-plasmic-override={overrides.waitingIcon}

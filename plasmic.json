@@ -462,8 +462,7 @@
           "componentImportPath": "@plasmicapp/react-web/lib/data-sources"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "afXULSfGYmou2jFpEc2QWJ",
@@ -593,6 +592,33 @@
             "modulePath": "InvoiceDetails.tsx"
           },
           "cssFilePath": "plasmic/chortke/PlasmicInvoiceDetails.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
+        },
+        {
+          "id": "0wu_ZE1f8SuT",
+          "name": "Button",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/chortke/PlasmicButton.tsx",
+          "importSpec": {
+            "modulePath": "Button.tsx"
+          },
+          "cssFilePath": "plasmic/chortke/PlasmicButton.module.css",
+          "scheme": "blackbox",
+          "componentType": "component",
+          "plumeType": "button"
+        },
+        {
+          "id": "nYtkLnbqtkXY",
+          "name": "Dialog",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/chortke/PlasmicDialog.tsx",
+          "importSpec": {
+            "modulePath": "Dialog.tsx"
+          },
+          "cssFilePath": "plasmic/chortke/PlasmicDialog.module.css",
           "scheme": "blackbox",
           "componentType": "component"
         }
@@ -732,6 +758,11 @@
           "id": "hs1r53dOSjtc",
           "name": "Icon20Icon",
           "moduleFilePath": "plasmic/chortke/icons/PlasmicIcon__Icon20.tsx"
+        },
+        {
+          "id": "5cMRv2c3LIXT",
+          "name": "Icon21Icon",
+          "moduleFilePath": "plasmic/chortke/icons/PlasmicIcon__Icon21.tsx"
         }
       ],
       "images": [
