@@ -1365,13 +1365,13 @@ function PlasmicHomepage__RenderFunc(props: {
                             {(() => {
                               try {
                                 return (() => {
-                                  return (
-                                    $state.txtReminderValue
-                                      .toString()
-                                      .replace("\u2212", "")
-                                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
-                                    " ریال"
-                                  );
+                                  return $state.txtReminderValue == 0
+                                    ? ""
+                                    : $state.txtReminderValue
+                                        .toString()
+                                        .replace("\u2212", "")
+                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
+                                        " ریال";
                                 })();
                               } catch (e) {
                                 if (
