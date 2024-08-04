@@ -83,9 +83,9 @@ import Icon11Icon from "./icons/PlasmicIcon__Icon11"; // plasmic-import: sdf49At
 import Icon6Icon from "./icons/PlasmicIcon__Icon6"; // plasmic-import: 7-KwYGGksEHB/icon
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
 import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
+import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
 import SearchsvgIcon from "./icons/PlasmicIcon__Searchsvg"; // plasmic-import: fjupp6w2fUeo/icon
 import ChecksvgIcon from "./icons/PlasmicIcon__Checksvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
-import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
 
 createPlasmicElementProxy;
 
@@ -125,7 +125,6 @@ export type PlasmicHomepage__OverridesType = {
   detailsDataApiRequest?: Flex__<typeof ApiRequest>;
   waitingIcon3?: Flex__<"svg">;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
-  waitingIcon?: Flex__<"svg">;
   sideEffectFirstLoad?: Flex__<typeof SideEffect>;
 };
 
@@ -1302,6 +1301,24 @@ function PlasmicHomepage__RenderFunc(props: {
                         sty.freeBox___3OBad
                       )}
                     >
+                      {(() => {
+                        try {
+                          return $state.waiting;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <Icon2Icon
+                          className={classNames(projectcss.all, sty.svg__molj2)}
+                          role={"img"}
+                        />
+                      ) : null}
                       <div
                         data-plasmic-name={"txtRemainingText"}
                         data-plasmic-override={overrides.txtRemainingText}
@@ -3888,42 +3905,6 @@ function PlasmicHomepage__RenderFunc(props: {
               }}
             />
 
-            {(
-              hasVariant(globalVariants, "screen", "mobileOnly")
-                ? (() => {
-                    try {
-                      return $state.waiting;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })()
-                : (() => {
-                    try {
-                      return $state.waiting;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })()
-            ) ? (
-              <Icon2Icon
-                data-plasmic-name={"waitingIcon"}
-                data-plasmic-override={overrides.waitingIcon}
-                className={classNames(projectcss.all, sty.waitingIcon)}
-                role={"img"}
-              />
-            ) : null}
             <SideEffect
               data-plasmic-name={"sideEffectFirstLoad"}
               data-plasmic-override={overrides.sideEffectFirstLoad}
@@ -4039,7 +4020,6 @@ const PlasmicDescendants = {
     "detailsDataApiRequest",
     "waitingIcon3",
     "sideEffectPageLoad",
-    "waitingIcon",
     "sideEffectFirstLoad"
   ],
   h1: ["h1"],
@@ -4118,7 +4098,6 @@ const PlasmicDescendants = {
   detailsDataApiRequest: ["detailsDataApiRequest", "waitingIcon3"],
   waitingIcon3: ["waitingIcon3"],
   sideEffectPageLoad: ["sideEffectPageLoad"],
-  waitingIcon: ["waitingIcon"],
   sideEffectFirstLoad: ["sideEffectFirstLoad"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -4151,7 +4130,6 @@ type NodeDefaultElementType = {
   detailsDataApiRequest: typeof ApiRequest;
   waitingIcon3: "svg";
   sideEffectPageLoad: typeof SideEffect;
-  waitingIcon: "svg";
   sideEffectFirstLoad: typeof SideEffect;
 };
 
@@ -4240,7 +4218,6 @@ export const PlasmicHomepage = Object.assign(
     detailsDataApiRequest: makeNodeComponent("detailsDataApiRequest"),
     waitingIcon3: makeNodeComponent("waitingIcon3"),
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
-    waitingIcon: makeNodeComponent("waitingIcon"),
     sideEffectFirstLoad: makeNodeComponent("sideEffectFirstLoad"),
 
     // Metadata about props expected for PlasmicHomepage
