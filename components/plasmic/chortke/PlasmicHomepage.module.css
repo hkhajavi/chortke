@@ -388,6 +388,7 @@
   .cbProductlist:global(.__wab_instance) {
     align-self: center;
     height: 39px;
+    margin-top: 8px;
     flex-shrink: 0;
   }
 }
@@ -583,7 +584,7 @@
   align-items: center;
   grid-column-end: span 2;
   min-width: 0;
-  padding: 8px;
+  padding: 8px 8px 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__aeDeu {
@@ -605,6 +606,7 @@
   height: auto;
   max-width: 100%;
   text-align: right;
+  margin-top: 8px;
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
