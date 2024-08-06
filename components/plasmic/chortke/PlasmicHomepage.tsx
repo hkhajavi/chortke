@@ -3346,12 +3346,13 @@ function PlasmicHomepage__RenderFunc(props: {
                               </div>
                               {(() => {
                                 try {
-                                  return $state.detailsDataApiRequest[0].data
-                                    .data !== undefined &&
-                                    $state.detailsDataApiRequest[0].data.data
-                                      .meta !== undefined &&
-                                    $state.detailsDataApiRequest[0].data.data
-                                      .meta.ResNum !== undefined
+                                  return $state.detailsDataApiRequest[
+                                    currentIndex
+                                  ].data.data !== undefined &&
+                                    $state.detailsDataApiRequest[currentIndex]
+                                      .data.data.meta !== undefined &&
+                                    $state.detailsDataApiRequest[currentIndex]
+                                      .data.data.meta.RefNum !== undefined
                                     ? true
                                     : false;
                                 } catch (e) {
@@ -3407,7 +3408,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                           try {
                                             return $state.detailsDataApiRequest[
                                               currentIndex
-                                            ].data.data.meta.ResNum;
+                                            ].data.data.meta.RefNum;
                                           } catch (e) {
                                             if (
                                               e instanceof TypeError ||
