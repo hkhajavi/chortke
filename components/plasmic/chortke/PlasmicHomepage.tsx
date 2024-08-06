@@ -2906,7 +2906,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                       sty.text___5TAx2
                                     )}
                                   >
-                                    {"\u062a\u0627\u0631\u06cc\u062e:"}
+                                    {"\u0632\u0645\u0627\u0646:"}
                                   </div>
                                 </div>
                                 <div
@@ -2925,18 +2925,24 @@ function PlasmicHomepage__RenderFunc(props: {
                                     <React.Fragment>
                                       {(() => {
                                         try {
-                                          return (() => {
-                                            const gregorianDate = new Date(
-                                              $state.detailsDataApiRequest[
-                                                currentIndex
-                                              ].data.data.registerdate
-                                            );
-                                            const persianDate =
-                                              new Intl.DateTimeFormat(
-                                                "fa-IR"
-                                              ).format(gregorianDate);
-                                            return persianDate;
-                                          })();
+                                          return (
+                                            $state.detailsDataApiRequest[
+                                              currentIndex
+                                            ].data.data.registertime +
+                                            " " +
+                                            (() => {
+                                              const gregorianDate = new Date(
+                                                $state.detailsDataApiRequest[
+                                                  currentIndex
+                                                ].data.data.registerdate
+                                              );
+                                              const persianDate =
+                                                new Intl.DateTimeFormat(
+                                                  "fa-IR"
+                                                ).format(gregorianDate);
+                                              return persianDate;
+                                            })()
+                                          );
                                         } catch (e) {
                                           if (
                                             e instanceof TypeError ||
