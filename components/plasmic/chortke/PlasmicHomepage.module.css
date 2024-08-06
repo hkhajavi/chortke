@@ -1699,6 +1699,8 @@
   height: auto;
   max-width: 100%;
   grid-column-end: span 2;
+  border-left-style: solid;
+  border-left-width: 1px;
   min-width: 0;
   padding: 8px;
 }
