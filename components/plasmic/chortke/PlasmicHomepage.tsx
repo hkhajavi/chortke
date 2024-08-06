@@ -2636,7 +2636,22 @@ function PlasmicHomepage__RenderFunc(props: {
                                     sty.text__zmxI2
                                   )}
                                 >
-                                  {"Error fetching data"}
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return "خطا در دریافت اطلاعات، لطفا دوباره تلاش نمایید.";
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "Error fetching data";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
                                 </div>
                               }
                               loadingDisplay={
