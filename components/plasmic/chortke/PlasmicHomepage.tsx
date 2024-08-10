@@ -3690,7 +3690,7 @@ function PlasmicHomepage__RenderFunc(props: {
                     ? (() => {
                         const actionArgs = {
                           destination:
-                            "https://www.paziresh24.com/login/?redirect_url=https://chortke.paziresh24.com/"
+                            "https://www.paziresh24.com/login/?redirect_url=https://katibe.paziresh24.com/"
                         };
                         return (({ destination }) => {
                           if (
