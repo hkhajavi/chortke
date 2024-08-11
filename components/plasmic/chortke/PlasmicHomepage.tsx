@@ -3020,9 +3020,22 @@ function PlasmicHomepage__RenderFunc(props: {
                                           sty.text__ggAq
                                         )}
                                       >
-                                        {
-                                          "\u062c\u0632\u0626\u06cc\u0627\u062a:"
-                                        }
+                                        <React.Fragment>
+                                          {(() => {
+                                            try {
+                                              return "جزئیات:";
+                                            } catch (e) {
+                                              if (
+                                                e instanceof TypeError ||
+                                                e?.plasmicType ===
+                                                  "PlasmicUndefinedDataError"
+                                              ) {
+                                                return "\u062c\u0632\u0626\u06cc\u0627\u062a:";
+                                              }
+                                              throw e;
+                                            }
+                                          })()}
+                                        </React.Fragment>
                                       </div>
                                     </div>
                                     <div
