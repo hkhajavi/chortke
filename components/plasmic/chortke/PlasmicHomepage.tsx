@@ -4248,7 +4248,7 @@ export const PlasmicHomepage = Object.assign(
 
     // Page metadata
     pageMetadata: {
-      title: "چرتکه، مدیریت امور مالی",
+      title: "کتیبه، مدیریت امور مالی",
       description: "ماژول ها وشیوه قیمت گذاری محصولات پذیرش24",
       ogImageSrc:
         "https://site-assets.plasmic.app/49b5e4e62d4fd1407285906a0f5e6382.svg",
