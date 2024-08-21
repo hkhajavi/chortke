@@ -865,6 +865,12 @@
           "name": "Chart",
           "displayName": "Chart",
           "componentImportPath": "@/fragment/components/chart"
+        },
+        {
+          "id": "hSq6gN8lmxlL",
+          "name": "Hamdast",
+          "displayName": "Hamdast",
+          "componentImportPath": "@/hamdast/hamdast"
         }
       ],
       "customFunctions": []
