@@ -389,7 +389,7 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
+          hasVariant(globalVariants, "screen", "mobileOnly") ? false : true
       },
       {
         path: "dialogNewInvoiceDetails[].open",
@@ -1955,7 +1955,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                                       $state.cbProductlist
                                                         .value,
                                                     returnlink:
-                                                      "https://chortke.paziresh24.com/?payment=true",
+                                                      "https://www.paziresh24.com/dashboard/apps/katibe/bills/",
                                                     title: "افزایش موجودی",
                                                     amount: $state.paymentAmount
                                                   };
