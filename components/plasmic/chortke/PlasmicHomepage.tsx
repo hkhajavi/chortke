@@ -108,6 +108,7 @@ export type PlasmicHomepage__OverridesType = {
   section?: Flex__<"section">;
   gridCalculator2?: Flex__<"div">;
   cbProductlist?: Flex__<typeof Select>;
+  cbCenters?: Flex__<typeof Select>;
   txtRemainingText?: Flex__<"div">;
   txtRemainingValue?: Flex__<"div">;
   dialogIncreaseRemaining?: Flex__<typeof Dialog>;
@@ -395,6 +396,24 @@ function PlasmicHomepage__RenderFunc(props: {
         path: "dialogNewInvoiceDetails[].open",
         type: "private",
         variableType: "boolean"
+      },
+      {
+        path: "cbCenters.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "showCbCenters",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => true
+      },
+      {
+        path: "centersList",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => []
       }
     ],
     [$props, $ctx, $refs]
@@ -1238,6 +1257,68 @@ function PlasmicHomepage__RenderFunc(props: {
                         ) {
                           $steps["runCode"] = await $steps["runCode"];
                         }
+
+                        $steps["getUserCenters"] =
+                          $state.cbProductlist.value == 7
+                            ? (() => {
+                                const actionArgs = {
+                                  args: [
+                                    undefined,
+                                    "https://apigw.paziresh24.com/transaction/v1/usercenters"
+                                  ]
+                                };
+                                return $globalActions[
+                                  "Fragment.apiRequest"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
+                        if (
+                          $steps["getUserCenters"] != null &&
+                          typeof $steps["getUserCenters"] === "object" &&
+                          typeof $steps["getUserCenters"].then === "function"
+                        ) {
+                          $steps["getUserCenters"] = await $steps[
+                            "getUserCenters"
+                          ];
+                        }
+
+                        $steps["updateCentersList"] =
+                          $steps.getUserCenters.status == 200 &&
+                          $steps.getUserCenters.data.status == true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["centersList"]
+                                  },
+                                  operation: 0,
+                                  value: $steps.getUserCenters.data.data
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                        if (
+                          $steps["updateCentersList"] != null &&
+                          typeof $steps["updateCentersList"] === "object" &&
+                          typeof $steps["updateCentersList"].then === "function"
+                        ) {
+                          $steps["updateCentersList"] = await $steps[
+                            "updateCentersList"
+                          ];
+                        }
                       }).apply(null, eventArgs);
                     }}
                     options={(() => {
@@ -1282,8 +1363,71 @@ function PlasmicHomepage__RenderFunc(props: {
                     "grid_calculator"
                   )}
                   id={"grid_calculator"}
-                />
-
+                >
+                  {(() => {
+                    try {
+                      return (() => {
+                        return $state.cbProductlist.value == 7 ? true : false;
+                      })();
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <Select
+                      data-plasmic-name={"cbCenters"}
+                      data-plasmic-override={overrides.cbCenters}
+                      aria-label={"name"}
+                      aria-labelledby={"productid"}
+                      className={classNames("__wab_instance", sty.cbCenters)}
+                      name={"productlist"}
+                      onChange={(...eventArgs) => {
+                        generateStateOnChangeProp($state, [
+                          "cbCenters",
+                          "value"
+                        ])(eventArgs[0]);
+                      }}
+                      options={(() => {
+                        try {
+                          return $state.centersList.map(item => ({
+                            value: item.centerid,
+                            label: item.centername
+                          }));
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return [{}];
+                          }
+                          throw e;
+                        }
+                      })()}
+                      placeholder={
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___74H8A
+                          )}
+                        >
+                          {
+                            "\u0627\u0646\u062a\u062e\u0627\u0628 \u0645\u0631\u06a9\u0632"
+                          }
+                        </div>
+                      }
+                      value={generateStateValueProp($state, [
+                        "cbCenters",
+                        "value"
+                      ])}
+                    />
+                  ) : null}
+                </div>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -4028,6 +4172,7 @@ const PlasmicDescendants = {
     "section",
     "gridCalculator2",
     "cbProductlist",
+    "cbCenters",
     "txtRemainingText",
     "txtRemainingValue",
     "dialogIncreaseRemaining",
@@ -4056,6 +4201,7 @@ const PlasmicDescendants = {
     "section",
     "gridCalculator2",
     "cbProductlist",
+    "cbCenters",
     "txtRemainingText",
     "txtRemainingValue",
     "dialogIncreaseRemaining",
@@ -4076,6 +4222,7 @@ const PlasmicDescendants = {
   gridCalculator2: [
     "gridCalculator2",
     "cbProductlist",
+    "cbCenters",
     "txtRemainingText",
     "txtRemainingValue",
     "dialogIncreaseRemaining",
@@ -4087,6 +4234,7 @@ const PlasmicDescendants = {
     "myHtml"
   ],
   cbProductlist: ["cbProductlist"],
+  cbCenters: ["cbCenters"],
   txtRemainingText: ["txtRemainingText"],
   txtRemainingValue: ["txtRemainingValue"],
   dialogIncreaseRemaining: [
@@ -4138,6 +4286,7 @@ type NodeDefaultElementType = {
   section: "section";
   gridCalculator2: "div";
   cbProductlist: typeof Select;
+  cbCenters: typeof Select;
   txtRemainingText: "div";
   txtRemainingValue: "div";
   dialogIncreaseRemaining: typeof Dialog;
@@ -4226,6 +4375,7 @@ export const PlasmicHomepage = Object.assign(
     section: makeNodeComponent("section"),
     gridCalculator2: makeNodeComponent("gridCalculator2"),
     cbProductlist: makeNodeComponent("cbProductlist"),
+    cbCenters: makeNodeComponent("cbCenters"),
     txtRemainingText: makeNodeComponent("txtRemainingText"),
     txtRemainingValue: makeNodeComponent("txtRemainingValue"),
     dialogIncreaseRemaining: makeNodeComponent("dialogIncreaseRemaining"),
