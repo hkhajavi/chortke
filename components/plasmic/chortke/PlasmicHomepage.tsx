@@ -1377,80 +1377,101 @@ function PlasmicHomepage__RenderFunc(props: {
                       "value"
                     ])}
                   />
-
-                  {(() => {
-                    try {
-                      return (() => {
-                        return $state.cbProductlist.value == 7 ? true : false;
-                      })();
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })() ? (
-                    <Select
-                      data-plasmic-name={"cbCenters"}
-                      data-plasmic-override={overrides.cbCenters}
-                      aria-label={"name"}
-                      aria-labelledby={"productid"}
-                      className={classNames("__wab_instance", sty.cbCenters)}
-                      name={"productlist"}
-                      onChange={(...eventArgs) => {
-                        generateStateOnChangeProp($state, [
-                          "cbCenters",
-                          "value"
-                        ])(eventArgs[0]);
-                      }}
-                      options={(() => {
+                </div>
+                {(
+                  hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? (() => {
                         try {
-                          return $state.centersList.map(item => ({
-                            value: item.centerid,
-                            label: item.centername
-                          }));
+                          return (() => {
+                            return $state.cbProductlist.value == 7
+                              ? true
+                              : false;
+                          })();
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
                             e?.plasmicType === "PlasmicUndefinedDataError"
                           ) {
-                            return [{}];
+                            return true;
                           }
                           throw e;
                         }
-                      })()}
-                      placeholder={
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___74H8A
-                          )}
-                        >
-                          {
-                            "\u0627\u0646\u062a\u062e\u0627\u0628 \u0645\u0631\u06a9\u0632"
-                          }
-                        </div>
+                      })()
+                    : true
+                ) ? (
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      sty.freeBox__uFbdt,
+                      "grid_calculator"
+                    )}
+                    id={"grid_calculator"}
+                  >
+                    {(() => {
+                      try {
+                        return (() => {
+                          return $state.cbProductlist.value == 7 ? true : false;
+                        })();
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
+                        }
+                        throw e;
                       }
-                      value={generateStateValueProp($state, [
-                        "cbCenters",
-                        "value"
-                      ])}
-                    />
-                  ) : null}
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    sty.freeBox__uFbdt,
-                    "grid_calculator"
-                  )}
-                  id={"grid_calculator"}
-                />
-
+                    })() ? (
+                      <Select
+                        data-plasmic-name={"cbCenters"}
+                        data-plasmic-override={overrides.cbCenters}
+                        aria-label={"name"}
+                        aria-labelledby={"productid"}
+                        className={classNames("__wab_instance", sty.cbCenters)}
+                        name={"productlist"}
+                        onChange={(...eventArgs) => {
+                          generateStateOnChangeProp($state, [
+                            "cbCenters",
+                            "value"
+                          ])(eventArgs[0]);
+                        }}
+                        options={(() => {
+                          try {
+                            return $state.centersList.map(item => ({
+                              value: item.centerid,
+                              label: item.centername
+                            }));
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [{}];
+                            }
+                            throw e;
+                          }
+                        })()}
+                        placeholder={
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text___74H8A
+                            )}
+                          >
+                            {
+                              "\u0627\u0646\u062a\u062e\u0627\u0628 \u0645\u0631\u06a9\u0632"
+                            }
+                          </div>
+                        }
+                        value={generateStateValueProp($state, [
+                          "cbCenters",
+                          "value"
+                        ])}
+                      />
+                    ) : null}
+                  </div>
+                ) : null}
                 <div
                   className={classNames(
                     projectcss.all,
