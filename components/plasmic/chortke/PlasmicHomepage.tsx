@@ -1107,6 +1107,7 @@ function PlasmicHomepage__RenderFunc(props: {
                         }
 
                         $steps["txtRemainingText"] =
+                          $state.cbProductlist.value != 7 &&
                           $steps.getProductWallet.status == 200 &&
                           $steps.getProductWallet.data.status == true
                             ? (() => {
@@ -1136,6 +1137,7 @@ function PlasmicHomepage__RenderFunc(props: {
                         }
 
                         $steps["txtReminderValue"] =
+                          $state.cbProductlist.value != 7 &&
                           $steps.getInvoiceList.status == 200 &&
                           $steps.getInvoiceList.data.status == true
                             ? (() => {
@@ -1628,12 +1630,25 @@ function PlasmicHomepage__RenderFunc(props: {
                                   const actionArgs = {
                                     args: [
                                       undefined,
-                                      `${undefined}${
-                                        "https://apigw.paziresh24.com/transaction/v1/userinvoicelist?productid=" +
-                                        $state.cbProductlist.value +
-                                        "&centerid=" +
-                                        $state.cbCenters.value
-                                      }`
+                                      (() => {
+                                        try {
+                                          return (
+                                            "https://apigw.paziresh24.com/transaction/v1/userinvoicelist?productid=" +
+                                            $state.cbProductlist.value +
+                                            "&centerid=" +
+                                            $state.cbCenters.value
+                                          );
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return undefined;
+                                          }
+                                          throw e;
+                                        }
+                                      })()
                                     ]
                                   };
                                   return $globalActions[
@@ -1692,42 +1707,6 @@ function PlasmicHomepage__RenderFunc(props: {
                               ];
                             }
 
-                            $steps["hideWaiting"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["waiting"]
-                                    },
-                                    operation: 0,
-                                    value: false
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["hideWaiting"] != null &&
-                              typeof $steps["hideWaiting"] === "object" &&
-                              typeof $steps["hideWaiting"].then === "function"
-                            ) {
-                              $steps["hideWaiting"] = await $steps[
-                                "hideWaiting"
-                              ];
-                            }
-
                             $steps["getCenterWallet"] = true
                               ? (() => {
                                   const actionArgs = {
@@ -1770,21 +1749,74 @@ function PlasmicHomepage__RenderFunc(props: {
                               ];
                             }
 
-                            $steps["txtRemainingText"] = true
+                            $steps["txtRemainingText"] =
+                              $steps.getCenterWallet.status == 200 &&
+                              $steps.getCenterWallet.data.status == true
+                                ? (() => {
+                                    const actionArgs = {
+                                      customFunction: async () => {
+                                        return $steps.getCenterWallet.data.data
+                                          .balance >= 0
+                                          ? ($state.txtReminderTextValue =
+                                              "موجودی حساب: ")
+                                          : ($state.txtReminderTextValue =
+                                              "بدهی شما: ");
+                                      }
+                                    };
+                                    return (({ customFunction }) => {
+                                      return customFunction();
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["txtRemainingText"] != null &&
+                              typeof $steps["txtRemainingText"] === "object" &&
+                              typeof $steps["txtRemainingText"].then ===
+                                "function"
+                            ) {
+                              $steps["txtRemainingText"] = await $steps[
+                                "txtRemainingText"
+                              ];
+                            }
+
+                            $steps["txtReminderValue"] =
+                              $steps.getInvoiceList.status == 200 &&
+                              $steps.getInvoiceList.data.status == true
+                                ? (() => {
+                                    const actionArgs = {
+                                      customFunction: async () => {
+                                        return ($state.txtReminderValue =
+                                          new Intl.NumberFormat("fa-IR").format(
+                                            $steps.getCenterWallet.data.data
+                                              .balance
+                                          ));
+                                      }
+                                    };
+                                    return (({ customFunction }) => {
+                                      return customFunction();
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["txtReminderValue"] != null &&
+                              typeof $steps["txtReminderValue"] === "object" &&
+                              typeof $steps["txtReminderValue"].then ===
+                                "function"
+                            ) {
+                              $steps["txtReminderValue"] = await $steps[
+                                "txtReminderValue"
+                              ];
+                            }
+
+                            $steps["hideWaiting"] = true
                               ? (() => {
                                   const actionArgs = {
                                     variable: {
                                       objRoot: $state,
-                                      variablePath: ["txtReminderTextValue"]
+                                      variablePath: ["waiting"]
                                     },
                                     operation: 0,
-                                    value:
-                                      $steps.getProductWallet.data.data
-                                        .balance >= 0
-                                        ? ($state.txtReminderTextValue =
-                                            "موجودی حساب: ")
-                                        : ($state.txtReminderTextValue =
-                                            "بدهی شما: ")
+                                    value: false
                                   };
                                   return (({
                                     variable,
@@ -1803,13 +1835,54 @@ function PlasmicHomepage__RenderFunc(props: {
                                 })()
                               : undefined;
                             if (
-                              $steps["txtRemainingText"] != null &&
-                              typeof $steps["txtRemainingText"] === "object" &&
-                              typeof $steps["txtRemainingText"].then ===
+                              $steps["hideWaiting"] != null &&
+                              typeof $steps["hideWaiting"] === "object" &&
+                              typeof $steps["hideWaiting"].then === "function"
+                            ) {
+                              $steps["hideWaiting"] = await $steps[
+                                "hideWaiting"
+                              ];
+                            }
+
+                            $steps["updateReminderWallet"] =
+                              $steps.getCenterWallet.status == 200 &&
+                              $steps.getCenterWallet.data.status == true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["reminderWallet"]
+                                      },
+                                      operation: 0,
+                                      value:
+                                        $steps.getCenterWallet.data.data.balance
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["updateReminderWallet"] != null &&
+                              typeof $steps["updateReminderWallet"] ===
+                                "object" &&
+                              typeof $steps["updateReminderWallet"].then ===
                                 "function"
                             ) {
-                              $steps["txtRemainingText"] = await $steps[
-                                "txtRemainingText"
+                              $steps["updateReminderWallet"] = await $steps[
+                                "updateReminderWallet"
                               ];
                             }
                           }).apply(null, eventArgs);
