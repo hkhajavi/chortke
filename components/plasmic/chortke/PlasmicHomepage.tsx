@@ -1071,6 +1071,40 @@ function PlasmicHomepage__RenderFunc(props: {
                           ];
                         }
 
+                        $steps["hideWaiting"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["waiting"]
+                                },
+                                operation: 0,
+                                value: false
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["hideWaiting"] != null &&
+                          typeof $steps["hideWaiting"] === "object" &&
+                          typeof $steps["hideWaiting"].then === "function"
+                        ) {
+                          $steps["hideWaiting"] = await $steps["hideWaiting"];
+                        }
+
                         $steps["updateInvoicelist"] =
                           $steps.getInvoiceList.status == 200 &&
                           $steps.getInvoiceList.data.status == true
@@ -1107,6 +1141,40 @@ function PlasmicHomepage__RenderFunc(props: {
                           $steps["updateInvoicelist"] = await $steps[
                             "updateInvoicelist"
                           ];
+                        }
+
+                        $steps["showWaiting2"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["waiting"]
+                                },
+                                operation: 0,
+                                value: true
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["showWaiting2"] != null &&
+                          typeof $steps["showWaiting2"] === "object" &&
+                          typeof $steps["showWaiting2"].then === "function"
+                        ) {
+                          $steps["showWaiting2"] = await $steps["showWaiting2"];
                         }
 
                         $steps["getProductWallet"] = true
@@ -1146,6 +1214,40 @@ function PlasmicHomepage__RenderFunc(props: {
                           $steps["getProductWallet"] = await $steps[
                             "getProductWallet"
                           ];
+                        }
+
+                        $steps["hideWaiting2"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["waiting"]
+                                },
+                                operation: 0,
+                                value: false
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["hideWaiting2"] != null &&
+                          typeof $steps["hideWaiting2"] === "object" &&
+                          typeof $steps["hideWaiting2"].then === "function"
+                        ) {
+                          $steps["hideWaiting2"] = await $steps["hideWaiting2"];
                         }
 
                         $steps["txtRemainingText"] =
@@ -1268,69 +1370,7 @@ function PlasmicHomepage__RenderFunc(props: {
                           $steps["runCode"] = await $steps["runCode"];
                         }
 
-                        $steps["getUserCenters"] =
-                          $state.cbProductlist.value == 7
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    undefined,
-                                    "https://apigw.paziresh24.com/transaction/v1/usercenters"
-                                  ]
-                                };
-                                return $globalActions[
-                                  "Fragment.apiRequest"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
-                        if (
-                          $steps["getUserCenters"] != null &&
-                          typeof $steps["getUserCenters"] === "object" &&
-                          typeof $steps["getUserCenters"].then === "function"
-                        ) {
-                          $steps["getUserCenters"] = await $steps[
-                            "getUserCenters"
-                          ];
-                        }
-
-                        $steps["updateCentersList"] =
-                          $steps.getUserCenters.status == 200 &&
-                          $steps.getUserCenters.data.status == true
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["centersList"]
-                                  },
-                                  operation: 0,
-                                  value: $steps.getUserCenters.data.data
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
-
-                                  $stateSet(objRoot, variablePath, value);
-                                  return value;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                        if (
-                          $steps["updateCentersList"] != null &&
-                          typeof $steps["updateCentersList"] === "object" &&
-                          typeof $steps["updateCentersList"].then === "function"
-                        ) {
-                          $steps["updateCentersList"] = await $steps[
-                            "updateCentersList"
-                          ];
-                        }
-
-                        $steps["runCode2"] = true
+                        $steps["selectedCbCenters0"] = true
                           ? (() => {
                               const actionArgs = {
                                 customFunction: async () => {
@@ -1343,45 +1383,14 @@ function PlasmicHomepage__RenderFunc(props: {
                             })()
                           : undefined;
                         if (
-                          $steps["runCode2"] != null &&
-                          typeof $steps["runCode2"] === "object" &&
-                          typeof $steps["runCode2"].then === "function"
+                          $steps["selectedCbCenters0"] != null &&
+                          typeof $steps["selectedCbCenters0"] === "object" &&
+                          typeof $steps["selectedCbCenters0"].then ===
+                            "function"
                         ) {
-                          $steps["runCode2"] = await $steps["runCode2"];
-                        }
-
-                        $steps["hideWaiting"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["waiting"]
-                                },
-                                operation: 0,
-                                value: false
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["hideWaiting"] != null &&
-                          typeof $steps["hideWaiting"] === "object" &&
-                          typeof $steps["hideWaiting"].then === "function"
-                        ) {
-                          $steps["hideWaiting"] = await $steps["hideWaiting"];
+                          $steps["selectedCbCenters0"] = await $steps[
+                            "selectedCbCenters0"
+                          ];
                         }
                       }).apply(null, eventArgs);
                     }}
@@ -4612,6 +4621,64 @@ function PlasmicHomepage__RenderFunc(props: {
                   $steps["setProductListVariable"] = await $steps[
                     "setProductListVariable"
                   ];
+                }
+
+                $steps["getUserCenters"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          undefined,
+                          "https://apigw.paziresh24.com/transaction/v1/usercenters"
+                        ]
+                      };
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
+                    })()
+                  : undefined;
+                if (
+                  $steps["getUserCenters"] != null &&
+                  typeof $steps["getUserCenters"] === "object" &&
+                  typeof $steps["getUserCenters"].then === "function"
+                ) {
+                  $steps["getUserCenters"] = await $steps["getUserCenters"];
+                }
+
+                $steps["updateCenters"] =
+                  $steps.getUserCenters.status == 200 &&
+                  $steps.getUserCenters.data.status == true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["centersList"]
+                          },
+                          operation: 0,
+                          value: $steps.getUserCenters.data.data
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["updateCenters"] != null &&
+                  typeof $steps["updateCenters"] === "object" &&
+                  typeof $steps["updateCenters"].then === "function"
+                ) {
+                  $steps["updateCenters"] = await $steps["updateCenters"];
                 }
 
                 $steps["hideWaiting"] = true
