@@ -1353,8 +1353,10 @@ function PlasmicHomepage__RenderFunc(props: {
                           ? (() => {
                               const actionArgs = {
                                 customFunction: async () => {
-                                  return ($state.isShowPaymentButton =
-                                    $state.cbProductlist.value > 0);
+                                  return $state.cbProductlist.value == 7
+                                    ? ($state.isShowPaymentButton = false)
+                                    : ($state.isShowPaymentButton =
+                                        $state.cbProductlist.value > 0);
                                 }
                               };
                               return (({ customFunction }) => {
@@ -1976,8 +1978,11 @@ function PlasmicHomepage__RenderFunc(props: {
                               ? (() => {
                                   const actionArgs = {
                                     customFunction: async () => {
-                                      return ($state.isShowPaymentButton =
-                                        $state.cbCenters.value > 0);
+                                      return (() => {
+                                        return $state.reminderWallet < 0
+                                          ? ($state.btnPayShow = true)
+                                          : ($state.btnPayShow = false);
+                                      })();
                                     }
                                   };
                                   return (({ customFunction }) => {
