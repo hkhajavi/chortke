@@ -420,6 +420,13 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => "0"
+      },
+      {
+        path: "txtPaymentText",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc"
       }
     ],
     [$props, $ctx, $refs]
@@ -1257,12 +1264,20 @@ function PlasmicHomepage__RenderFunc(props: {
                             ? (() => {
                                 const actionArgs = {
                                   customFunction: async () => {
-                                    return $steps.getProductWallet.data.data
-                                      .balance >= 0
-                                      ? ($state.txtReminderTextValue =
-                                          "موجودی حساب: ")
-                                      : ($state.txtReminderTextValue =
-                                          "بدهی شما: ");
+                                    return (() => {
+                                      $steps.getProductWallet.data.data
+                                        .balance >= 0
+                                        ? ($state.txtReminderTextValue =
+                                            "موجودی حساب: ")
+                                        : ($state.txtReminderTextValue =
+                                            "بدهی شما: ");
+                                      return $steps.getProductWallet.data.data
+                                        .balance >= 0
+                                        ? ($state.txtPaymentText =
+                                            "افزایش موجودی")
+                                        : ($state.txtPaymentText =
+                                            "پرداخت بدهی");
+                                    })();
                                   }
                                 };
                                 return (({ customFunction }) => {
@@ -1843,12 +1858,20 @@ function PlasmicHomepage__RenderFunc(props: {
                                 ? (() => {
                                     const actionArgs = {
                                       customFunction: async () => {
-                                        return $steps.getCenterWallet.data.data
-                                          .balance >= 0
-                                          ? ($state.txtReminderTextValue =
-                                              "موجودی حساب: ")
-                                          : ($state.txtReminderTextValue =
-                                              "بدهی شما: ");
+                                        return (() => {
+                                          $steps.getCenterWallet.data.data
+                                            .balance >= 0
+                                            ? ($state.txtReminderTextValue =
+                                                "موجودی حساب: ")
+                                            : ($state.txtReminderTextValue =
+                                                "بدهی شما: ");
+                                          return $steps.getCenterWallet.data
+                                            .data.balance >= 0
+                                            ? ($state.txtPaymentText =
+                                                "افزایش موجودی")
+                                            : ($state.txtPaymentText =
+                                                "پرداخت بدهی");
+                                        })();
                                       }
                                     };
                                     return (({ customFunction }) => {
@@ -2630,7 +2653,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                                 "fa-IR"
                                               ).format($state.paymentAmount) +
                                               " ریال" +
-                                              " - ارسال به درگاه"
+                                              " - ارسال به درگاه پرداخت"
                                             );
                                           } catch (e) {
                                             if (
@@ -2891,9 +2914,24 @@ function PlasmicHomepage__RenderFunc(props: {
                                 sty.text__dycd
                               )}
                             >
-                              {
-                                "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc:"
-                              }
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return (() => {
+                                      return $state.txtPaymentText + ":";
+                                    })();
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc:";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
                             </div>
                             {(
                               hasVariant(globalVariants, "screen", "mobileOnly")
