@@ -1938,6 +1938,31 @@ function PlasmicHomepage__RenderFunc(props: {
                               ];
                             }
 
+                            $steps["runCode"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return (() => {
+                                        return $state.reminderWallet < 0
+                                          ? ($state.isShowPaymentButton = true)
+                                          : ($state.isShowPaymentButton =
+                                              false);
+                                      })();
+                                    }
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["runCode"] != null &&
+                              typeof $steps["runCode"] === "object" &&
+                              typeof $steps["runCode"].then === "function"
+                            ) {
+                              $steps["runCode"] = await $steps["runCode"];
+                            }
+
                             $steps["hideWaiting"] = true
                               ? (() => {
                                   const actionArgs = {
@@ -1972,30 +1997,6 @@ function PlasmicHomepage__RenderFunc(props: {
                               $steps["hideWaiting"] = await $steps[
                                 "hideWaiting"
                               ];
-                            }
-
-                            $steps["runCode"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    customFunction: async () => {
-                                      return (() => {
-                                        return $state.reminderWallet < 0
-                                          ? ($state.btnPayShow = true)
-                                          : ($state.btnPayShow = false);
-                                      })();
-                                    }
-                                  };
-                                  return (({ customFunction }) => {
-                                    return customFunction();
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["runCode"] != null &&
-                              typeof $steps["runCode"] === "object" &&
-                              typeof $steps["runCode"].then === "function"
-                            ) {
-                              $steps["runCode"] = await $steps["runCode"];
                             }
                           }).apply(null, eventArgs);
                         }}
