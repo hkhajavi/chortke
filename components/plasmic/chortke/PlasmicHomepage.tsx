@@ -1965,12 +1965,11 @@ function PlasmicHomepage__RenderFunc(props: {
                               ? (() => {
                                   const actionArgs = {
                                     customFunction: async () => {
-                                      return (() => {
-                                        return $state.reminderWallet < 0
-                                          ? ($state.isShowPaymentButton = true)
-                                          : ($state.isShowPaymentButton =
-                                              false);
-                                      })();
+                                      return (
+                                        //($state.reminderWallet<0)?$state.isShowPaymentButton=true:$state.isShowPaymentButton=false;
+
+                                        ($state.isShowPaymentButton = true)
+                                      );
                                     }
                                   };
                                   return (({ customFunction }) => {
