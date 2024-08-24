@@ -414,6 +414,12 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "array",
         initFunc: ({ $props, $state, $queries, $ctx }) => []
+      },
+      {
+        path: "currentCenterid",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "0"
       }
     ],
     [$props, $ctx, $refs]
@@ -840,6 +846,42 @@ function PlasmicHomepage__RenderFunc(props: {
                           typeof $steps["showWaiting"].then === "function"
                         ) {
                           $steps["showWaiting"] = await $steps["showWaiting"];
+                        }
+
+                        $steps["currentCenterid0"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["currentCenterid"]
+                                },
+                                operation: 0,
+                                value: 0
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["currentCenterid0"] != null &&
+                          typeof $steps["currentCenterid0"] === "object" &&
+                          typeof $steps["currentCenterid0"].then === "function"
+                        ) {
+                          $steps["currentCenterid0"] = await $steps[
+                            "currentCenterid0"
+                          ];
                         }
 
                         $steps["clearInvoiceList"] = true
@@ -1326,9 +1368,7 @@ function PlasmicHomepage__RenderFunc(props: {
                           ? (() => {
                               const actionArgs = {
                                 customFunction: async () => {
-                                  return (() => {
-                                    return ($state.cbCenters.value = 0);
-                                  })();
+                                  return ($state.cbCenters.value = 0);
                                 }
                               };
                               return (({ customFunction }) => {
@@ -1474,6 +1514,43 @@ function PlasmicHomepage__RenderFunc(props: {
                             ) {
                               $steps["showWaiting"] = await $steps[
                                 "showWaiting"
+                              ];
+                            }
+
+                            $steps["currentCenterid"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["currentCenterid"]
+                                    },
+                                    operation: 0,
+                                    value: $state.cbCenters.value
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["currentCenterid"] != null &&
+                              typeof $steps["currentCenterid"] === "object" &&
+                              typeof $steps["currentCenterid"].then ===
+                                "function"
+                            ) {
+                              $steps["currentCenterid"] = await $steps[
+                                "currentCenterid"
                               ];
                             }
 
@@ -1780,8 +1857,8 @@ function PlasmicHomepage__RenderFunc(props: {
                             }
 
                             $steps["txtReminderValue"] =
-                              $steps.getInvoiceList.status == 200 &&
-                              $steps.getInvoiceList.data.status == true
+                              $steps.getCenterWallet.status == 200 &&
+                              $steps.getCenterWallet.data.status == true
                                 ? (() => {
                                     const actionArgs = {
                                       customFunction: async () => {
@@ -1805,42 +1882,6 @@ function PlasmicHomepage__RenderFunc(props: {
                             ) {
                               $steps["txtReminderValue"] = await $steps[
                                 "txtReminderValue"
-                              ];
-                            }
-
-                            $steps["hideWaiting"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["waiting"]
-                                    },
-                                    operation: 0,
-                                    value: false
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["hideWaiting"] != null &&
-                              typeof $steps["hideWaiting"] === "object" &&
-                              typeof $steps["hideWaiting"].then === "function"
-                            ) {
-                              $steps["hideWaiting"] = await $steps[
-                                "hideWaiting"
                               ];
                             }
 
@@ -1883,6 +1924,42 @@ function PlasmicHomepage__RenderFunc(props: {
                             ) {
                               $steps["updateReminderWallet"] = await $steps[
                                 "updateReminderWallet"
+                              ];
+                            }
+
+                            $steps["hideWaiting"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["waiting"]
+                                    },
+                                    operation: 0,
+                                    value: false
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["hideWaiting"] != null &&
+                              typeof $steps["hideWaiting"] === "object" &&
+                              typeof $steps["hideWaiting"].then === "function"
+                            ) {
+                              $steps["hideWaiting"] = await $steps[
+                                "hideWaiting"
                               ];
                             }
                           }).apply(null, eventArgs);
@@ -2597,7 +2674,10 @@ function PlasmicHomepage__RenderFunc(props: {
                                                     returnlink:
                                                       "https://www.paziresh24.com/dashboard/apps/katibe/bills/",
                                                     title: "افزایش موجودی",
-                                                    amount: $state.paymentAmount
+                                                    amount:
+                                                      $state.paymentAmount,
+                                                    centerid:
+                                                      $state.currentCenterid
                                                   };
                                                 } catch (e) {
                                                   if (
