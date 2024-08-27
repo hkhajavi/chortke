@@ -4687,6 +4687,28 @@ function PlasmicHomepage__RenderFunc(props: {
                   ];
                 }
 
+                $steps["selectedProductList"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return ($state.cbProductlist.value = 8);
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["selectedProductList"] != null &&
+                  typeof $steps["selectedProductList"] === "object" &&
+                  typeof $steps["selectedProductList"].then === "function"
+                ) {
+                  $steps["selectedProductList"] = await $steps[
+                    "selectedProductList"
+                  ];
+                }
+
                 $steps["getUserCenters"] = true
                   ? (() => {
                       const actionArgs = {
