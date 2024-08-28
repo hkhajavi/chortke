@@ -4886,26 +4886,30 @@ function PlasmicHomepage__RenderFunc(props: {
                   $steps["getProductWallet"] = await $steps["getProductWallet"];
                 }
 
-                $steps["txtReminderText"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        customFunction: async () => {
-                          return (() => {
-                            $steps.getProductWallet.data.data.balance >= 0
-                              ? ($state.txtReminderTextValue = "موجودی حساب: ")
-                              : ($state.txtReminderTextValue = "بدهی شما: ");
-                            return $steps.getProductWallet.data.data.balance >=
-                              0
-                              ? ($state.txtPaymentText = "افزایش موجودی")
-                              : ($state.txtPaymentText = "پرداخت بدهی");
-                          })();
-                        }
-                      };
-                      return (({ customFunction }) => {
-                        return customFunction();
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
+                $steps["txtReminderText"] =
+                  $state.cbProductlist.value != 7 &&
+                  $steps.getProductWallet.status == 200 &&
+                  $steps.getProductWallet.data.status == true
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return (() => {
+                              $steps.getProductWallet.data.data.balance >= 0
+                                ? ($state.txtReminderTextValue =
+                                    "موجودی حساب: ")
+                                : ($state.txtReminderTextValue = "بدهی شما: ");
+                              return $steps.getProductWallet.data.data
+                                .balance >= 0
+                                ? ($state.txtPaymentText = "افزایش موجودی")
+                                : ($state.txtPaymentText = "پرداخت بدهی");
+                            })();
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
                 if (
                   $steps["txtReminderText"] != null &&
                   typeof $steps["txtReminderText"] === "object" &&
