@@ -63,7 +63,6 @@ import Button from "../../Button"; // plasmic-import: 0wu_ZE1f8SuT/component
 import Select from "../../Select"; // plasmic-import: 7wkEfmUYAcMf/component
 import Dialog from "../../Dialog"; // plasmic-import: nYtkLnbqtkXY/component
 import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
-import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: hVBOtSJvmbc4/codeComponent
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
@@ -117,7 +116,6 @@ export type PlasmicHomepage__OverridesType = {
   btnSelectAmount?: Flex__<typeof Button>;
   gridMyAmount?: Flex__<"div">;
   txtNewPaymentAmount?: Flex__<typeof TextInput>;
-  myHtml?: Flex__<typeof Embed>;
   gridInvoice1?: Flex__<"div">;
   gridNoData?: Flex__<"div">;
   gridInvoice12?: Flex__<"div">;
@@ -192,7 +190,22 @@ function PlasmicHomepage__RenderFunc(props: {
         path: "cbProductlist.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return (() => {
+                return $state.productList[0].productid;
+              })();
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return "0";
+              }
+              throw e;
+            }
+          })()
       },
       {
         path: "productList",
@@ -2875,14 +2888,6 @@ function PlasmicHomepage__RenderFunc(props: {
                                     role={"img"}
                                   />
                                 ) : null}
-                                <Embed
-                                  data-plasmic-name={"myHtml"}
-                                  data-plasmic-override={overrides.myHtml}
-                                  className={classNames(
-                                    "__wab_instance",
-                                    sty.myHtml
-                                  )}
-                                />
                               </div>
                             </div>
                           </React.Fragment>
@@ -4745,6 +4750,257 @@ function PlasmicHomepage__RenderFunc(props: {
                   $steps["updateCenters"] = await $steps["updateCenters"];
                 }
 
+                $steps["setFirstProduct"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return ($state.cbProductlist.value =
+                            $state.productList[0].productid);
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["setFirstProduct"] != null &&
+                  typeof $steps["setFirstProduct"] === "object" &&
+                  typeof $steps["setFirstProduct"].then === "function"
+                ) {
+                  $steps["setFirstProduct"] = await $steps["setFirstProduct"];
+                }
+
+                $steps["getInvoiceListOfFirstProduct"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          undefined,
+                          (() => {
+                            try {
+                              return (
+                                "https://apigw.paziresh24.com/transaction/v1/userinvoicelist?productid=" +
+                                $state.productList[0].productid
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        ]
+                      };
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
+                    })()
+                  : undefined;
+                if (
+                  $steps["getInvoiceListOfFirstProduct"] != null &&
+                  typeof $steps["getInvoiceListOfFirstProduct"] === "object" &&
+                  typeof $steps["getInvoiceListOfFirstProduct"].then ===
+                    "function"
+                ) {
+                  $steps["getInvoiceListOfFirstProduct"] = await $steps[
+                    "getInvoiceListOfFirstProduct"
+                  ];
+                }
+
+                $steps["updateInvoiceList"] =
+                  $steps.getInvoiceListOfFirstProduct.status == 200 &&
+                  $steps.getInvoiceListOfFirstProduct.data.status == true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["invoicelist"]
+                          },
+                          operation: 0,
+                          value: $steps.getInvoiceListOfFirstProduct.data.data
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["updateInvoiceList"] != null &&
+                  typeof $steps["updateInvoiceList"] === "object" &&
+                  typeof $steps["updateInvoiceList"].then === "function"
+                ) {
+                  $steps["updateInvoiceList"] = await $steps[
+                    "updateInvoiceList"
+                  ];
+                }
+
+                $steps["getProductWallet"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          undefined,
+                          (() => {
+                            try {
+                              return (
+                                "https://apigw.paziresh24.com/transaction/v1/productwallet?productid=" +
+                                $state.cbProductlist.value
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        ]
+                      };
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
+                    })()
+                  : undefined;
+                if (
+                  $steps["getProductWallet"] != null &&
+                  typeof $steps["getProductWallet"] === "object" &&
+                  typeof $steps["getProductWallet"].then === "function"
+                ) {
+                  $steps["getProductWallet"] = await $steps["getProductWallet"];
+                }
+
+                $steps["txtReminderText"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return (() => {
+                            $steps.getProductWallet.data.data.balance >= 0
+                              ? ($state.txtReminderTextValue = "موجودی حساب: ")
+                              : ($state.txtReminderTextValue = "بدهی شما: ");
+                            return $steps.getProductWallet.data.data.balance >=
+                              0
+                              ? ($state.txtPaymentText = "افزایش موجودی")
+                              : ($state.txtPaymentText = "پرداخت بدهی");
+                          })();
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["txtReminderText"] != null &&
+                  typeof $steps["txtReminderText"] === "object" &&
+                  typeof $steps["txtReminderText"].then === "function"
+                ) {
+                  $steps["txtReminderText"] = await $steps["txtReminderText"];
+                }
+
+                $steps["txtReminderValue"] =
+                  $state.cbProductlist.value != 7 &&
+                  $steps.getInvoiceListOfFirstProduct.status == 200 &&
+                  $steps.getInvoiceListOfFirstProduct.data.status == true
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return ($state.txtReminderValue =
+                              new Intl.NumberFormat("fa-IR").format(
+                                $steps.getProductWallet.data.data.balance
+                              ));
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["txtReminderValue"] != null &&
+                  typeof $steps["txtReminderValue"] === "object" &&
+                  typeof $steps["txtReminderValue"].then === "function"
+                ) {
+                  $steps["txtReminderValue"] = await $steps["txtReminderValue"];
+                }
+
+                $steps["updateReminderWallet"] =
+                  $steps.getInvoiceListOfFirstProduct.status == 200 &&
+                  $steps.getInvoiceListOfFirstProduct.data.status == true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["reminderWallet"]
+                          },
+                          operation: 0,
+                          value: $steps.getProductWallet.data.data.balance
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["updateReminderWallet"] != null &&
+                  typeof $steps["updateReminderWallet"] === "object" &&
+                  typeof $steps["updateReminderWallet"].then === "function"
+                ) {
+                  $steps["updateReminderWallet"] = await $steps[
+                    "updateReminderWallet"
+                  ];
+                }
+
+                $steps["runCode"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return $state.cbProductlist.value == 7
+                            ? ($state.isShowPaymentButton = false)
+                            : ($state.isShowPaymentButton =
+                                $state.cbProductlist.value > 0);
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["runCode"] != null &&
+                  typeof $steps["runCode"] === "object" &&
+                  typeof $steps["runCode"].then === "function"
+                ) {
+                  $steps["runCode"] = await $steps["runCode"];
+                }
+
                 $steps["hideWaiting"] = true
                   ? (() => {
                       const actionArgs = {
@@ -4888,7 +5144,6 @@ const PlasmicDescendants = {
     "btnSelectAmount",
     "gridMyAmount",
     "txtNewPaymentAmount",
-    "myHtml",
     "gridInvoice1",
     "gridNoData",
     "gridInvoice12",
@@ -4917,7 +5172,6 @@ const PlasmicDescendants = {
     "btnSelectAmount",
     "gridMyAmount",
     "txtNewPaymentAmount",
-    "myHtml",
     "gridInvoice1",
     "gridNoData",
     "gridInvoice12",
@@ -4937,8 +5191,7 @@ const PlasmicDescendants = {
     "gridSelectprice",
     "btnSelectAmount",
     "gridMyAmount",
-    "txtNewPaymentAmount",
-    "myHtml"
+    "txtNewPaymentAmount"
   ],
   cbProductlist: ["cbProductlist"],
   cbCenters: ["cbCenters"],
@@ -4950,15 +5203,13 @@ const PlasmicDescendants = {
     "gridSelectprice",
     "btnSelectAmount",
     "gridMyAmount",
-    "txtNewPaymentAmount",
-    "myHtml"
+    "txtNewPaymentAmount"
   ],
   btnPay: ["btnPay"],
   gridSelectprice: ["gridSelectprice", "btnSelectAmount"],
   btnSelectAmount: ["btnSelectAmount"],
   gridMyAmount: ["gridMyAmount", "txtNewPaymentAmount"],
   txtNewPaymentAmount: ["txtNewPaymentAmount"],
-  myHtml: ["myHtml"],
   gridInvoice1: ["gridInvoice1"],
   gridNoData: ["gridNoData"],
   gridInvoice12: [
@@ -5002,7 +5253,6 @@ type NodeDefaultElementType = {
   btnSelectAmount: typeof Button;
   gridMyAmount: "div";
   txtNewPaymentAmount: typeof TextInput;
-  myHtml: typeof Embed;
   gridInvoice1: "div";
   gridNoData: "div";
   gridInvoice12: "div";
@@ -5091,7 +5341,6 @@ export const PlasmicHomepage = Object.assign(
     btnSelectAmount: makeNodeComponent("btnSelectAmount"),
     gridMyAmount: makeNodeComponent("gridMyAmount"),
     txtNewPaymentAmount: makeNodeComponent("txtNewPaymentAmount"),
-    myHtml: makeNodeComponent("myHtml"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     gridNoData: makeNodeComponent("gridNoData"),
     gridInvoice12: makeNodeComponent("gridInvoice12"),
