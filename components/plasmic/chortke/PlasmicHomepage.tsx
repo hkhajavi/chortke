@@ -83,8 +83,8 @@ import Icon6Icon from "./icons/PlasmicIcon__Icon6"; // plasmic-import: 7-KwYGGks
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
 import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
-import SearchsvgIcon from "./icons/PlasmicIcon__Searchsvg"; // plasmic-import: fjupp6w2fUeo/icon
-import ChecksvgIcon from "./icons/PlasmicIcon__Checksvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
+import SearchSvgIcon from "./icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
+import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
 
 createPlasmicElementProxy;
 
@@ -556,7 +556,7 @@ function PlasmicHomepage__RenderFunc(props: {
                       onClick={async event => {
                         const $steps = {};
 
-                        $steps["goToHttpspaziresh24Com"] = true
+                        $steps["goToHttpsPaziresh24Com"] = true
                           ? (() => {
                               const actionArgs = {
                                 destination: "https://paziresh24.com"
@@ -576,14 +576,14 @@ function PlasmicHomepage__RenderFunc(props: {
                             })()
                           : undefined;
                         if (
-                          $steps["goToHttpspaziresh24Com"] != null &&
-                          typeof $steps["goToHttpspaziresh24Com"] ===
+                          $steps["goToHttpsPaziresh24Com"] != null &&
+                          typeof $steps["goToHttpsPaziresh24Com"] ===
                             "object" &&
-                          typeof $steps["goToHttpspaziresh24Com"].then ===
+                          typeof $steps["goToHttpsPaziresh24Com"].then ===
                             "function"
                         ) {
-                          $steps["goToHttpspaziresh24Com"] = await $steps[
-                            "goToHttpspaziresh24Com"
+                          $steps["goToHttpsPaziresh24Com"] = await $steps[
+                            "goToHttpsPaziresh24Com"
                           ];
                         }
                       }}
@@ -717,7 +717,7 @@ function PlasmicHomepage__RenderFunc(props: {
                         const $steps = {};
 
                         $steps[
-                          "goToHttpspaziresh24Comlogouturlhttpschortkepaziresh24Com"
+                          "goToHttpsPaziresh24ComLogoutUrlHttpsChortkePaziresh24Com"
                         ] = true
                           ? (() => {
                               const actionArgs = {
@@ -740,19 +740,19 @@ function PlasmicHomepage__RenderFunc(props: {
                           : undefined;
                         if (
                           $steps[
-                            "goToHttpspaziresh24Comlogouturlhttpschortkepaziresh24Com"
+                            "goToHttpsPaziresh24ComLogoutUrlHttpsChortkePaziresh24Com"
                           ] != null &&
                           typeof $steps[
-                            "goToHttpspaziresh24Comlogouturlhttpschortkepaziresh24Com"
+                            "goToHttpsPaziresh24ComLogoutUrlHttpsChortkePaziresh24Com"
                           ] === "object" &&
                           typeof $steps[
-                            "goToHttpspaziresh24Comlogouturlhttpschortkepaziresh24Com"
+                            "goToHttpsPaziresh24ComLogoutUrlHttpsChortkePaziresh24Com"
                           ].then === "function"
                         ) {
                           $steps[
-                            "goToHttpspaziresh24Comlogouturlhttpschortkepaziresh24Com"
+                            "goToHttpsPaziresh24ComLogoutUrlHttpsChortkePaziresh24Com"
                           ] = await $steps[
-                            "goToHttpspaziresh24Comlogouturlhttpschortkepaziresh24Com"
+                            "goToHttpsPaziresh24ComLogoutUrlHttpsChortkePaziresh24Com"
                           ];
                         }
                       }}
@@ -4654,41 +4654,36 @@ function PlasmicHomepage__RenderFunc(props: {
                   $steps["getProductList"] = await $steps["getProductList"];
                 }
 
-                $steps["setProductListVariable"] =
-                  $steps.getProductList.status == 200 &&
-                  $steps.getProductList.data.status == true
-                    ? (() => {
-                        const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["productList"]
-                          },
-                          operation: 0,
-                          value: $steps.getProductList.data.data
-                        };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
-                          }
-                          const { objRoot, variablePath } = variable;
-
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
+                $steps["setProductListVariable2"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return (() => {
+                            return $steps.getProductList.status == 200 &&
+                              $steps.getProductList.data.status == true
+                              ? ($state.productList = [
+                                  {
+                                    productid: 0,
+                                    name: "همه"
+                                  },
+                                  ...$steps.getProductList.data.data
+                                ])
+                              : ($state.productList = []);
+                          })();
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
                 if (
-                  $steps["setProductListVariable"] != null &&
-                  typeof $steps["setProductListVariable"] === "object" &&
-                  typeof $steps["setProductListVariable"].then === "function"
+                  $steps["setProductListVariable2"] != null &&
+                  typeof $steps["setProductListVariable2"] === "object" &&
+                  typeof $steps["setProductListVariable2"].then === "function"
                 ) {
-                  $steps["setProductListVariable"] = await $steps[
-                    "setProductListVariable"
+                  $steps["setProductListVariable2"] = await $steps[
+                    "setProductListVariable2"
                   ];
                 }
 

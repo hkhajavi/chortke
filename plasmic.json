@@ -627,23 +627,23 @@
       "icons": [
         {
           "id": "fjupp6w2fUeo",
-          "name": "SearchsvgIcon",
-          "moduleFilePath": "plasmic/chortke/icons/PlasmicIcon__Searchsvg.tsx"
+          "name": "SearchSvgIcon",
+          "moduleFilePath": "plasmic/chortke/icons/PlasmicIcon__SearchSvg.tsx"
         },
         {
           "id": "VZ6Vl-sB0jLM",
-          "name": "ChecksvgIcon",
-          "moduleFilePath": "plasmic/chortke/icons/PlasmicIcon__Checksvg.tsx"
+          "name": "CheckSvgIcon",
+          "moduleFilePath": "plasmic/chortke/icons/PlasmicIcon__CheckSvg.tsx"
         },
         {
           "id": "xEMFaK-yEYgd",
-          "name": "ChevronDownsvgIcon",
-          "moduleFilePath": "plasmic/chortke/icons/PlasmicIcon__ChevronDownsvg.tsx"
+          "name": "ChevronDownSvgIcon",
+          "moduleFilePath": "plasmic/chortke/icons/PlasmicIcon__ChevronDownSvg.tsx"
         },
         {
           "id": "WRSXhzCsATtt",
-          "name": "ChevronUpsvgIcon",
-          "moduleFilePath": "plasmic/chortke/icons/PlasmicIcon__ChevronUpsvg.tsx"
+          "name": "ChevronUpSvgIcon",
+          "moduleFilePath": "plasmic/chortke/icons/PlasmicIcon__ChevronUpSvg.tsx"
         },
         {
           "id": "vSk8gB06wiRC",
@@ -702,18 +702,18 @@
         },
         {
           "id": "89UX2c4RUbMn",
-          "name": "SquaresvgIcon",
-          "moduleFilePath": "plasmic/chortke/icons/PlasmicIcon__Squaresvg.tsx"
+          "name": "SquareSvgIcon",
+          "moduleFilePath": "plasmic/chortke/icons/PlasmicIcon__SquareSvg.tsx"
         },
         {
           "id": "fHnEYndpDVQM",
-          "name": "SquareCheckFilledsvgIcon",
-          "moduleFilePath": "plasmic/chortke/icons/PlasmicIcon__SquareCheckFilledsvg.tsx"
+          "name": "SquareCheckFilledSvgIcon",
+          "moduleFilePath": "plasmic/chortke/icons/PlasmicIcon__SquareCheckFilledSvg.tsx"
         },
         {
           "id": "cjtWk_p-hopr",
-          "name": "SquareMinussvgIcon",
-          "moduleFilePath": "plasmic/chortke/icons/PlasmicIcon__SquareMinussvg.tsx"
+          "name": "SquareMinusSvgIcon",
+          "moduleFilePath": "plasmic/chortke/icons/PlasmicIcon__SquareMinusSvg.tsx"
         },
         {
           "id": "ecBaHl9ZBa7P",

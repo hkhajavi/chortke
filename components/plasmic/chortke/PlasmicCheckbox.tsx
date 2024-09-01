@@ -69,9 +69,9 @@ import plasmic_fragment_design_system_css from "../fragment_design_system/plasmi
 import projectcss from "./plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicCheckbox.module.css"; // plasmic-import: aziC0C3kJR0h/css
 
-import SquaresvgIcon from "./icons/PlasmicIcon__Squaresvg"; // plasmic-import: 89UX2c4RUbMn/icon
-import SquareCheckFilledsvgIcon from "./icons/PlasmicIcon__SquareCheckFilledsvg"; // plasmic-import: fHnEYndpDVQM/icon
-import SquareMinussvgIcon from "./icons/PlasmicIcon__SquareMinussvg"; // plasmic-import: cjtWk_p-hopr/icon
+import SquareSvgIcon from "./icons/PlasmicIcon__SquareSvg"; // plasmic-import: 89UX2c4RUbMn/icon
+import SquareCheckFilledSvgIcon from "./icons/PlasmicIcon__SquareCheckFilledSvg"; // plasmic-import: fHnEYndpDVQM/icon
+import SquareMinusSvgIcon from "./icons/PlasmicIcon__SquareMinusSvg"; // plasmic-import: cjtWk_p-hopr/icon
 
 createPlasmicElementProxy;
 
@@ -257,10 +257,10 @@ function PlasmicCheckbox__RenderFunc(props: {
           data-plasmic-override={overrides.svg}
           PlasmicIconType={
             hasVariant($state, "isIndeterminate", "isIndeterminate")
-              ? SquareMinussvgIcon
+              ? SquareMinusSvgIcon
               : hasVariant($state, "isChecked", "isChecked")
-              ? SquareCheckFilledsvgIcon
-              : SquaresvgIcon
+              ? SquareCheckFilledSvgIcon
+              : SquareSvgIcon
           }
           className={classNames(projectcss.all, sty.svg, {
             [sty.svg___focusVisibleWithin]: triggers.focusVisibleWithin_root,

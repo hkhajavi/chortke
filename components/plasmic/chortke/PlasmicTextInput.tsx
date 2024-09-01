@@ -69,8 +69,8 @@ import plasmic_fragment_design_system_css from "../fragment_design_system/plasmi
 import projectcss from "./plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicTextInput.module.css"; // plasmic-import: SePhlRlvEn3n/css
 
-import SearchsvgIcon from "./icons/PlasmicIcon__Searchsvg"; // plasmic-import: fjupp6w2fUeo/icon
-import ChecksvgIcon from "./icons/PlasmicIcon__Checksvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
+import SearchSvgIcon from "./icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
+import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
 
 createPlasmicElementProxy;
 
@@ -304,7 +304,7 @@ function PlasmicTextInput__RenderFunc(props: {
       >
         {renderPlasmicSlot({
           defaultContents: (
-            <SearchsvgIcon
+            <SearchSvgIcon
               className={classNames(projectcss.all, sty.svg__eBCpT)}
               role={"img"}
             />
@@ -368,7 +368,7 @@ function PlasmicTextInput__RenderFunc(props: {
       >
         {renderPlasmicSlot({
           defaultContents: (
-            <ChecksvgIcon
+            <CheckSvgIcon
               className={classNames(projectcss.all, sty.svg__b0CvI)}
               role={"img"}
             />
