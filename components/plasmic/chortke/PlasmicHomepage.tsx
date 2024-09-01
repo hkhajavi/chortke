@@ -1272,6 +1272,7 @@ function PlasmicHomepage__RenderFunc(props: {
 
                         $steps["txtRemainingText"] =
                           $state.cbProductlist.value != 7 &&
+                          $state.cbProductlist.value != 0 &&
                           $steps.getProductWallet.status == 200 &&
                           $steps.getProductWallet.data.status == true
                             ? (() => {
@@ -1310,6 +1311,7 @@ function PlasmicHomepage__RenderFunc(props: {
 
                         $steps["txtReminderValue"] =
                           $state.cbProductlist.value != 7 &&
+                          $state.cbProductlist.value > 0 &&
                           $steps.getInvoiceList.status == 200 &&
                           $steps.getInvoiceList.data.status == true
                             ? (() => {
@@ -4915,6 +4917,7 @@ function PlasmicHomepage__RenderFunc(props: {
 
                 $steps["txtReminderValue"] =
                   $state.cbProductlist.value != 7 &&
+                  $state.cbProductlist.value != 0 &&
                   $steps.getInvoiceListOfFirstProduct.status == 200 &&
                   $steps.getInvoiceListOfFirstProduct.data.status == true
                     ? (() => {
