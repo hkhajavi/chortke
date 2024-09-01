@@ -4656,22 +4656,58 @@ function PlasmicHomepage__RenderFunc(props: {
                   $steps["getProductList"] = await $steps["getProductList"];
                 }
 
+                $steps["hideWaitingOnNoProduct"] =
+                  $steps.getProductList.status != 200 &&
+                  $steps.getProductList.data.status != true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["waiting"]
+                          },
+                          operation: 0,
+                          value: false
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["hideWaitingOnNoProduct"] != null &&
+                  typeof $steps["hideWaitingOnNoProduct"] === "object" &&
+                  typeof $steps["hideWaitingOnNoProduct"].then === "function"
+                ) {
+                  $steps["hideWaitingOnNoProduct"] = await $steps[
+                    "hideWaitingOnNoProduct"
+                  ];
+                }
+
                 $steps["setProductListVariable2"] = true
                   ? (() => {
                       const actionArgs = {
                         customFunction: async () => {
-                          return (() => {
-                            return $steps.getProductList.status == 200 &&
-                              $steps.getProductList.data.status == true
-                              ? ($state.productList = [
-                                  {
-                                    productid: 0,
-                                    name: "همه"
-                                  },
-                                  ...$steps.getProductList.data.data
-                                ])
-                              : ($state.productList = []);
-                          })();
+                          return $steps.getProductList.status == 200 &&
+                            $steps.getProductList.data.status == true
+                            ? ($state.productList = [
+                                {
+                                  productid: 0,
+                                  name: "همه"
+                                },
+                                ...$steps.getProductList.data.data
+                              ])
+                            : ($state.productList = []);
                         }
                       };
                       return (({ customFunction }) => {
