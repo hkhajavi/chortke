@@ -565,40 +565,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
                         ];
                       }
 
-                      $steps["hideWaiting"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["waiting"]
-                              },
-                              operation: 0,
-                              value: false
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["hideWaiting"] != null &&
-                        typeof $steps["hideWaiting"] === "object" &&
-                        typeof $steps["hideWaiting"].then === "function"
-                      ) {
-                        $steps["hideWaiting"] = await $steps["hideWaiting"];
-                      }
-
                       $steps["getInvoiceList"] = true
                         ? (() => {
                             const actionArgs = {
@@ -677,6 +643,40 @@ function PlasmicProductAdmin__RenderFunc(props: {
                         $steps["updateInvoicelist"] = await $steps[
                           "updateInvoicelist"
                         ];
+                      }
+
+                      $steps["hideWaiting"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["waiting"]
+                              },
+                              operation: 0,
+                              value: false
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["hideWaiting"] != null &&
+                        typeof $steps["hideWaiting"] === "object" &&
+                        typeof $steps["hideWaiting"].then === "function"
+                      ) {
+                        $steps["hideWaiting"] = await $steps["hideWaiting"];
                       }
                     }).apply(null, eventArgs);
                   }}
@@ -767,6 +767,192 @@ function PlasmicProductAdmin__RenderFunc(props: {
                         </div>
                       }
                       className={classNames("__wab_instance", sty.btnSearch)}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["showWaiting"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["waiting"]
+                                },
+                                operation: 0,
+                                value: true
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["showWaiting"] != null &&
+                          typeof $steps["showWaiting"] === "object" &&
+                          typeof $steps["showWaiting"].then === "function"
+                        ) {
+                          $steps["showWaiting"] = await $steps["showWaiting"];
+                        }
+
+                        $steps["clearInvoiceList"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["invoicelist"]
+                                },
+                                operation: 0,
+                                value: []
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["clearInvoiceList"] != null &&
+                          typeof $steps["clearInvoiceList"] === "object" &&
+                          typeof $steps["clearInvoiceList"].then === "function"
+                        ) {
+                          $steps["clearInvoiceList"] = await $steps[
+                            "clearInvoiceList"
+                          ];
+                        }
+
+                        $steps["getInvoiceList"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  undefined,
+                                  (() => {
+                                    try {
+                                      return (
+                                        "https://apigw.paziresh24.com/transaction/v1/admininvoicelist?productid=" +
+                                        $state.cbProductlist.value +
+                                        "&search=" +
+                                        $state.txtSearch.value
+                                      );
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.apiRequest"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["getInvoiceList"] != null &&
+                          typeof $steps["getInvoiceList"] === "object" &&
+                          typeof $steps["getInvoiceList"].then === "function"
+                        ) {
+                          $steps["getInvoiceList"] = await $steps[
+                            "getInvoiceList"
+                          ];
+                        }
+
+                        $steps["updateInvoicelist"] =
+                          $steps.getInvoiceList.status == 200 &&
+                          $steps.getInvoiceList.data.status == true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["invoicelist"]
+                                  },
+                                  operation: 0,
+                                  value: $steps.getInvoiceList.data.data
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                        if (
+                          $steps["updateInvoicelist"] != null &&
+                          typeof $steps["updateInvoicelist"] === "object" &&
+                          typeof $steps["updateInvoicelist"].then === "function"
+                        ) {
+                          $steps["updateInvoicelist"] = await $steps[
+                            "updateInvoicelist"
+                          ];
+                        }
+
+                        $steps["hideWaiting"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["waiting"]
+                                },
+                                operation: 0,
+                                value: false
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["hideWaiting"] != null &&
+                          typeof $steps["hideWaiting"] === "object" &&
+                          typeof $steps["hideWaiting"].then === "function"
+                        ) {
+                          $steps["hideWaiting"] = await $steps["hideWaiting"];
+                        }
+                      }}
                     />
                   </div>
                 </div>

@@ -458,6 +458,7 @@
   }
 }
 .freeBox__xmf4E {
+  display: flex;
   position: relative;
   flex-direction: column;
   width: 100%;
@@ -470,7 +471,6 @@
   background: #ffffff;
   grid-column-end: span 2;
   min-width: 0;
-  display: none;
   border-radius: 10px;
   padding: 0px 8px;
 }
@@ -478,7 +478,6 @@
   .freeBox__xmf4E {
     grid-column-end: span 4;
     margin-top: 5px;
-    display: flex;
   }
 }
 .freeBox__ryqn7 {
