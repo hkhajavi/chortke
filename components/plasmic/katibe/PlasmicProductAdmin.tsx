@@ -67,7 +67,6 @@ import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-impor
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 
 import { useScreenVariants as useScreenVariantsbr2UhI7UlpvR } from "../fragment_icons/PlasmicGlobalVariant__Screen"; // plasmic-import: BR2UhI7ulpvR/globalVariant
-import { useScreenVariants as useScreenVariants_7Bs7RtJcMv9T } from "../chortke/PlasmicGlobalVariant__Screen"; // plasmic-import: 7BS7RtJcMv9t/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -108,14 +107,6 @@ export type PlasmicProductAdmin__OverridesType = {
   cbProductlist?: Flex__<typeof Select>;
   txtSearch?: Flex__<typeof TextInput>;
   btnSearch?: Flex__<typeof Button>;
-  txtRemainingText?: Flex__<"div">;
-  txtRemainingValue?: Flex__<"div">;
-  dialogIncreaseRemaining?: Flex__<typeof Dialog>;
-  btnPay?: Flex__<typeof Button>;
-  gridSelectprice?: Flex__<"div">;
-  btnSelectAmount?: Flex__<typeof Button>;
-  gridMyAmount?: Flex__<"div">;
-  txtNewPaymentAmount?: Flex__<typeof TextInput>;
   gridInvoice1?: Flex__<"div">;
   gridNoData?: Flex__<"div">;
   gridInvoice12?: Flex__<"div">;
@@ -173,19 +164,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
     () => [
       {
         path: "txtSearch.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
-      },
-      {
-        path: "dialogIncreaseRemaining.open",
-        type: "private",
-        variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          hasVariant(globalVariants, "screen", "mobileOnly") ? false : false
-      },
-      {
-        path: "txtNewPaymentAmount.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
@@ -327,8 +305,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
   });
 
   const globalVariants = ensureGlobalVariants({
-    screen: useScreenVariantsbr2UhI7UlpvR(),
-    screen: useScreenVariants_7Bs7RtJcMv9T()
+    screen: useScreenVariantsbr2UhI7UlpvR()
   });
 
   return (
@@ -790,309 +767,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
                         </div>
                       }
                       className={classNames("__wab_instance", sty.btnSearch)}
-                    />
-                  </div>
-                </div>
-              </div>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  sty.freeBox__dbQFg,
-                  "grid_calculator"
-                )}
-                id={"grid_calculator"}
-              >
-                <div className={classNames(projectcss.all, sty.freeBox__v1KqZ)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__zMNzr)}
-                  >
-                    {(() => {
-                      try {
-                        return $state.waiting;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return true;
-                        }
-                        throw e;
-                      }
-                    })() ? (
-                      <Icon2Icon
-                        className={classNames(projectcss.all, sty.svg__bxpI)}
-                        role={"img"}
-                      />
-                    ) : null}
-                    <div
-                      data-plasmic-name={"txtRemainingText"}
-                      data-plasmic-override={overrides.txtRemainingText}
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.txtRemainingText
-                      )}
-                    >
-                      {""}
-                    </div>
-                    <div
-                      data-plasmic-name={"txtRemainingValue"}
-                      data-plasmic-override={overrides.txtRemainingValue}
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.txtRemainingValue
-                      )}
-                    >
-                      {""}
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__sM3Lr)}
-                  >
-                    <Dialog
-                      data-plasmic-name={"dialogIncreaseRemaining"}
-                      data-plasmic-override={overrides.dialogIncreaseRemaining}
-                      body={
-                        <React.Fragment>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__zoJLw
-                            )}
-                          />
-
-                          <div
-                            data-plasmic-name={"gridSelectprice"}
-                            data-plasmic-override={overrides.gridSelectprice}
-                            className={classNames(
-                              projectcss.all,
-                              sty.gridSelectprice
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__iOvyX
-                              )}
-                            >
-                              {(_par =>
-                                !_par
-                                  ? []
-                                  : Array.isArray(_par)
-                                  ? _par
-                                  : [_par])([]).map(
-                                (__plasmic_item_0, __plasmic_idx_0) => {
-                                  const currentItem = __plasmic_item_0;
-                                  const currentIndex = __plasmic_idx_0;
-                                  return (
-                                    <Button
-                                      data-plasmic-name={"btnSelectAmount"}
-                                      data-plasmic-override={
-                                        overrides.btnSelectAmount
-                                      }
-                                      children2={
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text__bf8My
-                                          )}
-                                        >
-                                          {""}
-                                        </div>
-                                      }
-                                      className={classNames(
-                                        "__wab_instance",
-                                        sty.btnSelectAmount
-                                      )}
-                                      color={"green"}
-                                      key={currentIndex}
-                                    />
-                                  );
-                                }
-                              )}
-                              <Button
-                                children2={
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__yuNAs
-                                    )}
-                                  >
-                                    {"..."}
-                                  </div>
-                                }
-                                className={classNames(
-                                  "__wab_instance",
-                                  sty.button__h0Yq8
-                                )}
-                                color={"green"}
-                              />
-                            </div>
-                          </div>
-                          <div
-                            data-plasmic-name={"gridMyAmount"}
-                            data-plasmic-override={overrides.gridMyAmount}
-                            className={classNames(
-                              projectcss.all,
-                              sty.gridMyAmount
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox___8VeB9
-                              )}
-                            />
-
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox___5Ra8Q
-                              )}
-                              dir={"rtl"}
-                            >
-                              <TextInput
-                                data-plasmic-name={"txtNewPaymentAmount"}
-                                data-plasmic-override={
-                                  overrides.txtNewPaymentAmount
-                                }
-                                className={classNames(
-                                  "__wab_instance",
-                                  sty.txtNewPaymentAmount
-                                )}
-                                onChange={(...eventArgs) => {
-                                  generateStateOnChangeProp($state, [
-                                    "txtNewPaymentAmount",
-                                    "value"
-                                  ])(
-                                    (e => e.target?.value).apply(
-                                      null,
-                                      eventArgs
-                                    )
-                                  );
-                                }}
-                                placeholder={
-                                  "\u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f"
-                                }
-                                type={"number"}
-                                value={
-                                  generateStateValueProp($state, [
-                                    "txtNewPaymentAmount",
-                                    "value"
-                                  ]) ?? ""
-                                }
-                              />
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__zf7L8
-                              )}
-                            />
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__l0L2B
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox___2YuT9
-                              )}
-                            >
-                              <Button
-                                children2={
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__pXzvK
-                                    )}
-                                  >
-                                    {""}
-                                  </div>
-                                }
-                                className={classNames(
-                                  "__wab_instance",
-                                  sty.button__sOszL
-                                )}
-                              />
-
-                              <Icon2Icon
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.svg__dxaGk
-                                )}
-                                role={"img"}
-                              />
-                            </div>
-                          </div>
-                        </React.Fragment>
-                      }
-                      className={classNames(
-                        "__wab_instance",
-                        sty.dialogIncreaseRemaining
-                      )}
-                      onOpenChange={generateStateOnChangeProp($state, [
-                        "dialogIncreaseRemaining",
-                        "open"
-                      ])}
-                      open={generateStateValueProp($state, [
-                        "dialogIncreaseRemaining",
-                        "open"
-                      ])}
-                      title={
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__xV97R
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__eLL
-                            )}
-                          >
-                            {""}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__xyjzY
-                            )}
-                          >
-                            {
-                              '\u0627\u0628\u062a\u062f\u0627 \u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 "\u0627\u0631\u0633\u0627\u0644 \u0628\u0647 \u062f\u0631\u06af\u0627\u0647" \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f:'
-                            }
-                          </div>
-                        </div>
-                      }
-                      trigger={
-                        <Button
-                          data-plasmic-name={"btnPay"}
-                          data-plasmic-override={overrides.btnPay}
-                          children2={
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__cqTpv
-                              )}
-                            >
-                              {"\u067e\u0631\u062f\u0627\u062e\u062a"}
-                            </div>
-                          }
-                          className={classNames("__wab_instance", sty.btnPay)}
-                        />
-                      }
                     />
                   </div>
                 </div>
@@ -2588,14 +2262,6 @@ const PlasmicDescendants = {
     "cbProductlist",
     "txtSearch",
     "btnSearch",
-    "txtRemainingText",
-    "txtRemainingValue",
-    "dialogIncreaseRemaining",
-    "btnPay",
-    "gridSelectprice",
-    "btnSelectAmount",
-    "gridMyAmount",
-    "txtNewPaymentAmount",
     "gridInvoice1",
     "gridNoData",
     "gridInvoice12",
@@ -2617,14 +2283,6 @@ const PlasmicDescendants = {
     "cbProductlist",
     "txtSearch",
     "btnSearch",
-    "txtRemainingText",
-    "txtRemainingValue",
-    "dialogIncreaseRemaining",
-    "btnPay",
-    "gridSelectprice",
-    "btnSelectAmount",
-    "gridMyAmount",
-    "txtNewPaymentAmount",
     "gridInvoice1",
     "gridNoData",
     "gridInvoice12",
@@ -2637,34 +2295,11 @@ const PlasmicDescendants = {
     "gridCalculator2",
     "cbProductlist",
     "txtSearch",
-    "btnSearch",
-    "txtRemainingText",
-    "txtRemainingValue",
-    "dialogIncreaseRemaining",
-    "btnPay",
-    "gridSelectprice",
-    "btnSelectAmount",
-    "gridMyAmount",
-    "txtNewPaymentAmount"
+    "btnSearch"
   ],
   cbProductlist: ["cbProductlist"],
   txtSearch: ["txtSearch"],
   btnSearch: ["btnSearch"],
-  txtRemainingText: ["txtRemainingText"],
-  txtRemainingValue: ["txtRemainingValue"],
-  dialogIncreaseRemaining: [
-    "dialogIncreaseRemaining",
-    "btnPay",
-    "gridSelectprice",
-    "btnSelectAmount",
-    "gridMyAmount",
-    "txtNewPaymentAmount"
-  ],
-  btnPay: ["btnPay"],
-  gridSelectprice: ["gridSelectprice", "btnSelectAmount"],
-  btnSelectAmount: ["btnSelectAmount"],
-  gridMyAmount: ["gridMyAmount", "txtNewPaymentAmount"],
-  txtNewPaymentAmount: ["txtNewPaymentAmount"],
   gridInvoice1: ["gridInvoice1"],
   gridNoData: ["gridNoData"],
   gridInvoice12: [
@@ -2701,14 +2336,6 @@ type NodeDefaultElementType = {
   cbProductlist: typeof Select;
   txtSearch: typeof TextInput;
   btnSearch: typeof Button;
-  txtRemainingText: "div";
-  txtRemainingValue: "div";
-  dialogIncreaseRemaining: typeof Dialog;
-  btnPay: typeof Button;
-  gridSelectprice: "div";
-  btnSelectAmount: typeof Button;
-  gridMyAmount: "div";
-  txtNewPaymentAmount: typeof TextInput;
   gridInvoice1: "div";
   gridNoData: "div";
   gridInvoice12: "div";
@@ -2790,14 +2417,6 @@ export const PlasmicProductAdmin = Object.assign(
     cbProductlist: makeNodeComponent("cbProductlist"),
     txtSearch: makeNodeComponent("txtSearch"),
     btnSearch: makeNodeComponent("btnSearch"),
-    txtRemainingText: makeNodeComponent("txtRemainingText"),
-    txtRemainingValue: makeNodeComponent("txtRemainingValue"),
-    dialogIncreaseRemaining: makeNodeComponent("dialogIncreaseRemaining"),
-    btnPay: makeNodeComponent("btnPay"),
-    gridSelectprice: makeNodeComponent("gridSelectprice"),
-    btnSelectAmount: makeNodeComponent("btnSelectAmount"),
-    gridMyAmount: makeNodeComponent("gridMyAmount"),
-    txtNewPaymentAmount: makeNodeComponent("txtNewPaymentAmount"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     gridNoData: makeNodeComponent("gridNoData"),
     gridInvoice12: makeNodeComponent("gridInvoice12"),
