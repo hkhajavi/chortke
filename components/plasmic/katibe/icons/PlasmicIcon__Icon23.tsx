@@ -5,11 +5,11 @@
 import React from "react";
 import { classNames } from "@plasmicapp/react-web";
 
-export type ChecksvgIconProps = React.ComponentProps<"svg"> & {
+export type Icon23IconProps = React.ComponentProps<"svg"> & {
   title?: string;
 };
 
-export function ChecksvgIcon(props: ChecksvgIconProps) {
+export function Icon23Icon(props: Icon23IconProps) {
   const { className, style, title, ...restProps } = props;
   return (
     <svg
@@ -17,13 +17,8 @@ export function ChecksvgIcon(props: ChecksvgIconProps) {
       fill={"none"}
       viewBox={"0 0 24 24"}
       height={"1em"}
-      width={"1em"}
-      style={{
-        fill: "currentcolor",
-
-        ...(style || {}),
-      }}
       className={classNames("plasmic-default__svg", className)}
+      style={style}
       {...restProps}
     >
       {title && <title>{title}</title>}
@@ -32,7 +27,7 @@ export function ChecksvgIcon(props: ChecksvgIconProps) {
         fillRule={"evenodd"}
         clipRule={"evenodd"}
         d={
-          "M18.416 5.876a.75.75 0 01.208 1.04L11.42 17.721a1.75 1.75 0 01-2.871.06l-3.156-4.34a.75.75 0 111.214-.882l3.155 4.339a.25.25 0 00.41-.009l7.204-10.805a.75.75 0 011.04-.208z"
+          "M14.53 5.47a.75.75 0 010 1.06L9.06 12l5.47 5.47a.75.75 0 11-1.06 1.06l-6-6a.75.75 0 010-1.06l6-6a.75.75 0 011.06 0z"
         }
         fill={"currentColor"}
       ></path>
@@ -40,5 +35,5 @@ export function ChecksvgIcon(props: ChecksvgIconProps) {
   );
 }
 
-export default ChecksvgIcon;
+export default Icon23Icon;
 /* prettier-ignore-end */

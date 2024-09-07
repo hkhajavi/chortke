@@ -150,7 +150,9 @@ function PlasmicInvoiceDetails__RenderFunc(props: {
             }
           }
         },
-        props.args
+        Object.fromEntries(
+          Object.entries(props.args).filter(([_, v]) => v !== undefined)
+        )
       ),
     [props.args]
   );

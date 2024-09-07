@@ -230,14 +230,14 @@
       "components": [
         {
           "id": "5nirPCGmCnRD",
-          "name": "Button",
+          "name": "RadixUiButton",
           "type": "managed",
           "projectId": "sqPBLwEBBKHA2WDuGb17eV",
-          "renderModuleFilePath": "plasmic/radix_ui/PlasmicButton.tsx",
+          "renderModuleFilePath": "plasmic/radix_ui/PlasmicRadixUiButton.tsx",
           "importSpec": {
-            "modulePath": "Button.tsx"
+            "modulePath": "RadixUiButton.tsx"
           },
-          "cssFilePath": "plasmic/radix_ui/PlasmicButton.module.css",
+          "cssFilePath": "plasmic/radix_ui/PlasmicRadixUiButton.module.css",
           "scheme": "blackbox",
           "componentType": "component",
           "plumeType": "button"
@@ -246,8 +246,8 @@
       "icons": [
         {
           "id": "Wyt3GMMsLefj",
-          "name": "ChecksvgIcon",
-          "moduleFilePath": "plasmic/radix_ui/icons/PlasmicIcon__Checksvg.tsx"
+          "name": "CheckSvgIcon",
+          "moduleFilePath": "plasmic/radix_ui/icons/PlasmicIcon__CheckSvg.tsx"
         },
         {
           "id": "MbDRsJU0e3bw",
@@ -309,8 +309,7 @@
           "componentImportPath": "@plasmicpkgs/radix-ui"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     },
     {
       "projectId": "8PtdGodUbexNYgkuyBUcWu",
@@ -622,6 +621,33 @@
           "cssFilePath": "plasmic/chortke/PlasmicDialog.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "L5_xWrUT2kGZ",
+          "name": "ProductAdmin",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/katibe/PlasmicProductAdmin.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/new-page.tsx"
+          },
+          "cssFilePath": "plasmic/katibe/PlasmicProductAdmin.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/new-page"
+        },
+        {
+          "id": "42tFBTdMKvt2",
+          "name": "Dialog",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/katibe/PlasmicDialog.tsx",
+          "importSpec": {
+            "modulePath": "Dialog.tsx"
+          },
+          "cssFilePath": "plasmic/katibe/PlasmicDialog.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -764,6 +790,21 @@
           "id": "5cMRv2c3LIXT",
           "name": "Icon21Icon",
           "moduleFilePath": "plasmic/chortke/icons/PlasmicIcon__Icon21.tsx"
+        },
+        {
+          "id": "BJgqZU7jDRod",
+          "name": "Icon22Icon",
+          "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon22.tsx"
+        },
+        {
+          "id": "uRGFXzJKMzcg",
+          "name": "Icon23Icon",
+          "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon23.tsx"
+        },
+        {
+          "id": "qXnLr7su52Ln",
+          "name": "Icon24Icon",
+          "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon24.tsx"
         }
       ],
       "images": [
