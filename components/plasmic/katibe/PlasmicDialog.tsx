@@ -209,6 +209,7 @@ function PlasmicDialog__RenderFunc(props: {
       )}
       onOpenChange={generateStateOnChangeProp($state, ["dialog", "open"])}
       open={generateStateValueProp($state, ["dialog", "open"])}
+      overlayClassName={classNames({ [sty["pcls_uqjuuk3ALXwn"]]: true })}
       themeResetClass={classNames(
         projectcss.root_reset,
         projectcss.plasmic_default_styles,

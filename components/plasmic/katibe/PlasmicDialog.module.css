@@ -9,6 +9,14 @@
   position: relative;
   -webkit-backdrop-filter: blur(10px);
 }
+.pcls_uqjuuk3ALXwn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--token-Le07ngBUPl2h);
+  outline: none;
+}
 .text__w71Km {
   position: relative;
   width: 100%;
