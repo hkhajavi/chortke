@@ -333,7 +333,20 @@ function PlasmicProductAdmin__RenderFunc(props: {
 
   return (
     <React.Fragment>
-      <Head></Head>
+      <Head>
+        <meta name="twitter:card" content="summary" />
+        <title key="title">{PlasmicProductAdmin.pageMetadata.title}</title>
+        <meta
+          key="og:title"
+          property="og:title"
+          content={PlasmicProductAdmin.pageMetadata.title}
+        />
+        <meta
+          key="twitter:title"
+          name="twitter:title"
+          content={PlasmicProductAdmin.pageMetadata.title}
+        />
+      </Head>
 
       <style>{`
         body {
@@ -2801,7 +2814,7 @@ export const PlasmicProductAdmin = Object.assign(
 
     // Page metadata
     pageMetadata: {
-      title: "",
+      title: "تراکنش های مالی مدیر محصول",
       description: "",
       ogImageSrc: "",
       canonical: ""

@@ -309,7 +309,8 @@
           "componentImportPath": "@plasmicpkgs/radix-ui"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     },
     {
       "projectId": "8PtdGodUbexNYgkuyBUcWu",
@@ -629,7 +630,7 @@
           "projectId": "afXULSfGYmou2jFpEc2QWJ",
           "renderModuleFilePath": "plasmic/katibe/PlasmicProductAdmin.tsx",
           "importSpec": {
-            "modulePath": "../src/pages/new-page.tsx"
+            "modulePath": "../src/pages/productAdmin.tsx"
           },
           "cssFilePath": "plasmic/katibe/PlasmicProductAdmin.module.css",
           "scheme": "blackbox",
