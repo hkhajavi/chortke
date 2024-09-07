@@ -22,6 +22,11 @@
 .root > * {
   grid-column: 4;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .root > * {
+    grid-column: 4;
+  }
+}
 .freeBox__mI0Os {
   position: relative;
   flex-direction: row;
@@ -365,7 +370,7 @@
 .gridCalculator2 {
   display: grid;
   position: relative;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   width: 100%;
   height: auto;
   max-width: 100%;
@@ -403,7 +408,7 @@
   flex-wrap: nowrap;
   align-content: stretch;
   background: #ffffff;
-  grid-column-end: span 1;
+  grid-column-end: span 2;
   min-width: 0;
   border-radius: 10px;
   padding: 0px 8px;
@@ -556,7 +561,7 @@
 }
 .text__yibz4 {
   font-family: var(--iran-sans-x);
-  font-size: var(--token-5Ye_3XTSaP9X);
+  font-size: var(--token-8bH1BcrDPs2U);
   font-weight: 700;
   font-style: normal;
   color: #ededec;
@@ -597,7 +602,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .gridInvoice1 {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-columns: repeat(7, minmax(0, 1fr));
   }
 }
 .freeBox__nu0RW {
