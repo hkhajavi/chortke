@@ -2420,9 +2420,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                     const actionArgs = {
                       customFunction: async () => {
                         return (() => {
-                          if ($ctx.query.urlproductid > 0) {
-                            $state.cbProductlist.value =
-                              $ctx.query.urlproductid;
+                          if ($ctx.query.productid > 0) {
+                            $state.cbProductlist.value = $ctx.query.productid;
                             return ($state.productListBox = false);
                           }
                         })();
