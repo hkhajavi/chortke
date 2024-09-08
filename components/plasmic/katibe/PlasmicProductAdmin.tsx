@@ -1592,9 +1592,31 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     globalVariants,
                                     "screen",
                                     "mobileOnly"
-                                  )
-                                    ? "\u06a9\u062f:"
-                                    : "\u06a9\u062f:"}
+                                  ) ? (
+                                    "\u06a9\u062f:"
+                                  ) : (
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return (
+                                            "کد: " +
+                                            $state.detailsDataApiRequest[
+                                              currentIndex
+                                            ].data.data.invoiceid
+                                          );
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "\u06a9\u062f:";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  )}
                                 </div>
                               </div>
                               <Stack__
@@ -1615,9 +1637,12 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   <React.Fragment>
                                     {(() => {
                                       try {
-                                        return $state.detailsDataApiRequest[
-                                          currentIndex
-                                        ].data.data.invoiceid;
+                                        return (
+                                          "کد کاربر: " +
+                                          $state.detailsDataApiRequest[
+                                            currentIndex
+                                          ].data.data.userid
+                                        );
                                       } catch (e) {
                                         if (
                                           e instanceof TypeError ||
