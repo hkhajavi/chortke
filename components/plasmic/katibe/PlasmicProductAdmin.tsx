@@ -116,7 +116,6 @@ export type PlasmicProductAdmin__OverridesType = {
   detailsDataApiRequest?: Flex__<typeof ApiRequest>;
   waitingIcon3?: Flex__<"svg">;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
-  sideEffectFirstLoad?: Flex__<typeof SideEffect>;
 };
 
 export interface DefaultProductAdminProps {}
@@ -2319,6 +2318,19 @@ function PlasmicProductAdmin__RenderFunc(props: {
             data-plasmic-name={"sideEffectPageLoad"}
             data-plasmic-override={overrides.sideEffectPageLoad}
             className={classNames("__wab_instance", sty.sideEffectPageLoad)}
+            deps={(() => {
+              try {
+                return [$ctx.query.productid];
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return undefined;
+                }
+                throw e;
+              }
+            })()}
             onMount={async () => {
               const $steps = {};
 
@@ -2544,12 +2556,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
               }
             }}
           />
-
-          <SideEffect
-            data-plasmic-name={"sideEffectFirstLoad"}
-            data-plasmic-override={overrides.sideEffectFirstLoad}
-            className={classNames("__wab_instance", sty.sideEffectFirstLoad)}
-          />
         </div>
       </div>
     </React.Fragment>
@@ -2577,8 +2583,7 @@ const PlasmicDescendants = {
     "btnInvoiceInfo",
     "detailsDataApiRequest",
     "waitingIcon3",
-    "sideEffectPageLoad",
-    "sideEffectFirstLoad"
+    "sideEffectPageLoad"
   ],
   h1: ["h1"],
   btnDashboard3: ["btnDashboard3"],
@@ -2629,8 +2634,7 @@ const PlasmicDescendants = {
   btnInvoiceInfo: ["btnInvoiceInfo"],
   detailsDataApiRequest: ["detailsDataApiRequest", "waitingIcon3"],
   waitingIcon3: ["waitingIcon3"],
-  sideEffectPageLoad: ["sideEffectPageLoad"],
-  sideEffectFirstLoad: ["sideEffectFirstLoad"]
+  sideEffectPageLoad: ["sideEffectPageLoad"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -2656,7 +2660,6 @@ type NodeDefaultElementType = {
   detailsDataApiRequest: typeof ApiRequest;
   waitingIcon3: "svg";
   sideEffectPageLoad: typeof SideEffect;
-  sideEffectFirstLoad: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -2738,7 +2741,6 @@ export const PlasmicProductAdmin = Object.assign(
     detailsDataApiRequest: makeNodeComponent("detailsDataApiRequest"),
     waitingIcon3: makeNodeComponent("waitingIcon3"),
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
-    sideEffectFirstLoad: makeNodeComponent("sideEffectFirstLoad"),
 
     // Metadata about props expected for PlasmicProductAdmin
     internalVariantProps: PlasmicProductAdmin__VariantProps,
