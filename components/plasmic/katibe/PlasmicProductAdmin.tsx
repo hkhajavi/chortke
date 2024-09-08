@@ -872,7 +872,9 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     try {
                                       return (
                                         "https://apigw.paziresh24.com/transaction/v1/admininvoicelist?productid=" +
-                                        $state.cbProductlist.value +
+                                        ($ctx.query.productid > 0
+                                          ? $ctx.query.productid
+                                          : $state.cbProductlist.value) +
                                         "&search=" +
                                         $state.txtSearch.value
                                       );
@@ -2461,7 +2463,9 @@ function PlasmicProductAdmin__RenderFunc(props: {
                           try {
                             return (
                               "https://apigw.paziresh24.com/transaction/v1/admininvoicelist?productid=" +
-                              $state.cbProductlist.value +
+                              ($ctx.query.productid > 0
+                                ? $ctx.query.productid
+                                : $state.cbProductlist.value) +
                               "&search=" +
                               $state.txtSearch.value
                             );
