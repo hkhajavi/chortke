@@ -481,7 +481,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                   ? true
                   : (() => {
                       try {
-                        return !$ctx.query.productid;
+                        return !($ctx.query.productid > 0);
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
