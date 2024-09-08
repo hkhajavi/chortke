@@ -1232,9 +1232,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               "" +
                               (() => {
                                 const gregorianDate = new Date(
-                                  $state.detailsDataApiRequest[
-                                    currentIndex
-                                  ].data.data.registerdate
+                                  $state.invoicelist[currentIndex].registerdate
                                 );
                                 const persianDate = new Intl.DateTimeFormat(
                                   "fa-IR"
