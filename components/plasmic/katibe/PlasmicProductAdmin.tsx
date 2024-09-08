@@ -294,6 +294,12 @@ function PlasmicProductAdmin__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "productListBox",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => true
       }
     ],
     [$props, $ctx, $refs]
@@ -471,154 +477,57 @@ function PlasmicProductAdmin__RenderFunc(props: {
               data-plasmic-override={overrides.gridCalculator2}
               className={classNames(projectcss.all, sty.gridCalculator2)}
             >
-              <div
-                className={classNames(
-                  projectcss.all,
-                  sty.freeBox__kQpa3,
-                  "grid_calculator"
-                )}
-                id={"grid_calculator"}
-              >
-                <Select
-                  data-plasmic-name={"cbProductlist"}
-                  data-plasmic-override={overrides.cbProductlist}
-                  aria-label={"name"}
-                  aria-labelledby={"productid"}
-                  className={classNames("__wab_instance", sty.cbProductlist)}
-                  name={"productlist"}
-                  onChange={async (...eventArgs: any) => {
-                    ((...eventArgs) => {
-                      generateStateOnChangeProp($state, [
-                        "cbProductlist",
-                        "value"
-                      ])(eventArgs[0]);
-                    }).apply(null, eventArgs);
-                    (async value => {
-                      const $steps = {};
-
-                      $steps["showWaiting"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["waiting"]
-                              },
-                              operation: 0,
-                              value: true
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["showWaiting"] != null &&
-                        typeof $steps["showWaiting"] === "object" &&
-                        typeof $steps["showWaiting"].then === "function"
-                      ) {
-                        $steps["showWaiting"] = await $steps["showWaiting"];
+              {(
+                hasVariant(globalVariants, "screen", "mobileOnly")
+                  ? true
+                  : (() => {
+                      try {
+                        return $state.productListBox;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
+                        }
+                        throw e;
                       }
+                    })()
+              ) ? (
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    sty.freeBox__kQpa3,
+                    "grid_calculator"
+                  )}
+                  id={"grid_calculator"}
+                >
+                  <Select
+                    data-plasmic-name={"cbProductlist"}
+                    data-plasmic-override={overrides.cbProductlist}
+                    aria-label={"name"}
+                    aria-labelledby={"productid"}
+                    className={classNames("__wab_instance", sty.cbProductlist)}
+                    name={"productlist"}
+                    onChange={async (...eventArgs: any) => {
+                      ((...eventArgs) => {
+                        generateStateOnChangeProp($state, [
+                          "cbProductlist",
+                          "value"
+                        ])(eventArgs[0]);
+                      }).apply(null, eventArgs);
+                      (async value => {
+                        const $steps = {};
 
-                      $steps["clearInvoiceList"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["invoicelist"]
-                              },
-                              operation: 0,
-                              value: []
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["clearInvoiceList"] != null &&
-                        typeof $steps["clearInvoiceList"] === "object" &&
-                        typeof $steps["clearInvoiceList"].then === "function"
-                      ) {
-                        $steps["clearInvoiceList"] = await $steps[
-                          "clearInvoiceList"
-                        ];
-                      }
-
-                      $steps["getInvoiceList"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              args: [
-                                undefined,
-                                (() => {
-                                  try {
-                                    return (
-                                      "https://apigw.paziresh24.com/transaction/v1/admininvoicelist?productid=" +
-                                      $state.cbProductlist.value +
-                                      "&search=" +
-                                      $state.txtSearch.value
-                                    );
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
-                                    }
-                                    throw e;
-                                  }
-                                })()
-                              ]
-                            };
-                            return $globalActions["Fragment.apiRequest"]?.apply(
-                              null,
-                              [...actionArgs.args]
-                            );
-                          })()
-                        : undefined;
-                      if (
-                        $steps["getInvoiceList"] != null &&
-                        typeof $steps["getInvoiceList"] === "object" &&
-                        typeof $steps["getInvoiceList"].then === "function"
-                      ) {
-                        $steps["getInvoiceList"] = await $steps[
-                          "getInvoiceList"
-                        ];
-                      }
-
-                      $steps["updateInvoicelist"] =
-                        $steps.getInvoiceList.status == 200 &&
-                        $steps.getInvoiceList.data.status == true
+                        $steps["showWaiting"] = true
                           ? (() => {
                               const actionArgs = {
                                 variable: {
                                   objRoot: $state,
-                                  variablePath: ["invoicelist"]
+                                  variablePath: ["waiting"]
                                 },
                                 operation: 0,
-                                value: $steps.getInvoiceList.data.data
+                                value: true
                               };
                               return (({
                                 variable,
@@ -636,89 +545,203 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               })?.apply(null, [actionArgs]);
                             })()
                           : undefined;
-                      if (
-                        $steps["updateInvoicelist"] != null &&
-                        typeof $steps["updateInvoicelist"] === "object" &&
-                        typeof $steps["updateInvoicelist"].then === "function"
-                      ) {
-                        $steps["updateInvoicelist"] = await $steps[
-                          "updateInvoicelist"
-                        ];
-                      }
+                        if (
+                          $steps["showWaiting"] != null &&
+                          typeof $steps["showWaiting"] === "object" &&
+                          typeof $steps["showWaiting"].then === "function"
+                        ) {
+                          $steps["showWaiting"] = await $steps["showWaiting"];
+                        }
 
-                      $steps["hideWaiting"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["waiting"]
-                              },
-                              operation: 0,
-                              value: false
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
+                        $steps["clearInvoiceList"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["invoicelist"]
+                                },
+                                operation: 0,
+                                value: []
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
 
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["hideWaiting"] != null &&
-                        typeof $steps["hideWaiting"] === "object" &&
-                        typeof $steps["hideWaiting"].then === "function"
-                      ) {
-                        $steps["hideWaiting"] = await $steps["hideWaiting"];
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["clearInvoiceList"] != null &&
+                          typeof $steps["clearInvoiceList"] === "object" &&
+                          typeof $steps["clearInvoiceList"].then === "function"
+                        ) {
+                          $steps["clearInvoiceList"] = await $steps[
+                            "clearInvoiceList"
+                          ];
+                        }
+
+                        $steps["getInvoiceList"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  undefined,
+                                  (() => {
+                                    try {
+                                      return (
+                                        "https://apigw.paziresh24.com/transaction/v1/admininvoicelist?productid=" +
+                                        $state.cbProductlist.value +
+                                        "&search=" +
+                                        $state.txtSearch.value
+                                      );
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.apiRequest"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["getInvoiceList"] != null &&
+                          typeof $steps["getInvoiceList"] === "object" &&
+                          typeof $steps["getInvoiceList"].then === "function"
+                        ) {
+                          $steps["getInvoiceList"] = await $steps[
+                            "getInvoiceList"
+                          ];
+                        }
+
+                        $steps["updateInvoicelist"] =
+                          $steps.getInvoiceList.status == 200 &&
+                          $steps.getInvoiceList.data.status == true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["invoicelist"]
+                                  },
+                                  operation: 0,
+                                  value: $steps.getInvoiceList.data.data
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                        if (
+                          $steps["updateInvoicelist"] != null &&
+                          typeof $steps["updateInvoicelist"] === "object" &&
+                          typeof $steps["updateInvoicelist"].then === "function"
+                        ) {
+                          $steps["updateInvoicelist"] = await $steps[
+                            "updateInvoicelist"
+                          ];
+                        }
+
+                        $steps["hideWaiting"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["waiting"]
+                                },
+                                operation: 0,
+                                value: false
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["hideWaiting"] != null &&
+                          typeof $steps["hideWaiting"] === "object" &&
+                          typeof $steps["hideWaiting"].then === "function"
+                        ) {
+                          $steps["hideWaiting"] = await $steps["hideWaiting"];
+                        }
+                      }).apply(null, eventArgs);
+                    }}
+                    options={(() => {
+                      try {
+                        return $state.productList.map(item => ({
+                          value: item.productid.toString(),
+                          label: item.name
+                        }));
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [
+                            { value: "option1", label: "Option 1" },
+                            { value: "option2", label: "Option 2" }
+                          ];
+                        }
+                        throw e;
                       }
-                    }).apply(null, eventArgs);
-                  }}
-                  options={(() => {
-                    try {
-                      return $state.productList.map(item => ({
-                        value: item.productid.toString(),
-                        label: item.name
-                      }));
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return [
-                          { value: "option1", label: "Option 1" },
-                          { value: "option2", label: "Option 2" }
-                        ];
-                      }
-                      throw e;
+                    })()}
+                    placeholder={
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__yc1HJ
+                        )}
+                      >
+                        {
+                          "\u0628\u062e\u0634 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                        }
+                      </div>
                     }
-                  })()}
-                  placeholder={
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__yc1HJ
-                      )}
-                    >
-                      {
-                        "\u0628\u062e\u0634 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
-                      }
-                    </div>
-                  }
-                  value={generateStateValueProp($state, [
-                    "cbProductlist",
-                    "value"
-                  ])}
-                />
-              </div>
+                    value={generateStateValueProp($state, [
+                      "cbProductlist",
+                      "value"
+                    ])}
+                  />
+                </div>
+              ) : null}
               <div
                 className={classNames(
                   projectcss.all,
@@ -2390,6 +2413,32 @@ function PlasmicProductAdmin__RenderFunc(props: {
                 $steps["setProductListVariable"] = await $steps[
                   "setProductListVariable"
                 ];
+              }
+
+              $steps["urlproductid"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          if ($ctx.query.urlproductid > 0) {
+                            $state.cbProductlist.value =
+                              $ctx.query.urlproductid;
+                            return ($state.productListBox = false);
+                          }
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["urlproductid"] != null &&
+                typeof $steps["urlproductid"] === "object" &&
+                typeof $steps["urlproductid"].then === "function"
+              ) {
+                $steps["urlproductid"] = await $steps["urlproductid"];
               }
 
               $steps["getInvoiceList"] = true

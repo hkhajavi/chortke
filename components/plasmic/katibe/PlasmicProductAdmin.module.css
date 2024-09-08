@@ -421,6 +421,7 @@
     padding-left: 0px;
     grid-column-end: span 2;
     margin-top: 5px;
+    display: flex;
   }
 }
 .cbProductlist:global(.__wab_instance) {
