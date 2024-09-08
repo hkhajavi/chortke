@@ -959,6 +959,18 @@
   max-width: 100%;
   padding-top: 0px;
   text-align: center;
+  font-family: var(--iran-sans-x);
+  font-size: 16px;
+  font-weight: 700;
+  font-style: normal;
+  color: #535353;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -991,6 +1003,19 @@
   height: auto;
   max-width: 100%;
   text-align: center;
+  padding-top: 0px;
+  font-family: var(--iran-sans-x);
+  font-size: 16px;
+  font-weight: 700;
+  font-style: normal;
+  color: #535353;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -1024,6 +1049,19 @@
   height: auto;
   max-width: 100%;
   text-align: center;
+  padding-top: 0px;
+  font-family: var(--iran-sans-x);
+  font-size: 16px;
+  font-weight: 700;
+  font-style: normal;
+  color: #535353;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -1056,6 +1094,19 @@
   height: auto;
   max-width: 100%;
   text-align: center;
+  padding-top: 0px;
+  font-family: var(--iran-sans-x);
+  font-size: 16px;
+  font-weight: 700;
+  font-style: normal;
+  color: #535353;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -1088,6 +1139,19 @@
   height: auto;
   max-width: 100%;
   text-align: center;
+  padding-top: 0px;
+  font-family: var(--iran-sans-x);
+  font-size: 16px;
+  font-weight: 700;
+  font-style: normal;
+  color: #535353;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {

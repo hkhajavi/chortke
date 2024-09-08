@@ -107,6 +107,7 @@ export type PlasmicProductAdmin__OverridesType = {
   cbProductlist?: Flex__<typeof Select>;
   txtSearch?: Flex__<typeof TextInput>;
   btnSearch?: Flex__<typeof Button>;
+  waitingIcon4?: Flex__<"svg">;
   gridInvoice1?: Flex__<"div">;
   gridNoData?: Flex__<"div">;
   gridInvoice12?: Flex__<"div">;
@@ -957,6 +958,44 @@ function PlasmicProductAdmin__RenderFunc(props: {
                   </div>
                 </div>
               </div>
+              {(
+                hasVariant(globalVariants, "screen", "mobileOnly")
+                  ? (() => {
+                      try {
+                        return $state.waiting;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
+                        }
+                        throw e;
+                      }
+                    })()
+                  : (() => {
+                      try {
+                        return $state.waiting;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
+                        }
+                        throw e;
+                      }
+                    })()
+              ) ? (
+                <div className={classNames(projectcss.all, sty.freeBox__dqrH)}>
+                  <Icon2Icon
+                    data-plasmic-name={"waitingIcon4"}
+                    data-plasmic-override={overrides.waitingIcon4}
+                    className={classNames(projectcss.all, sty.waitingIcon4)}
+                    role={"img"}
+                  />
+                </div>
+              ) : null}
             </div>
             <div
               data-plasmic-name={"gridInvoice1"}
@@ -2457,6 +2496,7 @@ const PlasmicDescendants = {
     "cbProductlist",
     "txtSearch",
     "btnSearch",
+    "waitingIcon4",
     "gridInvoice1",
     "gridNoData",
     "gridInvoice12",
@@ -2478,6 +2518,7 @@ const PlasmicDescendants = {
     "cbProductlist",
     "txtSearch",
     "btnSearch",
+    "waitingIcon4",
     "gridInvoice1",
     "gridNoData",
     "gridInvoice12",
@@ -2490,11 +2531,13 @@ const PlasmicDescendants = {
     "gridCalculator2",
     "cbProductlist",
     "txtSearch",
-    "btnSearch"
+    "btnSearch",
+    "waitingIcon4"
   ],
   cbProductlist: ["cbProductlist"],
   txtSearch: ["txtSearch"],
   btnSearch: ["btnSearch"],
+  waitingIcon4: ["waitingIcon4"],
   gridInvoice1: ["gridInvoice1"],
   gridNoData: ["gridNoData"],
   gridInvoice12: [
@@ -2531,6 +2574,7 @@ type NodeDefaultElementType = {
   cbProductlist: typeof Select;
   txtSearch: typeof TextInput;
   btnSearch: typeof Button;
+  waitingIcon4: "svg";
   gridInvoice1: "div";
   gridNoData: "div";
   gridInvoice12: "div";
@@ -2612,6 +2656,7 @@ export const PlasmicProductAdmin = Object.assign(
     cbProductlist: makeNodeComponent("cbProductlist"),
     txtSearch: makeNodeComponent("txtSearch"),
     btnSearch: makeNodeComponent("btnSearch"),
+    waitingIcon4: makeNodeComponent("waitingIcon4"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     gridNoData: makeNodeComponent("gridNoData"),
     gridInvoice12: makeNodeComponent("gridInvoice12"),
