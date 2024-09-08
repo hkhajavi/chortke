@@ -3325,9 +3325,20 @@ function PlasmicHomepage__RenderFunc(props: {
                         <React.Fragment>
                           {(() => {
                             try {
-                              return new Date(
-                                $state.invoicelist[currentIndex].registerdate
-                              ).toLocaleDateString("fa-IR");
+                              return (
+                                "" +
+                                (() => {
+                                  const gregorianDate = new Date(
+                                    $state.invoicelist[
+                                      currentIndex
+                                    ].registerdate
+                                  );
+                                  const persianDate = new Intl.DateTimeFormat(
+                                    "fa-IR"
+                                  ).format(gregorianDate);
+                                  return persianDate;
+                                })()
+                              );
                             } catch (e) {
                               if (
                                 e instanceof TypeError ||
