@@ -64,6 +64,8 @@ import Select from "../../Select"; // plasmic-import: 7wkEfmUYAcMf/component
 import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
 import Dialog from "../../Dialog"; // plasmic-import: 42tFBTdMKvt2/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: hVBOtSJvmbc4/codeComponent
+import Dialog2 from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
+import Button2 from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 
 import { useScreenVariants as useScreenVariantsbr2UhI7UlpvR } from "../fragment_icons/PlasmicGlobalVariant__Screen"; // plasmic-import: BR2UhI7ulpvR/globalVariant
@@ -115,6 +117,8 @@ export type PlasmicProductAdmin__OverridesType = {
   btnInvoiceInfo?: Flex__<typeof Button>;
   detailsDataApiRequest?: Flex__<typeof ApiRequest>;
   waitingIcon3?: Flex__<"svg">;
+  dialog?: Flex__<typeof Dialog2>;
+  txtCancelReason?: Flex__<typeof TextInput>;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
 };
 
@@ -299,6 +303,22 @@ function PlasmicProductAdmin__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => true
+      },
+      {
+        path: "dialog[].open",
+        type: "private",
+        variableType: "boolean"
+      },
+      {
+        path: "txtCancelReason[].value",
+        type: "private",
+        variableType: "text"
+      },
+      {
+        path: "cancelInvoiceWaiting",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -1291,18 +1311,15 @@ function PlasmicProductAdmin__RenderFunc(props: {
                       <React.Fragment>
                         {(() => {
                           try {
-                            return (
-                              "" +
-                              (() => {
-                                const gregorianDate = new Date(
-                                  $state.invoicelist[currentIndex].registerdate
-                                );
-                                const persianDate = new Intl.DateTimeFormat(
-                                  "fa-IR"
-                                ).format(gregorianDate);
-                                return persianDate;
-                              })()
-                            );
+                            return (() => {
+                              const gregorianDate = new Date(
+                                $state.invoicelist[currentIndex].registerdate
+                              );
+                              const persianDate = new Intl.DateTimeFormat(
+                                "fa-IR"
+                              ).format(gregorianDate);
+                              return persianDate;
+                            })();
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
@@ -2219,6 +2236,483 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 </div>
                               </div>
                             ) : null}
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__dHbi7
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox___9GqiI
+                                )}
+                              >
+                                {(() => {
+                                  const child$Props = {
+                                    body: (
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox__umhop
+                                        )}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox___33Nbd
+                                          )}
+                                        >
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__sAjex
+                                            )}
+                                          >
+                                            <React.Fragment>
+                                              {(() => {
+                                                try {
+                                                  return (
+                                                    "آیا مایل به لغو صورت حساب " +
+                                                    $state
+                                                      .detailsDataApiRequest[
+                                                      currentIndex
+                                                    ].data.data.title +
+                                                    " می باشید؟"
+                                                  );
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return "You can insert dialog body content here in this slot.";
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()}
+                                            </React.Fragment>
+                                          </div>
+                                        </div>
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox__wsxk2
+                                          )}
+                                        >
+                                          {(() => {
+                                            const child$Props = {
+                                              className: classNames(
+                                                "__wab_instance",
+                                                sty.txtCancelReason
+                                              ),
+                                              onChange: (...eventArgs) => {
+                                                generateStateOnChangeProp(
+                                                  $state,
+                                                  [
+                                                    "txtCancelReason",
+                                                    __plasmic_idx_0,
+                                                    "value"
+                                                  ]
+                                                )(
+                                                  (e => e.target?.value).apply(
+                                                    null,
+                                                    eventArgs
+                                                  )
+                                                );
+                                              },
+                                              placeholder:
+                                                "\u062f\u0644\u06cc\u0644 \u0644\u063a\u0648 \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628",
+                                              value:
+                                                generateStateValueProp($state, [
+                                                  "txtCancelReason",
+                                                  __plasmic_idx_0,
+                                                  "value"
+                                                ]) ?? ""
+                                            };
+
+                                            initializePlasmicStates(
+                                              $state,
+                                              [
+                                                {
+                                                  name: "txtCancelReason[].value",
+                                                  initFunc: ({
+                                                    $props,
+                                                    $state,
+                                                    $queries
+                                                  }) => ""
+                                                }
+                                              ],
+                                              [__plasmic_idx_0]
+                                            );
+                                            return (
+                                              <TextInput
+                                                data-plasmic-name={
+                                                  "txtCancelReason"
+                                                }
+                                                data-plasmic-override={
+                                                  overrides.txtCancelReason
+                                                }
+                                                {...child$Props}
+                                              />
+                                            );
+                                          })()}
+                                        </div>
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox__bAl4C
+                                          )}
+                                        >
+                                          <Button2
+                                            children2={
+                                              <div
+                                                className={classNames(
+                                                  projectcss.all,
+                                                  projectcss.__wab_text,
+                                                  sty.text__cYWr
+                                                )}
+                                              >
+                                                {
+                                                  "\u0644\u063a\u0648 \u0634\u0648\u062f"
+                                                }
+                                              </div>
+                                            }
+                                            className={classNames(
+                                              "__wab_instance",
+                                              sty.button__iLIxh
+                                            )}
+                                            onClick={async event => {
+                                              const $steps = {};
+
+                                              $steps["showWaiting"] = true
+                                                ? (() => {
+                                                    const actionArgs = {
+                                                      variable: {
+                                                        objRoot: $state,
+                                                        variablePath: [
+                                                          "cancelInvoiceWaiting"
+                                                        ]
+                                                      },
+                                                      operation: 0,
+                                                      value: true
+                                                    };
+                                                    return (({
+                                                      variable,
+                                                      value,
+                                                      startIndex,
+                                                      deleteCount
+                                                    }) => {
+                                                      if (!variable) {
+                                                        return;
+                                                      }
+                                                      const {
+                                                        objRoot,
+                                                        variablePath
+                                                      } = variable;
+
+                                                      $stateSet(
+                                                        objRoot,
+                                                        variablePath,
+                                                        value
+                                                      );
+                                                      return value;
+                                                    })?.apply(null, [
+                                                      actionArgs
+                                                    ]);
+                                                  })()
+                                                : undefined;
+                                              if (
+                                                $steps["showWaiting"] != null &&
+                                                typeof $steps["showWaiting"] ===
+                                                  "object" &&
+                                                typeof $steps["showWaiting"]
+                                                  .then === "function"
+                                              ) {
+                                                $steps["showWaiting"] =
+                                                  await $steps["showWaiting"];
+                                              }
+
+                                              $steps["cancelInvoice"] = true
+                                                ? (() => {
+                                                    const actionArgs = {
+                                                      args: [
+                                                        "PUT",
+                                                        "https://apigw.paziresh24.com/transaction/v1/admininvoice",
+                                                        undefined,
+                                                        (() => {
+                                                          try {
+                                                            return {
+                                                              invoiceid:
+                                                                $state
+                                                                  .detailsDataApiRequest[
+                                                                  currentIndex
+                                                                ].data.data
+                                                                  .invoiceid,
+                                                              reason: "",
+                                                              status: "canceled"
+                                                            };
+                                                          } catch (e) {
+                                                            if (
+                                                              e instanceof
+                                                                TypeError ||
+                                                              e?.plasmicType ===
+                                                                "PlasmicUndefinedDataError"
+                                                            ) {
+                                                              return undefined;
+                                                            }
+                                                            throw e;
+                                                          }
+                                                        })()
+                                                      ]
+                                                    };
+                                                    return $globalActions[
+                                                      "Fragment.apiRequest"
+                                                    ]?.apply(null, [
+                                                      ...actionArgs.args
+                                                    ]);
+                                                  })()
+                                                : undefined;
+                                              if (
+                                                $steps["cancelInvoice"] !=
+                                                  null &&
+                                                typeof $steps[
+                                                  "cancelInvoice"
+                                                ] === "object" &&
+                                                typeof $steps["cancelInvoice"]
+                                                  .then === "function"
+                                              ) {
+                                                $steps["cancelInvoice"] =
+                                                  await $steps["cancelInvoice"];
+                                              }
+
+                                              $steps["hideWaiting"] = true
+                                                ? (() => {
+                                                    const actionArgs = {
+                                                      variable: {
+                                                        objRoot: $state,
+                                                        variablePath: [
+                                                          "cancelInvoiceWaiting"
+                                                        ]
+                                                      },
+                                                      operation: 0,
+                                                      value: false
+                                                    };
+                                                    return (({
+                                                      variable,
+                                                      value,
+                                                      startIndex,
+                                                      deleteCount
+                                                    }) => {
+                                                      if (!variable) {
+                                                        return;
+                                                      }
+                                                      const {
+                                                        objRoot,
+                                                        variablePath
+                                                      } = variable;
+
+                                                      $stateSet(
+                                                        objRoot,
+                                                        variablePath,
+                                                        value
+                                                      );
+                                                      return value;
+                                                    })?.apply(null, [
+                                                      actionArgs
+                                                    ]);
+                                                  })()
+                                                : undefined;
+                                              if (
+                                                $steps["hideWaiting"] != null &&
+                                                typeof $steps["hideWaiting"] ===
+                                                  "object" &&
+                                                typeof $steps["hideWaiting"]
+                                                  .then === "function"
+                                              ) {
+                                                $steps["hideWaiting"] =
+                                                  await $steps["hideWaiting"];
+                                              }
+
+                                              $steps["alertOk"] =
+                                                $steps.cancelInvoice.status ==
+                                                200
+                                                  ? (() => {
+                                                      const actionArgs = {
+                                                        args: [
+                                                          undefined,
+                                                          "\u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0644\u063a\u0648 \u06af\u0631\u062f\u06cc\u062f"
+                                                        ]
+                                                      };
+                                                      return $globalActions[
+                                                        "Fragment.showToast"
+                                                      ]?.apply(null, [
+                                                        ...actionArgs.args
+                                                      ]);
+                                                    })()
+                                                  : undefined;
+                                              if (
+                                                $steps["alertOk"] != null &&
+                                                typeof $steps["alertOk"] ===
+                                                  "object" &&
+                                                typeof $steps["alertOk"]
+                                                  .then === "function"
+                                              ) {
+                                                $steps["alertOk"] =
+                                                  await $steps["alertOk"];
+                                              }
+
+                                              $steps["alertError"] =
+                                                $steps.cancelInvoice.status !=
+                                                200
+                                                  ? (() => {
+                                                      const actionArgs = {
+                                                        args: [
+                                                          "error",
+                                                          "\u062e\u0638\u0627 \u062f\u0631 \u0644\u063a\u0648 \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628"
+                                                        ]
+                                                      };
+                                                      return $globalActions[
+                                                        "Fragment.showToast"
+                                                      ]?.apply(null, [
+                                                        ...actionArgs.args
+                                                      ]);
+                                                    })()
+                                                  : undefined;
+                                              if (
+                                                $steps["alertError"] != null &&
+                                                typeof $steps["alertError"] ===
+                                                  "object" &&
+                                                typeof $steps["alertError"]
+                                                  .then === "function"
+                                              ) {
+                                                $steps["alertError"] =
+                                                  await $steps["alertError"];
+                                              }
+                                            }}
+                                          />
+                                        </div>
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox___9BYq0
+                                          )}
+                                        >
+                                          {(() => {
+                                            try {
+                                              return $state.cancelInvoiceWaiting;
+                                            } catch (e) {
+                                              if (
+                                                e instanceof TypeError ||
+                                                e?.plasmicType ===
+                                                  "PlasmicUndefinedDataError"
+                                              ) {
+                                                return true;
+                                              }
+                                              throw e;
+                                            }
+                                          })() ? (
+                                            <Icon2Icon
+                                              className={classNames(
+                                                projectcss.all,
+                                                sty.svg__tnPj
+                                              )}
+                                              role={"img"}
+                                            />
+                                          ) : null}
+                                        </div>
+                                      </div>
+                                    ),
+                                    className: classNames(
+                                      "__wab_instance",
+                                      sty.dialog
+                                    ),
+                                    onOpenChange: generateStateOnChangeProp(
+                                      $state,
+                                      ["dialog", __plasmic_idx_0, "open"]
+                                    ),
+                                    open: generateStateValueProp($state, [
+                                      "dialog",
+                                      __plasmic_idx_0,
+                                      "open"
+                                    ]),
+                                    title:
+                                      "\u0644\u063a\u0648 \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628:",
+                                    trigger: (
+                                      <Button2
+                                        children2={
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__juRe5
+                                            )}
+                                          >
+                                            <React.Fragment>
+                                              {(() => {
+                                                try {
+                                                  return "لغو صورت حساب";
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return "\u0644\u063a\u0648 ";
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()}
+                                            </React.Fragment>
+                                          </div>
+                                        }
+                                        endIcon={
+                                          <ChevronLeftIcon
+                                            className={classNames(
+                                              projectcss.all,
+                                              sty.svg___2Qps5
+                                            )}
+                                            role={"img"}
+                                          />
+                                        }
+                                        startIcon={
+                                          <ChevronRightIcon
+                                            className={classNames(
+                                              projectcss.all,
+                                              sty.svg__forxA
+                                            )}
+                                            role={"img"}
+                                          />
+                                        }
+                                      />
+                                    )
+                                  };
+
+                                  initializePlasmicStates(
+                                    $state,
+                                    [
+                                      {
+                                        name: "dialog[].open",
+                                        initFunc: ({
+                                          $props,
+                                          $state,
+                                          $queries
+                                        }) => true
+                                      }
+                                    ],
+                                    [__plasmic_idx_0]
+                                  );
+                                  return (
+                                    <Dialog2
+                                      data-plasmic-name={"dialog"}
+                                      data-plasmic-override={overrides.dialog}
+                                      {...child$Props}
+                                    />
+                                  );
+                                })()}
+                              </div>
+                            </div>
                           </ApiRequest>
                         ),
                         className: classNames(
@@ -2587,6 +3081,8 @@ const PlasmicDescendants = {
     "btnInvoiceInfo",
     "detailsDataApiRequest",
     "waitingIcon3",
+    "dialog",
+    "txtCancelReason",
     "sideEffectPageLoad"
   ],
   h1: ["h1"],
@@ -2607,7 +3103,9 @@ const PlasmicDescendants = {
     "dialogNewInvoiceDetails",
     "btnInvoiceInfo",
     "detailsDataApiRequest",
-    "waitingIcon3"
+    "waitingIcon3",
+    "dialog",
+    "txtCancelReason"
   ],
   gridCalculator2: [
     "gridCalculator2",
@@ -2627,17 +3125,28 @@ const PlasmicDescendants = {
     "dialogNewInvoiceDetails",
     "btnInvoiceInfo",
     "detailsDataApiRequest",
-    "waitingIcon3"
+    "waitingIcon3",
+    "dialog",
+    "txtCancelReason"
   ],
   dialogNewInvoiceDetails: [
     "dialogNewInvoiceDetails",
     "btnInvoiceInfo",
     "detailsDataApiRequest",
-    "waitingIcon3"
+    "waitingIcon3",
+    "dialog",
+    "txtCancelReason"
   ],
   btnInvoiceInfo: ["btnInvoiceInfo"],
-  detailsDataApiRequest: ["detailsDataApiRequest", "waitingIcon3"],
+  detailsDataApiRequest: [
+    "detailsDataApiRequest",
+    "waitingIcon3",
+    "dialog",
+    "txtCancelReason"
+  ],
   waitingIcon3: ["waitingIcon3"],
+  dialog: ["dialog", "txtCancelReason"],
+  txtCancelReason: ["txtCancelReason"],
   sideEffectPageLoad: ["sideEffectPageLoad"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -2663,6 +3172,8 @@ type NodeDefaultElementType = {
   btnInvoiceInfo: typeof Button;
   detailsDataApiRequest: typeof ApiRequest;
   waitingIcon3: "svg";
+  dialog: typeof Dialog2;
+  txtCancelReason: typeof TextInput;
   sideEffectPageLoad: typeof SideEffect;
 };
 
@@ -2744,6 +3255,8 @@ export const PlasmicProductAdmin = Object.assign(
     btnInvoiceInfo: makeNodeComponent("btnInvoiceInfo"),
     detailsDataApiRequest: makeNodeComponent("detailsDataApiRequest"),
     waitingIcon3: makeNodeComponent("waitingIcon3"),
+    dialog: makeNodeComponent("dialog"),
+    txtCancelReason: makeNodeComponent("txtCancelReason"),
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
 
     // Metadata about props expected for PlasmicProductAdmin
