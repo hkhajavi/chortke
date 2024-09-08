@@ -481,13 +481,13 @@ function PlasmicProductAdmin__RenderFunc(props: {
                   ? true
                   : (() => {
                       try {
-                        return $state.productListBox;
+                        return !$ctx.query.productid;
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
                           e?.plasmicType === "PlasmicUndefinedDataError"
                         ) {
-                          return true;
+                          return false;
                         }
                         throw e;
                       }
@@ -2433,8 +2433,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                       customFunction: async () => {
                         return (() => {
                           if ($ctx.query.productid > 0) {
-                            $state.cbProductlist.value = $ctx.query.productid;
-                            return ($state.productListBox = false);
+                            return ($state.cbProductlist.value =
+                              $ctx.query.productid);
                           }
                         })();
                       }
