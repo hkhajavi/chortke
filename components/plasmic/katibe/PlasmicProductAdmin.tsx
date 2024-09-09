@@ -117,7 +117,7 @@ export type PlasmicProductAdmin__OverridesType = {
   btnInvoiceInfo?: Flex__<typeof Button>;
   detailsDataApiRequest?: Flex__<typeof ApiRequest>;
   waitingIcon3?: Flex__<"svg">;
-  dialog?: Flex__<typeof Dialog2>;
+  dialogCancelInvoice?: Flex__<typeof Dialog2>;
   txtCancelReason?: Flex__<typeof TextInput>;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
 };
@@ -305,7 +305,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => true
       },
       {
-        path: "dialog[].open",
+        path: "dialogCancelInvoice[].open",
         type: "private",
         variableType: "boolean"
       },
@@ -2381,9 +2381,11 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                     const actionArgs = {
                                                       customFunction:
                                                         async () => {
-                                                          return ($state.dialog[
-                                                            currentIndex
-                                                          ].open = false);
+                                                          return (() => {
+                                                            return ($state.dialogCancelInvoice[
+                                                              currentIndex
+                                                            ].open = false);
+                                                          })();
                                                         }
                                                     };
                                                     return (({
@@ -2579,6 +2581,57 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                   await $steps["hideWaiting"];
                                               }
 
+                                              $steps["modalData"] = true
+                                                ? (() => {
+                                                    const actionArgs = {
+                                                      customFunction:
+                                                        async () => {
+                                                          return (() => {
+                                                            $state.dialogInvoiceDetails[
+                                                              currentIndex
+                                                            ].open = false;
+                                                            $state.dialogCancelInvoice[
+                                                              currentIndex
+                                                            ].open = false;
+                                                            if (
+                                                              $steps
+                                                                .cancelInvoice
+                                                                .status == 200
+                                                            ) {
+                                                              return ($state.invoicelist =
+                                                                $state.invoicelist.filter(
+                                                                  item =>
+                                                                    item.invoiceid !==
+                                                                    $state
+                                                                      .detailsDataApiRequest[
+                                                                      currentIndex
+                                                                    ].data.data
+                                                                      .invoiceid
+                                                                ));
+                                                            }
+                                                          })();
+                                                        }
+                                                    };
+                                                    return (({
+                                                      customFunction
+                                                    }) => {
+                                                      return customFunction();
+                                                    })?.apply(null, [
+                                                      actionArgs
+                                                    ]);
+                                                  })()
+                                                : undefined;
+                                              if (
+                                                $steps["modalData"] != null &&
+                                                typeof $steps["modalData"] ===
+                                                  "object" &&
+                                                typeof $steps["modalData"]
+                                                  .then === "function"
+                                              ) {
+                                                $steps["modalData"] =
+                                                  await $steps["modalData"];
+                                              }
+
                                               $steps["alertOk"] =
                                                 $steps.cancelInvoice.status ==
                                                 200
@@ -2670,14 +2723,18 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     ),
                                     className: classNames(
                                       "__wab_instance",
-                                      sty.dialog
+                                      sty.dialogCancelInvoice
                                     ),
                                     onOpenChange: generateStateOnChangeProp(
                                       $state,
-                                      ["dialog", __plasmic_idx_0, "open"]
+                                      [
+                                        "dialogCancelInvoice",
+                                        __plasmic_idx_0,
+                                        "open"
+                                      ]
                                     ),
                                     open: generateStateValueProp($state, [
-                                      "dialog",
+                                      "dialogCancelInvoice",
                                       __plasmic_idx_0,
                                       "open"
                                     ]),
@@ -2711,6 +2768,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                             </React.Fragment>
                                           </div>
                                         }
+                                        color={"blue"}
                                         endIcon={
                                           <ChevronLeftIcon
                                             className={classNames(
@@ -2720,6 +2778,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                             role={"img"}
                                           />
                                         }
+                                        size={"compact"}
                                         startIcon={
                                           <ChevronRightIcon
                                             className={classNames(
@@ -2737,7 +2796,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     $state,
                                     [
                                       {
-                                        name: "dialog[].open",
+                                        name: "dialogCancelInvoice[].open",
                                         initFunc: ({
                                           $props,
                                           $state,
@@ -2749,8 +2808,10 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   );
                                   return (
                                     <Dialog2
-                                      data-plasmic-name={"dialog"}
-                                      data-plasmic-override={overrides.dialog}
+                                      data-plasmic-name={"dialogCancelInvoice"}
+                                      data-plasmic-override={
+                                        overrides.dialogCancelInvoice
+                                      }
                                       {...child$Props}
                                     />
                                   );
@@ -3123,7 +3184,7 @@ const PlasmicDescendants = {
     "btnInvoiceInfo",
     "detailsDataApiRequest",
     "waitingIcon3",
-    "dialog",
+    "dialogCancelInvoice",
     "txtCancelReason",
     "sideEffectPageLoad"
   ],
@@ -3146,7 +3207,7 @@ const PlasmicDescendants = {
     "btnInvoiceInfo",
     "detailsDataApiRequest",
     "waitingIcon3",
-    "dialog",
+    "dialogCancelInvoice",
     "txtCancelReason"
   ],
   gridCalculator2: [
@@ -3168,7 +3229,7 @@ const PlasmicDescendants = {
     "btnInvoiceInfo",
     "detailsDataApiRequest",
     "waitingIcon3",
-    "dialog",
+    "dialogCancelInvoice",
     "txtCancelReason"
   ],
   dialogInvoiceDetails: [
@@ -3176,18 +3237,18 @@ const PlasmicDescendants = {
     "btnInvoiceInfo",
     "detailsDataApiRequest",
     "waitingIcon3",
-    "dialog",
+    "dialogCancelInvoice",
     "txtCancelReason"
   ],
   btnInvoiceInfo: ["btnInvoiceInfo"],
   detailsDataApiRequest: [
     "detailsDataApiRequest",
     "waitingIcon3",
-    "dialog",
+    "dialogCancelInvoice",
     "txtCancelReason"
   ],
   waitingIcon3: ["waitingIcon3"],
-  dialog: ["dialog", "txtCancelReason"],
+  dialogCancelInvoice: ["dialogCancelInvoice", "txtCancelReason"],
   txtCancelReason: ["txtCancelReason"],
   sideEffectPageLoad: ["sideEffectPageLoad"]
 } as const;
@@ -3214,7 +3275,7 @@ type NodeDefaultElementType = {
   btnInvoiceInfo: typeof Button;
   detailsDataApiRequest: typeof ApiRequest;
   waitingIcon3: "svg";
-  dialog: typeof Dialog2;
+  dialogCancelInvoice: typeof Dialog2;
   txtCancelReason: typeof TextInput;
   sideEffectPageLoad: typeof SideEffect;
 };
@@ -3297,7 +3358,7 @@ export const PlasmicProductAdmin = Object.assign(
     btnInvoiceInfo: makeNodeComponent("btnInvoiceInfo"),
     detailsDataApiRequest: makeNodeComponent("detailsDataApiRequest"),
     waitingIcon3: makeNodeComponent("waitingIcon3"),
-    dialog: makeNodeComponent("dialog"),
+    dialogCancelInvoice: makeNodeComponent("dialogCancelInvoice"),
     txtCancelReason: makeNodeComponent("txtCancelReason"),
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
 

@@ -2645,7 +2645,7 @@
     padding: 2px;
   }
 }
-.dialog:global(.__wab_instance):global(.__wab_instance) {
+.dialogCancelInvoice:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;
 }
 .text__juRe5 {
