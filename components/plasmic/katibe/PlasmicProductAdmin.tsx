@@ -110,7 +110,7 @@ export type PlasmicProductAdmin__OverridesType = {
   txtSearch?: Flex__<typeof TextInput>;
   btnSearch?: Flex__<typeof Button>;
   waitingIcon4?: Flex__<"svg">;
-  dialog?: Flex__<typeof Dialog>;
+  dialogRegisterInvoice?: Flex__<typeof Dialog>;
   txtTitle?: Flex__<typeof TextInput>;
   txtDescription?: Flex__<typeof TextInput>;
   txtServiceName?: Flex__<typeof TextInput>;
@@ -329,7 +329,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
-        path: "dialog.open",
+        path: "dialogRegisterInvoice.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
@@ -380,6 +380,12 @@ function PlasmicProductAdmin__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => [
           { title: "", count: 0, price: 0 }
         ]
+      },
+      {
+        path: "waitingInvoice",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -1103,8 +1109,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
               ) : null}
               <div className={classNames(projectcss.all, sty.freeBox__hccMy)}>
                 <Dialog
-                  data-plasmic-name={"dialog"}
-                  data-plasmic-override={overrides.dialog}
+                  data-plasmic-name={"dialogRegisterInvoice"}
+                  data-plasmic-override={overrides.dialogRegisterInvoice}
                   body={
                     <React.Fragment>
                       <div
@@ -1797,6 +1803,83 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               sty.button__qFkQy
                             )}
                             color={"green"}
+                            onClick={async event => {
+                              const $steps = {};
+
+                              $steps["showWaiting"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["waitingInvoice"]
+                                      },
+                                      operation: 0,
+                                      value: true
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["showWaiting"] != null &&
+                                typeof $steps["showWaiting"] === "object" &&
+                                typeof $steps["showWaiting"].then === "function"
+                              ) {
+                                $steps["showWaiting"] = await $steps[
+                                  "showWaiting"
+                                ];
+                              }
+
+                              $steps["hideWaiting"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["waitingInvoice"]
+                                      },
+                                      operation: 0,
+                                      value: false
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["hideWaiting"] != null &&
+                                typeof $steps["hideWaiting"] === "object" &&
+                                typeof $steps["hideWaiting"].then === "function"
+                              ) {
+                                $steps["hideWaiting"] = await $steps[
+                                  "hideWaiting"
+                                ];
+                              }
+                            }}
                           />
 
                           <Button2
@@ -1805,38 +1888,84 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               "__wab_instance",
                               sty.button__mY1Qh
                             )}
+                            onClick={async event => {
+                              const $steps = {};
+
+                              $steps["closeDialog"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      customFunction: async () => {
+                                        return ($state.dialogRegisterInvoice.open =
+                                          false);
+                                      }
+                                    };
+                                    return (({ customFunction }) => {
+                                      return customFunction();
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["closeDialog"] != null &&
+                                typeof $steps["closeDialog"] === "object" &&
+                                typeof $steps["closeDialog"].then === "function"
+                              ) {
+                                $steps["closeDialog"] = await $steps[
+                                  "closeDialog"
+                                ];
+                              }
+                            }}
                           />
                         </div>
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__nbDq3
-                        )}
-                      >
+                      {(() => {
+                        try {
+                          return $state.waitingInvoice;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
                         <div
                           className={classNames(
                             projectcss.all,
-                            sty.freeBox___4Pjwq
+                            sty.freeBox__nbDq3
                           )}
                         >
-                          <Icon2Icon
+                          <div
                             className={classNames(
                               projectcss.all,
-                              sty.svg__e0GMc
+                              sty.freeBox___4Pjwq
                             )}
-                            role={"img"}
-                          />
+                          >
+                            <Icon2Icon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__e0GMc
+                              )}
+                              role={"img"}
+                            />
+                          </div>
                         </div>
-                      </div>
+                      ) : null}
                     </React.Fragment>
                   }
-                  className={classNames("__wab_instance", sty.dialog)}
+                  className={classNames(
+                    "__wab_instance",
+                    sty.dialogRegisterInvoice
+                  )}
                   onOpenChange={generateStateOnChangeProp($state, [
-                    "dialog",
+                    "dialogRegisterInvoice",
                     "open"
                   ])}
-                  open={generateStateValueProp($state, ["dialog", "open"])}
+                  open={generateStateValueProp($state, [
+                    "dialogRegisterInvoice",
+                    "open"
+                  ])}
                   title={
                     "\u062b\u0628\u062a \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628"
                   }
@@ -3990,7 +4119,7 @@ const PlasmicDescendants = {
     "txtSearch",
     "btnSearch",
     "waitingIcon4",
-    "dialog",
+    "dialogRegisterInvoice",
     "txtTitle",
     "txtDescription",
     "txtServiceName",
@@ -4021,7 +4150,7 @@ const PlasmicDescendants = {
     "txtSearch",
     "btnSearch",
     "waitingIcon4",
-    "dialog",
+    "dialogRegisterInvoice",
     "txtTitle",
     "txtDescription",
     "txtServiceName",
@@ -4045,7 +4174,7 @@ const PlasmicDescendants = {
     "txtSearch",
     "btnSearch",
     "waitingIcon4",
-    "dialog",
+    "dialogRegisterInvoice",
     "txtTitle",
     "txtDescription",
     "txtServiceName",
@@ -4058,8 +4187,8 @@ const PlasmicDescendants = {
   txtSearch: ["txtSearch"],
   btnSearch: ["btnSearch"],
   waitingIcon4: ["waitingIcon4"],
-  dialog: [
-    "dialog",
+  dialogRegisterInvoice: [
+    "dialogRegisterInvoice",
     "txtTitle",
     "txtDescription",
     "txtServiceName",
@@ -4122,7 +4251,7 @@ type NodeDefaultElementType = {
   txtSearch: typeof TextInput;
   btnSearch: typeof Button;
   waitingIcon4: "svg";
-  dialog: typeof Dialog;
+  dialogRegisterInvoice: typeof Dialog;
   txtTitle: typeof TextInput;
   txtDescription: typeof TextInput;
   txtServiceName: typeof TextInput;
@@ -4213,7 +4342,7 @@ export const PlasmicProductAdmin = Object.assign(
     txtSearch: makeNodeComponent("txtSearch"),
     btnSearch: makeNodeComponent("btnSearch"),
     waitingIcon4: makeNodeComponent("waitingIcon4"),
-    dialog: makeNodeComponent("dialog"),
+    dialogRegisterInvoice: makeNodeComponent("dialogRegisterInvoice"),
     txtTitle: makeNodeComponent("txtTitle"),
     txtDescription: makeNodeComponent("txtDescription"),
     txtServiceName: makeNodeComponent("txtServiceName"),
