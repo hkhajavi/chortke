@@ -62,10 +62,10 @@ import {
 import Button from "../../Button"; // plasmic-import: 0wu_ZE1f8SuT/component
 import Select from "../../Select"; // plasmic-import: 7wkEfmUYAcMf/component
 import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
-import Dialog from "../../Dialog"; // plasmic-import: 42tFBTdMKvt2/component
-import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: hVBOtSJvmbc4/codeComponent
-import Dialog2 from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
+import Dialog from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
 import Button2 from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
+import Dialog2 from "../../Dialog"; // plasmic-import: 42tFBTdMKvt2/component
+import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: hVBOtSJvmbc4/codeComponent
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 
 import { useScreenVariants as useScreenVariantsbr2UhI7UlpvR } from "../fragment_icons/PlasmicGlobalVariant__Screen"; // plasmic-import: BR2UhI7ulpvR/globalVariant
@@ -110,14 +110,22 @@ export type PlasmicProductAdmin__OverridesType = {
   txtSearch?: Flex__<typeof TextInput>;
   btnSearch?: Flex__<typeof Button>;
   waitingIcon4?: Flex__<"svg">;
+  dialog?: Flex__<typeof Dialog>;
+  txtTitle?: Flex__<typeof TextInput>;
+  txtDescription?: Flex__<typeof TextInput>;
+  txtServiceName?: Flex__<typeof TextInput>;
+  txtServiceCount?: Flex__<typeof TextInput>;
+  txtServicePrice?: Flex__<typeof TextInput>;
+  txtDiscountPercent?: Flex__<typeof TextInput>;
+  txtVatPercent?: Flex__<typeof TextInput>;
   gridInvoice1?: Flex__<"div">;
   gridNoData?: Flex__<"div">;
   gridInvoice12?: Flex__<"div">;
-  dialogInvoiceDetails?: Flex__<typeof Dialog>;
+  dialogInvoiceDetails?: Flex__<typeof Dialog2>;
   btnInvoiceInfo?: Flex__<typeof Button>;
   detailsDataApiRequest?: Flex__<typeof ApiRequest>;
   waitingIcon3?: Flex__<"svg">;
-  dialogCancelInvoice?: Flex__<typeof Dialog2>;
+  dialogCancelInvoice?: Flex__<typeof Dialog>;
   txtCancelReason?: Flex__<typeof TextInput>;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
 };
@@ -319,6 +327,59 @@ function PlasmicProductAdmin__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "dialog.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "txtTitle.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "txtDescription.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "txtDiscountPercent.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "0"
+      },
+      {
+        path: "txtVatPercent.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "0"
+      },
+      {
+        path: "txtServiceName[].value",
+        type: "private",
+        variableType: "text"
+      },
+      {
+        path: "txtServiceCount[].value",
+        type: "private",
+        variableType: "text"
+      },
+      {
+        path: "txtServicePrice[].value",
+        type: "private",
+        variableType: "text"
+      },
+      {
+        path: "newInvoiceServices",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => [
+          { title: "", count: 0, price: 0 }
+        ]
       }
     ],
     [$props, $ctx, $refs]
@@ -1040,6 +1101,584 @@ function PlasmicProductAdmin__RenderFunc(props: {
                   />
                 </div>
               ) : null}
+              <div className={classNames(projectcss.all, sty.freeBox__hccMy)}>
+                <Dialog
+                  data-plasmic-name={"dialog"}
+                  data-plasmic-override={overrides.dialog}
+                  body={
+                    <React.Fragment>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__ewCrk
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__bqI2C
+                          )}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__rwjdb
+                            )}
+                          >
+                            {"\u0639\u0646\u0648\u0627\u0646:"}
+                          </div>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__w1Yt
+                          )}
+                        >
+                          <TextInput
+                            data-plasmic-name={"txtTitle"}
+                            data-plasmic-override={overrides.txtTitle}
+                            className={classNames(
+                              "__wab_instance",
+                              sty.txtTitle
+                            )}
+                            onChange={(...eventArgs) => {
+                              generateStateOnChangeProp($state, [
+                                "txtTitle",
+                                "value"
+                              ])((e => e.target?.value).apply(null, eventArgs));
+                            }}
+                            placeholder={
+                              "\u0639\u0646\u0648\u0627\u0646 \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628"
+                            }
+                            value={
+                              generateStateValueProp($state, [
+                                "txtTitle",
+                                "value"
+                              ]) ?? ""
+                            }
+                          />
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__v6W9I
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__bs95I
+                          )}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__ihbA
+                            )}
+                          >
+                            {"\u062a\u0648\u0636\u06cc\u062d\u0627\u062a:"}
+                          </div>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__wcKg2
+                          )}
+                        >
+                          <TextInput
+                            data-plasmic-name={"txtDescription"}
+                            data-plasmic-override={overrides.txtDescription}
+                            className={classNames(
+                              "__wab_instance",
+                              sty.txtDescription
+                            )}
+                            onChange={(...eventArgs) => {
+                              generateStateOnChangeProp($state, [
+                                "txtDescription",
+                                "value"
+                              ])((e => e.target?.value).apply(null, eventArgs));
+                            }}
+                            placeholder={
+                              "\u062a\u0648\u0636\u06cc\u062d\u0627\u062a \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628"
+                            }
+                            value={
+                              generateStateValueProp($state, [
+                                "txtDescription",
+                                "value"
+                              ]) ?? ""
+                            }
+                          />
+                        </div>
+                      </div>
+                      {(_par =>
+                        !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                        (() => {
+                          try {
+                            return $state.newInvoiceServices;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()
+                      ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                        const currentItem = __plasmic_item_0;
+                        const currentIndex = __plasmic_idx_0;
+                        return (
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__w1Z3N
+                            )}
+                            key={currentIndex}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__gaWqO
+                              )}
+                            >
+                              {(() => {
+                                const child$Props = {
+                                  className: classNames(
+                                    "__wab_instance",
+                                    sty.txtServiceName
+                                  ),
+                                  onChange: (...eventArgs) => {
+                                    generateStateOnChangeProp($state, [
+                                      "txtServiceName",
+                                      __plasmic_idx_0,
+                                      "value"
+                                    ])(
+                                      (e => e.target?.value).apply(
+                                        null,
+                                        eventArgs
+                                      )
+                                    );
+                                  },
+                                  placeholder: "\u0639\u0646\u0648\u0627\u0646",
+                                  value:
+                                    generateStateValueProp($state, [
+                                      "txtServiceName",
+                                      __plasmic_idx_0,
+                                      "value"
+                                    ]) ?? ""
+                                };
+
+                                initializePlasmicStates(
+                                  $state,
+                                  [
+                                    {
+                                      name: "txtServiceName[].value",
+                                      initFunc: ({
+                                        $props,
+                                        $state,
+                                        $queries
+                                      }) =>
+                                        (() => {
+                                          try {
+                                            return $state.newInvoiceServices[
+                                              currentIndex
+                                            ].title;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return undefined;
+                                            }
+                                            throw e;
+                                          }
+                                        })()
+                                    }
+                                  ],
+                                  [__plasmic_idx_0]
+                                );
+                                return (
+                                  <TextInput
+                                    data-plasmic-name={"txtServiceName"}
+                                    data-plasmic-override={
+                                      overrides.txtServiceName
+                                    }
+                                    {...child$Props}
+                                  />
+                                );
+                              })()}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox___3Mpjk
+                              )}
+                            >
+                              {(() => {
+                                const child$Props = {
+                                  className: classNames(
+                                    "__wab_instance",
+                                    sty.txtServiceCount
+                                  ),
+                                  onChange: (...eventArgs) => {
+                                    generateStateOnChangeProp($state, [
+                                      "txtServiceCount",
+                                      __plasmic_idx_0,
+                                      "value"
+                                    ])(
+                                      (e => e.target?.value).apply(
+                                        null,
+                                        eventArgs
+                                      )
+                                    );
+                                  },
+                                  placeholder: "\u062a\u0639\u062f\u0627\u062f",
+                                  value:
+                                    generateStateValueProp($state, [
+                                      "txtServiceCount",
+                                      __plasmic_idx_0,
+                                      "value"
+                                    ]) ?? ""
+                                };
+
+                                initializePlasmicStates(
+                                  $state,
+                                  [
+                                    {
+                                      name: "txtServiceCount[].value",
+                                      initFunc: ({
+                                        $props,
+                                        $state,
+                                        $queries
+                                      }) =>
+                                        (() => {
+                                          try {
+                                            return $state.newInvoiceServices[
+                                              currentIndex
+                                            ].count;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return undefined;
+                                            }
+                                            throw e;
+                                          }
+                                        })()
+                                    }
+                                  ],
+                                  [__plasmic_idx_0]
+                                );
+                                return (
+                                  <TextInput
+                                    data-plasmic-name={"txtServiceCount"}
+                                    data-plasmic-override={
+                                      overrides.txtServiceCount
+                                    }
+                                    {...child$Props}
+                                  />
+                                );
+                              })()}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__mmbX5
+                              )}
+                            >
+                              {(() => {
+                                const child$Props = {
+                                  className: classNames(
+                                    "__wab_instance",
+                                    sty.txtServicePrice
+                                  ),
+                                  onChange: (...eventArgs) => {
+                                    generateStateOnChangeProp($state, [
+                                      "txtServicePrice",
+                                      __plasmic_idx_0,
+                                      "value"
+                                    ])(
+                                      (e => e.target?.value).apply(
+                                        null,
+                                        eventArgs
+                                      )
+                                    );
+                                  },
+                                  placeholder: "\u0645\u0628\u0644\u063a",
+                                  value:
+                                    generateStateValueProp($state, [
+                                      "txtServicePrice",
+                                      __plasmic_idx_0,
+                                      "value"
+                                    ]) ?? ""
+                                };
+
+                                initializePlasmicStates(
+                                  $state,
+                                  [
+                                    {
+                                      name: "txtServicePrice[].value",
+                                      initFunc: ({
+                                        $props,
+                                        $state,
+                                        $queries
+                                      }) =>
+                                        (() => {
+                                          try {
+                                            return $state.newInvoiceServices[
+                                              currentIndex
+                                            ].price;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return undefined;
+                                            }
+                                            throw e;
+                                          }
+                                        })()
+                                    }
+                                  ],
+                                  [__plasmic_idx_0]
+                                );
+                                return (
+                                  <TextInput
+                                    data-plasmic-name={"txtServicePrice"}
+                                    data-plasmic-override={
+                                      overrides.txtServicePrice
+                                    }
+                                    {...child$Props}
+                                  />
+                                );
+                              })()}
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__p1Amx
+                              )}
+                            >
+                              <Button2
+                                children2={"+"}
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.button__tPpLa
+                                )}
+                                onClick={async event => {
+                                  const $steps = {};
+
+                                  $steps["runCode"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          customFunction: async () => {
+                                            return undefined;
+                                          }
+                                        };
+                                        return (({ customFunction }) => {
+                                          return customFunction();
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["runCode"] != null &&
+                                    typeof $steps["runCode"] === "object" &&
+                                    typeof $steps["runCode"].then === "function"
+                                  ) {
+                                    $steps["runCode"] = await $steps["runCode"];
+                                  }
+                                }}
+                              />
+                            </div>
+                          </div>
+                        );
+                      })}
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__uuwFs
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__qurey
+                          )}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__nwKng
+                            )}
+                          >
+                            {
+                              "\u062f\u0631\u0635\u062f \u062a\u062e\u0641\u06cc\u0641:"
+                            }
+                          </div>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox___53N0S
+                          )}
+                        >
+                          <TextInput
+                            data-plasmic-name={"txtDiscountPercent"}
+                            data-plasmic-override={overrides.txtDiscountPercent}
+                            className={classNames(
+                              "__wab_instance",
+                              sty.txtDiscountPercent
+                            )}
+                            onChange={(...eventArgs) => {
+                              generateStateOnChangeProp($state, [
+                                "txtDiscountPercent",
+                                "value"
+                              ])((e => e.target?.value).apply(null, eventArgs));
+                            }}
+                            placeholder={
+                              "\u062f\u0631\u0635\u062f \u062a\u062e\u0641\u06cc\u0641"
+                            }
+                            value={
+                              generateStateValueProp($state, [
+                                "txtDiscountPercent",
+                                "value"
+                              ]) ?? ""
+                            }
+                          />
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__xXy
+                          )}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__v0Ln4
+                            )}
+                          >
+                            {
+                              "\u062f\u0631\u0635\u062f \u0645\u0627\u0644\u06cc\u0627\u062a:"
+                            }
+                          </div>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__cEgOi
+                          )}
+                        >
+                          <TextInput
+                            data-plasmic-name={"txtVatPercent"}
+                            data-plasmic-override={overrides.txtVatPercent}
+                            className={classNames(
+                              "__wab_instance",
+                              sty.txtVatPercent
+                            )}
+                            onChange={(...eventArgs) => {
+                              generateStateOnChangeProp($state, [
+                                "txtVatPercent",
+                                "value"
+                              ])((e => e.target?.value).apply(null, eventArgs));
+                            }}
+                            placeholder={
+                              "\u062f\u0631\u0635\u062f \u0645\u0627\u0644\u06cc\u0627\u062a"
+                            }
+                            value={
+                              generateStateValueProp($state, [
+                                "txtVatPercent",
+                                "value"
+                              ]) ?? ""
+                            }
+                          />
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__f5NDj
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__qmwyw
+                          )}
+                        >
+                          <Button2
+                            children2={"   \u062b\u0628\u062a   "}
+                            className={classNames(
+                              "__wab_instance",
+                              sty.button__qFkQy
+                            )}
+                            color={"green"}
+                          />
+
+                          <Button2
+                            children2={"\u0628\u0627\u0632\u06af\u0634\u062a"}
+                            className={classNames(
+                              "__wab_instance",
+                              sty.button__mY1Qh
+                            )}
+                          />
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__nbDq3
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox___4Pjwq
+                          )}
+                        >
+                          <Icon2Icon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg__e0GMc
+                            )}
+                            role={"img"}
+                          />
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  }
+                  className={classNames("__wab_instance", sty.dialog)}
+                  onOpenChange={generateStateOnChangeProp($state, [
+                    "dialog",
+                    "open"
+                  ])}
+                  open={generateStateValueProp($state, ["dialog", "open"])}
+                  title={
+                    "\u062b\u0628\u062a \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628"
+                  }
+                  trigger={
+                    <Button2
+                      children2={"+"}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.button__eot80
+                      )}
+                      color={"green"}
+                      size={"compact"}
+                    />
+                  }
+                />
+              </div>
             </div>
             <div
               data-plasmic-name={"gridInvoice1"}
@@ -2807,7 +3446,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     [__plasmic_idx_0]
                                   );
                                   return (
-                                    <Dialog2
+                                    <Dialog
                                       data-plasmic-name={"dialogCancelInvoice"}
                                       data-plasmic-override={
                                         overrides.dialogCancelInvoice
@@ -2901,7 +3540,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                         [__plasmic_idx_0]
                       );
                       return (
-                        <Dialog
+                        <Dialog2
                           data-plasmic-name={"dialogInvoiceDetails"}
                           data-plasmic-override={overrides.dialogInvoiceDetails}
                           {...child$Props}
@@ -3177,6 +3816,14 @@ const PlasmicDescendants = {
     "txtSearch",
     "btnSearch",
     "waitingIcon4",
+    "dialog",
+    "txtTitle",
+    "txtDescription",
+    "txtServiceName",
+    "txtServiceCount",
+    "txtServicePrice",
+    "txtDiscountPercent",
+    "txtVatPercent",
     "gridInvoice1",
     "gridNoData",
     "gridInvoice12",
@@ -3200,6 +3847,14 @@ const PlasmicDescendants = {
     "txtSearch",
     "btnSearch",
     "waitingIcon4",
+    "dialog",
+    "txtTitle",
+    "txtDescription",
+    "txtServiceName",
+    "txtServiceCount",
+    "txtServicePrice",
+    "txtDiscountPercent",
+    "txtVatPercent",
     "gridInvoice1",
     "gridNoData",
     "gridInvoice12",
@@ -3215,12 +3870,37 @@ const PlasmicDescendants = {
     "cbProductlist",
     "txtSearch",
     "btnSearch",
-    "waitingIcon4"
+    "waitingIcon4",
+    "dialog",
+    "txtTitle",
+    "txtDescription",
+    "txtServiceName",
+    "txtServiceCount",
+    "txtServicePrice",
+    "txtDiscountPercent",
+    "txtVatPercent"
   ],
   cbProductlist: ["cbProductlist"],
   txtSearch: ["txtSearch"],
   btnSearch: ["btnSearch"],
   waitingIcon4: ["waitingIcon4"],
+  dialog: [
+    "dialog",
+    "txtTitle",
+    "txtDescription",
+    "txtServiceName",
+    "txtServiceCount",
+    "txtServicePrice",
+    "txtDiscountPercent",
+    "txtVatPercent"
+  ],
+  txtTitle: ["txtTitle"],
+  txtDescription: ["txtDescription"],
+  txtServiceName: ["txtServiceName"],
+  txtServiceCount: ["txtServiceCount"],
+  txtServicePrice: ["txtServicePrice"],
+  txtDiscountPercent: ["txtDiscountPercent"],
+  txtVatPercent: ["txtVatPercent"],
   gridInvoice1: ["gridInvoice1"],
   gridNoData: ["gridNoData"],
   gridInvoice12: [
@@ -3268,14 +3948,22 @@ type NodeDefaultElementType = {
   txtSearch: typeof TextInput;
   btnSearch: typeof Button;
   waitingIcon4: "svg";
+  dialog: typeof Dialog;
+  txtTitle: typeof TextInput;
+  txtDescription: typeof TextInput;
+  txtServiceName: typeof TextInput;
+  txtServiceCount: typeof TextInput;
+  txtServicePrice: typeof TextInput;
+  txtDiscountPercent: typeof TextInput;
+  txtVatPercent: typeof TextInput;
   gridInvoice1: "div";
   gridNoData: "div";
   gridInvoice12: "div";
-  dialogInvoiceDetails: typeof Dialog;
+  dialogInvoiceDetails: typeof Dialog2;
   btnInvoiceInfo: typeof Button;
   detailsDataApiRequest: typeof ApiRequest;
   waitingIcon3: "svg";
-  dialogCancelInvoice: typeof Dialog2;
+  dialogCancelInvoice: typeof Dialog;
   txtCancelReason: typeof TextInput;
   sideEffectPageLoad: typeof SideEffect;
 };
@@ -3351,6 +4039,14 @@ export const PlasmicProductAdmin = Object.assign(
     txtSearch: makeNodeComponent("txtSearch"),
     btnSearch: makeNodeComponent("btnSearch"),
     waitingIcon4: makeNodeComponent("waitingIcon4"),
+    dialog: makeNodeComponent("dialog"),
+    txtTitle: makeNodeComponent("txtTitle"),
+    txtDescription: makeNodeComponent("txtDescription"),
+    txtServiceName: makeNodeComponent("txtServiceName"),
+    txtServiceCount: makeNodeComponent("txtServiceCount"),
+    txtServicePrice: makeNodeComponent("txtServicePrice"),
+    txtDiscountPercent: makeNodeComponent("txtDiscountPercent"),
+    txtVatPercent: makeNodeComponent("txtVatPercent"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     gridNoData: makeNodeComponent("gridNoData"),
     gridInvoice12: makeNodeComponent("gridInvoice12"),
