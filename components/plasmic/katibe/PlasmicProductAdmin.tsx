@@ -1644,7 +1644,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     ) : null}
                                     {(() => {
                                       try {
-                                        return currentIndex != 0;
+                                        return false /*currentIndex!=0*/;
                                       } catch (e) {
                                         if (
                                           e instanceof TypeError ||

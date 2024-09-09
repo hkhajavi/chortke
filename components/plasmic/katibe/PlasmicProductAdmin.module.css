@@ -476,7 +476,7 @@
   flex-wrap: nowrap;
   align-content: stretch;
   background: #ffffff;
-  grid-column-end: span 2;
+  grid-column-end: span 3;
   min-width: 0;
   border-radius: 10px;
   padding: 0px 8px;
@@ -491,7 +491,7 @@
 .freeBox__ryqn7 {
   display: grid;
   position: relative;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   width: 100%;
   height: auto;
   max-width: 100%;
@@ -619,14 +619,14 @@
 }
 .freeBox__hccMy {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   position: relative;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   width: 100%;
   height: auto;
   max-width: 100%;
-  grid-column-end: span 2;
+  grid-column-end: span 1;
   background: #ffffff;
   flex-wrap: nowrap;
   align-content: stretch;
@@ -640,7 +640,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    grid-column-end: span 1;
+    grid-column-end: span 2;
     padding-right: 5px;
     padding-left: 5px;
   }
