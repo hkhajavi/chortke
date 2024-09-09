@@ -1251,17 +1251,49 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     "__wab_instance",
                                     sty.txtServiceName
                                   ),
-                                  onChange: (...eventArgs) => {
-                                    generateStateOnChangeProp($state, [
-                                      "txtServiceName",
-                                      __plasmic_idx_0,
-                                      "value"
-                                    ])(
-                                      (e => e.target?.value).apply(
-                                        null,
-                                        eventArgs
-                                      )
-                                    );
+                                  onChange: async (...eventArgs: any) => {
+                                    ((...eventArgs) => {
+                                      generateStateOnChangeProp($state, [
+                                        "txtServiceName",
+                                        __plasmic_idx_0,
+                                        "value"
+                                      ])(
+                                        (e => e.target?.value).apply(
+                                          null,
+                                          eventArgs
+                                        )
+                                      );
+                                    }).apply(null, eventArgs);
+                                    (async event => {
+                                      const $steps = {};
+
+                                      $steps["runCode"] = true
+                                        ? (() => {
+                                            const actionArgs = {
+                                              customFunction: async () => {
+                                                return (() => {
+                                                  return ($state.newInvoiceServices[
+                                                    currentIndex
+                                                  ].title = currentItem.title);
+                                                })();
+                                              }
+                                            };
+                                            return (({ customFunction }) => {
+                                              return customFunction();
+                                            })?.apply(null, [actionArgs]);
+                                          })()
+                                        : undefined;
+                                      if (
+                                        $steps["runCode"] != null &&
+                                        typeof $steps["runCode"] === "object" &&
+                                        typeof $steps["runCode"].then ===
+                                          "function"
+                                      ) {
+                                        $steps["runCode"] = await $steps[
+                                          "runCode"
+                                        ];
+                                      }
+                                    }).apply(null, eventArgs);
                                   },
                                   placeholder: "\u0639\u0646\u0648\u0627\u0646",
                                   value:
@@ -1325,17 +1357,49 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     "__wab_instance",
                                     sty.txtServiceCount
                                   ),
-                                  onChange: (...eventArgs) => {
-                                    generateStateOnChangeProp($state, [
-                                      "txtServiceCount",
-                                      __plasmic_idx_0,
-                                      "value"
-                                    ])(
-                                      (e => e.target?.value).apply(
-                                        null,
-                                        eventArgs
-                                      )
-                                    );
+                                  onChange: async (...eventArgs: any) => {
+                                    ((...eventArgs) => {
+                                      generateStateOnChangeProp($state, [
+                                        "txtServiceCount",
+                                        __plasmic_idx_0,
+                                        "value"
+                                      ])(
+                                        (e => e.target?.value).apply(
+                                          null,
+                                          eventArgs
+                                        )
+                                      );
+                                    }).apply(null, eventArgs);
+                                    (async event => {
+                                      const $steps = {};
+
+                                      $steps["runCode"] = true
+                                        ? (() => {
+                                            const actionArgs = {
+                                              customFunction: async () => {
+                                                return (() => {
+                                                  return ($state.newInvoiceServices[
+                                                    currentIndex
+                                                  ].title = currentItem.count);
+                                                })();
+                                              }
+                                            };
+                                            return (({ customFunction }) => {
+                                              return customFunction();
+                                            })?.apply(null, [actionArgs]);
+                                          })()
+                                        : undefined;
+                                      if (
+                                        $steps["runCode"] != null &&
+                                        typeof $steps["runCode"] === "object" &&
+                                        typeof $steps["runCode"].then ===
+                                          "function"
+                                      ) {
+                                        $steps["runCode"] = await $steps[
+                                          "runCode"
+                                        ];
+                                      }
+                                    }).apply(null, eventArgs);
                                   },
                                   placeholder: "\u062a\u0639\u062f\u0627\u062f",
                                   value:
@@ -1399,17 +1463,49 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     "__wab_instance",
                                     sty.txtServicePrice
                                   ),
-                                  onChange: (...eventArgs) => {
-                                    generateStateOnChangeProp($state, [
-                                      "txtServicePrice",
-                                      __plasmic_idx_0,
-                                      "value"
-                                    ])(
-                                      (e => e.target?.value).apply(
-                                        null,
-                                        eventArgs
-                                      )
-                                    );
+                                  onChange: async (...eventArgs: any) => {
+                                    ((...eventArgs) => {
+                                      generateStateOnChangeProp($state, [
+                                        "txtServicePrice",
+                                        __plasmic_idx_0,
+                                        "value"
+                                      ])(
+                                        (e => e.target?.value).apply(
+                                          null,
+                                          eventArgs
+                                        )
+                                      );
+                                    }).apply(null, eventArgs);
+                                    (async event => {
+                                      const $steps = {};
+
+                                      $steps["runCode"] = true
+                                        ? (() => {
+                                            const actionArgs = {
+                                              customFunction: async () => {
+                                                return (() => {
+                                                  return ($state.newInvoiceServices[
+                                                    currentIndex
+                                                  ].title = currentItem.price);
+                                                })();
+                                              }
+                                            };
+                                            return (({ customFunction }) => {
+                                              return customFunction();
+                                            })?.apply(null, [actionArgs]);
+                                          })()
+                                        : undefined;
+                                      if (
+                                        $steps["runCode"] != null &&
+                                        typeof $steps["runCode"] === "object" &&
+                                        typeof $steps["runCode"].then ===
+                                          "function"
+                                      ) {
+                                        $steps["runCode"] = await $steps[
+                                          "runCode"
+                                        ];
+                                      }
+                                    }).apply(null, eventArgs);
                                   },
                                   placeholder: "\u0645\u0628\u0644\u063a",
                                   value:
@@ -1467,36 +1563,114 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 sty.freeBox__p1Amx
                               )}
                             >
-                              <Button2
-                                children2={"+"}
-                                className={classNames(
-                                  "__wab_instance",
-                                  sty.button__tPpLa
-                                )}
-                                onClick={async event => {
-                                  const $steps = {};
-
-                                  $steps["runCode"] = true
-                                    ? (() => {
-                                        const actionArgs = {
-                                          customFunction: async () => {
-                                            return undefined;
-                                          }
-                                        };
-                                        return (({ customFunction }) => {
-                                          return customFunction();
-                                        })?.apply(null, [actionArgs]);
-                                      })()
-                                    : undefined;
+                              {(() => {
+                                try {
+                                  return currentIndex == 0;
+                                } catch (e) {
                                   if (
-                                    $steps["runCode"] != null &&
-                                    typeof $steps["runCode"] === "object" &&
-                                    typeof $steps["runCode"].then === "function"
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
                                   ) {
-                                    $steps["runCode"] = await $steps["runCode"];
+                                    return true;
                                   }
-                                }}
-                              />
+                                  throw e;
+                                }
+                              })() ? (
+                                <Button2
+                                  children2={"+"}
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.button__tPpLa
+                                  )}
+                                  onClick={async event => {
+                                    const $steps = {};
+
+                                    $steps["runCode"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            customFunction: async () => {
+                                              return (() => {
+                                                return $state.newInvoiceServices.push(
+                                                  {
+                                                    title: "",
+                                                    count: 0,
+                                                    price: 0
+                                                  }
+                                                );
+                                              })();
+                                            }
+                                          };
+                                          return (({ customFunction }) => {
+                                            return customFunction();
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["runCode"] != null &&
+                                      typeof $steps["runCode"] === "object" &&
+                                      typeof $steps["runCode"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["runCode"] = await $steps[
+                                        "runCode"
+                                      ];
+                                    }
+                                  }}
+                                />
+                              ) : null}
+                              {(() => {
+                                try {
+                                  return currentIndex != 0;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return true;
+                                  }
+                                  throw e;
+                                }
+                              })() ? (
+                                <Button2
+                                  children2={"-"}
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.button__p0Ovn
+                                  )}
+                                  color={"red"}
+                                  onClick={async event => {
+                                    const $steps = {};
+
+                                    $steps["runCode"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            customFunction: async () => {
+                                              return $state.newInvoiceServices.splice(
+                                                currentIndex,
+                                                1
+                                              );
+                                            }
+                                          };
+                                          return (({ customFunction }) => {
+                                            return customFunction();
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["runCode"] != null &&
+                                      typeof $steps["runCode"] === "object" &&
+                                      typeof $steps["runCode"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["runCode"] = await $steps[
+                                        "runCode"
+                                      ];
+                                    }
+                                  }}
+                                />
+                              ) : null}
                             </div>
                           </div>
                         );
