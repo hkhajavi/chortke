@@ -1261,7 +1261,7 @@
     justify-content: center;
   }
 }
-.dialogNewInvoiceDetails:global(.__wab_instance):global(.__wab_instance) {
+.dialogInvoiceDetails:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;
 }
 .btnInvoiceInfo:global(.__wab_instance) {
@@ -2735,11 +2735,27 @@
   min-width: 0;
   padding: 8px;
 }
+.button__yoZze:global(.__wab_instance) {
+  max-width: 100%;
+}
+.svg__hPvdL {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.svg___0VSgW {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
 .button__iLIxh:global(.__wab_instance) {
   max-width: 100%;
   position: relative;
   left: auto;
   top: auto;
+  margin-right: 20px;
 }
 .svg__wlNXe {
   position: relative;

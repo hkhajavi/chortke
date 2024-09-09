@@ -113,7 +113,7 @@ export type PlasmicProductAdmin__OverridesType = {
   gridInvoice1?: Flex__<"div">;
   gridNoData?: Flex__<"div">;
   gridInvoice12?: Flex__<"div">;
-  dialogNewInvoiceDetails?: Flex__<typeof Dialog>;
+  dialogInvoiceDetails?: Flex__<typeof Dialog>;
   btnInvoiceInfo?: Flex__<typeof Button>;
   detailsDataApiRequest?: Flex__<typeof ApiRequest>;
   waitingIcon3?: Flex__<"svg">;
@@ -173,7 +173,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "dialogNewInvoiceDetails[].open",
+        path: "dialogInvoiceDetails[].open",
         type: "private",
         variableType: "boolean"
       },
@@ -2367,6 +2367,49 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         >
                                           <Button2
                                             children2={
+                                              "\u0628\u0627\u0632\u06af\u0634\u062a"
+                                            }
+                                            className={classNames(
+                                              "__wab_instance",
+                                              sty.button__yoZze
+                                            )}
+                                            onClick={async event => {
+                                              const $steps = {};
+
+                                              $steps["runCode"] = true
+                                                ? (() => {
+                                                    const actionArgs = {
+                                                      customFunction:
+                                                        async () => {
+                                                          return ($state.dialog[
+                                                            currentIndex
+                                                          ].open = false);
+                                                        }
+                                                    };
+                                                    return (({
+                                                      customFunction
+                                                    }) => {
+                                                      return customFunction();
+                                                    })?.apply(null, [
+                                                      actionArgs
+                                                    ]);
+                                                  })()
+                                                : undefined;
+                                              if (
+                                                $steps["runCode"] != null &&
+                                                typeof $steps["runCode"] ===
+                                                  "object" &&
+                                                typeof $steps["runCode"]
+                                                  .then === "function"
+                                              ) {
+                                                $steps["runCode"] =
+                                                  await $steps["runCode"];
+                                              }
+                                            }}
+                                          />
+
+                                          <Button2
+                                            children2={
                                               <div
                                                 className={classNames(
                                                   projectcss.all,
@@ -2383,6 +2426,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               "__wab_instance",
                                               sty.button__iLIxh
                                             )}
+                                            color={"red"}
                                             onClick={async event => {
                                               const $steps = {};
 
@@ -2717,15 +2761,15 @@ function PlasmicProductAdmin__RenderFunc(props: {
                         ),
                         className: classNames(
                           "__wab_instance",
-                          sty.dialogNewInvoiceDetails
+                          sty.dialogInvoiceDetails
                         ),
                         onOpenChange: generateStateOnChangeProp($state, [
-                          "dialogNewInvoiceDetails",
+                          "dialogInvoiceDetails",
                           __plasmic_idx_0,
                           "open"
                         ]),
                         open: generateStateValueProp($state, [
-                          "dialogNewInvoiceDetails",
+                          "dialogInvoiceDetails",
                           __plasmic_idx_0,
                           "open"
                         ]),
@@ -2786,7 +2830,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                         $state,
                         [
                           {
-                            name: "dialogNewInvoiceDetails[].open",
+                            name: "dialogInvoiceDetails[].open",
                             initFunc: ({ $props, $state, $queries }) =>
                               hasVariant(globalVariants, "screen", "mobileOnly")
                                 ? false
@@ -2797,10 +2841,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                       );
                       return (
                         <Dialog
-                          data-plasmic-name={"dialogNewInvoiceDetails"}
-                          data-plasmic-override={
-                            overrides.dialogNewInvoiceDetails
-                          }
+                          data-plasmic-name={"dialogInvoiceDetails"}
+                          data-plasmic-override={overrides.dialogInvoiceDetails}
                           {...child$Props}
                         />
                       );
@@ -3077,7 +3119,7 @@ const PlasmicDescendants = {
     "gridInvoice1",
     "gridNoData",
     "gridInvoice12",
-    "dialogNewInvoiceDetails",
+    "dialogInvoiceDetails",
     "btnInvoiceInfo",
     "detailsDataApiRequest",
     "waitingIcon3",
@@ -3100,7 +3142,7 @@ const PlasmicDescendants = {
     "gridInvoice1",
     "gridNoData",
     "gridInvoice12",
-    "dialogNewInvoiceDetails",
+    "dialogInvoiceDetails",
     "btnInvoiceInfo",
     "detailsDataApiRequest",
     "waitingIcon3",
@@ -3122,15 +3164,15 @@ const PlasmicDescendants = {
   gridNoData: ["gridNoData"],
   gridInvoice12: [
     "gridInvoice12",
-    "dialogNewInvoiceDetails",
+    "dialogInvoiceDetails",
     "btnInvoiceInfo",
     "detailsDataApiRequest",
     "waitingIcon3",
     "dialog",
     "txtCancelReason"
   ],
-  dialogNewInvoiceDetails: [
-    "dialogNewInvoiceDetails",
+  dialogInvoiceDetails: [
+    "dialogInvoiceDetails",
     "btnInvoiceInfo",
     "detailsDataApiRequest",
     "waitingIcon3",
@@ -3168,7 +3210,7 @@ type NodeDefaultElementType = {
   gridInvoice1: "div";
   gridNoData: "div";
   gridInvoice12: "div";
-  dialogNewInvoiceDetails: typeof Dialog;
+  dialogInvoiceDetails: typeof Dialog;
   btnInvoiceInfo: typeof Button;
   detailsDataApiRequest: typeof ApiRequest;
   waitingIcon3: "svg";
@@ -3251,7 +3293,7 @@ export const PlasmicProductAdmin = Object.assign(
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     gridNoData: makeNodeComponent("gridNoData"),
     gridInvoice12: makeNodeComponent("gridInvoice12"),
-    dialogNewInvoiceDetails: makeNodeComponent("dialogNewInvoiceDetails"),
+    dialogInvoiceDetails: makeNodeComponent("dialogInvoiceDetails"),
     btnInvoiceInfo: makeNodeComponent("btnInvoiceInfo"),
     detailsDataApiRequest: makeNodeComponent("detailsDataApiRequest"),
     waitingIcon3: makeNodeComponent("waitingIcon3"),
