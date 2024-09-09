@@ -433,7 +433,7 @@
   .cbProductlist:global(.__wab_instance) {
     align-self: center;
     height: 39px;
-    margin-top: 8px;
+    margin-top: 0px;
     flex-shrink: 0;
   }
 }
@@ -484,7 +484,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__xmf4E {
     grid-column-end: span 4;
-    margin-top: 5px;
+    margin-top: 0px;
     padding: 0px;
   }
 }
@@ -527,8 +527,22 @@
   border-radius: 10px;
   padding: 0px 8px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__otz {
+    padding-right: 0px;
+    padding-left: 0px;
+    grid-column-end: span 2;
+    margin-bottom: 7px;
+  }
+}
 .txtSearch:global(.__wab_instance) {
   max-width: 100%;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .txtSearch:global(.__wab_instance) {
+    height: 25px;
+    flex-shrink: 0;
+  }
 }
 .svg__g9Og4 {
   position: relative;
@@ -560,11 +574,17 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__syNqd {
-    padding: 0px;
+    margin-right: 5px;
+    padding: 0px 0px 0px 5px;
   }
 }
 .btnSearch:global(.__wab_instance) {
   max-width: 100%;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .btnSearch:global(.__wab_instance) {
+    margin-top: 0px;
+  }
 }
 .svg__m4Wnv {
   position: relative;
@@ -574,7 +594,6 @@
 }
 .text__yibz4 {
   font-family: var(--iran-sans-x);
-  font-size: var(--token-8bH1BcrDPs2U);
   font-weight: 700;
   font-style: normal;
   color: #ededec;
@@ -587,50 +606,22 @@
   text-decoration-line: none !important;
   text-overflow: clip !important;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__yibz4 {
+    font-size: var(--token-8bH1BcrDPs2U);
+  }
+}
 .svg__q9BGz {
   position: relative;
   object-fit: cover;
   width: auto;
   height: 1em;
 }
-.freeBox__dqrH {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  align-items: center;
-  justify-content: flex-start;
-  width: 100%;
-  max-width: 100%;
-  grid-column-end: span 2;
-  min-width: 0;
-  padding: 8px;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .freeBox__dqrH {
-    grid-column-end: span 6;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-}
-.waitingIcon4 {
-  object-fit: cover;
-  max-width: 100%;
-  position: relative;
-  left: auto;
-  top: auto;
-  z-index: 1;
-  right: auto;
-  width: 35px;
-  height: 23px;
-  flex-shrink: 0;
-  margin: 0px;
-}
 .freeBox__hccMy {
   display: flex;
   flex-direction: column;
   position: relative;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: center;
   width: 100%;
   height: auto;
@@ -643,11 +634,34 @@
   border-radius: 10px;
   padding: 0px 8px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__hccMy {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    grid-column-end: span 1;
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+}
 .dialogRegisterInvoice:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;
+  margin-bottom: 7px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .dialogRegisterInvoice:global(.__wab_instance):global(.__wab_instance) {
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
 }
 .button__eot80:global(.__wab_instance) {
   max-width: 100%;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .button__eot80:global(.__wab_instance) {
+    height: 10px;
+  }
 }
 .svg__qjhKu {
   position: relative;
@@ -683,6 +697,12 @@
   min-width: 0;
   padding: 0px 8px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__bqI2C {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}
 .text__rwjdb {
   position: relative;
   width: 100%;
@@ -690,6 +710,16 @@
   max-width: 100%;
   text-align: left;
   min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__rwjdb {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    font-size: 13px;
+    text-align: left;
+    min-width: 0;
+  }
 }
 .freeBox__w1Yt {
   display: flex;
@@ -741,6 +771,12 @@
   min-width: 0;
   padding: 0px 8px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__bs95I {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}
 .text__ihbA {
   position: relative;
   width: 100%;
@@ -748,6 +784,16 @@
   max-width: 100%;
   text-align: left;
   min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__ihbA {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    font-size: 13px;
+    text-align: left;
+    min-width: 0;
+  }
 }
 .freeBox__wcKg2 {
   display: flex;
@@ -1108,6 +1154,27 @@
   width: 25px;
   height: 20px;
   flex-shrink: 0;
+}
+.waitingIcon4 {
+  object-fit: cover;
+  max-width: 100%;
+  position: relative;
+  left: auto;
+  top: auto;
+  z-index: 1;
+  right: auto;
+  width: 35px;
+  height: 23px;
+  flex-shrink: 0;
+  margin: 0px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .waitingIcon4 {
+    left: auto;
+    top: auto;
+    right: auto;
+    display: block;
+  }
 }
 .gridInvoice1 {
   display: grid;

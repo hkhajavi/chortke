@@ -109,7 +109,6 @@ export type PlasmicProductAdmin__OverridesType = {
   cbProductlist?: Flex__<typeof Select>;
   txtSearch?: Flex__<typeof TextInput>;
   btnSearch?: Flex__<typeof Button>;
-  waitingIcon4?: Flex__<"svg">;
   dialogRegisterInvoice?: Flex__<typeof Dialog>;
   txtTitle?: Flex__<typeof TextInput>;
   txtDescription?: Flex__<typeof TextInput>;
@@ -118,6 +117,7 @@ export type PlasmicProductAdmin__OverridesType = {
   txtServicePrice?: Flex__<typeof TextInput>;
   txtDiscountPercent?: Flex__<typeof TextInput>;
   txtVatPercent?: Flex__<typeof TextInput>;
+  waitingIcon4?: Flex__<"svg">;
   gridInvoice1?: Flex__<"div">;
   gridNoData?: Flex__<"div">;
   gridInvoice12?: Flex__<"div">;
@@ -1065,922 +1065,1019 @@ function PlasmicProductAdmin__RenderFunc(props: {
                           $steps["hideWaiting"] = await $steps["hideWaiting"];
                         }
                       }}
-                    />
-                  </div>
-                </div>
-              </div>
-              {(
-                hasVariant(globalVariants, "screen", "mobileOnly")
-                  ? (() => {
-                      try {
-                        return $state.waiting;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return true;
-                        }
-                        throw e;
-                      }
-                    })()
-                  : (() => {
-                      try {
-                        return $state.waiting;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return true;
-                        }
-                        throw e;
-                      }
-                    })()
-              ) ? (
-                <div className={classNames(projectcss.all, sty.freeBox__dqrH)}>
-                  <Icon2Icon
-                    data-plasmic-name={"waitingIcon4"}
-                    data-plasmic-override={overrides.waitingIcon4}
-                    className={classNames(projectcss.all, sty.waitingIcon4)}
-                    role={"img"}
-                  />
-                </div>
-              ) : null}
-              <div className={classNames(projectcss.all, sty.freeBox__hccMy)}>
-                <Dialog
-                  data-plasmic-name={"dialogRegisterInvoice"}
-                  data-plasmic-override={overrides.dialogRegisterInvoice}
-                  body={
-                    <React.Fragment>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__ewCrk
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__bqI2C
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__rwjdb
-                            )}
-                          >
-                            {"\u0639\u0646\u0648\u0627\u0646:"}
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__w1Yt
-                          )}
-                        >
-                          <TextInput
-                            data-plasmic-name={"txtTitle"}
-                            data-plasmic-override={overrides.txtTitle}
-                            className={classNames(
-                              "__wab_instance",
-                              sty.txtTitle
-                            )}
-                            onChange={(...eventArgs) => {
-                              generateStateOnChangeProp($state, [
-                                "txtTitle",
-                                "value"
-                              ])((e => e.target?.value).apply(null, eventArgs));
-                            }}
-                            placeholder={
-                              "\u0639\u0646\u0648\u0627\u0646 \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628"
-                            }
-                            value={
-                              generateStateValueProp($state, [
-                                "txtTitle",
-                                "value"
-                              ]) ?? ""
-                            }
-                          />
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__v6W9I
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__bs95I
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__ihbA
-                            )}
-                          >
-                            {"\u062a\u0648\u0636\u06cc\u062d\u0627\u062a:"}
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__wcKg2
-                          )}
-                        >
-                          <TextInput
-                            data-plasmic-name={"txtDescription"}
-                            data-plasmic-override={overrides.txtDescription}
-                            className={classNames(
-                              "__wab_instance",
-                              sty.txtDescription
-                            )}
-                            onChange={(...eventArgs) => {
-                              generateStateOnChangeProp($state, [
-                                "txtDescription",
-                                "value"
-                              ])((e => e.target?.value).apply(null, eventArgs));
-                            }}
-                            placeholder={
-                              "\u062a\u0648\u0636\u06cc\u062d\u0627\u062a \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628"
-                            }
-                            value={
-                              generateStateValueProp($state, [
-                                "txtDescription",
-                                "value"
-                              ]) ?? ""
-                            }
-                          />
-                        </div>
-                      </div>
-                      {(_par =>
-                        !_par ? [] : Array.isArray(_par) ? _par : [_par])(
-                        (() => {
-                          try {
-                            return $state.newInvoiceServices;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                      ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                        const currentItem = __plasmic_item_0;
-                        const currentIndex = __plasmic_idx_0;
-                        return (
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__w1Z3N
-                            )}
-                            key={currentIndex}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__gaWqO
-                              )}
-                            >
-                              {(() => {
-                                const child$Props = {
-                                  className: classNames(
-                                    "__wab_instance",
-                                    sty.txtServiceName
-                                  ),
-                                  onChange: async (...eventArgs: any) => {
-                                    ((...eventArgs) => {
-                                      generateStateOnChangeProp($state, [
-                                        "txtServiceName",
-                                        __plasmic_idx_0,
-                                        "value"
-                                      ])(
-                                        (e => e.target?.value).apply(
-                                          null,
-                                          eventArgs
-                                        )
-                                      );
-                                    }).apply(null, eventArgs);
-                                    (async event => {
-                                      const $steps = {};
-
-                                      $steps["runCode"] = true
-                                        ? (() => {
-                                            const actionArgs = {
-                                              customFunction: async () => {
-                                                return (() => {
-                                                  return ($state.newInvoiceServices[
-                                                    currentIndex
-                                                  ].title = currentItem.title);
-                                                })();
-                                              }
-                                            };
-                                            return (({ customFunction }) => {
-                                              return customFunction();
-                                            })?.apply(null, [actionArgs]);
-                                          })()
-                                        : undefined;
-                                      if (
-                                        $steps["runCode"] != null &&
-                                        typeof $steps["runCode"] === "object" &&
-                                        typeof $steps["runCode"].then ===
-                                          "function"
-                                      ) {
-                                        $steps["runCode"] = await $steps[
-                                          "runCode"
-                                        ];
-                                      }
-                                    }).apply(null, eventArgs);
-                                  },
-                                  placeholder: "\u0639\u0646\u0648\u0627\u0646",
-                                  value:
-                                    generateStateValueProp($state, [
-                                      "txtServiceName",
-                                      __plasmic_idx_0,
-                                      "value"
-                                    ]) ?? ""
-                                };
-
-                                initializePlasmicStates(
-                                  $state,
-                                  [
-                                    {
-                                      name: "txtServiceName[].value",
-                                      initFunc: ({
-                                        $props,
-                                        $state,
-                                        $queries
-                                      }) =>
-                                        (() => {
-                                          try {
-                                            return $state.newInvoiceServices[
-                                              currentIndex
-                                            ].title;
-                                          } catch (e) {
-                                            if (
-                                              e instanceof TypeError ||
-                                              e?.plasmicType ===
-                                                "PlasmicUndefinedDataError"
-                                            ) {
-                                              return undefined;
-                                            }
-                                            throw e;
-                                          }
-                                        })()
-                                    }
-                                  ],
-                                  [__plasmic_idx_0]
-                                );
-                                return (
-                                  <TextInput
-                                    data-plasmic-name={"txtServiceName"}
-                                    data-plasmic-override={
-                                      overrides.txtServiceName
-                                    }
-                                    {...child$Props}
-                                  />
-                                );
-                              })()}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox___3Mpjk
-                              )}
-                            >
-                              {(() => {
-                                const child$Props = {
-                                  className: classNames(
-                                    "__wab_instance",
-                                    sty.txtServiceCount
-                                  ),
-                                  onChange: async (...eventArgs: any) => {
-                                    ((...eventArgs) => {
-                                      generateStateOnChangeProp($state, [
-                                        "txtServiceCount",
-                                        __plasmic_idx_0,
-                                        "value"
-                                      ])(
-                                        (e => e.target?.value).apply(
-                                          null,
-                                          eventArgs
-                                        )
-                                      );
-                                    }).apply(null, eventArgs);
-                                    (async event => {
-                                      const $steps = {};
-
-                                      $steps["runCode"] = true
-                                        ? (() => {
-                                            const actionArgs = {
-                                              customFunction: async () => {
-                                                return (() => {
-                                                  return ($state.newInvoiceServices[
-                                                    currentIndex
-                                                  ].title = currentItem.count);
-                                                })();
-                                              }
-                                            };
-                                            return (({ customFunction }) => {
-                                              return customFunction();
-                                            })?.apply(null, [actionArgs]);
-                                          })()
-                                        : undefined;
-                                      if (
-                                        $steps["runCode"] != null &&
-                                        typeof $steps["runCode"] === "object" &&
-                                        typeof $steps["runCode"].then ===
-                                          "function"
-                                      ) {
-                                        $steps["runCode"] = await $steps[
-                                          "runCode"
-                                        ];
-                                      }
-                                    }).apply(null, eventArgs);
-                                  },
-                                  placeholder: "\u062a\u0639\u062f\u0627\u062f",
-                                  value:
-                                    generateStateValueProp($state, [
-                                      "txtServiceCount",
-                                      __plasmic_idx_0,
-                                      "value"
-                                    ]) ?? ""
-                                };
-
-                                initializePlasmicStates(
-                                  $state,
-                                  [
-                                    {
-                                      name: "txtServiceCount[].value",
-                                      initFunc: ({
-                                        $props,
-                                        $state,
-                                        $queries
-                                      }) =>
-                                        (() => {
-                                          try {
-                                            return $state.newInvoiceServices[
-                                              currentIndex
-                                            ].count;
-                                          } catch (e) {
-                                            if (
-                                              e instanceof TypeError ||
-                                              e?.plasmicType ===
-                                                "PlasmicUndefinedDataError"
-                                            ) {
-                                              return undefined;
-                                            }
-                                            throw e;
-                                          }
-                                        })()
-                                    }
-                                  ],
-                                  [__plasmic_idx_0]
-                                );
-                                return (
-                                  <TextInput
-                                    data-plasmic-name={"txtServiceCount"}
-                                    data-plasmic-override={
-                                      overrides.txtServiceCount
-                                    }
-                                    {...child$Props}
-                                  />
-                                );
-                              })()}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__mmbX5
-                              )}
-                            >
-                              {(() => {
-                                const child$Props = {
-                                  className: classNames(
-                                    "__wab_instance",
-                                    sty.txtServicePrice
-                                  ),
-                                  onChange: async (...eventArgs: any) => {
-                                    ((...eventArgs) => {
-                                      generateStateOnChangeProp($state, [
-                                        "txtServicePrice",
-                                        __plasmic_idx_0,
-                                        "value"
-                                      ])(
-                                        (e => e.target?.value).apply(
-                                          null,
-                                          eventArgs
-                                        )
-                                      );
-                                    }).apply(null, eventArgs);
-                                    (async event => {
-                                      const $steps = {};
-
-                                      $steps["runCode"] = true
-                                        ? (() => {
-                                            const actionArgs = {
-                                              customFunction: async () => {
-                                                return (() => {
-                                                  return ($state.newInvoiceServices[
-                                                    currentIndex
-                                                  ].title = currentItem.price);
-                                                })();
-                                              }
-                                            };
-                                            return (({ customFunction }) => {
-                                              return customFunction();
-                                            })?.apply(null, [actionArgs]);
-                                          })()
-                                        : undefined;
-                                      if (
-                                        $steps["runCode"] != null &&
-                                        typeof $steps["runCode"] === "object" &&
-                                        typeof $steps["runCode"].then ===
-                                          "function"
-                                      ) {
-                                        $steps["runCode"] = await $steps[
-                                          "runCode"
-                                        ];
-                                      }
-                                    }).apply(null, eventArgs);
-                                  },
-                                  placeholder: "\u0645\u0628\u0644\u063a",
-                                  value:
-                                    generateStateValueProp($state, [
-                                      "txtServicePrice",
-                                      __plasmic_idx_0,
-                                      "value"
-                                    ]) ?? ""
-                                };
-
-                                initializePlasmicStates(
-                                  $state,
-                                  [
-                                    {
-                                      name: "txtServicePrice[].value",
-                                      initFunc: ({
-                                        $props,
-                                        $state,
-                                        $queries
-                                      }) =>
-                                        (() => {
-                                          try {
-                                            return $state.newInvoiceServices[
-                                              currentIndex
-                                            ].price;
-                                          } catch (e) {
-                                            if (
-                                              e instanceof TypeError ||
-                                              e?.plasmicType ===
-                                                "PlasmicUndefinedDataError"
-                                            ) {
-                                              return undefined;
-                                            }
-                                            throw e;
-                                          }
-                                        })()
-                                    }
-                                  ],
-                                  [__plasmic_idx_0]
-                                );
-                                return (
-                                  <TextInput
-                                    data-plasmic-name={"txtServicePrice"}
-                                    data-plasmic-override={
-                                      overrides.txtServicePrice
-                                    }
-                                    {...child$Props}
-                                  />
-                                );
-                              })()}
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__p1Amx
-                              )}
-                            >
-                              {(() => {
-                                try {
-                                  return currentIndex == 0;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return true;
-                                  }
-                                  throw e;
-                                }
-                              })() ? (
-                                <Button2
-                                  children2={"+"}
-                                  className={classNames(
-                                    "__wab_instance",
-                                    sty.button__tPpLa
-                                  )}
-                                  onClick={async event => {
-                                    const $steps = {};
-
-                                    $steps["runCode"] = true
-                                      ? (() => {
-                                          const actionArgs = {
-                                            customFunction: async () => {
-                                              return (() => {
-                                                return $state.newInvoiceServices.push(
-                                                  {
-                                                    title: "",
-                                                    count: 0,
-                                                    price: 0
-                                                  }
-                                                );
-                                              })();
-                                            }
-                                          };
-                                          return (({ customFunction }) => {
-                                            return customFunction();
-                                          })?.apply(null, [actionArgs]);
-                                        })()
-                                      : undefined;
-                                    if (
-                                      $steps["runCode"] != null &&
-                                      typeof $steps["runCode"] === "object" &&
-                                      typeof $steps["runCode"].then ===
-                                        "function"
-                                    ) {
-                                      $steps["runCode"] = await $steps[
-                                        "runCode"
-                                      ];
-                                    }
-                                  }}
-                                />
-                              ) : null}
-                              {(() => {
-                                try {
-                                  return currentIndex != 0;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return true;
-                                  }
-                                  throw e;
-                                }
-                              })() ? (
-                                <Button2
-                                  children2={"-"}
-                                  className={classNames(
-                                    "__wab_instance",
-                                    sty.button__p0Ovn
-                                  )}
-                                  color={"red"}
-                                  onClick={async event => {
-                                    const $steps = {};
-
-                                    $steps["runCode"] = true
-                                      ? (() => {
-                                          const actionArgs = {
-                                            customFunction: async () => {
-                                              return $state.newInvoiceServices.splice(
-                                                currentIndex,
-                                                1
-                                              );
-                                            }
-                                          };
-                                          return (({ customFunction }) => {
-                                            return customFunction();
-                                          })?.apply(null, [actionArgs]);
-                                        })()
-                                      : undefined;
-                                    if (
-                                      $steps["runCode"] != null &&
-                                      typeof $steps["runCode"] === "object" &&
-                                      typeof $steps["runCode"].then ===
-                                        "function"
-                                    ) {
-                                      $steps["runCode"] = await $steps[
-                                        "runCode"
-                                      ];
-                                    }
-                                  }}
-                                />
-                              ) : null}
-                            </div>
-                          </div>
-                        );
-                      })}
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__uuwFs
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__qurey
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__nwKng
-                            )}
-                          >
-                            {
-                              "\u062f\u0631\u0635\u062f \u062a\u062e\u0641\u06cc\u0641:"
-                            }
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox___53N0S
-                          )}
-                        >
-                          <TextInput
-                            data-plasmic-name={"txtDiscountPercent"}
-                            data-plasmic-override={overrides.txtDiscountPercent}
-                            className={classNames(
-                              "__wab_instance",
-                              sty.txtDiscountPercent
-                            )}
-                            onChange={(...eventArgs) => {
-                              generateStateOnChangeProp($state, [
-                                "txtDiscountPercent",
-                                "value"
-                              ])((e => e.target?.value).apply(null, eventArgs));
-                            }}
-                            placeholder={
-                              "\u062f\u0631\u0635\u062f \u062a\u062e\u0641\u06cc\u0641"
-                            }
-                            value={
-                              generateStateValueProp($state, [
-                                "txtDiscountPercent",
-                                "value"
-                              ]) ?? ""
-                            }
-                          />
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__xXy
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__v0Ln4
-                            )}
-                          >
-                            {
-                              "\u062f\u0631\u0635\u062f \u0645\u0627\u0644\u06cc\u0627\u062a:"
-                            }
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__cEgOi
-                          )}
-                        >
-                          <TextInput
-                            data-plasmic-name={"txtVatPercent"}
-                            data-plasmic-override={overrides.txtVatPercent}
-                            className={classNames(
-                              "__wab_instance",
-                              sty.txtVatPercent
-                            )}
-                            onChange={(...eventArgs) => {
-                              generateStateOnChangeProp($state, [
-                                "txtVatPercent",
-                                "value"
-                              ])((e => e.target?.value).apply(null, eventArgs));
-                            }}
-                            placeholder={
-                              "\u062f\u0631\u0635\u062f \u0645\u0627\u0644\u06cc\u0627\u062a"
-                            }
-                            value={
-                              generateStateValueProp($state, [
-                                "txtVatPercent",
-                                "value"
-                              ]) ?? ""
-                            }
-                          />
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__f5NDj
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__qmwyw
-                          )}
-                        >
-                          <Button2
-                            children2={"   \u062b\u0628\u062a   "}
-                            className={classNames(
-                              "__wab_instance",
-                              sty.button__qFkQy
-                            )}
-                            color={"green"}
-                            onClick={async event => {
-                              const $steps = {};
-
-                              $steps["showWaiting"] = true
-                                ? (() => {
-                                    const actionArgs = {
-                                      variable: {
-                                        objRoot: $state,
-                                        variablePath: ["waitingInvoice"]
-                                      },
-                                      operation: 0,
-                                      value: true
-                                    };
-                                    return (({
-                                      variable,
-                                      value,
-                                      startIndex,
-                                      deleteCount
-                                    }) => {
-                                      if (!variable) {
-                                        return;
-                                      }
-                                      const { objRoot, variablePath } =
-                                        variable;
-
-                                      $stateSet(objRoot, variablePath, value);
-                                      return value;
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                              if (
-                                $steps["showWaiting"] != null &&
-                                typeof $steps["showWaiting"] === "object" &&
-                                typeof $steps["showWaiting"].then === "function"
-                              ) {
-                                $steps["showWaiting"] = await $steps[
-                                  "showWaiting"
-                                ];
-                              }
-
-                              $steps["hideWaiting"] = true
-                                ? (() => {
-                                    const actionArgs = {
-                                      variable: {
-                                        objRoot: $state,
-                                        variablePath: ["waitingInvoice"]
-                                      },
-                                      operation: 0,
-                                      value: false
-                                    };
-                                    return (({
-                                      variable,
-                                      value,
-                                      startIndex,
-                                      deleteCount
-                                    }) => {
-                                      if (!variable) {
-                                        return;
-                                      }
-                                      const { objRoot, variablePath } =
-                                        variable;
-
-                                      $stateSet(objRoot, variablePath, value);
-                                      return value;
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                              if (
-                                $steps["hideWaiting"] != null &&
-                                typeof $steps["hideWaiting"] === "object" &&
-                                typeof $steps["hideWaiting"].then === "function"
-                              ) {
-                                $steps["hideWaiting"] = await $steps[
-                                  "hideWaiting"
-                                ];
-                              }
-                            }}
-                          />
-
-                          <Button2
-                            children2={"\u0628\u0627\u0632\u06af\u0634\u062a"}
-                            className={classNames(
-                              "__wab_instance",
-                              sty.button__mY1Qh
-                            )}
-                            onClick={async event => {
-                              const $steps = {};
-
-                              $steps["closeDialog"] = true
-                                ? (() => {
-                                    const actionArgs = {
-                                      customFunction: async () => {
-                                        return ($state.dialogRegisterInvoice.open =
-                                          false);
-                                      }
-                                    };
-                                    return (({ customFunction }) => {
-                                      return customFunction();
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                              if (
-                                $steps["closeDialog"] != null &&
-                                typeof $steps["closeDialog"] === "object" &&
-                                typeof $steps["closeDialog"].then === "function"
-                              ) {
-                                $steps["closeDialog"] = await $steps[
-                                  "closeDialog"
-                                ];
-                              }
-                            }}
-                          />
-                        </div>
-                      </div>
-                      {(() => {
-                        try {
-                          return $state.waitingInvoice;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })() ? (
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__nbDq3
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox___4Pjwq
-                            )}
-                          >
-                            <Icon2Icon
-                              className={classNames(
-                                projectcss.all,
-                                sty.svg__e0GMc
-                              )}
-                              role={"img"}
-                            />
-                          </div>
-                        </div>
-                      ) : null}
-                    </React.Fragment>
-                  }
-                  className={classNames(
-                    "__wab_instance",
-                    sty.dialogRegisterInvoice
-                  )}
-                  onOpenChange={generateStateOnChangeProp($state, [
-                    "dialogRegisterInvoice",
-                    "open"
-                  ])}
-                  open={generateStateValueProp($state, [
-                    "dialogRegisterInvoice",
-                    "open"
-                  ])}
-                  title={
-                    "\u062b\u0628\u062a \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628"
-                  }
-                  trigger={
-                    <Button2
-                      children2={"+"}
-                      className={classNames(
-                        "__wab_instance",
-                        sty.button__eot80
-                      )}
-                      color={"green"}
                       size={"compact"}
                     />
-                  }
-                />
+                  </div>
+                  {(() => {
+                    try {
+                      return !(
+                        $ctx.query.productid > 0 ||
+                        $state.cbProductlist.value > 0
+                      );
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__hccMy)}
+                    >
+                      <Dialog
+                        data-plasmic-name={"dialogRegisterInvoice"}
+                        data-plasmic-override={overrides.dialogRegisterInvoice}
+                        body={
+                          <React.Fragment>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__ewCrk
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__bqI2C
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__rwjdb
+                                  )}
+                                >
+                                  {"\u0639\u0646\u0648\u0627\u0646:"}
+                                </div>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__w1Yt
+                                )}
+                              >
+                                <TextInput
+                                  data-plasmic-name={"txtTitle"}
+                                  data-plasmic-override={overrides.txtTitle}
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.txtTitle
+                                  )}
+                                  onChange={(...eventArgs) => {
+                                    generateStateOnChangeProp($state, [
+                                      "txtTitle",
+                                      "value"
+                                    ])(
+                                      (e => e.target?.value).apply(
+                                        null,
+                                        eventArgs
+                                      )
+                                    );
+                                  }}
+                                  placeholder={
+                                    "\u0639\u0646\u0648\u0627\u0646 \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628"
+                                  }
+                                  value={
+                                    generateStateValueProp($state, [
+                                      "txtTitle",
+                                      "value"
+                                    ]) ?? ""
+                                  }
+                                />
+                              </div>
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__v6W9I
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__bs95I
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__ihbA
+                                  )}
+                                >
+                                  {
+                                    "\u062a\u0648\u0636\u06cc\u062d\u0627\u062a:"
+                                  }
+                                </div>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__wcKg2
+                                )}
+                              >
+                                <TextInput
+                                  data-plasmic-name={"txtDescription"}
+                                  data-plasmic-override={
+                                    overrides.txtDescription
+                                  }
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.txtDescription
+                                  )}
+                                  onChange={(...eventArgs) => {
+                                    generateStateOnChangeProp($state, [
+                                      "txtDescription",
+                                      "value"
+                                    ])(
+                                      (e => e.target?.value).apply(
+                                        null,
+                                        eventArgs
+                                      )
+                                    );
+                                  }}
+                                  placeholder={
+                                    "\u062a\u0648\u0636\u06cc\u062d\u0627\u062a \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628"
+                                  }
+                                  value={
+                                    generateStateValueProp($state, [
+                                      "txtDescription",
+                                      "value"
+                                    ]) ?? ""
+                                  }
+                                />
+                              </div>
+                            </div>
+                            {(_par =>
+                              !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                              (() => {
+                                try {
+                                  return $state.newInvoiceServices;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return [];
+                                  }
+                                  throw e;
+                                }
+                              })()
+                            ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                              const currentItem = __plasmic_item_0;
+                              const currentIndex = __plasmic_idx_0;
+                              return (
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__w1Z3N
+                                  )}
+                                  key={currentIndex}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__gaWqO
+                                    )}
+                                  >
+                                    {(() => {
+                                      const child$Props = {
+                                        className: classNames(
+                                          "__wab_instance",
+                                          sty.txtServiceName
+                                        ),
+                                        onChange: async (...eventArgs: any) => {
+                                          ((...eventArgs) => {
+                                            generateStateOnChangeProp($state, [
+                                              "txtServiceName",
+                                              __plasmic_idx_0,
+                                              "value"
+                                            ])(
+                                              (e => e.target?.value).apply(
+                                                null,
+                                                eventArgs
+                                              )
+                                            );
+                                          }).apply(null, eventArgs);
+                                          (async event => {
+                                            const $steps = {};
+
+                                            $steps["runCode"] = true
+                                              ? (() => {
+                                                  const actionArgs = {
+                                                    customFunction:
+                                                      async () => {
+                                                        return (() => {
+                                                          return ($state.newInvoiceServices[
+                                                            currentIndex
+                                                          ].title =
+                                                            currentItem.title);
+                                                        })();
+                                                      }
+                                                  };
+                                                  return (({
+                                                    customFunction
+                                                  }) => {
+                                                    return customFunction();
+                                                  })?.apply(null, [actionArgs]);
+                                                })()
+                                              : undefined;
+                                            if (
+                                              $steps["runCode"] != null &&
+                                              typeof $steps["runCode"] ===
+                                                "object" &&
+                                              typeof $steps["runCode"].then ===
+                                                "function"
+                                            ) {
+                                              $steps["runCode"] = await $steps[
+                                                "runCode"
+                                              ];
+                                            }
+                                          }).apply(null, eventArgs);
+                                        },
+                                        placeholder:
+                                          "\u0639\u0646\u0648\u0627\u0646",
+                                        value:
+                                          generateStateValueProp($state, [
+                                            "txtServiceName",
+                                            __plasmic_idx_0,
+                                            "value"
+                                          ]) ?? ""
+                                      };
+
+                                      initializePlasmicStates(
+                                        $state,
+                                        [
+                                          {
+                                            name: "txtServiceName[].value",
+                                            initFunc: ({
+                                              $props,
+                                              $state,
+                                              $queries
+                                            }) =>
+                                              (() => {
+                                                try {
+                                                  return $state
+                                                    .newInvoiceServices[
+                                                    currentIndex
+                                                  ].title;
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return undefined;
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()
+                                          }
+                                        ],
+                                        [__plasmic_idx_0]
+                                      );
+                                      return (
+                                        <TextInput
+                                          data-plasmic-name={"txtServiceName"}
+                                          data-plasmic-override={
+                                            overrides.txtServiceName
+                                          }
+                                          {...child$Props}
+                                        />
+                                      );
+                                    })()}
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox___3Mpjk
+                                    )}
+                                  >
+                                    {(() => {
+                                      const child$Props = {
+                                        className: classNames(
+                                          "__wab_instance",
+                                          sty.txtServiceCount
+                                        ),
+                                        onChange: async (...eventArgs: any) => {
+                                          ((...eventArgs) => {
+                                            generateStateOnChangeProp($state, [
+                                              "txtServiceCount",
+                                              __plasmic_idx_0,
+                                              "value"
+                                            ])(
+                                              (e => e.target?.value).apply(
+                                                null,
+                                                eventArgs
+                                              )
+                                            );
+                                          }).apply(null, eventArgs);
+                                          (async event => {
+                                            const $steps = {};
+
+                                            $steps["runCode"] = true
+                                              ? (() => {
+                                                  const actionArgs = {
+                                                    customFunction:
+                                                      async () => {
+                                                        return (() => {
+                                                          return ($state.newInvoiceServices[
+                                                            currentIndex
+                                                          ].title =
+                                                            currentItem.count);
+                                                        })();
+                                                      }
+                                                  };
+                                                  return (({
+                                                    customFunction
+                                                  }) => {
+                                                    return customFunction();
+                                                  })?.apply(null, [actionArgs]);
+                                                })()
+                                              : undefined;
+                                            if (
+                                              $steps["runCode"] != null &&
+                                              typeof $steps["runCode"] ===
+                                                "object" &&
+                                              typeof $steps["runCode"].then ===
+                                                "function"
+                                            ) {
+                                              $steps["runCode"] = await $steps[
+                                                "runCode"
+                                              ];
+                                            }
+                                          }).apply(null, eventArgs);
+                                        },
+                                        placeholder:
+                                          "\u062a\u0639\u062f\u0627\u062f",
+                                        value:
+                                          generateStateValueProp($state, [
+                                            "txtServiceCount",
+                                            __plasmic_idx_0,
+                                            "value"
+                                          ]) ?? ""
+                                      };
+
+                                      initializePlasmicStates(
+                                        $state,
+                                        [
+                                          {
+                                            name: "txtServiceCount[].value",
+                                            initFunc: ({
+                                              $props,
+                                              $state,
+                                              $queries
+                                            }) =>
+                                              (() => {
+                                                try {
+                                                  return $state
+                                                    .newInvoiceServices[
+                                                    currentIndex
+                                                  ].count;
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return undefined;
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()
+                                          }
+                                        ],
+                                        [__plasmic_idx_0]
+                                      );
+                                      return (
+                                        <TextInput
+                                          data-plasmic-name={"txtServiceCount"}
+                                          data-plasmic-override={
+                                            overrides.txtServiceCount
+                                          }
+                                          {...child$Props}
+                                        />
+                                      );
+                                    })()}
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__mmbX5
+                                    )}
+                                  >
+                                    {(() => {
+                                      const child$Props = {
+                                        className: classNames(
+                                          "__wab_instance",
+                                          sty.txtServicePrice
+                                        ),
+                                        onChange: async (...eventArgs: any) => {
+                                          ((...eventArgs) => {
+                                            generateStateOnChangeProp($state, [
+                                              "txtServicePrice",
+                                              __plasmic_idx_0,
+                                              "value"
+                                            ])(
+                                              (e => e.target?.value).apply(
+                                                null,
+                                                eventArgs
+                                              )
+                                            );
+                                          }).apply(null, eventArgs);
+                                          (async event => {
+                                            const $steps = {};
+
+                                            $steps["runCode"] = true
+                                              ? (() => {
+                                                  const actionArgs = {
+                                                    customFunction:
+                                                      async () => {
+                                                        return (() => {
+                                                          return ($state.newInvoiceServices[
+                                                            currentIndex
+                                                          ].title =
+                                                            currentItem.price);
+                                                        })();
+                                                      }
+                                                  };
+                                                  return (({
+                                                    customFunction
+                                                  }) => {
+                                                    return customFunction();
+                                                  })?.apply(null, [actionArgs]);
+                                                })()
+                                              : undefined;
+                                            if (
+                                              $steps["runCode"] != null &&
+                                              typeof $steps["runCode"] ===
+                                                "object" &&
+                                              typeof $steps["runCode"].then ===
+                                                "function"
+                                            ) {
+                                              $steps["runCode"] = await $steps[
+                                                "runCode"
+                                              ];
+                                            }
+                                          }).apply(null, eventArgs);
+                                        },
+                                        placeholder: "\u0645\u0628\u0644\u063a",
+                                        value:
+                                          generateStateValueProp($state, [
+                                            "txtServicePrice",
+                                            __plasmic_idx_0,
+                                            "value"
+                                          ]) ?? ""
+                                      };
+
+                                      initializePlasmicStates(
+                                        $state,
+                                        [
+                                          {
+                                            name: "txtServicePrice[].value",
+                                            initFunc: ({
+                                              $props,
+                                              $state,
+                                              $queries
+                                            }) =>
+                                              (() => {
+                                                try {
+                                                  return $state
+                                                    .newInvoiceServices[
+                                                    currentIndex
+                                                  ].price;
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return undefined;
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()
+                                          }
+                                        ],
+                                        [__plasmic_idx_0]
+                                      );
+                                      return (
+                                        <TextInput
+                                          data-plasmic-name={"txtServicePrice"}
+                                          data-plasmic-override={
+                                            overrides.txtServicePrice
+                                          }
+                                          {...child$Props}
+                                        />
+                                      );
+                                    })()}
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__p1Amx
+                                    )}
+                                  >
+                                    {(() => {
+                                      try {
+                                        return currentIndex == 0;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return true;
+                                        }
+                                        throw e;
+                                      }
+                                    })() ? (
+                                      <Button2
+                                        children2={"+"}
+                                        className={classNames(
+                                          "__wab_instance",
+                                          sty.button__tPpLa
+                                        )}
+                                        onClick={async event => {
+                                          const $steps = {};
+
+                                          $steps["runCode"] = true
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  customFunction: async () => {
+                                                    return (() => {
+                                                      return $state.newInvoiceServices.push(
+                                                        {
+                                                          title: "",
+                                                          count: 0,
+                                                          price: 0
+                                                        }
+                                                      );
+                                                    })();
+                                                  }
+                                                };
+                                                return (({
+                                                  customFunction
+                                                }) => {
+                                                  return customFunction();
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                          if (
+                                            $steps["runCode"] != null &&
+                                            typeof $steps["runCode"] ===
+                                              "object" &&
+                                            typeof $steps["runCode"].then ===
+                                              "function"
+                                          ) {
+                                            $steps["runCode"] = await $steps[
+                                              "runCode"
+                                            ];
+                                          }
+                                        }}
+                                      />
+                                    ) : null}
+                                    {(() => {
+                                      try {
+                                        return currentIndex != 0;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return true;
+                                        }
+                                        throw e;
+                                      }
+                                    })() ? (
+                                      <Button2
+                                        children2={"-"}
+                                        className={classNames(
+                                          "__wab_instance",
+                                          sty.button__p0Ovn
+                                        )}
+                                        color={"red"}
+                                        onClick={async event => {
+                                          const $steps = {};
+
+                                          $steps["runCode"] = true
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  customFunction: async () => {
+                                                    return $state.newInvoiceServices.splice(
+                                                      currentIndex,
+                                                      1
+                                                    );
+                                                  }
+                                                };
+                                                return (({
+                                                  customFunction
+                                                }) => {
+                                                  return customFunction();
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                          if (
+                                            $steps["runCode"] != null &&
+                                            typeof $steps["runCode"] ===
+                                              "object" &&
+                                            typeof $steps["runCode"].then ===
+                                              "function"
+                                          ) {
+                                            $steps["runCode"] = await $steps[
+                                              "runCode"
+                                            ];
+                                          }
+                                        }}
+                                      />
+                                    ) : null}
+                                  </div>
+                                </div>
+                              );
+                            })}
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__uuwFs
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__qurey
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__nwKng
+                                  )}
+                                >
+                                  {
+                                    "\u062f\u0631\u0635\u062f \u062a\u062e\u0641\u06cc\u0641:"
+                                  }
+                                </div>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox___53N0S
+                                )}
+                              >
+                                <TextInput
+                                  data-plasmic-name={"txtDiscountPercent"}
+                                  data-plasmic-override={
+                                    overrides.txtDiscountPercent
+                                  }
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.txtDiscountPercent
+                                  )}
+                                  onChange={(...eventArgs) => {
+                                    generateStateOnChangeProp($state, [
+                                      "txtDiscountPercent",
+                                      "value"
+                                    ])(
+                                      (e => e.target?.value).apply(
+                                        null,
+                                        eventArgs
+                                      )
+                                    );
+                                  }}
+                                  placeholder={
+                                    "\u062f\u0631\u0635\u062f \u062a\u062e\u0641\u06cc\u0641"
+                                  }
+                                  value={
+                                    generateStateValueProp($state, [
+                                      "txtDiscountPercent",
+                                      "value"
+                                    ]) ?? ""
+                                  }
+                                />
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__xXy
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__v0Ln4
+                                  )}
+                                >
+                                  {
+                                    "\u062f\u0631\u0635\u062f \u0645\u0627\u0644\u06cc\u0627\u062a:"
+                                  }
+                                </div>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__cEgOi
+                                )}
+                              >
+                                <TextInput
+                                  data-plasmic-name={"txtVatPercent"}
+                                  data-plasmic-override={
+                                    overrides.txtVatPercent
+                                  }
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.txtVatPercent
+                                  )}
+                                  onChange={(...eventArgs) => {
+                                    generateStateOnChangeProp($state, [
+                                      "txtVatPercent",
+                                      "value"
+                                    ])(
+                                      (e => e.target?.value).apply(
+                                        null,
+                                        eventArgs
+                                      )
+                                    );
+                                  }}
+                                  placeholder={
+                                    "\u062f\u0631\u0635\u062f \u0645\u0627\u0644\u06cc\u0627\u062a"
+                                  }
+                                  value={
+                                    generateStateValueProp($state, [
+                                      "txtVatPercent",
+                                      "value"
+                                    ]) ?? ""
+                                  }
+                                />
+                              </div>
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__f5NDj
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__qmwyw
+                                )}
+                              >
+                                <Button2
+                                  children2={"   \u062b\u0628\u062a   "}
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.button__qFkQy
+                                  )}
+                                  color={"green"}
+                                  onClick={async event => {
+                                    const $steps = {};
+
+                                    $steps["showWaiting"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: ["waitingInvoice"]
+                                            },
+                                            operation: 0,
+                                            value: true
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["showWaiting"] != null &&
+                                      typeof $steps["showWaiting"] ===
+                                        "object" &&
+                                      typeof $steps["showWaiting"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["showWaiting"] = await $steps[
+                                        "showWaiting"
+                                      ];
+                                    }
+
+                                    $steps["hideWaiting"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: ["waitingInvoice"]
+                                            },
+                                            operation: 0,
+                                            value: false
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["hideWaiting"] != null &&
+                                      typeof $steps["hideWaiting"] ===
+                                        "object" &&
+                                      typeof $steps["hideWaiting"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["hideWaiting"] = await $steps[
+                                        "hideWaiting"
+                                      ];
+                                    }
+                                  }}
+                                />
+
+                                <Button2
+                                  children2={
+                                    "\u0628\u0627\u0632\u06af\u0634\u062a"
+                                  }
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.button__mY1Qh
+                                  )}
+                                  onClick={async event => {
+                                    const $steps = {};
+
+                                    $steps["closeDialog"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            customFunction: async () => {
+                                              return ($state.dialogRegisterInvoice.open =
+                                                false);
+                                            }
+                                          };
+                                          return (({ customFunction }) => {
+                                            return customFunction();
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["closeDialog"] != null &&
+                                      typeof $steps["closeDialog"] ===
+                                        "object" &&
+                                      typeof $steps["closeDialog"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["closeDialog"] = await $steps[
+                                        "closeDialog"
+                                      ];
+                                    }
+                                  }}
+                                />
+                              </div>
+                            </div>
+                            {(() => {
+                              try {
+                                return $state.waitingInvoice;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })() ? (
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__nbDq3
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox___4Pjwq
+                                  )}
+                                >
+                                  <Icon2Icon
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.svg__e0GMc
+                                    )}
+                                    role={"img"}
+                                  />
+                                </div>
+                              </div>
+                            ) : null}
+                          </React.Fragment>
+                        }
+                        className={classNames(
+                          "__wab_instance",
+                          sty.dialogRegisterInvoice
+                        )}
+                        onOpenChange={generateStateOnChangeProp($state, [
+                          "dialogRegisterInvoice",
+                          "open"
+                        ])}
+                        open={generateStateValueProp($state, [
+                          "dialogRegisterInvoice",
+                          "open"
+                        ])}
+                        title={
+                          "\u062b\u0628\u062a \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628"
+                        }
+                        trigger={
+                          <Button2
+                            children2={"+"}
+                            className={classNames(
+                              "__wab_instance",
+                              sty.button__eot80
+                            )}
+                            color={"green"}
+                            size={
+                              hasVariant(globalVariants, "screen", "mobileOnly")
+                                ? undefined
+                                : "compact"
+                            }
+                          />
+                        }
+                      />
+
+                      {(
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? (() => {
+                              try {
+                                return $state.waiting;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })()
+                          : (() => {
+                              try {
+                                return $state.waiting;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })()
+                      ) ? (
+                        <Icon2Icon
+                          data-plasmic-name={"waitingIcon4"}
+                          data-plasmic-override={overrides.waitingIcon4}
+                          className={classNames(
+                            projectcss.all,
+                            sty.waitingIcon4
+                          )}
+                          role={"img"}
+                        />
+                      ) : null}
+                    </div>
+                  ) : null}
+                </div>
               </div>
             </div>
             <div
@@ -4118,7 +4215,6 @@ const PlasmicDescendants = {
     "cbProductlist",
     "txtSearch",
     "btnSearch",
-    "waitingIcon4",
     "dialogRegisterInvoice",
     "txtTitle",
     "txtDescription",
@@ -4127,6 +4223,7 @@ const PlasmicDescendants = {
     "txtServicePrice",
     "txtDiscountPercent",
     "txtVatPercent",
+    "waitingIcon4",
     "gridInvoice1",
     "gridNoData",
     "gridInvoice12",
@@ -4149,7 +4246,6 @@ const PlasmicDescendants = {
     "cbProductlist",
     "txtSearch",
     "btnSearch",
-    "waitingIcon4",
     "dialogRegisterInvoice",
     "txtTitle",
     "txtDescription",
@@ -4158,6 +4254,7 @@ const PlasmicDescendants = {
     "txtServicePrice",
     "txtDiscountPercent",
     "txtVatPercent",
+    "waitingIcon4",
     "gridInvoice1",
     "gridNoData",
     "gridInvoice12",
@@ -4173,7 +4270,6 @@ const PlasmicDescendants = {
     "cbProductlist",
     "txtSearch",
     "btnSearch",
-    "waitingIcon4",
     "dialogRegisterInvoice",
     "txtTitle",
     "txtDescription",
@@ -4181,12 +4277,12 @@ const PlasmicDescendants = {
     "txtServiceCount",
     "txtServicePrice",
     "txtDiscountPercent",
-    "txtVatPercent"
+    "txtVatPercent",
+    "waitingIcon4"
   ],
   cbProductlist: ["cbProductlist"],
   txtSearch: ["txtSearch"],
   btnSearch: ["btnSearch"],
-  waitingIcon4: ["waitingIcon4"],
   dialogRegisterInvoice: [
     "dialogRegisterInvoice",
     "txtTitle",
@@ -4204,6 +4300,7 @@ const PlasmicDescendants = {
   txtServicePrice: ["txtServicePrice"],
   txtDiscountPercent: ["txtDiscountPercent"],
   txtVatPercent: ["txtVatPercent"],
+  waitingIcon4: ["waitingIcon4"],
   gridInvoice1: ["gridInvoice1"],
   gridNoData: ["gridNoData"],
   gridInvoice12: [
@@ -4250,7 +4347,6 @@ type NodeDefaultElementType = {
   cbProductlist: typeof Select;
   txtSearch: typeof TextInput;
   btnSearch: typeof Button;
-  waitingIcon4: "svg";
   dialogRegisterInvoice: typeof Dialog;
   txtTitle: typeof TextInput;
   txtDescription: typeof TextInput;
@@ -4259,6 +4355,7 @@ type NodeDefaultElementType = {
   txtServicePrice: typeof TextInput;
   txtDiscountPercent: typeof TextInput;
   txtVatPercent: typeof TextInput;
+  waitingIcon4: "svg";
   gridInvoice1: "div";
   gridNoData: "div";
   gridInvoice12: "div";
@@ -4341,7 +4438,6 @@ export const PlasmicProductAdmin = Object.assign(
     cbProductlist: makeNodeComponent("cbProductlist"),
     txtSearch: makeNodeComponent("txtSearch"),
     btnSearch: makeNodeComponent("btnSearch"),
-    waitingIcon4: makeNodeComponent("waitingIcon4"),
     dialogRegisterInvoice: makeNodeComponent("dialogRegisterInvoice"),
     txtTitle: makeNodeComponent("txtTitle"),
     txtDescription: makeNodeComponent("txtDescription"),
@@ -4350,6 +4446,7 @@ export const PlasmicProductAdmin = Object.assign(
     txtServicePrice: makeNodeComponent("txtServicePrice"),
     txtDiscountPercent: makeNodeComponent("txtDiscountPercent"),
     txtVatPercent: makeNodeComponent("txtVatPercent"),
+    waitingIcon4: makeNodeComponent("waitingIcon4"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     gridNoData: makeNodeComponent("gridNoData"),
     gridInvoice12: makeNodeComponent("gridInvoice12"),
