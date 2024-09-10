@@ -1207,36 +1207,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         (async event => {
                                           const $steps = {};
 
-                                          $steps["setUserToNull"] = true
-                                            ? (() => {
-                                                const actionArgs = {
-                                                  customFunction: async () => {
-                                                    return (() => {
-                                                      $state.registerinvoiceUserid =
-                                                        "";
-                                                      return ($state.registerinvoiceUserinfo =
-                                                        "");
-                                                    })();
-                                                  }
-                                                };
-                                                return (({
-                                                  customFunction
-                                                }) => {
-                                                  return customFunction();
-                                                })?.apply(null, [actionArgs]);
-                                              })()
-                                            : undefined;
-                                          if (
-                                            $steps["setUserToNull"] != null &&
-                                            typeof $steps["setUserToNull"] ===
-                                              "object" &&
-                                            typeof $steps["setUserToNull"]
-                                              .then === "function"
-                                          ) {
-                                            $steps["setUserToNull"] =
-                                              await $steps["setUserToNull"];
-                                          }
-
                                           $steps["showWaiting"] =
                                             $state.txtUserMobile.value
                                               .length === 11 &&
@@ -1287,6 +1257,83 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                           ) {
                                             $steps["showWaiting"] =
                                               await $steps["showWaiting"];
+                                          }
+
+                                          $steps["setUserToNull"] = true
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  customFunction: async () => {
+                                                    return (() => {
+                                                      $state.registerinvoiceUserid =
+                                                        "";
+                                                      return ($state.registerinvoiceUserinfo =
+                                                        "");
+                                                    })();
+                                                  }
+                                                };
+                                                return (({
+                                                  customFunction
+                                                }) => {
+                                                  return customFunction();
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                          if (
+                                            $steps["setUserToNull"] != null &&
+                                            typeof $steps["setUserToNull"] ===
+                                              "object" &&
+                                            typeof $steps["setUserToNull"]
+                                              .then === "function"
+                                          ) {
+                                            $steps["setUserToNull"] =
+                                              await $steps["setUserToNull"];
+                                          }
+
+                                          $steps["final"] = true
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  variable: {
+                                                    objRoot: $state,
+                                                    variablePath: [
+                                                      "registerInvoiceFinal"
+                                                    ]
+                                                  },
+                                                  operation: 0,
+                                                  value: false
+                                                };
+                                                return (({
+                                                  variable,
+                                                  value,
+                                                  startIndex,
+                                                  deleteCount
+                                                }) => {
+                                                  if (!variable) {
+                                                    return;
+                                                  }
+                                                  const {
+                                                    objRoot,
+                                                    variablePath
+                                                  } = variable;
+
+                                                  $stateSet(
+                                                    objRoot,
+                                                    variablePath,
+                                                    value
+                                                  );
+                                                  return value;
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                          if (
+                                            $steps["final"] != null &&
+                                            typeof $steps["final"] ===
+                                              "object" &&
+                                            typeof $steps["final"].then ===
+                                              "function"
+                                          ) {
+                                            $steps["final"] = await $steps[
+                                              "final"
+                                            ];
                                           }
 
                                           $steps["getUserInfoApi"] =
@@ -2329,6 +2376,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                           "__wab_instance",
                                           sty.txtFinalPrice
                                         )}
+                                        isDisabled={true}
                                         onChange={(...eventArgs) => {
                                           generateStateOnChangeProp($state, [
                                             "txtFinalPrice",
@@ -2380,6 +2428,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                           "__wab_instance",
                                           sty.txtInvoiceId
                                         )}
+                                        isDisabled={true}
                                         onChange={(...eventArgs) => {
                                           generateStateOnChangeProp($state, [
                                             "txtInvoiceId",
@@ -2672,7 +2721,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         }
 
                                         $steps["alertSucess"] =
-                                          $steps.registerInvoiceApi.state == 200
+                                          $steps.registerInvoiceApi.status ==
+                                          200
                                             ? (() => {
                                                 const actionArgs = {
                                                   args: [
@@ -2741,20 +2791,33 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                         $steps.registerInvoiceApi.data.data.invoiceid;
                                                       $state.txtFinalPrice.value =
                                                         $steps.registerInvoiceApi.data.data.finalprice;
-                                                      $state.txtUserMobile.value =
-                                                        "";
                                                       $state.registerinvoiceUserid =
                                                         "";
+                                                      $state.txtUserMobile.value =
+                                                        "";
+                                                      $state.txtServiceCount[0].value = 0;
+                                                      $state.txtServiceName[0].value = 0;
+                                                      $state.txtServicePrice[0].value = 0;
                                                       $state.registerinvoiceUserinfo =
                                                         "";
-                                                      return ($state.newInvoiceServices =
+                                                      $state.txtRegisterInvoiceVatPercent.value = 0;
+                                                      $state.txtRegisterInvoiceTitle.value =
+                                                        "";
+                                                      $state.txtRegisterInvoiceDiscountPercent.value = 0;
+                                                      $state.txtRegisterinvoiceDescription.value =
+                                                        "";
+                                                      $state.waitingInvoice =
+                                                        false;
+                                                      $state.newInvoiceServices =
                                                         [
                                                           {
-                                                            title: "",
+                                                            name: "",
                                                             count: 0,
                                                             price: 0
                                                           }
-                                                        ]);
+                                                        ];
+                                                      return ($state.servicesToRegister =
+                                                        []);
                                                     })();
                                                   }
                                                 };
@@ -2928,143 +2991,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 onClick={async event => {
                                   const $steps = {};
 
-                                  $steps["newServices"] = true
-                                    ? (() => {
-                                        const actionArgs = {
-                                          variable: {
-                                            objRoot: $state,
-                                            variablePath: ["newInvoiceServices"]
-                                          },
-                                          operation: 0,
-                                          value: [
-                                            {
-                                              name: "",
-                                              count: 0,
-                                              price: 0
-                                            }
-                                          ]
-                                        };
-                                        return (({
-                                          variable,
-                                          value,
-                                          startIndex,
-                                          deleteCount
-                                        }) => {
-                                          if (!variable) {
-                                            return;
-                                          }
-                                          const { objRoot, variablePath } =
-                                            variable;
-
-                                          $stateSet(
-                                            objRoot,
-                                            variablePath,
-                                            value
-                                          );
-                                          return value;
-                                        })?.apply(null, [actionArgs]);
-                                      })()
-                                    : undefined;
-                                  if (
-                                    $steps["newServices"] != null &&
-                                    typeof $steps["newServices"] === "object" &&
-                                    typeof $steps["newServices"].then ===
-                                      "function"
-                                  ) {
-                                    $steps["newServices"] = await $steps[
-                                      "newServices"
-                                    ];
-                                  }
-
-                                  $steps["clearUser"] = true
-                                    ? (() => {
-                                        const actionArgs = {
-                                          variable: {
-                                            objRoot: $state,
-                                            variablePath: [
-                                              "registerinvoiceUserid"
-                                            ]
-                                          },
-                                          operation: 0,
-                                          value: ""
-                                        };
-                                        return (({
-                                          variable,
-                                          value,
-                                          startIndex,
-                                          deleteCount
-                                        }) => {
-                                          if (!variable) {
-                                            return;
-                                          }
-                                          const { objRoot, variablePath } =
-                                            variable;
-
-                                          $stateSet(
-                                            objRoot,
-                                            variablePath,
-                                            value
-                                          );
-                                          return value;
-                                        })?.apply(null, [actionArgs]);
-                                      })()
-                                    : undefined;
-                                  if (
-                                    $steps["clearUser"] != null &&
-                                    typeof $steps["clearUser"] === "object" &&
-                                    typeof $steps["clearUser"].then ===
-                                      "function"
-                                  ) {
-                                    $steps["clearUser"] = await $steps[
-                                      "clearUser"
-                                    ];
-                                  }
-
-                                  $steps["clearUserInfo"] = true
-                                    ? (() => {
-                                        const actionArgs = {
-                                          variable: {
-                                            objRoot: $state,
-                                            variablePath: [
-                                              "registerinvoiceUserinfo"
-                                            ]
-                                          },
-                                          operation: 0,
-                                          value: ""
-                                        };
-                                        return (({
-                                          variable,
-                                          value,
-                                          startIndex,
-                                          deleteCount
-                                        }) => {
-                                          if (!variable) {
-                                            return;
-                                          }
-                                          const { objRoot, variablePath } =
-                                            variable;
-
-                                          $stateSet(
-                                            objRoot,
-                                            variablePath,
-                                            value
-                                          );
-                                          return value;
-                                        })?.apply(null, [actionArgs]);
-                                      })()
-                                    : undefined;
-                                  if (
-                                    $steps["clearUserInfo"] != null &&
-                                    typeof $steps["clearUserInfo"] ===
-                                      "object" &&
-                                    typeof $steps["clearUserInfo"].then ===
-                                      "function"
-                                  ) {
-                                    $steps["clearUserInfo"] = await $steps[
-                                      "clearUserInfo"
-                                    ];
-                                  }
-
                                   $steps["cleaRAll"] = true
                                     ? (() => {
                                         const actionArgs = {
@@ -3076,14 +3002,25 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               $state.txtServiceCount[0].value = 0;
                                               $state.txtServiceName[0].value = 0;
                                               $state.txtServicePrice[0].value = 0;
+                                              $state.registerinvoiceUserinfo =
+                                                "";
+                                              $state.registerinvoiceUserid = "";
                                               $state.txtRegisterInvoiceVatPercent.value = 0;
                                               $state.txtRegisterInvoiceTitle.value =
                                                 "";
                                               $state.txtRegisterInvoiceDiscountPercent.value = 0;
                                               $state.txtRegisterinvoiceDescription.value =
                                                 "";
-                                              return ($state.waitingInvoice =
-                                                false);
+                                              $state.waitingInvoice = false;
+                                              $state.newInvoiceServices = [
+                                                {
+                                                  name: "",
+                                                  count: 0,
+                                                  price: 0
+                                                }
+                                              ];
+                                              return ($state.servicesToRegister =
+                                                []);
                                             })();
                                           }
                                         };
