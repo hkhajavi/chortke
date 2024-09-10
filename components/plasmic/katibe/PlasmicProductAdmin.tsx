@@ -110,13 +110,17 @@ export type PlasmicProductAdmin__OverridesType = {
   txtSearch?: Flex__<typeof TextInput>;
   btnSearch?: Flex__<typeof Button>;
   dialogRegisterInvoice?: Flex__<typeof Dialog>;
-  txtTitle?: Flex__<typeof TextInput>;
-  txtDescription?: Flex__<typeof TextInput>;
+  txtUserMobile?: Flex__<typeof TextInput>;
+  waitingIcon5?: Flex__<"svg">;
+  txtRegisterInvoiceTitle?: Flex__<typeof TextInput>;
+  txtRegisterinvoiceDescription?: Flex__<typeof TextInput>;
   txtServiceName?: Flex__<typeof TextInput>;
   txtServiceCount?: Flex__<typeof TextInput>;
   txtServicePrice?: Flex__<typeof TextInput>;
-  txtDiscountPercent?: Flex__<typeof TextInput>;
-  txtVatPercent?: Flex__<typeof TextInput>;
+  txtRegisterInvoiceDiscountPercent?: Flex__<typeof TextInput>;
+  txtRegisterInvoiceVatPercent?: Flex__<typeof TextInput>;
+  txtFinalPrice?: Flex__<typeof TextInput>;
+  txtInvoiceId?: Flex__<typeof TextInput>;
   waitingIcon4?: Flex__<"svg">;
   gridInvoice1?: Flex__<"div">;
   gridNoData?: Flex__<"div">;
@@ -335,25 +339,25 @@ function PlasmicProductAdmin__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       },
       {
-        path: "txtTitle.value",
+        path: "txtUserMobile.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "txtDescription.value",
+        path: "txtRegisterinvoiceDescription.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "txtDiscountPercent.value",
+        path: "txtRegisterInvoiceDiscountPercent.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => "0"
       },
       {
-        path: "txtVatPercent.value",
+        path: "txtRegisterInvoiceVatPercent.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => "0"
@@ -383,6 +387,48 @@ function PlasmicProductAdmin__RenderFunc(props: {
       },
       {
         path: "waitingInvoice",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "txtRegisterInvoiceTitle.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "waitingUser",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "registerinvoiceUserid",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "registerinvoiceUserinfo",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "txtFinalPrice.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "0"
+      },
+      {
+        path: "txtInvoiceId.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "0"
+      },
+      {
+        path: "registerInvoiceFinal",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
@@ -1122,7 +1168,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         sty.text__rwjdb
                                       )}
                                     >
-                                      {"\u0639\u0646\u0648\u0627\u0646:"}
+                                      {"\u06a9\u0627\u0631\u0628\u0631:"}
                                     </div>
                                   </div>
                                   <div
@@ -1132,15 +1178,368 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     )}
                                   >
                                     <TextInput
-                                      data-plasmic-name={"txtTitle"}
-                                      data-plasmic-override={overrides.txtTitle}
+                                      data-plasmic-name={"txtUserMobile"}
+                                      data-plasmic-override={
+                                        overrides.txtUserMobile
+                                      }
                                       className={classNames(
                                         "__wab_instance",
-                                        sty.txtTitle
+                                        sty.txtUserMobile
+                                      )}
+                                      onChange={async (...eventArgs: any) => {
+                                        ((...eventArgs) => {
+                                          generateStateOnChangeProp($state, [
+                                            "txtUserMobile",
+                                            "value"
+                                          ])(
+                                            (e => e.target?.value).apply(
+                                              null,
+                                              eventArgs
+                                            )
+                                          );
+                                        }).apply(null, eventArgs);
+                                        (async event => {
+                                          const $steps = {};
+
+                                          $steps["setUserToNull"] = true
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  customFunction: async () => {
+                                                    return (() => {
+                                                      $state.registerinvoiceUserid =
+                                                        "";
+                                                      return ($state.registerinvoiceUserinfo =
+                                                        "");
+                                                    })();
+                                                  }
+                                                };
+                                                return (({
+                                                  customFunction
+                                                }) => {
+                                                  return customFunction();
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                          if (
+                                            $steps["setUserToNull"] != null &&
+                                            typeof $steps["setUserToNull"] ===
+                                              "object" &&
+                                            typeof $steps["setUserToNull"]
+                                              .then === "function"
+                                          ) {
+                                            $steps["setUserToNull"] =
+                                              await $steps["setUserToNull"];
+                                          }
+
+                                          $steps["showWaiting"] =
+                                            $state.txtUserMobile.value
+                                              .length === 11 &&
+                                            $state.txtUserMobile.value.substring(
+                                              0,
+                                              2
+                                            ) == "09"
+                                              ? (() => {
+                                                  const actionArgs = {
+                                                    variable: {
+                                                      objRoot: $state,
+                                                      variablePath: [
+                                                        "waitingUser"
+                                                      ]
+                                                    },
+                                                    operation: 0,
+                                                    value: true
+                                                  };
+                                                  return (({
+                                                    variable,
+                                                    value,
+                                                    startIndex,
+                                                    deleteCount
+                                                  }) => {
+                                                    if (!variable) {
+                                                      return;
+                                                    }
+                                                    const {
+                                                      objRoot,
+                                                      variablePath
+                                                    } = variable;
+
+                                                    $stateSet(
+                                                      objRoot,
+                                                      variablePath,
+                                                      value
+                                                    );
+                                                    return value;
+                                                  })?.apply(null, [actionArgs]);
+                                                })()
+                                              : undefined;
+                                          if (
+                                            $steps["showWaiting"] != null &&
+                                            typeof $steps["showWaiting"] ===
+                                              "object" &&
+                                            typeof $steps["showWaiting"]
+                                              .then === "function"
+                                          ) {
+                                            $steps["showWaiting"] =
+                                              await $steps["showWaiting"];
+                                          }
+
+                                          $steps["getUserInfoApi"] =
+                                            $state.txtUserMobile.value
+                                              .length === 11 &&
+                                            $state.txtUserMobile.value.substring(
+                                              0,
+                                              2
+                                            ) == "09"
+                                              ? (() => {
+                                                  const actionArgs = {
+                                                    args: [
+                                                      undefined,
+                                                      (() => {
+                                                        try {
+                                                          return (
+                                                            "https://apigw.paziresh24.com/transaction/v1/userByMobile?mobile=" +
+                                                            $state.txtUserMobile
+                                                              .value
+                                                          );
+                                                        } catch (e) {
+                                                          if (
+                                                            e instanceof
+                                                              TypeError ||
+                                                            e?.plasmicType ===
+                                                              "PlasmicUndefinedDataError"
+                                                          ) {
+                                                            return "https://apigw.paziresh24.com/transaction/v1/userByMobile?mobile=";
+                                                          }
+                                                          throw e;
+                                                        }
+                                                      })()
+                                                    ]
+                                                  };
+                                                  return $globalActions[
+                                                    "Fragment.apiRequest"
+                                                  ]?.apply(null, [
+                                                    ...actionArgs.args
+                                                  ]);
+                                                })()
+                                              : undefined;
+                                          if (
+                                            $steps["getUserInfoApi"] != null &&
+                                            typeof $steps["getUserInfoApi"] ===
+                                              "object" &&
+                                            typeof $steps["getUserInfoApi"]
+                                              .then === "function"
+                                          ) {
+                                            $steps["getUserInfoApi"] =
+                                              await $steps["getUserInfoApi"];
+                                          }
+
+                                          $steps["updateUserByApi"] =
+                                            $state.txtUserMobile.value
+                                              .length === 11 &&
+                                            $state.txtUserMobile.value.substring(
+                                              0,
+                                              2
+                                            ) == "09" &&
+                                            $steps.getUserInfoApi.status == 200
+                                              ? (() => {
+                                                  const actionArgs = {
+                                                    customFunction:
+                                                      async () => {
+                                                        return (() => {
+                                                          $state.registerinvoiceUserinfo =
+                                                            (($state.registerinvoiceUserinfo =
+                                                              $steps.getUserInfoApi.data.data.isDoctor)
+                                                              ? "پزشک"
+                                                              : "") +
+                                                            " " +
+                                                            $steps
+                                                              .getUserInfoApi
+                                                              .data.data.name +
+                                                            " " +
+                                                            $steps
+                                                              .getUserInfoApi
+                                                              .data.data.family;
+                                                          return ($state.registerinvoiceUserid =
+                                                            $steps.getUserInfoApi.data.data.id);
+                                                        })();
+                                                      }
+                                                  };
+                                                  return (({
+                                                    customFunction
+                                                  }) => {
+                                                    return customFunction();
+                                                  })?.apply(null, [actionArgs]);
+                                                })()
+                                              : undefined;
+                                          if (
+                                            $steps["updateUserByApi"] != null &&
+                                            typeof $steps["updateUserByApi"] ===
+                                              "object" &&
+                                            typeof $steps["updateUserByApi"]
+                                              .then === "function"
+                                          ) {
+                                            $steps["updateUserByApi"] =
+                                              await $steps["updateUserByApi"];
+                                          }
+
+                                          $steps["hideWaiting"] = true
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  variable: {
+                                                    objRoot: $state,
+                                                    variablePath: [
+                                                      "waitingUser"
+                                                    ]
+                                                  },
+                                                  operation: 0,
+                                                  value: false
+                                                };
+                                                return (({
+                                                  variable,
+                                                  value,
+                                                  startIndex,
+                                                  deleteCount
+                                                }) => {
+                                                  if (!variable) {
+                                                    return;
+                                                  }
+                                                  const {
+                                                    objRoot,
+                                                    variablePath
+                                                  } = variable;
+
+                                                  $stateSet(
+                                                    objRoot,
+                                                    variablePath,
+                                                    value
+                                                  );
+                                                  return value;
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                          if (
+                                            $steps["hideWaiting"] != null &&
+                                            typeof $steps["hideWaiting"] ===
+                                              "object" &&
+                                            typeof $steps["hideWaiting"]
+                                              .then === "function"
+                                          ) {
+                                            $steps["hideWaiting"] =
+                                              await $steps["hideWaiting"];
+                                          }
+                                        }).apply(null, eventArgs);
+                                      }}
+                                      placeholder={
+                                        "\u0634\u0645\u0627\u0631\u0647 \u0645\u0648\u0628\u0627\u06cc\u0644"
+                                      }
+                                      value={
+                                        generateStateValueProp($state, [
+                                          "txtUserMobile",
+                                          "value"
+                                        ]) ?? ""
+                                      }
+                                    />
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox___4Qi9P
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__l07Ry
+                                      )}
+                                    >
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return $state.registerinvoiceUserinfo;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "...";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
+                                    </div>
+                                    {(() => {
+                                      try {
+                                        return $state.waitingUser;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return true;
+                                        }
+                                        throw e;
+                                      }
+                                    })() ? (
+                                      <Icon2Icon
+                                        data-plasmic-name={"waitingIcon5"}
+                                        data-plasmic-override={
+                                          overrides.waitingIcon5
+                                        }
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.waitingIcon5
+                                        )}
+                                        role={"img"}
+                                      />
+                                    ) : null}
+                                  </div>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__uSZyf
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox___9Pnhw
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__i7EXj
+                                      )}
+                                    >
+                                      {"\u0639\u0646\u0648\u0627\u0646:"}
+                                    </div>
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__z7J6N
+                                    )}
+                                  >
+                                    <TextInput
+                                      data-plasmic-name={
+                                        "txtRegisterInvoiceTitle"
+                                      }
+                                      data-plasmic-override={
+                                        overrides.txtRegisterInvoiceTitle
+                                      }
+                                      className={classNames(
+                                        "__wab_instance",
+                                        sty.txtRegisterInvoiceTitle
                                       )}
                                       onChange={(...eventArgs) => {
                                         generateStateOnChangeProp($state, [
-                                          "txtTitle",
+                                          "txtRegisterInvoiceTitle",
                                           "value"
                                         ])(
                                           (e => e.target?.value).apply(
@@ -1154,7 +1553,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       }
                                       value={
                                         generateStateValueProp($state, [
-                                          "txtTitle",
+                                          "txtRegisterInvoiceTitle",
                                           "value"
                                         ]) ?? ""
                                       }
@@ -1192,17 +1591,19 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     )}
                                   >
                                     <TextInput
-                                      data-plasmic-name={"txtDescription"}
+                                      data-plasmic-name={
+                                        "txtRegisterinvoiceDescription"
+                                      }
                                       data-plasmic-override={
-                                        overrides.txtDescription
+                                        overrides.txtRegisterinvoiceDescription
                                       }
                                       className={classNames(
                                         "__wab_instance",
-                                        sty.txtDescription
+                                        sty.txtRegisterinvoiceDescription
                                       )}
                                       onChange={(...eventArgs) => {
                                         generateStateOnChangeProp($state, [
-                                          "txtDescription",
+                                          "txtRegisterinvoiceDescription",
                                           "value"
                                         ])(
                                           (e => e.target?.value).apply(
@@ -1216,7 +1617,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       }
                                       value={
                                         generateStateValueProp($state, [
-                                          "txtDescription",
+                                          "txtRegisterinvoiceDescription",
                                           "value"
                                         ]) ?? ""
                                       }
@@ -1779,17 +2180,19 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     )}
                                   >
                                     <TextInput
-                                      data-plasmic-name={"txtDiscountPercent"}
+                                      data-plasmic-name={
+                                        "txtRegisterInvoiceDiscountPercent"
+                                      }
                                       data-plasmic-override={
-                                        overrides.txtDiscountPercent
+                                        overrides.txtRegisterInvoiceDiscountPercent
                                       }
                                       className={classNames(
                                         "__wab_instance",
-                                        sty.txtDiscountPercent
+                                        sty.txtRegisterInvoiceDiscountPercent
                                       )}
                                       onChange={(...eventArgs) => {
                                         generateStateOnChangeProp($state, [
-                                          "txtDiscountPercent",
+                                          "txtRegisterInvoiceDiscountPercent",
                                           "value"
                                         ])(
                                           (e => e.target?.value).apply(
@@ -1803,7 +2206,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       }
                                       value={
                                         generateStateValueProp($state, [
-                                          "txtDiscountPercent",
+                                          "txtRegisterInvoiceDiscountPercent",
                                           "value"
                                         ]) ?? ""
                                       }
@@ -1834,17 +2237,19 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     )}
                                   >
                                     <TextInput
-                                      data-plasmic-name={"txtVatPercent"}
+                                      data-plasmic-name={
+                                        "txtRegisterInvoiceVatPercent"
+                                      }
                                       data-plasmic-override={
-                                        overrides.txtVatPercent
+                                        overrides.txtRegisterInvoiceVatPercent
                                       }
                                       className={classNames(
                                         "__wab_instance",
-                                        sty.txtVatPercent
+                                        sty.txtRegisterInvoiceVatPercent
                                       )}
                                       onChange={(...eventArgs) => {
                                         generateStateOnChangeProp($state, [
-                                          "txtVatPercent",
+                                          "txtRegisterInvoiceVatPercent",
                                           "value"
                                         ])(
                                           (e => e.target?.value).apply(
@@ -1858,13 +2263,141 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       }
                                       value={
                                         generateStateValueProp($state, [
-                                          "txtVatPercent",
+                                          "txtRegisterInvoiceVatPercent",
                                           "value"
                                         ]) ?? ""
                                       }
                                     />
                                   </div>
                                 </div>
+                                {(() => {
+                                  try {
+                                    return $state.registerInvoiceFinal;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return true;
+                                    }
+                                    throw e;
+                                  }
+                                })() ? (
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__yfYeC
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__mPhZw
+                                      )}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text___3DYpB
+                                        )}
+                                      >
+                                        {
+                                          "\u0645\u0644\u0628\u063a \u0646\u0647\u0627\u06cc\u06cc:"
+                                        }
+                                      </div>
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__qVmFf
+                                      )}
+                                    >
+                                      <TextInput
+                                        data-plasmic-name={"txtFinalPrice"}
+                                        data-plasmic-override={
+                                          overrides.txtFinalPrice
+                                        }
+                                        className={classNames(
+                                          "__wab_instance",
+                                          sty.txtFinalPrice
+                                        )}
+                                        onChange={(...eventArgs) => {
+                                          generateStateOnChangeProp($state, [
+                                            "txtFinalPrice",
+                                            "value"
+                                          ])(
+                                            (e => e.target?.value).apply(
+                                              null,
+                                              eventArgs
+                                            )
+                                          );
+                                        }}
+                                        placeholder={``}
+                                        value={
+                                          generateStateValueProp($state, [
+                                            "txtFinalPrice",
+                                            "value"
+                                          ]) ?? ""
+                                        }
+                                      />
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__fLbhq
+                                      )}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text__kkABy
+                                        )}
+                                      >
+                                        {"\u0634\u0646\u0627\u0633\u0647:"}
+                                      </div>
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__mj4Wv
+                                      )}
+                                    >
+                                      <TextInput
+                                        data-plasmic-name={"txtInvoiceId"}
+                                        data-plasmic-override={
+                                          overrides.txtInvoiceId
+                                        }
+                                        className={classNames(
+                                          "__wab_instance",
+                                          sty.txtInvoiceId
+                                        )}
+                                        onChange={(...eventArgs) => {
+                                          generateStateOnChangeProp($state, [
+                                            "txtInvoiceId",
+                                            "value"
+                                          ])(
+                                            (e => e.target?.value).apply(
+                                              null,
+                                              eventArgs
+                                            )
+                                          );
+                                        }}
+                                        placeholder={
+                                          "\u062f\u0631\u0635\u062f \u0645\u0627\u0644\u06cc\u0627\u062a"
+                                        }
+                                        value={
+                                          generateStateValueProp($state, [
+                                            "txtInvoiceId",
+                                            "value"
+                                          ]) ?? ""
+                                        }
+                                      />
+                                    </div>
+                                  </div>
+                                ) : null}
                                 <div
                                   className={classNames(
                                     projectcss.all,
@@ -1931,6 +2464,204 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         ) {
                                           $steps["showWaiting"] = await $steps[
                                             "showWaiting"
+                                          ];
+                                        }
+
+                                        $steps["errUser"] =
+                                          $state.registerinvoiceUserid.length ==
+                                          0
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  args: [
+                                                    "error",
+                                                    "\u0628\u0627 \u0648\u0627\u0631\u062f \u06a9\u0631\u062f\u0646 \u0634\u0645\u0627\u0631\u0647 \u0645\u0648\u0628\u0627\u06cc\u0644\u060c \u06a9\u0627\u0631\u0628\u0631 \u0645\u0648\u0631\u062f \u0646\u0634\u0631 \u0631\u0627 \u062c\u0633\u062a \u0648 \u062c\u0648 \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                                                  ]
+                                                };
+                                                return $globalActions[
+                                                  "Fragment.showToast"
+                                                ]?.apply(null, [
+                                                  ...actionArgs.args
+                                                ]);
+                                              })()
+                                            : undefined;
+                                        if (
+                                          $steps["errUser"] != null &&
+                                          typeof $steps["errUser"] ===
+                                            "object" &&
+                                          typeof $steps["errUser"].then ===
+                                            "function"
+                                        ) {
+                                          $steps["errUser"] = await $steps[
+                                            "errUser"
+                                          ];
+                                        }
+
+                                        $steps["registerInvoiceApi"] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                args: [
+                                                  "POST",
+                                                  "https://apigw.paziresh24.com/transaction/v1/admininvoice",
+                                                  undefined,
+                                                  (() => {
+                                                    try {
+                                                      return {
+                                                        userid:
+                                                          $state.registerinvoiceUserid,
+                                                        title:
+                                                          $state
+                                                            .txtRegisterInvoiceTitle
+                                                            .value,
+                                                        type: "sale",
+                                                        description:
+                                                          $state
+                                                            .txtRegisterinvoiceDescription
+                                                            .value,
+                                                        discountpercent:
+                                                          parseInt(
+                                                            $state
+                                                              .txtRegisterInvoiceDiscountPercent
+                                                              .value
+                                                          ),
+                                                        vatpercent: parseInt(
+                                                          $state
+                                                            .txtRegisterInvoiceVatPercent
+                                                            .value
+                                                        ),
+                                                        services:
+                                                          $state.newInvoiceServices,
+                                                        productid: parseInt(
+                                                          $ctx.query.productid >
+                                                            0
+                                                            ? $ctx.query
+                                                                .productid
+                                                            : $state
+                                                                .cbProductlist
+                                                                .value
+                                                        )
+                                                      };
+                                                    } catch (e) {
+                                                      if (
+                                                        e instanceof
+                                                          TypeError ||
+                                                        e?.plasmicType ===
+                                                          "PlasmicUndefinedDataError"
+                                                      ) {
+                                                        return undefined;
+                                                      }
+                                                      throw e;
+                                                    }
+                                                  })()
+                                                ]
+                                              };
+                                              return $globalActions[
+                                                "Fragment.apiRequest"
+                                              ]?.apply(null, [
+                                                ...actionArgs.args
+                                              ]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["registerInvoiceApi"] !=
+                                            null &&
+                                          typeof $steps[
+                                            "registerInvoiceApi"
+                                          ] === "object" &&
+                                          typeof $steps["registerInvoiceApi"]
+                                            .then === "function"
+                                        ) {
+                                          $steps["registerInvoiceApi"] =
+                                            await $steps["registerInvoiceApi"];
+                                        }
+
+                                        $steps["alertSucess"] =
+                                          $steps.registerInvoiceApi.state == 200
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  args: [
+                                                    undefined,
+                                                    "\u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u062b\u0628\u062a \u06af\u0631\u062f\u06cc\u062f"
+                                                  ]
+                                                };
+                                                return $globalActions[
+                                                  "Fragment.showToast"
+                                                ]?.apply(null, [
+                                                  ...actionArgs.args
+                                                ]);
+                                              })()
+                                            : undefined;
+                                        if (
+                                          $steps["alertSucess"] != null &&
+                                          typeof $steps["alertSucess"] ===
+                                            "object" &&
+                                          typeof $steps["alertSucess"].then ===
+                                            "function"
+                                        ) {
+                                          $steps["alertSucess"] = await $steps[
+                                            "alertSucess"
+                                          ];
+                                        }
+
+                                        $steps["alertError"] =
+                                          $steps.registerInvoiceApi.status !=
+                                          200
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  args: [
+                                                    "error",
+                                                    "\u062e\u0637\u0627 \u062f\u0631 \u062b\u0628\u062a \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628. \u0644\u0637\u0641\u0627 \u0645\u0642\u0627\u062f\u06cc\u0631 \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0631\u0627 \u0628\u0631\u0631\u0633\u06cc \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                                                  ]
+                                                };
+                                                return $globalActions[
+                                                  "Fragment.showToast"
+                                                ]?.apply(null, [
+                                                  ...actionArgs.args
+                                                ]);
+                                              })()
+                                            : undefined;
+                                        if (
+                                          $steps["alertError"] != null &&
+                                          typeof $steps["alertError"] ===
+                                            "object" &&
+                                          typeof $steps["alertError"].then ===
+                                            "function"
+                                        ) {
+                                          $steps["alertError"] = await $steps[
+                                            "alertError"
+                                          ];
+                                        }
+
+                                        $steps["final"] =
+                                          $steps.registerInvoiceApi.status ==
+                                          200
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  customFunction: async () => {
+                                                    return (() => {
+                                                      $state.registerInvoiceFinal =
+                                                        true;
+                                                      $state.txtInvoiceId.value =
+                                                        $steps.registerInvoiceApi.data.data.invoiceid;
+                                                      return ($state.txtFinalPrice.value =
+                                                        $steps.registerInvoiceApi.data.data.finalprice);
+                                                    })();
+                                                  }
+                                                };
+                                                return (({
+                                                  customFunction
+                                                }) => {
+                                                  return customFunction();
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                        if (
+                                          $steps["final"] != null &&
+                                          typeof $steps["final"] === "object" &&
+                                          typeof $steps["final"].then ===
+                                            "function"
+                                        ) {
+                                          $steps["final"] = await $steps[
+                                            "final"
                                           ];
                                         }
 
@@ -4300,13 +5031,17 @@ const PlasmicDescendants = {
     "txtSearch",
     "btnSearch",
     "dialogRegisterInvoice",
-    "txtTitle",
-    "txtDescription",
+    "txtUserMobile",
+    "waitingIcon5",
+    "txtRegisterInvoiceTitle",
+    "txtRegisterinvoiceDescription",
     "txtServiceName",
     "txtServiceCount",
     "txtServicePrice",
-    "txtDiscountPercent",
-    "txtVatPercent",
+    "txtRegisterInvoiceDiscountPercent",
+    "txtRegisterInvoiceVatPercent",
+    "txtFinalPrice",
+    "txtInvoiceId",
     "waitingIcon4",
     "gridInvoice1",
     "gridNoData",
@@ -4331,13 +5066,17 @@ const PlasmicDescendants = {
     "txtSearch",
     "btnSearch",
     "dialogRegisterInvoice",
-    "txtTitle",
-    "txtDescription",
+    "txtUserMobile",
+    "waitingIcon5",
+    "txtRegisterInvoiceTitle",
+    "txtRegisterinvoiceDescription",
     "txtServiceName",
     "txtServiceCount",
     "txtServicePrice",
-    "txtDiscountPercent",
-    "txtVatPercent",
+    "txtRegisterInvoiceDiscountPercent",
+    "txtRegisterInvoiceVatPercent",
+    "txtFinalPrice",
+    "txtInvoiceId",
     "waitingIcon4",
     "gridInvoice1",
     "gridNoData",
@@ -4355,13 +5094,17 @@ const PlasmicDescendants = {
     "txtSearch",
     "btnSearch",
     "dialogRegisterInvoice",
-    "txtTitle",
-    "txtDescription",
+    "txtUserMobile",
+    "waitingIcon5",
+    "txtRegisterInvoiceTitle",
+    "txtRegisterinvoiceDescription",
     "txtServiceName",
     "txtServiceCount",
     "txtServicePrice",
-    "txtDiscountPercent",
-    "txtVatPercent",
+    "txtRegisterInvoiceDiscountPercent",
+    "txtRegisterInvoiceVatPercent",
+    "txtFinalPrice",
+    "txtInvoiceId",
     "waitingIcon4"
   ],
   cbProductlist: ["cbProductlist"],
@@ -4369,21 +5112,29 @@ const PlasmicDescendants = {
   btnSearch: ["btnSearch"],
   dialogRegisterInvoice: [
     "dialogRegisterInvoice",
-    "txtTitle",
-    "txtDescription",
+    "txtUserMobile",
+    "waitingIcon5",
+    "txtRegisterInvoiceTitle",
+    "txtRegisterinvoiceDescription",
     "txtServiceName",
     "txtServiceCount",
     "txtServicePrice",
-    "txtDiscountPercent",
-    "txtVatPercent"
+    "txtRegisterInvoiceDiscountPercent",
+    "txtRegisterInvoiceVatPercent",
+    "txtFinalPrice",
+    "txtInvoiceId"
   ],
-  txtTitle: ["txtTitle"],
-  txtDescription: ["txtDescription"],
+  txtUserMobile: ["txtUserMobile"],
+  waitingIcon5: ["waitingIcon5"],
+  txtRegisterInvoiceTitle: ["txtRegisterInvoiceTitle"],
+  txtRegisterinvoiceDescription: ["txtRegisterinvoiceDescription"],
   txtServiceName: ["txtServiceName"],
   txtServiceCount: ["txtServiceCount"],
   txtServicePrice: ["txtServicePrice"],
-  txtDiscountPercent: ["txtDiscountPercent"],
-  txtVatPercent: ["txtVatPercent"],
+  txtRegisterInvoiceDiscountPercent: ["txtRegisterInvoiceDiscountPercent"],
+  txtRegisterInvoiceVatPercent: ["txtRegisterInvoiceVatPercent"],
+  txtFinalPrice: ["txtFinalPrice"],
+  txtInvoiceId: ["txtInvoiceId"],
   waitingIcon4: ["waitingIcon4"],
   gridInvoice1: ["gridInvoice1"],
   gridNoData: ["gridNoData"],
@@ -4432,13 +5183,17 @@ type NodeDefaultElementType = {
   txtSearch: typeof TextInput;
   btnSearch: typeof Button;
   dialogRegisterInvoice: typeof Dialog;
-  txtTitle: typeof TextInput;
-  txtDescription: typeof TextInput;
+  txtUserMobile: typeof TextInput;
+  waitingIcon5: "svg";
+  txtRegisterInvoiceTitle: typeof TextInput;
+  txtRegisterinvoiceDescription: typeof TextInput;
   txtServiceName: typeof TextInput;
   txtServiceCount: typeof TextInput;
   txtServicePrice: typeof TextInput;
-  txtDiscountPercent: typeof TextInput;
-  txtVatPercent: typeof TextInput;
+  txtRegisterInvoiceDiscountPercent: typeof TextInput;
+  txtRegisterInvoiceVatPercent: typeof TextInput;
+  txtFinalPrice: typeof TextInput;
+  txtInvoiceId: typeof TextInput;
   waitingIcon4: "svg";
   gridInvoice1: "div";
   gridNoData: "div";
@@ -4523,13 +5278,23 @@ export const PlasmicProductAdmin = Object.assign(
     txtSearch: makeNodeComponent("txtSearch"),
     btnSearch: makeNodeComponent("btnSearch"),
     dialogRegisterInvoice: makeNodeComponent("dialogRegisterInvoice"),
-    txtTitle: makeNodeComponent("txtTitle"),
-    txtDescription: makeNodeComponent("txtDescription"),
+    txtUserMobile: makeNodeComponent("txtUserMobile"),
+    waitingIcon5: makeNodeComponent("waitingIcon5"),
+    txtRegisterInvoiceTitle: makeNodeComponent("txtRegisterInvoiceTitle"),
+    txtRegisterinvoiceDescription: makeNodeComponent(
+      "txtRegisterinvoiceDescription"
+    ),
     txtServiceName: makeNodeComponent("txtServiceName"),
     txtServiceCount: makeNodeComponent("txtServiceCount"),
     txtServicePrice: makeNodeComponent("txtServicePrice"),
-    txtDiscountPercent: makeNodeComponent("txtDiscountPercent"),
-    txtVatPercent: makeNodeComponent("txtVatPercent"),
+    txtRegisterInvoiceDiscountPercent: makeNodeComponent(
+      "txtRegisterInvoiceDiscountPercent"
+    ),
+    txtRegisterInvoiceVatPercent: makeNodeComponent(
+      "txtRegisterInvoiceVatPercent"
+    ),
+    txtFinalPrice: makeNodeComponent("txtFinalPrice"),
+    txtInvoiceId: makeNodeComponent("txtInvoiceId"),
     waitingIcon4: makeNodeComponent("waitingIcon4"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     gridNoData: makeNodeComponent("gridNoData"),
