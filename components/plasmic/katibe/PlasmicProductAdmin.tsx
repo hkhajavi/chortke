@@ -382,7 +382,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
         type: "private",
         variableType: "array",
         initFunc: ({ $props, $state, $queries, $ctx }) => [
-          { title: "", count: 0, price: 0 }
+          { name: "", count: 0, price: 0 }
         ]
       },
       {
@@ -1753,7 +1753,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                       return $state
                                                         .newInvoiceServices[
                                                         currentIndex
-                                                      ].title;
+                                                      ].name;
                                                     } catch (e) {
                                                       if (
                                                         e instanceof
@@ -2560,7 +2560,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                     return ($state.servicesToRegister =
                                                       $state.txtServiceName.map(
                                                         (name, index) => ({
-                                                          title: name.value,
+                                                          name: name.value,
                                                           count:
                                                             $state
                                                               .txtServiceCount[
@@ -2915,7 +2915,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               "open"
                             ])}
                             title={
-                              "\u062b\u0628\u062a \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628"
+                              "\u062b\u0628\u062a \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628 \u0641\u0631\u0648\u0634"
                             }
                             trigger={
                               <Button2
@@ -2925,6 +2925,178 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   sty.button__eot80
                                 )}
                                 color={"green"}
+                                onClick={async event => {
+                                  const $steps = {};
+
+                                  $steps["newServices"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: ["newInvoiceServices"]
+                                          },
+                                          operation: 0,
+                                          value: [
+                                            {
+                                              name: "",
+                                              count: 0,
+                                              price: 0
+                                            }
+                                          ]
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["newServices"] != null &&
+                                    typeof $steps["newServices"] === "object" &&
+                                    typeof $steps["newServices"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["newServices"] = await $steps[
+                                      "newServices"
+                                    ];
+                                  }
+
+                                  $steps["clearUser"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: [
+                                              "registerinvoiceUserid"
+                                            ]
+                                          },
+                                          operation: 0,
+                                          value: ""
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["clearUser"] != null &&
+                                    typeof $steps["clearUser"] === "object" &&
+                                    typeof $steps["clearUser"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["clearUser"] = await $steps[
+                                      "clearUser"
+                                    ];
+                                  }
+
+                                  $steps["clearUserInfo"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: [
+                                              "registerinvoiceUserinfo"
+                                            ]
+                                          },
+                                          operation: 0,
+                                          value: ""
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["clearUserInfo"] != null &&
+                                    typeof $steps["clearUserInfo"] ===
+                                      "object" &&
+                                    typeof $steps["clearUserInfo"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["clearUserInfo"] = await $steps[
+                                      "clearUserInfo"
+                                    ];
+                                  }
+
+                                  $steps["cleaRAll"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          customFunction: async () => {
+                                            return (() => {
+                                              $state.registerInvoiceFinal =
+                                                false;
+                                              $state.txtRegisterInvoiceVatPercent = 0;
+                                              $state.txtRegisterInvoiceTitle =
+                                                "";
+                                              $state.txtRegisterInvoiceDiscountPercent = 0;
+                                              return ($state.txtRegisterinvoiceDescription =
+                                                "");
+                                            })();
+                                          }
+                                        };
+                                        return (({ customFunction }) => {
+                                          return customFunction();
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["cleaRAll"] != null &&
+                                    typeof $steps["cleaRAll"] === "object" &&
+                                    typeof $steps["cleaRAll"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["cleaRAll"] = await $steps[
+                                      "cleaRAll"
+                                    ];
+                                  }
+                                }}
                                 size={
                                   hasVariant(
                                     globalVariants,
