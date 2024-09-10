@@ -3072,12 +3072,18 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                             return (() => {
                                               $state.registerInvoiceFinal =
                                                 false;
-                                              $state.txtRegisterInvoiceVatPercent = 0;
-                                              $state.txtRegisterInvoiceTitle =
+                                              $state.txtUserMobile.value = "";
+                                              $state.txtServiceCount[0].value = 0;
+                                              $state.txtServiceName[0].value = 0;
+                                              $state.txtServicePrice[0].value = 0;
+                                              $state.txtRegisterInvoiceVatPercent.value = 0;
+                                              $state.txtRegisterInvoiceTitle.value =
                                                 "";
-                                              $state.txtRegisterInvoiceDiscountPercent = 0;
-                                              return ($state.txtRegisterinvoiceDescription =
-                                                "");
+                                              $state.txtRegisterInvoiceDiscountPercent.value = 0;
+                                              $state.txtRegisterinvoiceDescription.value =
+                                                "";
+                                              return ($state.waitingInvoice =
+                                                false);
                                             })();
                                           }
                                         };
