@@ -432,6 +432,12 @@ function PlasmicProductAdmin__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "servicesToRegister",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => []
       }
     ],
     [$props, $ctx, $refs]
@@ -2420,6 +2426,56 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       onClick={async event => {
                                         const $steps = {};
 
+                                        $steps["clearRegisterServices"] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                variable: {
+                                                  objRoot: $state,
+                                                  variablePath: [
+                                                    "servicesToRegister"
+                                                  ]
+                                                },
+                                                operation: 0,
+                                                value: []
+                                              };
+                                              return (({
+                                                variable,
+                                                value,
+                                                startIndex,
+                                                deleteCount
+                                              }) => {
+                                                if (!variable) {
+                                                  return;
+                                                }
+                                                const {
+                                                  objRoot,
+                                                  variablePath
+                                                } = variable;
+
+                                                $stateSet(
+                                                  objRoot,
+                                                  variablePath,
+                                                  value
+                                                );
+                                                return value;
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["clearRegisterServices"] !=
+                                            null &&
+                                          typeof $steps[
+                                            "clearRegisterServices"
+                                          ] === "object" &&
+                                          typeof $steps["clearRegisterServices"]
+                                            .then === "function"
+                                        ) {
+                                          $steps["clearRegisterServices"] =
+                                            await $steps[
+                                              "clearRegisterServices"
+                                            ];
+                                        }
+
                                         $steps["showWaiting"] = true
                                           ? (() => {
                                               const actionArgs = {
@@ -2474,7 +2530,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                 const actionArgs = {
                                                   args: [
                                                     "error",
-                                                    "\u0628\u0627 \u0648\u0627\u0631\u062f \u06a9\u0631\u062f\u0646 \u0634\u0645\u0627\u0631\u0647 \u0645\u0648\u0628\u0627\u06cc\u0644\u060c \u06a9\u0627\u0631\u0628\u0631 \u0645\u0648\u0631\u062f \u0646\u0634\u0631 \u0631\u0627 \u062c\u0633\u062a \u0648 \u062c\u0648 \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                                                    "\u0628\u0627 \u0648\u0627\u0631\u062f \u06a9\u0631\u062f\u0646 \u0634\u0645\u0627\u0631\u0647 \u0645\u0648\u0628\u0627\u06cc\u0644\u060c \u06a9\u0627\u0631\u0628\u0631 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u062c\u0633\u062a \u0648 \u062c\u0648 \u0646\u0645\u0627\u06cc\u06cc\u062f"
                                                   ]
                                                 };
                                                 return $globalActions[
@@ -2493,6 +2549,47 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         ) {
                                           $steps["errUser"] = await $steps[
                                             "errUser"
+                                          ];
+                                        }
+
+                                        $steps["newServices"] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                customFunction: async () => {
+                                                  return (() => {
+                                                    return ($state.servicesToRegister =
+                                                      $state.txtServiceName.map(
+                                                        (name, index) => ({
+                                                          title: name.value,
+                                                          count:
+                                                            $state
+                                                              .txtServiceCount[
+                                                              index
+                                                            ].value,
+                                                          price:
+                                                            $state
+                                                              .txtServicePrice[
+                                                              index
+                                                            ].value
+                                                        })
+                                                      ));
+                                                  })();
+                                                }
+                                              };
+                                              return (({ customFunction }) => {
+                                                return customFunction();
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["newServices"] != null &&
+                                          typeof $steps["newServices"] ===
+                                            "object" &&
+                                          typeof $steps["newServices"].then ===
+                                            "function"
+                                        ) {
+                                          $steps["newServices"] = await $steps[
+                                            "newServices"
                                           ];
                                         }
 
@@ -2529,7 +2626,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                             .value
                                                         ),
                                                         services:
-                                                          $state.newInvoiceServices,
+                                                          $state.servicesToRegister,
                                                         productid: parseInt(
                                                           $ctx.query.productid >
                                                             0
@@ -2642,8 +2739,22 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                         true;
                                                       $state.txtInvoiceId.value =
                                                         $steps.registerInvoiceApi.data.data.invoiceid;
-                                                      return ($state.txtFinalPrice.value =
-                                                        $steps.registerInvoiceApi.data.data.finalprice);
+                                                      $state.txtFinalPrice.value =
+                                                        $steps.registerInvoiceApi.data.data.finalprice;
+                                                      $state.txtUserMobile.value =
+                                                        "";
+                                                      $state.registerinvoiceUserid =
+                                                        "";
+                                                      $state.registerinvoiceUserinfo =
+                                                        "";
+                                                      return ($state.newInvoiceServices =
+                                                        [
+                                                          {
+                                                            title: "",
+                                                            count: 0,
+                                                            price: 0
+                                                          }
+                                                        ]);
                                                     })();
                                                   }
                                                 };
