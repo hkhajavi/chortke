@@ -2812,8 +2812,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                         [
                                                           {
                                                             name: "",
-                                                            count: 0,
-                                                            price: 0
+                                                            count: "",
+                                                            price: ""
                                                           }
                                                         ];
                                                       return ($state.servicesToRegister =
@@ -3015,8 +3015,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               $state.newInvoiceServices = [
                                                 {
                                                   name: "",
-                                                  count: 0,
-                                                  price: 0
+                                                  count: "",
+                                                  price: ""
                                                 }
                                               ];
                                               return ($state.servicesToRegister =
