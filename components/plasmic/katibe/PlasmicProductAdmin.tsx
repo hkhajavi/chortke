@@ -901,7 +901,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                         ])((e => e.target?.value).apply(null, eventArgs));
                       }}
                       placeholder={
-                        "\u062c\u0633\u062a\u200c \u0648 \u062c\u0648: \u06a9\u062f \u06a9\u0627\u0631\u0628\u0631\u060c \u0639\u0646\u0648\u0627\u0646\u060c \u062a\u0627\u0631\u06cc\u062e"
+                        "\u062c\u0633\u062a\u200c \u0648 \u062c\u0648: \u0645\u0648\u0628\u0627\u06cc\u0644 \u06a9\u0627\u0631\u0628\u0631\u060c \u0639\u0646\u0648\u0627\u0646\u060c \u062a\u0627\u0631\u06cc\u062e"
                       }
                       value={
                         generateStateValueProp($state, [
