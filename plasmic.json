@@ -649,6 +649,34 @@
           "cssFilePath": "plasmic/katibe/PlasmicDialog.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "vS0KxsSJaPFY",
+          "name": "Button2",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/katibe/PlasmicButton2.tsx",
+          "importSpec": {
+            "modulePath": "Button2.tsx"
+          },
+          "cssFilePath": "plasmic/katibe/PlasmicButton2.module.css",
+          "scheme": "blackbox",
+          "componentType": "component",
+          "plumeType": "button"
+        },
+        {
+          "id": "GjxR5_VkIiX-",
+          "name": "MyInvoices",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/katibe/PlasmicMyInvoices.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/transactions.tsx"
+          },
+          "cssFilePath": "plasmic/katibe/PlasmicMyInvoices.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/transactions"
         }
       ],
       "icons": [
@@ -806,6 +834,31 @@
           "id": "qXnLr7su52Ln",
           "name": "Icon24Icon",
           "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon24.tsx"
+        },
+        {
+          "id": "Fb3NI24dY_eQ",
+          "name": "ChevronRightIcon",
+          "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__ChevronRight.tsx"
+        },
+        {
+          "id": "CxovwxdEk-fa",
+          "name": "Icon25Icon",
+          "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon25.tsx"
+        },
+        {
+          "id": "qY2SZVT8yfvr",
+          "name": "Icon26Icon",
+          "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon26.tsx"
+        },
+        {
+          "id": "QhChLujGPm3A",
+          "name": "Icon27Icon",
+          "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon27.tsx"
+        },
+        {
+          "id": "0EP3x6e2dNEM",
+          "name": "Icon28Icon",
+          "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon28.tsx"
         }
       ],
       "images": [
@@ -818,6 +871,186 @@
           "id": "_aRe5KDHbJ0s",
           "name": "logo.5e03fe79.svg",
           "filePath": "../public/plasmic/chortke/images/logo5E03Fe79Svg.svg"
+        },
+        {
+          "id": "P-HTm7YJqKuv",
+          "name": "image 2",
+          "filePath": "../public/plasmic/katibe/images/image2.svg"
+        },
+        {
+          "id": "8pLHNiR0fKD9",
+          "name": "image 3",
+          "filePath": "../public/plasmic/katibe/images/image3.svg"
+        },
+        {
+          "id": "EeuvlFfa15v3",
+          "name": "image 4",
+          "filePath": "../public/plasmic/katibe/images/image4.png"
+        },
+        {
+          "id": "YH6H3jScn0WB",
+          "name": "image 5",
+          "filePath": "../public/plasmic/katibe/images/image5.png"
+        },
+        {
+          "id": "jG-Tiank7elA",
+          "name": "image 6",
+          "filePath": "../public/plasmic/katibe/images/image6.png"
+        },
+        {
+          "id": "JeRQ2y197_Ww",
+          "name": "image 7",
+          "filePath": "../public/plasmic/katibe/images/image7.png"
+        },
+        {
+          "id": "MnaFW8dBUy5x",
+          "name": "image 8",
+          "filePath": "../public/plasmic/katibe/images/image8.png"
+        },
+        {
+          "id": "hNHgXBzKWP60",
+          "name": "image 9",
+          "filePath": "../public/plasmic/katibe/images/image9.svg"
+        },
+        {
+          "id": "Uit8pQb37kNP",
+          "name": "image 10",
+          "filePath": "../public/plasmic/katibe/images/image10.svg"
+        },
+        {
+          "id": "1Ja16OWQ-Pbo",
+          "name": "image 11",
+          "filePath": "../public/plasmic/katibe/images/image11.svg"
+        },
+        {
+          "id": "2rcQLvtNnYOt",
+          "name": "image 12",
+          "filePath": "../public/plasmic/katibe/images/image12.svg"
+        },
+        {
+          "id": "jzqoDzPbmRnt",
+          "name": "image 13",
+          "filePath": "../public/plasmic/katibe/images/image13.svg"
+        },
+        {
+          "id": "-x_MLLphhOTU",
+          "name": "image 14",
+          "filePath": "../public/plasmic/katibe/images/image14.svg"
+        },
+        {
+          "id": "_hr6G9OGg_SE",
+          "name": "image 15",
+          "filePath": "../public/plasmic/katibe/images/image15.svg"
+        },
+        {
+          "id": "qJxA2CpaWaCJ",
+          "name": "image 16",
+          "filePath": "../public/plasmic/katibe/images/image16.svg"
+        },
+        {
+          "id": "9jvR1TtOlwzc",
+          "name": "image 17",
+          "filePath": "../public/plasmic/katibe/images/image17.svg"
+        },
+        {
+          "id": "bXZcnPl-n0s3",
+          "name": "image 18",
+          "filePath": "../public/plasmic/katibe/images/image18.svg"
+        },
+        {
+          "id": "WhgvBY9KLyh7",
+          "name": "image 19",
+          "filePath": "../public/plasmic/katibe/images/image19.svg"
+        },
+        {
+          "id": "uUOlYcm5ieM2",
+          "name": "image 20",
+          "filePath": "../public/plasmic/katibe/images/image20.png"
+        },
+        {
+          "id": "hnXqASwJJNNl",
+          "name": "image 21",
+          "filePath": "../public/plasmic/katibe/images/image21.svg"
+        },
+        {
+          "id": "AhivsikXJeEe",
+          "name": "image 22",
+          "filePath": "../public/plasmic/katibe/images/image22.svg"
+        },
+        {
+          "id": "XYJGUpj20qd1",
+          "name": "image 23",
+          "filePath": "../public/plasmic/katibe/images/image23.png"
+        },
+        {
+          "id": "rT_GdzQWd6Sc",
+          "name": "image 24",
+          "filePath": "../public/plasmic/katibe/images/image24.png"
+        },
+        {
+          "id": "L7UOVGJS4lDl",
+          "name": "image 25",
+          "filePath": "../public/plasmic/katibe/images/image25.svg"
+        },
+        {
+          "id": "q-MD7tp5g-Lw",
+          "name": "image 26",
+          "filePath": "../public/plasmic/katibe/images/image26.svg"
+        },
+        {
+          "id": "MjaNM4jC6ycw",
+          "name": "image 27",
+          "filePath": "../public/plasmic/katibe/images/image27.png"
+        },
+        {
+          "id": "5Sztgs4cnizF",
+          "name": "image 28",
+          "filePath": "../public/plasmic/katibe/images/image28.png"
+        },
+        {
+          "id": "KJbpbzaQ7NQX",
+          "name": "image 29",
+          "filePath": "../public/plasmic/katibe/images/image29.svg"
+        },
+        {
+          "id": "TmgQMgyhJQ_q",
+          "name": "image 30",
+          "filePath": "../public/plasmic/katibe/images/image30.svg"
+        },
+        {
+          "id": "wNCKCXD14Mvt",
+          "name": "image 31",
+          "filePath": "../public/plasmic/katibe/images/image31.svg"
+        },
+        {
+          "id": "XZ9NCSYbWzXd",
+          "name": "image 32",
+          "filePath": "../public/plasmic/katibe/images/image32.svg"
+        },
+        {
+          "id": "6t4ikhcdDfVE",
+          "name": "image 33",
+          "filePath": "../public/plasmic/katibe/images/image33.svg"
+        },
+        {
+          "id": "m-8KrbLlAvEl",
+          "name": "image 34",
+          "filePath": "../public/plasmic/katibe/images/image34.svg"
+        },
+        {
+          "id": "V_EBqSEbQUiD",
+          "name": "image 35",
+          "filePath": "../public/plasmic/katibe/images/image35.svg"
+        },
+        {
+          "id": "VHaBRqqAH3US",
+          "name": "image 36",
+          "filePath": "../public/plasmic/katibe/images/image36.png"
+        },
+        {
+          "id": "GoK8KcOQvZ63",
+          "name": "image 37",
+          "filePath": "../public/plasmic/katibe/images/image37.png"
         }
       ],
       "indirect": false,
@@ -1401,6 +1634,72 @@
       ],
       "customFunctions": [],
       "jsBundleThemes": []
+    },
+    {
+      "projectId": "gLnoj82AzKVVT7qXiqAbHD",
+      "projectApiToken": "30Q6Vm3wLmLUouXUphjiHN1eerUuQNmjcIHNiu6sFoeK8pIoi3LRDH2gMh9txlrZGCbOh9s0VaoZHqtvs3hQ",
+      "projectName": "plasmic-tabs",
+      "version": ">0.0.0",
+      "cssFilePath": "plasmic/plasmic_tabs/plasmic.module.css",
+      "components": [
+        {
+          "id": "lBHNzts6tFyj",
+          "name": "Button",
+          "type": "managed",
+          "projectId": "gLnoj82AzKVVT7qXiqAbHD",
+          "renderModuleFilePath": "plasmic/plasmic_tabs/PlasmicButton.tsx",
+          "importSpec": {
+            "modulePath": "Button.tsx"
+          },
+          "cssFilePath": "plasmic/plasmic_tabs/PlasmicButton.module.css",
+          "scheme": "blackbox",
+          "componentType": "component",
+          "plumeType": "button"
+        }
+      ],
+      "icons": [
+        {
+          "id": "zq2s7N0xWucT",
+          "name": "CheckSvgIcon",
+          "moduleFilePath": "plasmic/plasmic_tabs/icons/PlasmicIcon__CheckSvg.tsx"
+        },
+        {
+          "id": "8K40faRNhuCj",
+          "name": "IconIcon",
+          "moduleFilePath": "plasmic/plasmic_tabs/icons/PlasmicIcon__Icon.tsx"
+        }
+      ],
+      "images": [],
+      "indirect": true,
+      "globalContextsFilePath": "",
+      "splitsProviderFilePath": "",
+      "codeComponents": [
+        {
+          "id": "qT-BBamUwNg",
+          "name": "TabsContainer",
+          "displayName": "hostless-tabs-container",
+          "componentImportPath": "@plasmicpkgs/plasmic-tabs"
+        },
+        {
+          "id": "7uvxnLIBlo3",
+          "name": "TabUnderline",
+          "displayName": "hostless-tab-underline",
+          "componentImportPath": "@plasmicpkgs/plasmic-tabs"
+        },
+        {
+          "id": "5jaBI7A4_ak",
+          "name": "TabButton",
+          "displayName": "hostless-tab-button",
+          "componentImportPath": "@plasmicpkgs/plasmic-tabs"
+        },
+        {
+          "id": "KyRr6GQ_tPI",
+          "name": "TabContent",
+          "displayName": "hostless-tab-content",
+          "componentImportPath": "@plasmicpkgs/plasmic-tabs"
+        }
+      ],
+      "customFunctions": []
     }
   ],
   "globalVariants": {

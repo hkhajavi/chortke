@@ -4486,7 +4486,7 @@ function PlasmicHomepage__RenderFunc(props: {
                   ];
                 }
 
-                $steps["checkUser"] = true
+                $steps["checkUser"] = false
                   ? (() => {
                       const actionArgs = {
                         args: [
@@ -4508,27 +4508,26 @@ function PlasmicHomepage__RenderFunc(props: {
                   $steps["checkUser"] = await $steps["checkUser"];
                 }
 
-                $steps["loginUser"] =
-                  $steps.checkUser.status != 200
-                    ? (() => {
-                        const actionArgs = {
-                          destination:
-                            "https://www.paziresh24.com/login/?redirect_url=https://katibe.paziresh24.com/"
-                        };
-                        return (({ destination }) => {
-                          if (
-                            typeof destination === "string" &&
-                            destination.startsWith("#")
-                          ) {
-                            document
-                              .getElementById(destination.substr(1))
-                              .scrollIntoView({ behavior: "smooth" });
-                          } else {
-                            __nextRouter?.push(destination);
-                          }
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
+                $steps["loginUser"] = false
+                  ? /*$steps.checkUser.status != 200*/ (() => {
+                      const actionArgs = {
+                        destination:
+                          "https://www.paziresh24.com/login/?redirect_url=https://katibe.paziresh24.com/"
+                      };
+                      return (({ destination }) => {
+                        if (
+                          typeof destination === "string" &&
+                          destination.startsWith("#")
+                        ) {
+                          document
+                            .getElementById(destination.substr(1))
+                            .scrollIntoView({ behavior: "smooth" });
+                        } else {
+                          __nextRouter?.push(destination);
+                        }
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
                 if (
                   $steps["loginUser"] != null &&
                   typeof $steps["loginUser"] === "object" &&
@@ -4537,33 +4536,32 @@ function PlasmicHomepage__RenderFunc(props: {
                   $steps["loginUser"] = await $steps["loginUser"];
                 }
 
-                $steps["updateUser"] =
-                  $steps.checkUser.status == 200
-                    ? (() => {
-                        const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["user"]
-                          },
-                          operation: 0,
-                          value: $steps.checkUser.data.users[0]
-                        };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
-                          }
-                          const { objRoot, variablePath } = variable;
+                $steps["updateUser"] = false
+                  ? /*$steps.checkUser.status == 200*/ (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["user"]
+                        },
+                        operation: 0,
+                        value: $steps.checkUser.data.users[0]
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
 
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
                 if (
                   $steps["updateUser"] != null &&
                   typeof $steps["updateUser"] === "object" &&
@@ -4572,33 +4570,32 @@ function PlasmicHomepage__RenderFunc(props: {
                   $steps["updateUser"] = await $steps["updateUser"];
                 }
 
-                $steps["setFnameLname"] =
-                  $steps.checkUser.status == 200
-                    ? (() => {
-                        const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["txtUserName"]
-                          },
-                          operation: 0,
-                          value: $state.user.name + " " + $state.user.family
-                        };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
-                          }
-                          const { objRoot, variablePath } = variable;
+                $steps["setFnameLname"] = false
+                  ? /*$steps.checkUser.status == 200*/ (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["txtUserName"]
+                        },
+                        operation: 0,
+                        value: $state.user.name + " " + $state.user.family
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
 
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
                 if (
                   $steps["setFnameLname"] != null &&
                   typeof $steps["setFnameLname"] === "object" &&
@@ -4607,33 +4604,32 @@ function PlasmicHomepage__RenderFunc(props: {
                   $steps["setFnameLname"] = await $steps["setFnameLname"];
                 }
 
-                $steps["btnLogout"] =
-                  $steps.checkUser.status == 200
-                    ? (() => {
-                        const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["btnLogoutShow"]
-                          },
-                          operation: 0,
-                          value: true
-                        };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
-                          }
-                          const { objRoot, variablePath } = variable;
+                $steps["btnLogout"] = false
+                  ? /*$steps.checkUser.status == 200*/ (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["btnLogoutShow"]
+                        },
+                        operation: 0,
+                        value: true
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
 
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
                 if (
                   $steps["btnLogout"] != null &&
                   typeof $steps["btnLogout"] === "object" &&
