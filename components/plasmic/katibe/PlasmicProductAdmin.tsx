@@ -869,7 +869,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                         )}
                       >
                         {
-                          "\u0628\u062e\u0634 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                          "\u0627\u0646\u062a\u062e\u0627\u0628 \u067e\u0631\u0648\u062f\u0627\u06a9\u062a"
                         }
                       </div>
                     }
