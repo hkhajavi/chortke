@@ -710,6 +710,40 @@ function PlasmicProductAdmin__RenderFunc(props: {
                           $steps["showWaiting"] = await $steps["showWaiting"];
                         }
 
+                        $steps["updateOffset"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["offset"]
+                                },
+                                operation: 0,
+                                value: 0
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateOffset"] != null &&
+                          typeof $steps["updateOffset"] === "object" &&
+                          typeof $steps["updateOffset"].then === "function"
+                        ) {
+                          $steps["updateOffset"] = await $steps["updateOffset"];
+                        }
+
                         $steps["clearInvoiceList"] = true
                           ? (() => {
                               const actionArgs = {
@@ -994,6 +1028,40 @@ function PlasmicProductAdmin__RenderFunc(props: {
                           typeof $steps["showWaiting"].then === "function"
                         ) {
                           $steps["showWaiting"] = await $steps["showWaiting"];
+                        }
+
+                        $steps["updateOffset"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["offset"]
+                                },
+                                operation: 0,
+                                value: 0
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateOffset"] != null &&
+                          typeof $steps["updateOffset"] === "object" &&
+                          typeof $steps["updateOffset"].then === "function"
+                        ) {
+                          $steps["updateOffset"] = await $steps["updateOffset"];
                         }
 
                         $steps["clearInvoiceList"] = true
