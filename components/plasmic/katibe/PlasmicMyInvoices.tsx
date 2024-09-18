@@ -225,7 +225,7 @@ function PlasmicMyInvoices__RenderFunc(props: {
                       >
                         <Button
                           children2={
-                            "\u062a\u0631\u0627\u06a9\u0646\u0634 \u0647\u0627\u06cc \u0645\u0646"
+                            "\u062a\u0631\u0627\u06a9\u0646\u0634\u0647\u0627\u06cc \u0645\u0646"
                           }
                           className={classNames(
                             "__wab_instance",
