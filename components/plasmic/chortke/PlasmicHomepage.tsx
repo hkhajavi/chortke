@@ -4411,7 +4411,11 @@ function PlasmicHomepage__RenderFunc(props: {
                 >
                   {(() => {
                     try {
-                      return !$state.waiting;
+                      return (
+                        !$state.waiting &&
+                        $state.invoicelist.length > 0 &&
+                        !$state.waitingLoading
+                      );
                     } catch (e) {
                       if (
                         e instanceof TypeError ||

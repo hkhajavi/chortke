@@ -5353,7 +5353,11 @@ function PlasmicProductAdmin__RenderFunc(props: {
               <div className={classNames(projectcss.all, sty.freeBox__atoJe)}>
                 {(() => {
                   try {
-                    return !$state.waiting;
+                    return (
+                      !$state.waiting &&
+                      $state.invoicelist.length > 0 &&
+                      !$state.waitingLoading
+                    );
                   } catch (e) {
                     if (
                       e instanceof TypeError ||
