@@ -469,6 +469,12 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "showMoreBtn",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => true
       }
     ],
     [$props, $ctx, $refs]
@@ -4448,7 +4454,8 @@ function PlasmicHomepage__RenderFunc(props: {
                       return (
                         !$state.waiting &&
                         $state.invoicelist.length > 0 &&
-                        !$state.waitingLoading
+                        !$state.waitingLoading &&
+                        $state.showMoreBtn
                       );
                     } catch (e) {
                       if (
