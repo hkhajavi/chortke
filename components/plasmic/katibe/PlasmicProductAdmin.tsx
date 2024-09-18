@@ -5551,7 +5551,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                         ];
                       }
                     }}
-                    size={"minimal"}
+                    size={"compact"}
                   />
                 ) : null}
                 {(() => {
