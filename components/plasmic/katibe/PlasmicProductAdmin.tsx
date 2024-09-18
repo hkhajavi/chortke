@@ -889,7 +889,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                 id={"grid_calculator"}
               >
                 <div className={classNames(projectcss.all, sty.freeBox__ryqn7)}>
-                  <div className={classNames(projectcss.all, sty.freeBox__otz)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__otz)}
+                    font-size={
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? "10px"
+                        : undefined
+                    }
+                  >
                     <TextInput
                       data-plasmic-name={"txtSearch"}
                       data-plasmic-override={overrides.txtSearch}
@@ -3141,7 +3148,9 @@ function PlasmicProductAdmin__RenderFunc(props: {
                     sty.text__okjgH
                   )}
                 >
-                  {"\u0631\u062f\u06cc\u0641"}
+                  {hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? "\u0631\u062f\u06cc\u0641 / \u0634\u0646\u0627\u0633\u0647"
+                    : "\u0631\u062f\u06cc\u0641/\u0634\u0646\u0627\u0633\u0647"}
                 </div>
               </div>
               <div
@@ -3326,7 +3335,10 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 item =>
                                   item.invoiceid ===
                                   $state.invoicelist[currentIndex].invoiceid
-                              ) + 1
+                              ) +
+                              1 +
+                              "\n" +
+                              $state.invoicelist[currentIndex].invoiceid
                             );
                           } catch (e) {
                             if (
@@ -3755,27 +3767,52 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     sty.text__sUkj6
                                   )}
                                 >
-                                  <React.Fragment>
-                                    {(() => {
-                                      try {
-                                        return (
-                                          "کد کاربر: " +
-                                          $state.detailsDataApiRequest[
+                                  {hasVariant(
+                                    globalVariants,
+                                    "screen",
+                                    "mobileOnly"
+                                  ) ? (
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return $state.detailsDataApiRequest[
                                             currentIndex
-                                          ].data.data.userid
-                                        );
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return "";
+                                          ].data.data.invoiceid;
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "";
+                                          }
+                                          throw e;
                                         }
-                                        throw e;
-                                      }
-                                    })()}
-                                  </React.Fragment>
+                                      })()}
+                                    </React.Fragment>
+                                  ) : (
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return (
+                                            "کد کاربر: " +
+                                            $state.detailsDataApiRequest[
+                                              currentIndex
+                                            ].data.data.userid
+                                          );
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  )}
                                 </div>
                               </Stack__>
                               <div
@@ -3843,6 +3880,153 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 </div>
                               </div>
                             </div>
+                            {(
+                              hasVariant(globalVariants, "screen", "mobileOnly")
+                                ? true
+                                : false
+                            ) ? (
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__y1La4
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__cnoLz
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__he0Xc
+                                    )}
+                                  >
+                                    {hasVariant(
+                                      globalVariants,
+                                      "screen",
+                                      "mobileOnly"
+                                    ) ? (
+                                      "\u06a9\u062f \u06a9\u0627\u0631\u0628\u0631:"
+                                    ) : (
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return (
+                                              "کد: " +
+                                              $state.detailsDataApiRequest[
+                                                currentIndex
+                                              ].data.data.invoiceid
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "\u06a9\u062f:";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
+                                    )}
+                                  </div>
+                                </div>
+                                <Stack__
+                                  as={"div"}
+                                  hasGap={true}
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox___8HZcP
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__qosYg
+                                    )}
+                                  >
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return $state.detailsDataApiRequest[
+                                            currentIndex
+                                          ].data.data.userid;
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  </div>
+                                </Stack__>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox___2RdDh
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__i4Ti
+                                    )}
+                                  >
+                                    {hasVariant(
+                                      globalVariants,
+                                      "screen",
+                                      "mobileOnly"
+                                    )
+                                      ? "\u06a9\u0627\u0631\u0628\u0631:"
+                                      : "\u0632\u0645\u0627\u0646:"}
+                                  </div>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__p9A3
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__wLaHy
+                                    )}
+                                  >
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return $state.invoicelist[
+                                            currentIndex
+                                          ].userinfo;
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  </div>
+                                </div>
+                              </div>
+                            ) : null}
                             {(_par =>
                               !_par ? [] : Array.isArray(_par) ? _par : [_par])(
                               (() => {
