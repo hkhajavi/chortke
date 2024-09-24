@@ -2277,26 +2277,13 @@ function PlasmicHomepage__RenderFunc(props: {
                         }
                         body={
                           <React.Fragment>
-                            {(() => {
-                              try {
-                                return $state.showSelectPriceGrid;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return true;
-                                }
-                                throw e;
-                              }
-                            })() ? (
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.freeBox__f3Erv
-                                )}
-                              />
-                            ) : null}
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__f3Erv
+                              )}
+                            />
+
                             {(() => {
                               try {
                                 return $state.showSelectPriceGrid;
@@ -3087,7 +3074,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                           variablePath: ["showMyAmount"]
                                         },
                                         operation: 0,
-                                        value: false
+                                        value: true
                                       };
                                       return (({
                                         variable,
@@ -3159,6 +3146,36 @@ function PlasmicHomepage__RenderFunc(props: {
                                   $steps["buttonList"] = await $steps[
                                     "buttonList"
                                   ];
+                                }
+
+                                $steps["runCode"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        customFunction: async () => {
+                                          return (() => {
+                                            $state.txtNewPaymentAmount.value =
+                                              $state.reminderWallet < 0
+                                                ? Math.abs(
+                                                    $state.reminderWallet
+                                                  )
+                                                : $state.reminderWallet;
+                                            if ($state.reminderWallet > 0)
+                                              return ($state.showMyAmount =
+                                                false);
+                                          })();
+                                        }
+                                      };
+                                      return (({ customFunction }) => {
+                                        return customFunction();
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["runCode"] != null &&
+                                  typeof $steps["runCode"] === "object" &&
+                                  typeof $steps["runCode"].then === "function"
+                                ) {
+                                  $steps["runCode"] = await $steps["runCode"];
                                 }
                               }}
                             />
