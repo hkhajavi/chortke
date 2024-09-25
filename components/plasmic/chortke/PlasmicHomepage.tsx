@@ -63,8 +63,9 @@ import Button from "../../Button"; // plasmic-import: 0wu_ZE1f8SuT/component
 import Select from "../../Select"; // plasmic-import: 7wkEfmUYAcMf/component
 import Dialog from "../../Dialog"; // plasmic-import: nYtkLnbqtkXY/component
 import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
-import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: hVBOtSJvmbc4/codeComponent
+import Dialog2 from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
 import Button2 from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
+import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: hVBOtSJvmbc4/codeComponent
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
@@ -117,6 +118,9 @@ export type PlasmicHomepage__OverridesType = {
   btnSelectAmount?: Flex__<typeof Button>;
   gridMyAmount?: Flex__<"div">;
   txtNewPaymentAmount?: Flex__<typeof TextInput>;
+  dialog?: Flex__<typeof Dialog2>;
+  btnSettlement?: Flex__<typeof Button2>;
+  txtSettlemenAmount?: Flex__<typeof TextInput>;
   gridInvoice1?: Flex__<"div">;
   gridNoData?: Flex__<"div">;
   gridInvoice12?: Flex__<"div">;
@@ -475,6 +479,24 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => true
+      },
+      {
+        path: "dialog.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "isSettlementShow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "txtSettlemenAmount.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -1120,6 +1142,40 @@ function PlasmicHomepage__RenderFunc(props: {
                           ];
                         }
 
+                        $steps["showMoreBtn1"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["showMoreBtn"]
+                                },
+                                operation: 0,
+                                value: true
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["showMoreBtn1"] != null &&
+                          typeof $steps["showMoreBtn1"] === "object" &&
+                          typeof $steps["showMoreBtn1"].then === "function"
+                        ) {
+                          $steps["showMoreBtn1"] = await $steps["showMoreBtn1"];
+                        }
+
                         $steps["getInvoiceList"] =
                           $state.cbProductlist.value != 7
                             ? (() => {
@@ -1358,12 +1414,15 @@ function PlasmicHomepage__RenderFunc(props: {
                                             "موجودی حساب: ")
                                         : ($state.txtReminderTextValue =
                                             "بدهی شما: ");
-                                      return $steps.getProductWallet.data.data
+                                      $steps.getProductWallet.data.data
                                         .balance >= 0
                                         ? ($state.txtPaymentText =
                                             "افزایش موجودی")
                                         : ($state.txtPaymentText =
                                             "پرداخت بدهی");
+                                      return ($state.isSettlementShow =
+                                        $steps.getProductWallet.data.data
+                                          .balance > 0);
                                     })();
                                   }
                                 };
@@ -1495,6 +1554,35 @@ function PlasmicHomepage__RenderFunc(props: {
                         ) {
                           $steps["selectedCbCenters0"] = await $steps[
                             "selectedCbCenters0"
+                          ];
+                        }
+
+                        $steps["updateShowMoreBtn"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                customFunction: async () => {
+                                  return (() => {
+                                    if (
+                                      $steps.getInvoiceList.status != 200 ||
+                                      $steps.getInvoiceList.data.data.length !=
+                                        $state.limit
+                                    )
+                                      return ($state.showMoreBtn = false);
+                                  })();
+                                }
+                              };
+                              return (({ customFunction }) => {
+                                return customFunction();
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateShowMoreBtn"] != null &&
+                          typeof $steps["updateShowMoreBtn"] === "object" &&
+                          typeof $steps["updateShowMoreBtn"].then === "function"
+                        ) {
+                          $steps["updateShowMoreBtn"] = await $steps[
+                            "updateShowMoreBtn"
                           ];
                         }
                       }).apply(null, eventArgs);
@@ -3056,13 +3144,29 @@ function PlasmicHomepage__RenderFunc(props: {
                                     sty.text___6C57K
                                   )}
                                 >
-                                  {"\u067e\u0631\u062f\u0627\u062e\u062a"}
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return $state.txtPaymentText;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "\u067e\u0631\u062f\u0627\u062e\u062a";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
                                 </div>
                               }
                               className={classNames(
                                 "__wab_instance",
                                 sty.btnPay
                               )}
+                              color={"green"}
                               onClick={async event => {
                                 const $steps = {};
 
@@ -3178,6 +3282,281 @@ function PlasmicHomepage__RenderFunc(props: {
                                   $steps["runCode"] = await $steps["runCode"];
                                 }
                               }}
+                            />
+                          ) : null
+                        }
+                      />
+
+                      <Dialog2
+                        data-plasmic-name={"dialog"}
+                        data-plasmic-override={overrides.dialog}
+                        body={
+                          <React.Fragment>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__nCo7G
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return (
+                                      "موجودی حساب: " +
+                                      $state.txtReminderValue +
+                                      " ریال"
+                                    );
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "\u0645\u0648\u062c\u0648\u062f\u06cc \u062d\u0633\u0627\u0628:";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__x2Yq8
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__qW9Wk
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__ff3Za
+                                  )}
+                                >
+                                  {"\u0645\u0628\u0644\u063a:"}
+                                </div>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__gbCvw
+                                )}
+                              >
+                                <TextInput
+                                  data-plasmic-name={"txtSettlemenAmount"}
+                                  data-plasmic-override={
+                                    overrides.txtSettlemenAmount
+                                  }
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.txtSettlemenAmount
+                                  )}
+                                  onChange={async (...eventArgs: any) => {
+                                    ((...eventArgs) => {
+                                      generateStateOnChangeProp($state, [
+                                        "txtSettlemenAmount",
+                                        "value"
+                                      ])(
+                                        (e => e.target?.value).apply(
+                                          null,
+                                          eventArgs
+                                        )
+                                      );
+                                    }).apply(null, eventArgs);
+                                    (async event => {
+                                      const $steps = {};
+
+                                      $steps["runCode"] = true
+                                        ? (() => {
+                                            const actionArgs = {
+                                              customFunction: async () => {
+                                                return (() => {
+                                                  if (
+                                                    parseInt(
+                                                      $state.txtSettlemenAmount
+                                                        .value
+                                                    ) > $state.reminderWallet
+                                                  ) {
+                                                    return ($state.txtSettlemenAmount.value =
+                                                      $state.reminderWallet.toString());
+                                                  }
+                                                })();
+                                              }
+                                            };
+                                            return (({ customFunction }) => {
+                                              return customFunction();
+                                            })?.apply(null, [actionArgs]);
+                                          })()
+                                        : undefined;
+                                      if (
+                                        $steps["runCode"] != null &&
+                                        typeof $steps["runCode"] === "object" &&
+                                        typeof $steps["runCode"].then ===
+                                          "function"
+                                      ) {
+                                        $steps["runCode"] = await $steps[
+                                          "runCode"
+                                        ];
+                                      }
+                                    }).apply(null, eventArgs);
+                                  }}
+                                  placeholder={
+                                    "\u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631"
+                                  }
+                                  value={
+                                    generateStateValueProp($state, [
+                                      "txtSettlemenAmount",
+                                      "value"
+                                    ]) ?? ""
+                                  }
+                                />
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox___4ZqWs
+                                )}
+                              >
+                                <Button2
+                                  children2={
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return (
+                                            new Intl.NumberFormat(
+                                              "fa-IR"
+                                            ).format(
+                                              $state.txtSettlemenAmount.value
+                                            ) +
+                                            " ریال" +
+                                            " - ثبت درخواست"
+                                          );
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "\u062b\u0628\u062a \u062f\u0631\u062e\u0648\u0627\u0633\u062a";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  }
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.button__cu61Y
+                                  )}
+                                  onClick={async event => {
+                                    const $steps = {};
+
+                                    $steps["invokeGlobalAction"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            args: [
+                                              "error",
+                                              "\u062f\u0631 \u062d\u0627\u0644 \u062d\u0627\u0638\u0631 \u0627\u0645\u06a9\u0627\u0646 \u062a\u0633\u0648\u06cc\u0647 \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f. \u0644\u0637\u0641\u0627 \u062f\u0631 \u0631\u0648\u0632\u0647\u0627\u06cc \u0622\u062a\u06cc \u062a\u0644\u0627\u0634 \u0646\u0645\u0627\u06cc\u06cc\u062f."
+                                            ]
+                                          };
+                                          return $globalActions[
+                                            "Fragment.showToast"
+                                          ]?.apply(null, [...actionArgs.args]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["invokeGlobalAction"] != null &&
+                                      typeof $steps["invokeGlobalAction"] ===
+                                        "object" &&
+                                      typeof $steps["invokeGlobalAction"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["invokeGlobalAction"] =
+                                        await $steps["invokeGlobalAction"];
+                                    }
+                                  }}
+                                />
+                              </div>
+                            </div>
+                          </React.Fragment>
+                        }
+                        className={classNames("__wab_instance", sty.dialog)}
+                        onOpenChange={generateStateOnChangeProp($state, [
+                          "dialog",
+                          "open"
+                        ])}
+                        open={generateStateValueProp($state, [
+                          "dialog",
+                          "open"
+                        ])}
+                        title={
+                          "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062a\u0633\u0648\u06cc\u0647 \u062d\u0633\u0627\u0628"
+                        }
+                        trigger={
+                          (() => {
+                            try {
+                              return $state.isSettlementShow;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
+                            }
+                          })() ? (
+                            <Button2
+                              data-plasmic-name={"btnSettlement"}
+                              data-plasmic-override={overrides.btnSettlement}
+                              children2={
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__jvTmg
+                                  )}
+                                >
+                                  {
+                                    "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062a\u0633\u0648\u06cc\u0647"
+                                  }
+                                </div>
+                              }
+                              className={classNames(
+                                "__wab_instance",
+                                sty.btnSettlement
+                              )}
+                              onClick={async event => {
+                                const $steps = {};
+
+                                $steps["runCode"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        customFunction: async () => {
+                                          return ($state.txtSettlemenAmount.value =
+                                            $state.reminderWallet);
+                                        }
+                                      };
+                                      return (({ customFunction }) => {
+                                        return customFunction();
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["runCode"] != null &&
+                                  typeof $steps["runCode"] === "object" &&
+                                  typeof $steps["runCode"].then === "function"
+                                ) {
+                                  $steps["runCode"] = await $steps["runCode"];
+                                }
+                              }}
+                              size={"compact"}
                             />
                           ) : null
                         }
@@ -4672,6 +5051,66 @@ function PlasmicHomepage__RenderFunc(props: {
                             "updateWaitingLoading2"
                           ];
                         }
+
+                        $steps["updateUser"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["user"]
+                                },
+                                operation: 0
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateUser"] != null &&
+                          typeof $steps["updateUser"] === "object" &&
+                          typeof $steps["updateUser"].then === "function"
+                        ) {
+                          $steps["updateUser"] = await $steps["updateUser"];
+                        }
+
+                        $steps["showMoreBtn"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                customFunction: async () => {
+                                  return (() => {
+                                    if (
+                                      $steps.getInvoiceList.status != 200 ||
+                                      $steps.getInvoiceList.data.data.length !=
+                                        $state.limit
+                                    )
+                                      return ($state.showMoreBtn = false);
+                                  })();
+                                }
+                              };
+                              return (({ customFunction }) => {
+                                return customFunction();
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["showMoreBtn"] != null &&
+                          typeof $steps["showMoreBtn"] === "object" &&
+                          typeof $steps["showMoreBtn"].then === "function"
+                        ) {
+                          $steps["showMoreBtn"] = await $steps["showMoreBtn"];
+                        }
                       }}
                     />
                   ) : null}
@@ -4832,7 +5271,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 }
 
                 $steps["loginUser"] = false
-                  ? /*$steps.checkUser.status != 200*/ (() => {
+                  ? (() => {
                       const actionArgs = {
                         destination:
                           "https://www.paziresh24.com/login/?redirect_url=https://katibe.paziresh24.com/"
@@ -4860,7 +5299,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 }
 
                 $steps["updateUser"] = false
-                  ? /*$steps.checkUser.status == 200*/ (() => {
+                  ? (() => {
                       const actionArgs = {
                         variable: {
                           objRoot: $state,
@@ -4894,7 +5333,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 }
 
                 $steps["setFnameLname"] = false
-                  ? /*$steps.checkUser.status == 200*/ (() => {
+                  ? (() => {
                       const actionArgs = {
                         variable: {
                           objRoot: $state,
@@ -4928,7 +5367,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 }
 
                 $steps["btnLogout"] = false
-                  ? /*$steps.checkUser.status == 200*/ (() => {
+                  ? (() => {
                       const actionArgs = {
                         variable: {
                           objRoot: $state,
@@ -5415,6 +5854,34 @@ function PlasmicHomepage__RenderFunc(props: {
                 ) {
                   $steps["hideWaiting"] = await $steps["hideWaiting"];
                 }
+
+                $steps["showMoreBtn"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return (() => {
+                            if (
+                              $steps.getInvoiceListOfFirstProduct.status !=
+                                200 ||
+                              $steps.getInvoiceListOfFirstProduct.data.data
+                                .length != $state.limit
+                            )
+                              return ($state.showMoreBtn = false);
+                          })();
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["showMoreBtn"] != null &&
+                  typeof $steps["showMoreBtn"] === "object" &&
+                  typeof $steps["showMoreBtn"].then === "function"
+                ) {
+                  $steps["showMoreBtn"] = await $steps["showMoreBtn"];
+                }
               }}
             />
 
@@ -5525,6 +5992,9 @@ const PlasmicDescendants = {
     "btnSelectAmount",
     "gridMyAmount",
     "txtNewPaymentAmount",
+    "dialog",
+    "btnSettlement",
+    "txtSettlemenAmount",
     "gridInvoice1",
     "gridNoData",
     "gridInvoice12",
@@ -5554,6 +6024,9 @@ const PlasmicDescendants = {
     "btnSelectAmount",
     "gridMyAmount",
     "txtNewPaymentAmount",
+    "dialog",
+    "btnSettlement",
+    "txtSettlemenAmount",
     "gridInvoice1",
     "gridNoData",
     "gridInvoice12",
@@ -5574,7 +6047,10 @@ const PlasmicDescendants = {
     "gridSelectprice",
     "btnSelectAmount",
     "gridMyAmount",
-    "txtNewPaymentAmount"
+    "txtNewPaymentAmount",
+    "dialog",
+    "btnSettlement",
+    "txtSettlemenAmount"
   ],
   cbProductlist: ["cbProductlist"],
   cbCenters: ["cbCenters"],
@@ -5593,6 +6069,9 @@ const PlasmicDescendants = {
   btnSelectAmount: ["btnSelectAmount"],
   gridMyAmount: ["gridMyAmount", "txtNewPaymentAmount"],
   txtNewPaymentAmount: ["txtNewPaymentAmount"],
+  dialog: ["dialog", "btnSettlement", "txtSettlemenAmount"],
+  btnSettlement: ["btnSettlement"],
+  txtSettlemenAmount: ["txtSettlemenAmount"],
   gridInvoice1: ["gridInvoice1"],
   gridNoData: ["gridNoData"],
   gridInvoice12: [
@@ -5637,6 +6116,9 @@ type NodeDefaultElementType = {
   btnSelectAmount: typeof Button;
   gridMyAmount: "div";
   txtNewPaymentAmount: typeof TextInput;
+  dialog: typeof Dialog2;
+  btnSettlement: typeof Button2;
+  txtSettlemenAmount: typeof TextInput;
   gridInvoice1: "div";
   gridNoData: "div";
   gridInvoice12: "div";
@@ -5726,6 +6208,9 @@ export const PlasmicHomepage = Object.assign(
     btnSelectAmount: makeNodeComponent("btnSelectAmount"),
     gridMyAmount: makeNodeComponent("gridMyAmount"),
     txtNewPaymentAmount: makeNodeComponent("txtNewPaymentAmount"),
+    dialog: makeNodeComponent("dialog"),
+    btnSettlement: makeNodeComponent("btnSettlement"),
+    txtSettlemenAmount: makeNodeComponent("txtSettlemenAmount"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     gridNoData: makeNodeComponent("gridNoData"),
     gridInvoice12: makeNodeComponent("gridInvoice12"),

@@ -457,6 +457,12 @@ function PlasmicProductAdmin__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "showMoreBtn",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => true
       }
     ],
     [$props, $ctx, $refs]
@@ -896,6 +902,34 @@ function PlasmicProductAdmin__RenderFunc(props: {
                         ) {
                           $steps["hideWaiting"] = await $steps["hideWaiting"];
                         }
+
+                        $steps["showMoreBtn1"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                customFunction: async () => {
+                                  return (() => {
+                                    $state.showMoreBtn = true;
+                                    if (
+                                      $steps.getInvoiceList.status != 200 ||
+                                      $steps.getInvoiceList.data.data.length !=
+                                        $state.limit
+                                    )
+                                      return ($state.showMoreBtn = false);
+                                  })();
+                                }
+                              };
+                              return (({ customFunction }) => {
+                                return customFunction();
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["showMoreBtn1"] != null &&
+                          typeof $steps["showMoreBtn1"] === "object" &&
+                          typeof $steps["showMoreBtn1"].then === "function"
+                        ) {
+                          $steps["showMoreBtn1"] = await $steps["showMoreBtn1"];
+                        }
                       }).apply(null, eventArgs);
                     }}
                     options={(() => {
@@ -1217,6 +1251,34 @@ function PlasmicProductAdmin__RenderFunc(props: {
                           typeof $steps["hideWaiting"].then === "function"
                         ) {
                           $steps["hideWaiting"] = await $steps["hideWaiting"];
+                        }
+
+                        $steps["showMoreBtn1"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                customFunction: async () => {
+                                  return (() => {
+                                    $state.showMoreBtn = true;
+                                    if (
+                                      $steps.getInvoiceList.status != 200 ||
+                                      $steps.getInvoiceList.data.data.length !=
+                                        $state.limit
+                                    )
+                                      return ($state.showMoreBtn = false);
+                                  })();
+                                }
+                              };
+                              return (({ customFunction }) => {
+                                return customFunction();
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["showMoreBtn1"] != null &&
+                          typeof $steps["showMoreBtn1"] === "object" &&
+                          typeof $steps["showMoreBtn1"].then === "function"
+                        ) {
+                          $steps["showMoreBtn1"] = await $steps["showMoreBtn1"];
                         }
                       }}
                       size={"compact"}
@@ -5424,7 +5486,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                     return (
                       !$state.waiting &&
                       $state.invoicelist.length > 0 &&
-                      !$state.waitingLoading
+                      !$state.waitingLoading &&
+                      $state.showMoreBtn
                     );
                   } catch (e) {
                     if (
@@ -5621,6 +5684,34 @@ function PlasmicProductAdmin__RenderFunc(props: {
                         $steps["updateWaitingLoading2"] = await $steps[
                           "updateWaitingLoading2"
                         ];
+                      }
+
+                      $steps["showMoreBtn"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return (() => {
+                                  $state.showMoreBtn = true;
+                                  if (
+                                    $steps.getInvoiceList.status != 200 ||
+                                    $steps.getInvoiceList.data.data.length !=
+                                      $state.limit
+                                  )
+                                    return ($state.showMoreBtn = false);
+                                })();
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["showMoreBtn"] != null &&
+                        typeof $steps["showMoreBtn"] === "object" &&
+                        typeof $steps["showMoreBtn"].then === "function"
+                      ) {
+                        $steps["showMoreBtn"] = await $steps["showMoreBtn"];
                       }
                     }}
                     size={"compact"}
@@ -5894,6 +5985,33 @@ function PlasmicProductAdmin__RenderFunc(props: {
                 typeof $steps["hideWaiting"].then === "function"
               ) {
                 $steps["hideWaiting"] = await $steps["hideWaiting"];
+              }
+
+              $steps["showMoreBtn"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          if (
+                            $steps.getInvoiceList.status != 200 ||
+                            $steps.getInvoiceList.data.data.length !=
+                              $state.limit
+                          )
+                            return ($state.showMoreBtn = false);
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["showMoreBtn"] != null &&
+                typeof $steps["showMoreBtn"] === "object" &&
+                typeof $steps["showMoreBtn"].then === "function"
+              ) {
+                $steps["showMoreBtn"] = await $steps["showMoreBtn"];
               }
             }}
           />
