@@ -1904,6 +1904,42 @@ function PlasmicHomepage__RenderFunc(props: {
                               ];
                             }
 
+                            $steps["showMoreBtn1"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["showMoreBtn"]
+                                    },
+                                    operation: 0,
+                                    value: true
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["showMoreBtn1"] != null &&
+                              typeof $steps["showMoreBtn1"] === "object" &&
+                              typeof $steps["showMoreBtn1"].then === "function"
+                            ) {
+                              $steps["showMoreBtn1"] = await $steps[
+                                "showMoreBtn1"
+                              ];
+                            }
+
                             $steps["getInvoiceList"] = true
                               ? (() => {
                                   const actionArgs = {
@@ -2141,11 +2177,8 @@ function PlasmicHomepage__RenderFunc(props: {
                               ? (() => {
                                   const actionArgs = {
                                     customFunction: async () => {
-                                      return (
-                                        //($state.reminderWallet<0)?$state.isShowPaymentButton=true:$state.isShowPaymentButton=false;
-
-                                        ($state.isShowPaymentButton = true)
-                                      );
+                                      return ($state.isShowPaymentButton =
+                                        true);
                                     }
                                   };
                                   return (({ customFunction }) => {
@@ -2194,6 +2227,35 @@ function PlasmicHomepage__RenderFunc(props: {
                             ) {
                               $steps["hideWaiting"] = await $steps[
                                 "hideWaiting"
+                              ];
+                            }
+
+                            $steps["showMoreBtn"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return (() => {
+                                        if (
+                                          $steps.getInvoiceList.status != 200 ||
+                                          $steps.getInvoiceList.data.data
+                                            .length != $state.limit
+                                        )
+                                          return ($state.showMoreBtn = false);
+                                      })();
+                                    }
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["showMoreBtn"] != null &&
+                              typeof $steps["showMoreBtn"] === "object" &&
+                              typeof $steps["showMoreBtn"].then === "function"
+                            ) {
+                              $steps["showMoreBtn"] = await $steps[
+                                "showMoreBtn"
                               ];
                             }
                           }).apply(null, eventArgs);
