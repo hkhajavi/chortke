@@ -4330,3 +4330,41 @@
   object-fit: cover;
   position: relative;
 }
+.freeBox__ov9Ek {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-self: flex-start;
+  grid-column-start: 1 !important;
+  grid-column-end: -1 !important;
+  padding: 8px;
+}
+.freeBox__zoJ {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+  padding: 8px;
+}
+.text__jJcVu {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  text-align: center;
+  color: #7d829b;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__jJcVu {
+    font-size: 10px;
+    color: #7d829b;
+  }
+}
