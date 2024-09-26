@@ -1894,25 +1894,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                   $props,
                                                   $state,
                                                   $queries
-                                                }) =>
-                                                  (() => {
-                                                    try {
-                                                      return $state
-                                                        .newInvoiceServices[
-                                                        currentIndex
-                                                      ].name;
-                                                    } catch (e) {
-                                                      if (
-                                                        e instanceof
-                                                          TypeError ||
-                                                        e?.plasmicType ===
-                                                          "PlasmicUndefinedDataError"
-                                                      ) {
-                                                        return undefined;
-                                                      }
-                                                      throw e;
-                                                    }
-                                                  })()
+                                                }) => ""
                                               }
                                             ],
                                             [__plasmic_idx_0]
@@ -2016,25 +1998,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                   $props,
                                                   $state,
                                                   $queries
-                                                }) =>
-                                                  (() => {
-                                                    try {
-                                                      return $state
-                                                        .newInvoiceServices[
-                                                        currentIndex
-                                                      ].count;
-                                                    } catch (e) {
-                                                      if (
-                                                        e instanceof
-                                                          TypeError ||
-                                                        e?.plasmicType ===
-                                                          "PlasmicUndefinedDataError"
-                                                      ) {
-                                                        return undefined;
-                                                      }
-                                                      throw e;
-                                                    }
-                                                  })()
+                                                }) => ""
                                               }
                                             ],
                                             [__plasmic_idx_0]
@@ -2120,7 +2084,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               }).apply(null, eventArgs);
                                             },
                                             placeholder:
-                                              "\u0645\u0628\u0644\u063a",
+                                              "\u0645\u0628\u0644\u063a - \u0631\u06cc\u0627\u0644",
                                             value:
                                               generateStateValueProp($state, [
                                                 "txtServicePrice",
@@ -2138,25 +2102,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                   $props,
                                                   $state,
                                                   $queries
-                                                }) =>
-                                                  (() => {
-                                                    try {
-                                                      return $state
-                                                        .newInvoiceServices[
-                                                        currentIndex
-                                                      ].price;
-                                                    } catch (e) {
-                                                      if (
-                                                        e instanceof
-                                                          TypeError ||
-                                                        e?.plasmicType ===
-                                                          "PlasmicUndefinedDataError"
-                                                      ) {
-                                                        return undefined;
-                                                      }
-                                                      throw e;
-                                                    }
-                                                  })()
+                                                }) => ""
                                               }
                                             ],
                                             [__plasmic_idx_0]
