@@ -2639,54 +2639,33 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       onClick={async event => {
                                         const $steps = {};
 
-                                        $steps["clearRegisterServices"] = true
-                                          ? (() => {
-                                              const actionArgs = {
-                                                variable: {
-                                                  objRoot: $state,
-                                                  variablePath: [
-                                                    "servicesToRegister"
+                                        $steps["errUser"] =
+                                          $state.registerinvoiceUserid.length ==
+                                          0
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  args: [
+                                                    "error",
+                                                    "\u0628\u0627 \u0648\u0627\u0631\u062f \u06a9\u0631\u062f\u0646 \u0634\u0645\u0627\u0631\u0647 \u0645\u0648\u0628\u0627\u06cc\u0644\u060c \u06a9\u0627\u0631\u0628\u0631 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u062c\u0633\u062a \u0648 \u062c\u0648 \u0646\u0645\u0627\u06cc\u06cc\u062f"
                                                   ]
-                                                },
-                                                operation: 0,
-                                                value: []
-                                              };
-                                              return (({
-                                                variable,
-                                                value,
-                                                startIndex,
-                                                deleteCount
-                                              }) => {
-                                                if (!variable) {
-                                                  return;
-                                                }
-                                                const {
-                                                  objRoot,
-                                                  variablePath
-                                                } = variable;
-
-                                                $stateSet(
-                                                  objRoot,
-                                                  variablePath,
-                                                  value
-                                                );
-                                                return value;
-                                              })?.apply(null, [actionArgs]);
-                                            })()
-                                          : undefined;
+                                                };
+                                                return $globalActions[
+                                                  "Fragment.showToast"
+                                                ]?.apply(null, [
+                                                  ...actionArgs.args
+                                                ]);
+                                              })()
+                                            : undefined;
                                         if (
-                                          $steps["clearRegisterServices"] !=
-                                            null &&
-                                          typeof $steps[
-                                            "clearRegisterServices"
-                                          ] === "object" &&
-                                          typeof $steps["clearRegisterServices"]
-                                            .then === "function"
+                                          $steps["errUser"] != null &&
+                                          typeof $steps["errUser"] ===
+                                            "object" &&
+                                          typeof $steps["errUser"].then ===
+                                            "function"
                                         ) {
-                                          $steps["clearRegisterServices"] =
-                                            await $steps[
-                                              "clearRegisterServices"
-                                            ];
+                                          $steps["errUser"] = await $steps[
+                                            "errUser"
+                                          ];
                                         }
 
                                         $steps["showWaiting"] = true
@@ -2736,141 +2715,87 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                           ];
                                         }
 
-                                        $steps["errUser"] =
-                                          $state.registerinvoiceUserid.length ==
+                                        $steps["registerInvoiceApi"] =
+                                          $state.registerinvoiceUserid.length >
                                           0
                                             ? (() => {
                                                 const actionArgs = {
                                                   args: [
-                                                    "error",
-                                                    "\u0628\u0627 \u0648\u0627\u0631\u062f \u06a9\u0631\u062f\u0646 \u0634\u0645\u0627\u0631\u0647 \u0645\u0648\u0628\u0627\u06cc\u0644\u060c \u06a9\u0627\u0631\u0628\u0631 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u062c\u0633\u062a \u0648 \u062c\u0648 \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                                                    "POST",
+                                                    "https://apigw.paziresh24.com/transaction/v1/admininvoice",
+                                                    undefined,
+                                                    (() => {
+                                                      try {
+                                                        return {
+                                                          userid:
+                                                            $state.registerinvoiceUserid,
+                                                          title:
+                                                            $state
+                                                              .txtRegisterInvoiceTitle
+                                                              .value,
+                                                          type: "sale",
+                                                          description:
+                                                            $state
+                                                              .txtRegisterinvoiceDescription
+                                                              .value,
+                                                          discountpercent:
+                                                            parseInt(
+                                                              $state
+                                                                .txtRegisterInvoiceDiscountPercent
+                                                                .value
+                                                            ),
+                                                          vatpercent: parseInt(
+                                                            $state
+                                                              .txtRegisterInvoiceVatPercent
+                                                              .value
+                                                          ),
+                                                          services: [
+                                                            {
+                                                              name: $state
+                                                                .txtServiceName[0]
+                                                                .value,
+                                                              count:
+                                                                $state
+                                                                  .txtServiceCount[0]
+                                                                  .value,
+                                                              price:
+                                                                $state
+                                                                  .txtServicePrice[0]
+                                                                  .value
+                                                            }
+                                                          ],
+
+                                                          productid: parseInt(
+                                                            $ctx.query
+                                                              .productid > 0
+                                                              ? $ctx.query
+                                                                  .productid
+                                                              : $state
+                                                                  .cbProductlist
+                                                                  .value
+                                                          )
+                                                        };
+                                                      } catch (e) {
+                                                        if (
+                                                          e instanceof
+                                                            TypeError ||
+                                                          e?.plasmicType ===
+                                                            "PlasmicUndefinedDataError"
+                                                        ) {
+                                                          return undefined;
+                                                        }
+                                                        throw e;
+                                                      }
+                                                    })()
                                                   ]
                                                 };
                                                 return $globalActions[
-                                                  "Fragment.showToast"
+                                                  "Fragment.apiRequest"
                                                 ]?.apply(null, [
                                                   ...actionArgs.args
                                                 ]);
                                               })()
                                             : undefined;
-                                        if (
-                                          $steps["errUser"] != null &&
-                                          typeof $steps["errUser"] ===
-                                            "object" &&
-                                          typeof $steps["errUser"].then ===
-                                            "function"
-                                        ) {
-                                          $steps["errUser"] = await $steps[
-                                            "errUser"
-                                          ];
-                                        }
-
-                                        $steps["newServices"] = true
-                                          ? (() => {
-                                              const actionArgs = {
-                                                customFunction: async () => {
-                                                  return (() => {
-                                                    return ($state.servicesToRegister =
-                                                      $state.txtServiceName.map(
-                                                        (name, index) => ({
-                                                          name: name.value,
-                                                          count:
-                                                            $state
-                                                              .txtServiceCount[
-                                                              index
-                                                            ].value,
-                                                          price:
-                                                            $state
-                                                              .txtServicePrice[
-                                                              index
-                                                            ].value
-                                                        })
-                                                      ));
-                                                  })();
-                                                }
-                                              };
-                                              return (({ customFunction }) => {
-                                                return customFunction();
-                                              })?.apply(null, [actionArgs]);
-                                            })()
-                                          : undefined;
-                                        if (
-                                          $steps["newServices"] != null &&
-                                          typeof $steps["newServices"] ===
-                                            "object" &&
-                                          typeof $steps["newServices"].then ===
-                                            "function"
-                                        ) {
-                                          $steps["newServices"] = await $steps[
-                                            "newServices"
-                                          ];
-                                        }
-
-                                        $steps["registerInvoiceApi"] = true
-                                          ? (() => {
-                                              const actionArgs = {
-                                                args: [
-                                                  "POST",
-                                                  "https://apigw.paziresh24.com/transaction/v1/admininvoice",
-                                                  undefined,
-                                                  (() => {
-                                                    try {
-                                                      return {
-                                                        userid:
-                                                          $state.registerinvoiceUserid,
-                                                        title:
-                                                          $state
-                                                            .txtRegisterInvoiceTitle
-                                                            .value,
-                                                        type: "sale",
-                                                        description:
-                                                          $state
-                                                            .txtRegisterinvoiceDescription
-                                                            .value,
-                                                        discountpercent:
-                                                          parseInt(
-                                                            $state
-                                                              .txtRegisterInvoiceDiscountPercent
-                                                              .value
-                                                          ),
-                                                        vatpercent: parseInt(
-                                                          $state
-                                                            .txtRegisterInvoiceVatPercent
-                                                            .value
-                                                        ),
-                                                        services:
-                                                          $state.servicesToRegister,
-                                                        productid: parseInt(
-                                                          $ctx.query.productid >
-                                                            0
-                                                            ? $ctx.query
-                                                                .productid
-                                                            : $state
-                                                                .cbProductlist
-                                                                .value
-                                                        )
-                                                      };
-                                                    } catch (e) {
-                                                      if (
-                                                        e instanceof
-                                                          TypeError ||
-                                                        e?.plasmicType ===
-                                                          "PlasmicUndefinedDataError"
-                                                      ) {
-                                                        return undefined;
-                                                      }
-                                                      throw e;
-                                                    }
-                                                  })()
-                                                ]
-                                              };
-                                              return $globalActions[
-                                                "Fragment.apiRequest"
-                                              ]?.apply(null, [
-                                                ...actionArgs.args
-                                              ]);
-                                            })()
-                                          : undefined;
                                         if (
                                           $steps["registerInvoiceApi"] !=
                                             null &&
@@ -2882,6 +2807,53 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         ) {
                                           $steps["registerInvoiceApi"] =
                                             await $steps["registerInvoiceApi"];
+                                        }
+
+                                        $steps["hideWaiting"] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                variable: {
+                                                  objRoot: $state,
+                                                  variablePath: [
+                                                    "waitingInvoice"
+                                                  ]
+                                                },
+                                                operation: 0,
+                                                value: false
+                                              };
+                                              return (({
+                                                variable,
+                                                value,
+                                                startIndex,
+                                                deleteCount
+                                              }) => {
+                                                if (!variable) {
+                                                  return;
+                                                }
+                                                const {
+                                                  objRoot,
+                                                  variablePath
+                                                } = variable;
+
+                                                $stateSet(
+                                                  objRoot,
+                                                  variablePath,
+                                                  value
+                                                );
+                                                return value;
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["hideWaiting"] != null &&
+                                          typeof $steps["hideWaiting"] ===
+                                            "object" &&
+                                          typeof $steps["hideWaiting"].then ===
+                                            "function"
+                                        ) {
+                                          $steps["hideWaiting"] = await $steps[
+                                            "hideWaiting"
+                                          ];
                                         }
 
                                         $steps["alertSucess"] =
@@ -3000,53 +2972,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         ) {
                                           $steps["final"] = await $steps[
                                             "final"
-                                          ];
-                                        }
-
-                                        $steps["hideWaiting"] = true
-                                          ? (() => {
-                                              const actionArgs = {
-                                                variable: {
-                                                  objRoot: $state,
-                                                  variablePath: [
-                                                    "waitingInvoice"
-                                                  ]
-                                                },
-                                                operation: 0,
-                                                value: false
-                                              };
-                                              return (({
-                                                variable,
-                                                value,
-                                                startIndex,
-                                                deleteCount
-                                              }) => {
-                                                if (!variable) {
-                                                  return;
-                                                }
-                                                const {
-                                                  objRoot,
-                                                  variablePath
-                                                } = variable;
-
-                                                $stateSet(
-                                                  objRoot,
-                                                  variablePath,
-                                                  value
-                                                );
-                                                return value;
-                                              })?.apply(null, [actionArgs]);
-                                            })()
-                                          : undefined;
-                                        if (
-                                          $steps["hideWaiting"] != null &&
-                                          typeof $steps["hideWaiting"] ===
-                                            "object" &&
-                                          typeof $steps["hideWaiting"].then ===
-                                            "function"
-                                        ) {
-                                          $steps["hideWaiting"] = await $steps[
-                                            "hideWaiting"
                                           ];
                                         }
                                       }}
