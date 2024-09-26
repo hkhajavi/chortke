@@ -2894,9 +2894,12 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                         "";
                                                       $state.txtUserMobile.value =
                                                         "";
-                                                      $state.txtServiceCount[0].value = 0;
-                                                      $state.txtServiceName[0].value = 0;
-                                                      $state.txtServicePrice[0].value = 0;
+                                                      $state.txtServiceCount[0].value =
+                                                        "";
+                                                      $state.txtServiceName[0].value =
+                                                        "";
+                                                      $state.txtServicePrice[0].value =
+                                                        "";
                                                       $state.registerinvoiceUserinfo =
                                                         "";
                                                       $state.txtRegisterInvoiceVatPercent.value = 0;
