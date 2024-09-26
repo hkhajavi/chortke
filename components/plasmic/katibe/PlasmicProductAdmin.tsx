@@ -3094,10 +3094,12 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               $state.registerinvoiceUserinfo =
                                                 "";
                                               $state.registerinvoiceUserid = "";
-                                              $state.txtRegisterInvoiceVatPercent.value = 0;
+                                              $state.txtRegisterInvoiceVatPercent.value =
+                                                "0";
                                               $state.txtRegisterInvoiceTitle.value =
                                                 "";
-                                              $state.txtRegisterInvoiceDiscountPercent.value = 0;
+                                              $state.txtRegisterInvoiceDiscountPercent.value =
+                                                "0";
                                               $state.txtRegisterinvoiceDescription.value =
                                                 "";
                                               $state.waitingInvoice = false;
