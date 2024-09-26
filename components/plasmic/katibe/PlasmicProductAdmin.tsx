@@ -2275,9 +2275,9 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                           return (() => {
                                                             return $state.newInvoiceServices.push(
                                                               {
-                                                                title: "",
-                                                                count: 0,
-                                                                price: 0
+                                                                name: "",
+                                                                count: "",
+                                                                price: ""
                                                               }
                                                             );
                                                           })();
