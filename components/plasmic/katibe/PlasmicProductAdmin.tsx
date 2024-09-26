@@ -1894,7 +1894,22 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                   $props,
                                                   $state,
                                                   $queries
-                                                }) => ""
+                                                }) =>
+                                                  (() => {
+                                                    try {
+                                                      return "";
+                                                    } catch (e) {
+                                                      if (
+                                                        e instanceof
+                                                          TypeError ||
+                                                        e?.plasmicType ===
+                                                          "PlasmicUndefinedDataError"
+                                                      ) {
+                                                        return undefined;
+                                                      }
+                                                      throw e;
+                                                    }
+                                                  })()
                                               }
                                             ],
                                             [__plasmic_idx_0]
@@ -1981,6 +1996,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                             },
                                             placeholder:
                                               "\u062a\u0639\u062f\u0627\u062f",
+                                            type: "number",
                                             value:
                                               generateStateValueProp($state, [
                                                 "txtServiceCount",
@@ -2085,6 +2101,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                             },
                                             placeholder:
                                               "\u0645\u0628\u0644\u063a - \u0631\u06cc\u0627\u0644",
+                                            type: "number",
                                             value:
                                               generateStateValueProp($state, [
                                                 "txtServicePrice",
@@ -3034,9 +3051,12 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               $state.registerInvoiceFinal =
                                                 false;
                                               $state.txtUserMobile.value = "";
-                                              $state.txtServiceCount[0].value = 0;
-                                              $state.txtServiceName[0].value = 0;
-                                              $state.txtServicePrice[0].value = 0;
+                                              $state.txtServiceCount[0].value =
+                                                "";
+                                              $state.txtServiceName[0].value =
+                                                "";
+                                              $state.txtServicePrice[0].value =
+                                                "";
                                               $state.registerinvoiceUserinfo =
                                                 "";
                                               $state.registerinvoiceUserid = "";
