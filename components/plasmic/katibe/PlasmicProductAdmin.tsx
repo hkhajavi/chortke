@@ -113,10 +113,10 @@ export type PlasmicProductAdmin__OverridesType = {
   txtUserMobile?: Flex__<typeof TextInput>;
   waitingIcon5?: Flex__<"svg">;
   txtRegisterInvoiceTitle?: Flex__<typeof TextInput>;
-  txtRegisterinvoiceDescription?: Flex__<typeof TextInput>;
   txtServiceName?: Flex__<typeof TextInput>;
   txtServiceCount?: Flex__<typeof TextInput>;
   txtServicePrice?: Flex__<typeof TextInput>;
+  txtRegisterinvoiceDescription?: Flex__<typeof TextInput>;
   txtRegisterInvoiceDiscountPercent?: Flex__<typeof TextInput>;
   txtRegisterInvoiceVatPercent?: Flex__<typeof TextInput>;
   txtFinalPrice?: Flex__<typeof TextInput>;
@@ -1777,70 +1777,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     />
                                   </div>
                                 </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.freeBox__v6W9I
-                                  )}
-                                >
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      sty.freeBox__bs95I
-                                    )}
-                                  >
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
-                                        sty.text__ihbA
-                                      )}
-                                    >
-                                      {
-                                        "\u062a\u0648\u0636\u06cc\u062d\u0627\u062a:"
-                                      }
-                                    </div>
-                                  </div>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      sty.freeBox__wcKg2
-                                    )}
-                                  >
-                                    <TextInput
-                                      data-plasmic-name={
-                                        "txtRegisterinvoiceDescription"
-                                      }
-                                      data-plasmic-override={
-                                        overrides.txtRegisterinvoiceDescription
-                                      }
-                                      className={classNames(
-                                        "__wab_instance",
-                                        sty.txtRegisterinvoiceDescription
-                                      )}
-                                      onChange={(...eventArgs) => {
-                                        generateStateOnChangeProp($state, [
-                                          "txtRegisterinvoiceDescription",
-                                          "value"
-                                        ])(
-                                          (e => e.target?.value).apply(
-                                            null,
-                                            eventArgs
-                                          )
-                                        );
-                                      }}
-                                      placeholder={
-                                        "\u062a\u0648\u0636\u06cc\u062d\u0627\u062a \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628"
-                                      }
-                                      value={
-                                        generateStateValueProp($state, [
-                                          "txtRegisterinvoiceDescription",
-                                          "value"
-                                        ]) ?? ""
-                                      }
-                                    />
-                                  </div>
-                                </div>
                                 {(_par =>
                                   !_par
                                     ? []
@@ -2369,6 +2305,70 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 <div
                                   className={classNames(
                                     projectcss.all,
+                                    sty.freeBox__v6W9I
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__bs95I
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__ihbA
+                                      )}
+                                    >
+                                      {
+                                        "\u062a\u0648\u0636\u06cc\u062d\u0627\u062a:"
+                                      }
+                                    </div>
+                                  </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__wcKg2
+                                    )}
+                                  >
+                                    <TextInput
+                                      data-plasmic-name={
+                                        "txtRegisterinvoiceDescription"
+                                      }
+                                      data-plasmic-override={
+                                        overrides.txtRegisterinvoiceDescription
+                                      }
+                                      className={classNames(
+                                        "__wab_instance",
+                                        sty.txtRegisterinvoiceDescription
+                                      )}
+                                      onChange={(...eventArgs) => {
+                                        generateStateOnChangeProp($state, [
+                                          "txtRegisterinvoiceDescription",
+                                          "value"
+                                        ])(
+                                          (e => e.target?.value).apply(
+                                            null,
+                                            eventArgs
+                                          )
+                                        );
+                                      }}
+                                      placeholder={
+                                        "\u062a\u0648\u0636\u06cc\u062d\u0627\u062a \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628"
+                                      }
+                                      value={
+                                        generateStateValueProp($state, [
+                                          "txtRegisterinvoiceDescription",
+                                          "value"
+                                        ]) ?? ""
+                                      }
+                                    />
+                                  </div>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
                                     sty.freeBox__uuwFs
                                   )}
                                 >
@@ -2731,7 +2731,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                             $state.registerinvoiceUserid,
                                                           title:
                                                             $state
-                                                              .txtRegisterInvoiceTitle
+                                                              .txtServiceName[0]
                                                               .value,
                                                           type: "sale",
                                                           description:
@@ -6037,10 +6037,10 @@ const PlasmicDescendants = {
     "txtUserMobile",
     "waitingIcon5",
     "txtRegisterInvoiceTitle",
-    "txtRegisterinvoiceDescription",
     "txtServiceName",
     "txtServiceCount",
     "txtServicePrice",
+    "txtRegisterinvoiceDescription",
     "txtRegisterInvoiceDiscountPercent",
     "txtRegisterInvoiceVatPercent",
     "txtFinalPrice",
@@ -6073,10 +6073,10 @@ const PlasmicDescendants = {
     "txtUserMobile",
     "waitingIcon5",
     "txtRegisterInvoiceTitle",
-    "txtRegisterinvoiceDescription",
     "txtServiceName",
     "txtServiceCount",
     "txtServicePrice",
+    "txtRegisterinvoiceDescription",
     "txtRegisterInvoiceDiscountPercent",
     "txtRegisterInvoiceVatPercent",
     "txtFinalPrice",
@@ -6102,10 +6102,10 @@ const PlasmicDescendants = {
     "txtUserMobile",
     "waitingIcon5",
     "txtRegisterInvoiceTitle",
-    "txtRegisterinvoiceDescription",
     "txtServiceName",
     "txtServiceCount",
     "txtServicePrice",
+    "txtRegisterinvoiceDescription",
     "txtRegisterInvoiceDiscountPercent",
     "txtRegisterInvoiceVatPercent",
     "txtFinalPrice",
@@ -6120,10 +6120,10 @@ const PlasmicDescendants = {
     "txtUserMobile",
     "waitingIcon5",
     "txtRegisterInvoiceTitle",
-    "txtRegisterinvoiceDescription",
     "txtServiceName",
     "txtServiceCount",
     "txtServicePrice",
+    "txtRegisterinvoiceDescription",
     "txtRegisterInvoiceDiscountPercent",
     "txtRegisterInvoiceVatPercent",
     "txtFinalPrice",
@@ -6132,10 +6132,10 @@ const PlasmicDescendants = {
   txtUserMobile: ["txtUserMobile"],
   waitingIcon5: ["waitingIcon5"],
   txtRegisterInvoiceTitle: ["txtRegisterInvoiceTitle"],
-  txtRegisterinvoiceDescription: ["txtRegisterinvoiceDescription"],
   txtServiceName: ["txtServiceName"],
   txtServiceCount: ["txtServiceCount"],
   txtServicePrice: ["txtServicePrice"],
+  txtRegisterinvoiceDescription: ["txtRegisterinvoiceDescription"],
   txtRegisterInvoiceDiscountPercent: ["txtRegisterInvoiceDiscountPercent"],
   txtRegisterInvoiceVatPercent: ["txtRegisterInvoiceVatPercent"],
   txtFinalPrice: ["txtFinalPrice"],
@@ -6192,10 +6192,10 @@ type NodeDefaultElementType = {
   txtUserMobile: typeof TextInput;
   waitingIcon5: "svg";
   txtRegisterInvoiceTitle: typeof TextInput;
-  txtRegisterinvoiceDescription: typeof TextInput;
   txtServiceName: typeof TextInput;
   txtServiceCount: typeof TextInput;
   txtServicePrice: typeof TextInput;
+  txtRegisterinvoiceDescription: typeof TextInput;
   txtRegisterInvoiceDiscountPercent: typeof TextInput;
   txtRegisterInvoiceVatPercent: typeof TextInput;
   txtFinalPrice: typeof TextInput;
@@ -6288,12 +6288,12 @@ export const PlasmicProductAdmin = Object.assign(
     txtUserMobile: makeNodeComponent("txtUserMobile"),
     waitingIcon5: makeNodeComponent("waitingIcon5"),
     txtRegisterInvoiceTitle: makeNodeComponent("txtRegisterInvoiceTitle"),
-    txtRegisterinvoiceDescription: makeNodeComponent(
-      "txtRegisterinvoiceDescription"
-    ),
     txtServiceName: makeNodeComponent("txtServiceName"),
     txtServiceCount: makeNodeComponent("txtServiceCount"),
     txtServicePrice: makeNodeComponent("txtServicePrice"),
+    txtRegisterinvoiceDescription: makeNodeComponent(
+      "txtRegisterinvoiceDescription"
+    ),
     txtRegisterInvoiceDiscountPercent: makeNodeComponent(
       "txtRegisterInvoiceDiscountPercent"
     ),

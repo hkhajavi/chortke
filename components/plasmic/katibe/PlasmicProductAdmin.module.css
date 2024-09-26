@@ -802,13 +802,13 @@
   margin: 0px;
 }
 .freeBox__uSZyf {
-  display: grid;
   position: relative;
   grid-template-columns: repeat(6, minmax(0, 1fr));
   width: 100%;
   height: auto;
   max-width: 100%;
   min-width: 0;
+  display: none;
   padding: 8px;
 }
 .freeBox___9Pnhw {
@@ -870,80 +870,6 @@
   height: 1em;
 }
 .svg__a6ZzT {
-  position: relative;
-  object-fit: cover;
-  width: auto;
-  height: 1em;
-}
-.freeBox__v6W9I {
-  display: grid;
-  position: relative;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-  padding: 8px;
-}
-.freeBox__bs95I {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: center;
-  align-items: flex-end;
-  min-width: 0;
-  padding: 0px 8px;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .freeBox__bs95I {
-    padding-right: 0px;
-    padding-left: 0px;
-  }
-}
-.text__ihbA {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  text-align: left;
-  min-width: 0;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .text__ihbA {
-    width: 100%;
-    height: auto;
-    max-width: 100%;
-    font-size: 13px;
-    text-align: left;
-    min-width: 0;
-  }
-}
-.freeBox__wcKg2 {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: center;
-  align-items: flex-end;
-  grid-column-end: span 5;
-  min-width: 0;
-  padding: 0px 8px;
-}
-.txtRegisterinvoiceDescription:global(.__wab_instance) {
-  max-width: 100%;
-}
-.svg__jckO {
-  position: relative;
-  object-fit: cover;
-  width: auto;
-  height: 1em;
-}
-.svg___7MRWk {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -1086,6 +1012,80 @@
   height: 1em;
 }
 .svg___70BhR {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.freeBox__v6W9I {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px;
+}
+.freeBox__bs95I {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: center;
+  align-items: flex-end;
+  min-width: 0;
+  padding: 0px 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__bs95I {
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}
+.text__ihbA {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: left;
+  min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__ihbA {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    font-size: 13px;
+    text-align: left;
+    min-width: 0;
+  }
+}
+.freeBox__wcKg2 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: center;
+  align-items: flex-end;
+  grid-column-end: span 5;
+  min-width: 0;
+  padding: 0px 8px;
+}
+.txtRegisterinvoiceDescription:global(.__wab_instance) {
+  max-width: 100%;
+}
+.svg__jckO {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.svg___7MRWk {
   position: relative;
   object-fit: cover;
   width: auto;
