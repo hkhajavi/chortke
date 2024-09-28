@@ -2938,35 +2938,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                           ];
                                         }
 
-                                        $steps["closeModal"] =
-                                          $steps.registerInvoiceApi.status ==
-                                          200
-                                            ? (() => {
-                                                const actionArgs = {
-                                                  customFunction: async () => {
-                                                    return ($state.dialogRegisterInvoice.open =
-                                                      false);
-                                                  }
-                                                };
-                                                return (({
-                                                  customFunction
-                                                }) => {
-                                                  return customFunction();
-                                                })?.apply(null, [actionArgs]);
-                                              })()
-                                            : undefined;
-                                        if (
-                                          $steps["closeModal"] != null &&
-                                          typeof $steps["closeModal"] ===
-                                            "object" &&
-                                          typeof $steps["closeModal"].then ===
-                                            "function"
-                                        ) {
-                                          $steps["closeModal"] = await $steps[
-                                            "closeModal"
-                                          ];
-                                        }
-
                                         $steps["getInvoiceList"] =
                                           $steps.registerInvoiceApi.status ==
                                           200
@@ -3088,6 +3059,35 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         ) {
                                           $steps["showMoreBtn1"] = await $steps[
                                             "showMoreBtn1"
+                                          ];
+                                        }
+
+                                        $steps["closeModal"] =
+                                          $steps.registerInvoiceApi.status ==
+                                          200
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  customFunction: async () => {
+                                                    return ($state.dialogRegisterInvoice.open =
+                                                      false);
+                                                  }
+                                                };
+                                                return (({
+                                                  customFunction
+                                                }) => {
+                                                  return customFunction();
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                        if (
+                                          $steps["closeModal"] != null &&
+                                          typeof $steps["closeModal"] ===
+                                            "object" &&
+                                          typeof $steps["closeModal"].then ===
+                                            "function"
+                                        ) {
+                                          $steps["closeModal"] = await $steps[
+                                            "closeModal"
                                           ];
                                         }
 
