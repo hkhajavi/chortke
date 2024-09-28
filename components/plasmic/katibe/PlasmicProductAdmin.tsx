@@ -5968,6 +5968,33 @@ function PlasmicProductAdmin__RenderFunc(props: {
                 $steps["urlproductid"] = await $steps["urlproductid"];
               }
 
+              $steps["selectFirstProduct"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          return ($state.cbProductlist.value =
+                            $state.productList.find(
+                              item => item.productid > 0
+                            ).productid);
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["selectFirstProduct"] != null &&
+                typeof $steps["selectFirstProduct"] === "object" &&
+                typeof $steps["selectFirstProduct"].then === "function"
+              ) {
+                $steps["selectFirstProduct"] = await $steps[
+                  "selectFirstProduct"
+                ];
+              }
+
               $steps["getInvoiceList"] = true
                 ? (() => {
                     const actionArgs = {
