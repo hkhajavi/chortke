@@ -2727,7 +2727,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                                   .value
                                                             }
                                                           ],
-
                                                           productid: parseInt(
                                                             $ctx.query
                                                               .productid > 0
@@ -2884,12 +2883,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                 const actionArgs = {
                                                   customFunction: async () => {
                                                     return (() => {
-                                                      $state.registerInvoiceFinal =
-                                                        true;
-                                                      $state.txtInvoiceId.value =
-                                                        $steps.registerInvoiceApi.data.data.invoiceid;
-                                                      $state.txtFinalPrice.value =
-                                                        $steps.registerInvoiceApi.data.data.finalprice;
                                                       $state.registerinvoiceUserid =
                                                         "";
                                                       $state.txtUserMobile.value =
@@ -2918,7 +2911,11 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                             price: ""
                                                           }
                                                         ];
-                                                      return ($state.servicesToRegister =
+                                                      $state.servicesToRegister =
+                                                        [];
+                                                      $state.waiting = true;
+                                                      $state.offset = 0;
+                                                      return ($state.invoicelist =
                                                         []);
                                                     })();
                                                   }
@@ -2939,6 +2936,203 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                           $steps["final"] = await $steps[
                                             "final"
                                           ];
+                                        }
+
+                                        $steps["closeModal"] =
+                                          $steps.registerInvoiceApi.status ==
+                                          200
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  customFunction: async () => {
+                                                    return ($state.dialogRegisterInvoice.open =
+                                                      false);
+                                                  }
+                                                };
+                                                return (({
+                                                  customFunction
+                                                }) => {
+                                                  return customFunction();
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                        if (
+                                          $steps["closeModal"] != null &&
+                                          typeof $steps["closeModal"] ===
+                                            "object" &&
+                                          typeof $steps["closeModal"].then ===
+                                            "function"
+                                        ) {
+                                          $steps["closeModal"] = await $steps[
+                                            "closeModal"
+                                          ];
+                                        }
+
+                                        $steps["getInvoiceList"] =
+                                          $steps.registerInvoiceApi.status ==
+                                          200
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  args: [
+                                                    undefined,
+                                                    (() => {
+                                                      try {
+                                                        return (
+                                                          "https://apigw.paziresh24.com/transaction/v1/admininvoicelist?productid=" +
+                                                          ($ctx.query
+                                                            .productid > 0
+                                                            ? $ctx.query
+                                                                .productid
+                                                            : $state
+                                                                .cbProductlist
+                                                                .value) +
+                                                          "&search=" +
+                                                          $state.txtSearch
+                                                            .value +
+                                                          "&limit=" +
+                                                          $state.limit +
+                                                          "&offset=" +
+                                                          $state.offset
+                                                        );
+                                                      } catch (e) {
+                                                        if (
+                                                          e instanceof
+                                                            TypeError ||
+                                                          e?.plasmicType ===
+                                                            "PlasmicUndefinedDataError"
+                                                        ) {
+                                                          return undefined;
+                                                        }
+                                                        throw e;
+                                                      }
+                                                    })()
+                                                  ]
+                                                };
+                                                return $globalActions[
+                                                  "Fragment.apiRequest"
+                                                ]?.apply(null, [
+                                                  ...actionArgs.args
+                                                ]);
+                                              })()
+                                            : undefined;
+                                        if (
+                                          $steps["getInvoiceList"] != null &&
+                                          typeof $steps["getInvoiceList"] ===
+                                            "object" &&
+                                          typeof $steps["getInvoiceList"]
+                                            .then === "function"
+                                        ) {
+                                          $steps["getInvoiceList"] =
+                                            await $steps["getInvoiceList"];
+                                        }
+
+                                        $steps["updateInvoicelist"] =
+                                          $steps.getInvoiceList.status == 200 &&
+                                          $steps.getInvoiceList.data.status ==
+                                            true &&
+                                          $steps.registerInvoiceApi.status ==
+                                            200
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  customFunction: async () => {
+                                                    return ($state.invoicelist =
+                                                      $steps.getInvoiceList.data.data);
+                                                  }
+                                                };
+                                                return (({
+                                                  customFunction
+                                                }) => {
+                                                  return customFunction();
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                        if (
+                                          $steps["updateInvoicelist"] != null &&
+                                          typeof $steps["updateInvoicelist"] ===
+                                            "object" &&
+                                          typeof $steps["updateInvoicelist"]
+                                            .then === "function"
+                                        ) {
+                                          $steps["updateInvoicelist"] =
+                                            await $steps["updateInvoicelist"];
+                                        }
+
+                                        $steps["showMoreBtn1"] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                customFunction: async () => {
+                                                  return (() => {
+                                                    $state.showMoreBtn = true;
+                                                    if (
+                                                      $steps.getInvoiceList
+                                                        .status != 200 ||
+                                                      $steps.getInvoiceList.data
+                                                        .data.length !=
+                                                        $state.limit
+                                                    )
+                                                      return ($state.showMoreBtn =
+                                                        false);
+                                                  })();
+                                                }
+                                              };
+                                              return (({ customFunction }) => {
+                                                return customFunction();
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["showMoreBtn1"] != null &&
+                                          typeof $steps["showMoreBtn1"] ===
+                                            "object" &&
+                                          typeof $steps["showMoreBtn1"].then ===
+                                            "function"
+                                        ) {
+                                          $steps["showMoreBtn1"] = await $steps[
+                                            "showMoreBtn1"
+                                          ];
+                                        }
+
+                                        $steps["updateWaiting"] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                variable: {
+                                                  objRoot: $state,
+                                                  variablePath: ["waiting"]
+                                                },
+                                                operation: 0,
+                                                value: false
+                                              };
+                                              return (({
+                                                variable,
+                                                value,
+                                                startIndex,
+                                                deleteCount
+                                              }) => {
+                                                if (!variable) {
+                                                  return;
+                                                }
+                                                const {
+                                                  objRoot,
+                                                  variablePath
+                                                } = variable;
+
+                                                $stateSet(
+                                                  objRoot,
+                                                  variablePath,
+                                                  value
+                                                );
+                                                return value;
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["updateWaiting"] != null &&
+                                          typeof $steps["updateWaiting"] ===
+                                            "object" &&
+                                          typeof $steps["updateWaiting"]
+                                            .then === "function"
+                                        ) {
+                                          $steps["updateWaiting"] =
+                                            await $steps["updateWaiting"];
                                         }
                                       }}
                                     />
@@ -3335,7 +3529,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                     )}
                   >
                     {
-                      "\u0645\u062d\u062a\u0648\u0627\u06cc\u06cc \u062c\u0647\u062a \u0646\u0645\u0627\u06cc\u0634 \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f"
+                      "\u0645\u062d\u062a\u0648\u0627\u06cc\u06cc \u062c\u0647\u062a \u0646\u0645\u0627\u06cc\u0634 \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f."
                     }
                   </div>
                 </div>
