@@ -3543,42 +3543,6 @@ function PlasmicHomepage__RenderFunc(props: {
                               $steps["runCode2"] = await $steps["runCode2"];
                             }
 
-                            $steps["showWaiting"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["waiting"]
-                                    },
-                                    operation: 0,
-                                    value: true
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["showWaiting"] != null &&
-                              typeof $steps["showWaiting"] === "object" &&
-                              typeof $steps["showWaiting"].then === "function"
-                            ) {
-                              $steps["showWaiting"] = await $steps[
-                                "showWaiting"
-                              ];
-                            }
-
                             $steps["getUserAccounts"] = true
                               ? (() => {
                                   const actionArgs = {
@@ -3640,42 +3604,6 @@ function PlasmicHomepage__RenderFunc(props: {
                             ) {
                               $steps["updateBankAccountList"] = await $steps[
                                 "updateBankAccountList"
-                              ];
-                            }
-
-                            $steps["updateWaiting"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["waiting"]
-                                    },
-                                    operation: 0,
-                                    value: false
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["updateWaiting"] != null &&
-                              typeof $steps["updateWaiting"] === "object" &&
-                              typeof $steps["updateWaiting"].then === "function"
-                            ) {
-                              $steps["updateWaiting"] = await $steps[
-                                "updateWaiting"
                               ];
                             }
                           }}
