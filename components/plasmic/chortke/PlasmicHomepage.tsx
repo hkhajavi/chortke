@@ -613,6 +613,12 @@ function PlasmicHomepage__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "waitingAccount",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -4024,7 +4030,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                                             customFunction:
                                                               async () => {
                                                                 return (() => {
-                                                                  $state.waiting =
+                                                                  $state.waitingAccount =
                                                                     true;
                                                                   return ($state.cardInquiry =
                                                                     {});
@@ -4172,7 +4178,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                                           const actionArgs = {
                                                             customFunction:
                                                               async () => {
-                                                                return ($state.waiting =
+                                                                return ($state.waitingAccount =
                                                                   false);
                                                               }
                                                           };
@@ -4508,7 +4514,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                                           const actionArgs = {
                                                             customFunction:
                                                               async () => {
-                                                                return ($state.waiting =
+                                                                return ($state.waitingAccount =
                                                                   true);
                                                               }
                                                           };
@@ -4719,6 +4725,63 @@ function PlasmicHomepage__RenderFunc(props: {
                                                           "runCode2"
                                                         ];
                                                     }
+
+                                                    $steps[
+                                                      "hideWaitingAccount"
+                                                    ] = true
+                                                      ? (() => {
+                                                          const actionArgs = {
+                                                            variable: {
+                                                              objRoot: $state,
+                                                              variablePath: [
+                                                                "waitingAccount"
+                                                              ]
+                                                            },
+                                                            operation: 0,
+                                                            value: false
+                                                          };
+                                                          return (({
+                                                            variable,
+                                                            value,
+                                                            startIndex,
+                                                            deleteCount
+                                                          }) => {
+                                                            if (!variable) {
+                                                              return;
+                                                            }
+                                                            const {
+                                                              objRoot,
+                                                              variablePath
+                                                            } = variable;
+
+                                                            $stateSet(
+                                                              objRoot,
+                                                              variablePath,
+                                                              value
+                                                            );
+                                                            return value;
+                                                          })?.apply(null, [
+                                                            actionArgs
+                                                          ]);
+                                                        })()
+                                                      : undefined;
+                                                    if (
+                                                      $steps[
+                                                        "hideWaitingAccount"
+                                                      ] != null &&
+                                                      typeof $steps[
+                                                        "hideWaitingAccount"
+                                                      ] === "object" &&
+                                                      typeof $steps[
+                                                        "hideWaitingAccount"
+                                                      ].then === "function"
+                                                    ) {
+                                                      $steps[
+                                                        "hideWaitingAccount"
+                                                      ] = await $steps[
+                                                        "hideWaitingAccount"
+                                                      ];
+                                                    }
                                                   }}
                                                 />
                                               </div>
@@ -4753,7 +4816,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                           </div>
                                           {(() => {
                                             try {
-                                              return $state.waiting;
+                                              return $state.waitingAccount;
                                             } catch (e) {
                                               if (
                                                 e instanceof TypeError ||
