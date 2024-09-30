@@ -5368,14 +5368,16 @@ function PlasmicHomepage__RenderFunc(props: {
                                               (() => {
                                                 try {
                                                   return {
-                                                    accountid:
-                                                      $state.radioAccounts
-                                                        .value,
-                                                    amount:
+                                                    accountid: parseInt(
+                                                      $state.radioAccounts.value
+                                                    ),
+                                                    amount: parseInt(
                                                       $state.txtSettlemenAmount
-                                                        .value,
-                                                    productid:
+                                                        .value
+                                                    ),
+                                                    productid: parseInt(
                                                       $state.cbProductlist.value
+                                                    )
                                                   };
                                                 } catch (e) {
                                                   if (
