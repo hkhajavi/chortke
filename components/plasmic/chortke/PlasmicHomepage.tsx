@@ -5081,8 +5081,9 @@ function PlasmicHomepage__RenderFunc(props: {
                                   onClick={async event => {
                                     const $steps = {};
 
-                                    $steps["invokeGlobalAction2"] =
-                                      $state.radioAccounts.value < 1
+                                    $steps["alertSelectAccount"] =
+                                      $state.radioAccounts.value < 1 ||
+                                      $state.radioAccounts.value == undefined
                                         ? (() => {
                                             const actionArgs = {
                                               args: [
@@ -5098,14 +5099,14 @@ function PlasmicHomepage__RenderFunc(props: {
                                           })()
                                         : undefined;
                                     if (
-                                      $steps["invokeGlobalAction2"] != null &&
-                                      typeof $steps["invokeGlobalAction2"] ===
+                                      $steps["alertSelectAccount"] != null &&
+                                      typeof $steps["alertSelectAccount"] ===
                                         "object" &&
-                                      typeof $steps["invokeGlobalAction2"]
+                                      typeof $steps["alertSelectAccount"]
                                         .then === "function"
                                     ) {
-                                      $steps["invokeGlobalAction2"] =
-                                        await $steps["invokeGlobalAction2"];
+                                      $steps["alertSelectAccount"] =
+                                        await $steps["alertSelectAccount"];
                                     }
                                   }}
                                 />
