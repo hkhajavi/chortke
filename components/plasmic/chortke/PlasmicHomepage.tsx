@@ -598,6 +598,12 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "insertAccountErrorText",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -4731,14 +4737,36 @@ function PlasmicHomepage__RenderFunc(props: {
                                                                   }
                                                                 })(),
                                                                 undefined,
-                                                                {
-                                                                  iban: "string",
-                                                                  cardid:
-                                                                    "string",
-                                                                  ownername:
-                                                                    "string",
-                                                                  name: "string"
-                                                                }
+                                                                (() => {
+                                                                  try {
+                                                                    return {
+                                                                      iban: $state
+                                                                        .txtCardIban
+                                                                        .value,
+                                                                      cardid:
+                                                                        $state
+                                                                          .txtCardId
+                                                                          .value,
+                                                                      ownername:
+                                                                        $state
+                                                                          .txtCardOwner
+                                                                          .value,
+                                                                      name: $state
+                                                                        .txtCardBankName
+                                                                        .value
+                                                                    };
+                                                                  } catch (e) {
+                                                                    if (
+                                                                      e instanceof
+                                                                        TypeError ||
+                                                                      e?.plasmicType ===
+                                                                        "PlasmicUndefinedDataError"
+                                                                    ) {
+                                                                      return [];
+                                                                    }
+                                                                    throw e;
+                                                                  }
+                                                                })()
                                                               ]
                                                             };
                                                             return $globalActions[
@@ -4766,6 +4794,68 @@ function PlasmicHomepage__RenderFunc(props: {
                                                       ];
                                                     }
 
+                                                    $steps[
+                                                      "updateInsertAccountErrorText"
+                                                    ] =
+                                                      $steps.registerAccount
+                                                        .status != 200
+                                                        ? (() => {
+                                                            const actionArgs = {
+                                                              variable: {
+                                                                objRoot: $state,
+                                                                variablePath: [
+                                                                  "insertAccountErrorText"
+                                                                ]
+                                                              },
+                                                              operation: 0,
+                                                              value:
+                                                                $steps
+                                                                  .registerAccount
+                                                                  .data.message
+                                                            };
+                                                            return (({
+                                                              variable,
+                                                              value,
+                                                              startIndex,
+                                                              deleteCount
+                                                            }) => {
+                                                              if (!variable) {
+                                                                return;
+                                                              }
+                                                              const {
+                                                                objRoot,
+                                                                variablePath
+                                                              } = variable;
+
+                                                              $stateSet(
+                                                                objRoot,
+                                                                variablePath,
+                                                                value
+                                                              );
+                                                              return value;
+                                                            })?.apply(null, [
+                                                              actionArgs
+                                                            ]);
+                                                          })()
+                                                        : undefined;
+                                                    if (
+                                                      $steps[
+                                                        "updateInsertAccountErrorText"
+                                                      ] != null &&
+                                                      typeof $steps[
+                                                        "updateInsertAccountErrorText"
+                                                      ] === "object" &&
+                                                      typeof $steps[
+                                                        "updateInsertAccountErrorText"
+                                                      ].then === "function"
+                                                    ) {
+                                                      $steps[
+                                                        "updateInsertAccountErrorText"
+                                                      ] = await $steps[
+                                                        "updateInsertAccountErrorText"
+                                                      ];
+                                                    }
+
                                                     $steps["errorAlert"] =
                                                       $steps.registerAccount
                                                         .status != 200
@@ -4775,7 +4865,14 @@ function PlasmicHomepage__RenderFunc(props: {
                                                                 "error",
                                                                 (() => {
                                                                   try {
-                                                                    return "خطا در ثبت اطلاعات حساب. لطفا مجددا تلاش نمایید";
+                                                                    return (
+                                                                      "خطا در ثبت اطلاعات حساب" +
+                                                                      ": " +
+                                                                      $state.insertAccountErrorText
+                                                                    ).replaceAll(
+                                                                      "undefined",
+                                                                      ""
+                                                                    );
                                                                   } catch (e) {
                                                                     if (
                                                                       e instanceof
@@ -4860,39 +4957,100 @@ function PlasmicHomepage__RenderFunc(props: {
                                                         ];
                                                     }
 
-                                                    $steps["runCode2"] =
-                                                      $steps.registerAccount
+                                                    $steps["getUserAccounts"] =
+                                                      true
+                                                        ? (() => {
+                                                            const actionArgs = {
+                                                              args: [
+                                                                undefined,
+                                                                "https://apigw.paziresh24.com/ganjname/v1/useraccounts"
+                                                              ]
+                                                            };
+                                                            return $globalActions[
+                                                              "Fragment.apiRequest"
+                                                            ]?.apply(null, [
+                                                              ...actionArgs.args
+                                                            ]);
+                                                          })()
+                                                        : undefined;
+                                                    if (
+                                                      $steps[
+                                                        "getUserAccounts"
+                                                      ] != null &&
+                                                      typeof $steps[
+                                                        "getUserAccounts"
+                                                      ] === "object" &&
+                                                      typeof $steps[
+                                                        "getUserAccounts"
+                                                      ].then === "function"
+                                                    ) {
+                                                      $steps[
+                                                        "getUserAccounts"
+                                                      ] = await $steps[
+                                                        "getUserAccounts"
+                                                      ];
+                                                    }
+
+                                                    $steps[
+                                                      "updateBankAccountList"
+                                                    ] =
+                                                      $steps.getUserAccounts
                                                         .status == 200
                                                         ? (() => {
                                                             const actionArgs = {
-                                                              customFunction:
-                                                                async () => {
-                                                                  return ($state.dialogRegisterAccount.open =
-                                                                    false);
-                                                                }
+                                                              variable: {
+                                                                objRoot: $state,
+                                                                variablePath: [
+                                                                  "bankAccountList"
+                                                                ]
+                                                              },
+                                                              operation: 0,
+                                                              value:
+                                                                $steps
+                                                                  .getUserAccounts
+                                                                  .data.data
                                                             };
                                                             return (({
-                                                              customFunction
+                                                              variable,
+                                                              value,
+                                                              startIndex,
+                                                              deleteCount
                                                             }) => {
-                                                              return customFunction();
+                                                              if (!variable) {
+                                                                return;
+                                                              }
+                                                              const {
+                                                                objRoot,
+                                                                variablePath
+                                                              } = variable;
+
+                                                              $stateSet(
+                                                                objRoot,
+                                                                variablePath,
+                                                                value
+                                                              );
+                                                              return value;
                                                             })?.apply(null, [
                                                               actionArgs
                                                             ]);
                                                           })()
                                                         : undefined;
                                                     if (
-                                                      $steps["runCode2"] !=
-                                                        null &&
+                                                      $steps[
+                                                        "updateBankAccountList"
+                                                      ] != null &&
                                                       typeof $steps[
-                                                        "runCode2"
+                                                        "updateBankAccountList"
                                                       ] === "object" &&
-                                                      typeof $steps["runCode2"]
-                                                        .then === "function"
+                                                      typeof $steps[
+                                                        "updateBankAccountList"
+                                                      ].then === "function"
                                                     ) {
-                                                      $steps["runCode2"] =
-                                                        await $steps[
-                                                          "runCode2"
-                                                        ];
+                                                      $steps[
+                                                        "updateBankAccountList"
+                                                      ] = await $steps[
+                                                        "updateBankAccountList"
+                                                      ];
                                                     }
 
                                                     $steps[
@@ -4950,6 +5108,45 @@ function PlasmicHomepage__RenderFunc(props: {
                                                       ] = await $steps[
                                                         "hideWaitingAccount"
                                                       ];
+                                                    }
+
+                                                    $steps["runCode2"] =
+                                                      $steps.registerAccount
+                                                        .status == 200
+                                                        ? (() => {
+                                                            const actionArgs = {
+                                                              customFunction:
+                                                                async () => {
+                                                                  return (() => {
+                                                                    $state.dialogRegisterAccount.open =
+                                                                      false;
+                                                                    return ($state.cardInquiry =
+                                                                      {});
+                                                                  })();
+                                                                }
+                                                            };
+                                                            return (({
+                                                              customFunction
+                                                            }) => {
+                                                              return customFunction();
+                                                            })?.apply(null, [
+                                                              actionArgs
+                                                            ]);
+                                                          })()
+                                                        : undefined;
+                                                    if (
+                                                      $steps["runCode2"] !=
+                                                        null &&
+                                                      typeof $steps[
+                                                        "runCode2"
+                                                      ] === "object" &&
+                                                      typeof $steps["runCode2"]
+                                                        .then === "function"
+                                                    ) {
+                                                      $steps["runCode2"] =
+                                                        await $steps[
+                                                          "runCode2"
+                                                        ];
                                                     }
                                                   }}
                                                 />
