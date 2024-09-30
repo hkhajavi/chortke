@@ -510,34 +510,7 @@ function PlasmicHomepage__RenderFunc(props: {
         path: "bankAccountList",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
-          {
-            accountid: 34,
-            number: null,
-            type: null,
-            internationalnumber: "600700001000114072573001",
-            cardid: "5041721041172405",
-            name: " \u0628\u0627\u0646\u06a9 \u0633\u067e\u0647",
-            ownername:
-              "\u0645\u062d\u0645\u062f\u0627\u0628\u0631\u0627\u0647\u064a\u0645 \u0642\u0627\u0646\u0639"
-          },
-          {
-            accountid: 35,
-            number: null,
-            type: null,
-            internationalnumber: "930180000000189029396377",
-            cardid: "5859831191483105",
-            name: " \u0628\u0627\u0646\u06a9 \u0633\u067e\u0647",
-            ownername:
-              "\u0627\u064a\u062f\u0627 \u0627\u0631\u062f\u0627\u0646\u064a"
-          }
-        ]
-      },
-      {
-        path: "radioAccounts.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $ctx }) => []
       },
       {
         path: "dialogRegisterAccount.open",
@@ -619,6 +592,12 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "radioAccounts.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -3528,40 +3507,81 @@ function PlasmicHomepage__RenderFunc(props: {
                               $steps["runCode"] = await $steps["runCode"];
                             }
 
-                            $steps["runCode2"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    customFunction: async () => {
-                                      return ($state.dialogSettlement.open =
-                                        true);
-                                    }
-                                  };
-                                  return (({ customFunction }) => {
-                                    return customFunction();
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
+                            $steps["openDialog"] =
+                              $state.bankAccountList.length > 0
+                                ? (() => {
+                                    const actionArgs = {
+                                      customFunction: async () => {
+                                        return ($state.dialogSettlement.open =
+                                          true);
+                                      }
+                                    };
+                                    return (({ customFunction }) => {
+                                      return customFunction();
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
                             if (
-                              $steps["runCode2"] != null &&
-                              typeof $steps["runCode2"] === "object" &&
-                              typeof $steps["runCode2"].then === "function"
+                              $steps["openDialog"] != null &&
+                              typeof $steps["openDialog"] === "object" &&
+                              typeof $steps["openDialog"].then === "function"
                             ) {
-                              $steps["runCode2"] = await $steps["runCode2"];
+                              $steps["openDialog"] = await $steps["openDialog"];
                             }
 
-                            $steps["getUserAccounts"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    args: [
-                                      undefined,
-                                      "https://apigw.paziresh24.com/ganjname/v1/useraccounts"
-                                    ]
-                                  };
-                                  return $globalActions[
-                                    "Fragment.apiRequest"
-                                  ]?.apply(null, [...actionArgs.args]);
-                                })()
-                              : undefined;
+                            $steps["updateWaiting2"] =
+                              $state.bankAccountList.length == 0
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["waiting"]
+                                      },
+                                      operation: 0,
+                                      value: true
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["updateWaiting2"] != null &&
+                              typeof $steps["updateWaiting2"] === "object" &&
+                              typeof $steps["updateWaiting2"].then ===
+                                "function"
+                            ) {
+                              $steps["updateWaiting2"] = await $steps[
+                                "updateWaiting2"
+                              ];
+                            }
+
+                            $steps["getUserAccounts"] =
+                              $state.bankAccountList.length == 0
+                                ? (() => {
+                                    const actionArgs = {
+                                      args: [
+                                        undefined,
+                                        "https://apigw.paziresh24.com/ganjname/v1/useraccounts"
+                                      ]
+                                    };
+                                    return $globalActions[
+                                      "Fragment.apiRequest"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
                             if (
                               $steps["getUserAccounts"] != null &&
                               typeof $steps["getUserAccounts"] === "object" &&
@@ -3574,7 +3594,8 @@ function PlasmicHomepage__RenderFunc(props: {
                             }
 
                             $steps["updateBankAccountList"] =
-                              $steps.getUserAccounts.status == 200
+                              $steps.getUserAccounts.status == 200 &&
+                              $state.bankAccountList.length == 0
                                 ? (() => {
                                     const actionArgs = {
                                       variable: {
@@ -3611,6 +3632,63 @@ function PlasmicHomepage__RenderFunc(props: {
                               $steps["updateBankAccountList"] = await $steps[
                                 "updateBankAccountList"
                               ];
+                            }
+
+                            $steps["updateWaiting"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["waiting"]
+                                    },
+                                    operation: 0,
+                                    value: false
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateWaiting"] != null &&
+                              typeof $steps["updateWaiting"] === "object" &&
+                              typeof $steps["updateWaiting"].then === "function"
+                            ) {
+                              $steps["updateWaiting"] = await $steps[
+                                "updateWaiting"
+                              ];
+                            }
+
+                            $steps["runCode2"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return ($state.dialogSettlement.open =
+                                        true);
+                                    }
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["runCode2"] != null &&
+                              typeof $steps["runCode2"] === "object" &&
+                              typeof $steps["runCode2"].then === "function"
+                            ) {
+                              $steps["runCode2"] = await $steps["runCode2"];
                             }
                           }}
                           size={"compact"}
@@ -3803,9 +3881,12 @@ function PlasmicHomepage__RenderFunc(props: {
                                       options={(() => {
                                         try {
                                           return $state.bankAccountList.map(
-                                            item => ({
-                                              value: item.accountid,
-                                              lable: item.cardid
+                                            account => ({
+                                              label:
+                                                account.name +
+                                                "-" +
+                                                account.cardid,
+                                              value: account.accountid
                                             })
                                           );
                                         } catch (e) {
@@ -3814,7 +3895,16 @@ function PlasmicHomepage__RenderFunc(props: {
                                             e?.plasmicType ===
                                               "PlasmicUndefinedDataError"
                                           ) {
-                                            return [];
+                                            return [
+                                              {
+                                                value: "option1",
+                                                label: "Option 1"
+                                              },
+                                              {
+                                                value: "option2",
+                                                label: "Option 2"
+                                              }
+                                            ];
                                           }
                                           throw e;
                                         }
@@ -3827,7 +3917,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                       <AntdRadio
                                         className={classNames(
                                           "__wab_instance",
-                                          sty.radio___9D4Ao
+                                          sty.radio__sy6VS
                                         )}
                                         value={"op1"}
                                       >
@@ -3835,7 +3925,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                           className={classNames(
                                             projectcss.all,
                                             projectcss.__wab_text,
-                                            sty.text__zEjk1
+                                            sty.text__eSrUd
                                           )}
                                         >
                                           {"Option 1"}
@@ -3844,7 +3934,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                       <AntdRadio
                                         className={classNames(
                                           "__wab_instance",
-                                          sty.radio__wVFqF
+                                          sty.radio__zzyq
                                         )}
                                         value={"op2"}
                                       >
@@ -3852,13 +3942,41 @@ function PlasmicHomepage__RenderFunc(props: {
                                           className={classNames(
                                             projectcss.all,
                                             projectcss.__wab_text,
-                                            sty.text__ozcwZ
+                                            sty.text__ta9KA
                                           )}
                                         >
                                           {"Option 2"}
                                         </div>
                                       </AntdRadio>
                                     </AntdRadioGroup>
+                                    {(() => {
+                                      try {
+                                        return (
+                                          $state.bankAccountList.length == 0
+                                        );
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return true;
+                                        }
+                                        throw e;
+                                      }
+                                    })() ? (
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text___95OZt
+                                        )}
+                                      >
+                                        {
+                                          "\u0644\u0637\u0641\u0627 \u06cc\u06a9 \u062d\u0633\u0627\u0628 \u0628\u0627\u0646\u06a9\u06cc \u062b\u0628\u062a \u0646\u0645\u0627\u06cc\u06cc\u062f."
+                                        }
+                                      </div>
+                                    ) : null}
                                   </div>
                                   <div
                                     className={classNames(
@@ -4963,28 +5081,31 @@ function PlasmicHomepage__RenderFunc(props: {
                                   onClick={async event => {
                                     const $steps = {};
 
-                                    $steps["invokeGlobalAction"] = true
-                                      ? (() => {
-                                          const actionArgs = {
-                                            args: [
-                                              "error",
-                                              "\u062f\u0631 \u062d\u0627\u0644 \u062d\u0627\u0638\u0631 \u0627\u0645\u06a9\u0627\u0646 \u062a\u0633\u0648\u06cc\u0647 \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f. \u0644\u0637\u0641\u0627 \u062f\u0631 \u0631\u0648\u0632\u0647\u0627\u06cc \u0622\u062a\u06cc \u062a\u0644\u0627\u0634 \u0646\u0645\u0627\u06cc\u06cc\u062f."
-                                            ]
-                                          };
-                                          return $globalActions[
-                                            "Fragment.showToast"
-                                          ]?.apply(null, [...actionArgs.args]);
-                                        })()
-                                      : undefined;
+                                    $steps["invokeGlobalAction2"] =
+                                      $state.radioAccounts.value < 1
+                                        ? (() => {
+                                            const actionArgs = {
+                                              args: [
+                                                "error",
+                                                "\u0644\u0637\u0641\u0627 \u06cc\u06a9 \u062d\u0633\u0627\u0628 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f."
+                                              ]
+                                            };
+                                            return $globalActions[
+                                              "Fragment.showToast"
+                                            ]?.apply(null, [
+                                              ...actionArgs.args
+                                            ]);
+                                          })()
+                                        : undefined;
                                     if (
-                                      $steps["invokeGlobalAction"] != null &&
-                                      typeof $steps["invokeGlobalAction"] ===
+                                      $steps["invokeGlobalAction2"] != null &&
+                                      typeof $steps["invokeGlobalAction2"] ===
                                         "object" &&
-                                      typeof $steps["invokeGlobalAction"]
+                                      typeof $steps["invokeGlobalAction2"]
                                         .then === "function"
                                     ) {
-                                      $steps["invokeGlobalAction"] =
-                                        await $steps["invokeGlobalAction"];
+                                      $steps["invokeGlobalAction2"] =
+                                        await $steps["invokeGlobalAction2"];
                                     }
                                   }}
                                 />
