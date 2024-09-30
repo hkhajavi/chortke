@@ -604,6 +604,12 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "waitingSettlement",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -5278,6 +5284,52 @@ function PlasmicHomepage__RenderFunc(props: {
                                   onClick={async event => {
                                     const $steps = {};
 
+                                    $steps["updateWaitingSettlement"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: [
+                                                "waitingSettlement"
+                                              ]
+                                            },
+                                            operation: 0,
+                                            value: true
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["updateWaitingSettlement"] !=
+                                        null &&
+                                      typeof $steps[
+                                        "updateWaitingSettlement"
+                                      ] === "object" &&
+                                      typeof $steps["updateWaitingSettlement"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["updateWaitingSettlement"] =
+                                        await $steps["updateWaitingSettlement"];
+                                    }
+
                                     $steps["alertSelectAccount"] =
                                       $state.radioAccounts.value < 1 ||
                                       $state.radioAccounts.value == undefined
@@ -5305,6 +5357,156 @@ function PlasmicHomepage__RenderFunc(props: {
                                       $steps["alertSelectAccount"] =
                                         await $steps["alertSelectAccount"];
                                     }
+
+                                    $steps["requestSettlement"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            args: [
+                                              "POST",
+                                              "https://apigw.paziresh24.com/ganjname/v1/settlement",
+                                              undefined,
+                                              (() => {
+                                                try {
+                                                  return {
+                                                    accountid:
+                                                      $state.radioAccounts
+                                                        .value,
+                                                    amount:
+                                                      $state.txtSettlemenAmount
+                                                        .value,
+                                                    productid:
+                                                      $state.cbProductlist.value
+                                                  };
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return undefined;
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()
+                                            ]
+                                          };
+                                          return $globalActions[
+                                            "Fragment.apiRequest"
+                                          ]?.apply(null, [...actionArgs.args]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["requestSettlement"] != null &&
+                                      typeof $steps["requestSettlement"] ===
+                                        "object" &&
+                                      typeof $steps["requestSettlement"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["requestSettlement"] =
+                                        await $steps["requestSettlement"];
+                                    }
+
+                                    $steps["invokeGlobalAction2"] =
+                                      $steps.requestSettlement.status == 200
+                                        ? (() => {
+                                            const actionArgs = {
+                                              args: [
+                                                undefined,
+                                                "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0634\u0645\u0627 \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u062b\u0628\u062a \u0634\u062f."
+                                              ]
+                                            };
+                                            return $globalActions[
+                                              "Fragment.showToast"
+                                            ]?.apply(null, [
+                                              ...actionArgs.args
+                                            ]);
+                                          })()
+                                        : undefined;
+                                    if (
+                                      $steps["invokeGlobalAction2"] != null &&
+                                      typeof $steps["invokeGlobalAction2"] ===
+                                        "object" &&
+                                      typeof $steps["invokeGlobalAction2"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["invokeGlobalAction2"] =
+                                        await $steps["invokeGlobalAction2"];
+                                    }
+
+                                    $steps["invokeGlobalAction"] =
+                                      $steps.requestSettlement.status != 200
+                                        ? (() => {
+                                            const actionArgs = {
+                                              args: [
+                                                "error",
+                                                "\u062e\u0637\u0627 \u062f\u0631 \u062b\u0628\u062a \u062f\u0631\u062e\u0648\u0627\u0633\u062a. \u0644\u0637\u0641\u0627 \u0645\u062c\u062f\u062f\u0627 \u062a\u0644\u0627\u0634 \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                                              ]
+                                            };
+                                            return $globalActions[
+                                              "Fragment.showToast"
+                                            ]?.apply(null, [
+                                              ...actionArgs.args
+                                            ]);
+                                          })()
+                                        : undefined;
+                                    if (
+                                      $steps["invokeGlobalAction"] != null &&
+                                      typeof $steps["invokeGlobalAction"] ===
+                                        "object" &&
+                                      typeof $steps["invokeGlobalAction"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["invokeGlobalAction"] =
+                                        await $steps["invokeGlobalAction"];
+                                    }
+
+                                    $steps["updateWaitingSettlement2"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: [
+                                                "waitingSettlement"
+                                              ]
+                                            },
+                                            operation: 0,
+                                            value: false
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["updateWaitingSettlement2"] !=
+                                        null &&
+                                      typeof $steps[
+                                        "updateWaitingSettlement2"
+                                      ] === "object" &&
+                                      typeof $steps["updateWaitingSettlement2"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["updateWaitingSettlement2"] =
+                                        await $steps[
+                                          "updateWaitingSettlement2"
+                                        ];
+                                    }
                                   }}
                                 />
                               </div>
@@ -5324,7 +5526,40 @@ function PlasmicHomepage__RenderFunc(props: {
                           "open"
                         ])}
                         title={
-                          "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062a\u0633\u0648\u06cc\u0647 \u062d\u0633\u0627\u0628"
+                          <React.Fragment>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__jruSy
+                              )}
+                            >
+                              {
+                                "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062a\u0633\u0648\u06cc\u0647 \u062d\u0633\u0627\u0628"
+                              }
+                            </div>
+                            {(() => {
+                              try {
+                                return $state.waitingSettlement;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })() ? (
+                              <Icon2Icon
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.svg__jGoAg
+                                )}
+                                role={"img"}
+                              />
+                            ) : null}
+                          </React.Fragment>
                         }
                         trigger={null}
                       />
