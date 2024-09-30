@@ -66,7 +66,6 @@ import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/compone
 import Button2 from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
 import Dialog2 from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
 import { AntdRadioGroup } from "@plasmicpkgs/antd5/skinny/registerRadio";
-import { AntdRadio } from "@plasmicpkgs/antd5/skinny/registerRadio";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: hVBOtSJvmbc4/codeComponent
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
@@ -3882,6 +3881,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                       data-plasmic-override={
                                         overrides.radioAccounts
                                       }
+                                      children={null}
                                       className={classNames(
                                         "__wab_instance",
                                         sty.radioAccounts
@@ -3916,42 +3916,8 @@ function PlasmicHomepage__RenderFunc(props: {
                                         "radioAccounts",
                                         "value"
                                       ])}
-                                    >
-                                      <AntdRadio
-                                        className={classNames(
-                                          "__wab_instance",
-                                          sty.radio__sy6VS
-                                        )}
-                                        value={"op1"}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text__eSrUd
-                                          )}
-                                        >
-                                          {"Option 1"}
-                                        </div>
-                                      </AntdRadio>
-                                      <AntdRadio
-                                        className={classNames(
-                                          "__wab_instance",
-                                          sty.radio__zzyq
-                                        )}
-                                        value={"op2"}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text__ta9KA
-                                          )}
-                                        >
-                                          {"Option 2"}
-                                        </div>
-                                      </AntdRadio>
-                                    </AntdRadioGroup>
+                                    />
+
                                     {(() => {
                                       try {
                                         return (
