@@ -609,6 +609,12 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "requestSettlementMessage",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -3825,7 +3831,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                     }).apply(null, eventArgs);
                                   }}
                                   placeholder={
-                                    "\u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631"
+                                    "\u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0628\u0647 \u0631\u06cc\u0627\u0644"
                                   }
                                   value={
                                     generateStateValueProp($state, [
@@ -5372,7 +5378,53 @@ function PlasmicHomepage__RenderFunc(props: {
                                         await $steps["requestSettlement"];
                                     }
 
-                                    $steps["invokeGlobalAction2"] =
+                                    $steps["setSettlementMeessage"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: [
+                                                "requestSettlementMessage"
+                                              ]
+                                            },
+                                            operation: 0,
+                                            value:
+                                              $steps.requestSettlement.data
+                                                .message
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["setSettlementMeessage"] != null &&
+                                      typeof $steps["setSettlementMeessage"] ===
+                                        "object" &&
+                                      typeof $steps["setSettlementMeessage"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["setSettlementMeessage"] =
+                                        await $steps["setSettlementMeessage"];
+                                    }
+
+                                    $steps["alertOk"] =
                                       $steps.requestSettlement.status == 200
                                         ? (() => {
                                             const actionArgs = {
@@ -5389,23 +5441,42 @@ function PlasmicHomepage__RenderFunc(props: {
                                           })()
                                         : undefined;
                                     if (
-                                      $steps["invokeGlobalAction2"] != null &&
-                                      typeof $steps["invokeGlobalAction2"] ===
-                                        "object" &&
-                                      typeof $steps["invokeGlobalAction2"]
-                                        .then === "function"
+                                      $steps["alertOk"] != null &&
+                                      typeof $steps["alertOk"] === "object" &&
+                                      typeof $steps["alertOk"].then ===
+                                        "function"
                                     ) {
-                                      $steps["invokeGlobalAction2"] =
-                                        await $steps["invokeGlobalAction2"];
+                                      $steps["alertOk"] = await $steps[
+                                        "alertOk"
+                                      ];
                                     }
 
-                                    $steps["invokeGlobalAction"] =
+                                    $steps["alertError"] =
                                       $steps.requestSettlement.status != 200
                                         ? (() => {
                                             const actionArgs = {
                                               args: [
                                                 "error",
-                                                "\u062e\u0637\u0627 \u062f\u0631 \u062b\u0628\u062a \u062f\u0631\u062e\u0648\u0627\u0633\u062a. \u0644\u0637\u0641\u0627 \u0645\u062c\u062f\u062f\u0627 \u062a\u0644\u0627\u0634 \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                                                (() => {
+                                                  try {
+                                                    return (
+                                                      "خطا در ثبت درخواست. " +
+                                                      $state.requestSettlementMessage
+                                                    ).replaceAll(
+                                                      "undefined",
+                                                      ""
+                                                    );
+                                                  } catch (e) {
+                                                    if (
+                                                      e instanceof TypeError ||
+                                                      e?.plasmicType ===
+                                                        "PlasmicUndefinedDataError"
+                                                    ) {
+                                                      return undefined;
+                                                    }
+                                                    throw e;
+                                                  }
+                                                })()
                                               ]
                                             };
                                             return $globalActions[
@@ -5416,14 +5487,15 @@ function PlasmicHomepage__RenderFunc(props: {
                                           })()
                                         : undefined;
                                     if (
-                                      $steps["invokeGlobalAction"] != null &&
-                                      typeof $steps["invokeGlobalAction"] ===
+                                      $steps["alertError"] != null &&
+                                      typeof $steps["alertError"] ===
                                         "object" &&
-                                      typeof $steps["invokeGlobalAction"]
-                                        .then === "function"
+                                      typeof $steps["alertError"].then ===
+                                        "function"
                                     ) {
-                                      $steps["invokeGlobalAction"] =
-                                        await $steps["invokeGlobalAction"];
+                                      $steps["alertError"] = await $steps[
+                                        "alertError"
+                                      ];
                                     }
 
                                     $steps["updateWaitingSettlement2"] = true
