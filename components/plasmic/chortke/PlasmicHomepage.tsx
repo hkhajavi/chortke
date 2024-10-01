@@ -3358,7 +3358,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                           variablePath: ["showMyAmount"]
                                         },
                                         operation: 0,
-                                        value: false
+                                        value: true
                                       };
                                       return (({
                                         variable,
