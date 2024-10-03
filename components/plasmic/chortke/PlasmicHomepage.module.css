@@ -1806,7 +1806,7 @@
   align-items: flex-end;
   align-content: stretch;
   justify-self: flex-start;
-  background: none;
+  background: #ffffff;
   grid-column-start: 1 !important;
   grid-column-end: -1 !important;
   padding: 8px;
