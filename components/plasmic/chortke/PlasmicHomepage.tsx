@@ -1766,7 +1766,7 @@ function PlasmicHomepage__RenderFunc(props: {
                             )}
                           >
                             {hasVariant(globalVariants, "screen", "mobileOnly")
-                              ? "\u0627\u0646\u062a\u062e\u0627\u0628"
+                              ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
                               : "\u0628\u062e\u0634 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"}
                           </div>
                         }
@@ -1776,686 +1776,722 @@ function PlasmicHomepage__RenderFunc(props: {
                         ])}
                       />
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__oBa8)}
-                    />
-                  </div>
-                </div>
-                {(
-                  hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? (() => {
-                        try {
-                          return (() => {
-                            return $state.cbProductlist.value == 7
-                              ? true
-                              : false;
-                          })();
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })()
-                    : true
-                ) ? (
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      sty.freeBox__uFbdt,
-                      "grid_calculator"
-                    )}
-                    id={"grid_calculator"}
-                  >
-                    {(() => {
-                      try {
-                        return (() => {
-                          return $state.cbProductlist.value == 7 ? true : false;
-                        })();
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return true;
-                        }
-                        throw e;
-                      }
-                    })() ? (
-                      <Select
-                        data-plasmic-name={"cbCenters"}
-                        data-plasmic-override={overrides.cbCenters}
-                        aria-label={"name"}
-                        aria-labelledby={"productid"}
-                        className={classNames("__wab_instance", sty.cbCenters)}
-                        name={"productlist"}
-                        onChange={async (...eventArgs: any) => {
-                          ((...eventArgs) => {
-                            generateStateOnChangeProp($state, [
-                              "cbCenters",
-                              "value"
-                            ])(eventArgs[0]);
-                          }).apply(null, eventArgs);
-                          (async value => {
-                            const $steps = {};
-
-                            $steps["showWaiting"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["waiting"]
-                                    },
-                                    operation: 0,
-                                    value: true
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["showWaiting"] != null &&
-                              typeof $steps["showWaiting"] === "object" &&
-                              typeof $steps["showWaiting"].then === "function"
-                            ) {
-                              $steps["showWaiting"] = await $steps[
-                                "showWaiting"
-                              ];
+                    {(
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? (() => {
+                            try {
+                              return (() => {
+                                return $state.cbProductlist.value == 7
+                                  ? true
+                                  : false;
+                              })();
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
                             }
-
-                            $steps["currentCenterid"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["currentCenterid"]
-                                    },
-                                    operation: 0,
-                                    value: $state.cbCenters.value
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["currentCenterid"] != null &&
-                              typeof $steps["currentCenterid"] === "object" &&
-                              typeof $steps["currentCenterid"].then ===
-                                "function"
-                            ) {
-                              $steps["currentCenterid"] = await $steps[
-                                "currentCenterid"
-                              ];
-                            }
-
-                            $steps["clearInvoiceList"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["invoicelist"]
-                                    },
-                                    operation: 0,
-                                    value: []
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["clearInvoiceList"] != null &&
-                              typeof $steps["clearInvoiceList"] === "object" &&
-                              typeof $steps["clearInvoiceList"].then ===
-                                "function"
-                            ) {
-                              $steps["clearInvoiceList"] = await $steps[
-                                "clearInvoiceList"
-                              ];
-                            }
-
-                            $steps["clearReminderWallet"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["reminderWallet"]
-                                    },
-                                    operation: 0,
-                                    value: 0
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["clearReminderWallet"] != null &&
-                              typeof $steps["clearReminderWallet"] ===
-                                "object" &&
-                              typeof $steps["clearReminderWallet"].then ===
-                                "function"
-                            ) {
-                              $steps["clearReminderWallet"] = await $steps[
-                                "clearReminderWallet"
-                              ];
-                            }
-
-                            $steps["reminderTextVal"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["txtReminderTextValue"]
-                                    },
-                                    operation: 0,
-                                    value: ""
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["reminderTextVal"] != null &&
-                              typeof $steps["reminderTextVal"] === "object" &&
-                              typeof $steps["reminderTextVal"].then ===
-                                "function"
-                            ) {
-                              $steps["reminderTextVal"] = await $steps[
-                                "reminderTextVal"
-                              ];
-                            }
-
-                            $steps["reminderValue"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["txtReminderValue"]
-                                    },
-                                    operation: 0,
-                                    value: 0
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["reminderValue"] != null &&
-                              typeof $steps["reminderValue"] === "object" &&
-                              typeof $steps["reminderValue"].then === "function"
-                            ) {
-                              $steps["reminderValue"] = await $steps[
-                                "reminderValue"
-                              ];
-                            }
-
-                            $steps["showMoreBtn1"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["showMoreBtn"]
-                                    },
-                                    operation: 0,
-                                    value: true
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["showMoreBtn1"] != null &&
-                              typeof $steps["showMoreBtn1"] === "object" &&
-                              typeof $steps["showMoreBtn1"].then === "function"
-                            ) {
-                              $steps["showMoreBtn1"] = await $steps[
-                                "showMoreBtn1"
-                              ];
-                            }
-
-                            $steps["getInvoiceList"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    args: [
-                                      undefined,
-                                      (() => {
-                                        try {
-                                          return (
-                                            "https://apigw.paziresh24.com/transaction/v1/userinvoicelist?productid=" +
-                                            $state.cbProductlist.value +
-                                            "&centerid=" +
-                                            $state.cbCenters.value
-                                          );
-                                        } catch (e) {
-                                          if (
-                                            e instanceof TypeError ||
-                                            e?.plasmicType ===
-                                              "PlasmicUndefinedDataError"
-                                          ) {
-                                            return undefined;
-                                          }
-                                          throw e;
-                                        }
-                                      })()
-                                    ]
-                                  };
-                                  return $globalActions[
-                                    "Fragment.apiRequest"
-                                  ]?.apply(null, [...actionArgs.args]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["getInvoiceList"] != null &&
-                              typeof $steps["getInvoiceList"] === "object" &&
-                              typeof $steps["getInvoiceList"].then ===
-                                "function"
-                            ) {
-                              $steps["getInvoiceList"] = await $steps[
-                                "getInvoiceList"
-                              ];
-                            }
-
-                            $steps["updateInvoiceList"] =
-                              $steps.getInvoiceList.status == 200 &&
-                              $steps.getInvoiceList.data.status == true
-                                ? (() => {
-                                    const actionArgs = {
-                                      variable: {
-                                        objRoot: $state,
-                                        variablePath: ["invoicelist"]
-                                      },
-                                      operation: 0,
-                                      value: $steps.getInvoiceList.data.data
-                                    };
-                                    return (({
-                                      variable,
-                                      value,
-                                      startIndex,
-                                      deleteCount
-                                    }) => {
-                                      if (!variable) {
-                                        return;
-                                      }
-                                      const { objRoot, variablePath } =
-                                        variable;
-
-                                      $stateSet(objRoot, variablePath, value);
-                                      return value;
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                            if (
-                              $steps["updateInvoiceList"] != null &&
-                              typeof $steps["updateInvoiceList"] === "object" &&
-                              typeof $steps["updateInvoiceList"].then ===
-                                "function"
-                            ) {
-                              $steps["updateInvoiceList"] = await $steps[
-                                "updateInvoiceList"
-                              ];
-                            }
-
-                            $steps["getCenterWallet"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    args: [
-                                      undefined,
-                                      (() => {
-                                        try {
-                                          return (
-                                            "https://apigw.paziresh24.com/transaction/v1/productwallet?productid=" +
-                                            $state.cbProductlist.value +
-                                            "&centerid=" +
-                                            $state.cbCenters.value
-                                          );
-                                        } catch (e) {
-                                          if (
-                                            e instanceof TypeError ||
-                                            e?.plasmicType ===
-                                              "PlasmicUndefinedDataError"
-                                          ) {
-                                            return undefined;
-                                          }
-                                          throw e;
-                                        }
-                                      })()
-                                    ]
-                                  };
-                                  return $globalActions[
-                                    "Fragment.apiRequest"
-                                  ]?.apply(null, [...actionArgs.args]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["getCenterWallet"] != null &&
-                              typeof $steps["getCenterWallet"] === "object" &&
-                              typeof $steps["getCenterWallet"].then ===
-                                "function"
-                            ) {
-                              $steps["getCenterWallet"] = await $steps[
-                                "getCenterWallet"
-                              ];
-                            }
-
-                            $steps["txtRemainingText"] =
-                              $steps.getCenterWallet.status == 200 &&
-                              $steps.getCenterWallet.data.status == true
-                                ? (() => {
-                                    const actionArgs = {
-                                      customFunction: async () => {
-                                        return (() => {
-                                          $steps.getCenterWallet.data.data
-                                            .balance >= 0
-                                            ? ($state.txtReminderTextValue =
-                                                "موجودی حساب: ")
-                                            : ($state.txtReminderTextValue =
-                                                "بدهی شما: ");
-                                          return $steps.getCenterWallet.data
-                                            .data.balance >= 0
-                                            ? ($state.txtPaymentText =
-                                                "افزایش موجودی")
-                                            : ($state.txtPaymentText =
-                                                "پرداخت بدهی");
-                                        })();
-                                      }
-                                    };
-                                    return (({ customFunction }) => {
-                                      return customFunction();
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                            if (
-                              $steps["txtRemainingText"] != null &&
-                              typeof $steps["txtRemainingText"] === "object" &&
-                              typeof $steps["txtRemainingText"].then ===
-                                "function"
-                            ) {
-                              $steps["txtRemainingText"] = await $steps[
-                                "txtRemainingText"
-                              ];
-                            }
-
-                            $steps["txtReminderValue"] =
-                              $steps.getCenterWallet.status == 200 &&
-                              $steps.getCenterWallet.data.status == true
-                                ? (() => {
-                                    const actionArgs = {
-                                      customFunction: async () => {
-                                        return ($state.txtReminderValue =
-                                          new Intl.NumberFormat("fa-IR").format(
-                                            $steps.getCenterWallet.data.data
-                                              .balance
-                                          ));
-                                      }
-                                    };
-                                    return (({ customFunction }) => {
-                                      return customFunction();
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                            if (
-                              $steps["txtReminderValue"] != null &&
-                              typeof $steps["txtReminderValue"] === "object" &&
-                              typeof $steps["txtReminderValue"].then ===
-                                "function"
-                            ) {
-                              $steps["txtReminderValue"] = await $steps[
-                                "txtReminderValue"
-                              ];
-                            }
-
-                            $steps["updateReminderWallet"] =
-                              $steps.getCenterWallet.status == 200 &&
-                              $steps.getCenterWallet.data.status == true
-                                ? (() => {
-                                    const actionArgs = {
-                                      variable: {
-                                        objRoot: $state,
-                                        variablePath: ["reminderWallet"]
-                                      },
-                                      operation: 0,
-                                      value:
-                                        $steps.getCenterWallet.data.data.balance
-                                    };
-                                    return (({
-                                      variable,
-                                      value,
-                                      startIndex,
-                                      deleteCount
-                                    }) => {
-                                      if (!variable) {
-                                        return;
-                                      }
-                                      const { objRoot, variablePath } =
-                                        variable;
-
-                                      $stateSet(objRoot, variablePath, value);
-                                      return value;
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                            if (
-                              $steps["updateReminderWallet"] != null &&
-                              typeof $steps["updateReminderWallet"] ===
-                                "object" &&
-                              typeof $steps["updateReminderWallet"].then ===
-                                "function"
-                            ) {
-                              $steps["updateReminderWallet"] = await $steps[
-                                "updateReminderWallet"
-                              ];
-                            }
-
-                            $steps["runCode"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    customFunction: async () => {
-                                      return ($state.isShowPaymentButton =
-                                        true);
-                                    }
-                                  };
-                                  return (({ customFunction }) => {
-                                    return customFunction();
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["runCode"] != null &&
-                              typeof $steps["runCode"] === "object" &&
-                              typeof $steps["runCode"].then === "function"
-                            ) {
-                              $steps["runCode"] = await $steps["runCode"];
-                            }
-
-                            $steps["hideWaiting"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["waiting"]
-                                    },
-                                    operation: 0,
-                                    value: false
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["hideWaiting"] != null &&
-                              typeof $steps["hideWaiting"] === "object" &&
-                              typeof $steps["hideWaiting"].then === "function"
-                            ) {
-                              $steps["hideWaiting"] = await $steps[
-                                "hideWaiting"
-                              ];
-                            }
-
-                            $steps["showMoreBtn"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    customFunction: async () => {
-                                      return (() => {
-                                        if (
-                                          $steps.getInvoiceList.status != 200 ||
-                                          $steps.getInvoiceList.data.data
-                                            .length != $state.limit
-                                        )
-                                          return ($state.showMoreBtn = false);
-                                      })();
-                                    }
-                                  };
-                                  return (({ customFunction }) => {
-                                    return customFunction();
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["showMoreBtn"] != null &&
-                              typeof $steps["showMoreBtn"] === "object" &&
-                              typeof $steps["showMoreBtn"].then === "function"
-                            ) {
-                              $steps["showMoreBtn"] = await $steps[
-                                "showMoreBtn"
-                              ];
-                            }
-                          }).apply(null, eventArgs);
-                        }}
-                        options={(() => {
+                          })()
+                        : true
+                    ) ? (
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__uFbdt,
+                          "grid_calculator"
+                        )}
+                        id={"grid_calculator"}
+                      >
+                        {(() => {
                           try {
-                            return $state.centersList.map(item => ({
-                              value: item.centerid,
-                              label: item.centername
-                            }));
+                            return (() => {
+                              return $state.cbProductlist.value == 7
+                                ? true
+                                : false;
+                            })();
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
                               e?.plasmicType === "PlasmicUndefinedDataError"
                             ) {
-                              return [{}];
+                              return true;
                             }
                             throw e;
                           }
-                        })()}
-                        placeholder={
-                          <div
+                        })() ? (
+                          <Select
+                            data-plasmic-name={"cbCenters"}
+                            data-plasmic-override={overrides.cbCenters}
+                            aria-label={"name"}
+                            aria-labelledby={"productid"}
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___74H8A
+                              "__wab_instance",
+                              sty.cbCenters
                             )}
-                          >
-                            {
-                              "\u0627\u0646\u062a\u062e\u0627\u0628 \u0645\u0631\u06a9\u0632"
+                            name={"productlist"}
+                            onChange={async (...eventArgs: any) => {
+                              ((...eventArgs) => {
+                                generateStateOnChangeProp($state, [
+                                  "cbCenters",
+                                  "value"
+                                ])(eventArgs[0]);
+                              }).apply(null, eventArgs);
+                              (async value => {
+                                const $steps = {};
+
+                                $steps["showWaiting"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: ["waiting"]
+                                        },
+                                        operation: 0,
+                                        value: true
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        $stateSet(objRoot, variablePath, value);
+                                        return value;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["showWaiting"] != null &&
+                                  typeof $steps["showWaiting"] === "object" &&
+                                  typeof $steps["showWaiting"].then ===
+                                    "function"
+                                ) {
+                                  $steps["showWaiting"] = await $steps[
+                                    "showWaiting"
+                                  ];
+                                }
+
+                                $steps["currentCenterid"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: ["currentCenterid"]
+                                        },
+                                        operation: 0,
+                                        value: $state.cbCenters.value
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        $stateSet(objRoot, variablePath, value);
+                                        return value;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["currentCenterid"] != null &&
+                                  typeof $steps["currentCenterid"] ===
+                                    "object" &&
+                                  typeof $steps["currentCenterid"].then ===
+                                    "function"
+                                ) {
+                                  $steps["currentCenterid"] = await $steps[
+                                    "currentCenterid"
+                                  ];
+                                }
+
+                                $steps["clearInvoiceList"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: ["invoicelist"]
+                                        },
+                                        operation: 0,
+                                        value: []
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        $stateSet(objRoot, variablePath, value);
+                                        return value;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["clearInvoiceList"] != null &&
+                                  typeof $steps["clearInvoiceList"] ===
+                                    "object" &&
+                                  typeof $steps["clearInvoiceList"].then ===
+                                    "function"
+                                ) {
+                                  $steps["clearInvoiceList"] = await $steps[
+                                    "clearInvoiceList"
+                                  ];
+                                }
+
+                                $steps["clearReminderWallet"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: ["reminderWallet"]
+                                        },
+                                        operation: 0,
+                                        value: 0
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        $stateSet(objRoot, variablePath, value);
+                                        return value;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["clearReminderWallet"] != null &&
+                                  typeof $steps["clearReminderWallet"] ===
+                                    "object" &&
+                                  typeof $steps["clearReminderWallet"].then ===
+                                    "function"
+                                ) {
+                                  $steps["clearReminderWallet"] = await $steps[
+                                    "clearReminderWallet"
+                                  ];
+                                }
+
+                                $steps["reminderTextVal"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: ["txtReminderTextValue"]
+                                        },
+                                        operation: 0,
+                                        value: ""
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        $stateSet(objRoot, variablePath, value);
+                                        return value;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["reminderTextVal"] != null &&
+                                  typeof $steps["reminderTextVal"] ===
+                                    "object" &&
+                                  typeof $steps["reminderTextVal"].then ===
+                                    "function"
+                                ) {
+                                  $steps["reminderTextVal"] = await $steps[
+                                    "reminderTextVal"
+                                  ];
+                                }
+
+                                $steps["reminderValue"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: ["txtReminderValue"]
+                                        },
+                                        operation: 0,
+                                        value: 0
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        $stateSet(objRoot, variablePath, value);
+                                        return value;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["reminderValue"] != null &&
+                                  typeof $steps["reminderValue"] === "object" &&
+                                  typeof $steps["reminderValue"].then ===
+                                    "function"
+                                ) {
+                                  $steps["reminderValue"] = await $steps[
+                                    "reminderValue"
+                                  ];
+                                }
+
+                                $steps["showMoreBtn1"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: ["showMoreBtn"]
+                                        },
+                                        operation: 0,
+                                        value: true
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        $stateSet(objRoot, variablePath, value);
+                                        return value;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["showMoreBtn1"] != null &&
+                                  typeof $steps["showMoreBtn1"] === "object" &&
+                                  typeof $steps["showMoreBtn1"].then ===
+                                    "function"
+                                ) {
+                                  $steps["showMoreBtn1"] = await $steps[
+                                    "showMoreBtn1"
+                                  ];
+                                }
+
+                                $steps["getInvoiceList"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        args: [
+                                          undefined,
+                                          (() => {
+                                            try {
+                                              return (
+                                                "https://apigw.paziresh24.com/transaction/v1/userinvoicelist?productid=" +
+                                                $state.cbProductlist.value +
+                                                "&centerid=" +
+                                                $state.cbCenters.value
+                                              );
+                                            } catch (e) {
+                                              if (
+                                                e instanceof TypeError ||
+                                                e?.plasmicType ===
+                                                  "PlasmicUndefinedDataError"
+                                              ) {
+                                                return undefined;
+                                              }
+                                              throw e;
+                                            }
+                                          })()
+                                        ]
+                                      };
+                                      return $globalActions[
+                                        "Fragment.apiRequest"
+                                      ]?.apply(null, [...actionArgs.args]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["getInvoiceList"] != null &&
+                                  typeof $steps["getInvoiceList"] ===
+                                    "object" &&
+                                  typeof $steps["getInvoiceList"].then ===
+                                    "function"
+                                ) {
+                                  $steps["getInvoiceList"] = await $steps[
+                                    "getInvoiceList"
+                                  ];
+                                }
+
+                                $steps["updateInvoiceList"] =
+                                  $steps.getInvoiceList.status == 200 &&
+                                  $steps.getInvoiceList.data.status == true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: ["invoicelist"]
+                                          },
+                                          operation: 0,
+                                          value: $steps.getInvoiceList.data.data
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                if (
+                                  $steps["updateInvoiceList"] != null &&
+                                  typeof $steps["updateInvoiceList"] ===
+                                    "object" &&
+                                  typeof $steps["updateInvoiceList"].then ===
+                                    "function"
+                                ) {
+                                  $steps["updateInvoiceList"] = await $steps[
+                                    "updateInvoiceList"
+                                  ];
+                                }
+
+                                $steps["getCenterWallet"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        args: [
+                                          undefined,
+                                          (() => {
+                                            try {
+                                              return (
+                                                "https://apigw.paziresh24.com/transaction/v1/productwallet?productid=" +
+                                                $state.cbProductlist.value +
+                                                "&centerid=" +
+                                                $state.cbCenters.value
+                                              );
+                                            } catch (e) {
+                                              if (
+                                                e instanceof TypeError ||
+                                                e?.plasmicType ===
+                                                  "PlasmicUndefinedDataError"
+                                              ) {
+                                                return undefined;
+                                              }
+                                              throw e;
+                                            }
+                                          })()
+                                        ]
+                                      };
+                                      return $globalActions[
+                                        "Fragment.apiRequest"
+                                      ]?.apply(null, [...actionArgs.args]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["getCenterWallet"] != null &&
+                                  typeof $steps["getCenterWallet"] ===
+                                    "object" &&
+                                  typeof $steps["getCenterWallet"].then ===
+                                    "function"
+                                ) {
+                                  $steps["getCenterWallet"] = await $steps[
+                                    "getCenterWallet"
+                                  ];
+                                }
+
+                                $steps["txtRemainingText"] =
+                                  $steps.getCenterWallet.status == 200 &&
+                                  $steps.getCenterWallet.data.status == true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          customFunction: async () => {
+                                            return (() => {
+                                              $steps.getCenterWallet.data.data
+                                                .balance >= 0
+                                                ? ($state.txtReminderTextValue =
+                                                    "موجودی حساب: ")
+                                                : ($state.txtReminderTextValue =
+                                                    "بدهی شما: ");
+                                              return $steps.getCenterWallet.data
+                                                .data.balance >= 0
+                                                ? ($state.txtPaymentText =
+                                                    "افزایش موجودی")
+                                                : ($state.txtPaymentText =
+                                                    "پرداخت بدهی");
+                                            })();
+                                          }
+                                        };
+                                        return (({ customFunction }) => {
+                                          return customFunction();
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                if (
+                                  $steps["txtRemainingText"] != null &&
+                                  typeof $steps["txtRemainingText"] ===
+                                    "object" &&
+                                  typeof $steps["txtRemainingText"].then ===
+                                    "function"
+                                ) {
+                                  $steps["txtRemainingText"] = await $steps[
+                                    "txtRemainingText"
+                                  ];
+                                }
+
+                                $steps["txtReminderValue"] =
+                                  $steps.getCenterWallet.status == 200 &&
+                                  $steps.getCenterWallet.data.status == true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          customFunction: async () => {
+                                            return ($state.txtReminderValue =
+                                              new Intl.NumberFormat(
+                                                "fa-IR"
+                                              ).format(
+                                                $steps.getCenterWallet.data.data
+                                                  .balance
+                                              ));
+                                          }
+                                        };
+                                        return (({ customFunction }) => {
+                                          return customFunction();
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                if (
+                                  $steps["txtReminderValue"] != null &&
+                                  typeof $steps["txtReminderValue"] ===
+                                    "object" &&
+                                  typeof $steps["txtReminderValue"].then ===
+                                    "function"
+                                ) {
+                                  $steps["txtReminderValue"] = await $steps[
+                                    "txtReminderValue"
+                                  ];
+                                }
+
+                                $steps["updateReminderWallet"] =
+                                  $steps.getCenterWallet.status == 200 &&
+                                  $steps.getCenterWallet.data.status == true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: ["reminderWallet"]
+                                          },
+                                          operation: 0,
+                                          value:
+                                            $steps.getCenterWallet.data.data
+                                              .balance
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                if (
+                                  $steps["updateReminderWallet"] != null &&
+                                  typeof $steps["updateReminderWallet"] ===
+                                    "object" &&
+                                  typeof $steps["updateReminderWallet"].then ===
+                                    "function"
+                                ) {
+                                  $steps["updateReminderWallet"] = await $steps[
+                                    "updateReminderWallet"
+                                  ];
+                                }
+
+                                $steps["runCode"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        customFunction: async () => {
+                                          return ($state.isShowPaymentButton =
+                                            true);
+                                        }
+                                      };
+                                      return (({ customFunction }) => {
+                                        return customFunction();
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["runCode"] != null &&
+                                  typeof $steps["runCode"] === "object" &&
+                                  typeof $steps["runCode"].then === "function"
+                                ) {
+                                  $steps["runCode"] = await $steps["runCode"];
+                                }
+
+                                $steps["hideWaiting"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: ["waiting"]
+                                        },
+                                        operation: 0,
+                                        value: false
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        $stateSet(objRoot, variablePath, value);
+                                        return value;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["hideWaiting"] != null &&
+                                  typeof $steps["hideWaiting"] === "object" &&
+                                  typeof $steps["hideWaiting"].then ===
+                                    "function"
+                                ) {
+                                  $steps["hideWaiting"] = await $steps[
+                                    "hideWaiting"
+                                  ];
+                                }
+
+                                $steps["showMoreBtn"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        customFunction: async () => {
+                                          return (() => {
+                                            if (
+                                              $steps.getInvoiceList.status !=
+                                                200 ||
+                                              $steps.getInvoiceList.data.data
+                                                .length != $state.limit
+                                            )
+                                              return ($state.showMoreBtn =
+                                                false);
+                                          })();
+                                        }
+                                      };
+                                      return (({ customFunction }) => {
+                                        return customFunction();
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["showMoreBtn"] != null &&
+                                  typeof $steps["showMoreBtn"] === "object" &&
+                                  typeof $steps["showMoreBtn"].then ===
+                                    "function"
+                                ) {
+                                  $steps["showMoreBtn"] = await $steps[
+                                    "showMoreBtn"
+                                  ];
+                                }
+                              }).apply(null, eventArgs);
+                            }}
+                            options={(() => {
+                              try {
+                                return $state.centersList.map(item => ({
+                                  value: item.centerid,
+                                  label: item.centername
+                                }));
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return [{}];
+                                }
+                                throw e;
+                              }
+                            })()}
+                            placeholder={
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text___74H8A
+                                )}
+                              >
+                                {
+                                  "\u0627\u0646\u062a\u062e\u0627\u0628 \u0645\u0631\u06a9\u0632"
+                                }
+                              </div>
                             }
-                          </div>
-                        }
-                        value={generateStateValueProp($state, [
-                          "cbCenters",
-                          "value"
-                        ])}
-                      />
+                            value={generateStateValueProp($state, [
+                              "cbCenters",
+                              "value"
+                            ])}
+                          />
+                        ) : null}
+                      </div>
                     ) : null}
                   </div>
-                ) : null}
+                </div>
                 <div
                   className={classNames(
                     projectcss.all,
