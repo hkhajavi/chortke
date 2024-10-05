@@ -3910,6 +3910,15 @@ function PlasmicHomepage__RenderFunc(props: {
                                   placeholder={
                                     "\u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0628\u0647 \u0631\u06cc\u0627\u0644"
                                   }
+                                  type={
+                                    hasVariant(
+                                      globalVariants,
+                                      "screen",
+                                      "mobileOnly"
+                                    )
+                                      ? "number"
+                                      : undefined
+                                  }
                                   value={
                                     generateStateValueProp($state, [
                                       "txtSettlemenAmount",
@@ -5292,30 +5301,38 @@ function PlasmicHomepage__RenderFunc(props: {
                               >
                                 <Button2
                                   children2={
-                                    <React.Fragment>
-                                      {(() => {
-                                        try {
-                                          return (
-                                            new Intl.NumberFormat(
-                                              "fa-IR"
-                                            ).format(
-                                              $state.txtSettlemenAmount.value
-                                            ) +
-                                            " ریال" +
-                                            " - ثبت درخواست"
-                                          );
-                                        } catch (e) {
-                                          if (
-                                            e instanceof TypeError ||
-                                            e?.plasmicType ===
-                                              "PlasmicUndefinedDataError"
-                                          ) {
-                                            return "\u062b\u0628\u062a \u062f\u0631\u062e\u0648\u0627\u0633\u062a";
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__elJqz
+                                      )}
+                                    >
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return (
+                                              new Intl.NumberFormat(
+                                                "fa-IR"
+                                              ).format(
+                                                $state.txtSettlemenAmount.value
+                                              ) +
+                                              " ریال" +
+                                              " - ثبت درخواست"
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "\u062b\u0628\u062a \u062f\u0631\u062e\u0648\u0627\u0633\u062a";
+                                            }
+                                            throw e;
                                           }
-                                          throw e;
-                                        }
-                                      })()}
-                                    </React.Fragment>
+                                        })()}
+                                      </React.Fragment>
+                                    </div>
                                   }
                                   className={classNames(
                                     "__wab_instance",
@@ -5623,6 +5640,15 @@ function PlasmicHomepage__RenderFunc(props: {
                                         ];
                                     }
                                   }}
+                                  size={
+                                    hasVariant(
+                                      globalVariants,
+                                      "screen",
+                                      "mobileOnly"
+                                    )
+                                      ? "compact"
+                                      : undefined
+                                  }
                                 />
                               </div>
                             </div>
