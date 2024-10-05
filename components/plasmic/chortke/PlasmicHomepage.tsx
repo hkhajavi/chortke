@@ -65,6 +65,7 @@ import Dialog from "../../Dialog"; // plasmic-import: nYtkLnbqtkXY/component
 import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
 import Button2 from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
 import Dialog2 from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
+import { TabContent } from "@plasmicpkgs/plasmic-tabs";
 import { AntdRadioGroup } from "@plasmicpkgs/antd5/skinny/registerRadio";
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: hVBOtSJvmbc4/codeComponent
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
@@ -121,6 +122,7 @@ export type PlasmicHomepage__OverridesType = {
   txtNewPaymentAmount?: Flex__<typeof TextInput>;
   btnSettlement?: Flex__<typeof Button2>;
   dialogSettlement?: Flex__<typeof Dialog2>;
+  tabContent?: Flex__<typeof TabContent>;
   txtSettlemenAmount?: Flex__<typeof TextInput>;
   radioAccounts?: Flex__<typeof AntdRadioGroup>;
   dialogRegisterAccount?: Flex__<typeof Dialog2>;
@@ -3849,83 +3851,94 @@ function PlasmicHomepage__RenderFunc(props: {
                                   sty.freeBox__gbCvw
                                 )}
                               >
-                                <TextInput
-                                  data-plasmic-name={"txtSettlemenAmount"}
-                                  data-plasmic-override={
-                                    overrides.txtSettlemenAmount
-                                  }
+                                <TabContent
+                                  data-plasmic-name={"tabContent"}
+                                  data-plasmic-override={overrides.tabContent}
                                   className={classNames(
                                     "__wab_instance",
-                                    sty.txtSettlemenAmount
+                                    sty.tabContent
                                   )}
-                                  onChange={async (...eventArgs: any) => {
-                                    ((...eventArgs) => {
-                                      generateStateOnChangeProp($state, [
+                                >
+                                  <TextInput
+                                    data-plasmic-name={"txtSettlemenAmount"}
+                                    data-plasmic-override={
+                                      overrides.txtSettlemenAmount
+                                    }
+                                    className={classNames(
+                                      "__wab_instance",
+                                      sty.txtSettlemenAmount
+                                    )}
+                                    onChange={async (...eventArgs: any) => {
+                                      ((...eventArgs) => {
+                                        generateStateOnChangeProp($state, [
+                                          "txtSettlemenAmount",
+                                          "value"
+                                        ])(
+                                          (e => e.target?.value).apply(
+                                            null,
+                                            eventArgs
+                                          )
+                                        );
+                                      }).apply(null, eventArgs);
+                                      (async event => {
+                                        const $steps = {};
+
+                                        $steps["runCode"] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                customFunction: async () => {
+                                                  return (() => {
+                                                    if (
+                                                      parseInt(
+                                                        $state
+                                                          .txtSettlemenAmount
+                                                          .value
+                                                      ) > $state.reminderWallet
+                                                    ) {
+                                                      return ($state.txtSettlemenAmount.value =
+                                                        $state.reminderWallet.toString());
+                                                    }
+                                                  })();
+                                                }
+                                              };
+                                              return (({ customFunction }) => {
+                                                return customFunction();
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["runCode"] != null &&
+                                          typeof $steps["runCode"] ===
+                                            "object" &&
+                                          typeof $steps["runCode"].then ===
+                                            "function"
+                                        ) {
+                                          $steps["runCode"] = await $steps[
+                                            "runCode"
+                                          ];
+                                        }
+                                      }).apply(null, eventArgs);
+                                    }}
+                                    placeholder={
+                                      "\u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0628\u0647 \u0631\u06cc\u0627\u0644"
+                                    }
+                                    type={
+                                      hasVariant(
+                                        globalVariants,
+                                        "screen",
+                                        "mobileOnly"
+                                      )
+                                        ? "number"
+                                        : undefined
+                                    }
+                                    value={
+                                      generateStateValueProp($state, [
                                         "txtSettlemenAmount",
                                         "value"
-                                      ])(
-                                        (e => e.target?.value).apply(
-                                          null,
-                                          eventArgs
-                                        )
-                                      );
-                                    }).apply(null, eventArgs);
-                                    (async event => {
-                                      const $steps = {};
-
-                                      $steps["runCode"] = true
-                                        ? (() => {
-                                            const actionArgs = {
-                                              customFunction: async () => {
-                                                return (() => {
-                                                  if (
-                                                    parseInt(
-                                                      $state.txtSettlemenAmount
-                                                        .value
-                                                    ) > $state.reminderWallet
-                                                  ) {
-                                                    return ($state.txtSettlemenAmount.value =
-                                                      $state.reminderWallet.toString());
-                                                  }
-                                                })();
-                                              }
-                                            };
-                                            return (({ customFunction }) => {
-                                              return customFunction();
-                                            })?.apply(null, [actionArgs]);
-                                          })()
-                                        : undefined;
-                                      if (
-                                        $steps["runCode"] != null &&
-                                        typeof $steps["runCode"] === "object" &&
-                                        typeof $steps["runCode"].then ===
-                                          "function"
-                                      ) {
-                                        $steps["runCode"] = await $steps[
-                                          "runCode"
-                                        ];
-                                      }
-                                    }).apply(null, eventArgs);
-                                  }}
-                                  placeholder={
-                                    "\u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0628\u0647 \u0631\u06cc\u0627\u0644"
-                                  }
-                                  type={
-                                    hasVariant(
-                                      globalVariants,
-                                      "screen",
-                                      "mobileOnly"
-                                    )
-                                      ? "number"
-                                      : undefined
-                                  }
-                                  value={
-                                    generateStateValueProp($state, [
-                                      "txtSettlemenAmount",
-                                      "value"
-                                    ]) ?? ""
-                                  }
-                                />
+                                      ]) ?? ""
+                                    }
+                                  />
+                                </TabContent>
                               </div>
                             </div>
                             <div
@@ -8137,6 +8150,7 @@ const PlasmicDescendants = {
     "txtNewPaymentAmount",
     "btnSettlement",
     "dialogSettlement",
+    "tabContent",
     "txtSettlemenAmount",
     "radioAccounts",
     "dialogRegisterAccount",
@@ -8175,6 +8189,7 @@ const PlasmicDescendants = {
     "txtNewPaymentAmount",
     "btnSettlement",
     "dialogSettlement",
+    "tabContent",
     "txtSettlemenAmount",
     "radioAccounts",
     "dialogRegisterAccount",
@@ -8205,6 +8220,7 @@ const PlasmicDescendants = {
     "txtNewPaymentAmount",
     "btnSettlement",
     "dialogSettlement",
+    "tabContent",
     "txtSettlemenAmount",
     "radioAccounts",
     "dialogRegisterAccount",
@@ -8233,6 +8249,7 @@ const PlasmicDescendants = {
   btnSettlement: ["btnSettlement"],
   dialogSettlement: [
     "dialogSettlement",
+    "tabContent",
     "txtSettlemenAmount",
     "radioAccounts",
     "dialogRegisterAccount",
@@ -8241,6 +8258,7 @@ const PlasmicDescendants = {
     "txtCardIban",
     "txtCardBankName"
   ],
+  tabContent: ["tabContent", "txtSettlemenAmount"],
   txtSettlemenAmount: ["txtSettlemenAmount"],
   radioAccounts: ["radioAccounts"],
   dialogRegisterAccount: [
@@ -8300,6 +8318,7 @@ type NodeDefaultElementType = {
   txtNewPaymentAmount: typeof TextInput;
   btnSettlement: typeof Button2;
   dialogSettlement: typeof Dialog2;
+  tabContent: typeof TabContent;
   txtSettlemenAmount: typeof TextInput;
   radioAccounts: typeof AntdRadioGroup;
   dialogRegisterAccount: typeof Dialog2;
@@ -8398,6 +8417,7 @@ export const PlasmicHomepage = Object.assign(
     txtNewPaymentAmount: makeNodeComponent("txtNewPaymentAmount"),
     btnSettlement: makeNodeComponent("btnSettlement"),
     dialogSettlement: makeNodeComponent("dialogSettlement"),
+    tabContent: makeNodeComponent("tabContent"),
     txtSettlemenAmount: makeNodeComponent("txtSettlemenAmount"),
     radioAccounts: makeNodeComponent("radioAccounts"),
     dialogRegisterAccount: makeNodeComponent("dialogRegisterAccount"),
