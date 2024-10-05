@@ -455,6 +455,7 @@
   align-content: stretch;
   background: #ffffff;
   grid-column-end: span 1;
+  margin-right: 5px;
   min-width: 0;
   border-radius: 10px;
   padding: 0px 8px;
