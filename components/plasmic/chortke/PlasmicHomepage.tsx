@@ -1056,6 +1056,44 @@ function PlasmicHomepage__RenderFunc(props: {
                               ];
                             }
 
+                            $steps["updateIsSettlementShow"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["isSettlementShow"]
+                                    },
+                                    operation: 0,
+                                    value: false
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateIsSettlementShow"] != null &&
+                              typeof $steps["updateIsSettlementShow"] ===
+                                "object" &&
+                              typeof $steps["updateIsSettlementShow"].then ===
+                                "function"
+                            ) {
+                              $steps["updateIsSettlementShow"] = await $steps[
+                                "updateIsSettlementShow"
+                              ];
+                            }
+
                             $steps["currentCenterid0"] = true
                               ? (() => {
                                   const actionArgs = {
@@ -1571,7 +1609,8 @@ function PlasmicHomepage__RenderFunc(props: {
                                                 "پرداخت بدهی");
                                           return ($state.isSettlementShow =
                                             $steps.getProductWallet.data.data
-                                              .balance > 0);
+                                              .balance > 0 &&
+                                            $state.cbProductlist.value != 7);
                                         })();
                                       }
                                     };
@@ -1599,11 +1638,24 @@ function PlasmicHomepage__RenderFunc(props: {
                                 ? (() => {
                                     const actionArgs = {
                                       customFunction: async () => {
-                                        return ($state.txtReminderValue =
-                                          new Intl.NumberFormat("fa-IR").format(
+                                        return (() => {
+                                          $state.txtReminderValue =
+                                            new Intl.NumberFormat(
+                                              "fa-IR"
+                                            ).format(
+                                              $steps.getProductWallet.data.data
+                                                .balance
+                                            );
+                                          if (
                                             $steps.getProductWallet.data.data
-                                              .balance
-                                          ));
+                                              .balance > 0
+                                          )
+                                            return ($state.isSettlementShow =
+                                              true);
+                                          else
+                                            return ($state.isSettlementShow =
+                                              false);
+                                        })();
                                       }
                                     };
                                     return (({ customFunction }) => {
