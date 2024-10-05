@@ -4083,24 +4083,6 @@ function PlasmicHomepage__RenderFunc(props: {
                                         <div
                                           className={classNames(
                                             projectcss.all,
-                                            sty.freeBox__cGKxU
-                                          )}
-                                        >
-                                          <div
-                                            className={classNames(
-                                              projectcss.all,
-                                              projectcss.__wab_text,
-                                              sty.text__fd6M0
-                                            )}
-                                          >
-                                            {
-                                              "\u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a:"
-                                            }
-                                          </div>
-                                        </div>
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
                                             sty.freeBox__rxJiu
                                           )}
                                         >
@@ -4163,7 +4145,22 @@ function PlasmicHomepage__RenderFunc(props: {
                                               }).apply(null, eventArgs);
                                             }}
                                             placeholder={
-                                              "\u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                                              hasVariant(
+                                                globalVariants,
+                                                "screen",
+                                                "mobileOnly"
+                                              )
+                                                ? "\u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a"
+                                                : "\u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                                            }
+                                            type={
+                                              hasVariant(
+                                                globalVariants,
+                                                "screen",
+                                                "mobileOnly"
+                                              )
+                                                ? "number"
+                                                : undefined
                                             }
                                             value={
                                               generateStateValueProp($state, [

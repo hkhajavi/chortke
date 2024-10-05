@@ -1301,29 +1301,10 @@
   min-width: 0;
   padding: 8px;
 }
-.freeBox__cGKxU {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: center;
-  align-items: center;
-  min-width: 0;
-  padding: 8px;
-}
-.text__fd6M0 {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  text-align: left;
-  min-width: 0;
-}
 @media (min-width: 0px) and (max-width: 768px) {
-  .text__fd6M0 {
-    font-size: 12px;
+  .freeBox__bULnu {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    padding: 0px;
   }
 }
 .freeBox__rxJiu {
@@ -1338,6 +1319,11 @@
   grid-column-end: span 2;
   min-width: 0;
   padding: 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__rxJiu {
+    grid-column-end: span 4;
+  }
 }
 .txtCardId:global(.__wab_instance) {
   max-width: 100%;
@@ -1365,6 +1351,11 @@
   max-width: 100%;
   min-width: 0;
   padding: 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__ne3S {
+    padding: 0px;
+  }
 }
 .button__o41Sn:global(.__wab_instance) {
   max-width: 100%;
