@@ -525,6 +525,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__bYmeb {
     grid-template-columns: repeat(1, minmax(0, 1fr));
+    align-self: center;
     padding: 0px;
   }
 }
@@ -1946,7 +1947,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .gridInvoice12 {
-    grid-template-columns: repeat(7, minmax(0, 1fr));
+    grid-template-columns: repeat(6, minmax(0, 1fr));
     padding: 5px;
   }
 }
