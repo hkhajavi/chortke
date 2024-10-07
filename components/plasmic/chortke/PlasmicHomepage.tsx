@@ -89,6 +89,8 @@ import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; 
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
 import SearchSvgIcon from "./icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
+import Icon29Icon from "../katibe/icons/PlasmicIcon__Icon29"; // plasmic-import: v6n1zIPv27O2/icon
+import Icon30Icon from "../katibe/icons/PlasmicIcon__Icon30"; // plasmic-import: b5udc-7LsSfj/icon
 
 createPlasmicElementProxy;
 
@@ -6026,6 +6028,42 @@ function PlasmicHomepage__RenderFunc(props: {
                           })()}
                         </React.Fragment>
                       </div>
+                      {(() => {
+                        try {
+                          return currentItem.type == "purchase";
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <Icon29Icon
+                          className={classNames(projectcss.all, sty.svg__qo8JO)}
+                          role={"img"}
+                        />
+                      ) : null}
+                      {(() => {
+                        try {
+                          return currentItem.type == "sale";
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <Icon30Icon
+                          className={classNames(projectcss.all, sty.svg__hOxl)}
+                          role={"img"}
+                        />
+                      ) : null}
                     </div>
                     <div
                       className={classNames(

@@ -859,6 +859,16 @@
           "id": "0EP3x6e2dNEM",
           "name": "Icon28Icon",
           "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon28.tsx"
+        },
+        {
+          "id": "v6n1zIPv27O2",
+          "name": "Icon29Icon",
+          "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon29.tsx"
+        },
+        {
+          "id": "b5udc-7LsSfj",
+          "name": "Icon30Icon",
+          "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon30.tsx"
         }
       ],
       "images": [

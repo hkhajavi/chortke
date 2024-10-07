@@ -2062,12 +2062,12 @@
 .freeBox__kPny5 {
   display: flex;
   position: relative;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
   height: auto;
   max-width: 100%;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   flex-wrap: nowrap;
   align-content: stretch;
   min-width: 0;
@@ -2080,16 +2080,43 @@
 }
 .text___07T8 {
   position: relative;
-  width: 100%;
+  width: auto;
   height: auto;
   max-width: 100%;
   text-align: center;
-  min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text___07T8 {
     font-size: 12px;
     align-self: center;
+  }
+}
+.svg__qo8JO {
+  object-fit: cover;
+  max-width: 100%;
+  color: #0ba020;
+  height: 1em;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .svg__qo8JO {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
+  }
+}
+.svg__hOxl {
+  object-fit: cover;
+  max-width: 100%;
+  color: #f71a1a;
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .svg__hOxl {
+    width: 13px;
+    height: 13px;
+    flex-shrink: 0;
   }
 }
 .freeBox__wy9LE {
