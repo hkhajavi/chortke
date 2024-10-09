@@ -4810,7 +4810,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                                           "POST",
                                                           (() => {
                                                             try {
-                                                              return "https://apigw.paziresh24.com/ganjname/v1/useraccount";
+                                                              return "https://apigw.paziresh24.com/ganjname/v1/useraccountbycardid";
                                                             } catch (e) {
                                                               if (
                                                                 e instanceof
@@ -4827,20 +4827,10 @@ function PlasmicHomepage__RenderFunc(props: {
                                                           (() => {
                                                             try {
                                                               return {
-                                                                iban: $state
-                                                                  .txtCardIban
-                                                                  .value,
                                                                 cardid:
                                                                   $state
                                                                     .txtCardId
-                                                                    .value,
-                                                                ownername:
-                                                                  $state
-                                                                    .txtCardOwner
-                                                                    .value,
-                                                                name: $state
-                                                                  .txtCardBankName
-                                                                  .value
+                                                                    .value
                                                               };
                                                             } catch (e) {
                                                               if (
