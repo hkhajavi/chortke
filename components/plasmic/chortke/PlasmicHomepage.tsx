@@ -141,7 +141,7 @@ export type PlasmicHomepage__OverridesType = {
   waitingIcon3?: Flex__<"svg">;
   gridNoData2?: Flex__<"div">;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
-  sideEffectFirstLoad?: Flex__<typeof SideEffect>;
+  sideEffectRefresh?: Flex__<typeof SideEffect>;
 };
 
 export interface DefaultHomepageProps {}
@@ -619,6 +619,12 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "firstRequestCount",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
@@ -5637,6 +5643,80 @@ function PlasmicHomepage__RenderFunc(props: {
                                           "updateWaitingSettlement2"
                                         ];
                                     }
+
+                                    $steps["closeModal"] =
+                                      $steps.requestSettlement.status == 200
+                                        ? (() => {
+                                            const actionArgs = {
+                                              customFunction: async () => {
+                                                return ($state.dialogSettlement.open =
+                                                  false);
+                                              }
+                                            };
+                                            return (({ customFunction }) => {
+                                              return customFunction();
+                                            })?.apply(null, [actionArgs]);
+                                          })()
+                                        : undefined;
+                                    if (
+                                      $steps["closeModal"] != null &&
+                                      typeof $steps["closeModal"] ===
+                                        "object" &&
+                                      typeof $steps["closeModal"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["closeModal"] = await $steps[
+                                        "closeModal"
+                                      ];
+                                    }
+
+                                    $steps["refresh"] =
+                                      $steps.requestSettlement.status == 200
+                                        ? (() => {
+                                            const actionArgs = {
+                                              variable: {
+                                                objRoot: $state,
+                                                variablePath: [
+                                                  "firstRequestCount"
+                                                ]
+                                              },
+                                              operation: 2
+                                            };
+                                            return (({
+                                              variable,
+                                              value,
+                                              startIndex,
+                                              deleteCount
+                                            }) => {
+                                              if (!variable) {
+                                                return;
+                                              }
+                                              const { objRoot, variablePath } =
+                                                variable;
+
+                                              const oldValue = $stateGet(
+                                                objRoot,
+                                                variablePath
+                                              );
+                                              $stateSet(
+                                                objRoot,
+                                                variablePath,
+                                                oldValue + 1
+                                              );
+                                              return oldValue + 1;
+                                            })?.apply(null, [actionArgs]);
+                                          })()
+                                        : undefined;
+                                    if (
+                                      $steps["refresh"] != null &&
+                                      typeof $steps["refresh"] === "object" &&
+                                      typeof $steps["refresh"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["refresh"] = await $steps[
+                                        "refresh"
+                                      ];
+                                    }
                                   }}
                                   size={
                                     hasVariant(
@@ -7356,26 +7436,16 @@ function PlasmicHomepage__RenderFunc(props: {
                 $steps["emptyTxtReminderTextVal"] = true
                   ? (() => {
                       const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["txtReminderTextValue"]
-                        },
-                        operation: 0,
-                        value: ""
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
+                        customFunction: async () => {
+                          return (() => {
+                            $state.txtReminderTextValue = "";
+                            $state.invoicelist = [];
+                            return ($state.invoiceDetials = {});
+                          })();
                         }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
                       })?.apply(null, [actionArgs]);
                     })()
                   : undefined;
@@ -7423,158 +7493,6 @@ function PlasmicHomepage__RenderFunc(props: {
                   $steps["emptyReminderValue"] = await $steps[
                     "emptyReminderValue"
                   ];
-                }
-
-                $steps["checkUser"] = false
-                  ? (() => {
-                      const actionArgs = {
-                        args: [
-                          undefined,
-                          "https://apigw.paziresh24.com/v1/auth/me"
-                        ]
-                      };
-                      return $globalActions["Fragment.apiRequest"]?.apply(
-                        null,
-                        [...actionArgs.args]
-                      );
-                    })()
-                  : undefined;
-                if (
-                  $steps["checkUser"] != null &&
-                  typeof $steps["checkUser"] === "object" &&
-                  typeof $steps["checkUser"].then === "function"
-                ) {
-                  $steps["checkUser"] = await $steps["checkUser"];
-                }
-
-                $steps["loginUser"] = false
-                  ? (() => {
-                      const actionArgs = {
-                        destination:
-                          "https://www.paziresh24.com/login/?redirect_url=https://katibe.paziresh24.com/"
-                      };
-                      return (({ destination }) => {
-                        if (
-                          typeof destination === "string" &&
-                          destination.startsWith("#")
-                        ) {
-                          document
-                            .getElementById(destination.substr(1))
-                            .scrollIntoView({ behavior: "smooth" });
-                        } else {
-                          __nextRouter?.push(destination);
-                        }
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["loginUser"] != null &&
-                  typeof $steps["loginUser"] === "object" &&
-                  typeof $steps["loginUser"].then === "function"
-                ) {
-                  $steps["loginUser"] = await $steps["loginUser"];
-                }
-
-                $steps["updateUser"] = false
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["user"]
-                        },
-                        operation: 0,
-                        value: $steps.checkUser.data.users[0]
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["updateUser"] != null &&
-                  typeof $steps["updateUser"] === "object" &&
-                  typeof $steps["updateUser"].then === "function"
-                ) {
-                  $steps["updateUser"] = await $steps["updateUser"];
-                }
-
-                $steps["setFnameLname"] = false
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["txtUserName"]
-                        },
-                        operation: 0,
-                        value: $state.user.name + " " + $state.user.family
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["setFnameLname"] != null &&
-                  typeof $steps["setFnameLname"] === "object" &&
-                  typeof $steps["setFnameLname"].then === "function"
-                ) {
-                  $steps["setFnameLname"] = await $steps["setFnameLname"];
-                }
-
-                $steps["btnLogout"] = false
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["btnLogoutShow"]
-                        },
-                        operation: 0,
-                        value: true
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["btnLogout"] != null &&
-                  typeof $steps["btnLogout"] === "object" &&
-                  typeof $steps["btnLogout"].then === "function"
-                ) {
-                  $steps["btnLogout"] = await $steps["btnLogout"];
                 }
 
                 $steps["getProductList"] = true
@@ -7738,19 +7656,20 @@ function PlasmicHomepage__RenderFunc(props: {
                   $steps["updateCenters"] = await $steps["updateCenters"];
                 }
 
-                $steps["setFirstProduct"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        customFunction: async () => {
-                          return ($state.cbProductlist.value =
-                            $state.productList[0].productid);
-                        }
-                      };
-                      return (({ customFunction }) => {
-                        return customFunction();
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
+                $steps["setFirstProduct"] =
+                  $state.cbProductlist.value == 0
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return ($state.cbProductlist.value =
+                              $state.productList[0].productid);
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
                 if (
                   $steps["setFirstProduct"] != null &&
                   typeof $steps["setFirstProduct"] === "object" &&
@@ -7768,7 +7687,7 @@ function PlasmicHomepage__RenderFunc(props: {
                             try {
                               return (
                                 "https://apigw.paziresh24.com/transaction/v1/userinvoicelist?productid=" +
-                                $state.productList[0].productid +
+                                $state.cbProductlist.value +
                                 "&limit=" +
                                 $state.limit +
                                 "&offset=" +
@@ -8063,82 +7982,313 @@ function PlasmicHomepage__RenderFunc(props: {
             />
 
             <SideEffect
-              data-plasmic-name={"sideEffectFirstLoad"}
-              data-plasmic-override={overrides.sideEffectFirstLoad}
-              className={classNames("__wab_instance", sty.sideEffectFirstLoad)}
+              data-plasmic-name={"sideEffectRefresh"}
+              data-plasmic-override={overrides.sideEffectRefresh}
+              className={classNames("__wab_instance", sty.sideEffectRefresh)}
+              deps={(() => {
+                try {
+                  return [$state.firstRequestCount];
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return undefined;
+                  }
+                  throw e;
+                }
+              })()}
               onMount={async () => {
                 const $steps = {};
 
-                $steps["deleteInvoicelist"] = true
+                $steps["runCode"] = true
                   ? (() => {
                       const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["invoicelist"]
-                        },
-                        operation: 0,
-                        value: []
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
+                        customFunction: async () => {
+                          return (() => {
+                            $state.txtReminderTextValue = "";
+                            $state.invoicelist = [];
+                            $state.invoiceDetials = {};
+                            $state.waiting = true;
+                            return ($state.txtReminderValue = "");
+                          })();
                         }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
                       })?.apply(null, [actionArgs]);
                     })()
                   : undefined;
                 if (
-                  $steps["deleteInvoicelist"] != null &&
-                  typeof $steps["deleteInvoicelist"] === "object" &&
-                  typeof $steps["deleteInvoicelist"].then === "function"
+                  $steps["runCode"] != null &&
+                  typeof $steps["runCode"] === "object" &&
+                  typeof $steps["runCode"].then === "function"
                 ) {
-                  $steps["deleteInvoicelist"] = await $steps[
-                    "deleteInvoicelist"
+                  $steps["runCode"] = await $steps["runCode"];
+                }
+
+                $steps["getInvoiceList"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          undefined,
+                          (() => {
+                            try {
+                              return (
+                                "https://apigw.paziresh24.com/transaction/v1/userinvoicelist?productid=" +
+                                $state.cbProductlist.value +
+                                "&limit=" +
+                                $state.limit +
+                                "&offset=" +
+                                $state.offset
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        ]
+                      };
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
+                    })()
+                  : undefined;
+                if (
+                  $steps["getInvoiceList"] != null &&
+                  typeof $steps["getInvoiceList"] === "object" &&
+                  typeof $steps["getInvoiceList"].then === "function"
+                ) {
+                  $steps["getInvoiceList"] = await $steps["getInvoiceList"];
+                }
+
+                $steps["updateInvoicelist"] =
+                  $steps.getInvoiceList.status == 200 &&
+                  $steps.getInvoiceList.data.status == true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["invoicelist"]
+                          },
+                          operation: 0,
+                          value: $steps.getInvoiceList.data.data
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["updateInvoicelist"] != null &&
+                  typeof $steps["updateInvoicelist"] === "object" &&
+                  typeof $steps["updateInvoicelist"].then === "function"
+                ) {
+                  $steps["updateInvoicelist"] = await $steps[
+                    "updateInvoicelist"
                   ];
                 }
 
-                $steps["deleteInvoiceDetails"] = true
+                $steps["getProductWallet"] = true
                   ? (() => {
                       const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["invoiceDetials"]
-                        },
-                        operation: 0,
-                        value: {}
+                        args: [
+                          undefined,
+                          (() => {
+                            try {
+                              return (
+                                "https://apigw.paziresh24.com/transaction/v1/productwallet?productid=" +
+                                $state.cbProductlist.value
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        ]
                       };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
+                    })()
+                  : undefined;
+                if (
+                  $steps["getProductWallet"] != null &&
+                  typeof $steps["getProductWallet"] === "object" &&
+                  typeof $steps["getProductWallet"].then === "function"
+                ) {
+                  $steps["getProductWallet"] = await $steps["getProductWallet"];
+                }
 
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
+                $steps["txtReminderText"] =
+                  $state.cbProductlist.value != 7 &&
+                  $steps.getProductWallet.status == 200 &&
+                  $steps.getProductWallet.data.status == true
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return (() => {
+                              $steps.getProductWallet.data.data.balance >= 0
+                                ? ($state.txtReminderTextValue =
+                                    "موجودی حساب: ")
+                                : ($state.txtReminderTextValue = "بدهی شما: ");
+                              return $steps.getProductWallet.data.data
+                                .balance >= 0
+                                ? ($state.txtPaymentText = "افزایش موجودی")
+                                : ($state.txtPaymentText = "پرداخت بدهی");
+                            })();
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["txtReminderText"] != null &&
+                  typeof $steps["txtReminderText"] === "object" &&
+                  typeof $steps["txtReminderText"].then === "function"
+                ) {
+                  $steps["txtReminderText"] = await $steps["txtReminderText"];
+                }
+
+                $steps["txtReminderValue"] =
+                  $state.cbProductlist.value != 7 &&
+                  $state.cbProductlist.value != 0 &&
+                  $steps.getInvoiceList.status == 200 &&
+                  $steps.getInvoiceList.data.status == true
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return ($state.txtReminderValue =
+                              new Intl.NumberFormat("fa-IR").format(
+                                $steps.getProductWallet.data.data.balance
+                              ));
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["txtReminderValue"] != null &&
+                  typeof $steps["txtReminderValue"] === "object" &&
+                  typeof $steps["txtReminderValue"].then === "function"
+                ) {
+                  $steps["txtReminderValue"] = await $steps["txtReminderValue"];
+                }
+
+                $steps["updateReminderWallet"] =
+                  $steps.getProductWallet.status == 200 &&
+                  $steps.getProductWallet.data.status == true
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["reminderWallet"]
+                          },
+                          operation: 0,
+                          value: $steps.getProductWallet.data.data.balance
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["updateReminderWallet"] != null &&
+                  typeof $steps["updateReminderWallet"] === "object" &&
+                  typeof $steps["updateReminderWallet"].then === "function"
+                ) {
+                  $steps["updateReminderWallet"] = await $steps[
+                    "updateReminderWallet"
+                  ];
+                }
+
+                $steps["runCode2"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return $state.cbProductlist.value == 7
+                            ? ($state.isShowPaymentButton = false)
+                            : ($state.isShowPaymentButton =
+                                $state.cbProductlist.value > 0);
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
                       })?.apply(null, [actionArgs]);
                     })()
                   : undefined;
                 if (
-                  $steps["deleteInvoiceDetails"] != null &&
-                  typeof $steps["deleteInvoiceDetails"] === "object" &&
-                  typeof $steps["deleteInvoiceDetails"].then === "function"
+                  $steps["runCode2"] != null &&
+                  typeof $steps["runCode2"] === "object" &&
+                  typeof $steps["runCode2"].then === "function"
                 ) {
-                  $steps["deleteInvoiceDetails"] = await $steps[
-                    "deleteInvoiceDetails"
-                  ];
+                  $steps["runCode2"] = await $steps["runCode2"];
+                }
+
+                $steps["runCode3"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return (() => {
+                            $state.waiting = false;
+                            if (
+                              $steps.getInvoiceList.status != 200 ||
+                              $steps.getInvoiceList.data.data.length !=
+                                $state.limit
+                            )
+                              return ($state.showMoreBtn = false);
+                          })();
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["runCode3"] != null &&
+                  typeof $steps["runCode3"] === "object" &&
+                  typeof $steps["runCode3"].then === "function"
+                ) {
+                  $steps["runCode3"] = await $steps["runCode3"];
                 }
               }}
             />
@@ -8188,7 +8338,7 @@ const PlasmicDescendants = {
     "waitingIcon3",
     "gridNoData2",
     "sideEffectPageLoad",
-    "sideEffectFirstLoad"
+    "sideEffectRefresh"
   ],
   h1: ["h1"],
   btnDashboard3: ["btnDashboard3"],
@@ -8313,7 +8463,7 @@ const PlasmicDescendants = {
   waitingIcon3: ["waitingIcon3"],
   gridNoData2: ["gridNoData2"],
   sideEffectPageLoad: ["sideEffectPageLoad"],
-  sideEffectFirstLoad: ["sideEffectFirstLoad"]
+  sideEffectRefresh: ["sideEffectRefresh"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -8356,7 +8506,7 @@ type NodeDefaultElementType = {
   waitingIcon3: "svg";
   gridNoData2: "div";
   sideEffectPageLoad: typeof SideEffect;
-  sideEffectFirstLoad: typeof SideEffect;
+  sideEffectRefresh: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -8455,7 +8605,7 @@ export const PlasmicHomepage = Object.assign(
     waitingIcon3: makeNodeComponent("waitingIcon3"),
     gridNoData2: makeNodeComponent("gridNoData2"),
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
-    sideEffectFirstLoad: makeNodeComponent("sideEffectFirstLoad"),
+    sideEffectRefresh: makeNodeComponent("sideEffectRefresh"),
 
     // Metadata about props expected for PlasmicHomepage
     internalVariantProps: PlasmicHomepage__VariantProps,
