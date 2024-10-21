@@ -7698,34 +7698,32 @@ function PlasmicHomepage__RenderFunc(props: {
                   $steps["getProductList"] = await $steps["getProductList"];
                 }
 
-                $steps["hideWaitingOnNoProduct"] =
-                  $steps.getProductList.status != 200 &&
-                  $steps.getProductList.data.status != true
-                    ? (() => {
-                        const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["waiting"]
-                          },
-                          operation: 0,
-                          value: false
-                        };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
-                          }
-                          const { objRoot, variablePath } = variable;
+                $steps["hideWaitingOnNoProduct"] = false
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["waiting"]
+                        },
+                        operation: 0,
+                        value: false
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
 
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
                 if (
                   $steps["hideWaitingOnNoProduct"] != null &&
                   typeof $steps["hideWaitingOnNoProduct"] === "object" &&
