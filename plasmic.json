@@ -638,19 +638,6 @@
           "path": "/new-page"
         },
         {
-          "id": "42tFBTdMKvt2",
-          "name": "Dialog",
-          "type": "managed",
-          "projectId": "afXULSfGYmou2jFpEc2QWJ",
-          "renderModuleFilePath": "plasmic/katibe/PlasmicDialog.tsx",
-          "importSpec": {
-            "modulePath": "Dialog.tsx"
-          },
-          "cssFilePath": "plasmic/katibe/PlasmicDialog.module.css",
-          "scheme": "blackbox",
-          "componentType": "component"
-        },
-        {
           "id": "vS0KxsSJaPFY",
           "name": "Button2",
           "type": "managed",
@@ -677,6 +664,19 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/transactions"
+        },
+        {
+          "id": "42tFBTdMKvt2",
+          "name": "Dialog2",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/katibe/PlasmicDialog2.tsx",
+          "importSpec": {
+            "modulePath": "Dialog2.tsx"
+          },
+          "cssFilePath": "plasmic/katibe/PlasmicDialog2.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [

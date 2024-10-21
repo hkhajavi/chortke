@@ -64,7 +64,7 @@ import Select from "../../Select"; // plasmic-import: 7wkEfmUYAcMf/component
 import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
 import Dialog from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
 import Button2 from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
-import Dialog2 from "../../Dialog"; // plasmic-import: 42tFBTdMKvt2/component
+import Dialog2 from "../../Dialog2"; // plasmic-import: 42tFBTdMKvt2/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: hVBOtSJvmbc4/codeComponent
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 

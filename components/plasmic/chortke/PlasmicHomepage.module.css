@@ -1124,110 +1124,12 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  text-align: left;
+  text-align: center;
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__nnq4E {
     font-size: 14px;
-  }
-}
-.freeBox__qefNx {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: center;
-  align-items: flex-start;
-  grid-column-end: span 4;
-  min-width: 0;
-  padding: 8px;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .freeBox__qefNx {
-    padding: 0px;
-  }
-}
-.freeBox__g4QzE {
-  display: grid;
-  position: relative;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-  padding: 8px;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .freeBox__g4QzE {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
-    padding: 5px;
-  }
-}
-.freeBox__jCvni {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: center;
-  align-items: center;
-  grid-column-end: span 3;
-  min-width: 0;
-  padding: 0px;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .freeBox__jCvni {
-    grid-column-end: span 1;
-  }
-}
-.radioAccounts:global(.__wab_instance) {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  align-items: stretch;
-  justify-content: flex-start;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  object-fit: cover;
-  min-width: 0;
-  padding: 0px;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .radioAccounts:global(.__wab_instance) {
-    font-size: 10px;
-  }
-}
-.text___95OZt {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  text-align: center;
-  min-width: 0;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .text___95OZt {
-    font-size: 12px;
-  }
-}
-.freeBox__kicI {
-  display: grid;
-  position: relative;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-  padding: 8px;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .freeBox__kicI {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
 .freeBox__mR8O4 {
@@ -1578,6 +1480,104 @@
   width: auto;
   height: 1em;
 }
+.freeBox__qefNx {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  grid-column-end: span 4;
+  min-width: 0;
+  padding: 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__qefNx {
+    padding: 0px;
+  }
+}
+.freeBox__g4QzE {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__g4QzE {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    padding: 5px;
+  }
+}
+.freeBox__jCvni {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  grid-column-end: span 3;
+  min-width: 0;
+  padding: 0px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__jCvni {
+    grid-column-end: span 1;
+  }
+}
+.radioAccounts:global(.__wab_instance) {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: cover;
+  min-width: 0;
+  padding: 0px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .radioAccounts:global(.__wab_instance) {
+    font-size: 10px;
+  }
+}
+.text___95OZt {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: center;
+  min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text___95OZt {
+    font-size: 12px;
+  }
+}
+.freeBox__kicI {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__kicI {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
 .freeBox__kmZYg {
   display: flex;
   flex-direction: column;
@@ -1615,6 +1615,16 @@
   object-fit: cover;
   width: auto;
   height: 1em;
+}
+.txtSettlementResult {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: center;
+  font-weight: 700;
+  color: #068612;
+  min-width: 0;
 }
 .gridInvoice1 {
   display: grid;
