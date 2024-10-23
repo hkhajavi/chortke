@@ -541,7 +541,7 @@
 }
 .freeBox___3OBad {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   position: relative;
   width: 100%;
   height: auto;
@@ -565,14 +565,11 @@
   width: 100%;
   height: 35px;
   margin-top: 0px;
-  grid-column-start: 1 !important;
-  grid-column-end: -1 !important;
-  flex-shrink: 0;
+  min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .svg__molj2 {
     height: 25px;
-    flex-shrink: 0;
   }
 }
 .txtRemainingText {
