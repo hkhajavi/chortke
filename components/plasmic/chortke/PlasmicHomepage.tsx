@@ -6554,40 +6554,6 @@ function PlasmicHomepage__RenderFunc(props: {
                     "updateFirstRequestCount"
                   ];
                 }
-
-                $steps["hideWaiting"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["waiting"]
-                        },
-                        operation: 0,
-                        value: false
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["hideWaiting"] != null &&
-                  typeof $steps["hideWaiting"] === "object" &&
-                  typeof $steps["hideWaiting"].then === "function"
-                ) {
-                  $steps["hideWaiting"] = await $steps["hideWaiting"];
-                }
               }}
             />
 
@@ -6616,11 +6582,11 @@ function PlasmicHomepage__RenderFunc(props: {
                       const actionArgs = {
                         customFunction: async () => {
                           return (() => {
+                            $state.waiting = true;
                             $state.txtReminderTextValue = "";
                             $state.reminderWallet = 0;
                             $state.invoicelist = [];
                             $state.invoiceDetials = {};
-                            $state.waiting = true;
                             $state.txtReminderValue = "";
                             return $state.accounts.forEach(account => {
                               if (account.id == $state.cbAccounts.value) {
