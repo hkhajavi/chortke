@@ -1977,8 +1977,11 @@ function PlasmicHomepage__RenderFunc(props: {
                                                 try {
                                                   return {
                                                     productid:
-                                                      $state.cbProductlist
-                                                        .value,
+                                                      $state.currentAccountType ==
+                                                      "centerid"
+                                                        ? "7"
+                                                        : $state.cbProductlist
+                                                            .value,
                                                     returnlink:
                                                       "https://www.paziresh24.com/dashboard/apps/katibe/bills/",
                                                     title: "افزایش موجودی",
@@ -6599,11 +6602,14 @@ function PlasmicHomepage__RenderFunc(props: {
                                     $state.limit +
                                     "&offset=" +
                                     $state.offset;
+                                  $state.currentCenterid = "";
                                   $state.requestWalletUrl =
                                     "https://apigw.paziresh24.com/transaction/v1/productwallet?productid=" +
                                     $state.cbProductlist.value;
                                 } else {
                                   $state.currentAccountType = "centerid";
+                                  $state.currentCenterid =
+                                    $state.cbAccounts.value;
                                   $state.requestInvoiceUrl =
                                     "https://apigw.paziresh24.com/transaction/v1/userinvoicelist?productid=7&limit=" +
                                     $state.limit +
