@@ -1207,99 +1207,120 @@ function PlasmicHomepage__RenderFunc(props: {
                   )}
                   id={"grid_calculator"}
                 >
-                  <Select
-                    data-plasmic-name={"cbProductlist"}
-                    data-plasmic-override={overrides.cbProductlist}
-                    aria-label={"name"}
-                    aria-labelledby={"productid"}
-                    className={classNames("__wab_instance", sty.cbProductlist)}
-                    name={"productlist"}
-                    onChange={async (...eventArgs: any) => {
-                      ((...eventArgs) => {
-                        generateStateOnChangeProp($state, [
-                          "cbProductlist",
-                          "value"
-                        ])(eventArgs[0]);
-                      }).apply(null, eventArgs);
-                      (async value => {
-                        const $steps = {};
-
-                        $steps["updateFirstRequestCount"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["firstRequestCount"]
-                                },
-                                operation: 2
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                const oldValue = $stateGet(
-                                  objRoot,
-                                  variablePath
-                                );
-                                $stateSet(objRoot, variablePath, oldValue + 1);
-                                return oldValue + 1;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateFirstRequestCount"] != null &&
-                          typeof $steps["updateFirstRequestCount"] ===
-                            "object" &&
-                          typeof $steps["updateFirstRequestCount"].then ===
-                            "function"
-                        ) {
-                          $steps["updateFirstRequestCount"] = await $steps[
-                            "updateFirstRequestCount"
-                          ];
-                        }
-                      }).apply(null, eventArgs);
-                    }}
-                    options={(() => {
-                      try {
-                        return $state.productList.map(item => ({
-                          value: item.productid.toString(),
-                          label: item.name
-                        }));
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return undefined;
-                        }
-                        throw e;
+                  {(() => {
+                    try {
+                      return $state.currentAccountType == "userid";
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
                       }
-                    })()}
-                    placeholder={
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__lX8IZ
-                        )}
-                      >
-                        {hasVariant(globalVariants, "screen", "mobileOnly")
-                          ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
-                          : "\u0628\u062e\u0634 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"}
-                      </div>
+                      throw e;
                     }
-                    value={generateStateValueProp($state, [
-                      "cbProductlist",
-                      "value"
-                    ])}
-                  />
+                  })() ? (
+                    <Select
+                      data-plasmic-name={"cbProductlist"}
+                      data-plasmic-override={overrides.cbProductlist}
+                      aria-label={"name"}
+                      aria-labelledby={"productid"}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.cbProductlist
+                      )}
+                      name={"productlist"}
+                      onChange={async (...eventArgs: any) => {
+                        ((...eventArgs) => {
+                          generateStateOnChangeProp($state, [
+                            "cbProductlist",
+                            "value"
+                          ])(eventArgs[0]);
+                        }).apply(null, eventArgs);
+                        (async value => {
+                          const $steps = {};
+
+                          $steps["updateFirstRequestCount"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["firstRequestCount"]
+                                  },
+                                  operation: 2
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  const oldValue = $stateGet(
+                                    objRoot,
+                                    variablePath
+                                  );
+                                  $stateSet(
+                                    objRoot,
+                                    variablePath,
+                                    oldValue + 1
+                                  );
+                                  return oldValue + 1;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateFirstRequestCount"] != null &&
+                            typeof $steps["updateFirstRequestCount"] ===
+                              "object" &&
+                            typeof $steps["updateFirstRequestCount"].then ===
+                              "function"
+                          ) {
+                            $steps["updateFirstRequestCount"] = await $steps[
+                              "updateFirstRequestCount"
+                            ];
+                          }
+                        }).apply(null, eventArgs);
+                      }}
+                      options={(() => {
+                        try {
+                          return $state.productList.map(item => ({
+                            value: item.productid.toString(),
+                            label: item.name
+                          }));
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return undefined;
+                          }
+                          throw e;
+                        }
+                      })()}
+                      placeholder={
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__lX8IZ
+                          )}
+                        >
+                          {hasVariant(globalVariants, "screen", "mobileOnly")
+                            ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                            : "\u0628\u062e\u0634 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"}
+                        </div>
+                      }
+                      value={generateStateValueProp($state, [
+                        "cbProductlist",
+                        "value"
+                      ])}
+                    />
+                  ) : null}
                 </div>
                 <div
                   className={classNames(
