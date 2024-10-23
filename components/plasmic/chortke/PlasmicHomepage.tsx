@@ -6450,7 +6450,7 @@ function PlasmicHomepage__RenderFunc(props: {
                               $steps.me.status == 200
                             )
                               return ($state.cbAccounts.value =
-                                $state.accounts[0]);
+                                $state.accounts[0].id);
                           })();
                         }
                       };
@@ -6505,19 +6505,16 @@ function PlasmicHomepage__RenderFunc(props: {
                   ? (() => {
                       const actionArgs = {
                         customFunction: async () => {
-                          return (() => {
-                            $state.cbAccount.value = $state.cbAccount[0].value;
-                            return $steps.getProductList.status == 200 &&
-                              $steps.getProductList.data.status == true
-                              ? ($state.productList = [
-                                  {
-                                    productid: 0,
-                                    name: "همه"
-                                  },
-                                  ...$steps.getProductList.data.data
-                                ])
-                              : ($state.productList = []);
-                          })();
+                          return $steps.getProductList.status == 200 &&
+                            $steps.getProductList.data.status == true
+                            ? ($state.productList = [
+                                {
+                                  productid: 0,
+                                  name: "همه"
+                                },
+                                ...$steps.getProductList.data.data
+                              ])
+                            : ($state.productList = []);
                         }
                       };
                       return (({ customFunction }) => {
