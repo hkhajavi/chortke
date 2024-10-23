@@ -1160,9 +1160,30 @@ function PlasmicHomepage__RenderFunc(props: {
                             sty.text__a5UlJ
                           )}
                         >
-                          {hasVariant(globalVariants, "screen", "mobileOnly")
-                            ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
-                            : "\u0645\u0631\u06a9\u0632 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"}
+                          {hasVariant(
+                            globalVariants,
+                            "screen",
+                            "mobileOnly"
+                          ) ? (
+                            "\u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                          ) : (
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return "حساب مورد نظر را انتخاب نمایید";
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "\u0645\u0631\u06a9\u0632 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          )}
                         </div>
                       }
                       value={generateStateValueProp($state, [
@@ -6484,16 +6505,19 @@ function PlasmicHomepage__RenderFunc(props: {
                   ? (() => {
                       const actionArgs = {
                         customFunction: async () => {
-                          return $steps.getProductList.status == 200 &&
-                            $steps.getProductList.data.status == true
-                            ? ($state.productList = [
-                                {
-                                  productid: 0,
-                                  name: "همه"
-                                },
-                                ...$steps.getProductList.data.data
-                              ])
-                            : ($state.productList = []);
+                          return (() => {
+                            $state.cbAccount.value = $state.cbAccount[0].value;
+                            return $steps.getProductList.status == 200 &&
+                              $steps.getProductList.data.status == true
+                              ? ($state.productList = [
+                                  {
+                                    productid: 0,
+                                    name: "همه"
+                                  },
+                                  ...$steps.getProductList.data.data
+                                ])
+                              : ($state.productList = []);
+                          })();
                         }
                       };
                       return (({ customFunction }) => {
