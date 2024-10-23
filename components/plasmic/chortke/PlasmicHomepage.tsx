@@ -2358,7 +2358,7 @@ function PlasmicHomepage__RenderFunc(props: {
 
                       {(() => {
                         try {
-                          return $state.isSettlementShow;
+                          return $state.reminderWallet > 0;
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
@@ -6596,6 +6596,7 @@ function PlasmicHomepage__RenderFunc(props: {
                         customFunction: async () => {
                           return (() => {
                             $state.txtReminderTextValue = "";
+                            $state.reminderWallet = 0;
                             $state.invoicelist = [];
                             $state.invoiceDetials = {};
                             $state.waiting = true;
