@@ -1075,9 +1075,21 @@ function PlasmicHomepage__RenderFunc(props: {
                         sty.text__l4CJ
                       )}
                     >
-                      {
-                        "\u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc: "
-                      }
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return "حساب کاربری: ";
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "\u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc: ";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
                     </div>
                     <Select
                       data-plasmic-name={"cbAccounts"}
