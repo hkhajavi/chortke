@@ -1426,151 +1426,175 @@ function PlasmicHomepage__RenderFunc(props: {
                     className={classNames(projectcss.all, sty.freeBox__bYmeb)}
                   >
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___3OBad
-                      )}
+                      className={classNames(projectcss.all, sty.freeBox__s0WRf)}
                     >
-                      {(() => {
-                        try {
-                          return $state.waiting;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })() ? (
-                        <Icon2Icon
-                          className={classNames(projectcss.all, sty.svg__molj2)}
-                          role={"img"}
-                        />
-                      ) : null}
-                      {(() => {
-                        try {
-                          return $state.reminderWallet != 0;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })() ? (
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___0Es2W
+                        )}
+                      >
                         <div
-                          data-plasmic-name={"txtRemainingText"}
-                          data-plasmic-override={overrides.txtRemainingText}
                           className={classNames(
                             projectcss.all,
-                            projectcss.__wab_text,
-                            sty.txtRemainingText
+                            sty.freeBox___3OBad
                           )}
                         >
-                          <React.Fragment>
-                            {(() => {
-                              try {
-                                return $state.txtReminderTextValue;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "\u0645\u0627\u0646\u062f\u0647 \u0628\u062f\u0647\u06cc:";
-                                }
-                                throw e;
+                          {(() => {
+                            try {
+                              return $state.reminderWallet != 0;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
                               }
-                            })()}
-                          </React.Fragment>
+                              throw e;
+                            }
+                          })() ? (
+                            <div
+                              data-plasmic-name={"txtRemainingText"}
+                              data-plasmic-override={overrides.txtRemainingText}
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.txtRemainingText
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return $state.txtReminderTextValue;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "\u0645\u0627\u0646\u062f\u0647 \u0628\u062f\u0647\u06cc:";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                          ) : null}
+                          {(() => {
+                            try {
+                              return $state.reminderWallet != 0;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
+                            }
+                          })() ? (
+                            <div
+                              data-plasmic-name={"txtRemainingValue"}
+                              data-plasmic-override={
+                                overrides.txtRemainingValue
+                              }
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.txtRemainingValue
+                              )}
+                            >
+                              {hasVariant(
+                                globalVariants,
+                                "screen",
+                                "mobileOnly"
+                              ) ? (
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return (() => {
+                                        return $state.txtReminderValue == 0
+                                          ? ""
+                                          : $state.txtReminderValue
+                                              .toString()
+                                              .replace("\u2212", "")
+                                              .replace(
+                                                /\B(?=(\d{3})+(?!\d))/g,
+                                                ","
+                                              ) + " ریال";
+                                      })();
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "0";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
+                              ) : (
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return (() => {
+                                        return $state.txtReminderValue == 0
+                                          ? ""
+                                          : $state.txtReminderValue
+                                              .toString()
+                                              .replace("\u2212", "")
+                                              .replace(
+                                                /\B(?=(\d{3})+(?!\d))/g,
+                                                ","
+                                              ) + " ریال";
+                                      })();
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "0";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
+                              )}
+                            </div>
+                          ) : null}
                         </div>
-                      ) : null}
-                      {(() => {
-                        try {
-                          return $state.reminderWallet != 0;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
+                        {(() => {
+                          try {
+                            return $state.waiting;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
                           }
-                          throw e;
-                        }
-                      })() ? (
-                        <div
-                          data-plasmic-name={"txtRemainingValue"}
-                          data-plasmic-override={overrides.txtRemainingValue}
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.txtRemainingValue
-                          )}
-                        >
-                          {hasVariant(
-                            globalVariants,
-                            "screen",
-                            "mobileOnly"
-                          ) ? (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (() => {
-                                    return $state.txtReminderValue == 0
-                                      ? ""
-                                      : $state.txtReminderValue
-                                          .toString()
-                                          .replace("\u2212", "")
-                                          .replace(
-                                            /\B(?=(\d{3})+(?!\d))/g,
-                                            ","
-                                          ) + " ریال";
-                                  })();
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "0";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          ) : (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (() => {
-                                    return $state.txtReminderValue == 0
-                                      ? ""
-                                      : $state.txtReminderValue
-                                          .toString()
-                                          .replace("\u2212", "")
-                                          .replace(
-                                            /\B(?=(\d{3})+(?!\d))/g,
-                                            ","
-                                          ) + " ریال";
-                                  })();
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "0";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          )}
-                        </div>
-                      ) : null}
+                        })() ? (
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox___2WYU
+                            )}
+                          >
+                            <Icon2Icon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__molj2
+                              )}
+                              role={"img"}
+                            />
+                          </div>
+                        ) : null}
+                      </div>
                     </div>
                     <div
                       className={classNames(projectcss.all, sty.freeBox__dLpxl)}
