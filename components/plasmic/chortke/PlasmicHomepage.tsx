@@ -681,6 +681,12 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "updatewallet",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => true
       }
     ],
     [$props, $ctx, $refs]
@@ -1090,6 +1096,43 @@ function PlasmicHomepage__RenderFunc(props: {
                         (async value => {
                           const $steps = {};
 
+                          $steps["updateUpdatewallet"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["updatewallet"]
+                                  },
+                                  operation: 0,
+                                  value: true
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateUpdatewallet"] != null &&
+                            typeof $steps["updateUpdatewallet"] === "object" &&
+                            typeof $steps["updateUpdatewallet"].then ===
+                              "function"
+                          ) {
+                            $steps["updateUpdatewallet"] = await $steps[
+                              "updateUpdatewallet"
+                            ];
+                          }
+
                           $steps["updateFirstRequestCount"] = true
                             ? (() => {
                                 const actionArgs = {
@@ -1239,6 +1282,43 @@ function PlasmicHomepage__RenderFunc(props: {
                         }).apply(null, eventArgs);
                         (async value => {
                           const $steps = {};
+
+                          $steps["updateUpdatewallet"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["updatewallet"]
+                                  },
+                                  operation: 0,
+                                  value: false
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateUpdatewallet"] != null &&
+                            typeof $steps["updateUpdatewallet"] === "object" &&
+                            typeof $steps["updateUpdatewallet"].then ===
+                              "function"
+                          ) {
+                            $steps["updateUpdatewallet"] = await $steps[
+                              "updateUpdatewallet"
+                            ];
+                          }
 
                           $steps["updateFirstRequestCount"] = true
                             ? (() => {
@@ -6624,11 +6704,13 @@ function PlasmicHomepage__RenderFunc(props: {
                         customFunction: async () => {
                           return (() => {
                             $state.waiting = true;
-                            $state.txtReminderTextValue = "";
-                            $state.reminderWallet = 0;
+                            if ($state.updatewallet) {
+                              $state.txtReminderTextValue = "";
+                              $state.reminderWallet = 0;
+                              $state.txtReminderValue = "";
+                            }
                             $state.invoicelist = [];
                             $state.invoiceDetials = {};
-                            $state.txtReminderValue = "";
                             return $state.accounts.forEach(account => {
                               if (account.id == $state.cbAccounts.value) {
                                 if (account.type == "userid") {
@@ -6749,7 +6831,71 @@ function PlasmicHomepage__RenderFunc(props: {
                   ];
                 }
 
-                $steps["getProductWallet"] = true
+                $steps["runCode2"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return (() => {
+                            if (
+                              $steps.getInvoiceList.status == 200 &&
+                              $steps.getInvoiceList.data.data !== undefined &&
+                              $steps.getInvoiceList.data.data.length ==
+                                $state.limit
+                            )
+                              return ($state.showMoreBtn = true);
+                            else return ($state.showMoreBtn = false);
+                          })();
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["runCode2"] != null &&
+                  typeof $steps["runCode2"] === "object" &&
+                  typeof $steps["runCode2"].then === "function"
+                ) {
+                  $steps["runCode2"] = await $steps["runCode2"];
+                }
+
+                $steps["updateWaiting"] =
+                  $state.updatewallet == false
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["waiting"]
+                          },
+                          operation: 0,
+                          value: false
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["updateWaiting"] != null &&
+                  typeof $steps["updateWaiting"] === "object" &&
+                  typeof $steps["updateWaiting"].then === "function"
+                ) {
+                  $steps["updateWaiting"] = await $steps["updateWaiting"];
+                }
+
+                $steps["getProductWallet"] = $state.updatewallet
                   ? (() => {
                       const actionArgs = {
                         args: [
@@ -6785,7 +6931,8 @@ function PlasmicHomepage__RenderFunc(props: {
 
                 $steps["txtReminderText"] =
                   $steps.getProductWallet.status == 200 &&
-                  $steps.getProductWallet.data.status == true
+                  $steps.getProductWallet.data.status == true &&
+                  $state.updatewallet == true
                     ? (() => {
                         const actionArgs = {
                           customFunction: async () => {
@@ -6815,7 +6962,8 @@ function PlasmicHomepage__RenderFunc(props: {
 
                 $steps["txtReminderValue"] =
                   $steps.getProductWallet.status == 200 &&
-                  $steps.getProductWallet.data.status == true
+                  $steps.getProductWallet.data.status == true &&
+                  $state.updatewallet == true
                     ? (() => {
                         const actionArgs = {
                           customFunction: async () => {
@@ -6840,7 +6988,8 @@ function PlasmicHomepage__RenderFunc(props: {
 
                 $steps["updateReminderWallet"] =
                   $steps.getProductWallet.status == 200 &&
-                  $steps.getProductWallet.data.status == true
+                  $steps.getProductWallet.data.status == true &&
+                  $state.updatewallet == true
                     ? (() => {
                         const actionArgs = {
                           variable: {
@@ -6876,42 +7025,11 @@ function PlasmicHomepage__RenderFunc(props: {
                   ];
                 }
 
-                $steps["runCode2"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        customFunction: async () => {
-                          return (() => {
-                            if (
-                              $steps.getInvoiceList.status == 200 &&
-                              $steps.getInvoiceList.data.data !== undefined &&
-                              $steps.getInvoiceList.data.data.length ==
-                                $state.limit
-                            )
-                              return ($state.showMoreBtn = true);
-                            else return ($state.showMoreBtn = false);
-                          })();
-                        }
-                      };
-                      return (({ customFunction }) => {
-                        return customFunction();
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["runCode2"] != null &&
-                  typeof $steps["runCode2"] === "object" &&
-                  typeof $steps["runCode2"].then === "function"
-                ) {
-                  $steps["runCode2"] = await $steps["runCode2"];
-                }
-
                 $steps["runCode3"] = true
                   ? (() => {
                       const actionArgs = {
                         customFunction: async () => {
-                          return (() => {
-                            return ($state.waiting = false);
-                          })();
+                          return ($state.waiting = false);
                         }
                       };
                       return (({ customFunction }) => {
