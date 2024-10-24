@@ -2134,8 +2134,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                                       $state.currentAccountType ==
                                                       "centerid"
                                                         ? "7"
-                                                        : $state.cbProductlist
-                                                            .value,
+                                                        : "1",
                                                     returnlink:
                                                       "https://www.paziresh24.com/dashboard/apps/katibe/bills/",
                                                     title: "افزایش موجودی",
