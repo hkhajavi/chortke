@@ -1357,90 +1357,128 @@ function PlasmicHomepage__RenderFunc(props: {
                           role={"img"}
                         />
                       ) : null}
-                      <div
-                        data-plasmic-name={"txtRemainingText"}
-                        data-plasmic-override={overrides.txtRemainingText}
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.txtRemainingText
-                        )}
-                      >
-                        <React.Fragment>
-                          {(() => {
-                            try {
-                              return $state.txtReminderTextValue;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "\u0645\u0627\u0646\u062f\u0647 \u0628\u062f\u0647\u06cc:";
-                              }
-                              throw e;
-                            }
-                          })()}
-                        </React.Fragment>
-                      </div>
-                      <div
-                        data-plasmic-name={"txtRemainingValue"}
-                        data-plasmic-override={overrides.txtRemainingValue}
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.txtRemainingValue
-                        )}
-                      >
-                        {hasVariant(globalVariants, "screen", "mobileOnly") ? (
+                      {(() => {
+                        try {
+                          return $state.reminderWallet != 0;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <div
+                          data-plasmic-name={"txtRemainingText"}
+                          data-plasmic-override={overrides.txtRemainingText}
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.txtRemainingText
+                          )}
+                        >
                           <React.Fragment>
                             {(() => {
                               try {
-                                return (() => {
-                                  return $state.txtReminderValue == 0
-                                    ? ""
-                                    : $state.txtReminderValue
-                                        .toString()
-                                        .replace("\u2212", "")
-                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
-                                        " ریال";
-                                })();
+                                return $state.txtReminderTextValue;
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||
                                   e?.plasmicType === "PlasmicUndefinedDataError"
                                 ) {
-                                  return "0";
+                                  return "\u0645\u0627\u0646\u062f\u0647 \u0628\u062f\u0647\u06cc:";
                                 }
                                 throw e;
                               }
                             })()}
                           </React.Fragment>
-                        ) : (
-                          <React.Fragment>
-                            {(() => {
-                              try {
-                                return (() => {
-                                  return $state.txtReminderValue == 0
-                                    ? ""
-                                    : $state.txtReminderValue
-                                        .toString()
-                                        .replace("\u2212", "")
-                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
-                                        " ریال";
-                                })();
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "0";
+                        </div>
+                      ) : null}
+                      {(() => {
+                        try {
+                          return $state.reminderWallet != 0;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <div
+                          data-plasmic-name={"txtRemainingValue"}
+                          data-plasmic-override={overrides.txtRemainingValue}
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.txtRemainingValue
+                          )}
+                        >
+                          {hasVariant(
+                            globalVariants,
+                            "screen",
+                            "mobileOnly"
+                          ) ? (
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return (() => {
+                                    return $state.txtReminderValue == 0
+                                      ? ""
+                                      : $state.txtReminderValue
+                                          .toString()
+                                          .replace("\u2212", "")
+                                          .replace(
+                                            /\B(?=(\d{3})+(?!\d))/g,
+                                            ","
+                                          ) + " ریال";
+                                  })();
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "0";
+                                  }
+                                  throw e;
                                 }
-                                throw e;
-                              }
-                            })()}
-                          </React.Fragment>
-                        )}
-                      </div>
+                              })()}
+                            </React.Fragment>
+                          ) : (
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return (() => {
+                                    return $state.txtReminderValue == 0
+                                      ? ""
+                                      : $state.txtReminderValue
+                                          .toString()
+                                          .replace("\u2212", "")
+                                          .replace(
+                                            /\B(?=(\d{3})+(?!\d))/g,
+                                            ","
+                                          ) + " ریال";
+                                  })();
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "0";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          )}
+                        </div>
+                      ) : null}
                     </div>
                     <div
                       className={classNames(projectcss.all, sty.freeBox__dLpxl)}
@@ -2212,7 +2250,7 @@ function PlasmicHomepage__RenderFunc(props: {
                         trigger={
                           (() => {
                             try {
-                              return $state.isShowPaymentButton;
+                              return $state.reminderWallet < 0;
                             } catch (e) {
                               if (
                                 e instanceof TypeError ||
@@ -2660,7 +2698,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                   {(() => {
                                     try {
                                       return (
-                                        "موجودی حساب: " +
+                                        "طلب شما: " +
                                         $state.txtReminderValue +
                                         " ریال"
                                       );
@@ -6752,13 +6790,12 @@ function PlasmicHomepage__RenderFunc(props: {
                         const actionArgs = {
                           customFunction: async () => {
                             return (() => {
-                              $steps.getProductWallet.data.data.balance >= 0
-                                ? ($state.txtReminderTextValue =
-                                    "موجودی حساب: ")
+                              $steps.getProductWallet.data.data.balance > 0
+                                ? ($state.txtReminderTextValue = "طلب شما: ")
                                 : ($state.txtReminderTextValue = "بدهی شما: ");
                               return $steps.getProductWallet.data.data
                                 .balance >= 0
-                                ? ($state.txtPaymentText = "افزایش موجودی")
+                                ? ($state.txtPaymentText = "پرداخت")
                                 : ($state.txtPaymentText = "پرداخت بدهی");
                             })();
                           }
@@ -6844,7 +6881,6 @@ function PlasmicHomepage__RenderFunc(props: {
                       const actionArgs = {
                         customFunction: async () => {
                           return (() => {
-                            $state.isShowPaymentButton = true;
                             if (
                               $steps.getInvoiceList.status == 200 &&
                               $steps.getInvoiceList.data.data !== undefined &&
