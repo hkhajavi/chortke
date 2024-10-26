@@ -6759,6 +6759,7 @@ function PlasmicHomepage__RenderFunc(props: {
                               $state.reminderWallet = 0;
                               $state.txtReminderValue = "";
                             }
+                            $state.offset = 0;
                             $state.invoicelist = [];
                             $state.invoiceDetials = {};
                             return $state.accounts.forEach(account => {
