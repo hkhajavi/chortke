@@ -6575,7 +6575,7 @@ function PlasmicHomepage__RenderFunc(props: {
                               ];
                             }
                             if ($steps.getUserCenters.status == 200) {
-                              $state.accounts = [
+                              return ($state.accounts = [
                                 ...$state.accounts,
                                 ...$steps.getUserCenters.data.data.map(
                                   center => ({
@@ -6584,14 +6584,8 @@ function PlasmicHomepage__RenderFunc(props: {
                                     type: "centerid"
                                   })
                                 )
-                              ];
+                              ]);
                             }
-                            if (
-                              $steps.getUserCenters.status == 200 ||
-                              $steps.me.status == 200
-                            )
-                              return ($state.cbAccounts.value =
-                                $state.accounts[0].id);
                           })();
                         }
                       };
@@ -6606,6 +6600,29 @@ function PlasmicHomepage__RenderFunc(props: {
                   typeof $steps["runCode"].then === "function"
                 ) {
                   $steps["runCode"] = await $steps["runCode"];
+                }
+
+                $steps["runCode2"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return (() => {
+                            return ($state.cbAccounts.value =
+                              $state.accounts[$state.accounts.length - 1].id);
+                          })();
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["runCode2"] != null &&
+                  typeof $steps["runCode2"] === "object" &&
+                  typeof $steps["runCode2"].then === "function"
+                ) {
+                  $steps["runCode2"] = await $steps["runCode2"];
                 }
 
                 $steps["getProductList"] = true
@@ -6646,18 +6663,16 @@ function PlasmicHomepage__RenderFunc(props: {
                   ? (() => {
                       const actionArgs = {
                         customFunction: async () => {
-                          return (() => {
-                            return $steps.getProductList.status == 200 &&
-                              $steps.getProductList.data.status == true
-                              ? ($state.productList = [
-                                  {
-                                    productid: 0,
-                                    name: "همه"
-                                  },
-                                  ...$steps.getProductList.data.data
-                                ])
-                              : ($state.productList = []);
-                          })();
+                          return $steps.getProductList.status == 200 &&
+                            $steps.getProductList.data.status == true
+                            ? ($state.productList = [
+                                {
+                                  productid: 0,
+                                  name: "همه"
+                                },
+                                ...$steps.getProductList.data.data
+                              ])
+                            : ($state.productList = []);
                         }
                       };
                       return (({ customFunction }) => {
