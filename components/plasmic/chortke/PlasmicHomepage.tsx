@@ -6483,12 +6483,12 @@ function PlasmicHomepage__RenderFunc(props: {
                   $steps["showWaiting"] = await $steps["showWaiting"];
                 }
 
-                $steps["me"] = true
+                $steps["getUserAccounts"] = true
                   ? (() => {
                       const actionArgs = {
                         args: [
                           undefined,
-                          "https://apigw.paziresh24.com/v1/auth/me"
+                          "https://apigw.paziresh24.com/transaction/v1/useraccounts"
                         ]
                       };
                       return $globalActions["Fragment.apiRequest"]?.apply(
@@ -6498,33 +6498,11 @@ function PlasmicHomepage__RenderFunc(props: {
                     })()
                   : undefined;
                 if (
-                  $steps["me"] != null &&
-                  typeof $steps["me"] === "object" &&
-                  typeof $steps["me"].then === "function"
+                  $steps["getUserAccounts"] != null &&
+                  typeof $steps["getUserAccounts"] === "object" &&
+                  typeof $steps["getUserAccounts"].then === "function"
                 ) {
-                  $steps["me"] = await $steps["me"];
-                }
-
-                $steps["getUserCenters"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        args: [
-                          undefined,
-                          "https://apigw.paziresh24.com/transaction/v1/usercenters"
-                        ]
-                      };
-                      return $globalActions["Fragment.apiRequest"]?.apply(
-                        null,
-                        [...actionArgs.args]
-                      );
-                    })()
-                  : undefined;
-                if (
-                  $steps["getUserCenters"] != null &&
-                  typeof $steps["getUserCenters"] === "object" &&
-                  typeof $steps["getUserCenters"].then === "function"
-                ) {
-                  $steps["getUserCenters"] = await $steps["getUserCenters"];
+                  $steps["getUserAccounts"] = await $steps["getUserAccounts"];
                 }
 
                 $steps["runCode"] = true
@@ -6532,29 +6510,9 @@ function PlasmicHomepage__RenderFunc(props: {
                       const actionArgs = {
                         customFunction: async () => {
                           return (() => {
-                            if ($steps.me.status == 200) {
-                              $state.accounts = [
-                                {
-                                  id: $steps.me.data.users[0].id.toString(),
-                                  name:
-                                    $steps.me.data.users[0].name +
-                                    " " +
-                                    $steps.me.data.users[0].family,
-                                  type: "userid"
-                                }
-                              ];
-                            }
-                            if ($steps.getUserCenters.status == 200) {
-                              return ($state.accounts = [
-                                ...$state.accounts,
-                                ...$steps.getUserCenters.data.data.map(
-                                  center => ({
-                                    id: center.centerid,
-                                    name: center.centername,
-                                    type: "centerid"
-                                  })
-                                )
-                              ]);
+                            if ($steps.getUserAccounts.status == 200) {
+                              return ($state.accounts =
+                                $steps.getUserAccounts.data.data);
                             }
                           })();
                         }
@@ -6576,10 +6534,8 @@ function PlasmicHomepage__RenderFunc(props: {
                   ? (() => {
                       const actionArgs = {
                         customFunction: async () => {
-                          return (() => {
-                            return ($state.cbAccounts.value =
-                              $state.accounts[$state.accounts.length - 1].id);
-                          })();
+                          return ($state.cbAccounts.value =
+                            $state.accounts[$state.accounts.length - 1].id);
                         }
                       };
                       return (({ customFunction }) => {
@@ -6747,7 +6703,8 @@ function PlasmicHomepage__RenderFunc(props: {
                                   $state.requestWalletUrl =
                                     "https://apigw.paziresh24.com/transaction/v1/productwallet?productid=" +
                                     $state.cbProductlist.value;
-                                } else {
+                                }
+                                if (account.type == "centerid") {
                                   $state.currentAccountType = "centerid";
                                   $state.currentCenterid =
                                     $state.cbAccounts.value;
