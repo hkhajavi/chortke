@@ -1976,14 +1976,9 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                               return (() => {
                                                                 $state.registerinvoiceUserinfo =
                                                                   " برای پروداکت " +
-                                                                  $state
-                                                                    .p24Products[
-                                                                    currentIndex
-                                                                  ].name;
+                                                                  currentItem.name;
                                                                 return ($state.registerinvoiceUserid =
-                                                                  $state.p24Products[
-                                                                    currentIndex
-                                                                  ].codename);
+                                                                  currentItem.codename);
                                                               })();
                                                             }
                                                         };
