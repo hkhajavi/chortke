@@ -3364,7 +3364,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                                         ];
                                                     }
                                                   }}
-                                                  size={"minimal"}
+                                                  size={"compact"}
                                                 />
                                               ) : null}
                                             </div>
