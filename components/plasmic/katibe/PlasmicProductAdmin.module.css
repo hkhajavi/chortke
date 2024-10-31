@@ -559,7 +559,7 @@
   flex-direction: row;
   position: relative;
   width: 100%;
-  height: auto;
+  height: 100%;
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
@@ -568,6 +568,7 @@
   align-content: stretch;
   grid-column-end: span 3;
   min-width: 0;
+  min-height: 0;
   border-radius: 10px;
   padding: 0px;
 }
