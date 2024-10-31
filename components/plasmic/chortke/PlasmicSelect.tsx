@@ -145,7 +145,7 @@ export const PlasmicSelect__ArgProps = new Array<ArgPropType>(
 export type PlasmicSelect__OverridesType = {
   root?: Flex__<"div">;
   trigger?: Flex__<"button">;
-  contentContainer?: Flex__<"div">;
+  contentContainer?: Flex__<"h4">;
   dropdownIcon?: Flex__<"svg">;
   overlay?: Flex__<typeof Select__Overlay>;
   optionsContainer?: Flex__<"div">;
@@ -380,26 +380,31 @@ function PlasmicSelect__RenderFunc(props: {
             $refs["trigger"] = ref;
           }}
         >
-          <div
+          <h4
             data-plasmic-name={"contentContainer"}
             data-plasmic-override={overrides.contentContainer}
-            className={classNames(projectcss.all, sty.contentContainer, {
-              [sty.contentContainercolor_softBlue]: hasVariant(
-                $state,
-                "color",
-                "softBlue"
-              ),
-              [sty.contentContainerisDisabled]: hasVariant(
-                $state,
-                "isDisabled",
-                "isDisabled"
-              ),
-              [sty.contentContainershowPlaceholder]: hasVariant(
-                $state,
-                "showPlaceholder",
-                "showPlaceholder"
-              )
-            })}
+            className={classNames(
+              projectcss.all,
+              projectcss.h4,
+              sty.contentContainer,
+              {
+                [sty.contentContainercolor_softBlue]: hasVariant(
+                  $state,
+                  "color",
+                  "softBlue"
+                ),
+                [sty.contentContainerisDisabled]: hasVariant(
+                  $state,
+                  "isDisabled",
+                  "isDisabled"
+                ),
+                [sty.contentContainershowPlaceholder]: hasVariant(
+                  $state,
+                  "showPlaceholder",
+                  "showPlaceholder"
+                )
+              }
+            )}
           >
             {(
               hasVariant($state, "showPlaceholder", "showPlaceholder")
@@ -547,7 +552,7 @@ function PlasmicSelect__RenderFunc(props: {
                   })
                 })
               : null}
-          </div>
+          </h4>
           <PlasmicIcon__
             data-plasmic-name={"dropdownIcon"}
             data-plasmic-override={overrides.dropdownIcon}
@@ -699,7 +704,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   trigger: "button";
-  contentContainer: "div";
+  contentContainer: "h4";
   dropdownIcon: "svg";
   overlay: typeof Select__Overlay;
   optionsContainer: "div";
