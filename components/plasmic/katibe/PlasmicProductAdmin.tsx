@@ -3162,7 +3162,19 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               throw e;
                             }
                           })()
-                        : true
+                        : (() => {
+                            try {
+                              return $state.waiting;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
+                            }
+                          })()
                     ) ? (
                       <Icon2Icon
                         data-plasmic-name={"waitingIcon4"}
@@ -5839,6 +5851,35 @@ function PlasmicProductAdmin__RenderFunc(props: {
                 $steps["getInvoiceList"] = await $steps["getInvoiceList"];
               }
 
+              $steps["hideWaiting"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["waiting"]
+                      },
+                      operation: 0,
+                      value: false
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["hideWaiting"] != null &&
+                typeof $steps["hideWaiting"] === "object" &&
+                typeof $steps["hideWaiting"].then === "function"
+              ) {
+                $steps["hideWaiting"] = await $steps["hideWaiting"];
+              }
+
               $steps["updateInvoicelist"] =
                 $steps.getInvoiceList.status == 200 &&
                 $steps.getInvoiceList.data.status == true
@@ -5873,35 +5914,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
                 typeof $steps["updateInvoicelist"].then === "function"
               ) {
                 $steps["updateInvoicelist"] = await $steps["updateInvoicelist"];
-              }
-
-              $steps["hideWaiting"] = true
-                ? (() => {
-                    const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["waiting"]
-                      },
-                      operation: 0,
-                      value: false
-                    };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
-                      }
-                      const { objRoot, variablePath } = variable;
-
-                      $stateSet(objRoot, variablePath, value);
-                      return value;
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["hideWaiting"] != null &&
-                typeof $steps["hideWaiting"] === "object" &&
-                typeof $steps["hideWaiting"].then === "function"
-              ) {
-                $steps["hideWaiting"] = await $steps["hideWaiting"];
               }
 
               $steps["showMoreBtn"] = true

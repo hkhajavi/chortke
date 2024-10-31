@@ -1375,6 +1375,7 @@
     top: auto;
     position: relative;
     right: auto;
+    display: block;
   }
 }
 .gridInvoice1 {
