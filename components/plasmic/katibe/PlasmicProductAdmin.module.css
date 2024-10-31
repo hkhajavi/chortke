@@ -574,6 +574,8 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__syNqd {
     margin-right: 2px;
+    display: flex;
+    flex-direction: row;
     padding: 0px 0px 0px 1px;
   }
 }
@@ -583,6 +585,9 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .btnSearch:global(.__wab_instance) {
     margin-top: 0px;
+    position: relative;
+    left: auto;
+    top: auto;
   }
 }
 .svg__m4Wnv {
@@ -625,6 +630,9 @@
   .dialogRegisterInvoice:global(.__wab_instance):global(.__wab_instance) {
     margin-bottom: 0px;
     margin-top: 0px;
+    position: relative;
+    left: auto;
+    top: auto;
   }
 }
 .button__eot80:global(.__wab_instance) {
@@ -1364,6 +1372,7 @@
   .waitingIcon4 {
     left: auto;
     top: auto;
+    position: relative;
     right: auto;
   }
 }
