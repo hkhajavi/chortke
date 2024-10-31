@@ -3740,7 +3740,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   }
 
                                   $steps["alertSucess"] =
-                                    $steps.registerInvoiceApi.status == 200
+                                    $steps.registerInvoiceApi.status == 200 &&
+                                    $state.registerinvoiceUserid.length > 0
                                       ? (() => {
                                           const actionArgs = {
                                             args: [
@@ -3765,7 +3766,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   }
 
                                   $steps["alertError"] =
-                                    $steps.registerInvoiceApi.status != 200
+                                    $steps.registerInvoiceApi.status != 200 &&
+                                    $state.registerinvoiceUserid.length > 0
                                       ? (() => {
                                           const actionArgs = {
                                             args: [
