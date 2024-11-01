@@ -4871,6 +4871,57 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   </React.Fragment>
                                 </div>
                               </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__hFdBs
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__iVeFh
+                                  )}
+                                >
+                                  {
+                                    "\u0635\u0627\u062f\u0631 \u06a9\u0646\u0646\u062f\u0647:"
+                                  }
+                                </div>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__kuqVo
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__yiHwb
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return $state.detailsDataApiRequest[
+                                          currentIndex
+                                        ].data.data.productname;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                              </div>
                             </div>
                             <div
                               className={classNames(
