@@ -2941,6 +2941,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 placeholder={
                                   "\u062f\u0631\u0635\u062f \u062a\u062e\u0641\u06cc\u0641"
                                 }
+                                type={"number"}
                                 value={
                                   generateStateValueProp($state, [
                                     "txtRegisterInvoiceDiscountPercent",
@@ -2998,6 +2999,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 placeholder={
                                   "\u062f\u0631\u0635\u062f \u0645\u0627\u0644\u06cc\u0627\u062a"
                                 }
+                                type={"number"}
                                 value={
                                   generateStateValueProp($state, [
                                     "txtRegisterInvoiceVatPercent",
@@ -4292,8 +4294,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                           }
                                         ];
                                         $state.servicesToRegister = [];
-                                        return ($state.cbProductlistRegisterInvoice.value =
-                                          $state.cbProductlist.value);
+                                        return ($state.cbProductlistRegisterInvoice.value = 0);
                                       })();
                                     }
                                   };
