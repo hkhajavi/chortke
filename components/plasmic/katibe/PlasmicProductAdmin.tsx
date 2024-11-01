@@ -3572,6 +3572,33 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     $steps["errUser"] = await $steps["errUser"];
                                   }
 
+                                  $steps["errorMyProduct"] =
+                                    $state.cbProductlistRegisterInvoice.value ==
+                                    0
+                                      ? (() => {
+                                          const actionArgs = {
+                                            args: [
+                                              "error",
+                                              "\u0644\u0637\u0641\u0627 \u067e\u0631\u0648\u062f\u0627\u06a9\u062a \u062e\u0648\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                                            ]
+                                          };
+                                          return $globalActions[
+                                            "Fragment.showToast"
+                                          ]?.apply(null, [...actionArgs.args]);
+                                        })()
+                                      : undefined;
+                                  if (
+                                    $steps["errorMyProduct"] != null &&
+                                    typeof $steps["errorMyProduct"] ===
+                                      "object" &&
+                                    typeof $steps["errorMyProduct"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["errorMyProduct"] = await $steps[
+                                      "errorMyProduct"
+                                    ];
+                                  }
+
                                   $steps["showWaiting"] = true
                                     ? (() => {
                                         const actionArgs = {
@@ -3615,7 +3642,9 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   }
 
                                   $steps["registerInvoiceApi"] =
-                                    $state.registerinvoiceUserid.length > 0
+                                    $state.registerinvoiceUserid.length > 0 &&
+                                    $state.cbProductlistRegisterInvoice.value >
+                                      0
                                       ? (() => {
                                           const actionArgs = {
                                             args: [
@@ -3665,8 +3694,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                         .cbProductlistRegisterInvoice
                                                         .value
                                                   };
-
-                                                  //   "productid": parseInt($ctx.query.productid > 0 ? $ctx.query.productid : $state.cbProductlist.value)
                                                 } catch (e) {
                                                   if (
                                                     e instanceof TypeError ||
@@ -3741,7 +3768,9 @@ function PlasmicProductAdmin__RenderFunc(props: {
 
                                   $steps["alertSucess"] =
                                     $steps.registerInvoiceApi.status == 200 &&
-                                    $state.registerinvoiceUserid.length > 0
+                                    $state.registerinvoiceUserid.length > 0 &&
+                                    $state.cbProductlistRegisterInvoice.value >
+                                      0
                                       ? (() => {
                                           const actionArgs = {
                                             args: [
@@ -3767,7 +3796,9 @@ function PlasmicProductAdmin__RenderFunc(props: {
 
                                   $steps["alertError"] =
                                     $steps.registerInvoiceApi.status != 200 &&
-                                    $state.registerinvoiceUserid.length > 0
+                                    $state.registerinvoiceUserid.length > 0 &&
+                                    $state.cbProductlistRegisterInvoice.value >
+                                      0
                                       ? (() => {
                                           const actionArgs = {
                                             args: [
