@@ -394,6 +394,7 @@
   .gridCalculator2 {
     grid-template-columns: repeat(6, minmax(0, 1fr));
     padding-top: 0px;
+    padding-bottom: 0px;
   }
 }
 .freeBox__kQpa3 {
@@ -483,6 +484,8 @@
   .freeBox__xmf4E {
     grid-column-end: span 4;
     margin-top: 0px;
+    height: 100%;
+    min-height: 0;
     padding: 0px;
   }
 }
@@ -505,6 +508,8 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__ryqn7 {
+    height: 100%;
+    min-height: 0;
     padding: 0px;
   }
 }
@@ -527,10 +532,12 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__otz {
-    padding-right: 0px;
-    padding-left: 0px;
+    padding-right: 3px;
+    padding-left: 3px;
     grid-column-end: span 2;
-    margin-bottom: 7px;
+    margin-bottom: 0px;
+    height: 100%;
+    min-height: 0;
   }
 }
 .txtSearch:global(.__wab_instance) {
@@ -574,9 +581,11 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__syNqd {
-    margin-right: 2px;
+    margin-right: 3px;
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
     padding: 0px 0px 0px 1px;
   }
 }
