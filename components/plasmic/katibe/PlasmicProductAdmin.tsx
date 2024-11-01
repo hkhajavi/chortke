@@ -4874,24 +4874,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               <div
                                 className={classNames(
                                   projectcss.all,
-                                  sty.freeBox__hFdBs
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__iVeFh
-                                  )}
-                                >
-                                  {
-                                    "\u0635\u0627\u062f\u0631 \u06a9\u0646\u0646\u062f\u0647:"
-                                  }
-                                </div>
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
                                   sty.freeBox__kuqVo
                                 )}
                               >
@@ -4902,24 +4884,55 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     sty.text__yiHwb
                                   )}
                                 >
-                                  <React.Fragment>
-                                    {(() => {
-                                      try {
-                                        return $state.detailsDataApiRequest[
-                                          currentIndex
-                                        ].data.data.productname;
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return "";
+                                  {hasVariant(
+                                    globalVariants,
+                                    "screen",
+                                    "mobileOnly"
+                                  ) ? (
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return (
+                                            "صادر شده توسط " +
+                                            $state.detailsDataApiRequest[
+                                              currentIndex
+                                            ].data.data.productname
+                                          );
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "";
+                                          }
+                                          throw e;
                                         }
-                                        throw e;
-                                      }
-                                    })()}
-                                  </React.Fragment>
+                                      })()}
+                                    </React.Fragment>
+                                  ) : (
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return (
+                                            "صادر شده توسط " +
+                                            $state.detailsDataApiRequest[
+                                              currentIndex
+                                            ].data.data.productname
+                                          );
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  )}
                                 </div>
                               </div>
                             </div>
