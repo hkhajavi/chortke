@@ -1716,52 +1716,29 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                                   onClick={async event => {
                                     const $steps = {};
 
-                                    $steps["updateDialogDelete0Open"] = true
+                                    $steps["runCode"] = true
                                       ? (() => {
                                           const actionArgs = {
-                                            variable: {
-                                              objRoot: $state,
-                                              variablePath: [
-                                                "dialogDelete",
-                                                "0",
-                                                "open"
-                                              ]
-                                            },
-                                            operation: 0,
-                                            value: false
-                                          };
-                                          return (({
-                                            variable,
-                                            value,
-                                            startIndex,
-                                            deleteCount
-                                          }) => {
-                                            if (!variable) {
-                                              return;
+                                            customFunction: async () => {
+                                              return ($state.dialogDelete[
+                                                currentIndex
+                                              ].open = false);
                                             }
-                                            const { objRoot, variablePath } =
-                                              variable;
-
-                                            $stateSet(
-                                              objRoot,
-                                              variablePath,
-                                              value
-                                            );
-                                            return value;
+                                          };
+                                          return (({ customFunction }) => {
+                                            return customFunction();
                                           })?.apply(null, [actionArgs]);
                                         })()
                                       : undefined;
                                     if (
-                                      $steps["updateDialogDelete0Open"] !=
-                                        null &&
-                                      typeof $steps[
-                                        "updateDialogDelete0Open"
-                                      ] === "object" &&
-                                      typeof $steps["updateDialogDelete0Open"]
-                                        .then === "function"
+                                      $steps["runCode"] != null &&
+                                      typeof $steps["runCode"] === "object" &&
+                                      typeof $steps["runCode"].then ===
+                                        "function"
                                     ) {
-                                      $steps["updateDialogDelete0Open"] =
-                                        await $steps["updateDialogDelete0Open"];
+                                      $steps["runCode"] = await $steps[
+                                        "runCode"
+                                      ];
                                     }
                                   }}
                                   size={"compact"}
