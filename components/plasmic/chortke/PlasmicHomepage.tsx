@@ -132,7 +132,7 @@ export type PlasmicHomepage__OverridesType = {
   txtCardIban?: Flex__<typeof TextInput>;
   txtCardBankName?: Flex__<typeof TextInput>;
   radioAccounts?: Flex__<typeof AntdRadioGroup>;
-  link?: Flex__<"a"> & Partial<LinkProps>;
+  span?: Flex__<"span">;
   txtSettlementResult?: Flex__<"div">;
   gridInvoice1?: Flex__<"div">;
   gridNoData?: Flex__<"div">;
@@ -4305,32 +4305,59 @@ function PlasmicHomepage__RenderFunc(props: {
                                           projectcss.__wab_text,
                                           sty.text__yahJ
                                         )}
+                                        onClick={async event => {
+                                          const $steps = {};
+
+                                          $steps["invokeGlobalAction"] = true
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  args: [
+                                                    "https://www.paziresh24.com/dashboard/apps/financialaccount/show/"
+                                                  ]
+                                                };
+                                                return $globalActions[
+                                                  "Hamdast.openLink"
+                                                ]?.apply(null, [
+                                                  ...actionArgs.args
+                                                ]);
+                                              })()
+                                            : undefined;
+                                          if (
+                                            $steps["invokeGlobalAction"] !=
+                                              null &&
+                                            typeof $steps[
+                                              "invokeGlobalAction"
+                                            ] === "object" &&
+                                            typeof $steps["invokeGlobalAction"]
+                                              .then === "function"
+                                          ) {
+                                            $steps["invokeGlobalAction"] =
+                                              await $steps[
+                                                "invokeGlobalAction"
+                                              ];
+                                          }
+                                        }}
                                       >
                                         <React.Fragment>
                                           <React.Fragment>{""}</React.Fragment>
                                           {
-                                            <PlasmicLink__
-                                              data-plasmic-name={"link"}
+                                            <span
+                                              data-plasmic-name={"span"}
                                               data-plasmic-override={
-                                                overrides.link
+                                                overrides.span
                                               }
                                               className={classNames(
                                                 projectcss.all,
-                                                projectcss.a,
+                                                projectcss.span,
                                                 projectcss.__wab_text,
                                                 projectcss.plasmic_default__inline,
-                                                sty.link
+                                                sty.span
                                               )}
-                                              component={Link}
-                                              href={
-                                                "https://www.paziresh24.com/dashboard/apps/financialaccount/show/"
-                                              }
-                                              platform={"nextjs"}
                                             >
                                               {
                                                 "\u0645\u062f\u06cc\u0631\u06cc\u062a \u062d\u0633\u0627\u0628\u200c"
                                               }
-                                            </PlasmicLink__>
+                                            </span>
                                           }
                                           <React.Fragment>{""}</React.Fragment>
                                         </React.Fragment>
@@ -7109,7 +7136,7 @@ const PlasmicDescendants = {
     "txtCardIban",
     "txtCardBankName",
     "radioAccounts",
-    "link",
+    "span",
     "txtSettlementResult",
     "gridInvoice1",
     "gridNoData",
@@ -7150,7 +7177,7 @@ const PlasmicDescendants = {
     "txtCardIban",
     "txtCardBankName",
     "radioAccounts",
-    "link",
+    "span",
     "txtSettlementResult",
     "gridInvoice1",
     "gridNoData",
@@ -7183,7 +7210,7 @@ const PlasmicDescendants = {
     "txtCardIban",
     "txtCardBankName",
     "radioAccounts",
-    "link",
+    "span",
     "txtSettlementResult"
   ],
   cbProductlist: ["cbProductlist"],
@@ -7213,7 +7240,7 @@ const PlasmicDescendants = {
     "txtCardIban",
     "txtCardBankName",
     "radioAccounts",
-    "link",
+    "span",
     "txtSettlementResult"
   ],
   tabContent: ["tabContent", "txtSettlemenAmount"],
@@ -7230,7 +7257,7 @@ const PlasmicDescendants = {
   txtCardIban: ["txtCardIban"],
   txtCardBankName: ["txtCardBankName"],
   radioAccounts: ["radioAccounts"],
-  link: ["link"],
+  span: ["span"],
   txtSettlementResult: ["txtSettlementResult"],
   gridInvoice1: ["gridInvoice1"],
   gridNoData: ["gridNoData"],
@@ -7286,7 +7313,7 @@ type NodeDefaultElementType = {
   txtCardIban: typeof TextInput;
   txtCardBankName: typeof TextInput;
   radioAccounts: typeof AntdRadioGroup;
-  link: "a";
+  span: "span";
   txtSettlementResult: "div";
   gridInvoice1: "div";
   gridNoData: "div";
@@ -7387,7 +7414,7 @@ export const PlasmicHomepage = Object.assign(
     txtCardIban: makeNodeComponent("txtCardIban"),
     txtCardBankName: makeNodeComponent("txtCardBankName"),
     radioAccounts: makeNodeComponent("radioAccounts"),
-    link: makeNodeComponent("link"),
+    span: makeNodeComponent("span"),
     txtSettlementResult: makeNodeComponent("txtSettlementResult"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     gridNoData: makeNodeComponent("gridNoData"),
