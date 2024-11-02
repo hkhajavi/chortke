@@ -64,6 +64,8 @@ import Button from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
 import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 
+import { useScreenVariants as useScreenVariantsbr2UhI7UlpvR } from "../fragment_icons/PlasmicGlobalVariant__Screen"; // plasmic-import: BR2UhI7ulpvR/globalVariant
+
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -258,6 +260,10 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
     $ctx,
     $queries: {},
     $refs
+  });
+
+  const globalVariants = ensureGlobalVariants({
+    screen: useScreenVariantsbr2UhI7UlpvR()
   });
 
   return (
@@ -1152,10 +1158,23 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                                         const actionArgs = {
                                           args: [
                                             "error",
-                                            `${$state.insertAccountMessage}${
-                                              "خطا در ثبت حساب: " +
-                                              $state.insertAccountMessage
-                                            }`
+                                            (() => {
+                                              try {
+                                                return (
+                                                  "خطا در ثبت حساب: " +
+                                                  $state.insertAccountMessage
+                                                );
+                                              } catch (e) {
+                                                if (
+                                                  e instanceof TypeError ||
+                                                  e?.plasmicType ===
+                                                    "PlasmicUndefinedDataError"
+                                                ) {
+                                                  return undefined;
+                                                }
+                                                throw e;
+                                              }
+                                            })()
                                           ]
                                         };
                                         return $globalActions[
@@ -1222,6 +1241,15 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                                   ];
                                 }
                               }}
+                              size={
+                                hasVariant(
+                                  globalVariants,
+                                  "screen",
+                                  "mobileOnly"
+                                )
+                                  ? "compact"
+                                  : undefined
+                              }
                             />
                           </div>
                         </div>
@@ -1331,9 +1359,9 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                       sty.text__oiRDy
                     )}
                   >
-                    {
-                      "\u0646\u0627\u0645 \u0648 \u0646\u0627\u0645 \u062e\u0627\u0646\u0648\u0627\u062f\u06af\u06cc"
-                    }
+                    {hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "\u0646\u0627\u0645"
+                      : "\u0646\u0627\u0645 \u0648 \u0646\u0627\u0645 \u062e\u0627\u0646\u0648\u0627\u062f\u06af\u06cc"}
                   </div>
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__xus6P)}>
@@ -1344,7 +1372,9 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                       sty.text__d49O4
                     )}
                   >
-                    {"\u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a"}
+                    {hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "\u06a9\u0627\u0631\u062a"
+                      : "\u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a"}
                   </div>
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__r15Js)}>
@@ -1980,7 +2010,53 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                                 role={"img"}
                               />
                             }
-                            size={"compact"}
+                            onClick={async event => {
+                              const $steps = {};
+
+                              $steps["updateWaitingRegister"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["waitingRegister"]
+                                      },
+                                      operation: 0,
+                                      value: false
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateWaitingRegister"] != null &&
+                                typeof $steps["updateWaitingRegister"] ===
+                                  "object" &&
+                                typeof $steps["updateWaitingRegister"].then ===
+                                  "function"
+                              ) {
+                                $steps["updateWaitingRegister"] = await $steps[
+                                  "updateWaitingRegister"
+                                ];
+                              }
+                            }}
+                            size={
+                              hasVariant(globalVariants, "screen", "mobileOnly")
+                                ? "compact"
+                                : "compact"
+                            }
                             startIcon={
                               <ChevronRightIcon
                                 className={classNames(
