@@ -130,7 +130,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .contentContainer {
-    font-size: 12px;
+    font-size: var(--token-VrIY9r5RDQZ_);
     font-weight: 400;
   }
 }
