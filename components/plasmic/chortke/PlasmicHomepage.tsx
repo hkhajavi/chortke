@@ -4572,41 +4572,44 @@ function PlasmicHomepage__RenderFunc(props: {
                                           await $steps["requestSettlement"];
                                       }
 
-                                      $steps["setSettlementMeessage"] = true
-                                        ? (() => {
-                                            const actionArgs = {
-                                              variable: {
-                                                objRoot: $state,
-                                                variablePath: [
-                                                  "requestSettlementMessage"
-                                                ]
-                                              },
-                                              operation: 0,
-                                              value:
-                                                $steps.requestSettlement.data
-                                                  .message
-                                            };
-                                            return (({
-                                              variable,
-                                              value,
-                                              startIndex,
-                                              deleteCount
-                                            }) => {
-                                              if (!variable) {
-                                                return;
-                                              }
-                                              const { objRoot, variablePath } =
-                                                variable;
+                                      $steps["setSettlementMeessage"] =
+                                        $steps.requestSettlement.status != 200
+                                          ? (() => {
+                                              const actionArgs = {
+                                                variable: {
+                                                  objRoot: $state,
+                                                  variablePath: [
+                                                    "requestSettlementMessage"
+                                                  ]
+                                                },
+                                                operation: 0,
+                                                value:
+                                                  $steps.requestSettlement.data
+                                                    .message
+                                              };
+                                              return (({
+                                                variable,
+                                                value,
+                                                startIndex,
+                                                deleteCount
+                                              }) => {
+                                                if (!variable) {
+                                                  return;
+                                                }
+                                                const {
+                                                  objRoot,
+                                                  variablePath
+                                                } = variable;
 
-                                              $stateSet(
-                                                objRoot,
-                                                variablePath,
-                                                value
-                                              );
-                                              return value;
-                                            })?.apply(null, [actionArgs]);
-                                          })()
-                                        : undefined;
+                                                $stateSet(
+                                                  objRoot,
+                                                  variablePath,
+                                                  value
+                                                );
+                                                return value;
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
                                       if (
                                         $steps["setSettlementMeessage"] !=
                                           null &&
