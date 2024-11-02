@@ -93,13 +93,12 @@ export const PlasmicFinancialaccounts__ArgProps = new Array<ArgPropType>();
 export type PlasmicFinancialaccounts__OverridesType = {
   root?: Flex__<"div">;
   section?: Flex__<"section">;
-  h4?: Flex__<"h4">;
   dialog2?: Flex__<typeof Dialog>;
   txtCardNumber?: Flex__<typeof TextInput>;
   txtName?: Flex__<typeof TextInput>;
   txtBan?: Flex__<typeof TextInput>;
   txtBank?: Flex__<typeof TextInput>;
-  dialog?: Flex__<typeof Dialog>;
+  dialogDelete?: Flex__<typeof Dialog>;
   sideEffect?: Flex__<typeof SideEffect>;
 };
 
@@ -160,7 +159,7 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => []
       },
       {
-        path: "dialog[].open",
+        path: "dialogDelete[].open",
         type: "private",
         variableType: "boolean"
       },
@@ -309,20 +308,24 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
           >
             <div className={classNames(projectcss.all, sty.freeBox___3ZJqF)}>
               <div className={classNames(projectcss.all, sty.freeBox__svMlS)}>
-                <h4
-                  data-plasmic-name={"h4"}
-                  data-plasmic-override={overrides.h4}
+                <div
                   className={classNames(
                     projectcss.all,
-                    projectcss.h4,
                     projectcss.__wab_text,
-                    sty.h4
+                    sty.text__seYcE
                   )}
                 >
-                  {
-                    "\u0644\u06cc\u0633\u062a \u062d\u0633\u0627\u0628\u200c\u0647\u0627\u06cc \u0628\u0627\u0646\u06a9\u06cc"
-                  }
-                </h4>
+                  <React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {
+                        "\u0644\u06cc\u0633\u062a \u062d\u0633\u0627\u0628\u200c\u0647\u0627\u06cc \u0628\u0627\u0646\u06a9\u06cc"
+                      }
+                    </span>
+                  </React.Fragment>
+                </div>
                 {(() => {
                   try {
                     return $state.waiting;
@@ -490,10 +493,7 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                                   ? (() => {
                                       const actionArgs = {
                                         customFunction: async () => {
-                                          return (() => {
-                                            $state.waitingAccount = true;
-                                            return ($state.cardInquiry = {});
-                                          })();
+                                          return ($state.cardInquiry = {});
                                         }
                                       };
                                       return (({ customFunction }) => {
@@ -1598,13 +1598,13 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                                   onClick={async event => {
                                     const $steps = {};
 
-                                    $steps["updateDialog0Open"] = true
+                                    $steps["updateDialogDelete0Open"] = true
                                       ? (() => {
                                           const actionArgs = {
                                             variable: {
                                               objRoot: $state,
                                               variablePath: [
-                                                "dialog",
+                                                "dialogDelete",
                                                 "0",
                                                 "open"
                                               ]
@@ -1634,14 +1634,16 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                                         })()
                                       : undefined;
                                     if (
-                                      $steps["updateDialog0Open"] != null &&
-                                      typeof $steps["updateDialog0Open"] ===
-                                        "object" &&
-                                      typeof $steps["updateDialog0Open"]
+                                      $steps["updateDialogDelete0Open"] !=
+                                        null &&
+                                      typeof $steps[
+                                        "updateDialogDelete0Open"
+                                      ] === "object" &&
+                                      typeof $steps["updateDialogDelete0Open"]
                                         .then === "function"
                                     ) {
-                                      $steps["updateDialog0Open"] =
-                                        await $steps["updateDialog0Open"];
+                                      $steps["updateDialogDelete0Open"] =
+                                        await $steps["updateDialogDelete0Open"];
                                     }
                                   }}
                                   size={"compact"}
@@ -1662,25 +1664,299 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                                     sty.button__aKVpX
                                   )}
                                   color={"red"}
+                                  onClick={async event => {
+                                    const $steps = {};
+
+                                    $steps["updateWaitingRegister"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: ["waitingRegister"]
+                                            },
+                                            operation: 0,
+                                            value: true
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["updateWaitingRegister"] != null &&
+                                      typeof $steps["updateWaitingRegister"] ===
+                                        "object" &&
+                                      typeof $steps["updateWaitingRegister"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["updateWaitingRegister"] =
+                                        await $steps["updateWaitingRegister"];
+                                    }
+
+                                    $steps["deleteRequest"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            args: [
+                                              "DELETE",
+                                              (() => {
+                                                try {
+                                                  return (
+                                                    "https://apigw.paziresh24.com/financialaccount/v1/useraccounts?accountid=" +
+                                                    currentItem.accountid
+                                                  );
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return undefined;
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()
+                                            ]
+                                          };
+                                          return $globalActions[
+                                            "Fragment.apiRequest"
+                                          ]?.apply(null, [...actionArgs.args]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["deleteRequest"] != null &&
+                                      typeof $steps["deleteRequest"] ===
+                                        "object" &&
+                                      typeof $steps["deleteRequest"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["deleteRequest"] = await $steps[
+                                        "deleteRequest"
+                                      ];
+                                    }
+
+                                    $steps["updateWaiting"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: ["waiting"]
+                                            },
+                                            operation: 0,
+                                            value: false
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["updateWaiting"] != null &&
+                                      typeof $steps["updateWaiting"] ===
+                                        "object" &&
+                                      typeof $steps["updateWaiting"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["updateWaiting"] = await $steps[
+                                        "updateWaiting"
+                                      ];
+                                    }
+
+                                    $steps["closeModal"] =
+                                      $steps.deleteRequest.status == 200
+                                        ? (() => {
+                                            const actionArgs = {
+                                              variable: {
+                                                objRoot: $state,
+                                                variablePath: [
+                                                  "dialogDelete",
+                                                  "0",
+                                                  "open"
+                                                ]
+                                              },
+                                              operation: 0,
+                                              value: false
+                                            };
+                                            return (({
+                                              variable,
+                                              value,
+                                              startIndex,
+                                              deleteCount
+                                            }) => {
+                                              if (!variable) {
+                                                return;
+                                              }
+                                              const { objRoot, variablePath } =
+                                                variable;
+
+                                              $stateSet(
+                                                objRoot,
+                                                variablePath,
+                                                value
+                                              );
+                                              return value;
+                                            })?.apply(null, [actionArgs]);
+                                          })()
+                                        : undefined;
+                                    if (
+                                      $steps["closeModal"] != null &&
+                                      typeof $steps["closeModal"] ===
+                                        "object" &&
+                                      typeof $steps["closeModal"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["closeModal"] = await $steps[
+                                        "closeModal"
+                                      ];
+                                    }
+
+                                    $steps["alertError"] =
+                                      $steps.deleteRequest.status != 200
+                                        ? (() => {
+                                            const actionArgs = {
+                                              args: [
+                                                "error",
+                                                "\u062e\u0637\u0627 \u062f\u0631 \u062d\u0630\u0641 \u062d\u0633\u0627\u0628 \u0628\u0627\u0646\u06a9\u06cc"
+                                              ]
+                                            };
+                                            return $globalActions[
+                                              "Fragment.showToast"
+                                            ]?.apply(null, [
+                                              ...actionArgs.args
+                                            ]);
+                                          })()
+                                        : undefined;
+                                    if (
+                                      $steps["alertError"] != null &&
+                                      typeof $steps["alertError"] ===
+                                        "object" &&
+                                      typeof $steps["alertError"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["alertError"] = await $steps[
+                                        "alertError"
+                                      ];
+                                    }
+
+                                    $steps["alertOk"] =
+                                      $steps.deleteRequest.status == 200
+                                        ? (() => {
+                                            const actionArgs = {
+                                              args: [
+                                                undefined,
+                                                "\u062d\u0633\u0627\u0628 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u062d\u0630\u0641 \u0634\u062f."
+                                              ]
+                                            };
+                                            return $globalActions[
+                                              "Fragment.showToast"
+                                            ]?.apply(null, [
+                                              ...actionArgs.args
+                                            ]);
+                                          })()
+                                        : undefined;
+                                    if (
+                                      $steps["alertOk"] != null &&
+                                      typeof $steps["alertOk"] === "object" &&
+                                      typeof $steps["alertOk"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["alertOk"] = await $steps[
+                                        "alertOk"
+                                      ];
+                                    }
+                                  }}
                                   size={"compact"}
                                 />
                               </div>
                             </div>
                           </React.Fragment>
                         ),
-                        className: classNames("__wab_instance", sty.dialog),
+                        className: classNames(
+                          "__wab_instance",
+                          sty.dialogDelete
+                        ),
                         onOpenChange: generateStateOnChangeProp($state, [
-                          "dialog",
+                          "dialogDelete",
                           __plasmic_idx_0,
                           "open"
                         ]),
                         open: generateStateValueProp($state, [
-                          "dialog",
+                          "dialogDelete",
                           __plasmic_idx_0,
                           "open"
                         ]),
-                        title:
-                          "\u062d\u0630\u0641 \u062d\u0633\u0627\u0628 \u0628\u0627\u0646\u06a9\u06cc",
+                        title: (
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__bQuiU
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__sjVWq
+                              )}
+                            >
+                              {
+                                "\u062d\u0630\u0641 \u062d\u0633\u0627\u0628 \u0628\u0627\u0646\u06a9\u06cc"
+                              }
+                            </div>
+                            {(() => {
+                              try {
+                                return $state.waitingRegister;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })() ? (
+                              <Icon2Icon
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.svg__y8Juj
+                                )}
+                                role={"img"}
+                              />
+                            ) : null}
+                          </div>
+                        ),
                         trigger: (
                           <Button
                             children2={
@@ -1722,7 +1998,7 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                         $state,
                         [
                           {
-                            name: "dialog[].open",
+                            name: "dialogDelete[].open",
                             initFunc: ({ $props, $state, $queries }) =>
                               undefined
                           }
@@ -1731,8 +2007,8 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                       );
                       return (
                         <Dialog
-                          data-plasmic-name={"dialog"}
-                          data-plasmic-override={overrides.dialog}
+                          data-plasmic-name={"dialogDelete"}
+                          data-plasmic-override={overrides.dialogDelete}
                           {...child$Props}
                         />
                       );
@@ -1868,32 +2144,29 @@ const PlasmicDescendants = {
   root: [
     "root",
     "section",
-    "h4",
     "dialog2",
     "txtCardNumber",
     "txtName",
     "txtBan",
     "txtBank",
-    "dialog",
+    "dialogDelete",
     "sideEffect"
   ],
   section: [
     "section",
-    "h4",
     "dialog2",
     "txtCardNumber",
     "txtName",
     "txtBan",
     "txtBank",
-    "dialog"
+    "dialogDelete"
   ],
-  h4: ["h4"],
   dialog2: ["dialog2", "txtCardNumber", "txtName", "txtBan", "txtBank"],
   txtCardNumber: ["txtCardNumber"],
   txtName: ["txtName"],
   txtBan: ["txtBan"],
   txtBank: ["txtBank"],
-  dialog: ["dialog"],
+  dialogDelete: ["dialogDelete"],
   sideEffect: ["sideEffect"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -1902,13 +2175,12 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   root: "div";
   section: "section";
-  h4: "h4";
   dialog2: typeof Dialog;
   txtCardNumber: typeof TextInput;
   txtName: typeof TextInput;
   txtBan: typeof TextInput;
   txtBank: typeof TextInput;
-  dialog: typeof Dialog;
+  dialogDelete: typeof Dialog;
   sideEffect: typeof SideEffect;
 };
 
@@ -1973,13 +2245,12 @@ export const PlasmicFinancialaccounts = Object.assign(
   {
     // Helper components rendering sub-elements
     section: makeNodeComponent("section"),
-    h4: makeNodeComponent("h4"),
     dialog2: makeNodeComponent("dialog2"),
     txtCardNumber: makeNodeComponent("txtCardNumber"),
     txtName: makeNodeComponent("txtName"),
     txtBan: makeNodeComponent("txtBan"),
     txtBank: makeNodeComponent("txtBank"),
-    dialog: makeNodeComponent("dialog"),
+    dialogDelete: makeNodeComponent("dialogDelete"),
     sideEffect: makeNodeComponent("sideEffect"),
 
     // Metadata about props expected for PlasmicFinancialaccounts
