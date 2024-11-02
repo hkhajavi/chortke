@@ -386,7 +386,7 @@
   width: auto;
   height: auto;
   max-width: 100%;
-  white-space: pre-wrap;
+  white-space: pre;
   padding-top: 0px;
   font-family: var(--iran-sans-x);
   font-size: var(--token-5Ye_3XTSaP9X);
