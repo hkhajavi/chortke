@@ -1629,6 +1629,9 @@
   max-width: 100%;
   min-width: 0;
 }
+.link {
+  font-size: 12px;
+}
 .freeBox__kicI {
   display: grid;
   position: relative;
