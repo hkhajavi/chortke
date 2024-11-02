@@ -2205,6 +2205,35 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                 </div>
               );
             })}
+            {(() => {
+              try {
+                return $state.useraccounts.length == 0;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox__ygP6U)}>
+                <div className={classNames(projectcss.all, sty.freeBox__eiMuV)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__aiwyU
+                    )}
+                  >
+                    {
+                      "\u0645\u062d\u062a\u0648\u0627\u06cc\u06cc \u062c\u0647\u062a \u0646\u0645\u0627\u06cc\u0634 \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f"
+                    }
+                  </div>
+                </div>
+              </div>
+            ) : null}
           </section>
           <SideEffect
             data-plasmic-name={"sideEffect"}
