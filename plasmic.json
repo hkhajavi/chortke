@@ -677,6 +677,20 @@
           "cssFilePath": "plasmic/katibe/PlasmicDialog2.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "Nb8_yMmNDQBL",
+          "name": "Financialaccounts",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/katibe/PlasmicFinancialaccounts.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/accounts.tsx"
+          },
+          "cssFilePath": "plasmic/katibe/PlasmicFinancialaccounts.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/accounts"
         }
       ],
       "icons": [
