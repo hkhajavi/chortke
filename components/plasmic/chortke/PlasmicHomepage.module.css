@@ -1179,7 +1179,6 @@
   }
 }
 .freeBox__mR8O4 {
-  display: flex;
   flex-direction: column;
   position: relative;
   width: 100%;
@@ -1188,6 +1187,7 @@
   justify-content: center;
   align-items: center;
   min-width: 0;
+  display: none;
   padding: 0px;
 }
 .dialogRegisterAccount:global(.__wab_instance):global(.__wab_instance) {
@@ -1608,6 +1608,26 @@
   .text___95OZt {
     font-size: 12px;
   }
+}
+.freeBox__fl8M7 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  grid-column-end: span 4;
+  min-width: 0;
+  padding: 8px;
+}
+.text__yahJ {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
 }
 .freeBox__kicI {
   display: grid;

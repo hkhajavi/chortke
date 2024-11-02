@@ -132,6 +132,7 @@ export type PlasmicHomepage__OverridesType = {
   txtCardIban?: Flex__<typeof TextInput>;
   txtCardBankName?: Flex__<typeof TextInput>;
   radioAccounts?: Flex__<typeof AntdRadioGroup>;
+  link?: Flex__<"a"> & Partial<LinkProps>;
   txtSettlementResult?: Flex__<"div">;
   gridInvoice1?: Flex__<"div">;
   gridNoData?: Flex__<"div">;
@@ -2632,7 +2633,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                     const actionArgs = {
                                       args: [
                                         undefined,
-                                        "https://apigw.paziresh24.com/ganjname/v1/useraccounts"
+                                        "https://apigw.paziresh24.com/financialaccount/v1/useraccounts"
                                       ]
                                     };
                                     return $globalActions[
@@ -4291,6 +4292,49 @@ function PlasmicHomepage__RenderFunc(props: {
                                           }
                                         </div>
                                       ) : null}
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__fl8M7
+                                      )}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text__yahJ
+                                        )}
+                                      >
+                                        <React.Fragment>
+                                          <React.Fragment>{""}</React.Fragment>
+                                          {
+                                            <PlasmicLink__
+                                              data-plasmic-name={"link"}
+                                              data-plasmic-override={
+                                                overrides.link
+                                              }
+                                              className={classNames(
+                                                projectcss.all,
+                                                projectcss.a,
+                                                projectcss.__wab_text,
+                                                projectcss.plasmic_default__inline,
+                                                sty.link
+                                              )}
+                                              component={Link}
+                                              href={
+                                                "https://www.paziresh24.com/dashboard/apps/financialaccount/show/"
+                                              }
+                                              platform={"nextjs"}
+                                            >
+                                              {
+                                                "\u0645\u062f\u06cc\u0631\u06cc\u062a \u062d\u0633\u0627\u0628\u200c"
+                                              }
+                                            </PlasmicLink__>
+                                          }
+                                          <React.Fragment>{""}</React.Fragment>
+                                        </React.Fragment>
+                                      </div>
                                     </div>
                                   </div>
                                 </div>
@@ -7065,6 +7109,7 @@ const PlasmicDescendants = {
     "txtCardIban",
     "txtCardBankName",
     "radioAccounts",
+    "link",
     "txtSettlementResult",
     "gridInvoice1",
     "gridNoData",
@@ -7105,6 +7150,7 @@ const PlasmicDescendants = {
     "txtCardIban",
     "txtCardBankName",
     "radioAccounts",
+    "link",
     "txtSettlementResult",
     "gridInvoice1",
     "gridNoData",
@@ -7137,6 +7183,7 @@ const PlasmicDescendants = {
     "txtCardIban",
     "txtCardBankName",
     "radioAccounts",
+    "link",
     "txtSettlementResult"
   ],
   cbProductlist: ["cbProductlist"],
@@ -7166,6 +7213,7 @@ const PlasmicDescendants = {
     "txtCardIban",
     "txtCardBankName",
     "radioAccounts",
+    "link",
     "txtSettlementResult"
   ],
   tabContent: ["tabContent", "txtSettlemenAmount"],
@@ -7182,6 +7230,7 @@ const PlasmicDescendants = {
   txtCardIban: ["txtCardIban"],
   txtCardBankName: ["txtCardBankName"],
   radioAccounts: ["radioAccounts"],
+  link: ["link"],
   txtSettlementResult: ["txtSettlementResult"],
   gridInvoice1: ["gridInvoice1"],
   gridNoData: ["gridNoData"],
@@ -7237,6 +7286,7 @@ type NodeDefaultElementType = {
   txtCardIban: typeof TextInput;
   txtCardBankName: typeof TextInput;
   radioAccounts: typeof AntdRadioGroup;
+  link: "a";
   txtSettlementResult: "div";
   gridInvoice1: "div";
   gridNoData: "div";
@@ -7337,6 +7387,7 @@ export const PlasmicHomepage = Object.assign(
     txtCardIban: makeNodeComponent("txtCardIban"),
     txtCardBankName: makeNodeComponent("txtCardBankName"),
     radioAccounts: makeNodeComponent("radioAccounts"),
+    link: makeNodeComponent("link"),
     txtSettlementResult: makeNodeComponent("txtSettlementResult"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     gridNoData: makeNodeComponent("gridNoData"),
