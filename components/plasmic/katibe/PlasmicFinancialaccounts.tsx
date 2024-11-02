@@ -251,6 +251,12 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "pageloadcount",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
@@ -1127,6 +1133,52 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                                   ];
                                 }
 
+                                $steps["refreshList"] =
+                                  $steps.registerAccount.status == 200
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: ["pageloadcount"]
+                                          },
+                                          operation: 2
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          const oldValue = $stateGet(
+                                            objRoot,
+                                            variablePath
+                                          );
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            oldValue + 1
+                                          );
+                                          return oldValue + 1;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                if (
+                                  $steps["refreshList"] != null &&
+                                  typeof $steps["refreshList"] === "object" &&
+                                  typeof $steps["refreshList"].then ===
+                                    "function"
+                                ) {
+                                  $steps["refreshList"] = await $steps[
+                                    "refreshList"
+                                  ];
+                                }
+
                                 $steps["alertSuccess"] =
                                   $steps.registerAccount.status == 200
                                     ? (() => {
@@ -1199,11 +1251,7 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                                         const actionArgs = {
                                           variable: {
                                             objRoot: $state,
-                                            variablePath: [
-                                              "dialog",
-                                              "0",
-                                              "open"
-                                            ]
+                                            variablePath: ["dialog2", "open"]
                                           },
                                           operation: 0,
                                           value: false
@@ -1314,6 +1362,46 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                           role={"img"}
                         />
                       }
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["updateWaitingRegister"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["waitingRegister"]
+                                },
+                                operation: 0,
+                                value: false
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateWaitingRegister"] != null &&
+                          typeof $steps["updateWaitingRegister"] === "object" &&
+                          typeof $steps["updateWaitingRegister"].then ===
+                            "function"
+                        ) {
+                          $steps["updateWaitingRegister"] = await $steps[
+                            "updateWaitingRegister"
+                          ];
+                        }
+                      }}
                       size={"compact"}
                       startIcon={
                         <ChevronRightIcon
@@ -1743,7 +1831,7 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                                       ? (() => {
                                           const actionArgs = {
                                             args: [
-                                              "DELETE",
+                                              "PUT",
                                               (() => {
                                                 try {
                                                   return (
@@ -1868,6 +1956,53 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                                     ) {
                                       $steps["closeModal"] = await $steps[
                                         "closeModal"
+                                      ];
+                                    }
+
+                                    $steps["refreshList"] =
+                                      $steps.deleteRequest.status == 200
+                                        ? (() => {
+                                            const actionArgs = {
+                                              variable: {
+                                                objRoot: $state,
+                                                variablePath: ["pageloadcount"]
+                                              },
+                                              operation: 2
+                                            };
+                                            return (({
+                                              variable,
+                                              value,
+                                              startIndex,
+                                              deleteCount
+                                            }) => {
+                                              if (!variable) {
+                                                return;
+                                              }
+                                              const { objRoot, variablePath } =
+                                                variable;
+
+                                              const oldValue = $stateGet(
+                                                objRoot,
+                                                variablePath
+                                              );
+                                              $stateSet(
+                                                objRoot,
+                                                variablePath,
+                                                oldValue + 1
+                                              );
+                                              return oldValue + 1;
+                                            })?.apply(null, [actionArgs]);
+                                          })()
+                                        : undefined;
+                                    if (
+                                      $steps["refreshList"] != null &&
+                                      typeof $steps["refreshList"] ===
+                                        "object" &&
+                                      typeof $steps["refreshList"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["refreshList"] = await $steps[
+                                        "refreshList"
                                       ];
                                     }
 
@@ -2098,6 +2233,19 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
             data-plasmic-name={"sideEffect"}
             data-plasmic-override={overrides.sideEffect}
             className={classNames("__wab_instance", sty.sideEffect)}
+            deps={(() => {
+              try {
+                return [$state.pageloadcount];
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return undefined;
+                }
+                throw e;
+              }
+            })()}
             onMount={async () => {
               const $steps = {};
 
