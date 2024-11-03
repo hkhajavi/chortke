@@ -280,8 +280,7 @@ function PlasmicHomepage__RenderFunc(props: {
         path: "txtReminderTextValue",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          "\u0645\u0627\u0646\u062f\u0647 \u0628\u062f\u0647\u06cc: "
+        initFunc: ({ $props, $state, $queries, $ctx }) => ``
       },
       {
         path: "txtReminderValue",
@@ -688,6 +687,12 @@ function PlasmicHomepage__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => true
+      },
+      {
+        path: "isLoadAccount",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -6690,6 +6695,42 @@ function PlasmicHomepage__RenderFunc(props: {
                   ];
                 }
 
+                $steps["isLoadAccountTrue"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["isLoadAccount"]
+                        },
+                        operation: 0,
+                        value: true
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["isLoadAccountTrue"] != null &&
+                  typeof $steps["isLoadAccountTrue"] === "object" &&
+                  typeof $steps["isLoadAccountTrue"].then === "function"
+                ) {
+                  $steps["isLoadAccountTrue"] = await $steps[
+                    "isLoadAccountTrue"
+                  ];
+                }
+
                 $steps["updateFirstRequestCount"] = true
                   ? (() => {
                       const actionArgs = {
@@ -6748,7 +6789,7 @@ function PlasmicHomepage__RenderFunc(props: {
               onMount={async () => {
                 const $steps = {};
 
-                $steps["runCode"] = true
+                $steps["runCode"] = $state.isLoadAccount
                   ? (() => {
                       const actionArgs = {
                         customFunction: async () => {
@@ -6811,7 +6852,7 @@ function PlasmicHomepage__RenderFunc(props: {
                   $steps["runCode"] = await $steps["runCode"];
                 }
 
-                $steps["getInvoiceList"] = true
+                $steps["getInvoiceList"] = $state.isLoadAccount
                   ? (() => {
                       const actionArgs = {
                         args: [
@@ -6847,7 +6888,8 @@ function PlasmicHomepage__RenderFunc(props: {
 
                 $steps["updateInvoicelist"] =
                   $steps.getInvoiceList.status == 200 &&
-                  $steps.getInvoiceList.data.status == true
+                  $steps.getInvoiceList.data.status == true &&
+                  $state.isLoadAccount
                     ? (() => {
                         const actionArgs = {
                           variable: {
@@ -6883,7 +6925,7 @@ function PlasmicHomepage__RenderFunc(props: {
                   ];
                 }
 
-                $steps["runCode2"] = true
+                $steps["runCode2"] = $state.isLoadAccount
                   ? (() => {
                       const actionArgs = {
                         customFunction: async () => {
@@ -6913,7 +6955,7 @@ function PlasmicHomepage__RenderFunc(props: {
                 }
 
                 $steps["updateWaiting"] =
-                  $state.updatewallet == false
+                  $state.updatewallet == false && $state.isLoadAccount
                     ? (() => {
                         const actionArgs = {
                           variable: {
@@ -6947,32 +6989,33 @@ function PlasmicHomepage__RenderFunc(props: {
                   $steps["updateWaiting"] = await $steps["updateWaiting"];
                 }
 
-                $steps["getProductWallet"] = $state.updatewallet
-                  ? (() => {
-                      const actionArgs = {
-                        args: [
-                          undefined,
-                          (() => {
-                            try {
-                              return $state.requestWalletUrl;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
+                $steps["getProductWallet"] =
+                  $state.updatewallet && $state.isLoadAccount
+                    ? (() => {
+                        const actionArgs = {
+                          args: [
+                            undefined,
+                            (() => {
+                              try {
+                                return $state.requestWalletUrl;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
                               }
-                              throw e;
-                            }
-                          })()
-                        ]
-                      };
-                      return $globalActions["Fragment.apiRequest"]?.apply(
-                        null,
-                        [...actionArgs.args]
-                      );
-                    })()
-                  : undefined;
+                            })()
+                          ]
+                        };
+                        return $globalActions["Fragment.apiRequest"]?.apply(
+                          null,
+                          [...actionArgs.args]
+                        );
+                      })()
+                    : undefined;
                 if (
                   $steps["getProductWallet"] != null &&
                   typeof $steps["getProductWallet"] === "object" &&
@@ -6984,7 +7027,8 @@ function PlasmicHomepage__RenderFunc(props: {
                 $steps["txtReminderText"] =
                   $steps.getProductWallet.status == 200 &&
                   $steps.getProductWallet.data.status == true &&
-                  $state.updatewallet == true
+                  $state.updatewallet == true &&
+                  $state.isLoadAccount
                     ? (() => {
                         const actionArgs = {
                           customFunction: async () => {
@@ -7019,7 +7063,8 @@ function PlasmicHomepage__RenderFunc(props: {
                 $steps["txtReminderValue"] =
                   $steps.getProductWallet.status == 200 &&
                   $steps.getProductWallet.data.status == true &&
-                  $state.updatewallet == true
+                  $state.updatewallet == true &&
+                  $state.isLoadAccount
                     ? (() => {
                         const actionArgs = {
                           customFunction: async () => {
@@ -7045,7 +7090,8 @@ function PlasmicHomepage__RenderFunc(props: {
                 $steps["updateReminderWallet"] =
                   $steps.getProductWallet.status == 200 &&
                   $steps.getProductWallet.data.status == true &&
-                  $state.updatewallet == true
+                  $state.updatewallet == true &&
+                  $state.isLoadAccount
                     ? (() => {
                         const actionArgs = {
                           variable: {
@@ -7085,7 +7131,8 @@ function PlasmicHomepage__RenderFunc(props: {
                   ? (() => {
                       const actionArgs = {
                         customFunction: async () => {
-                          return ($state.waiting = false);
+                          return ($state.waiting =
+                            false && $state.isLoadAccount);
                         }
                       };
                       return (({ customFunction }) => {
