@@ -6236,7 +6236,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                         sty.text__vV1ET
                                       )}
                                     >
-                                      {">"}
+                                      {"..."}
                                     </div>
                                   }
                                   className={classNames(
@@ -6637,8 +6637,11 @@ function PlasmicHomepage__RenderFunc(props: {
                   ? (() => {
                       const actionArgs = {
                         customFunction: async () => {
-                          return ($state.cbAccounts.value =
-                            $state.accounts[$state.accounts.length - 1].id);
+                          return (() => {
+                            if ($state.accounts.length > 0)
+                              return ($state.cbAccounts.value =
+                                $state.accounts[$state.accounts.length - 1].id);
+                          })();
                         }
                       };
                       return (({ customFunction }) => {
