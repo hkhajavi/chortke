@@ -2391,6 +2391,7 @@
   object-fit: cover;
   max-width: 100%;
   align-self: center;
+  width: 15px;
   height: 1em;
 }
 @media (min-width: 0px) and (max-width: 768px) {
