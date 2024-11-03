@@ -4317,7 +4317,7 @@ function PlasmicHomepage__RenderFunc(props: {
                                             ? (() => {
                                                 const actionArgs = {
                                                   args: [
-                                                    "https://www.paziresh24.com/dashboard/apps/financial-account/show/"
+                                                    "https://www.paziresh24.com/dashboard/apps/katibe/account/"
                                                   ]
                                                 };
                                                 return $globalActions[
