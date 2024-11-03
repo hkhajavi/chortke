@@ -91,7 +91,6 @@ import SearchSvgIcon from "./icons/PlasmicIcon__SearchSvg"; // plasmic-import: f
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
 import Icon29Icon from "../katibe/icons/PlasmicIcon__Icon29"; // plasmic-import: v6n1zIPv27O2/icon
 import Icon30Icon from "../katibe/icons/PlasmicIcon__Icon30"; // plasmic-import: b5udc-7LsSfj/icon
-import Icon23Icon from "../katibe/icons/PlasmicIcon__Icon23"; // plasmic-import: uRGFXzJKMzcg/icon
 
 createPlasmicElementProxy;
 
@@ -6230,13 +6229,15 @@ function PlasmicHomepage__RenderFunc(props: {
                                     overrides.btnInvoiceInfo
                                   }
                                   children2={
-                                    <Icon23Icon
+                                    <div
                                       className={classNames(
                                         projectcss.all,
-                                        sty.svg___3VvPm
+                                        projectcss.__wab_text,
+                                        sty.text__vV1ET
                                       )}
-                                      role={"img"}
-                                    />
+                                    >
+                                      {">"}
+                                    </div>
                                   }
                                   className={classNames(
                                     "__wab_instance",

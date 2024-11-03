@@ -2387,16 +2387,18 @@
   width: auto;
   height: 1em;
 }
-.svg___3VvPm {
-  object-fit: cover;
+.text__vV1ET {
+  position: relative;
+  width: 100%;
+  height: auto;
   max-width: 100%;
-  align-self: center;
-  width: 15px;
-  height: 1em;
+  font-weight: 400;
+  text-align: center;
+  min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .svg___3VvPm {
-    width: 12px;
+  .text__vV1ET {
+    font-size: var(--token-VrIY9r5RDQZ_);
   }
 }
 .svg__xyyxi {
