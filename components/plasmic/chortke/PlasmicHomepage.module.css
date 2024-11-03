@@ -2136,13 +2136,14 @@
   position: relative;
   flex-direction: column;
   width: 100%;
-  height: auto;
+  height: 100%;
   max-width: 100%;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   flex-wrap: nowrap;
   align-content: stretch;
   min-width: 0;
+  min-height: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox___7L5Fd {
@@ -2172,13 +2173,14 @@
   position: relative;
   flex-direction: column;
   width: 100%;
-  height: auto;
+  height: 100%;
   max-width: 100%;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   flex-wrap: nowrap;
   align-content: stretch;
   min-width: 0;
+  min-height: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__yy3L {
@@ -2228,14 +2230,15 @@
   position: relative;
   flex-direction: column;
   width: 100%;
-  height: auto;
+  height: 100%;
   max-width: 100%;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   flex-wrap: nowrap;
   align-content: stretch;
   grid-column-end: span 3;
   min-width: 0;
+  min-height: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox___5KBuV {
@@ -2288,7 +2291,7 @@
   height: auto;
   max-width: 100%;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__i8OpB {
