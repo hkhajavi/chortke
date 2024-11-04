@@ -123,7 +123,7 @@ export type PlasmicProductAdmin__OverridesType = {
   txtRegisterInvoiceVatPercent?: Flex__<typeof TextInput>;
   txtFinalPrice?: Flex__<typeof TextInput>;
   txtInvoiceId?: Flex__<typeof TextInput>;
-  cbProductlistRegisterInvoice?: Flex__<typeof Select>;
+  cbProducregisterInvoice?: Flex__<typeof Select>;
   waitingIcon4?: Flex__<"svg">;
   gridInvoice1?: Flex__<"div">;
   gridNoData?: Flex__<"div">;
@@ -486,7 +486,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "cbProductlistRegisterInvoice.value",
+        path: "cbProducregisterInvoice.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
@@ -3292,22 +3292,22 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 >
                                   <Select
                                     data-plasmic-name={
-                                      "cbProductlistRegisterInvoice"
+                                      "cbProducregisterInvoice"
                                     }
                                     data-plasmic-override={
-                                      overrides.cbProductlistRegisterInvoice
+                                      overrides.cbProducregisterInvoice
                                     }
                                     aria-label={"name"}
                                     aria-labelledby={"productid"}
                                     className={classNames(
                                       "__wab_instance",
-                                      sty.cbProductlistRegisterInvoice
+                                      sty.cbProducregisterInvoice
                                     )}
                                     name={"productlist"}
                                     onChange={async (...eventArgs: any) => {
                                       ((...eventArgs) => {
                                         generateStateOnChangeProp($state, [
-                                          "cbProductlistRegisterInvoice",
+                                          "cbProducregisterInvoice",
                                           "value"
                                         ])(eventArgs[0]);
                                       }).apply(null, eventArgs);
@@ -3348,7 +3348,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       </div>
                                     }
                                     value={generateStateValueProp($state, [
-                                      "cbProductlistRegisterInvoice",
+                                      "cbProducregisterInvoice",
                                       "value"
                                     ])}
                                   />
@@ -3404,8 +3404,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       }
 
                                       $steps["errorMyProduct"] =
-                                        $state.cbProductlistRegisterInvoice
-                                          .value == 0
+                                        $state.cbProducregisterInvoice.value ==
+                                        0
                                           ? (() => {
                                               const actionArgs = {
                                                 args: [
@@ -3478,8 +3478,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       $steps["registerInvoiceApi"] =
                                         $state.registerinvoiceUserid.length >
                                           0 &&
-                                        $state.cbProductlistRegisterInvoice
-                                          .value > 0
+                                        $state.cbProducregisterInvoice.value > 0
                                           ? (() => {
                                               const actionArgs = {
                                                 args: [
@@ -3528,7 +3527,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                         ],
                                                         productid:
                                                           $state
-                                                            .cbProductlistRegisterInvoice
+                                                            .cbProducregisterInvoice
                                                             .value
                                                       };
                                                     } catch (e) {
@@ -3611,8 +3610,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                           200 &&
                                         $state.registerinvoiceUserid.length >
                                           0 &&
-                                        $state.cbProductlistRegisterInvoice
-                                          .value > 0
+                                        $state.cbProducregisterInvoice.value > 0
                                           ? (() => {
                                               const actionArgs = {
                                                 args: [
@@ -3644,8 +3642,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                           200 &&
                                         $state.registerinvoiceUserid.length >
                                           0 &&
-                                        $state.cbProductlistRegisterInvoice
-                                          .value > 0
+                                        $state.cbProducregisterInvoice.value > 0
                                           ? (() => {
                                               const actionArgs = {
                                                 args: [
@@ -4151,6 +4148,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       const actionArgs = {
                                         customFunction: async () => {
                                           return (() => {
+                                            $state.cbProducregisterInvoice.value =
+                                              $state.productList[0].productid;
                                             $state.registerInvoiceFinal = false;
                                             $state.txtUserMobile.value = "";
                                             $state.txtServiceCount[0].value =
@@ -4176,8 +4175,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                 price: ""
                                               }
                                             ];
-                                            $state.servicesToRegister = [];
-                                            return ($state.cbProductlistRegisterInvoice.value = 0);
+                                            return ($state.servicesToRegister =
+                                              []);
                                           })();
                                         }
                                       };
@@ -7218,7 +7217,7 @@ const PlasmicDescendants = {
     "txtRegisterInvoiceVatPercent",
     "txtFinalPrice",
     "txtInvoiceId",
-    "cbProductlistRegisterInvoice",
+    "cbProducregisterInvoice",
     "waitingIcon4",
     "gridInvoice1",
     "gridNoData",
@@ -7257,7 +7256,7 @@ const PlasmicDescendants = {
     "txtRegisterInvoiceVatPercent",
     "txtFinalPrice",
     "txtInvoiceId",
-    "cbProductlistRegisterInvoice",
+    "cbProducregisterInvoice",
     "waitingIcon4",
     "gridInvoice1",
     "gridNoData",
@@ -7289,7 +7288,7 @@ const PlasmicDescendants = {
     "txtRegisterInvoiceVatPercent",
     "txtFinalPrice",
     "txtInvoiceId",
-    "cbProductlistRegisterInvoice",
+    "cbProducregisterInvoice",
     "waitingIcon4"
   ],
   cbProductlist: ["cbProductlist"],
@@ -7310,7 +7309,7 @@ const PlasmicDescendants = {
     "txtRegisterInvoiceVatPercent",
     "txtFinalPrice",
     "txtInvoiceId",
-    "cbProductlistRegisterInvoice"
+    "cbProducregisterInvoice"
   ],
   waitingIcon5: ["waitingIcon5"],
   txtUserMobile: ["txtUserMobile"],
@@ -7325,7 +7324,7 @@ const PlasmicDescendants = {
   txtRegisterInvoiceVatPercent: ["txtRegisterInvoiceVatPercent"],
   txtFinalPrice: ["txtFinalPrice"],
   txtInvoiceId: ["txtInvoiceId"],
-  cbProductlistRegisterInvoice: ["cbProductlistRegisterInvoice"],
+  cbProducregisterInvoice: ["cbProducregisterInvoice"],
   waitingIcon4: ["waitingIcon4"],
   gridInvoice1: ["gridInvoice1"],
   gridNoData: ["gridNoData"],
@@ -7388,7 +7387,7 @@ type NodeDefaultElementType = {
   txtRegisterInvoiceVatPercent: typeof TextInput;
   txtFinalPrice: typeof TextInput;
   txtInvoiceId: typeof TextInput;
-  cbProductlistRegisterInvoice: typeof Select;
+  cbProducregisterInvoice: typeof Select;
   waitingIcon4: "svg";
   gridInvoice1: "div";
   gridNoData: "div";
@@ -7493,9 +7492,7 @@ export const PlasmicProductAdmin = Object.assign(
     ),
     txtFinalPrice: makeNodeComponent("txtFinalPrice"),
     txtInvoiceId: makeNodeComponent("txtInvoiceId"),
-    cbProductlistRegisterInvoice: makeNodeComponent(
-      "cbProductlistRegisterInvoice"
-    ),
+    cbProducregisterInvoice: makeNodeComponent("cbProducregisterInvoice"),
     waitingIcon4: makeNodeComponent("waitingIcon4"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     gridNoData: makeNodeComponent("gridNoData"),
