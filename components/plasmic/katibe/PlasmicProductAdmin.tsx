@@ -3313,6 +3313,62 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       }).apply(null, eventArgs);
                                       (async value => {
                                         const $steps = {};
+
+                                        $steps[
+                                          "updateDialogRegisterInvoiceOpen"
+                                        ] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                variable: {
+                                                  objRoot: $state,
+                                                  variablePath: [
+                                                    "dialogRegisterInvoice",
+                                                    "open"
+                                                  ]
+                                                },
+                                                operation: 0,
+                                                value: true
+                                              };
+                                              return (({
+                                                variable,
+                                                value,
+                                                startIndex,
+                                                deleteCount
+                                              }) => {
+                                                if (!variable) {
+                                                  return;
+                                                }
+                                                const {
+                                                  objRoot,
+                                                  variablePath
+                                                } = variable;
+
+                                                $stateSet(
+                                                  objRoot,
+                                                  variablePath,
+                                                  value
+                                                );
+                                                return value;
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps[
+                                            "updateDialogRegisterInvoiceOpen"
+                                          ] != null &&
+                                          typeof $steps[
+                                            "updateDialogRegisterInvoiceOpen"
+                                          ] === "object" &&
+                                          typeof $steps[
+                                            "updateDialogRegisterInvoiceOpen"
+                                          ].then === "function"
+                                        ) {
+                                          $steps[
+                                            "updateDialogRegisterInvoiceOpen"
+                                          ] = await $steps[
+                                            "updateDialogRegisterInvoiceOpen"
+                                          ];
+                                        }
                                       }).apply(null, eventArgs);
                                     }}
                                     options={(() => {
