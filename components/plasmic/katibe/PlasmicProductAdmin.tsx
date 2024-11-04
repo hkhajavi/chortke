@@ -3459,23 +3459,21 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         ];
                                       }
 
-                                      $steps["errorMyProduct"] =
-                                        $state.cbProducregisterInvoice.value ==
-                                        0
-                                          ? (() => {
-                                              const actionArgs = {
-                                                args: [
-                                                  "error",
-                                                  "\u0644\u0637\u0641\u0627 \u067e\u0631\u0648\u062f\u0627\u06a9\u062a \u062e\u0648\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
-                                                ]
-                                              };
-                                              return $globalActions[
-                                                "Fragment.showToast"
-                                              ]?.apply(null, [
-                                                ...actionArgs.args
-                                              ]);
-                                            })()
-                                          : undefined;
+                                      $steps["errorMyProduct"] = false
+                                        ? (() => {
+                                            const actionArgs = {
+                                              args: [
+                                                "error",
+                                                "\u0644\u0637\u0641\u0627 \u067e\u0631\u0648\u062f\u0627\u06a9\u062a \u062e\u0648\u062f \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                                              ]
+                                            };
+                                            return $globalActions[
+                                              "Fragment.showToast"
+                                            ]?.apply(null, [
+                                              ...actionArgs.args
+                                            ]);
+                                          })()
+                                        : undefined;
                                       if (
                                         $steps["errorMyProduct"] != null &&
                                         typeof $steps["errorMyProduct"] ===
@@ -3582,9 +3580,10 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                           }
                                                         ],
                                                         productid:
-                                                          $state
-                                                            .cbProducregisterInvoice
-                                                            .value
+                                                          $state.productList[
+                                                            $state.productList
+                                                              .length - 1
+                                                          ].productid
                                                       };
                                                     } catch (e) {
                                                       if (
