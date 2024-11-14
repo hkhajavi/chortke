@@ -693,6 +693,12 @@ function PlasmicHomepage__RenderFunc(props: {
         path: "detailsDataApiRequest[].loading",
         type: "private",
         variableType: "boolean"
+      },
+      {
+        path: "paymentLink",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -2149,34 +2155,67 @@ function PlasmicHomepage__RenderFunc(props: {
                                       ];
                                     }
 
+                                    $steps["updatePaymentLink"] =
+                                      $steps.paymentRequest.status == 200 &&
+                                      $steps.paymentRequest.data.status == true
+                                        ? (() => {
+                                            const actionArgs = {
+                                              variable: {
+                                                objRoot: $state,
+                                                variablePath: ["paymentLink"]
+                                              },
+                                              operation: 0,
+                                              value:
+                                                $steps.paymentRequest.data.data
+                                                  .link
+                                            };
+                                            return (({
+                                              variable,
+                                              value,
+                                              startIndex,
+                                              deleteCount
+                                            }) => {
+                                              if (!variable) {
+                                                return;
+                                              }
+                                              const { objRoot, variablePath } =
+                                                variable;
+
+                                              $stateSet(
+                                                objRoot,
+                                                variablePath,
+                                                value
+                                              );
+                                              return value;
+                                            })?.apply(null, [actionArgs]);
+                                          })()
+                                        : undefined;
+                                    if (
+                                      $steps["updatePaymentLink"] != null &&
+                                      typeof $steps["updatePaymentLink"] ===
+                                        "object" &&
+                                      typeof $steps["updatePaymentLink"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["updatePaymentLink"] =
+                                        await $steps["updatePaymentLink"];
+                                    }
+
                                     $steps["redirectUser"] =
                                       $steps.paymentRequest.status == 200 &&
                                       $steps.paymentRequest.data.status == true
                                         ? (() => {
                                             const actionArgs = {
-                                              args: [
-                                                (() => {
-                                                  try {
-                                                    return $steps.paymentRequest
-                                                      .data.data.link;
-                                                  } catch (e) {
-                                                    if (
-                                                      e instanceof TypeError ||
-                                                      e?.plasmicType ===
-                                                        "PlasmicUndefinedDataError"
-                                                    ) {
-                                                      return undefined;
-                                                    }
-                                                    throw e;
-                                                  }
-                                                })()
-                                              ]
+                                              customFunction: async () => {
+                                                return (() => {
+                                                  return (window.location.href =
+                                                    $state.paymentlink);
+                                                })();
+                                              }
                                             };
-                                            return $globalActions[
-                                              "Hamdast.openLink"
-                                            ]?.apply(null, [
-                                              ...actionArgs.args
-                                            ]);
+                                            return (({ customFunction }) => {
+                                              return customFunction();
+                                            })?.apply(null, [actionArgs]);
                                           })()
                                         : undefined;
                                     if (

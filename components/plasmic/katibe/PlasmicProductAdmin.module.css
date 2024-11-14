@@ -2412,7 +2412,7 @@
   height: auto;
   max-width: 100%;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   flex-wrap: nowrap;
   align-content: stretch;
   min-width: 0;
@@ -2425,11 +2425,10 @@
 }
 .text__ue8Il {
   position: relative;
-  width: 100%;
+  width: auto;
   height: auto;
   max-width: 100%;
   text-align: center;
-  min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__ue8Il {
