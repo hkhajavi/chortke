@@ -2206,16 +2206,28 @@ function PlasmicHomepage__RenderFunc(props: {
                                       $steps.paymentRequest.data.status == true
                                         ? (() => {
                                             const actionArgs = {
-                                              customFunction: async () => {
-                                                return (() => {
-                                                  return (window.location.href =
-                                                    $state.paymentlink);
-                                                })();
-                                              }
+                                              args: [
+                                                (() => {
+                                                  try {
+                                                    return $state.paymentLink;
+                                                  } catch (e) {
+                                                    if (
+                                                      e instanceof TypeError ||
+                                                      e?.plasmicType ===
+                                                        "PlasmicUndefinedDataError"
+                                                    ) {
+                                                      return undefined;
+                                                    }
+                                                    throw e;
+                                                  }
+                                                })()
+                                              ]
                                             };
-                                            return (({ customFunction }) => {
-                                              return customFunction();
-                                            })?.apply(null, [actionArgs]);
+                                            return $globalActions[
+                                              "Hamdast.openLink"
+                                            ]?.apply(null, [
+                                              ...actionArgs.args
+                                            ]);
                                           })()
                                         : undefined;
                                     if (
