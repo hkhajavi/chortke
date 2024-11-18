@@ -6480,7 +6480,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                           ? (() => {
                               const actionArgs = {
                                 customFunction: async () => {
-                                  return ($state.offset += 20);
+                                  return ($state.pageNumber += 1);
                                 }
                               };
                               return (({ customFunction }) => {
@@ -6504,12 +6504,12 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   (() => {
                                     try {
                                       return (
-                                        "https://apigw.paziresh24.com/transaction/v1/userinvoicelist?productid=" +
+                                        "https://apigw.paziresh24.com/katibe/v1/transactions/search/p24?productid=" +
                                         $state.cbProductlist.value +
                                         "&limit=" +
                                         $state.limit +
-                                        "&offset=" +
-                                        $state.offset
+                                        "&page=" +
+                                        $state.pageNumber
                                       );
                                     } catch (e) {
                                       if (
