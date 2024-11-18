@@ -691,6 +691,20 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/accounts"
+        },
+        {
+          "id": "X-9VpIiu6hFS",
+          "name": "TransactionsSearch",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/katibe/PlasmicTransactionsSearch.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/transactions-search.tsx"
+          },
+          "cssFilePath": "plasmic/katibe/PlasmicTransactionsSearch.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/transactions-search"
         }
       ],
       "icons": [
