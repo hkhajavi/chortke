@@ -4590,7 +4590,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                               const actionArgs = {
                                                 args: [
                                                   "POST",
-                                                  "https://apigw.paziresh24.com/ganjname/v1/settlement",
+                                                  "https://apigw.paziresh24.com/ganjname/v1/settlement/vandar",
                                                   undefined,
                                                   (() => {
                                                     try {
@@ -6936,6 +6936,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               $state.txtReminderValue = "";
                             }
                             $state.offset = 0;
+                            $state.pageNumber = 1;
                             $state.invoicelist = [];
                             $state.invoiceDetials = {};
                             return $state.accounts.forEach(account => {
