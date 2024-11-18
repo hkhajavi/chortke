@@ -5089,7 +5089,18 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       sty.text__s5Z10
                     )}
                   >
-                    {"\u0645\u0628\u0644\u063a (\u0631\u06cc\u0627\u0644)"}
+                    {"\u0645\u0628\u0644\u063a "}
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__ry0YA
+                    )}
+                  >
+                    {hasVariant(globalVariants, "screen", "mobileOnly")
+                      ? "(\u0631\u06cc\u0627\u0644)"
+                      : " (\u0631\u06cc\u0627\u0644)"}
                   </div>
                 </div>
                 <div

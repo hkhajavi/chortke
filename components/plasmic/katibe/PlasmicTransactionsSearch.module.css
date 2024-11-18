@@ -1948,7 +1948,7 @@
 .freeBox__jFRa {
   display: flex;
   position: relative;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
   height: auto;
   max-width: 100%;
@@ -1962,11 +1962,13 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__jFRa {
     grid-column-end: span 2;
+    justify-content: center;
+    align-items: center;
   }
 }
 .text__s5Z10 {
   position: relative;
-  width: 100%;
+  width: auto;
   height: auto;
   max-width: 100%;
   text-align: center;
@@ -1983,7 +1985,6 @@
   user-select: text;
   text-decoration-line: none;
   text-overflow: clip;
-  min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__s5Z10 {
@@ -2006,6 +2007,19 @@
     text-decoration-line: none;
     text-overflow: clip;
     min-width: 0;
+  }
+}
+.text__ry0YA {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  font-size: var(--token-5Ye_3XTSaP9X);
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__ry0YA {
+    font-size: var(--token-VrIY9r5RDQZ_);
+    align-self: center;
   }
 }
 .freeBox__f3WAs {
@@ -2039,6 +2053,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__teeG {
     grid-template-columns: repeat(1, minmax(0, 1fr));
+    padding: 0px;
   }
 }
 .freeBox__cmPjc {
