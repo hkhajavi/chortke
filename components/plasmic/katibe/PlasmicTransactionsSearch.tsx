@@ -7631,7 +7631,7 @@ export const PlasmicTransactionsSearch = Object.assign(
     // Page metadata
     pageMetadata: {
       title: "کتیبه، مدیریت امور مالی",
-      description: "ماژول ها وشیوه قیمت گذاری محصولات پذیرش24",
+      description: "لیست تراکنش ها و عملیات حساب",
       ogImageSrc:
         "https://site-assets.plasmic.app/49b5e4e62d4fd1407285906a0f5e6382.svg",
       canonical: ""
