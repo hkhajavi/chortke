@@ -277,7 +277,9 @@ function PlasmicMyInvoices__RenderFunc(props: {
                             sty.iframe__dKscF
                           )}
                           preview={true}
-                          src={"https://katibe.paziresh24.com/"}
+                          src={
+                            "https://katibe.paziresh24.com/transactions-search/"
+                          }
                         />
                       </TabContent>
                       <TabContent
