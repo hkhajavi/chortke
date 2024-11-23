@@ -5739,7 +5739,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                   return $state
                                                     .detailsDataApiRequest[
                                                     currentIndex
-                                                  ].data.data.invoiceid;
+                                                  ].data.data.factorid;
                                                 } catch (e) {
                                                   if (
                                                     e instanceof TypeError ||
@@ -6364,7 +6364,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         )}
                                       >
                                         {
-                                          "\u062c\u0632\u0626\u06cc\u0627\u062a \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628"
+                                          "\u062c\u0632\u0626\u06cc\u0627\u062a \u0641\u0627\u06a9\u062a\u0648\u0631"
                                         }
                                       </div>
                                     </div>
