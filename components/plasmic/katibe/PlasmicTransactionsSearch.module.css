@@ -2048,7 +2048,7 @@
 .freeBox__teeG {
   display: grid;
   position: relative;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   width: 100%;
   height: auto;
   max-width: 100%;
@@ -2442,7 +2442,7 @@
 .freeBox__c6Zhl {
   display: grid;
   position: relative;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   width: 100%;
   height: auto;
   max-width: 100%;
@@ -2485,6 +2485,7 @@
   }
 }
 .freeBox__pyCyG {
+  display: flex;
   flex-direction: column;
   position: relative;
   width: 100%;
@@ -2493,7 +2494,6 @@
   justify-content: center;
   align-items: center;
   min-width: 0;
-  display: none;
   padding: 0px;
 }
 .dialogNewInvoiceDetails:global(.__wab_instance):global(.__wab_instance) {
