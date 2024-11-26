@@ -782,7 +782,6 @@
   padding: 8px;
 }
 .freeBox__w1Yt {
-  display: flex;
   flex-direction: column;
   position: relative;
   width: 100%;
@@ -792,6 +791,7 @@
   align-items: center;
   grid-column-end: span 3;
   min-width: 0;
+  display: none;
   padding: 0px 8px;
 }
 .txtUserMobile:global(.__wab_instance) {
