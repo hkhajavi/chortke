@@ -7070,16 +7070,19 @@ function PlasmicProductAdmin__RenderFunc(props: {
                 ? (() => {
                     const actionArgs = {
                       customFunction: async () => {
-                        return $steps.getProductList.status == 200 &&
+                        return (() => {
+                          $steps.getProductList.status == 200 &&
                           $steps.getProductList.data.status == true
-                          ? ($state.productList = [
-                              {
-                                productid: 0,
-                                name: "همه"
-                              },
-                              ...$steps.getProductList.data.data
-                            ])
-                          : ($state.productList = []);
+                            ? ($state.productList = [
+                                {
+                                  productid: 0,
+                                  name: "همه"
+                                },
+                                ...$steps.getProductList.data.data
+                              ])
+                            : ($state.productList = []);
+                          return ($state.cbProductlist.value = 0);
+                        })();
                       }
                     };
                     return (({ customFunction }) => {
@@ -7097,7 +7100,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                 ];
               }
 
-              $steps["urlproductid"] = true
+              $steps["urlproductid"] = false
                 ? (() => {
                     const actionArgs = {
                       customFunction: async () => {
@@ -7122,7 +7125,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                 $steps["urlproductid"] = await $steps["urlproductid"];
               }
 
-              $steps["selectFirstProduct"] = true
+              $steps["selectFirstProduct"] = false
                 ? (() => {
                     const actionArgs = {
                       customFunction: async () => {
