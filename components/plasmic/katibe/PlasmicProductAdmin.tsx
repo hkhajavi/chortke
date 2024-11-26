@@ -3545,7 +3545,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               const actionArgs = {
                                                 args: [
                                                   "POST",
-                                                  "https://apigw.paziresh24.com/transaction/v1/admininvoice",
+                                                  "https://apigw.paziresh24.com/katibe/v1/factors/p24-admin",
                                                   undefined,
                                                   (() => {
                                                     try {
@@ -3556,7 +3556,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                           $state
                                                             .txtServiceName[0]
                                                             .value,
-                                                        type: "sale",
                                                         description:
                                                           $state
                                                             .txtRegisterinvoiceDescription
@@ -4084,7 +4083,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   )}
                                 >
                                   {
-                                    "\u062b\u0628\u062a \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628 \u0641\u0631\u0648\u0634"
+                                    "\u062b\u0628\u062a \u0641\u0627\u06a9\u062a\u0648\u0631 "
                                   }
                                 </div>
                                 <div
@@ -4190,7 +4189,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       })()}
                                     </React.Fragment>
                                   ) : (
-                                    "\u062b\u0628\u062a \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628"
+                                    "\u062b\u0628\u062a \u0641\u0627\u06a9\u062a\u0648\u0631"
                                   )}
                                 </div>
                               }
