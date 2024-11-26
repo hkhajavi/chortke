@@ -4839,13 +4839,12 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   __plasmic_idx_0,
                                   "data"
                                 ])}
-                                params={(() => {
+                                url={(() => {
                                   try {
-                                    return {
-                                      invoiceid:
-                                        $state.invoicelist[currentIndex]
-                                          .invoiceid
-                                    };
+                                    return (
+                                      "https://apigw.paziresh24.com/katibe/v1/factors/p24-admin/" +
+                                      $state.invoicelist[currentIndex].factorid
+                                    );
                                   } catch (e) {
                                     if (
                                       e instanceof TypeError ||
@@ -4857,9 +4856,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     throw e;
                                   }
                                 })()}
-                                url={
-                                  "https://apigw.paziresh24.com/transaction/v1/admininvoicedetails"
-                                }
                               >
                                 <div
                                   className={classNames(
@@ -4963,7 +4959,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                 "صادر شده توسط " +
                                                 $state.detailsDataApiRequest[
                                                   currentIndex
-                                                ].data.data.productname
+                                                ].data.data.issuer_userid
                                               );
                                             } catch (e) {
                                               if (
@@ -5134,7 +5130,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               return $state
                                                 .detailsDataApiRequest[
                                                 currentIndex
-                                              ].data.data.invoiceid;
+                                              ].data.data.factorid;
                                             } catch (e) {
                                               if (
                                                 e instanceof TypeError ||
@@ -6660,7 +6656,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     )}
                                   >
                                     {
-                                      "\u062c\u0632\u0626\u06cc\u0627\u062a \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628"
+                                      "\u062c\u0632\u0626\u06cc\u0627\u062a \u0641\u0627\u06a9\u062a\u0648\u0631"
                                     }
                                   </div>
                                 </div>
