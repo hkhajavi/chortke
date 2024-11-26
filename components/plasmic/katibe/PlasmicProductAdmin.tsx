@@ -7157,10 +7157,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                         (() => {
                           try {
                             return (
-                              "https://apigw.paziresh24.com/transaction/v1/transactions/search/p24-admin?productid=" +
-                              ($ctx.query.productid > 0
-                                ? $ctx.query.productid
-                                : 0) +
+                              "https://apigw.paziresh24.com/katibe/v1/transactions/search/p24-admin?productid=" +
+                              $state.cbProductlist.value +
                               "&search=" +
                               $state.txtSearch.value +
                               "&limit=" +
