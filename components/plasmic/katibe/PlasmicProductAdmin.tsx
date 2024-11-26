@@ -3765,6 +3765,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                       [];
                                                     $state.waiting = true;
                                                     $state.offset = 0;
+                                                    $state.pageNumber = 1;
                                                     return ($state.invoicelist =
                                                       []);
                                                   })();
@@ -3793,7 +3794,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                   (() => {
                                                     try {
                                                       return (
-                                                        "https://apigw.paziresh24.com/transaction/v1/admininvoicelist?productid=" +
+                                                        "https://apigw.paziresh24.com/transaction/v1/transactions/search/p24-admin?productid=" +
                                                         ($ctx.query.productid >
                                                         0
                                                           ? $ctx.query.productid
@@ -3803,8 +3804,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                         $state.txtSearch.value +
                                                         "&limit=" +
                                                         $state.limit +
-                                                        "&offset=" +
-                                                        $state.offset
+                                                        "&page=" +
+                                                        $state.pageNumber
                                                       );
                                                     } catch (e) {
                                                       if (
