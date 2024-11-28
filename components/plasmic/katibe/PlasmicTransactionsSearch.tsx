@@ -6579,14 +6579,29 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   undefined,
                                   (() => {
                                     try {
-                                      return (
-                                        "https://apigw.paziresh24.com/katibe/v1/transactions/search/p24?productid=" +
-                                        $state.cbProductlist.value +
-                                        "&limit=" +
-                                        $state.limit +
-                                        "&page=" +
-                                        $state.pageNumber
-                                      );
+                                      return (() => {
+                                        if (
+                                          $state.currentAccountType ==
+                                          "centerid"
+                                        )
+                                          return (
+                                            "https://apigw.paziresh24.com/katibe/v1/transactions/search/p24?centerid=" +
+                                            $state.cbAccounts.value +
+                                            "&limit=" +
+                                            $state.limit +
+                                            "&page=" +
+                                            $state.pageNumber
+                                          );
+                                        else
+                                          return (
+                                            "https://apigw.paziresh24.com/katibe/v1/transactions/search/p24?productid=" +
+                                            $state.cbProductlist.value +
+                                            "&limit=" +
+                                            $state.limit +
+                                            "&page=" +
+                                            $state.pageNumber
+                                          );
+                                      })();
                                     } catch (e) {
                                       if (
                                         e instanceof TypeError ||
