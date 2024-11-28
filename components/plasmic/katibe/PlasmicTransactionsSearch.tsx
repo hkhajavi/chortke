@@ -6330,7 +6330,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                     return $state
                                                       .detailsDataApiRequest[
                                                       currentIndex
-                                                    ].data.data.meta.RefNum;
+                                                    ].data.data.meta.RRN;
                                                   } catch (e) {
                                                     if (
                                                       e instanceof TypeError ||
