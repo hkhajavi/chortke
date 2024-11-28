@@ -6299,25 +6299,51 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                               sty.text__lza2H
                                             )}
                                           >
-                                            <React.Fragment>
-                                              {(() => {
-                                                try {
-                                                  return $state
-                                                    .detailsDataApiRequest[
-                                                    currentIndex
-                                                  ].data.data.meta.RefNum;
-                                                } catch (e) {
-                                                  if (
-                                                    e instanceof TypeError ||
-                                                    e?.plasmicType ===
-                                                      "PlasmicUndefinedDataError"
-                                                  ) {
-                                                    return "";
+                                            {hasVariant(
+                                              globalVariants,
+                                              "screen",
+                                              "mobileOnly"
+                                            ) ? (
+                                              <React.Fragment>
+                                                {(() => {
+                                                  try {
+                                                    return $state
+                                                      .detailsDataApiRequest[
+                                                      currentIndex
+                                                    ].data.data.meta.RRN;
+                                                  } catch (e) {
+                                                    if (
+                                                      e instanceof TypeError ||
+                                                      e?.plasmicType ===
+                                                        "PlasmicUndefinedDataError"
+                                                    ) {
+                                                      return "";
+                                                    }
+                                                    throw e;
                                                   }
-                                                  throw e;
-                                                }
-                                              })()}
-                                            </React.Fragment>
+                                                })()}
+                                              </React.Fragment>
+                                            ) : (
+                                              <React.Fragment>
+                                                {(() => {
+                                                  try {
+                                                    return $state
+                                                      .detailsDataApiRequest[
+                                                      currentIndex
+                                                    ].data.data.meta.RefNum;
+                                                  } catch (e) {
+                                                    if (
+                                                      e instanceof TypeError ||
+                                                      e?.plasmicType ===
+                                                        "PlasmicUndefinedDataError"
+                                                    ) {
+                                                      return "";
+                                                    }
+                                                    throw e;
+                                                  }
+                                                })()}
+                                              </React.Fragment>
+                                            )}
                                           </div>
                                         </div>
                                       </div>
