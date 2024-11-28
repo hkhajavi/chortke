@@ -622,7 +622,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .txtRemainingText {
-    width: 100%;
+    width: auto;
     height: auto;
     max-width: 100%;
     padding-bottom: 0px;
@@ -630,7 +630,7 @@
     text-align: center;
     left: auto;
     top: auto;
-    min-width: 0;
+    white-space: pre;
   }
 }
 .txtRemainingValue {
@@ -667,6 +667,7 @@
     text-align: center;
     left: auto;
     top: auto;
+    white-space: pre;
     min-width: 0;
     margin: 0px;
   }
@@ -1901,7 +1902,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__ciUy5 {
-    grid-column-end: span 6;
+    grid-column-end: span 5;
   }
 }
 .text__rxRpM {
@@ -2022,8 +2023,8 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__ry0YA {
-    font-size: var(--token-VrIY9r5RDQZ_);
     align-self: center;
+    font-size: 0.5rem;
   }
 }
 .freeBox__f3WAs {
@@ -2042,7 +2043,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__f3WAs {
-    grid-column-end: span 2;
+    grid-column-end: span 3;
   }
 }
 .freeBox__teeG {
@@ -2217,7 +2218,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .gridInvoice12 {
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    padding: 5px;
+    padding: 5px 5px 5px 0px;
   }
 }
 .freeBox___79Fi3 {
@@ -2333,7 +2334,7 @@
   .freeBox__sDrrB {
     align-items: center;
     justify-content: center;
-    grid-column-end: span 6;
+    grid-column-end: span 5;
   }
 }
 .text__eRfYh {
@@ -2436,7 +2437,7 @@
   .freeBox__uNzEt {
     align-items: center;
     justify-content: center;
-    grid-column-end: span 2;
+    grid-column-end: span 3;
   }
 }
 .freeBox__c6Zhl {
@@ -2527,6 +2528,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text__vzf3 {
     font-size: var(--token-VrIY9r5RDQZ_);
+    padding: 0px 8px;
   }
 }
 .svg___5GQw {

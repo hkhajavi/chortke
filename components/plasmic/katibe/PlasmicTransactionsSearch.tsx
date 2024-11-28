@@ -6395,6 +6395,15 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     onClick={async event => {
                                       const $steps = {};
                                     }}
+                                    size={
+                                      hasVariant(
+                                        globalVariants,
+                                        "screen",
+                                        "mobileOnly"
+                                      )
+                                        ? "minimal"
+                                        : undefined
+                                    }
                                   />
                                 )
                               };
