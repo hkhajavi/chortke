@@ -4960,7 +4960,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                 "صادر شده توسط " +
                                                 $state.detailsDataApiRequest[
                                                   currentIndex
-                                                ].data.data.issuer_userid
+                                                ].data.data.productname
                                               );
                                             } catch (e) {
                                               if (
