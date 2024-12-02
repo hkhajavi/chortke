@@ -7270,7 +7270,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               return $steps.getProductWallet.data.data
                                 .balance >= 0
                                 ? ($state.txtPaymentText = "پرداخت")
-                                : ($state.txtPaymentText = "پرداخت بدهی");
+                                : ($state.txtPaymentText = "پرداخت");
                             })();
                           }
                         };
