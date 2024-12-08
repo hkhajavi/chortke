@@ -718,6 +718,12 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "currentAccountAccount",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -2162,12 +2168,9 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                     amount:
                                                       $state.paymentAmount,
                                                     centerid:
-                                                      $state.currentCenterid,
+                                                      $state.currentAccountId,
                                                     account:
-                                                      $state.currentAccountType ==
-                                                      "centerid"
-                                                        ? "expence"
-                                                        : "p24"
+                                                      $state.currentAccountAccount
                                                   };
                                                 } catch (e) {
                                                   if (
@@ -7069,6 +7072,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             return $state.accounts.forEach(account => {
                               if (account.uniqueid == $state.cbAccounts.value) {
                                 $state.currentAccountId = account.id;
+                                $state.currentAccountAccount = account.account;
                                 if (account.type == "userid") {
                                   $state.currentAccountType = "userid";
                                   $state.requestInvoiceUrl =
