@@ -2136,7 +2136,12 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                     amount:
                                                       $state.paymentAmount,
                                                     centerid:
-                                                      $state.currentCenterid
+                                                      $state.currentCenterid,
+                                                    account:
+                                                      $state.currentAccountType ==
+                                                      "centerid"
+                                                        ? "expence"
+                                                        : "p24"
                                                   };
                                                 } catch (e) {
                                                   if (
