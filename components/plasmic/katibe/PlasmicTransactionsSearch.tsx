@@ -2580,7 +2580,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
 
                       {(() => {
                         try {
-                          return $state.reminderWallet > 0;
+                          return (
+                            $state.reminderWallet > 0 &&
+                            $state.currentAccountType == "userid"
+                          );
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
