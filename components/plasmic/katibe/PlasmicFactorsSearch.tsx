@@ -110,7 +110,6 @@ export type PlasmicFactorsSearch__OverridesType = {
   section?: Flex__<"section">;
   cbAccounts?: Flex__<typeof Select>;
   gridCalculator2?: Flex__<"div">;
-  cbProductlist?: Flex__<typeof Select>;
   txtRemainingText?: Flex__<"div">;
   txtRemainingValue?: Flex__<"div">;
   dialogIncreaseRemaining?: Flex__<typeof Dialog>;
@@ -119,7 +118,6 @@ export type PlasmicFactorsSearch__OverridesType = {
   btnSelectAmount?: Flex__<typeof Button>;
   gridMyAmount?: Flex__<"div">;
   txtNewPaymentAmount?: Flex__<typeof TextInput>;
-  btnSettlement?: Flex__<typeof Button2>;
   gridInvoice1?: Flex__<"div">;
   gridNoData?: Flex__<"div">;
   gridInvoice12?: Flex__<"div">;
@@ -199,27 +197,6 @@ function PlasmicFactorsSearch__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
-      },
-      {
-        path: "cbProductlist.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
-          (() => {
-            try {
-              return (() => {
-                return $state.productList[0].productid;
-              })();
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return "0";
-              }
-              throw e;
-            }
-          })()
       },
       {
         path: "productList",
@@ -1212,166 +1189,6 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                 <div
                   className={classNames(
                     projectcss.all,
-                    sty.freeBox__xvipc,
-                    "grid_calculator"
-                  )}
-                  id={"grid_calculator"}
-                >
-                  {(() => {
-                    try {
-                      return $state.currentAccountType == "userid";
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })() ? (
-                    <Select
-                      data-plasmic-name={"cbProductlist"}
-                      data-plasmic-override={overrides.cbProductlist}
-                      aria-label={"name"}
-                      aria-labelledby={"productid"}
-                      className={classNames(
-                        "__wab_instance",
-                        sty.cbProductlist
-                      )}
-                      name={"productlist"}
-                      onChange={async (...eventArgs: any) => {
-                        ((...eventArgs) => {
-                          generateStateOnChangeProp($state, [
-                            "cbProductlist",
-                            "value"
-                          ])(eventArgs[0]);
-                        }).apply(null, eventArgs);
-                        (async value => {
-                          const $steps = {};
-
-                          $steps["updateUpdatewallet"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["updatewallet"]
-                                  },
-                                  operation: 0,
-                                  value: false
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
-
-                                  $stateSet(objRoot, variablePath, value);
-                                  return value;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["updateUpdatewallet"] != null &&
-                            typeof $steps["updateUpdatewallet"] === "object" &&
-                            typeof $steps["updateUpdatewallet"].then ===
-                              "function"
-                          ) {
-                            $steps["updateUpdatewallet"] = await $steps[
-                              "updateUpdatewallet"
-                            ];
-                          }
-
-                          $steps["updateFirstRequestCount"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["firstRequestCount"]
-                                  },
-                                  operation: 2
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
-
-                                  const oldValue = $stateGet(
-                                    objRoot,
-                                    variablePath
-                                  );
-                                  $stateSet(
-                                    objRoot,
-                                    variablePath,
-                                    oldValue + 1
-                                  );
-                                  return oldValue + 1;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["updateFirstRequestCount"] != null &&
-                            typeof $steps["updateFirstRequestCount"] ===
-                              "object" &&
-                            typeof $steps["updateFirstRequestCount"].then ===
-                              "function"
-                          ) {
-                            $steps["updateFirstRequestCount"] = await $steps[
-                              "updateFirstRequestCount"
-                            ];
-                          }
-                        }).apply(null, eventArgs);
-                      }}
-                      options={(() => {
-                        try {
-                          return $state.productList.map(item => ({
-                            value: item.productid.toString(),
-                            label: item.name
-                          }));
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return undefined;
-                          }
-                          throw e;
-                        }
-                      })()}
-                      placeholder={
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__x1BSd
-                          )}
-                        >
-                          {hasVariant(globalVariants, "screen", "mobileOnly")
-                            ? "\u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
-                            : "\u0628\u062e\u0634 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"}
-                        </div>
-                      }
-                      value={generateStateValueProp($state, [
-                        "cbProductlist",
-                        "value"
-                      ])}
-                    />
-                  ) : null}
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
                     sty.freeBox__pgfVd,
                     "grid_calculator"
                   )}
@@ -1490,26 +1307,19 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                               </React.Fragment>
                             )}
                           </div>
-                        </div>
-                        {(() => {
-                          try {
-                            return $state.waiting;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return true;
+                          {(() => {
+                            try {
+                              return $state.waiting;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })() ? (
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__eXbp
-                            )}
-                          >
+                          })() ? (
                             <Icon2Icon
                               className={classNames(
                                 projectcss.all,
@@ -1517,8 +1327,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                               )}
                               role={"img"}
                             />
-                          </div>
-                        ) : null}
+                          ) : null}
+                        </div>
                       </div>
                     </div>
                     <div
@@ -2521,49 +2331,6 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                           ) : null
                         }
                       />
-
-                      {(() => {
-                        try {
-                          return (
-                            $state.reminderWallet > 0 &&
-                            $state.currentAccountType == "userid"
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })() ? (
-                        <Button2
-                          data-plasmic-name={"btnSettlement"}
-                          data-plasmic-override={overrides.btnSettlement}
-                          children2={
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text___4HvNp
-                              )}
-                            >
-                              {
-                                "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062a\u0633\u0648\u06cc\u0647"
-                              }
-                            </div>
-                          }
-                          className={classNames(
-                            "__wab_instance",
-                            sty.btnSettlement
-                          )}
-                          onClick={async event => {
-                            const $steps = {};
-                          }}
-                          size={"compact"}
-                        />
-                      ) : null}
                     </div>
                   </div>
                 </div>
@@ -4136,214 +3903,6 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                         color={"softBlue"}
                         onClick={async event => {
                           const $steps = {};
-
-                          $steps["updateWaitingLoading"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["waitingLoading"]
-                                  },
-                                  operation: 0,
-                                  value: true
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
-
-                                  $stateSet(objRoot, variablePath, value);
-                                  return value;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["updateWaitingLoading"] != null &&
-                            typeof $steps["updateWaitingLoading"] ===
-                              "object" &&
-                            typeof $steps["updateWaitingLoading"].then ===
-                              "function"
-                          ) {
-                            $steps["updateWaitingLoading"] = await $steps[
-                              "updateWaitingLoading"
-                            ];
-                          }
-
-                          $steps["runCode"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  customFunction: async () => {
-                                    return ($state.pageNumber += 1);
-                                  }
-                                };
-                                return (({ customFunction }) => {
-                                  return customFunction();
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["runCode"] != null &&
-                            typeof $steps["runCode"] === "object" &&
-                            typeof $steps["runCode"].then === "function"
-                          ) {
-                            $steps["runCode"] = await $steps["runCode"];
-                          }
-
-                          $steps["getInvoiceList"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    undefined,
-                                    (() => {
-                                      try {
-                                        return (() => {
-                                          if (
-                                            $state.currentAccountType ==
-                                            "centerid"
-                                          )
-                                            return (
-                                              "https://apigw.paziresh24.com/katibe/v1/transactions/search/p24?centerid=" +
-                                              $state.cbAccounts.value +
-                                              "&limit=" +
-                                              $state.limit +
-                                              "&page=" +
-                                              $state.pageNumber
-                                            );
-                                          else
-                                            return (
-                                              "https://apigw.paziresh24.com/katibe/v1/transactions/search/p24?productid=" +
-                                              $state.cbProductlist.value +
-                                              "&limit=" +
-                                              $state.limit +
-                                              "&page=" +
-                                              $state.pageNumber
-                                            );
-                                        })();
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
-                                      }
-                                    })()
-                                  ]
-                                };
-                                return $globalActions[
-                                  "Fragment.apiRequest"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["getInvoiceList"] != null &&
-                            typeof $steps["getInvoiceList"] === "object" &&
-                            typeof $steps["getInvoiceList"].then === "function"
-                          ) {
-                            $steps["getInvoiceList"] = await $steps[
-                              "getInvoiceList"
-                            ];
-                          }
-
-                          $steps["runCode2"] =
-                            $steps.getInvoiceList.status == 200 &&
-                            $steps.getInvoiceList.data.status == true
-                              ? (() => {
-                                  const actionArgs = {
-                                    customFunction: async () => {
-                                      return (() => {
-                                        return ($state.invoicelist = [
-                                          ...$state.invoicelist,
-                                          ...$steps.getInvoiceList.data.data
-                                        ]);
-                                      })();
-                                    }
-                                  };
-                                  return (({ customFunction }) => {
-                                    return customFunction();
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                          if (
-                            $steps["runCode2"] != null &&
-                            typeof $steps["runCode2"] === "object" &&
-                            typeof $steps["runCode2"].then === "function"
-                          ) {
-                            $steps["runCode2"] = await $steps["runCode2"];
-                          }
-
-                          $steps["updateWaitingLoading2"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["waitingLoading"]
-                                  },
-                                  operation: 0,
-                                  value: false
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
-
-                                  $stateSet(objRoot, variablePath, value);
-                                  return value;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["updateWaitingLoading2"] != null &&
-                            typeof $steps["updateWaitingLoading2"] ===
-                              "object" &&
-                            typeof $steps["updateWaitingLoading2"].then ===
-                              "function"
-                          ) {
-                            $steps["updateWaitingLoading2"] = await $steps[
-                              "updateWaitingLoading2"
-                            ];
-                          }
-
-                          $steps["showMoreBtn"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  customFunction: async () => {
-                                    return (() => {
-                                      if (
-                                        $steps.getInvoiceList.status != 200 ||
-                                        $steps.getInvoiceList.data.data
-                                          .length != $state.limit
-                                      )
-                                        return ($state.showMoreBtn = false);
-                                    })();
-                                  }
-                                };
-                                return (({ customFunction }) => {
-                                  return customFunction();
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["showMoreBtn"] != null &&
-                            typeof $steps["showMoreBtn"] === "object" &&
-                            typeof $steps["showMoreBtn"].then === "function"
-                          ) {
-                            $steps["showMoreBtn"] = await $steps["showMoreBtn"];
-                          }
                         }}
                       />
                     ) : null}
@@ -4415,7 +3974,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                       const actionArgs = {
                         args: [
                           undefined,
-                          "https://apigw.paziresh24.com/transaction/v1/useraccounts"
+                          "https://apigw.paziresh24.com/transaction/v1/useraccounts?type=factor"
                         ]
                       };
                       return $globalActions["Fragment.apiRequest"]?.apply(
@@ -4955,7 +4514,6 @@ const PlasmicDescendants = {
     "section",
     "cbAccounts",
     "gridCalculator2",
-    "cbProductlist",
     "txtRemainingText",
     "txtRemainingValue",
     "dialogIncreaseRemaining",
@@ -4964,7 +4522,6 @@ const PlasmicDescendants = {
     "btnSelectAmount",
     "gridMyAmount",
     "txtNewPaymentAmount",
-    "btnSettlement",
     "gridInvoice1",
     "gridNoData",
     "gridInvoice12",
@@ -4985,7 +4542,6 @@ const PlasmicDescendants = {
     "section",
     "cbAccounts",
     "gridCalculator2",
-    "cbProductlist",
     "txtRemainingText",
     "txtRemainingValue",
     "dialogIncreaseRemaining",
@@ -4994,7 +4550,6 @@ const PlasmicDescendants = {
     "btnSelectAmount",
     "gridMyAmount",
     "txtNewPaymentAmount",
-    "btnSettlement",
     "gridInvoice1",
     "gridNoData",
     "gridInvoice12",
@@ -5007,7 +4562,6 @@ const PlasmicDescendants = {
   cbAccounts: ["cbAccounts"],
   gridCalculator2: [
     "gridCalculator2",
-    "cbProductlist",
     "txtRemainingText",
     "txtRemainingValue",
     "dialogIncreaseRemaining",
@@ -5015,10 +4569,8 @@ const PlasmicDescendants = {
     "gridSelectprice",
     "btnSelectAmount",
     "gridMyAmount",
-    "txtNewPaymentAmount",
-    "btnSettlement"
+    "txtNewPaymentAmount"
   ],
-  cbProductlist: ["cbProductlist"],
   txtRemainingText: ["txtRemainingText"],
   txtRemainingValue: ["txtRemainingValue"],
   dialogIncreaseRemaining: [
@@ -5034,7 +4586,6 @@ const PlasmicDescendants = {
   btnSelectAmount: ["btnSelectAmount"],
   gridMyAmount: ["gridMyAmount", "txtNewPaymentAmount"],
   txtNewPaymentAmount: ["txtNewPaymentAmount"],
-  btnSettlement: ["btnSettlement"],
   gridInvoice1: ["gridInvoice1"],
   gridNoData: ["gridNoData"],
   gridInvoice12: [
@@ -5070,7 +4621,6 @@ type NodeDefaultElementType = {
   section: "section";
   cbAccounts: typeof Select;
   gridCalculator2: "div";
-  cbProductlist: typeof Select;
   txtRemainingText: "div";
   txtRemainingValue: "div";
   dialogIncreaseRemaining: typeof Dialog;
@@ -5079,7 +4629,6 @@ type NodeDefaultElementType = {
   btnSelectAmount: typeof Button;
   gridMyAmount: "div";
   txtNewPaymentAmount: typeof TextInput;
-  btnSettlement: typeof Button2;
   gridInvoice1: "div";
   gridNoData: "div";
   gridInvoice12: "div";
@@ -5160,7 +4709,6 @@ export const PlasmicFactorsSearch = Object.assign(
     section: makeNodeComponent("section"),
     cbAccounts: makeNodeComponent("cbAccounts"),
     gridCalculator2: makeNodeComponent("gridCalculator2"),
-    cbProductlist: makeNodeComponent("cbProductlist"),
     txtRemainingText: makeNodeComponent("txtRemainingText"),
     txtRemainingValue: makeNodeComponent("txtRemainingValue"),
     dialogIncreaseRemaining: makeNodeComponent("dialogIncreaseRemaining"),
@@ -5169,7 +4717,6 @@ export const PlasmicFactorsSearch = Object.assign(
     btnSelectAmount: makeNodeComponent("btnSelectAmount"),
     gridMyAmount: makeNodeComponent("gridMyAmount"),
     txtNewPaymentAmount: makeNodeComponent("txtNewPaymentAmount"),
-    btnSettlement: makeNodeComponent("btnSettlement"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     gridNoData: makeNodeComponent("gridNoData"),
     gridInvoice12: makeNodeComponent("gridInvoice12"),
