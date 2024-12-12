@@ -707,18 +707,18 @@
           "path": "/transactions-search"
         },
         {
-          "id": "ELLntZzEiq7Y",
-          "name": "TransactionsSearchAccount",
+          "id": "E5TSAr0YUe-f",
+          "name": "FactorsSearch",
           "type": "managed",
           "projectId": "afXULSfGYmou2jFpEc2QWJ",
-          "renderModuleFilePath": "plasmic/katibe/PlasmicTransactionsSearchAccount.tsx",
+          "renderModuleFilePath": "plasmic/katibe/PlasmicFactorsSearch.tsx",
           "importSpec": {
-            "modulePath": "../src/pages/transactions-account-search.tsx"
+            "modulePath": "../src/pages/factors-search.tsx"
           },
-          "cssFilePath": "plasmic/katibe/PlasmicTransactionsSearchAccount.module.css",
+          "cssFilePath": "plasmic/katibe/PlasmicFactorsSearch.module.css",
           "scheme": "blackbox",
           "componentType": "page",
-          "path": "/transactions-account-search"
+          "path": "/factors-search"
         }
       ],
       "icons": [
