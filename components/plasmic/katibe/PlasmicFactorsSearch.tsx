@@ -1307,29 +1307,30 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                               </React.Fragment>
                             )}
                           </div>
-                          {(() => {
-                            try {
-                              return $state.waiting;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return true;
-                              }
-                              throw e;
-                            }
-                          })() ? (
-                            <Icon2Icon
-                              className={classNames(
-                                projectcss.all,
-                                sty.svg__foOee
-                              )}
-                              role={"img"}
-                            />
-                          ) : null}
                         </div>
                       </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__r8Zok)}
+                    >
+                      {(() => {
+                        try {
+                          return $state.waiting;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <Icon2Icon
+                          className={classNames(projectcss.all, sty.svg__foOee)}
+                          role={"img"}
+                        />
+                      ) : null}
                     </div>
                     <div
                       className={classNames(projectcss.all, sty.freeBox__fyOo)}

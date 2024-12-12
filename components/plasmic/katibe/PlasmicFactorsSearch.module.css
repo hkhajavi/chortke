@@ -510,7 +510,7 @@
   height: auto;
   max-width: 100%;
   grid-row-end: span 1;
-  grid-column-end: span 2;
+  grid-column-end: span 1;
   min-width: 0;
   padding: 8px;
 }
@@ -617,6 +617,18 @@
     min-width: 0;
     margin: 0px;
   }
+}
+.freeBox__r8Zok {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px;
 }
 .svg__foOee {
   object-fit: cover;
