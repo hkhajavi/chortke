@@ -3624,35 +3624,17 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       throw e;
                                     }
                                   })() ? (
-                                    <Button2
-                                      children2={
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text__jWvHk
-                                          )}
-                                        >
-                                          {
-                                            "\u067e\u0631\u062f\u0627\u062e\u062a \u0646\u0634\u062f\u0647"
-                                          }
-                                        </div>
-                                      }
+                                    <div
                                       className={classNames(
-                                        "__wab_instance",
-                                        sty.button__h8FS
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__jWvHk
                                       )}
-                                      color={
-                                        hasVariant(
-                                          globalVariants,
-                                          "screen",
-                                          "mobileOnly"
-                                        )
-                                          ? "clear"
-                                          : "clear"
+                                    >
+                                      {
+                                        "\u067e\u0631\u062f\u0627\u062e\u062a \u0646\u0634\u062f\u0647"
                                       }
-                                      size={"minimal"}
-                                    />
+                                    </div>
                                   ) : null}
                                   {(() => {
                                     try {
@@ -3671,35 +3653,17 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       throw e;
                                     }
                                   })() ? (
-                                    <Button2
-                                      children2={
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text__trw44
-                                          )}
-                                        >
-                                          {
-                                            "\u2714 \u067e\u0631\u062f\u0627\u062e\u062a \u0634\u062f\u0647"
-                                          }
-                                        </div>
-                                      }
+                                    <div
                                       className={classNames(
-                                        "__wab_instance",
-                                        sty.button__yde67
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__trw44
                                       )}
-                                      color={
-                                        hasVariant(
-                                          globalVariants,
-                                          "screen",
-                                          "mobileOnly"
-                                        )
-                                          ? "clear"
-                                          : "clear"
+                                    >
+                                      {
+                                        "\u2714 \u067e\u0631\u062f\u0627\u062e\u062a \u0634\u062f\u0647"
                                       }
-                                      size={"minimal"}
-                                    />
+                                    </div>
                                   ) : null}
                                 </div>
                               </div>
@@ -3863,27 +3827,17 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                           throw e;
                         }
                       })() ? (
-                        <Button2
-                          children2={
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__eyqDw
-                              )}
-                            >
-                              {
-                                "\u2714 \u067e\u0631\u062f\u0627\u062e\u062a \u0634\u062f\u0647"
-                              }
-                            </div>
-                          }
+                        <div
                           className={classNames(
-                            "__wab_instance",
-                            sty.button___9Bh8P
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__eyqDw
                           )}
-                          color={"clear"}
-                          size={"minimal"}
-                        />
+                        >
+                          {
+                            "\u2714 \u067e\u0631\u062f\u0627\u062e\u062a \u0634\u062f\u0647"
+                          }
+                        </div>
                       ) : null}
                       {(() => {
                         try {
@@ -3901,27 +3855,17 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                           throw e;
                         }
                       })() ? (
-                        <Button2
-                          children2={
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__tra4Y
-                              )}
-                            >
-                              {
-                                "\u067e\u0631\u062f\u0627\u062e\u062a \u0646\u0634\u062f\u0647"
-                              }
-                            </div>
-                          }
+                        <div
                           className={classNames(
-                            "__wab_instance",
-                            sty.button__ybQBs
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__tra4Y
                           )}
-                          color={"clear"}
-                          size={"minimal"}
-                        />
+                        >
+                          {
+                            "\u067e\u0631\u062f\u0627\u062e\u062a \u0646\u0634\u062f\u0647"
+                          }
+                        </div>
                       ) : null}
                     </div>
                   </div>
