@@ -3776,7 +3776,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                     sty.text__xFw74
                                   )}
                                 >
-                                  {"\u062c\u0632\u0626\u06cc\u0627\u062a>"}
+                                  {"\u062c\u0632\u0626\u06cc\u0627\u062a"}
                                 </div>
                               }
                               className={classNames(
