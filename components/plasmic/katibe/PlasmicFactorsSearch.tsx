@@ -408,7 +408,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
         path: "limit",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 2
+        initFunc: ({ $props, $state, $queries, $ctx }) => 20
       },
       {
         path: "offset",
