@@ -6590,11 +6590,13 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         )
                                           return (
                                             "https://apigw.paziresh24.com/katibe/v1/transactions/search/p24?centerid=" +
-                                            $state.cbAccounts.value +
+                                            $state.currentAccountId +
                                             "&limit=" +
                                             $state.limit +
                                             "&page=" +
-                                            $state.pageNumber
+                                            $state.pageNumber +
+                                            "&account=" +
+                                            $state.currentAccountAccount
                                           );
                                         else
                                           return (
@@ -6603,7 +6605,9 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                             "&limit=" +
                                             $state.limit +
                                             "&page=" +
-                                            $state.pageNumber
+                                            $state.pageNumber +
+                                            "&account=" +
+                                            $state.currentAccountAccount
                                           );
                                       })();
                                     } catch (e) {
