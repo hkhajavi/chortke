@@ -714,6 +714,15 @@ function PlasmicProductAdmin__RenderFunc(props: {
                           "value"
                         ])(eventArgs[0]);
                       }).apply(null, eventArgs);
+
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
+                        return;
+                      }
+
                       (async value => {
                         const $steps = {};
 
@@ -1029,11 +1038,21 @@ function PlasmicProductAdmin__RenderFunc(props: {
                       data-plasmic-name={"txtSearch"}
                       data-plasmic-override={overrides.txtSearch}
                       className={classNames("__wab_instance", sty.txtSearch)}
-                      onChange={(...eventArgs) => {
-                        generateStateOnChangeProp($state, [
-                          "txtSearch",
-                          "value"
-                        ])((e => e.target?.value).apply(null, eventArgs));
+                      onChange={async (...eventArgs: any) => {
+                        ((...eventArgs) => {
+                          generateStateOnChangeProp($state, [
+                            "txtSearch",
+                            "value"
+                          ])((e => e.target?.value).apply(null, eventArgs));
+                        }).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
+                        }
                       }}
                       placeholder={
                         hasVariant(globalVariants, "screen", "mobileOnly")
@@ -1397,6 +1416,15 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                           )
                                         );
                                       }).apply(null, eventArgs);
+
+                                      if (
+                                        eventArgs.length > 1 &&
+                                        eventArgs[1] &&
+                                        eventArgs[1]._plasmic_state_init_
+                                      ) {
+                                        return;
+                                      }
+
                                       (async event => {
                                         const $steps = {};
 
@@ -1726,16 +1754,33 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                 "__wab_instance",
                                                 sty.txtProductFilter
                                               )}
-                                              onChange={(...eventArgs) => {
-                                                generateStateOnChangeProp(
-                                                  $state,
-                                                  ["txtProductFilter", "value"]
-                                                )(
-                                                  (e => e.target?.value).apply(
-                                                    null,
-                                                    eventArgs
-                                                  )
-                                                );
+                                              onChange={async (
+                                                ...eventArgs: any
+                                              ) => {
+                                                ((...eventArgs) => {
+                                                  generateStateOnChangeProp(
+                                                    $state,
+                                                    [
+                                                      "txtProductFilter",
+                                                      "value"
+                                                    ]
+                                                  )(
+                                                    (e =>
+                                                      e.target?.value).apply(
+                                                      null,
+                                                      eventArgs
+                                                    )
+                                                  );
+                                                }).apply(null, eventArgs);
+
+                                                if (
+                                                  eventArgs.length > 1 &&
+                                                  eventArgs[1] &&
+                                                  eventArgs[1]
+                                                    ._plasmic_state_init_
+                                                ) {
+                                                  return;
+                                                }
                                               }}
                                               placeholder={
                                                 "\u062c\u0633\u062a \u0648 \u062c\u0648"
@@ -2124,10 +2169,20 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       "__wab_instance",
                                       sty.dialogSelectProduct
                                     )}
-                                    onOpenChange={generateStateOnChangeProp(
-                                      $state,
-                                      ["dialogSelectProduct", "open"]
-                                    )}
+                                    onOpenChange={async (...eventArgs: any) => {
+                                      generateStateOnChangeProp($state, [
+                                        "dialogSelectProduct",
+                                        "open"
+                                      ]).apply(null, eventArgs);
+
+                                      if (
+                                        eventArgs.length > 1 &&
+                                        eventArgs[1] &&
+                                        eventArgs[1]._plasmic_state_init_
+                                      ) {
+                                        return;
+                                      }
+                                    }}
                                     open={generateStateValueProp($state, [
                                       "dialogSelectProduct",
                                       "open"
@@ -2447,16 +2502,26 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       "__wab_instance",
                                       sty.txtRegisterInvoiceTitle
                                     )}
-                                    onChange={(...eventArgs) => {
-                                      generateStateOnChangeProp($state, [
-                                        "txtRegisterInvoiceTitle",
-                                        "value"
-                                      ])(
-                                        (e => e.target?.value).apply(
-                                          null,
-                                          eventArgs
-                                        )
-                                      );
+                                    onChange={async (...eventArgs: any) => {
+                                      ((...eventArgs) => {
+                                        generateStateOnChangeProp($state, [
+                                          "txtRegisterInvoiceTitle",
+                                          "value"
+                                        ])(
+                                          (e => e.target?.value).apply(
+                                            null,
+                                            eventArgs
+                                          )
+                                        );
+                                      }).apply(null, eventArgs);
+
+                                      if (
+                                        eventArgs.length > 1 &&
+                                        eventArgs[1] &&
+                                        eventArgs[1]._plasmic_state_init_
+                                      ) {
+                                        return;
+                                      }
                                     }}
                                     placeholder={
                                       "\u0639\u0646\u0648\u0627\u0646 \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628"
@@ -2531,6 +2596,15 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                 )
                                               );
                                             }).apply(null, eventArgs);
+
+                                            if (
+                                              eventArgs.length > 1 &&
+                                              eventArgs[1] &&
+                                              eventArgs[1]._plasmic_state_init_
+                                            ) {
+                                              return;
+                                            }
+
                                             (async event => {
                                               const $steps = {};
 
@@ -2647,6 +2721,15 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                 )
                                               );
                                             }).apply(null, eventArgs);
+
+                                            if (
+                                              eventArgs.length > 1 &&
+                                              eventArgs[1] &&
+                                              eventArgs[1]._plasmic_state_init_
+                                            ) {
+                                              return;
+                                            }
+
                                             (async event => {
                                               const $steps = {};
 
@@ -2752,6 +2835,15 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                 )
                                               );
                                             }).apply(null, eventArgs);
+
+                                            if (
+                                              eventArgs.length > 1 &&
+                                              eventArgs[1] &&
+                                              eventArgs[1]._plasmic_state_init_
+                                            ) {
+                                              return;
+                                            }
+
                                             (async event => {
                                               const $steps = {};
 
@@ -2994,16 +3086,26 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       "__wab_instance",
                                       sty.txtRegisterinvoiceDescription
                                     )}
-                                    onChange={(...eventArgs) => {
-                                      generateStateOnChangeProp($state, [
-                                        "txtRegisterinvoiceDescription",
-                                        "value"
-                                      ])(
-                                        (e => e.target?.value).apply(
-                                          null,
-                                          eventArgs
-                                        )
-                                      );
+                                    onChange={async (...eventArgs: any) => {
+                                      ((...eventArgs) => {
+                                        generateStateOnChangeProp($state, [
+                                          "txtRegisterinvoiceDescription",
+                                          "value"
+                                        ])(
+                                          (e => e.target?.value).apply(
+                                            null,
+                                            eventArgs
+                                          )
+                                        );
+                                      }).apply(null, eventArgs);
+
+                                      if (
+                                        eventArgs.length > 1 &&
+                                        eventArgs[1] &&
+                                        eventArgs[1]._plasmic_state_init_
+                                      ) {
+                                        return;
+                                      }
                                     }}
                                     placeholder={
                                       "\u062a\u0648\u0636\u06cc\u062d\u0627\u062a \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628"
@@ -3058,16 +3160,26 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       "__wab_instance",
                                       sty.txtRegisterInvoiceDiscountPercent
                                     )}
-                                    onChange={(...eventArgs) => {
-                                      generateStateOnChangeProp($state, [
-                                        "txtRegisterInvoiceDiscountPercent",
-                                        "value"
-                                      ])(
-                                        (e => e.target?.value).apply(
-                                          null,
-                                          eventArgs
-                                        )
-                                      );
+                                    onChange={async (...eventArgs: any) => {
+                                      ((...eventArgs) => {
+                                        generateStateOnChangeProp($state, [
+                                          "txtRegisterInvoiceDiscountPercent",
+                                          "value"
+                                        ])(
+                                          (e => e.target?.value).apply(
+                                            null,
+                                            eventArgs
+                                          )
+                                        );
+                                      }).apply(null, eventArgs);
+
+                                      if (
+                                        eventArgs.length > 1 &&
+                                        eventArgs[1] &&
+                                        eventArgs[1]._plasmic_state_init_
+                                      ) {
+                                        return;
+                                      }
                                     }}
                                     placeholder={
                                       "\u062f\u0631\u0635\u062f \u062a\u062e\u0641\u06cc\u0641"
@@ -3116,16 +3228,26 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       "__wab_instance",
                                       sty.txtRegisterInvoiceVatPercent
                                     )}
-                                    onChange={(...eventArgs) => {
-                                      generateStateOnChangeProp($state, [
-                                        "txtRegisterInvoiceVatPercent",
-                                        "value"
-                                      ])(
-                                        (e => e.target?.value).apply(
-                                          null,
-                                          eventArgs
-                                        )
-                                      );
+                                    onChange={async (...eventArgs: any) => {
+                                      ((...eventArgs) => {
+                                        generateStateOnChangeProp($state, [
+                                          "txtRegisterInvoiceVatPercent",
+                                          "value"
+                                        ])(
+                                          (e => e.target?.value).apply(
+                                            null,
+                                            eventArgs
+                                          )
+                                        );
+                                      }).apply(null, eventArgs);
+
+                                      if (
+                                        eventArgs.length > 1 &&
+                                        eventArgs[1] &&
+                                        eventArgs[1]._plasmic_state_init_
+                                      ) {
+                                        return;
+                                      }
                                     }}
                                     placeholder={
                                       "\u062f\u0631\u0635\u062f \u0645\u0627\u0644\u06cc\u0627\u062a"
@@ -3194,16 +3316,26 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         sty.txtFinalPrice
                                       )}
                                       isDisabled={true}
-                                      onChange={(...eventArgs) => {
-                                        generateStateOnChangeProp($state, [
-                                          "txtFinalPrice",
-                                          "value"
-                                        ])(
-                                          (e => e.target?.value).apply(
-                                            null,
-                                            eventArgs
-                                          )
-                                        );
+                                      onChange={async (...eventArgs: any) => {
+                                        ((...eventArgs) => {
+                                          generateStateOnChangeProp($state, [
+                                            "txtFinalPrice",
+                                            "value"
+                                          ])(
+                                            (e => e.target?.value).apply(
+                                              null,
+                                              eventArgs
+                                            )
+                                          );
+                                        }).apply(null, eventArgs);
+
+                                        if (
+                                          eventArgs.length > 1 &&
+                                          eventArgs[1] &&
+                                          eventArgs[1]._plasmic_state_init_
+                                        ) {
+                                          return;
+                                        }
                                       }}
                                       placeholder={``}
                                       value={
@@ -3246,16 +3378,26 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         sty.txtInvoiceId
                                       )}
                                       isDisabled={true}
-                                      onChange={(...eventArgs) => {
-                                        generateStateOnChangeProp($state, [
-                                          "txtInvoiceId",
-                                          "value"
-                                        ])(
-                                          (e => e.target?.value).apply(
-                                            null,
-                                            eventArgs
-                                          )
-                                        );
+                                      onChange={async (...eventArgs: any) => {
+                                        ((...eventArgs) => {
+                                          generateStateOnChangeProp($state, [
+                                            "txtInvoiceId",
+                                            "value"
+                                          ])(
+                                            (e => e.target?.value).apply(
+                                              null,
+                                              eventArgs
+                                            )
+                                          );
+                                        }).apply(null, eventArgs);
+
+                                        if (
+                                          eventArgs.length > 1 &&
+                                          eventArgs[1] &&
+                                          eventArgs[1]._plasmic_state_init_
+                                        ) {
+                                          return;
+                                        }
                                       }}
                                       placeholder={
                                         "\u062f\u0631\u0635\u062f \u0645\u0627\u0644\u06cc\u0627\u062a"
@@ -3321,6 +3463,15 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                           "value"
                                         ])(eventArgs[0]);
                                       }).apply(null, eventArgs);
+
+                                      if (
+                                        eventArgs.length > 1 &&
+                                        eventArgs[1] &&
+                                        eventArgs[1]._plasmic_state_init_
+                                      ) {
+                                        return;
+                                      }
+
                                       (async value => {
                                         const $steps = {};
 
@@ -4055,10 +4206,20 @@ function PlasmicProductAdmin__RenderFunc(props: {
                             "__wab_instance",
                             sty.dialogRegisterInvoice
                           )}
-                          onOpenChange={generateStateOnChangeProp($state, [
-                            "dialogRegisterInvoice",
-                            "open"
-                          ])}
+                          onOpenChange={async (...eventArgs: any) => {
+                            generateStateOnChangeProp($state, [
+                              "dialogRegisterInvoice",
+                              "open"
+                            ]).apply(null, eventArgs);
+
+                            if (
+                              eventArgs.length > 1 &&
+                              eventArgs[1] &&
+                              eventArgs[1]._plasmic_state_init_
+                            ) {
+                              return;
+                            }
+                          }}
                           open={generateStateValueProp($state, [
                             "dialogRegisterInvoice",
                             "open"
@@ -4825,21 +4986,27 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   />
                                 }
                                 method={"GET"}
-                                onError={generateStateOnChangeProp($state, [
-                                  "detailsDataApiRequest",
-                                  __plasmic_idx_0,
-                                  "error"
-                                ])}
-                                onLoading={generateStateOnChangeProp($state, [
-                                  "detailsDataApiRequest",
-                                  __plasmic_idx_0,
-                                  "loading"
-                                ])}
-                                onSuccess={generateStateOnChangeProp($state, [
-                                  "detailsDataApiRequest",
-                                  __plasmic_idx_0,
-                                  "data"
-                                ])}
+                                onError={async (...eventArgs: any) => {
+                                  generateStateOnChangeProp($state, [
+                                    "detailsDataApiRequest",
+                                    __plasmic_idx_0,
+                                    "error"
+                                  ]).apply(null, eventArgs);
+                                }}
+                                onLoading={async (...eventArgs: any) => {
+                                  generateStateOnChangeProp($state, [
+                                    "detailsDataApiRequest",
+                                    __plasmic_idx_0,
+                                    "loading"
+                                  ]).apply(null, eventArgs);
+                                }}
+                                onSuccess={async (...eventArgs: any) => {
+                                  generateStateOnChangeProp($state, [
+                                    "detailsDataApiRequest",
+                                    __plasmic_idx_0,
+                                    "data"
+                                  ]).apply(null, eventArgs);
+                                }}
                                 url={(() => {
                                   try {
                                     return (
@@ -6080,21 +6247,35 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                     "__wab_instance",
                                                     sty.txtCancelReason
                                                   ),
-                                                  onChange: (...eventArgs) => {
-                                                    generateStateOnChangeProp(
-                                                      $state,
-                                                      [
-                                                        "txtCancelReason",
-                                                        __plasmic_idx_0,
-                                                        "value"
-                                                      ]
-                                                    )(
-                                                      (e =>
-                                                        e.target?.value).apply(
-                                                        null,
-                                                        eventArgs
-                                                      )
-                                                    );
+                                                  onChange: async (
+                                                    ...eventArgs: any
+                                                  ) => {
+                                                    ((...eventArgs) => {
+                                                      generateStateOnChangeProp(
+                                                        $state,
+                                                        [
+                                                          "txtCancelReason",
+                                                          __plasmic_idx_0,
+                                                          "value"
+                                                        ]
+                                                      )(
+                                                        (e =>
+                                                          e.target
+                                                            ?.value).apply(
+                                                          null,
+                                                          eventArgs
+                                                        )
+                                                      );
+                                                    }).apply(null, eventArgs);
+
+                                                    if (
+                                                      eventArgs.length > 1 &&
+                                                      eventArgs[1] &&
+                                                      eventArgs[1]
+                                                        ._plasmic_state_init_
+                                                    ) {
+                                                      return;
+                                                    }
                                                   },
                                                   placeholder:
                                                     "\u062f\u0644\u06cc\u0644 \u0644\u063a\u0648 \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628",
@@ -6522,14 +6703,23 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                           "__wab_instance",
                                           sty.dialogCancelInvoice
                                         ),
-                                        onOpenChange: generateStateOnChangeProp(
-                                          $state,
-                                          [
+                                        onOpenChange: async (
+                                          ...eventArgs: any
+                                        ) => {
+                                          generateStateOnChangeProp($state, [
                                             "dialogCancelInvoice",
                                             __plasmic_idx_0,
                                             "open"
-                                          ]
-                                        ),
+                                          ]).apply(null, eventArgs);
+
+                                          if (
+                                            eventArgs.length > 1 &&
+                                            eventArgs[1] &&
+                                            eventArgs[1]._plasmic_state_init_
+                                          ) {
+                                            return;
+                                          }
+                                        },
                                         open: generateStateValueProp($state, [
                                           "dialogCancelInvoice",
                                           __plasmic_idx_0,
@@ -6624,11 +6814,21 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               "__wab_instance",
                               sty.dialogInvoiceDetails
                             ),
-                            onOpenChange: generateStateOnChangeProp($state, [
-                              "dialogInvoiceDetails",
-                              __plasmic_idx_0,
-                              "open"
-                            ]),
+                            onOpenChange: async (...eventArgs: any) => {
+                              generateStateOnChangeProp($state, [
+                                "dialogInvoiceDetails",
+                                __plasmic_idx_0,
+                                "open"
+                              ]).apply(null, eventArgs);
+
+                              if (
+                                eventArgs.length > 1 &&
+                                eventArgs[1] &&
+                                eventArgs[1]._plasmic_state_init_
+                              ) {
+                                return;
+                              }
+                            },
                             open: generateStateValueProp($state, [
                               "dialogInvoiceDetails",
                               __plasmic_idx_0,

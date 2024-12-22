@@ -487,6 +487,7 @@
     margin-top: 5px;
     height: 100%;
     min-height: 0;
+    display: none;
   }
 }
 .cbProductlist:global(.__wab_instance) {
@@ -528,7 +529,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__cuNo {
-    grid-column-end: span 3;
+    grid-column-end: span 6;
     margin-top: 5px;
     display: flex;
     flex-direction: column;
@@ -549,7 +550,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__v0KMu {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     align-self: center;
     padding: 0px;
   }
@@ -567,6 +568,11 @@
   grid-column-end: span 2;
   min-width: 0;
   padding: 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__gc10B {
+    grid-column-end: span 3;
+  }
 }
 .freeBox__a3LLz {
   display: grid;
@@ -714,6 +720,7 @@
   .freeBox__nQf7B {
     align-items: center;
     justify-content: center;
+    grid-column-end: span 2;
     padding: 0px;
   }
 }

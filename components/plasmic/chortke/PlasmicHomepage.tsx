@@ -1117,6 +1117,15 @@ function PlasmicHomepage__RenderFunc(props: {
                             "value"
                           ])(eventArgs[0]);
                         }).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
+                        }
+
                         (async value => {
                           const $steps = {};
 
@@ -1304,6 +1313,15 @@ function PlasmicHomepage__RenderFunc(props: {
                             "value"
                           ])(eventArgs[0]);
                         }).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
+                        }
+
                         (async value => {
                           const $steps = {};
 
@@ -1932,6 +1950,15 @@ function PlasmicHomepage__RenderFunc(props: {
                                             )
                                           );
                                         }).apply(null, eventArgs);
+
+                                        if (
+                                          eventArgs.length > 1 &&
+                                          eventArgs[1] &&
+                                          eventArgs[1]._plasmic_state_init_
+                                        ) {
+                                          return;
+                                        }
+
                                         (async event => {
                                           const $steps = {};
 
@@ -2316,10 +2343,20 @@ function PlasmicHomepage__RenderFunc(props: {
                           "__wab_instance",
                           sty.dialogIncreaseRemaining
                         )}
-                        onOpenChange={generateStateOnChangeProp($state, [
-                          "dialogIncreaseRemaining",
-                          "open"
-                        ])}
+                        onOpenChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "dialogIncreaseRemaining",
+                            "open"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
                         open={generateStateValueProp($state, [
                           "dialogIncreaseRemaining",
                           "open"
@@ -2928,6 +2965,15 @@ function PlasmicHomepage__RenderFunc(props: {
                                             )
                                           );
                                         }).apply(null, eventArgs);
+
+                                        if (
+                                          eventArgs.length > 1 &&
+                                          eventArgs[1] &&
+                                          eventArgs[1]._plasmic_state_init_
+                                        ) {
+                                          return;
+                                        }
+
                                         (async event => {
                                           const $steps = {};
 
@@ -3078,6 +3124,16 @@ function PlasmicHomepage__RenderFunc(props: {
                                                       )
                                                     );
                                                   }).apply(null, eventArgs);
+
+                                                  if (
+                                                    eventArgs.length > 1 &&
+                                                    eventArgs[1] &&
+                                                    eventArgs[1]
+                                                      ._plasmic_state_init_
+                                                  ) {
+                                                    return;
+                                                  }
+
                                                   (async event => {
                                                     const $steps = {};
 
@@ -3487,17 +3543,34 @@ function PlasmicHomepage__RenderFunc(props: {
                                                     sty.txtCardOwner
                                                   )}
                                                   isDisabled={true}
-                                                  onChange={(...eventArgs) => {
-                                                    generateStateOnChangeProp(
-                                                      $state,
-                                                      ["txtCardOwner", "value"]
-                                                    )(
-                                                      (e =>
-                                                        e.target?.value).apply(
-                                                        null,
-                                                        eventArgs
-                                                      )
-                                                    );
+                                                  onChange={async (
+                                                    ...eventArgs: any
+                                                  ) => {
+                                                    ((...eventArgs) => {
+                                                      generateStateOnChangeProp(
+                                                        $state,
+                                                        [
+                                                          "txtCardOwner",
+                                                          "value"
+                                                        ]
+                                                      )(
+                                                        (e =>
+                                                          e.target
+                                                            ?.value).apply(
+                                                          null,
+                                                          eventArgs
+                                                        )
+                                                      );
+                                                    }).apply(null, eventArgs);
+
+                                                    if (
+                                                      eventArgs.length > 1 &&
+                                                      eventArgs[1] &&
+                                                      eventArgs[1]
+                                                        ._plasmic_state_init_
+                                                    ) {
+                                                      return;
+                                                    }
                                                   }}
                                                   placeholder={``}
                                                   value={
@@ -3571,17 +3644,31 @@ function PlasmicHomepage__RenderFunc(props: {
                                                     sty.txtCardIban
                                                   )}
                                                   isDisabled={true}
-                                                  onChange={(...eventArgs) => {
-                                                    generateStateOnChangeProp(
-                                                      $state,
-                                                      ["txtCardIban", "value"]
-                                                    )(
-                                                      (e =>
-                                                        e.target?.value).apply(
-                                                        null,
-                                                        eventArgs
-                                                      )
-                                                    );
+                                                  onChange={async (
+                                                    ...eventArgs: any
+                                                  ) => {
+                                                    ((...eventArgs) => {
+                                                      generateStateOnChangeProp(
+                                                        $state,
+                                                        ["txtCardIban", "value"]
+                                                      )(
+                                                        (e =>
+                                                          e.target
+                                                            ?.value).apply(
+                                                          null,
+                                                          eventArgs
+                                                        )
+                                                      );
+                                                    }).apply(null, eventArgs);
+
+                                                    if (
+                                                      eventArgs.length > 1 &&
+                                                      eventArgs[1] &&
+                                                      eventArgs[1]
+                                                        ._plasmic_state_init_
+                                                    ) {
+                                                      return;
+                                                    }
                                                   }}
                                                   placeholder={``}
                                                   value={
@@ -3653,20 +3740,34 @@ function PlasmicHomepage__RenderFunc(props: {
                                                     sty.txtCardBankName
                                                   )}
                                                   isDisabled={true}
-                                                  onChange={(...eventArgs) => {
-                                                    generateStateOnChangeProp(
-                                                      $state,
-                                                      [
-                                                        "txtCardBankName",
-                                                        "value"
-                                                      ]
-                                                    )(
-                                                      (e =>
-                                                        e.target?.value).apply(
-                                                        null,
-                                                        eventArgs
-                                                      )
-                                                    );
+                                                  onChange={async (
+                                                    ...eventArgs: any
+                                                  ) => {
+                                                    ((...eventArgs) => {
+                                                      generateStateOnChangeProp(
+                                                        $state,
+                                                        [
+                                                          "txtCardBankName",
+                                                          "value"
+                                                        ]
+                                                      )(
+                                                        (e =>
+                                                          e.target
+                                                            ?.value).apply(
+                                                          null,
+                                                          eventArgs
+                                                        )
+                                                      );
+                                                    }).apply(null, eventArgs);
+
+                                                    if (
+                                                      eventArgs.length > 1 &&
+                                                      eventArgs[1] &&
+                                                      eventArgs[1]
+                                                        ._plasmic_state_init_
+                                                    ) {
+                                                      return;
+                                                    }
                                                   }}
                                                   placeholder={``}
                                                   value={
@@ -4189,10 +4290,22 @@ function PlasmicHomepage__RenderFunc(props: {
                                         "__wab_instance",
                                         sty.dialogRegisterAccount
                                       )}
-                                      onOpenChange={generateStateOnChangeProp(
-                                        $state,
-                                        ["dialogRegisterAccount", "open"]
-                                      )}
+                                      onOpenChange={async (
+                                        ...eventArgs: any
+                                      ) => {
+                                        generateStateOnChangeProp($state, [
+                                          "dialogRegisterAccount",
+                                          "open"
+                                        ]).apply(null, eventArgs);
+
+                                        if (
+                                          eventArgs.length > 1 &&
+                                          eventArgs[1] &&
+                                          eventArgs[1]._plasmic_state_init_
+                                        ) {
+                                          return;
+                                        }
+                                      }}
                                       open={generateStateValueProp($state, [
                                         "dialogRegisterAccount",
                                         "open"
@@ -4288,10 +4401,12 @@ function PlasmicHomepage__RenderFunc(props: {
                                           "__wab_instance",
                                           sty.radioAccounts
                                         )}
-                                        onChange={generateStateOnChangeProp(
-                                          $state,
-                                          ["radioAccounts", "value"]
-                                        )}
+                                        onChange={async (...eventArgs: any) => {
+                                          generateStateOnChangeProp($state, [
+                                            "radioAccounts",
+                                            "value"
+                                          ]).apply(null, eventArgs);
+                                        }}
                                         options={(() => {
                                           try {
                                             return $state.bankAccountList.map(
@@ -4952,10 +5067,20 @@ function PlasmicHomepage__RenderFunc(props: {
                           "__wab_instance",
                           sty.dialogSettlement
                         )}
-                        onOpenChange={generateStateOnChangeProp($state, [
-                          "dialogSettlement",
-                          "open"
-                        ])}
+                        onOpenChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "dialogSettlement",
+                            "open"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
                         open={generateStateValueProp($state, [
                           "dialogSettlement",
                           "open"
@@ -5424,21 +5549,27 @@ function PlasmicHomepage__RenderFunc(props: {
                                     />
                                   }
                                   method={"GET"}
-                                  onError={generateStateOnChangeProp($state, [
-                                    "detailsDataApiRequest",
-                                    __plasmic_idx_0,
-                                    "error"
-                                  ])}
-                                  onLoading={generateStateOnChangeProp($state, [
-                                    "detailsDataApiRequest",
-                                    __plasmic_idx_0,
-                                    "loading"
-                                  ])}
-                                  onSuccess={generateStateOnChangeProp($state, [
-                                    "detailsDataApiRequest",
-                                    __plasmic_idx_0,
-                                    "data"
-                                  ])}
+                                  onError={async (...eventArgs: any) => {
+                                    generateStateOnChangeProp($state, [
+                                      "detailsDataApiRequest",
+                                      __plasmic_idx_0,
+                                      "error"
+                                    ]).apply(null, eventArgs);
+                                  }}
+                                  onLoading={async (...eventArgs: any) => {
+                                    generateStateOnChangeProp($state, [
+                                      "detailsDataApiRequest",
+                                      __plasmic_idx_0,
+                                      "loading"
+                                    ]).apply(null, eventArgs);
+                                  }}
+                                  onSuccess={async (...eventArgs: any) => {
+                                    generateStateOnChangeProp($state, [
+                                      "detailsDataApiRequest",
+                                      __plasmic_idx_0,
+                                      "data"
+                                    ]).apply(null, eventArgs);
+                                  }}
                                   params={(() => {
                                     try {
                                       return {
@@ -6234,11 +6365,21 @@ function PlasmicHomepage__RenderFunc(props: {
                                 "__wab_instance",
                                 sty.dialogNewInvoiceDetails
                               ),
-                              onOpenChange: generateStateOnChangeProp($state, [
-                                "dialogNewInvoiceDetails",
-                                __plasmic_idx_0,
-                                "open"
-                              ]),
+                              onOpenChange: async (...eventArgs: any) => {
+                                generateStateOnChangeProp($state, [
+                                  "dialogNewInvoiceDetails",
+                                  __plasmic_idx_0,
+                                  "open"
+                                ]).apply(null, eventArgs);
+
+                                if (
+                                  eventArgs.length > 1 &&
+                                  eventArgs[1] &&
+                                  eventArgs[1]._plasmic_state_init_
+                                ) {
+                                  return;
+                                }
+                              },
                               open: generateStateValueProp($state, [
                                 "dialogNewInvoiceDetails",
                                 __plasmic_idx_0,

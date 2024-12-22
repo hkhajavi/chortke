@@ -391,6 +391,15 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                                   (e => e.target?.value).apply(null, eventArgs)
                                 );
                               }).apply(null, eventArgs);
+
+                              if (
+                                eventArgs.length > 1 &&
+                                eventArgs[1] &&
+                                eventArgs[1]._plasmic_state_init_
+                              ) {
+                                return;
+                              }
+
                               (async event => {
                                 const $steps = {};
 
@@ -743,13 +752,26 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                                 "__wab_instance",
                                 sty.txtName
                               )}
-                              onChange={(...eventArgs) => {
-                                generateStateOnChangeProp($state, [
-                                  "txtName",
-                                  "value"
-                                ])(
-                                  (e => e.target?.value).apply(null, eventArgs)
-                                );
+                              onChange={async (...eventArgs: any) => {
+                                ((...eventArgs) => {
+                                  generateStateOnChangeProp($state, [
+                                    "txtName",
+                                    "value"
+                                  ])(
+                                    (e => e.target?.value).apply(
+                                      null,
+                                      eventArgs
+                                    )
+                                  );
+                                }).apply(null, eventArgs);
+
+                                if (
+                                  eventArgs.length > 1 &&
+                                  eventArgs[1] &&
+                                  eventArgs[1]._plasmic_state_init_
+                                ) {
+                                  return;
+                                }
                               }}
                               value={
                                 generateStateValueProp($state, [
@@ -813,13 +835,26 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                                 "__wab_instance",
                                 sty.txtBan
                               )}
-                              onChange={(...eventArgs) => {
-                                generateStateOnChangeProp($state, [
-                                  "txtBan",
-                                  "value"
-                                ])(
-                                  (e => e.target?.value).apply(null, eventArgs)
-                                );
+                              onChange={async (...eventArgs: any) => {
+                                ((...eventArgs) => {
+                                  generateStateOnChangeProp($state, [
+                                    "txtBan",
+                                    "value"
+                                  ])(
+                                    (e => e.target?.value).apply(
+                                      null,
+                                      eventArgs
+                                    )
+                                  );
+                                }).apply(null, eventArgs);
+
+                                if (
+                                  eventArgs.length > 1 &&
+                                  eventArgs[1] &&
+                                  eventArgs[1]._plasmic_state_init_
+                                ) {
+                                  return;
+                                }
                               }}
                               value={
                                 generateStateValueProp($state, [
@@ -883,13 +918,26 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                                 "__wab_instance",
                                 sty.txtBank
                               )}
-                              onChange={(...eventArgs) => {
-                                generateStateOnChangeProp($state, [
-                                  "txtBank",
-                                  "value"
-                                ])(
-                                  (e => e.target?.value).apply(null, eventArgs)
-                                );
+                              onChange={async (...eventArgs: any) => {
+                                ((...eventArgs) => {
+                                  generateStateOnChangeProp($state, [
+                                    "txtBank",
+                                    "value"
+                                  ])(
+                                    (e => e.target?.value).apply(
+                                      null,
+                                      eventArgs
+                                    )
+                                  );
+                                }).apply(null, eventArgs);
+
+                                if (
+                                  eventArgs.length > 1 &&
+                                  eventArgs[1] &&
+                                  eventArgs[1]._plasmic_state_init_
+                                ) {
+                                  return;
+                                }
                               }}
                               value={
                                 generateStateValueProp($state, [
@@ -1319,10 +1367,20 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                     </React.Fragment>
                   }
                   className={classNames("__wab_instance", sty.dialog2)}
-                  onOpenChange={generateStateOnChangeProp($state, [
-                    "dialog2",
-                    "open"
-                  ])}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, [
+                      "dialog2",
+                      "open"
+                    ]).apply(null, eventArgs);
+
+                    if (
+                      eventArgs.length > 1 &&
+                      eventArgs[1] &&
+                      eventArgs[1]._plasmic_state_init_
+                    ) {
+                      return;
+                    }
+                  }}
                   open={generateStateValueProp($state, ["dialog2", "open"])}
                   title={
                     <div
@@ -2062,11 +2120,21 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                           "__wab_instance",
                           sty.dialogDelete
                         ),
-                        onOpenChange: generateStateOnChangeProp($state, [
-                          "dialogDelete",
-                          __plasmic_idx_0,
-                          "open"
-                        ]),
+                        onOpenChange: async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "dialogDelete",
+                            __plasmic_idx_0,
+                            "open"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        },
                         open: generateStateValueProp($state, [
                           "dialogDelete",
                           __plasmic_idx_0,
