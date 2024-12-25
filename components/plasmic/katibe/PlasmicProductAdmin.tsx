@@ -842,7 +842,9 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     try {
                                       return (
                                         "https://apigw.paziresh24.com/katibe/v1/factors/search/p24-admin?codename=" +
-                                        $state.cbProductlist.value +
+                                        ($state.cbProductlist.value == "0"
+                                          ? ""
+                                          : $state.cbProductlist.value) +
                                         "&limit=" +
                                         $state.limit +
                                         "&page=" +
@@ -7031,7 +7033,9 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   try {
                                     return (
                                       "https://apigw.paziresh24.com/katibe/v1/factors/search/p24-admin?codename=" +
-                                      $state.cbProductlist.value +
+                                      ($state.cbProductlist.value == "0"
+                                        ? ""
+                                        : $state.cbProductlist.value) +
                                       "&limit=" +
                                       $state.limit +
                                       "&page=" +
