@@ -3949,18 +3949,15 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                   (() => {
                                                     try {
                                                       return (
-                                                        "https://apigw.paziresh24.com/transaction/v1/transactions/search/p24-admin?productid=" +
-                                                        ($ctx.query.productid >
-                                                        0
-                                                          ? $ctx.query.productid
+                                                        "https://apigw.paziresh24.com/transaction/v1/factors/search/p24-admin?codename=" +
+                                                        ($state.cbProductlist
+                                                          .value == "0"
+                                                          ? ""
                                                           : $state.cbProductlist
                                                               .value) +
-                                                        "&search=" +
-                                                        $state.txtSearch.value +
                                                         "&limit=" +
                                                         $state.limit +
-                                                        "&page=" +
-                                                        $state.pageNumber
+                                                        "&page=1"
                                                       );
                                                     } catch (e) {
                                                       if (
