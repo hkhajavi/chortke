@@ -2209,7 +2209,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
 
                                   <Button2
                                     children2={
-                                      "\u0627\u0646\u062a\u062e\u0627\u0628 \u067e\u0631\u0648\u062f\u0627\u06a9\u062a"
+                                      "\u0627\u0646\u062a\u062e\u0627\u0628  \u0645\u0634\u062a\u0631\u06cc"
                                     }
                                     className={classNames(
                                       "__wab_instance",
@@ -2559,7 +2559,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     )}
                                   >
                                     {
-                                      "\u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628 \u0641\u0648\u0642 \u0627\u0632 \u06a9\u062f\u0627\u0645 \u067e\u0631\u0648\u062f\u0627\u06a9\u062a \u0634\u0645\u0627 \u062b\u0628\u062a \u0634\u0648\u062f\u061f"
+                                      "\u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628 \u0627\u0632 \u06a9\u062f\u0627\u0645 \u067e\u0631\u0648\u062f\u0627\u06a9\u062a \u0634\u0645\u0627 \u062b\u0628\u062a \u0634\u0648\u062f\u061f"
                                     }
                                   </div>
                                 </div>
