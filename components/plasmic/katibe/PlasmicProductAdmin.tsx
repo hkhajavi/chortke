@@ -117,6 +117,7 @@ export type PlasmicProductAdmin__OverridesType = {
   dialogSelectProduct?: Flex__<typeof Dialog>;
   txtProductFilter?: Flex__<typeof TextInput>;
   txtRegisterInvoiceTitle?: Flex__<typeof TextInput>;
+  cbProducregisterInvoice?: Flex__<typeof Select>;
   txtServiceName?: Flex__<typeof TextInput>;
   txtServiceCount?: Flex__<typeof TextInput>;
   txtServicePrice?: Flex__<typeof TextInput>;
@@ -125,7 +126,6 @@ export type PlasmicProductAdmin__OverridesType = {
   txtRegisterInvoiceVatPercent?: Flex__<typeof TextInput>;
   txtFinalPrice?: Flex__<typeof TextInput>;
   txtInvoiceId?: Flex__<typeof TextInput>;
-  cbProducregisterInvoice?: Flex__<typeof Select>;
   waitingIcon4?: Flex__<"svg">;
   gridInvoice1?: Flex__<"div">;
   gridNoData?: Flex__<"div">;
@@ -2539,6 +2539,165 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   />
                                 </div>
                               </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__oXgaj
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__nPb0X
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__wdXg4
+                                    )}
+                                  >
+                                    {
+                                      "\u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628 \u0641\u0648\u0642 \u0627\u0632 \u06a9\u062f\u0627\u0645 \u067e\u0631\u0648\u062f\u0627\u06a9\u062a \u0634\u0645\u0627 \u062b\u0628\u062a \u0634\u0648\u062f\u061f"
+                                    }
+                                  </div>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__v7BBh
+                                  )}
+                                >
+                                  <Select
+                                    data-plasmic-name={
+                                      "cbProducregisterInvoice"
+                                    }
+                                    data-plasmic-override={
+                                      overrides.cbProducregisterInvoice
+                                    }
+                                    aria-label={"name"}
+                                    aria-labelledby={"productid"}
+                                    className={classNames(
+                                      "__wab_instance",
+                                      sty.cbProducregisterInvoice
+                                    )}
+                                    name={"productlist"}
+                                    onChange={async (...eventArgs: any) => {
+                                      ((...eventArgs) => {
+                                        generateStateOnChangeProp($state, [
+                                          "cbProducregisterInvoice",
+                                          "value"
+                                        ])(eventArgs[0]);
+                                      }).apply(null, eventArgs);
+
+                                      if (
+                                        eventArgs.length > 1 &&
+                                        eventArgs[1] &&
+                                        eventArgs[1]._plasmic_state_init_
+                                      ) {
+                                        return;
+                                      }
+
+                                      (async value => {
+                                        const $steps = {};
+
+                                        $steps[
+                                          "updateDialogRegisterInvoiceOpen"
+                                        ] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                variable: {
+                                                  objRoot: $state,
+                                                  variablePath: [
+                                                    "dialogRegisterInvoice",
+                                                    "open"
+                                                  ]
+                                                },
+                                                operation: 0,
+                                                value: true
+                                              };
+                                              return (({
+                                                variable,
+                                                value,
+                                                startIndex,
+                                                deleteCount
+                                              }) => {
+                                                if (!variable) {
+                                                  return;
+                                                }
+                                                const {
+                                                  objRoot,
+                                                  variablePath
+                                                } = variable;
+
+                                                $stateSet(
+                                                  objRoot,
+                                                  variablePath,
+                                                  value
+                                                );
+                                                return value;
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps[
+                                            "updateDialogRegisterInvoiceOpen"
+                                          ] != null &&
+                                          typeof $steps[
+                                            "updateDialogRegisterInvoiceOpen"
+                                          ] === "object" &&
+                                          typeof $steps[
+                                            "updateDialogRegisterInvoiceOpen"
+                                          ].then === "function"
+                                        ) {
+                                          $steps[
+                                            "updateDialogRegisterInvoiceOpen"
+                                          ] = await $steps[
+                                            "updateDialogRegisterInvoiceOpen"
+                                          ];
+                                        }
+                                      }).apply(null, eventArgs);
+                                    }}
+                                    options={(() => {
+                                      try {
+                                        return $state.productList
+                                          .filter(item => item.productid !== 0)
+                                          .map(item => ({
+                                            value: item.codename,
+                                            label: item.name
+                                          }));
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return [];
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                    placeholder={
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text__rmHzk
+                                        )}
+                                      >
+                                        {
+                                          "\u0627\u0646\u062a\u062e\u0627\u0628 \u067e\u0631\u0648\u062f\u0627\u06a9\u062a"
+                                        }
+                                      </div>
+                                    }
+                                    value={generateStateValueProp($state, [
+                                      "cbProducregisterInvoice",
+                                      "value"
+                                    ])}
+                                  />
+                                </div>
+                              </div>
                               {(_par =>
                                 !_par
                                   ? []
@@ -3419,165 +3578,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               <div
                                 className={classNames(
                                   projectcss.all,
-                                  sty.freeBox__oXgaj
-                                )}
-                              >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.freeBox__nPb0X
-                                  )}
-                                >
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__wdXg4
-                                    )}
-                                  >
-                                    {
-                                      "\u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628 \u0641\u0648\u0642 \u0627\u0632 \u06a9\u062f\u0627\u0645 \u067e\u0631\u0648\u062f\u0627\u06a9\u062a \u0634\u0645\u0627 \u062b\u0628\u062a \u0634\u0648\u062f\u061f"
-                                    }
-                                  </div>
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.freeBox__v7BBh
-                                  )}
-                                >
-                                  <Select
-                                    data-plasmic-name={
-                                      "cbProducregisterInvoice"
-                                    }
-                                    data-plasmic-override={
-                                      overrides.cbProducregisterInvoice
-                                    }
-                                    aria-label={"name"}
-                                    aria-labelledby={"productid"}
-                                    className={classNames(
-                                      "__wab_instance",
-                                      sty.cbProducregisterInvoice
-                                    )}
-                                    name={"productlist"}
-                                    onChange={async (...eventArgs: any) => {
-                                      ((...eventArgs) => {
-                                        generateStateOnChangeProp($state, [
-                                          "cbProducregisterInvoice",
-                                          "value"
-                                        ])(eventArgs[0]);
-                                      }).apply(null, eventArgs);
-
-                                      if (
-                                        eventArgs.length > 1 &&
-                                        eventArgs[1] &&
-                                        eventArgs[1]._plasmic_state_init_
-                                      ) {
-                                        return;
-                                      }
-
-                                      (async value => {
-                                        const $steps = {};
-
-                                        $steps[
-                                          "updateDialogRegisterInvoiceOpen"
-                                        ] = true
-                                          ? (() => {
-                                              const actionArgs = {
-                                                variable: {
-                                                  objRoot: $state,
-                                                  variablePath: [
-                                                    "dialogRegisterInvoice",
-                                                    "open"
-                                                  ]
-                                                },
-                                                operation: 0,
-                                                value: true
-                                              };
-                                              return (({
-                                                variable,
-                                                value,
-                                                startIndex,
-                                                deleteCount
-                                              }) => {
-                                                if (!variable) {
-                                                  return;
-                                                }
-                                                const {
-                                                  objRoot,
-                                                  variablePath
-                                                } = variable;
-
-                                                $stateSet(
-                                                  objRoot,
-                                                  variablePath,
-                                                  value
-                                                );
-                                                return value;
-                                              })?.apply(null, [actionArgs]);
-                                            })()
-                                          : undefined;
-                                        if (
-                                          $steps[
-                                            "updateDialogRegisterInvoiceOpen"
-                                          ] != null &&
-                                          typeof $steps[
-                                            "updateDialogRegisterInvoiceOpen"
-                                          ] === "object" &&
-                                          typeof $steps[
-                                            "updateDialogRegisterInvoiceOpen"
-                                          ].then === "function"
-                                        ) {
-                                          $steps[
-                                            "updateDialogRegisterInvoiceOpen"
-                                          ] = await $steps[
-                                            "updateDialogRegisterInvoiceOpen"
-                                          ];
-                                        }
-                                      }).apply(null, eventArgs);
-                                    }}
-                                    options={(() => {
-                                      try {
-                                        return $state.productList
-                                          .filter(item => item.productid !== 0)
-                                          .map(item => ({
-                                            value: item.codename,
-                                            label: item.name
-                                          }));
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return [];
-                                        }
-                                        throw e;
-                                      }
-                                    })()}
-                                    placeholder={
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
-                                          sty.text__rmHzk
-                                        )}
-                                      >
-                                        {
-                                          "\u0627\u0646\u062a\u062e\u0627\u0628 \u067e\u0631\u0648\u062f\u0627\u06a9\u062a"
-                                        }
-                                      </div>
-                                    }
-                                    value={generateStateValueProp($state, [
-                                      "cbProducregisterInvoice",
-                                      "value"
-                                    ])}
-                                  />
-                                </div>
-                              </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
                                   sty.freeBox__sybWd
                                 )}
                               >
@@ -3603,7 +3603,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               const actionArgs = {
                                                 args: [
                                                   "error",
-                                                  "\u0628\u0627 \u0648\u0627\u0631\u062f \u06a9\u0631\u062f\u0646 \u0634\u0645\u0627\u0631\u0647 \u0645\u0648\u0628\u0627\u06cc\u0644\u060c \u06a9\u0627\u0631\u0628\u0631 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u062c\u0633\u062a \u0648 \u062c\u0648 \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                                                  "\u0644\u0637\u0641\u0627 \u067e\u0631\u0648\u062f\u0627\u06a9\u062a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
                                                 ]
                                               };
                                               return $globalActions[
@@ -7589,6 +7589,7 @@ const PlasmicDescendants = {
     "dialogSelectProduct",
     "txtProductFilter",
     "txtRegisterInvoiceTitle",
+    "cbProducregisterInvoice",
     "txtServiceName",
     "txtServiceCount",
     "txtServicePrice",
@@ -7597,7 +7598,6 @@ const PlasmicDescendants = {
     "txtRegisterInvoiceVatPercent",
     "txtFinalPrice",
     "txtInvoiceId",
-    "cbProducregisterInvoice",
     "waitingIcon4",
     "gridInvoice1",
     "gridNoData",
@@ -7628,6 +7628,7 @@ const PlasmicDescendants = {
     "dialogSelectProduct",
     "txtProductFilter",
     "txtRegisterInvoiceTitle",
+    "cbProducregisterInvoice",
     "txtServiceName",
     "txtServiceCount",
     "txtServicePrice",
@@ -7636,7 +7637,6 @@ const PlasmicDescendants = {
     "txtRegisterInvoiceVatPercent",
     "txtFinalPrice",
     "txtInvoiceId",
-    "cbProducregisterInvoice",
     "waitingIcon4",
     "gridInvoice1",
     "gridNoData",
@@ -7660,6 +7660,7 @@ const PlasmicDescendants = {
     "dialogSelectProduct",
     "txtProductFilter",
     "txtRegisterInvoiceTitle",
+    "cbProducregisterInvoice",
     "txtServiceName",
     "txtServiceCount",
     "txtServicePrice",
@@ -7668,7 +7669,6 @@ const PlasmicDescendants = {
     "txtRegisterInvoiceVatPercent",
     "txtFinalPrice",
     "txtInvoiceId",
-    "cbProducregisterInvoice",
     "waitingIcon4"
   ],
   cbProductlist: ["cbProductlist"],
@@ -7681,6 +7681,7 @@ const PlasmicDescendants = {
     "dialogSelectProduct",
     "txtProductFilter",
     "txtRegisterInvoiceTitle",
+    "cbProducregisterInvoice",
     "txtServiceName",
     "txtServiceCount",
     "txtServicePrice",
@@ -7688,14 +7689,14 @@ const PlasmicDescendants = {
     "txtRegisterInvoiceDiscountPercent",
     "txtRegisterInvoiceVatPercent",
     "txtFinalPrice",
-    "txtInvoiceId",
-    "cbProducregisterInvoice"
+    "txtInvoiceId"
   ],
   waitingIcon5: ["waitingIcon5"],
   txtUserMobile: ["txtUserMobile"],
   dialogSelectProduct: ["dialogSelectProduct", "txtProductFilter"],
   txtProductFilter: ["txtProductFilter"],
   txtRegisterInvoiceTitle: ["txtRegisterInvoiceTitle"],
+  cbProducregisterInvoice: ["cbProducregisterInvoice"],
   txtServiceName: ["txtServiceName"],
   txtServiceCount: ["txtServiceCount"],
   txtServicePrice: ["txtServicePrice"],
@@ -7704,7 +7705,6 @@ const PlasmicDescendants = {
   txtRegisterInvoiceVatPercent: ["txtRegisterInvoiceVatPercent"],
   txtFinalPrice: ["txtFinalPrice"],
   txtInvoiceId: ["txtInvoiceId"],
-  cbProducregisterInvoice: ["cbProducregisterInvoice"],
   waitingIcon4: ["waitingIcon4"],
   gridInvoice1: ["gridInvoice1"],
   gridNoData: ["gridNoData"],
@@ -7759,6 +7759,7 @@ type NodeDefaultElementType = {
   dialogSelectProduct: typeof Dialog;
   txtProductFilter: typeof TextInput;
   txtRegisterInvoiceTitle: typeof TextInput;
+  cbProducregisterInvoice: typeof Select;
   txtServiceName: typeof TextInput;
   txtServiceCount: typeof TextInput;
   txtServicePrice: typeof TextInput;
@@ -7767,7 +7768,6 @@ type NodeDefaultElementType = {
   txtRegisterInvoiceVatPercent: typeof TextInput;
   txtFinalPrice: typeof TextInput;
   txtInvoiceId: typeof TextInput;
-  cbProducregisterInvoice: typeof Select;
   waitingIcon4: "svg";
   gridInvoice1: "div";
   gridNoData: "div";
@@ -7858,6 +7858,7 @@ export const PlasmicProductAdmin = Object.assign(
     dialogSelectProduct: makeNodeComponent("dialogSelectProduct"),
     txtProductFilter: makeNodeComponent("txtProductFilter"),
     txtRegisterInvoiceTitle: makeNodeComponent("txtRegisterInvoiceTitle"),
+    cbProducregisterInvoice: makeNodeComponent("cbProducregisterInvoice"),
     txtServiceName: makeNodeComponent("txtServiceName"),
     txtServiceCount: makeNodeComponent("txtServiceCount"),
     txtServicePrice: makeNodeComponent("txtServicePrice"),
@@ -7872,7 +7873,6 @@ export const PlasmicProductAdmin = Object.assign(
     ),
     txtFinalPrice: makeNodeComponent("txtFinalPrice"),
     txtInvoiceId: makeNodeComponent("txtInvoiceId"),
-    cbProducregisterInvoice: makeNodeComponent("cbProducregisterInvoice"),
     waitingIcon4: makeNodeComponent("waitingIcon4"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     gridNoData: makeNodeComponent("gridNoData"),
