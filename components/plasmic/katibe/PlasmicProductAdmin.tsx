@@ -990,10 +990,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                           e instanceof TypeError ||
                           e?.plasmicType === "PlasmicUndefinedDataError"
                         ) {
-                          return [
-                            { value: "option1", label: "Option 1" },
-                            { value: "option2", label: "Option 2" }
-                          ];
+                          return [];
                         }
                         throw e;
                       }
@@ -2222,8 +2219,12 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         ? (() => {
                                             const actionArgs = {
                                               customFunction: async () => {
-                                                return ($state.txtUserMobile.value =
-                                                  "");
+                                                return (() => {
+                                                  $state.txtUserMobile.value =
+                                                    "";
+                                                  return ($state.cbProducregisterInvoice.value =
+                                                    $state.productList[0].productid);
+                                                })();
                                               }
                                             };
                                             return (({ customFunction }) => {
@@ -2559,7 +2560,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     )}
                                   >
                                     {
-                                      "\u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628 \u0627\u0632 \u06a9\u062f\u0627\u0645 \u067e\u0631\u0648\u062f\u0627\u06a9\u062a \u0634\u0645\u0627 \u062b\u0628\u062a \u0634\u0648\u062f\u061f"
+                                      "\u067e\u0631\u0648\u062f\u0627\u06a9\u062a \u0634\u0645\u0627:"
                                     }
                                   </div>
                                 </div>
@@ -4377,8 +4378,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       const actionArgs = {
                                         customFunction: async () => {
                                           return (() => {
-                                            $state.cbProducregisterInvoice.value =
-                                              $state.productList[0].productid;
                                             $state.registerInvoiceFinal = false;
                                             $state.txtUserMobile.value = "";
                                             $state.txtServiceCount[0].value =
