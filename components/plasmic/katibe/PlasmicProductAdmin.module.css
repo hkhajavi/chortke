@@ -1178,12 +1178,11 @@
 }
 .text__wdXg4 {
   position: relative;
-  width: 100%;
+  width: auto;
   height: auto;
   max-width: 100%;
   text-align: left;
   font-size: 13px;
-  min-width: 0;
 }
 .text__x9Wz2 {
   position: relative;
@@ -1194,13 +1193,13 @@
 }
 .freeBox__v7BBh {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   position: relative;
   width: 100%;
   height: auto;
   max-width: 100%;
-  justify-content: center;
-  align-items: flex-start;
+  justify-content: flex-start;
+  align-items: center;
   grid-column-end: span 3;
   min-width: 0;
   padding: 0px 8px;
