@@ -64,6 +64,8 @@ import Select from "../../Select"; // plasmic-import: 7wkEfmUYAcMf/component
 import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
 import Dialog from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
 import Button2 from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
+import RadioGroup from "../../RadioGroup"; // plasmic-import: tqHTZfyBziuN/component
+import Radio from "../../Radio"; // plasmic-import: Cbq_rTXOD16b/component
 import Dialog2 from "../../Dialog2"; // plasmic-import: 42tFBTdMKvt2/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: hVBOtSJvmbc4/codeComponent
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
@@ -117,7 +119,8 @@ export type PlasmicProductAdmin__OverridesType = {
   dialogSelectProduct?: Flex__<typeof Dialog>;
   txtProductFilter?: Flex__<typeof TextInput>;
   txtRegisterInvoiceTitle?: Flex__<typeof TextInput>;
-  cbProducregisterInvoice?: Flex__<typeof Select>;
+  radioGroup?: Flex__<typeof RadioGroup>;
+  radio?: Flex__<typeof Radio>;
   txtServiceName?: Flex__<typeof TextInput>;
   txtServiceCount?: Flex__<typeof TextInput>;
   txtServicePrice?: Flex__<typeof TextInput>;
@@ -489,16 +492,16 @@ function PlasmicProductAdmin__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "cbProducregisterInvoice.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
         path: "pageNumber",
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 1
+      },
+      {
+        path: "radioGroup.value",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -2220,10 +2223,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                             const actionArgs = {
                                               customFunction: async () => {
                                                 return (() => {
-                                                  $state.txtUserMobile.value =
-                                                    "";
-                                                  return ($state.cbProducregisterInvoice.value =
-                                                    $state.productList[0].productid);
+                                                  return ($state.txtUserMobile.value =
+                                                    "");
                                                 })();
                                               }
                                             };
@@ -2563,6 +2564,30 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       "\u067e\u0631\u0648\u062f\u0627\u06a9\u062a \u0634\u0645\u0627:"
                                     }
                                   </div>
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__x9Wz2
+                                    )}
+                                  >
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return undefined;
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  </div>
                                 </div>
                                 <div
                                   className={classNames(
@@ -2570,27 +2595,18 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     sty.freeBox__v7BBh
                                   )}
                                 >
-                                  <Select
-                                    data-plasmic-name={
-                                      "cbProducregisterInvoice"
-                                    }
-                                    data-plasmic-override={
-                                      overrides.cbProducregisterInvoice
-                                    }
-                                    aria-label={"name"}
-                                    aria-labelledby={"productid"}
+                                  <RadioGroup
+                                    data-plasmic-name={"radioGroup"}
+                                    data-plasmic-override={overrides.radioGroup}
                                     className={classNames(
                                       "__wab_instance",
-                                      sty.cbProducregisterInvoice
+                                      sty.radioGroup
                                     )}
-                                    name={"productlist"}
                                     onChange={async (...eventArgs: any) => {
-                                      ((...eventArgs) => {
-                                        generateStateOnChangeProp($state, [
-                                          "cbProducregisterInvoice",
-                                          "value"
-                                        ])(eventArgs[0]);
-                                      }).apply(null, eventArgs);
+                                      generateStateOnChangeProp($state, [
+                                        "radioGroup",
+                                        "value"
+                                      ]).apply(null, eventArgs);
 
                                       if (
                                         eventArgs.length > 1 &&
@@ -2599,103 +2615,103 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       ) {
                                         return;
                                       }
-
-                                      (async value => {
-                                        const $steps = {};
-
-                                        $steps[
-                                          "updateDialogRegisterInvoiceOpen"
-                                        ] = true
-                                          ? (() => {
-                                              const actionArgs = {
-                                                variable: {
-                                                  objRoot: $state,
-                                                  variablePath: [
-                                                    "dialogRegisterInvoice",
-                                                    "open"
-                                                  ]
-                                                },
-                                                operation: 0,
-                                                value: true
-                                              };
-                                              return (({
-                                                variable,
-                                                value,
-                                                startIndex,
-                                                deleteCount
-                                              }) => {
-                                                if (!variable) {
-                                                  return;
-                                                }
-                                                const {
-                                                  objRoot,
-                                                  variablePath
-                                                } = variable;
-
-                                                $stateSet(
-                                                  objRoot,
-                                                  variablePath,
-                                                  value
-                                                );
-                                                return value;
-                                              })?.apply(null, [actionArgs]);
-                                            })()
-                                          : undefined;
-                                        if (
-                                          $steps[
-                                            "updateDialogRegisterInvoiceOpen"
-                                          ] != null &&
-                                          typeof $steps[
-                                            "updateDialogRegisterInvoiceOpen"
-                                          ] === "object" &&
-                                          typeof $steps[
-                                            "updateDialogRegisterInvoiceOpen"
-                                          ].then === "function"
-                                        ) {
-                                          $steps[
-                                            "updateDialogRegisterInvoiceOpen"
-                                          ] = await $steps[
-                                            "updateDialogRegisterInvoiceOpen"
-                                          ];
-                                        }
-                                      }).apply(null, eventArgs);
                                     }}
-                                    options={(() => {
-                                      try {
-                                        return $state.productList
-                                          .filter(item => item.productid !== 0)
-                                          .map(item => ({
-                                            value: item.codename,
-                                            label: item.name
-                                          }));
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return [];
-                                        }
-                                        throw e;
-                                      }
-                                    })()}
-                                    placeholder={
-                                      <div
+                                    options={
+                                      <Stack__
+                                        as={"div"}
+                                        hasGap={true}
                                         className={classNames(
                                           projectcss.all,
-                                          projectcss.__wab_text,
-                                          sty.text__rmHzk
+                                          sty.freeBox___5Qw7Y
                                         )}
                                       >
-                                        {
-                                          "\u0627\u0646\u062a\u062e\u0627\u0628 \u067e\u0631\u0648\u062f\u0627\u06a9\u062a"
-                                        }
-                                      </div>
+                                        {(_par =>
+                                          !_par
+                                            ? []
+                                            : Array.isArray(_par)
+                                            ? _par
+                                            : [_par])(
+                                          (() => {
+                                            try {
+                                              return $state.productList
+                                                .filter(
+                                                  item => item.productid !== 0
+                                                )
+                                                .map(item => ({
+                                                  value: item.codename,
+                                                  label: item.name
+                                                }));
+                                            } catch (e) {
+                                              if (
+                                                e instanceof TypeError ||
+                                                e?.plasmicType ===
+                                                  "PlasmicUndefinedDataError"
+                                              ) {
+                                                return [];
+                                              }
+                                              throw e;
+                                            }
+                                          })()
+                                        ).map(
+                                          (
+                                            __plasmic_item_0,
+                                            __plasmic_idx_0
+                                          ) => {
+                                            const currentItem =
+                                              __plasmic_item_0;
+                                            const currentIndex =
+                                              __plasmic_idx_0;
+                                            return (
+                                              <Radio
+                                                data-plasmic-name={"radio"}
+                                                data-plasmic-override={
+                                                  overrides.radio
+                                                }
+                                                className={classNames(
+                                                  "__wab_instance",
+                                                  sty.radio
+                                                )}
+                                                key={currentIndex}
+                                                label={
+                                                  <React.Fragment>
+                                                    {(() => {
+                                                      try {
+                                                        return currentItem.label;
+                                                      } catch (e) {
+                                                        if (
+                                                          e instanceof
+                                                            TypeError ||
+                                                          e?.plasmicType ===
+                                                            "PlasmicUndefinedDataError"
+                                                        ) {
+                                                          return "Option 2";
+                                                        }
+                                                        throw e;
+                                                      }
+                                                    })()}
+                                                  </React.Fragment>
+                                                }
+                                                value={(() => {
+                                                  try {
+                                                    return currentItem.value;
+                                                  } catch (e) {
+                                                    if (
+                                                      e instanceof TypeError ||
+                                                      e?.plasmicType ===
+                                                        "PlasmicUndefinedDataError"
+                                                    ) {
+                                                      return undefined;
+                                                    }
+                                                    throw e;
+                                                  }
+                                                })()}
+                                              />
+                                            );
+                                          }
+                                        )}
+                                      </Stack__>
                                     }
-                                    value={generateStateValueProp($state, [
-                                      "cbProducregisterInvoice",
-                                      "value"
-                                    ])}
+                                    showLabel={false}
                                   />
                                 </div>
                               </div>
@@ -3604,7 +3620,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               const actionArgs = {
                                                 args: [
                                                   "error",
-                                                  "\u0644\u0637\u0641\u0627 \u067e\u0631\u0648\u062f\u0627\u06a9\u062a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                                                  "\u0644\u0637\u0641\u0627 \u0645\u0634\u062a\u0631\u06cc \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
                                                 ]
                                               };
                                               return $globalActions[
@@ -3626,10 +3642,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       }
 
                                       $steps["errorMyProduct"] =
-                                        $state.cbProducregisterInvoice.value ==
-                                          0 ||
-                                        $state.cbProducregisterInvoice.value ==
-                                          ""
+                                        $state.radioGroup.value == undefined ||
+                                        $state.radioGroup.value.length < 1
                                           ? (() => {
                                               const actionArgs = {
                                                 args: [
@@ -3702,10 +3716,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       $steps["registerInvoiceApi"] =
                                         $state.registerinvoiceUserid.length >
                                           0 &&
-                                        $state.cbProducregisterInvoice.value !=
-                                          0 &&
-                                        $state.cbProducregisterInvoice.value !=
-                                          ""
+                                        ($state.radioGroup.value == undefined ||
+                                          $state.radioGroup.value.length < 1)
                                           ? (() => {
                                               const actionArgs = {
                                                 args: [
@@ -3752,8 +3764,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                           }
                                                         ],
                                                         codename:
-                                                          $state
-                                                            .cbProducregisterInvoice
+                                                          $state.radioGroup
                                                             .value
                                                       };
                                                     } catch (e) {
@@ -7588,7 +7599,8 @@ const PlasmicDescendants = {
     "dialogSelectProduct",
     "txtProductFilter",
     "txtRegisterInvoiceTitle",
-    "cbProducregisterInvoice",
+    "radioGroup",
+    "radio",
     "txtServiceName",
     "txtServiceCount",
     "txtServicePrice",
@@ -7627,7 +7639,8 @@ const PlasmicDescendants = {
     "dialogSelectProduct",
     "txtProductFilter",
     "txtRegisterInvoiceTitle",
-    "cbProducregisterInvoice",
+    "radioGroup",
+    "radio",
     "txtServiceName",
     "txtServiceCount",
     "txtServicePrice",
@@ -7659,7 +7672,8 @@ const PlasmicDescendants = {
     "dialogSelectProduct",
     "txtProductFilter",
     "txtRegisterInvoiceTitle",
-    "cbProducregisterInvoice",
+    "radioGroup",
+    "radio",
     "txtServiceName",
     "txtServiceCount",
     "txtServicePrice",
@@ -7680,7 +7694,8 @@ const PlasmicDescendants = {
     "dialogSelectProduct",
     "txtProductFilter",
     "txtRegisterInvoiceTitle",
-    "cbProducregisterInvoice",
+    "radioGroup",
+    "radio",
     "txtServiceName",
     "txtServiceCount",
     "txtServicePrice",
@@ -7695,7 +7710,8 @@ const PlasmicDescendants = {
   dialogSelectProduct: ["dialogSelectProduct", "txtProductFilter"],
   txtProductFilter: ["txtProductFilter"],
   txtRegisterInvoiceTitle: ["txtRegisterInvoiceTitle"],
-  cbProducregisterInvoice: ["cbProducregisterInvoice"],
+  radioGroup: ["radioGroup", "radio"],
+  radio: ["radio"],
   txtServiceName: ["txtServiceName"],
   txtServiceCount: ["txtServiceCount"],
   txtServicePrice: ["txtServicePrice"],
@@ -7758,7 +7774,8 @@ type NodeDefaultElementType = {
   dialogSelectProduct: typeof Dialog;
   txtProductFilter: typeof TextInput;
   txtRegisterInvoiceTitle: typeof TextInput;
-  cbProducregisterInvoice: typeof Select;
+  radioGroup: typeof RadioGroup;
+  radio: typeof Radio;
   txtServiceName: typeof TextInput;
   txtServiceCount: typeof TextInput;
   txtServicePrice: typeof TextInput;
@@ -7857,7 +7874,8 @@ export const PlasmicProductAdmin = Object.assign(
     dialogSelectProduct: makeNodeComponent("dialogSelectProduct"),
     txtProductFilter: makeNodeComponent("txtProductFilter"),
     txtRegisterInvoiceTitle: makeNodeComponent("txtRegisterInvoiceTitle"),
-    cbProducregisterInvoice: makeNodeComponent("cbProducregisterInvoice"),
+    radioGroup: makeNodeComponent("radioGroup"),
+    radio: makeNodeComponent("radio"),
     txtServiceName: makeNodeComponent("txtServiceName"),
     txtServiceCount: makeNodeComponent("txtServiceCount"),
     txtServicePrice: makeNodeComponent("txtServicePrice"),
