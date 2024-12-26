@@ -26,6 +26,7 @@
     "@radix-ui/react-select": "^2.1.1",
     "@radix-ui/react-slider": "^1.2.0",
     "@radix-ui/react-switch": "^1.1.0",
+    "@plasmicpkgs/react-aria": "0.0.96",
     "axios": "^1.7.2",
     "clsx": "^2.1.1",
     "jalali-moment": "^3.3.11",
