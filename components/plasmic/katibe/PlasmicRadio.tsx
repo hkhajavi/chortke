@@ -94,6 +94,7 @@ export const PlasmicRadio__ArgProps = new Array<ArgPropType>(
 
 export type PlasmicRadio__OverridesType = {
   ariaRadio?: Flex__<typeof BaseRadio>;
+  section?: Flex__<"section">;
 };
 
 export interface DefaultRadioProps {
@@ -196,18 +197,25 @@ function PlasmicRadio__RenderFunc(props: {
         defaultContents: "Option",
         value: args.label
       })}
+      <section
+        data-plasmic-name={"section"}
+        data-plasmic-override={overrides.section}
+        className={classNames(projectcss.all, sty.section)}
+      />
     </BaseRadio>
   ) as React.ReactElement | null;
 }
 
 const PlasmicDescendants = {
-  ariaRadio: ["ariaRadio"]
+  ariaRadio: ["ariaRadio", "section"],
+  section: ["section"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   ariaRadio: typeof BaseRadio;
+  section: "section";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -270,6 +278,7 @@ export const PlasmicRadio = Object.assign(
   makeNodeComponent("ariaRadio"),
   {
     // Helper components rendering sub-elements
+    section: makeNodeComponent("section"),
 
     // Metadata about props expected for PlasmicRadio
     internalVariantProps: PlasmicRadio__VariantProps,

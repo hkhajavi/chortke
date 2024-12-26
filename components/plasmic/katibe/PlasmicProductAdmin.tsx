@@ -2673,23 +2673,31 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                 )}
                                                 key={currentIndex}
                                                 label={
-                                                  <React.Fragment>
-                                                    {(() => {
-                                                      try {
-                                                        return currentItem.label;
-                                                      } catch (e) {
-                                                        if (
-                                                          e instanceof
-                                                            TypeError ||
-                                                          e?.plasmicType ===
-                                                            "PlasmicUndefinedDataError"
-                                                        ) {
-                                                          return "Option 2";
+                                                  <div
+                                                    className={classNames(
+                                                      projectcss.all,
+                                                      projectcss.__wab_text,
+                                                      sty.text__f7ZN
+                                                    )}
+                                                  >
+                                                    <React.Fragment>
+                                                      {(() => {
+                                                        try {
+                                                          return currentItem.label;
+                                                        } catch (e) {
+                                                          if (
+                                                            e instanceof
+                                                              TypeError ||
+                                                            e?.plasmicType ===
+                                                              "PlasmicUndefinedDataError"
+                                                          ) {
+                                                            return "Option 2";
+                                                          }
+                                                          throw e;
                                                         }
-                                                        throw e;
-                                                      }
-                                                    })()}
-                                                  </React.Fragment>
+                                                      })()}
+                                                    </React.Fragment>
+                                                  </div>
                                                 }
                                                 value={(() => {
                                                   try {
@@ -3716,6 +3724,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       $steps["registerInvoiceApi"] =
                                         $state.registerinvoiceUserid.length >
                                           0 &&
+                                        $state.radioGroup.value != undefined &&
                                         $state.radioGroup.value.length > 0
                                           ? (() => {
                                               const actionArgs = {
