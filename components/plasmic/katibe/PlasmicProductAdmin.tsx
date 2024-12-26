@@ -3716,8 +3716,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       $steps["registerInvoiceApi"] =
                                         $state.registerinvoiceUserid.length >
                                           0 &&
-                                        ($state.radioGroup.value == undefined ||
-                                          $state.radioGroup.value.length < 1)
+                                        $state.radioGroup.value.length > 0
                                           ? (() => {
                                               const actionArgs = {
                                                 args: [
