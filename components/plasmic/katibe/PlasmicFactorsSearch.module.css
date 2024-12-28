@@ -2347,6 +2347,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    grid-column-end: span 1;
     min-width: 0;
     padding: 2px;
   }
