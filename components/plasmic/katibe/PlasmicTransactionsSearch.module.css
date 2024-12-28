@@ -1735,7 +1735,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__uiHf2 {
-    grid-column-end: span 2;
+    grid-column-end: span 4;
   }
 }
 .button__xokEq:global(.__wab_instance) {
