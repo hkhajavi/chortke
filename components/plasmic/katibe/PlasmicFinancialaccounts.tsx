@@ -975,6 +975,13 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                           <div
                             className={classNames(
                               projectcss.all,
+                              sty.freeBox__vrdQd
+                            )}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
                               sty.freeBox__glNyP
                             )}
                           >
@@ -1362,6 +1369,12 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                               }
                             />
                           </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__ks3Qo
+                            )}
+                          />
                         </div>
                       ) : null}
                     </React.Fragment>
