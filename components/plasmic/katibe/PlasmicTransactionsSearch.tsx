@@ -72,7 +72,6 @@ import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import { useScreenVariants as useScreenVariantsbr2UhI7UlpvR } from "../fragment_icons/PlasmicGlobalVariant__Screen"; // plasmic-import: BR2UhI7ulpvR/globalVariant
-import { useScreenVariants as useScreenVariants_7Bs7RtJcMv9T } from "../chortke/PlasmicGlobalVariant__Screen"; // plasmic-import: 7BS7RtJcMv9t/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -736,8 +735,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
   });
 
   const globalVariants = ensureGlobalVariants({
-    screen: useScreenVariantsbr2UhI7UlpvR(),
-    screen: useScreenVariants_7Bs7RtJcMv9T()
+    screen: useScreenVariantsbr2UhI7UlpvR()
   });
 
   return (
@@ -1943,8 +1941,23 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     projectcss.all,
                                     sty.freeBox___9GsoM
                                   )}
-                                />
-
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__gAzRa
+                                    )}
+                                  >
+                                    {hasVariant(
+                                      globalVariants,
+                                      "screen",
+                                      "mobileOnly"
+                                    )
+                                      ? "\u0645\u0628\u0644\u063a:"
+                                      : "Enter some text"}
+                                  </div>
+                                </div>
                                 {(
                                   hasVariant(
                                     globalVariants,

@@ -119,27 +119,27 @@ export const PlasmicSelect__VariantProps = new Array<VariantPropType>(
 );
 
 export type PlasmicSelect__ArgsType = {
-  selectedContent?: React.ReactNode;
-  placeholder?: React.ReactNode;
-  children?: React.ReactNode;
   value?: "Dynamic options";
   name?: string;
   "aria-label"?: string;
   "aria-labelledby"?: string;
   options?: any;
   onChange?: (value: string) => void;
+  selectedContent?: React.ReactNode;
+  placeholder?: React.ReactNode;
+  children?: React.ReactNode;
 };
 type ArgPropType = keyof PlasmicSelect__ArgsType;
 export const PlasmicSelect__ArgProps = new Array<ArgPropType>(
-  "selectedContent",
-  "placeholder",
-  "children",
   "value",
   "name",
   "aria-label",
   "aria-labelledby",
   "options",
-  "onChange"
+  "onChange",
+  "selectedContent",
+  "placeholder",
+  "children"
 );
 
 export type PlasmicSelect__OverridesType = {
