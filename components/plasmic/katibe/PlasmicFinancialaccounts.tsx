@@ -2248,7 +2248,7 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
                             }}
                             size={
                               hasVariant(globalVariants, "screen", "mobileOnly")
-                                ? "compact"
+                                ? "minimal"
                                 : "compact"
                             }
                             startIcon={
