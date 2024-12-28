@@ -2866,22 +2866,6 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                 <div
                                   className={classNames(
                                     projectcss.all,
-                                    sty.freeBox__ckvWv
-                                  )}
-                                >
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__l5EQa
-                                    )}
-                                  >
-                                    {"\u0639\u0646\u0648\u0627\u0646:"}
-                                  </div>
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
                                     sty.freeBox__wVFlB
                                   )}
                                 >
@@ -2919,29 +2903,9 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                   sty.freeBox__yoqU0
                                 )}
                               >
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.freeBox___0Fj5J
-                                  )}
-                                >
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__a2VY2
-                                    )}
-                                  >
-                                    {hasVariant(
-                                      globalVariants,
-                                      "screen",
-                                      "mobileOnly"
-                                    )
-                                      ? "\u062a\u0648\u0636\u06cc\u062d\u0627\u062a:"
-                                      : "\u062a\u0648\u0636\u06cc\u062d\u0627\u062a:"}
-                                  </div>
-                                </div>
-                                <div
+                                <Stack__
+                                  as={"div"}
+                                  hasGap={true}
                                   className={classNames(
                                     projectcss.all,
                                     sty.freeBox___5GPiz
@@ -2973,7 +2937,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       })()}
                                     </React.Fragment>
                                   </div>
-                                </div>
+                                </Stack__>
                               </div>
                               <div
                                 className={classNames(
@@ -3307,31 +3271,59 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                           sty.text__ycl6R
                                         )}
                                       >
-                                        <React.Fragment>
-                                          {(() => {
-                                            try {
-                                              return (
-                                                new Intl.NumberFormat(
+                                        {hasVariant(
+                                          globalVariants,
+                                          "screen",
+                                          "mobileOnly"
+                                        ) ? (
+                                          <React.Fragment>
+                                            {(() => {
+                                              try {
+                                                return new Intl.NumberFormat(
                                                   "fa-IR"
                                                 ).format(
                                                   currentItem.price *
                                                     currentItem.count
-                                                ) +
-                                                " " +
-                                                "ریال"
-                                              );
-                                            } catch (e) {
-                                              if (
-                                                e instanceof TypeError ||
-                                                e?.plasmicType ===
-                                                  "PlasmicUndefinedDataError"
-                                              ) {
-                                                return "";
+                                                );
+                                              } catch (e) {
+                                                if (
+                                                  e instanceof TypeError ||
+                                                  e?.plasmicType ===
+                                                    "PlasmicUndefinedDataError"
+                                                ) {
+                                                  return "";
+                                                }
+                                                throw e;
                                               }
-                                              throw e;
-                                            }
-                                          })()}
-                                        </React.Fragment>
+                                            })()}
+                                          </React.Fragment>
+                                        ) : (
+                                          <React.Fragment>
+                                            {(() => {
+                                              try {
+                                                return (
+                                                  new Intl.NumberFormat(
+                                                    "fa-IR"
+                                                  ).format(
+                                                    currentItem.price *
+                                                      currentItem.count
+                                                  ) +
+                                                  " " +
+                                                  "ریال"
+                                                );
+                                              } catch (e) {
+                                                if (
+                                                  e instanceof TypeError ||
+                                                  e?.plasmicType ===
+                                                    "PlasmicUndefinedDataError"
+                                                ) {
+                                                  return "";
+                                                }
+                                                throw e;
+                                              }
+                                            })()}
+                                          </React.Fragment>
+                                        )}
                                       </div>
                                     </div>
                                   </div>
@@ -3372,30 +3364,59 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       sty.text__w8JWd
                                     )}
                                   >
-                                    <React.Fragment>
-                                      {(() => {
-                                        try {
-                                          return (
-                                            new Intl.NumberFormat(
+                                    {hasVariant(
+                                      globalVariants,
+                                      "screen",
+                                      "mobileOnly"
+                                    ) ? (
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return new Intl.NumberFormat(
                                               "fa-IR"
                                             ).format(
                                               $state.detailsDataApiRequest[
                                                 currentIndex
                                               ].data.data.sumprice
-                                            ) + " ریال"
-                                          );
-                                        } catch (e) {
-                                          if (
-                                            e instanceof TypeError ||
-                                            e?.plasmicType ===
-                                              "PlasmicUndefinedDataError"
-                                          ) {
-                                            return "";
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "";
+                                            }
+                                            throw e;
                                           }
-                                          throw e;
-                                        }
-                                      })()}
-                                    </React.Fragment>
+                                        })()}
+                                      </React.Fragment>
+                                    ) : (
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return (
+                                              new Intl.NumberFormat(
+                                                "fa-IR"
+                                              ).format(
+                                                $state.detailsDataApiRequest[
+                                                  currentIndex
+                                                ].data.data.sumprice
+                                              ) + " ریال"
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
+                                    )}
                                   </div>
                                 </div>
                                 <div
@@ -3427,30 +3448,59 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       sty.text___5XsQ
                                     )}
                                   >
-                                    <React.Fragment>
-                                      {(() => {
-                                        try {
-                                          return (
-                                            new Intl.NumberFormat(
+                                    {hasVariant(
+                                      globalVariants,
+                                      "screen",
+                                      "mobileOnly"
+                                    ) ? (
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return new Intl.NumberFormat(
                                               "fa-IR"
                                             ).format(
                                               $state.detailsDataApiRequest[
                                                 currentIndex
                                               ].data.data.discountprice
-                                            ) + " ریال"
-                                          );
-                                        } catch (e) {
-                                          if (
-                                            e instanceof TypeError ||
-                                            e?.plasmicType ===
-                                              "PlasmicUndefinedDataError"
-                                          ) {
-                                            return "";
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "";
+                                            }
+                                            throw e;
                                           }
-                                          throw e;
-                                        }
-                                      })()}
-                                    </React.Fragment>
+                                        })()}
+                                      </React.Fragment>
+                                    ) : (
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return (
+                                              new Intl.NumberFormat(
+                                                "fa-IR"
+                                              ).format(
+                                                $state.detailsDataApiRequest[
+                                                  currentIndex
+                                                ].data.data.discountprice
+                                              ) + " ریال"
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
+                                    )}
                                   </div>
                                 </div>
                               </div>
@@ -3489,36 +3539,85 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       sty.text__ieppI
                                     )}
                                   >
-                                    <React.Fragment>
-                                      {(() => {
-                                        try {
-                                          return (
-                                            new Intl.NumberFormat(
+                                    {hasVariant(
+                                      globalVariants,
+                                      "screen",
+                                      "mobileOnly"
+                                    ) ? (
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return new Intl.NumberFormat(
                                               "fa-IR"
                                             ).format(
                                               $state.detailsDataApiRequest[
                                                 currentIndex
                                               ].data.data.vatprice
-                                            ) + " ریال"
-                                          );
-                                        } catch (e) {
-                                          if (
-                                            e instanceof TypeError ||
-                                            e?.plasmicType ===
-                                              "PlasmicUndefinedDataError"
-                                          ) {
-                                            return "";
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "";
+                                            }
+                                            throw e;
                                           }
-                                          throw e;
-                                        }
-                                      })()}
-                                    </React.Fragment>
+                                        })()}
+                                      </React.Fragment>
+                                    ) : (
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return (
+                                              new Intl.NumberFormat(
+                                                "fa-IR"
+                                              ).format(
+                                                $state.detailsDataApiRequest[
+                                                  currentIndex
+                                                ].data.data.vatprice
+                                              ) + " ریال"
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
+                                    )}
                                   </div>
                                 </div>
                                 <div
                                   className={classNames(
                                     projectcss.all,
                                     sty.freeBox__odgIv
+                                  )}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox___7Canf
+                                  )}
+                                />
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox___5NsrZ
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__e45IP
                                   )}
                                 >
                                   <div
@@ -3532,13 +3631,6 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       "\u0645\u0628\u0644\u063a \u0646\u0647\u0627\u06cc\u06cc:"
                                     }
                                   </div>
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.freeBox___7Canf
-                                  )}
-                                >
                                   <div
                                     className={classNames(
                                       projectcss.all,
@@ -3546,30 +3638,61 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       sty.text__apVoQ
                                     )}
                                   >
-                                    <React.Fragment>
-                                      {(() => {
-                                        try {
-                                          return (
-                                            new Intl.NumberFormat(
-                                              "fa-IR"
-                                            ).format(
-                                              $state.detailsDataApiRequest[
-                                                currentIndex
-                                              ].data.data.finalprice
-                                            ) + " ریال"
-                                          );
-                                        } catch (e) {
-                                          if (
-                                            e instanceof TypeError ||
-                                            e?.plasmicType ===
-                                              "PlasmicUndefinedDataError"
-                                          ) {
-                                            return "";
+                                    {hasVariant(
+                                      globalVariants,
+                                      "screen",
+                                      "mobileOnly"
+                                    ) ? (
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return (
+                                              new Intl.NumberFormat(
+                                                "fa-IR"
+                                              ).format(
+                                                $state.detailsDataApiRequest[
+                                                  currentIndex
+                                                ].data.data.finalprice
+                                              ) + "ریال"
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "";
+                                            }
+                                            throw e;
                                           }
-                                          throw e;
-                                        }
-                                      })()}
-                                    </React.Fragment>
+                                        })()}
+                                      </React.Fragment>
+                                    ) : (
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return (
+                                              new Intl.NumberFormat(
+                                                "fa-IR"
+                                              ).format(
+                                                $state.detailsDataApiRequest[
+                                                  currentIndex
+                                                ].data.data.finalprice
+                                              ) + " ریال"
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
+                                    )}
                                   </div>
                                 </div>
                               </div>
@@ -3684,13 +3807,13 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                               <div
                                 className={classNames(
                                   projectcss.all,
-                                  sty.freeBox___5NsrZ
+                                  sty.freeBox__kNras
                                 )}
                               >
                                 <div
                                   className={classNames(
                                     projectcss.all,
-                                    sty.freeBox__e45IP
+                                    sty.freeBox__pxhR
                                   )}
                                 >
                                   {(() => {
@@ -3714,7 +3837,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       className={classNames(
                                         projectcss.all,
                                         projectcss.__wab_text,
-                                        sty.text__jWvHk
+                                        sty.text__uiljD
                                       )}
                                     >
                                       {
@@ -3743,7 +3866,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       className={classNames(
                                         projectcss.all,
                                         projectcss.__wab_text,
-                                        sty.text__trw44
+                                        sty.text__gq91D
                                       )}
                                     >
                                       {
