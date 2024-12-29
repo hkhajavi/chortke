@@ -1790,7 +1790,7 @@
 .gridInvoice1 {
   display: grid;
   position: relative;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   width: 100%;
   height: auto;
   max-width: 100%;
@@ -1832,6 +1832,7 @@
   .freeBox__ouM3 {
     align-items: center;
     justify-content: center;
+    margin-top: 0px;
   }
 }
 .text__uiGqY {
@@ -1864,7 +1865,7 @@
     font-size: var(--token-VrIY9r5RDQZ_);
     text-align: center;
     font-weight: 700;
-    padding-top: 5px;
+    padding-top: 0px;
     min-width: 0;
   }
 }
@@ -2121,6 +2122,77 @@
     min-width: 0;
   }
 }
+.freeBox___1Ww71 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox___1Ww71 {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    align-content: stretch;
+    min-width: 0;
+    min-height: 0;
+    padding: 0px;
+  }
+}
+.text__nscf8 {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: center;
+  font-family: var(--iran-sans-x);
+  font-size: 16px;
+  font-weight: 700;
+  font-style: normal;
+  color: #535353;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
+  padding-top: 0px;
+  min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__nscf8 {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    font-family: var(--iran-sans-x);
+    font-size: var(--token-VrIY9r5RDQZ_);
+    font-weight: 700;
+    font-style: normal;
+    color: #535353;
+    text-align: center;
+    text-transform: none;
+    line-height: 1.5;
+    letter-spacing: normal;
+    white-space: pre-wrap;
+    user-select: text;
+    text-decoration-line: none;
+    text-overflow: clip;
+    min-width: 0;
+  }
+}
 .freeBox___9Bj4F {
   display: flex;
   position: relative;
@@ -2262,7 +2334,7 @@
 .gridInvoice12 {
   display: grid;
   position: relative;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   width: 100%;
   height: auto;
   max-width: 100%;
@@ -2302,6 +2374,8 @@
   .freeBox__h0Ls {
     align-items: center;
     justify-content: center;
+    height: 100%;
+    min-height: 0;
   }
 }
 .text__rJzBr {
@@ -2336,6 +2410,8 @@
   .freeBox__dtv0I {
     align-items: center;
     justify-content: center;
+    height: 100%;
+    min-height: 0;
   }
 }
 .text__nN9RS {
@@ -2402,6 +2478,8 @@
   .freeBox__bQjO {
     align-items: center;
     justify-content: center;
+    height: 100%;
+    min-height: 0;
   }
 }
 .text___8LKhl {
@@ -2454,6 +2532,67 @@
     font-size: var(--token-VrIY9r5RDQZ_);
   }
 }
+.freeBox__ob1Bq {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+  padding: 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__ob1Bq {
+    height: 100%;
+    min-height: 0;
+    padding: 0px;
+  }
+}
+.svg__hNaHd {
+  object-fit: cover;
+  max-width: 100%;
+  height: 1em;
+}
+.svg__hKdfv {
+  object-fit: cover;
+  max-width: 100%;
+  color: #3db863;
+  height: 1em;
+}
+.text__mzIY {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  text-align: center;
+  margin-right: 2px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__mzIY {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    font-size: var(--token-VrIY9r5RDQZ_);
+    text-align: center;
+    display: none;
+  }
+}
+.text__yw8 {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  text-align: center;
+  color: #3db863;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__yw8 {
+    display: none;
+  }
+}
 .freeBox__v5Tt4 {
   display: flex;
   position: relative;
@@ -2471,6 +2610,8 @@
   .freeBox__v5Tt4 {
     align-items: center;
     justify-content: center;
+    height: 100%;
+    min-height: 0;
   }
 }
 .dialogInvoiceDetails:global(.__wab_instance):global(.__wab_instance) {

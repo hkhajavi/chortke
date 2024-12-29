@@ -89,6 +89,8 @@ import CheckSvgIcon from "../chortke/icons/PlasmicIcon__CheckSvg"; // plasmic-im
 import Icon2Icon from "../chortke/icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
 import Icon29Icon from "./icons/PlasmicIcon__Icon29"; // plasmic-import: v6n1zIPv27O2/icon
 import Icon30Icon from "./icons/PlasmicIcon__Icon30"; // plasmic-import: b5udc-7LsSfj/icon
+import Icon40Icon from "./icons/PlasmicIcon__Icon40"; // plasmic-import: HLD8_-PsRU_m/icon
+import Icon41Icon from "./icons/PlasmicIcon__Icon41"; // plasmic-import: vWaZXlBhSJ2b/icon
 
 createPlasmicElementProxy;
 
@@ -4606,6 +4608,17 @@ function PlasmicProductAdmin__RenderFunc(props: {
                   {"\u0645\u0627\u0646\u062f\u0647"}
                 </div>
               </div>
+              <div className={classNames(projectcss.all, sty.freeBox___1Ww71)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__nscf8
+                  )}
+                >
+                  {"\u0648\u0636\u0639\u06cc\u062a"}
+                </div>
+              </div>
               <div
                 className={classNames(
                   projectcss.all,
@@ -4932,6 +4945,113 @@ function PlasmicProductAdmin__RenderFunc(props: {
                         })()}
                       </React.Fragment>
                     </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__ob1Bq)}
+                  >
+                    {(() => {
+                      try {
+                        return (
+                          $state.invoicelist[currentIndex].status ==
+                          "registered"
+                        );
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
+                        }
+                        throw e;
+                      }
+                    })() ? (
+                      <Icon40Icon
+                        className={classNames(projectcss.all, sty.svg__hNaHd)}
+                        role={"img"}
+                      />
+                    ) : null}
+                    {(() => {
+                      try {
+                        return (
+                          $state.invoicelist[currentIndex].status == "accepted"
+                        );
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
+                        }
+                        throw e;
+                      }
+                    })() ? (
+                      <Icon41Icon
+                        className={classNames(projectcss.all, sty.svg__hKdfv)}
+                        role={"img"}
+                      />
+                    ) : null}
+                    {(
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? true
+                        : (() => {
+                            try {
+                              return (
+                                $state.invoicelist[currentIndex].status ==
+                                "registered"
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
+                            }
+                          })()
+                    ) ? (
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__mzIY
+                        )}
+                      >
+                        {
+                          "\u062a\u0627\u06cc\u06cc\u062f \u0646\u0634\u062f\u0647"
+                        }
+                      </div>
+                    ) : null}
+                    {(
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? true
+                        : (() => {
+                            try {
+                              return (
+                                $state.invoicelist[currentIndex].status ==
+                                "accepted"
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
+                            }
+                          })()
+                    ) ? (
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__yw8
+                        )}
+                      >
+                        {"\u062a\u0627\u06cc\u06cc\u062f \u0634\u062f\u0647"}
+                      </div>
+                    ) : null}
                   </div>
                   <div
                     className={classNames(
