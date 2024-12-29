@@ -1955,7 +1955,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       "mobileOnly"
                                     )
                                       ? "\u0645\u0628\u0644\u063a:"
-                                      : "Enter some text"}
+                                      : "\u0645\u0628\u0644\u063a:"}
                                   </div>
                                 </div>
                                 {(
