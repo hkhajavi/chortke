@@ -4722,8 +4722,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               return (
                                 $state.invoicelist.findIndex(
                                   item =>
-                                    item.invoiceid ===
-                                    $state.invoicelist[currentIndex].invoiceid
+                                    item.factorid ===
+                                    $state.invoicelist[currentIndex].factorid
                                 ) +
                                 1 /*+"\n"+$state.invoicelist[currentIndex].invoiceid*/
                               );
