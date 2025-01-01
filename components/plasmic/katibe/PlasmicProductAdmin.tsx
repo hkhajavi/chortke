@@ -1024,6 +1024,37 @@ function PlasmicProductAdmin__RenderFunc(props: {
                       "value"
                     ])}
                   />
+
+                  <TextInput
+                    data-plasmic-name={"txtSearch"}
+                    data-plasmic-override={overrides.txtSearch}
+                    className={classNames("__wab_instance", sty.txtSearch)}
+                    onChange={async (...eventArgs: any) => {
+                      ((...eventArgs) => {
+                        generateStateOnChangeProp($state, [
+                          "txtSearch",
+                          "value"
+                        ])((e => e.target?.value).apply(null, eventArgs));
+                      }).apply(null, eventArgs);
+
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
+                        return;
+                      }
+                    }}
+                    placeholder={
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? "\u062c\u0633\u062a\u200c \u0648 \u062c\u0648"
+                        : "\u062c\u0633\u062a \u0648 \u062c\u0648: \u0639\u0646\u0648\u0627\u0646\u060c \u062a\u0627\u0631\u06cc\u062e"
+                    }
+                    value={
+                      generateStateValueProp($state, ["txtSearch", "value"]) ??
+                      ""
+                    }
+                  />
                 </div>
               ) : null}
               <div
@@ -1035,47 +1066,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
                 id={"grid_calculator"}
               >
                 <div className={classNames(projectcss.all, sty.freeBox__ybpJy)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__eZl8A)}
-                    font-size={
-                      hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? "10px"
-                        : undefined
-                    }
-                  >
-                    <TextInput
-                      data-plasmic-name={"txtSearch"}
-                      data-plasmic-override={overrides.txtSearch}
-                      className={classNames("__wab_instance", sty.txtSearch)}
-                      onChange={async (...eventArgs: any) => {
-                        ((...eventArgs) => {
-                          generateStateOnChangeProp($state, [
-                            "txtSearch",
-                            "value"
-                          ])((e => e.target?.value).apply(null, eventArgs));
-                        }).apply(null, eventArgs);
-
-                        if (
-                          eventArgs.length > 1 &&
-                          eventArgs[1] &&
-                          eventArgs[1]._plasmic_state_init_
-                        ) {
-                          return;
-                        }
-                      }}
-                      placeholder={
-                        hasVariant(globalVariants, "screen", "mobileOnly")
-                          ? "\u062c\u0633\u062a\u200c \u0648 \u062c\u0648"
-                          : "\u062c\u0633\u062a \u0648 \u062c\u0648: \u0639\u0646\u0648\u0627\u0646\u060c \u062a\u0627\u0631\u06cc\u062e"
-                      }
-                      value={
-                        generateStateValueProp($state, [
-                          "txtSearch",
-                          "value"
-                        ]) ?? ""
-                      }
-                    />
-                  </div>
                   <div
                     className={classNames(projectcss.all, sty.freeBox__jG9An)}
                   >
