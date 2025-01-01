@@ -1266,6 +1266,11 @@
   min-width: 0;
   padding: 0px 8px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox___8VvBh {
+    grid-column-end: span 2;
+  }
+}
 .txtServiceCount:global(.__wab_instance) {
   max-width: 100%;
 }
@@ -1293,6 +1298,12 @@
   grid-column-end: span 2;
   min-width: 0;
   padding: 0px 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__oWttc {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
 }
 .txtServicePrice:global(.__wab_instance) {
   max-width: 100%;

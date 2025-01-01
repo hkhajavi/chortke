@@ -3068,7 +3068,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                             }).apply(null, eventArgs);
                                           },
                                           placeholder:
-                                            "\u0645\u0628\u0644\u063a - \u0631\u06cc\u0627\u0644",
+                                            "\u0645\u0628\u0644\u063a \u0647\u0631 \u0648\u0627\u062d\u062f - \u0631\u06cc\u0627\u0644",
                                           type: "number",
                                           value:
                                             generateStateValueProp($state, [
