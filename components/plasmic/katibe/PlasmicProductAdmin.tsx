@@ -4513,6 +4513,24 @@ function PlasmicProductAdmin__RenderFunc(props: {
               <div
                 className={classNames(
                   projectcss.all,
+                  sty.freeBox__wTwXr,
+                  "grid_calculator"
+                )}
+                id={"grid_calculator"}
+              >
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___8Uc0H
+                  )}
+                >
+                  {"\u062a\u0627\u0631\u06cc\u062e"}
+                </div>
+              </div>
+              <div
+                className={classNames(
+                  projectcss.all,
                   sty.freeBox__ouM3,
                   "grid_calculator"
                 )}
@@ -4527,25 +4545,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly")
                     ? "\u0631\u062f\u06cc\u0641"
-                    : "\u0631\u062f\u06cc\u0641"}
-                </div>
-              </div>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  sty.freeBox__wTwXr,
-                  "grid_calculator"
-                )}
-                id={"grid_calculator"}
-              >
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___8Uc0H
-                  )}
-                >
-                  {"\u062a\u0627\u0631\u06cc\u062e"}
+                    : "\u067e\u0631\u0648\u062f\u0627\u06a9\u062a"}
                 </div>
               </div>
               <div
@@ -4703,6 +4703,46 @@ function PlasmicProductAdmin__RenderFunc(props: {
                   <div
                     className={classNames(
                       projectcss.all,
+                      sty.freeBox__dtv0I,
+                      "grid_calculator"
+                    )}
+                    id={"grid_calculator"}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__nN9RS
+                      )}
+                    >
+                      <React.Fragment>
+                        {(() => {
+                          try {
+                            return (() => {
+                              const gregorianDate = new Date(
+                                $state.invoicelist[currentIndex].registerdate
+                              );
+                              const persianDate = new Intl.DateTimeFormat(
+                                "fa-IR"
+                              ).format(gregorianDate);
+                              return persianDate;
+                            })();
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "";
+                            }
+                            throw e;
+                          }
+                        })()}
+                      </React.Fragment>
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
                       sty.freeBox__h0Ls,
                       "grid_calculator"
                     )}
@@ -4743,11 +4783,9 @@ function PlasmicProductAdmin__RenderFunc(props: {
                           {(() => {
                             try {
                               return (
-                                $state.invoicelist.findIndex(
-                                  item =>
-                                    item.factorid ===
-                                    $state.invoicelist[currentIndex].factorid
-                                ) + 1
+                                $state.invoicelist[currentIndex].issuerid +
+                                " -> " +
+                                $state.invoicelist[currentIndex].customerid
                               );
                             } catch (e) {
                               if (
@@ -4761,46 +4799,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
                           })()}
                         </React.Fragment>
                       )}
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      sty.freeBox__dtv0I,
-                      "grid_calculator"
-                    )}
-                    id={"grid_calculator"}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__nN9RS
-                      )}
-                    >
-                      <React.Fragment>
-                        {(() => {
-                          try {
-                            return (() => {
-                              const gregorianDate = new Date(
-                                $state.invoicelist[currentIndex].registerdate
-                              );
-                              const persianDate = new Intl.DateTimeFormat(
-                                "fa-IR"
-                              ).format(gregorianDate);
-                              return persianDate;
-                            })();
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "";
-                            }
-                            throw e;
-                          }
-                        })()}
-                      </React.Fragment>
                     </div>
                   </div>
                   <div
@@ -5176,22 +5174,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   <div
                                     className={classNames(
                                       projectcss.all,
-                                      sty.freeBox__iQj9H
-                                    )}
-                                  >
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
-                                        sty.text___2YpMc
-                                      )}
-                                    >
-                                      {"\u0639\u0646\u0648\u0627\u0646:"}
-                                    </div>
-                                  </div>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
                                       sty.freeBox__rGyb
                                     )}
                                   >
@@ -5247,7 +5229,12 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                 "صادر شده توسط " +
                                                 $state.detailsDataApiRequest[
                                                   currentIndex
-                                                ].data.data.productname
+                                                ].data.data.issuerid +
+                                                " " +
+                                                "برای " +
+                                                $state.detailsDataApiRequest[
+                                                  currentIndex
+                                                ].data.data.customerid
                                               );
                                             } catch (e) {
                                               if (
@@ -5269,7 +5256,12 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                 "صادر شده توسط " +
                                                 $state.detailsDataApiRequest[
                                                   currentIndex
-                                                ].data.data.productname
+                                                ].data.data.issuerid +
+                                                " " +
+                                                "برای " +
+                                                $state.detailsDataApiRequest[
+                                                  currentIndex
+                                                ].data.data.customerid
                                               );
                                             } catch (e) {
                                               if (
@@ -5456,22 +5448,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       )}
                                     </div>
                                   </Stack__>
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      sty.freeBox__jeTpf
-                                    )}
-                                  >
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
-                                        sty.text__yfXb
-                                      )}
-                                    >
-                                      {"\u0632\u0645\u0627\u0646:"}
-                                    </div>
-                                  </div>
                                   <div
                                     className={classNames(
                                       projectcss.all,
