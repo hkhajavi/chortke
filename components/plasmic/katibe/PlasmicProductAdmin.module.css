@@ -537,6 +537,7 @@
   .freeBox__ybpJy {
     height: 100%;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    width: auto;
     min-height: 0;
     padding: 0px;
   }
@@ -594,7 +595,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__veYrr {
-    grid-column-end: span 4;
+    grid-column-end: span 3;
   }
 }
 .btnSearch:global(.__wab_instance) {
@@ -1742,7 +1743,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__vNrRc {
-    grid-column-end: span 4;
+    grid-column-end: span 1;
   }
 }
 .waitingIcon4 {
