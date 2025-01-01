@@ -2170,6 +2170,7 @@
     text-decoration-line: none;
     text-overflow: clip;
     min-width: 0;
+    display: none;
   }
 }
 .freeBox___9Bj4F {
@@ -2437,7 +2438,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__cvRXd {
-    font-size: var(--token-5Ye_3XTSaP9X);
+    font-size: var(--token-VrIY9r5RDQZ_);
   }
 }
 .freeBox__bQjO {
