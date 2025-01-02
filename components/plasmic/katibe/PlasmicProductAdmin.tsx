@@ -117,9 +117,9 @@ export type PlasmicProductAdmin__OverridesType = {
   btnSearch?: Flex__<typeof Button>;
   dialogRegisterInvoice?: Flex__<typeof Dialog>;
   waitingIcon5?: Flex__<"svg">;
-  txtUserMobile?: Flex__<typeof TextInput>;
   dialogSelectProduct?: Flex__<typeof Dialog>;
   txtProductFilter?: Flex__<typeof TextInput>;
+  txtUserMobile?: Flex__<typeof TextInput>;
   txtRegisterInvoiceTitle?: Flex__<typeof TextInput>;
   radioGroup?: Flex__<typeof RadioGroup>;
   radio?: Flex__<typeof Radio>;
@@ -1718,752 +1718,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         "value"
                                       ]) ?? ""
                                     }
-                                  />
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.freeBox___3STz1
-                                  )}
-                                >
-                                  <Dialog
-                                    data-plasmic-name={"dialogSelectProduct"}
-                                    data-plasmic-override={
-                                      overrides.dialogSelectProduct
-                                    }
-                                    body={
-                                      <React.Fragment>
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            sty.freeBox__sDRo
-                                          )}
-                                        >
-                                          <div
-                                            className={classNames(
-                                              projectcss.all,
-                                              sty.freeBox__yws2Z
-                                            )}
-                                          >
-                                            <TextInput
-                                              data-plasmic-name={
-                                                "txtProductFilter"
-                                              }
-                                              data-plasmic-override={
-                                                overrides.txtProductFilter
-                                              }
-                                              className={classNames(
-                                                "__wab_instance",
-                                                sty.txtProductFilter
-                                              )}
-                                              onChange={async (
-                                                ...eventArgs: any
-                                              ) => {
-                                                ((...eventArgs) => {
-                                                  generateStateOnChangeProp(
-                                                    $state,
-                                                    [
-                                                      "txtProductFilter",
-                                                      "value"
-                                                    ]
-                                                  )(
-                                                    (e =>
-                                                      e.target?.value).apply(
-                                                      null,
-                                                      eventArgs
-                                                    )
-                                                  );
-                                                }).apply(null, eventArgs);
-
-                                                if (
-                                                  eventArgs.length > 1 &&
-                                                  eventArgs[1] &&
-                                                  eventArgs[1]
-                                                    ._plasmic_state_init_
-                                                ) {
-                                                  return;
-                                                }
-                                              }}
-                                              placeholder={
-                                                "\u062c\u0633\u062a \u0648 \u062c\u0648"
-                                              }
-                                              value={
-                                                generateStateValueProp($state, [
-                                                  "txtProductFilter",
-                                                  "value"
-                                                ]) ?? ""
-                                              }
-                                            />
-                                          </div>
-                                        </div>
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            sty.freeBox__eSkOy
-                                          )}
-                                        >
-                                          <div
-                                            className={classNames(
-                                              projectcss.all,
-                                              sty.freeBox__oUzO5
-                                            )}
-                                          >
-                                            <div
-                                              className={classNames(
-                                                projectcss.all,
-                                                projectcss.__wab_text,
-                                                sty.text___8SwmW
-                                              )}
-                                            >
-                                              {"\u0631\u062f\u06cc\u0641"}
-                                            </div>
-                                          </div>
-                                          <div
-                                            className={classNames(
-                                              projectcss.all,
-                                              sty.freeBox__mH8So
-                                            )}
-                                          >
-                                            <div
-                                              className={classNames(
-                                                projectcss.all,
-                                                projectcss.__wab_text,
-                                                sty.text__yb4Ue
-                                              )}
-                                            >
-                                              {"\u0634\u0646\u0627\u0633\u0647"}
-                                            </div>
-                                          </div>
-                                          <div
-                                            className={classNames(
-                                              projectcss.all,
-                                              sty.freeBox__olBzp
-                                            )}
-                                          >
-                                            <div
-                                              className={classNames(
-                                                projectcss.all,
-                                                projectcss.__wab_text,
-                                                sty.text__yrBex
-                                              )}
-                                            >
-                                              {"\u0639\u0646\u0648\u0627\u0646"}
-                                            </div>
-                                          </div>
-                                          <div
-                                            className={classNames(
-                                              projectcss.all,
-                                              sty.freeBox__kSAfa
-                                            )}
-                                          >
-                                            <div
-                                              className={classNames(
-                                                projectcss.all,
-                                                projectcss.__wab_text,
-                                                sty.text__dDh1T
-                                              )}
-                                            >
-                                              {
-                                                "\u0639\u0645\u0644\u06cc\u0627\u062a"
-                                              }
-                                            </div>
-                                          </div>
-                                        </div>
-                                        {(_par =>
-                                          !_par
-                                            ? []
-                                            : Array.isArray(_par)
-                                            ? _par
-                                            : [_par])(
-                                          (() => {
-                                            try {
-                                              return $state.p24Products.filter(
-                                                product =>
-                                                  product.name
-                                                    .toLowerCase()
-                                                    .includes(
-                                                      $state.txtProductFilter.value.toLowerCase()
-                                                    )
-                                              );
-                                            } catch (e) {
-                                              if (
-                                                e instanceof TypeError ||
-                                                e?.plasmicType ===
-                                                  "PlasmicUndefinedDataError"
-                                              ) {
-                                                return [];
-                                              }
-                                              throw e;
-                                            }
-                                          })()
-                                        ).map(
-                                          (
-                                            __plasmic_item_0,
-                                            __plasmic_idx_0
-                                          ) => {
-                                            const currentItem =
-                                              __plasmic_item_0;
-                                            const currentIndex =
-                                              __plasmic_idx_0;
-                                            return (
-                                              <div
-                                                className={classNames(
-                                                  projectcss.all,
-                                                  sty.freeBox__jlIb4
-                                                )}
-                                                key={currentIndex}
-                                              >
-                                                <div
-                                                  className={classNames(
-                                                    projectcss.all,
-                                                    sty.freeBox__aOnMr
-                                                  )}
-                                                >
-                                                  <div
-                                                    className={classNames(
-                                                      projectcss.all,
-                                                      projectcss.__wab_text,
-                                                      sty.text__qmaws
-                                                    )}
-                                                  >
-                                                    <React.Fragment>
-                                                      {(() => {
-                                                        try {
-                                                          return (
-                                                            currentIndex + 1
-                                                          );
-                                                        } catch (e) {
-                                                          if (
-                                                            e instanceof
-                                                              TypeError ||
-                                                            e?.plasmicType ===
-                                                              "PlasmicUndefinedDataError"
-                                                          ) {
-                                                            return "\u0631\u062f\u06cc\u0641";
-                                                          }
-                                                          throw e;
-                                                        }
-                                                      })()}
-                                                    </React.Fragment>
-                                                  </div>
-                                                </div>
-                                                <div
-                                                  className={classNames(
-                                                    projectcss.all,
-                                                    sty.freeBox__uFiL
-                                                  )}
-                                                >
-                                                  <div
-                                                    className={classNames(
-                                                      projectcss.all,
-                                                      projectcss.__wab_text,
-                                                      sty.text___0ZZxn
-                                                    )}
-                                                  >
-                                                    <React.Fragment>
-                                                      {(() => {
-                                                        try {
-                                                          return currentItem.codename;
-                                                        } catch (e) {
-                                                          if (
-                                                            e instanceof
-                                                              TypeError ||
-                                                            e?.plasmicType ===
-                                                              "PlasmicUndefinedDataError"
-                                                          ) {
-                                                            return "\u06a9\u062f\u0646\u06cc\u0645";
-                                                          }
-                                                          throw e;
-                                                        }
-                                                      })()}
-                                                    </React.Fragment>
-                                                  </div>
-                                                </div>
-                                                <div
-                                                  className={classNames(
-                                                    projectcss.all,
-                                                    sty.freeBox__jFCfw
-                                                  )}
-                                                >
-                                                  <div
-                                                    className={classNames(
-                                                      projectcss.all,
-                                                      projectcss.__wab_text,
-                                                      sty.text__luXj
-                                                    )}
-                                                  >
-                                                    <React.Fragment>
-                                                      {(() => {
-                                                        try {
-                                                          return currentItem.name;
-                                                        } catch (e) {
-                                                          if (
-                                                            e instanceof
-                                                              TypeError ||
-                                                            e?.plasmicType ===
-                                                              "PlasmicUndefinedDataError"
-                                                          ) {
-                                                            return "\u0639\u0646\u0648\u0627\u0646";
-                                                          }
-                                                          throw e;
-                                                        }
-                                                      })()}
-                                                    </React.Fragment>
-                                                  </div>
-                                                </div>
-                                                <div
-                                                  className={classNames(
-                                                    projectcss.all,
-                                                    sty.freeBox__q5VaH
-                                                  )}
-                                                >
-                                                  <Button2
-                                                    children2={
-                                                      "\u0627\u0646\u062a\u062e\u0627\u0628"
-                                                    }
-                                                    className={classNames(
-                                                      "__wab_instance",
-                                                      sty.button__m53Ql
-                                                    )}
-                                                    color={"green"}
-                                                    onClick={async event => {
-                                                      const $steps = {};
-
-                                                      $steps[
-                                                        "updateRegisterInvoiceFinal"
-                                                      ] = true
-                                                        ? (() => {
-                                                            const actionArgs = {
-                                                              variable: {
-                                                                objRoot: $state,
-                                                                variablePath: [
-                                                                  "registerInvoiceFinal"
-                                                                ]
-                                                              },
-                                                              operation: 0,
-                                                              value: false
-                                                            };
-                                                            return (({
-                                                              variable,
-                                                              value,
-                                                              startIndex,
-                                                              deleteCount
-                                                            }) => {
-                                                              if (!variable) {
-                                                                return;
-                                                              }
-                                                              const {
-                                                                objRoot,
-                                                                variablePath
-                                                              } = variable;
-
-                                                              $stateSet(
-                                                                objRoot,
-                                                                variablePath,
-                                                                value
-                                                              );
-                                                              return value;
-                                                            })?.apply(null, [
-                                                              actionArgs
-                                                            ]);
-                                                          })()
-                                                        : undefined;
-                                                      if (
-                                                        $steps[
-                                                          "updateRegisterInvoiceFinal"
-                                                        ] != null &&
-                                                        typeof $steps[
-                                                          "updateRegisterInvoiceFinal"
-                                                        ] === "object" &&
-                                                        typeof $steps[
-                                                          "updateRegisterInvoiceFinal"
-                                                        ].then === "function"
-                                                      ) {
-                                                        $steps[
-                                                          "updateRegisterInvoiceFinal"
-                                                        ] = await $steps[
-                                                          "updateRegisterInvoiceFinal"
-                                                        ];
-                                                      }
-
-                                                      $steps["runCode"] = true
-                                                        ? (() => {
-                                                            const actionArgs = {
-                                                              customFunction:
-                                                                async () => {
-                                                                  return (() => {
-                                                                    $state.registerinvoiceUserinfo =
-                                                                      " برای پروداکت " +
-                                                                      currentItem.name;
-                                                                    return ($state.registerinvoiceUserid =
-                                                                      currentItem.codename);
-                                                                  })();
-                                                                }
-                                                            };
-                                                            return (({
-                                                              customFunction
-                                                            }) => {
-                                                              return customFunction();
-                                                            })?.apply(null, [
-                                                              actionArgs
-                                                            ]);
-                                                          })()
-                                                        : undefined;
-                                                      if (
-                                                        $steps["runCode"] !=
-                                                          null &&
-                                                        typeof $steps[
-                                                          "runCode"
-                                                        ] === "object" &&
-                                                        typeof $steps["runCode"]
-                                                          .then === "function"
-                                                      ) {
-                                                        $steps["runCode"] =
-                                                          await $steps[
-                                                            "runCode"
-                                                          ];
-                                                      }
-
-                                                      $steps["runCode2"] = true
-                                                        ? (() => {
-                                                            const actionArgs = {
-                                                              customFunction:
-                                                                async () => {
-                                                                  return ($state.dialogSelectProduct.open =
-                                                                    false);
-                                                                }
-                                                            };
-                                                            return (({
-                                                              customFunction
-                                                            }) => {
-                                                              return customFunction();
-                                                            })?.apply(null, [
-                                                              actionArgs
-                                                            ]);
-                                                          })()
-                                                        : undefined;
-                                                      if (
-                                                        $steps["runCode2"] !=
-                                                          null &&
-                                                        typeof $steps[
-                                                          "runCode2"
-                                                        ] === "object" &&
-                                                        typeof $steps[
-                                                          "runCode2"
-                                                        ].then === "function"
-                                                      ) {
-                                                        $steps["runCode2"] =
-                                                          await $steps[
-                                                            "runCode2"
-                                                          ];
-                                                      }
-                                                    }}
-                                                    size={"compact"}
-                                                  />
-                                                </div>
-                                              </div>
-                                            );
-                                          }
-                                        )}
-                                      </React.Fragment>
-                                    }
-                                    className={classNames(
-                                      "__wab_instance",
-                                      sty.dialogSelectProduct
-                                    )}
-                                    onOpenChange={async (...eventArgs: any) => {
-                                      generateStateOnChangeProp($state, [
-                                        "dialogSelectProduct",
-                                        "open"
-                                      ]).apply(null, eventArgs);
-
-                                      if (
-                                        eventArgs.length > 1 &&
-                                        eventArgs[1] &&
-                                        eventArgs[1]._plasmic_state_init_
-                                      ) {
-                                        return;
-                                      }
-                                    }}
-                                    open={generateStateValueProp($state, [
-                                      "dialogSelectProduct",
-                                      "open"
-                                    ])}
-                                    title={
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
-                                          sty.text__jz33O
-                                        )}
-                                      >
-                                        {
-                                          "\u067e\u0631\u0648\u062f\u0627\u06a9\u062a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f:"
-                                        }
-                                      </div>
-                                    }
-                                    trigger={null}
-                                  />
-
-                                  <Button2
-                                    children2={
-                                      "\u0627\u0646\u062a\u062e\u0627\u0628  \u0645\u0634\u062a\u0631\u06cc"
-                                    }
-                                    className={classNames(
-                                      "__wab_instance",
-                                      sty.button__yqh7W
-                                    )}
-                                    onClick={async event => {
-                                      const $steps = {};
-
-                                      $steps["txtUserMobile"] = true
-                                        ? (() => {
-                                            const actionArgs = {
-                                              customFunction: async () => {
-                                                return (() => {
-                                                  return ($state.txtUserMobile.value =
-                                                    "");
-                                                })();
-                                              }
-                                            };
-                                            return (({ customFunction }) => {
-                                              return customFunction();
-                                            })?.apply(null, [actionArgs]);
-                                          })()
-                                        : undefined;
-                                      if (
-                                        $steps["txtUserMobile"] != null &&
-                                        typeof $steps["txtUserMobile"] ===
-                                          "object" &&
-                                        typeof $steps["txtUserMobile"].then ===
-                                          "function"
-                                      ) {
-                                        $steps["txtUserMobile"] = await $steps[
-                                          "txtUserMobile"
-                                        ];
-                                      }
-
-                                      $steps["showWaiting"] =
-                                        $state.p24Products.length == 0
-                                          ? (() => {
-                                              const actionArgs = {
-                                                variable: {
-                                                  objRoot: $state,
-                                                  variablePath: ["waitingUser"]
-                                                },
-                                                operation: 0,
-                                                value: true
-                                              };
-                                              return (({
-                                                variable,
-                                                value,
-                                                startIndex,
-                                                deleteCount
-                                              }) => {
-                                                if (!variable) {
-                                                  return;
-                                                }
-                                                const {
-                                                  objRoot,
-                                                  variablePath
-                                                } = variable;
-
-                                                $stateSet(
-                                                  objRoot,
-                                                  variablePath,
-                                                  value
-                                                );
-                                                return value;
-                                              })?.apply(null, [actionArgs]);
-                                            })()
-                                          : undefined;
-                                      if (
-                                        $steps["showWaiting"] != null &&
-                                        typeof $steps["showWaiting"] ===
-                                          "object" &&
-                                        typeof $steps["showWaiting"].then ===
-                                          "function"
-                                      ) {
-                                        $steps["showWaiting"] = await $steps[
-                                          "showWaiting"
-                                        ];
-                                      }
-
-                                      $steps["getp24Products"] =
-                                        $state.p24Products.length == 0
-                                          ? (() => {
-                                              const actionArgs = {
-                                                args: [
-                                                  undefined,
-                                                  "https://apigw.paziresh24.com/transaction/v1/p24products"
-                                                ]
-                                              };
-                                              return $globalActions[
-                                                "Fragment.apiRequest"
-                                              ]?.apply(null, [
-                                                ...actionArgs.args
-                                              ]);
-                                            })()
-                                          : undefined;
-                                      if (
-                                        $steps["getp24Products"] != null &&
-                                        typeof $steps["getp24Products"] ===
-                                          "object" &&
-                                        typeof $steps["getp24Products"].then ===
-                                          "function"
-                                      ) {
-                                        $steps["getp24Products"] = await $steps[
-                                          "getp24Products"
-                                        ];
-                                      }
-
-                                      $steps["updateP24Products"] =
-                                        $state.p24Products.length == 0 &&
-                                        $steps.getp24Products.status == 200
-                                          ? (() => {
-                                              const actionArgs = {
-                                                variable: {
-                                                  objRoot: $state,
-                                                  variablePath: ["p24Products"]
-                                                },
-                                                operation: 0,
-                                                value:
-                                                  $steps.getp24Products.data
-                                                    .data
-                                              };
-                                              return (({
-                                                variable,
-                                                value,
-                                                startIndex,
-                                                deleteCount
-                                              }) => {
-                                                if (!variable) {
-                                                  return;
-                                                }
-                                                const {
-                                                  objRoot,
-                                                  variablePath
-                                                } = variable;
-
-                                                $stateSet(
-                                                  objRoot,
-                                                  variablePath,
-                                                  value
-                                                );
-                                                return value;
-                                              })?.apply(null, [actionArgs]);
-                                            })()
-                                          : undefined;
-                                      if (
-                                        $steps["updateP24Products"] != null &&
-                                        typeof $steps["updateP24Products"] ===
-                                          "object" &&
-                                        typeof $steps["updateP24Products"]
-                                          .then === "function"
-                                      ) {
-                                        $steps["updateP24Products"] =
-                                          await $steps["updateP24Products"];
-                                      }
-
-                                      $steps["hideWaiting"] = true
-                                        ? (() => {
-                                            const actionArgs = {
-                                              variable: {
-                                                objRoot: $state,
-                                                variablePath: ["waitingUser"]
-                                              },
-                                              operation: 0,
-                                              value: false
-                                            };
-                                            return (({
-                                              variable,
-                                              value,
-                                              startIndex,
-                                              deleteCount
-                                            }) => {
-                                              if (!variable) {
-                                                return;
-                                              }
-                                              const { objRoot, variablePath } =
-                                                variable;
-
-                                              $stateSet(
-                                                objRoot,
-                                                variablePath,
-                                                value
-                                              );
-                                              return value;
-                                            })?.apply(null, [actionArgs]);
-                                          })()
-                                        : undefined;
-                                      if (
-                                        $steps["hideWaiting"] != null &&
-                                        typeof $steps["hideWaiting"] ===
-                                          "object" &&
-                                        typeof $steps["hideWaiting"].then ===
-                                          "function"
-                                      ) {
-                                        $steps["hideWaiting"] = await $steps[
-                                          "hideWaiting"
-                                        ];
-                                      }
-
-                                      $steps["updateDialogSelectProductOpen"] =
-                                        true
-                                          ? (() => {
-                                              const actionArgs = {
-                                                variable: {
-                                                  objRoot: $state,
-                                                  variablePath: [
-                                                    "dialogSelectProduct",
-                                                    "open"
-                                                  ]
-                                                },
-                                                operation: 0,
-                                                value: true
-                                              };
-                                              return (({
-                                                variable,
-                                                value,
-                                                startIndex,
-                                                deleteCount
-                                              }) => {
-                                                if (!variable) {
-                                                  return;
-                                                }
-                                                const {
-                                                  objRoot,
-                                                  variablePath
-                                                } = variable;
-
-                                                $stateSet(
-                                                  objRoot,
-                                                  variablePath,
-                                                  value
-                                                );
-                                                return value;
-                                              })?.apply(null, [actionArgs]);
-                                            })()
-                                          : undefined;
-                                      if (
-                                        $steps[
-                                          "updateDialogSelectProductOpen"
-                                        ] != null &&
-                                        typeof $steps[
-                                          "updateDialogSelectProductOpen"
-                                        ] === "object" &&
-                                        typeof $steps[
-                                          "updateDialogSelectProductOpen"
-                                        ].then === "function"
-                                      ) {
-                                        $steps[
-                                          "updateDialogSelectProductOpen"
-                                        ] = await $steps[
-                                          "updateDialogSelectProductOpen"
-                                        ];
-                                      }
-                                    }}
-                                    size={"compact"}
                                   />
                                 </div>
                               </div>
@@ -4271,28 +3525,26 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     sty.text__jGFp
                                   )}
                                 >
-                                  {
-                                    "\u062b\u0628\u062a \u0641\u0627\u06a9\u062a\u0648\u0631 "
-                                  }
-                                </div>
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__s0Hph
-                                  )}
-                                >
                                   <React.Fragment>
                                     {(() => {
                                       try {
-                                        return $state.registerinvoiceUserinfo;
+                                        return (() => {
+                                          return (
+                                            "ثبت فاکتور " +
+                                            ($state.registerinvoiceUserinfo
+                                              .length > 0
+                                              ? "برای " +
+                                                $state.registerinvoiceUserinfo
+                                              : "")
+                                          );
+                                        })();
                                       } catch (e) {
                                         if (
                                           e instanceof TypeError ||
                                           e?.plasmicType ===
                                             "PlasmicUndefinedDataError"
                                         ) {
-                                          return "...";
+                                          return "\u062b\u0628\u062a \u0641\u0627\u06a9\u062a\u0648\u0631 ";
                                         }
                                         throw e;
                                       }
@@ -4343,6 +3595,728 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     "\u0627\u0628\u062a\u062f\u0627 \u06a9\u0627\u0631\u0628\u0631 \u06cc\u0627 \u067e\u0631\u0648\u062f\u0627\u06a9\u062a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0645\u0634\u062e\u0635 \u0646\u0645\u0627\u06cc\u06cc\u062f. "
                                   }
                                 </div>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox___3STz1
+                                )}
+                              >
+                                <Dialog
+                                  data-plasmic-name={"dialogSelectProduct"}
+                                  data-plasmic-override={
+                                    overrides.dialogSelectProduct
+                                  }
+                                  body={
+                                    <React.Fragment>
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox__sDRo
+                                        )}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox__yws2Z
+                                          )}
+                                        >
+                                          <TextInput
+                                            data-plasmic-name={
+                                              "txtProductFilter"
+                                            }
+                                            data-plasmic-override={
+                                              overrides.txtProductFilter
+                                            }
+                                            className={classNames(
+                                              "__wab_instance",
+                                              sty.txtProductFilter
+                                            )}
+                                            onChange={async (
+                                              ...eventArgs: any
+                                            ) => {
+                                              ((...eventArgs) => {
+                                                generateStateOnChangeProp(
+                                                  $state,
+                                                  ["txtProductFilter", "value"]
+                                                )(
+                                                  (e => e.target?.value).apply(
+                                                    null,
+                                                    eventArgs
+                                                  )
+                                                );
+                                              }).apply(null, eventArgs);
+
+                                              if (
+                                                eventArgs.length > 1 &&
+                                                eventArgs[1] &&
+                                                eventArgs[1]
+                                                  ._plasmic_state_init_
+                                              ) {
+                                                return;
+                                              }
+                                            }}
+                                            placeholder={
+                                              "\u062c\u0633\u062a \u0648 \u062c\u0648"
+                                            }
+                                            value={
+                                              generateStateValueProp($state, [
+                                                "txtProductFilter",
+                                                "value"
+                                              ]) ?? ""
+                                            }
+                                          />
+                                        </div>
+                                      </div>
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox__eSkOy
+                                        )}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox__oUzO5
+                                          )}
+                                        >
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text___8SwmW
+                                            )}
+                                          >
+                                            {"\u0631\u062f\u06cc\u0641"}
+                                          </div>
+                                        </div>
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox__mH8So
+                                          )}
+                                        >
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__yb4Ue
+                                            )}
+                                          >
+                                            {"\u0634\u0646\u0627\u0633\u0647"}
+                                          </div>
+                                        </div>
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox__olBzp
+                                          )}
+                                        >
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__yrBex
+                                            )}
+                                          >
+                                            {"\u0639\u0646\u0648\u0627\u0646"}
+                                          </div>
+                                        </div>
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox__kSAfa
+                                          )}
+                                        >
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__dDh1T
+                                            )}
+                                          >
+                                            {
+                                              "\u0639\u0645\u0644\u06cc\u0627\u062a"
+                                            }
+                                          </div>
+                                        </div>
+                                      </div>
+                                      {(_par =>
+                                        !_par
+                                          ? []
+                                          : Array.isArray(_par)
+                                          ? _par
+                                          : [_par])(
+                                        (() => {
+                                          try {
+                                            return $state.p24Products.filter(
+                                              product =>
+                                                product.name
+                                                  .toLowerCase()
+                                                  .includes(
+                                                    $state.txtProductFilter.value.toLowerCase()
+                                                  )
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return [];
+                                            }
+                                            throw e;
+                                          }
+                                        })()
+                                      ).map(
+                                        (__plasmic_item_0, __plasmic_idx_0) => {
+                                          const currentItem = __plasmic_item_0;
+                                          const currentIndex = __plasmic_idx_0;
+                                          return (
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                sty.freeBox__jlIb4
+                                              )}
+                                              key={currentIndex}
+                                            >
+                                              <div
+                                                className={classNames(
+                                                  projectcss.all,
+                                                  sty.freeBox__aOnMr
+                                                )}
+                                              >
+                                                <div
+                                                  className={classNames(
+                                                    projectcss.all,
+                                                    projectcss.__wab_text,
+                                                    sty.text__qmaws
+                                                  )}
+                                                >
+                                                  <React.Fragment>
+                                                    {(() => {
+                                                      try {
+                                                        return currentIndex + 1;
+                                                      } catch (e) {
+                                                        if (
+                                                          e instanceof
+                                                            TypeError ||
+                                                          e?.plasmicType ===
+                                                            "PlasmicUndefinedDataError"
+                                                        ) {
+                                                          return "\u0631\u062f\u06cc\u0641";
+                                                        }
+                                                        throw e;
+                                                      }
+                                                    })()}
+                                                  </React.Fragment>
+                                                </div>
+                                              </div>
+                                              <div
+                                                className={classNames(
+                                                  projectcss.all,
+                                                  sty.freeBox__uFiL
+                                                )}
+                                              >
+                                                <div
+                                                  className={classNames(
+                                                    projectcss.all,
+                                                    projectcss.__wab_text,
+                                                    sty.text___0ZZxn
+                                                  )}
+                                                >
+                                                  <React.Fragment>
+                                                    {(() => {
+                                                      try {
+                                                        return currentItem.codename;
+                                                      } catch (e) {
+                                                        if (
+                                                          e instanceof
+                                                            TypeError ||
+                                                          e?.plasmicType ===
+                                                            "PlasmicUndefinedDataError"
+                                                        ) {
+                                                          return "\u06a9\u062f\u0646\u06cc\u0645";
+                                                        }
+                                                        throw e;
+                                                      }
+                                                    })()}
+                                                  </React.Fragment>
+                                                </div>
+                                              </div>
+                                              <div
+                                                className={classNames(
+                                                  projectcss.all,
+                                                  sty.freeBox__jFCfw
+                                                )}
+                                              >
+                                                <div
+                                                  className={classNames(
+                                                    projectcss.all,
+                                                    projectcss.__wab_text,
+                                                    sty.text__luXj
+                                                  )}
+                                                >
+                                                  <React.Fragment>
+                                                    {(() => {
+                                                      try {
+                                                        return currentItem.name;
+                                                      } catch (e) {
+                                                        if (
+                                                          e instanceof
+                                                            TypeError ||
+                                                          e?.plasmicType ===
+                                                            "PlasmicUndefinedDataError"
+                                                        ) {
+                                                          return "\u0639\u0646\u0648\u0627\u0646";
+                                                        }
+                                                        throw e;
+                                                      }
+                                                    })()}
+                                                  </React.Fragment>
+                                                </div>
+                                              </div>
+                                              <div
+                                                className={classNames(
+                                                  projectcss.all,
+                                                  sty.freeBox__q5VaH
+                                                )}
+                                              >
+                                                <Button2
+                                                  children2={
+                                                    "\u0627\u0646\u062a\u062e\u0627\u0628"
+                                                  }
+                                                  className={classNames(
+                                                    "__wab_instance",
+                                                    sty.button__m53Ql
+                                                  )}
+                                                  color={"green"}
+                                                  onClick={async event => {
+                                                    const $steps = {};
+
+                                                    $steps[
+                                                      "updateRegisterInvoiceFinal"
+                                                    ] = true
+                                                      ? (() => {
+                                                          const actionArgs = {
+                                                            variable: {
+                                                              objRoot: $state,
+                                                              variablePath: [
+                                                                "registerInvoiceFinal"
+                                                              ]
+                                                            },
+                                                            operation: 0,
+                                                            value: false
+                                                          };
+                                                          return (({
+                                                            variable,
+                                                            value,
+                                                            startIndex,
+                                                            deleteCount
+                                                          }) => {
+                                                            if (!variable) {
+                                                              return;
+                                                            }
+                                                            const {
+                                                              objRoot,
+                                                              variablePath
+                                                            } = variable;
+
+                                                            $stateSet(
+                                                              objRoot,
+                                                              variablePath,
+                                                              value
+                                                            );
+                                                            return value;
+                                                          })?.apply(null, [
+                                                            actionArgs
+                                                          ]);
+                                                        })()
+                                                      : undefined;
+                                                    if (
+                                                      $steps[
+                                                        "updateRegisterInvoiceFinal"
+                                                      ] != null &&
+                                                      typeof $steps[
+                                                        "updateRegisterInvoiceFinal"
+                                                      ] === "object" &&
+                                                      typeof $steps[
+                                                        "updateRegisterInvoiceFinal"
+                                                      ].then === "function"
+                                                    ) {
+                                                      $steps[
+                                                        "updateRegisterInvoiceFinal"
+                                                      ] = await $steps[
+                                                        "updateRegisterInvoiceFinal"
+                                                      ];
+                                                    }
+
+                                                    $steps["runCode"] = true
+                                                      ? (() => {
+                                                          const actionArgs = {
+                                                            customFunction:
+                                                              async () => {
+                                                                return (() => {
+                                                                  $state.registerinvoiceUserinfo =
+                                                                    currentItem.name;
+                                                                  return ($state.registerinvoiceUserid =
+                                                                    currentItem.codename);
+                                                                })();
+                                                              }
+                                                          };
+                                                          return (({
+                                                            customFunction
+                                                          }) => {
+                                                            return customFunction();
+                                                          })?.apply(null, [
+                                                            actionArgs
+                                                          ]);
+                                                        })()
+                                                      : undefined;
+                                                    if (
+                                                      $steps["runCode"] !=
+                                                        null &&
+                                                      typeof $steps[
+                                                        "runCode"
+                                                      ] === "object" &&
+                                                      typeof $steps["runCode"]
+                                                        .then === "function"
+                                                    ) {
+                                                      $steps["runCode"] =
+                                                        await $steps["runCode"];
+                                                    }
+
+                                                    $steps["runCode2"] = true
+                                                      ? (() => {
+                                                          const actionArgs = {
+                                                            customFunction:
+                                                              async () => {
+                                                                return ($state.dialogSelectProduct.open =
+                                                                  false);
+                                                              }
+                                                          };
+                                                          return (({
+                                                            customFunction
+                                                          }) => {
+                                                            return customFunction();
+                                                          })?.apply(null, [
+                                                            actionArgs
+                                                          ]);
+                                                        })()
+                                                      : undefined;
+                                                    if (
+                                                      $steps["runCode2"] !=
+                                                        null &&
+                                                      typeof $steps[
+                                                        "runCode2"
+                                                      ] === "object" &&
+                                                      typeof $steps["runCode2"]
+                                                        .then === "function"
+                                                    ) {
+                                                      $steps["runCode2"] =
+                                                        await $steps[
+                                                          "runCode2"
+                                                        ];
+                                                    }
+                                                  }}
+                                                  size={"compact"}
+                                                />
+                                              </div>
+                                            </div>
+                                          );
+                                        }
+                                      )}
+                                    </React.Fragment>
+                                  }
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.dialogSelectProduct
+                                  )}
+                                  onOpenChange={async (...eventArgs: any) => {
+                                    generateStateOnChangeProp($state, [
+                                      "dialogSelectProduct",
+                                      "open"
+                                    ]).apply(null, eventArgs);
+
+                                    if (
+                                      eventArgs.length > 1 &&
+                                      eventArgs[1] &&
+                                      eventArgs[1]._plasmic_state_init_
+                                    ) {
+                                      return;
+                                    }
+                                  }}
+                                  open={generateStateValueProp($state, [
+                                    "dialogSelectProduct",
+                                    "open"
+                                  ])}
+                                  title={
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__jz33O
+                                      )}
+                                    >
+                                      {
+                                        "\u067e\u0631\u0648\u062f\u0627\u06a9\u062a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f:"
+                                      }
+                                    </div>
+                                  }
+                                  trigger={null}
+                                />
+
+                                <Button2
+                                  children2={
+                                    "\u0627\u0646\u062a\u062e\u0627\u0628  \u0645\u0634\u062a\u0631\u06cc"
+                                  }
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.button__yqh7W
+                                  )}
+                                  onClick={async event => {
+                                    const $steps = {};
+
+                                    $steps["txtUserMobile"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            customFunction: async () => {
+                                              return (() => {
+                                                return ($state.txtUserMobile.value =
+                                                  "");
+                                              })();
+                                            }
+                                          };
+                                          return (({ customFunction }) => {
+                                            return customFunction();
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["txtUserMobile"] != null &&
+                                      typeof $steps["txtUserMobile"] ===
+                                        "object" &&
+                                      typeof $steps["txtUserMobile"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["txtUserMobile"] = await $steps[
+                                        "txtUserMobile"
+                                      ];
+                                    }
+
+                                    $steps["showWaiting"] =
+                                      $state.p24Products.length == 0
+                                        ? (() => {
+                                            const actionArgs = {
+                                              variable: {
+                                                objRoot: $state,
+                                                variablePath: ["waitingUser"]
+                                              },
+                                              operation: 0,
+                                              value: true
+                                            };
+                                            return (({
+                                              variable,
+                                              value,
+                                              startIndex,
+                                              deleteCount
+                                            }) => {
+                                              if (!variable) {
+                                                return;
+                                              }
+                                              const { objRoot, variablePath } =
+                                                variable;
+
+                                              $stateSet(
+                                                objRoot,
+                                                variablePath,
+                                                value
+                                              );
+                                              return value;
+                                            })?.apply(null, [actionArgs]);
+                                          })()
+                                        : undefined;
+                                    if (
+                                      $steps["showWaiting"] != null &&
+                                      typeof $steps["showWaiting"] ===
+                                        "object" &&
+                                      typeof $steps["showWaiting"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["showWaiting"] = await $steps[
+                                        "showWaiting"
+                                      ];
+                                    }
+
+                                    $steps["getp24Products"] =
+                                      $state.p24Products.length == 0
+                                        ? (() => {
+                                            const actionArgs = {
+                                              args: [
+                                                undefined,
+                                                "https://apigw.paziresh24.com/transaction/v1/p24products"
+                                              ]
+                                            };
+                                            return $globalActions[
+                                              "Fragment.apiRequest"
+                                            ]?.apply(null, [
+                                              ...actionArgs.args
+                                            ]);
+                                          })()
+                                        : undefined;
+                                    if (
+                                      $steps["getp24Products"] != null &&
+                                      typeof $steps["getp24Products"] ===
+                                        "object" &&
+                                      typeof $steps["getp24Products"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["getp24Products"] = await $steps[
+                                        "getp24Products"
+                                      ];
+                                    }
+
+                                    $steps["updateP24Products"] =
+                                      $state.p24Products.length == 0 &&
+                                      $steps.getp24Products.status == 200
+                                        ? (() => {
+                                            const actionArgs = {
+                                              variable: {
+                                                objRoot: $state,
+                                                variablePath: ["p24Products"]
+                                              },
+                                              operation: 0,
+                                              value:
+                                                $steps.getp24Products.data.data
+                                            };
+                                            return (({
+                                              variable,
+                                              value,
+                                              startIndex,
+                                              deleteCount
+                                            }) => {
+                                              if (!variable) {
+                                                return;
+                                              }
+                                              const { objRoot, variablePath } =
+                                                variable;
+
+                                              $stateSet(
+                                                objRoot,
+                                                variablePath,
+                                                value
+                                              );
+                                              return value;
+                                            })?.apply(null, [actionArgs]);
+                                          })()
+                                        : undefined;
+                                    if (
+                                      $steps["updateP24Products"] != null &&
+                                      typeof $steps["updateP24Products"] ===
+                                        "object" &&
+                                      typeof $steps["updateP24Products"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["updateP24Products"] =
+                                        await $steps["updateP24Products"];
+                                    }
+
+                                    $steps["hideWaiting"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: ["waitingUser"]
+                                            },
+                                            operation: 0,
+                                            value: false
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["hideWaiting"] != null &&
+                                      typeof $steps["hideWaiting"] ===
+                                        "object" &&
+                                      typeof $steps["hideWaiting"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["hideWaiting"] = await $steps[
+                                        "hideWaiting"
+                                      ];
+                                    }
+
+                                    $steps["updateDialogSelectProductOpen"] =
+                                      true
+                                        ? (() => {
+                                            const actionArgs = {
+                                              variable: {
+                                                objRoot: $state,
+                                                variablePath: [
+                                                  "dialogSelectProduct",
+                                                  "open"
+                                                ]
+                                              },
+                                              operation: 0,
+                                              value: true
+                                            };
+                                            return (({
+                                              variable,
+                                              value,
+                                              startIndex,
+                                              deleteCount
+                                            }) => {
+                                              if (!variable) {
+                                                return;
+                                              }
+                                              const { objRoot, variablePath } =
+                                                variable;
+
+                                              $stateSet(
+                                                objRoot,
+                                                variablePath,
+                                                value
+                                              );
+                                              return value;
+                                            })?.apply(null, [actionArgs]);
+                                          })()
+                                        : undefined;
+                                    if (
+                                      $steps["updateDialogSelectProductOpen"] !=
+                                        null &&
+                                      typeof $steps[
+                                        "updateDialogSelectProductOpen"
+                                      ] === "object" &&
+                                      typeof $steps[
+                                        "updateDialogSelectProductOpen"
+                                      ].then === "function"
+                                    ) {
+                                      $steps["updateDialogSelectProductOpen"] =
+                                        await $steps[
+                                          "updateDialogSelectProductOpen"
+                                        ];
+                                    }
+                                  }}
+                                  size={"compact"}
+                                />
                               </div>
                             </div>
                           }
@@ -8318,9 +8292,9 @@ const PlasmicDescendants = {
     "btnSearch",
     "dialogRegisterInvoice",
     "waitingIcon5",
-    "txtUserMobile",
     "dialogSelectProduct",
     "txtProductFilter",
+    "txtUserMobile",
     "txtRegisterInvoiceTitle",
     "radioGroup",
     "radio",
@@ -8359,9 +8333,9 @@ const PlasmicDescendants = {
     "btnSearch",
     "dialogRegisterInvoice",
     "waitingIcon5",
-    "txtUserMobile",
     "dialogSelectProduct",
     "txtProductFilter",
+    "txtUserMobile",
     "txtRegisterInvoiceTitle",
     "radioGroup",
     "radio",
@@ -8393,9 +8367,9 @@ const PlasmicDescendants = {
     "btnSearch",
     "dialogRegisterInvoice",
     "waitingIcon5",
-    "txtUserMobile",
     "dialogSelectProduct",
     "txtProductFilter",
+    "txtUserMobile",
     "txtRegisterInvoiceTitle",
     "radioGroup",
     "radio",
@@ -8415,9 +8389,9 @@ const PlasmicDescendants = {
   dialogRegisterInvoice: [
     "dialogRegisterInvoice",
     "waitingIcon5",
-    "txtUserMobile",
     "dialogSelectProduct",
     "txtProductFilter",
+    "txtUserMobile",
     "txtRegisterInvoiceTitle",
     "radioGroup",
     "radio",
@@ -8431,9 +8405,9 @@ const PlasmicDescendants = {
     "txtInvoiceId"
   ],
   waitingIcon5: ["waitingIcon5"],
-  txtUserMobile: ["txtUserMobile"],
   dialogSelectProduct: ["dialogSelectProduct", "txtProductFilter"],
   txtProductFilter: ["txtProductFilter"],
+  txtUserMobile: ["txtUserMobile"],
   txtRegisterInvoiceTitle: ["txtRegisterInvoiceTitle"],
   radioGroup: ["radioGroup", "radio"],
   radio: ["radio"],
@@ -8499,9 +8473,9 @@ type NodeDefaultElementType = {
   btnSearch: typeof Button;
   dialogRegisterInvoice: typeof Dialog;
   waitingIcon5: "svg";
-  txtUserMobile: typeof TextInput;
   dialogSelectProduct: typeof Dialog;
   txtProductFilter: typeof TextInput;
+  txtUserMobile: typeof TextInput;
   txtRegisterInvoiceTitle: typeof TextInput;
   radioGroup: typeof RadioGroup;
   radio: typeof Radio;
@@ -8600,9 +8574,9 @@ export const PlasmicProductAdmin = Object.assign(
     btnSearch: makeNodeComponent("btnSearch"),
     dialogRegisterInvoice: makeNodeComponent("dialogRegisterInvoice"),
     waitingIcon5: makeNodeComponent("waitingIcon5"),
-    txtUserMobile: makeNodeComponent("txtUserMobile"),
     dialogSelectProduct: makeNodeComponent("dialogSelectProduct"),
     txtProductFilter: makeNodeComponent("txtProductFilter"),
+    txtUserMobile: makeNodeComponent("txtUserMobile"),
     txtRegisterInvoiceTitle: makeNodeComponent("txtRegisterInvoiceTitle"),
     radioGroup: makeNodeComponent("radioGroup"),
     radio: makeNodeComponent("radio"),
