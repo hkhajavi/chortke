@@ -694,6 +694,11 @@
   min-width: 0;
   padding: 0px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__e0UzX {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
 .freeBox__gu0Y {
   display: flex;
   flex-direction: row;
@@ -706,6 +711,11 @@
   grid-column-end: span 3;
   min-width: 0;
   padding: 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__gu0Y {
+    grid-column-end: span 4;
+  }
 }
 .text__jGFp {
   height: auto;
@@ -758,6 +768,11 @@
   grid-column-end: span 1;
   min-width: 0;
   padding: 0px 8px 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox___3STz1 {
+    grid-column-end: span 2;
+  }
 }
 .dialogSelectProduct:global(.__wab_instance):global(.__wab_instance) {
   max-width: 100%;
@@ -1153,6 +1168,11 @@
   min-width: 0;
   padding: 0px 8px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__nPb0X {
+    padding: 0px;
+  }
+}
 .text__wdXg4 {
   position: relative;
   width: auto;
@@ -1426,6 +1446,18 @@
   min-width: 0;
   padding: 0px 8px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__cfCVy {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    min-width: 0;
+    padding: 0px;
+  }
+}
 .txtRegisterinvoiceDescription:global(.__wab_instance) {
   max-width: 100%;
 }
@@ -1463,6 +1495,11 @@
   min-width: 0;
   padding: 0px 8px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__hZa7 {
+    padding: 0px;
+  }
+}
 .text__axDC {
   position: relative;
   width: 100%;
@@ -1471,6 +1508,12 @@
   text-align: left;
   font-size: 13px;
   min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__axDC {
+    font-size: var(--token-VrIY9r5RDQZ_);
+    white-space: pre-wrap;
+  }
 }
 .freeBox__f6W70 {
   display: flex;
@@ -1484,6 +1527,18 @@
   grid-column-end: span 2;
   min-width: 0;
   padding: 0px 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__f6W70 {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    min-width: 0;
+    padding: 0px;
+  }
 }
 .txtRegisterInvoiceDiscountPercent:global(.__wab_instance) {
   max-width: 100%;
@@ -1512,6 +1567,11 @@
   min-width: 0;
   padding: 0px 8px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox___4OfQ3 {
+    padding: 0px;
+  }
+}
 .text__bgk1J {
   position: relative;
   width: 100%;
@@ -1520,6 +1580,11 @@
   text-align: left;
   font-size: 13px;
   min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__bgk1J {
+    font-size: var(--token-VrIY9r5RDQZ_);
+  }
 }
 .freeBox__zcG {
   display: flex;
@@ -1533,6 +1598,18 @@
   grid-column-end: span 2;
   min-width: 0;
   padding: 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__zcG {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    min-width: 0;
+    padding: 0px;
+  }
 }
 .txtRegisterInvoiceVatPercent:global(.__wab_instance) {
   max-width: 100%;
