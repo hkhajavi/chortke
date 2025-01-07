@@ -63,6 +63,7 @@ import Dialog from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
 import Button from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
 import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
+import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 
 import { useScreenVariants as useScreenVariantsbr2UhI7UlpvR } from "../fragment_icons/PlasmicGlobalVariant__Screen"; // plasmic-import: BR2UhI7ulpvR/globalVariant
 
@@ -102,6 +103,7 @@ export type PlasmicFinancialaccounts__OverridesType = {
   txtBank?: Flex__<typeof TextInput>;
   dialogDelete?: Flex__<typeof Dialog>;
   sideEffect?: Flex__<typeof SideEffect>;
+  embedHtml?: Flex__<typeof Embed>;
 };
 
 export interface DefaultFinancialaccountsProps {}
@@ -2459,6 +2461,15 @@ function PlasmicFinancialaccounts__RenderFunc(props: {
               }
             }}
           />
+
+          <Embed
+            data-plasmic-name={"embedHtml"}
+            data-plasmic-override={overrides.embedHtml}
+            className={classNames("__wab_instance", sty.embedHtml)}
+            code={
+              '<script type="text/javascript">\r\n    (function(c,l,a,r,i,t,y){\r\n        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\r\n        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;\r\n        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);\r\n    })(window, document, "clarity", "script", "pq37fqev3s");\r\n</script>'
+            }
+          />
         </div>
       </div>
     </React.Fragment>
@@ -2475,7 +2486,8 @@ const PlasmicDescendants = {
     "txtBan",
     "txtBank",
     "dialogDelete",
-    "sideEffect"
+    "sideEffect",
+    "embedHtml"
   ],
   section: [
     "section",
@@ -2492,7 +2504,8 @@ const PlasmicDescendants = {
   txtBan: ["txtBan"],
   txtBank: ["txtBank"],
   dialogDelete: ["dialogDelete"],
-  sideEffect: ["sideEffect"]
+  sideEffect: ["sideEffect"],
+  embedHtml: ["embedHtml"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -2507,6 +2520,7 @@ type NodeDefaultElementType = {
   txtBank: typeof TextInput;
   dialogDelete: typeof Dialog;
   sideEffect: typeof SideEffect;
+  embedHtml: typeof Embed;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -2577,6 +2591,7 @@ export const PlasmicFinancialaccounts = Object.assign(
     txtBank: makeNodeComponent("txtBank"),
     dialogDelete: makeNodeComponent("dialogDelete"),
     sideEffect: makeNodeComponent("sideEffect"),
+    embedHtml: makeNodeComponent("embedHtml"),
 
     // Metadata about props expected for PlasmicFinancialaccounts
     internalVariantProps: PlasmicFinancialaccounts__VariantProps,
