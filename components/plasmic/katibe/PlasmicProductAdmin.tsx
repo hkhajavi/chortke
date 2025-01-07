@@ -69,6 +69,7 @@ import Radio from "../../Radio"; // plasmic-import: Cbq_rTXOD16b/component
 import Dialog2 from "../../Dialog2"; // plasmic-import: 42tFBTdMKvt2/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: hVBOtSJvmbc4/codeComponent
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
+import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 
 import { useScreenVariants as useScreenVariantsbr2UhI7UlpvR } from "../fragment_icons/PlasmicGlobalVariant__Screen"; // plasmic-import: BR2UhI7ulpvR/globalVariant
 
@@ -144,6 +145,7 @@ export type PlasmicProductAdmin__OverridesType = {
   dialogAcceptInvoice?: Flex__<typeof Dialog>;
   waitingIcon6?: Flex__<"svg">;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
+  embedHtml?: Flex__<typeof Embed>;
 };
 
 export interface DefaultProductAdminProps {}
@@ -8271,6 +8273,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
               </div>
             </div>
           </div>
+          <Embed
+            data-plasmic-name={"embedHtml"}
+            data-plasmic-override={overrides.embedHtml}
+            className={classNames("__wab_instance", sty.embedHtml)}
+            code={
+              '<script type="text/javascript">\r\n    (function(c,l,a,r,i,t,y){\r\n        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\r\n        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;\r\n        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);\r\n    })(window, document, "clarity", "script", "pq37fqev3s");\r\n</script>'
+            }
+          />
         </div>
       </div>
     </React.Fragment>
@@ -8318,7 +8328,8 @@ const PlasmicDescendants = {
     "txtCancelReason",
     "dialogAcceptInvoice",
     "waitingIcon6",
-    "sideEffectPageLoad"
+    "sideEffectPageLoad",
+    "embedHtml"
   ],
   h1: ["h1"],
   btnDashboard3: ["btnDashboard3"],
@@ -8454,7 +8465,8 @@ const PlasmicDescendants = {
   txtCancelReason: ["txtCancelReason"],
   dialogAcceptInvoice: ["dialogAcceptInvoice"],
   waitingIcon6: ["waitingIcon6"],
-  sideEffectPageLoad: ["sideEffectPageLoad"]
+  sideEffectPageLoad: ["sideEffectPageLoad"],
+  embedHtml: ["embedHtml"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -8500,6 +8512,7 @@ type NodeDefaultElementType = {
   dialogAcceptInvoice: typeof Dialog;
   waitingIcon6: "svg";
   sideEffectPageLoad: typeof SideEffect;
+  embedHtml: typeof Embed;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -8607,6 +8620,7 @@ export const PlasmicProductAdmin = Object.assign(
     dialogAcceptInvoice: makeNodeComponent("dialogAcceptInvoice"),
     waitingIcon6: makeNodeComponent("waitingIcon6"),
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
+    embedHtml: makeNodeComponent("embedHtml"),
 
     // Metadata about props expected for PlasmicProductAdmin
     internalVariantProps: PlasmicProductAdmin__VariantProps,
