@@ -3818,23 +3818,51 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                     sty.freeBox__pxhR
                                   )}
                                 >
-                                  {(() => {
-                                    try {
-                                      return (
-                                        $state.invoicelist[currentIndex]
-                                          .payment_status != "paid"
-                                      );
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return true;
-                                      }
-                                      throw e;
-                                    }
-                                  })() ? (
+                                  {(
+                                    hasVariant(
+                                      globalVariants,
+                                      "screen",
+                                      "mobileOnly"
+                                    )
+                                      ? (() => {
+                                          try {
+                                            return (
+                                              $state.invoicelist[currentIndex]
+                                                .payment_status != "paid" &&
+                                              $state.invoicelist[currentIndex]
+                                                .due_date.length == 0
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return true;
+                                            }
+                                            throw e;
+                                          }
+                                        })()
+                                      : (() => {
+                                          try {
+                                            return (
+                                              $state.invoicelist[currentIndex]
+                                                .payment_status != "paid" &&
+                                              $state.invoicelist[currentIndex]
+                                                .due_date.length == 0
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return true;
+                                            }
+                                            throw e;
+                                          }
+                                        })()
+                                  ) ? (
                                     <div
                                       className={classNames(
                                         projectcss.all,
@@ -3845,6 +3873,119 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       {
                                         "\u067e\u0631\u062f\u0627\u062e\u062a \u0646\u0634\u062f\u0647"
                                       }
+                                    </div>
+                                  ) : null}
+                                  {(
+                                    hasVariant(
+                                      globalVariants,
+                                      "screen",
+                                      "mobileOnly"
+                                    )
+                                      ? (() => {
+                                          try {
+                                            return (
+                                              $state.invoicelist[currentIndex]
+                                                .due_date.length > 0 &&
+                                              $state.invoicelist[currentIndex]
+                                                .payment_status != "paid"
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return true;
+                                            }
+                                            throw e;
+                                          }
+                                        })()
+                                      : (() => {
+                                          try {
+                                            return (
+                                              $state.invoicelist[currentIndex]
+                                                .due_date.length > 0 &&
+                                              $state.invoicelist[currentIndex]
+                                                .payment_status != "paid"
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return true;
+                                            }
+                                            throw e;
+                                          }
+                                        })()
+                                  ) ? (
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__hgc8G
+                                      )}
+                                    >
+                                      {hasVariant(
+                                        globalVariants,
+                                        "screen",
+                                        "mobileOnly"
+                                      ) ? (
+                                        <React.Fragment>
+                                          {(() => {
+                                            try {
+                                              return (
+                                                "مهلت پرداخت: " +
+                                                (() => {
+                                                  const persianDate = new Date(
+                                                    $state.invoicelist[
+                                                      currentIndex
+                                                    ].due_date
+                                                  ).toLocaleDateString("fa-IR");
+                                                  return `${persianDate}`;
+                                                })()
+                                              );
+                                            } catch (e) {
+                                              if (
+                                                e instanceof TypeError ||
+                                                e?.plasmicType ===
+                                                  "PlasmicUndefinedDataError"
+                                              ) {
+                                                return "\u067e\u0631\u062f\u0627\u062e\u062a \u0646\u0634\u062f\u0647";
+                                              }
+                                              throw e;
+                                            }
+                                          })()}
+                                        </React.Fragment>
+                                      ) : (
+                                        <React.Fragment>
+                                          {(() => {
+                                            try {
+                                              return (
+                                                "مهلت پرداخت: " +
+                                                (() => {
+                                                  const persianDate = new Date(
+                                                    $state.invoicelist[
+                                                      currentIndex
+                                                    ].due_date
+                                                  ).toLocaleDateString("fa-IR");
+                                                  return `${persianDate}`;
+                                                })()
+                                              );
+                                            } catch (e) {
+                                              if (
+                                                e instanceof TypeError ||
+                                                e?.plasmicType ===
+                                                  "PlasmicUndefinedDataError"
+                                              ) {
+                                                return "\u067e\u0631\u062f\u0627\u062e\u062a \u0646\u0634\u062f\u0647";
+                                              }
+                                              throw e;
+                                            }
+                                          })()}
+                                        </React.Fragment>
+                                      )}
                                     </div>
                                   ) : null}
                                   {(() => {
@@ -4063,8 +4204,60 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                       {(() => {
                         try {
                           return (
+                            $state.invoicelist[currentIndex].due_date.length >
+                              0 &&
                             $state.invoicelist[currentIndex].payment_status !=
-                            "paid"
+                              "paid"
+                          );
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__buV3U
+                          )}
+                        >
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return (
+                                  "مهلت پرداخت: " +
+                                  (() => {
+                                    const persianDate = new Date(
+                                      $state.invoicelist[currentIndex].due_date
+                                    ).toLocaleDateString("fa-IR");
+                                    return `${persianDate}`;
+                                  })()
+                                );
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "\u067e\u0631\u062f\u0627\u062e\u062a \u0646\u0634\u062f\u0647";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        </div>
+                      ) : null}
+                      {(() => {
+                        try {
+                          return (
+                            $state.invoicelist[currentIndex].payment_status !=
+                              "paid" &&
+                            $state.invoicelist[currentIndex].due_date.length ==
+                              0
                           );
                         } catch (e) {
                           if (

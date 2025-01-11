@@ -2908,6 +2908,20 @@
   .text__uiljD {
     font-size: var(--token-VrIY9r5RDQZ_);
     color: var(--token-Bo2_tT25lwh4);
+    display: block;
+  }
+}
+.text__hgc8G {
+  font-size: var(--token-5Ye_3XTSaP9X);
+  font-weight: 400;
+  color: var(--token-Bo2_tT25lwh4);
+  margin: 5px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__hgc8G {
+    font-size: var(--token-VrIY9r5RDQZ_);
+    color: var(--token-Bo2_tT25lwh4);
+    display: block;
   }
 }
 .text__gq91D {
@@ -2961,7 +2975,7 @@
 .freeBox__vBvC {
   display: flex;
   position: relative;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
   height: 100%;
   max-width: 100%;
@@ -2986,6 +3000,19 @@
   font-size: var(--token-5Ye_3XTSaP9X);
   color: var(--token-HyiizzCtnTod);
   margin: 5px;
+}
+.text__buV3U {
+  font-size: var(--token-5Ye_3XTSaP9X);
+  font-weight: 400;
+  color: var(--token-fDNuFs9Skt3p);
+  user-select: text;
+  white-space: pre;
+  margin: 5px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__buV3U {
+    font-size: var(--token-VrIY9r5RDQZ_);
+  }
 }
 .text__tra4Y {
   font-size: var(--token-5Ye_3XTSaP9X);
