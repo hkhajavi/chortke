@@ -82,6 +82,7 @@ export type PlasmicFactorPrint__OverridesType = {
   factorPrint?: Flex__<"div">;
   holderPrint?: Flex__<"section">;
   img?: Flex__<typeof PlasmicImg__>;
+  section?: Flex__<"section">;
 };
 
 export interface DefaultFactorPrintProps {}
@@ -846,13 +847,50 @@ function PlasmicFactorPrint__RenderFunc(props: {
                             sty.text__kzcN7
                           )}
                         >
-                          {"\u062c\u0645\u0639"}
+                          {"\u062c\u0645\u0639 \u06a9\u0644"}
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+            <div className={classNames(projectcss.all, sty.freeBox__nTtl7)}>
+              <div className={classNames(projectcss.all, sty.freeBox__tw2B3)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__nUvDh
+                  )}
+                >
+                  {
+                    "\u0645\u0647\u0631 \u0648 \u0627\u0645\u0636\u0627\u06cc \u0641\u0631\u0648\u0634\u0646\u062f\u0647"
+                  }
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__gyA7Q)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__vWKij
+                  )}
+                >
+                  {
+                    "\u0645\u0647\u0631 \u0648 \u0627\u0645\u0636\u0627\u06cc \u062e\u0631\u06cc\u062f\u0627\u0631"
+                  }
+                </div>
+              </div>
+            </div>
+          </section>
+          <section
+            data-plasmic-name={"section"}
+            data-plasmic-override={overrides.section}
+            className={classNames(projectcss.all, sty.section)}
+          >
+            <div className={classNames(projectcss.all, sty.freeBox__fAUpA)}>
+              <div className={classNames(projectcss.all, sty.freeBox__fkvIo)} />
             </div>
           </section>
         </div>
@@ -862,9 +900,10 @@ function PlasmicFactorPrint__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  factorPrint: ["factorPrint", "holderPrint", "img"],
+  factorPrint: ["factorPrint", "holderPrint", "img", "section"],
   holderPrint: ["holderPrint", "img"],
-  img: ["img"]
+  img: ["img"],
+  section: ["section"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -873,6 +912,7 @@ type NodeDefaultElementType = {
   factorPrint: "div";
   holderPrint: "section";
   img: typeof PlasmicImg__;
+  section: "section";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -937,6 +977,7 @@ export const PlasmicFactorPrint = Object.assign(
     // Helper components rendering sub-elements
     holderPrint: makeNodeComponent("holderPrint"),
     img: makeNodeComponent("img"),
+    section: makeNodeComponent("section"),
 
     // Metadata about props expected for PlasmicFactorPrint
     internalVariantProps: PlasmicFactorPrint__VariantProps,
