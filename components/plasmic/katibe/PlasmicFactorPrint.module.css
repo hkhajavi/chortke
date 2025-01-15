@@ -107,7 +107,7 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   grid-column-end: span 2;
   min-width: 0;
@@ -121,7 +121,7 @@
   height: auto;
   max-width: 100%;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 .freeBox___5YOgQ {
   display: flex;
@@ -133,7 +133,7 @@
   justify-content: flex-start;
   align-items: center;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 .freeBox__ct617 {
   display: grid;
@@ -162,6 +162,7 @@
   width: 100%;
   height: auto;
   max-width: 100%;
+  font-weight: 700;
   min-width: 0;
 }
 .freeBox__w3I7D {
@@ -211,6 +212,7 @@
   width: 100%;
   height: auto;
   max-width: 100%;
+  font-weight: 700;
   min-width: 0;
 }
 .freeBox__sf6G2 {
@@ -885,6 +887,7 @@
   height: auto;
   max-width: 100%;
   text-align: center;
+  font-weight: 700;
   min-width: 0;
 }
 .freeBox___7GdFh {
@@ -905,6 +908,7 @@
   height: auto;
   max-width: 100%;
   text-align: center;
+  font-weight: 700;
   min-width: 0;
 }
 .freeBox__snl67 {
@@ -925,6 +929,7 @@
   height: auto;
   max-width: 100%;
   text-align: center;
+  font-weight: 700;
   min-width: 0;
 }
 .freeBox__sG6Kz {
@@ -1125,6 +1130,7 @@
   height: auto;
   max-width: 100%;
   text-align: center;
+  font-weight: 700;
   min-width: 0;
 }
 .freeBox__gyA7Q {
@@ -1145,6 +1151,7 @@
   height: auto;
   max-width: 100%;
   text-align: center;
+  font-weight: 700;
   min-width: 0;
 }
 .section {
