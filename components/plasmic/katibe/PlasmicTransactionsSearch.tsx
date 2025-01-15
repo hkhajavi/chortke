@@ -1191,6 +1191,28 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             ];
                           }
 
+                          $steps["runCode"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  customFunction: async () => {
+                                    return (() => {
+                                      return ($state.bankAccountList = []);
+                                    })();
+                                  }
+                                };
+                                return (({ customFunction }) => {
+                                  return customFunction();
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["runCode"] != null &&
+                            typeof $steps["runCode"] === "object" &&
+                            typeof $steps["runCode"].then === "function"
+                          ) {
+                            $steps["runCode"] = await $steps["runCode"];
+                          }
+
                           $steps["updateFirstRequestCount"] = true
                             ? (() => {
                                 const actionArgs = {
@@ -1234,26 +1256,6 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             $steps["updateFirstRequestCount"] = await $steps[
                               "updateFirstRequestCount"
                             ];
-                          }
-
-                          $steps["runCode"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  customFunction: async () => {
-                                    return undefined;
-                                  }
-                                };
-                                return (({ customFunction }) => {
-                                  return customFunction();
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["runCode"] != null &&
-                            typeof $steps["runCode"] === "object" &&
-                            typeof $steps["runCode"].then === "function"
-                          ) {
-                            $steps["runCode"] = await $steps["runCode"];
                           }
                         }).apply(null, eventArgs);
                       }}
@@ -2663,7 +2665,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         try {
                           return (
                             $state.reminderWallet > 0 &&
-                            $state.currentAccountType == "userid"
+                            (($state.currentAccountAccount == "organization" &&
+                              $state.currentAccountType == "centerid") ||
+                              ($state.currentAccountAccount == "p24" &&
+                                $state.currentAccountType == "userid"))
                           );
                         } catch (e) {
                           if (
@@ -2791,7 +2796,31 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     const actionArgs = {
                                       args: [
                                         undefined,
-                                        "https://apigw.paziresh24.com/financialaccount/v1/useraccounts"
+                                        (() => {
+                                          try {
+                                            return (() => {
+                                              if (
+                                                $state.currentAccountType ==
+                                                "centerid"
+                                              )
+                                                return (
+                                                  "https://apigw.paziresh24.com/financialaccount/v1/useraccounts?centerid=" +
+                                                  $state.currentAccountId
+                                                );
+                                              else
+                                                return "https://apigw.paziresh24.com/financialaccount/v1/useraccounts";
+                                            })();
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return undefined;
+                                            }
+                                            throw e;
+                                          }
+                                        })()
                                       ]
                                     };
                                     return $globalActions[
@@ -4893,13 +4922,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                   "error",
                                                   (() => {
                                                     try {
-                                                      return (
-                                                        "خطا در ثبت درخواست. " +
-                                                        $state.requestSettlementMessage
-                                                      ).replaceAll(
-                                                        "undefined",
-                                                        ""
-                                                      );
+                                                      return $state.requestSettlementMessage;
                                                     } catch (e) {
                                                       if (
                                                         e instanceof
@@ -6954,7 +6977,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       const actionArgs = {
                         args: [
                           undefined,
-                          "https://apigw.paziresh24.com/transaction/v1/useraccounts"
+                          "https://apigw.paziresh24.com/katibe/v1/useraccounts"
                         ]
                       };
                       return $globalActions["Fragment.apiRequest"]?.apply(
@@ -7208,11 +7231,15 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     "&limit=" +
                                     $state.limit +
                                     "&page=" +
-                                    $state.pageNumber;
+                                    $state.pageNumber +
+                                    "&account=" +
+                                    account.account;
                                   $state.currentCenterid = "";
                                   $state.requestWalletUrl =
                                     "https://apigw.paziresh24.com/katibe/v1/transactions/balance/p24?productid=" +
-                                    $state.cbProductlist.value;
+                                    $state.cbProductlist.value +
+                                    "&account=" +
+                                    account.account;
                                 }
                                 if (account.type == "centerid") {
                                   $state.currentAccountType = "centerid";
