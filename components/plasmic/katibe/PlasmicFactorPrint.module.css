@@ -46,7 +46,7 @@
 .freeBox__nz3Y7 {
   display: grid;
   position: relative;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(7, minmax(0, 1fr));
   width: 100%;
   height: auto;
   max-width: 100%;
@@ -63,6 +63,7 @@
   max-width: 100%;
   justify-content: center;
   align-items: center;
+  grid-column-end: span 2;
   min-width: 0;
   padding: 8px;
 }
@@ -84,6 +85,7 @@
   max-width: 100%;
   justify-content: center;
   align-items: center;
+  grid-column-end: span 3;
   min-width: 0;
   padding: 8px;
 }
@@ -93,6 +95,9 @@
   height: auto;
   max-width: 100%;
   text-align: center;
+  font-weight: 700;
+  white-space: pre;
+  font-size: 25px;
   min-width: 0;
 }
 .freeBox__yhjD0 {
@@ -104,6 +109,7 @@
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
+  grid-column-end: span 2;
   min-width: 0;
   padding: 8px;
 }
@@ -137,7 +143,7 @@
   height: auto;
   max-width: 100%;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 .freeBox__k2UiI {
   display: flex;
@@ -186,7 +192,7 @@
   height: auto;
   max-width: 100%;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 .freeBox__kgHmk {
   display: flex;
@@ -275,8 +281,8 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
   min-width: 0;
   padding: 8px;
 }
@@ -290,6 +296,8 @@
   margin-right: 10px;
   margin-left: 10px;
   background: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
   padding: 0px 10px;
 }
 .freeBox__uXztw {
@@ -524,8 +532,8 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
   min-width: 0;
   padding: 8px;
 }
@@ -539,6 +547,8 @@
   margin-right: 10px;
   margin-left: 10px;
   background: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
   padding: 0px 10px;
 }
 .freeBox__ate3W {
@@ -773,8 +783,8 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
   min-width: 0;
   padding: 8px;
 }
@@ -788,6 +798,8 @@
   margin-right: 10px;
   margin-left: 10px;
   background: #ffffff;
+  font-size: 20px;
+  font-weight: 700;
   padding: 0px 10px;
 }
 .freeBox__oobK {
@@ -831,6 +843,7 @@
   height: auto;
   max-width: 100%;
   text-align: center;
+  font-weight: 700;
   min-width: 0;
 }
 .freeBox__hzXRf {
@@ -851,6 +864,7 @@
   height: auto;
   max-width: 100%;
   text-align: center;
+  font-weight: 700;
   min-width: 0;
 }
 .freeBox__zO4Bh {
