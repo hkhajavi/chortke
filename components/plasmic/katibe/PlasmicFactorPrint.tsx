@@ -60,6 +60,7 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import Button from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
+import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
