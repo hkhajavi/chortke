@@ -1195,9 +1195,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             ? (() => {
                                 const actionArgs = {
                                   customFunction: async () => {
-                                    return (() => {
-                                      return ($state.bankAccountList = []);
-                                    })();
+                                    return ($state.bankAccountList = []);
                                   }
                                 };
                                 return (({ customFunction }) => {

@@ -785,6 +785,20 @@
           "cssFilePath": "plasmic/katibe/PlasmicRadioGroup.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "Y4-ibBMrkvma",
+          "name": "FactorPrint",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/katibe/PlasmicFactorPrint.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/factor-print.tsx"
+          },
+          "cssFilePath": "plasmic/katibe/PlasmicFactorPrint.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/factor-print"
         }
       ],
       "icons": [
@@ -2118,7 +2132,8 @@
           "componentImportPath": "@plasmicpkgs/react-aria/skinny/registerDialog"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "jsBundleThemes": []
     }
   ],
   "globalVariants": {
