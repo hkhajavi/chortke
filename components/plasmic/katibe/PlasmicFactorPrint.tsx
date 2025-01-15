@@ -59,6 +59,8 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import Button from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
+
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -66,6 +68,9 @@ import plasmic_plasmic_rich_components_css from "../plasmic_rich_components/plas
 import plasmic_fragment_design_system_css from "../fragment_design_system/plasmic.module.css"; // plasmic-import: h9Dbk9ygddw7UVEq1NNhKi/projectcss
 import projectcss from "../chortke/plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicFactorPrint.module.css"; // plasmic-import: Y4-ibBMrkvma/css
+
+import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
+import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
 
 createPlasmicElementProxy;
 
@@ -83,6 +88,7 @@ export type PlasmicFactorPrint__OverridesType = {
   holderPrint?: Flex__<"section">;
   img?: Flex__<typeof PlasmicImg__>;
   section?: Flex__<"section">;
+  button?: Flex__<typeof Button>;
 };
 
 export interface DefaultFactorPrintProps {}
@@ -890,7 +896,36 @@ function PlasmicFactorPrint__RenderFunc(props: {
             className={classNames(projectcss.all, sty.section)}
           >
             <div className={classNames(projectcss.all, sty.freeBox__fAUpA)}>
-              <div className={classNames(projectcss.all, sty.freeBox__fkvIo)} />
+              <div className={classNames(projectcss.all, sty.freeBox__fkvIo)}>
+                <Button
+                  data-plasmic-name={"button"}
+                  data-plasmic-override={overrides.button}
+                  children2={
+                    "\u0686\u0627\u067e \u0641\u0627\u06a9\u062a\u0648\u0631"
+                  }
+                  className={classNames("__wab_instance", sty.button)}
+                  color={"softBlue"}
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["runCode"] = true
+                      ? (() => {
+                          const actionArgs = {};
+                          return (({ customFunction }) => {
+                            return customFunction();
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["runCode"] != null &&
+                      typeof $steps["runCode"] === "object" &&
+                      typeof $steps["runCode"].then === "function"
+                    ) {
+                      $steps["runCode"] = await $steps["runCode"];
+                    }
+                  }}
+                />
+              </div>
             </div>
           </section>
         </div>
@@ -900,10 +935,11 @@ function PlasmicFactorPrint__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  factorPrint: ["factorPrint", "holderPrint", "img", "section"],
+  factorPrint: ["factorPrint", "holderPrint", "img", "section", "button"],
   holderPrint: ["holderPrint", "img"],
   img: ["img"],
-  section: ["section"]
+  section: ["section", "button"],
+  button: ["button"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -913,6 +949,7 @@ type NodeDefaultElementType = {
   holderPrint: "section";
   img: typeof PlasmicImg__;
   section: "section";
+  button: typeof Button;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -978,6 +1015,7 @@ export const PlasmicFactorPrint = Object.assign(
     holderPrint: makeNodeComponent("holderPrint"),
     img: makeNodeComponent("img"),
     section: makeNodeComponent("section"),
+    button: makeNodeComponent("button"),
 
     // Metadata about props expected for PlasmicFactorPrint
     internalVariantProps: PlasmicFactorPrint__VariantProps,
