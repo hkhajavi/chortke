@@ -26,9 +26,12 @@
   position: relative;
   align-content: flex-start;
   justify-items: center;
-  width: 2480px;
+  width: 100%;
   padding-left: 0;
   padding-right: 0;
+  justify-self: flex-start;
+  grid-column-start: 1 !important;
+  grid-column-end: -1 !important;
   grid-template-columns:
     var(--plsmc-viewport-gap) 1fr minmax(0, var(--plsmc-wide-chunk))
     min(
@@ -777,11 +780,15 @@
 }
 .text__wxlud {
   position: relative;
-  width: 100%;
+  width: auto;
   height: auto;
   max-width: 100%;
   text-align: center;
-  min-width: 0;
+  margin-top: -30px;
+  margin-right: 10px;
+  margin-left: 10px;
+  background: #ffffff;
+  padding: 0px 10px;
 }
 .freeBox__oobK {
   display: flex;
