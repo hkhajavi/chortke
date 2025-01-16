@@ -1531,7 +1531,7 @@ function PlasmicFactorPrint__RenderFunc(props: {
                           try {
                             return (
                               "https://apigw.paziresh24.com/katibe/v1/factors/p24/" +
-                              $ctx.query.factorid
+                              $ctx.params.factorid
                             );
                           } catch (e) {
                             if (
@@ -1604,7 +1604,7 @@ function PlasmicFactorPrint__RenderFunc(props: {
                           try {
                             return (
                               "https://apigw.paziresh24.com/financialaccount/v1/profiles" +
-                              ($ctx.query.customerType == "center"
+                              ($ctx.params.customertype == "center"
                                 ? "?centerid=" +
                                   $state.factorDetails.data.customerid
                                 : "")

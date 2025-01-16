@@ -793,12 +793,26 @@
           "projectId": "afXULSfGYmou2jFpEc2QWJ",
           "renderModuleFilePath": "plasmic/katibe/PlasmicFactorPrint.tsx",
           "importSpec": {
-            "modulePath": "../src/pages/factor-print.tsx"
+            "modulePath": "../src/pages/factor-print/[customertype]/[factorid].tsx"
           },
           "cssFilePath": "plasmic/katibe/PlasmicFactorPrint.module.css",
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/factor-print"
+        },
+        {
+          "id": "N2OZ5reJWy2r",
+          "name": "FinancialProfiles",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/katibe/PlasmicFinancialProfiles.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/financial-profiles.tsx"
+          },
+          "cssFilePath": "plasmic/katibe/PlasmicFinancialProfiles.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/financial-profiles"
         }
       ],
       "icons": [
