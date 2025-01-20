@@ -1531,7 +1531,7 @@ function PlasmicFactorPrint__RenderFunc(props: {
                           try {
                             return (
                               "https://apigw.paziresh24.com/katibe/v1/factors/p24/" +
-                              $ctx.params.factorid
+                              $ctx.query.factorid
                             );
                           } catch (e) {
                             if (
