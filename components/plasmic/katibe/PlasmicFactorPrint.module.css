@@ -91,14 +91,13 @@
 }
 .text__uGtiH {
   position: relative;
-  width: 100%;
+  width: auto;
   height: auto;
   max-width: 100%;
   text-align: center;
   font-weight: 700;
   white-space: pre;
   font-size: 20px;
-  min-width: 0;
 }
 .freeBox__yhjD0 {
   display: flex;
