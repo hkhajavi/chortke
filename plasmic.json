@@ -793,7 +793,7 @@
           "projectId": "afXULSfGYmou2jFpEc2QWJ",
           "renderModuleFilePath": "plasmic/katibe/PlasmicFactorPrint.tsx",
           "importSpec": {
-            "modulePath": "../src/pages/factor-print/[customertype]/[factorid].tsx"
+            "modulePath": "../src/pages/factor-print.tsx"
           },
           "cssFilePath": "plasmic/katibe/PlasmicFactorPrint.module.css",
           "scheme": "blackbox",
