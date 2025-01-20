@@ -1604,7 +1604,7 @@ function PlasmicFactorPrint__RenderFunc(props: {
                           try {
                             return (
                               "https://apigw.paziresh24.com/financialaccount/v1/profiles" +
-                              ($ctx.params.customertype == "center"
+                              ($ctx.query.customertype == "center"
                                 ? "?centerid=" +
                                   $state.factorDetails.data.customerid
                                 : "")
