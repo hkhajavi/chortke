@@ -296,6 +296,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__i2DwM {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+    display: grid;
   }
 }
 .freeBox__fva9V {
@@ -397,6 +398,9 @@
     font-size: var(--token-5Ye_3XTSaP9X);
     width: auto;
     margin-right: 10px;
+    height: auto;
+    max-width: 100%;
+    font-weight: 700;
   }
 }
 .freeBox__j8QJn {
@@ -446,6 +450,9 @@
     font-size: var(--token-5Ye_3XTSaP9X);
     width: auto;
     margin-right: 10px;
+    height: auto;
+    max-width: 100%;
+    font-weight: 700;
   }
 }
 .freeBox__eHnT2 {

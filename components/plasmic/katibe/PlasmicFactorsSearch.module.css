@@ -2934,6 +2934,13 @@
     color: var(--token-JP-pI4-MAOWS);
   }
 }
+.svg__iQb5C {
+  object-fit: cover;
+  max-width: 100%;
+  margin-right: 10px;
+  cursor: pointer;
+  height: 1em;
+}
 .freeBox___8Q2Zh {
   display: flex;
   position: relative;

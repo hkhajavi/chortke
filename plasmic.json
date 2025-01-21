@@ -1060,6 +1060,11 @@
           "id": "vWaZXlBhSJ2b",
           "name": "Icon41Icon",
           "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon41.tsx"
+        },
+        {
+          "id": "hHYxopWBHknS",
+          "name": "Icon42Icon",
+          "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon42.tsx"
         }
       ],
       "images": [

@@ -88,6 +88,7 @@ import Icon2Icon from "../chortke/icons/PlasmicIcon__Icon2"; // plasmic-import: 
 import SearchSvgIcon from "../chortke/icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
 import CheckSvgIcon from "../chortke/icons/PlasmicIcon__CheckSvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
 import Icon39Icon from "./icons/PlasmicIcon__Icon39"; // plasmic-import: I-Qer-jgPJtD/icon
+import Icon42Icon from "./icons/PlasmicIcon__Icon42"; // plasmic-import: hHYxopWBHknS/icon
 
 createPlasmicElementProxy;
 
@@ -4130,6 +4131,57 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                           />
                         );
                       })()}
+                      <Icon42Icon
+                        className={classNames(projectcss.all, sty.svg__iQb5C)}
+                        onClick={async event => {
+                          const $steps = {};
+
+                          $steps["invokeGlobalAction"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  args: [
+                                    (() => {
+                                      try {
+                                        return (
+                                          "https://katibe.paziresh24.com/factor-print/?factorid=" +
+                                          $state.invoicelist[currentIndex]
+                                            .factorid +
+                                          "&customertype=" +
+                                          ($state.currentAccountType == "userid"
+                                            ? "user"
+                                            : "center")
+                                        );
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return undefined;
+                                        }
+                                        throw e;
+                                      }
+                                    })()
+                                  ]
+                                };
+                                return $globalActions[
+                                  "Hamdast.openLink"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["invokeGlobalAction"] != null &&
+                            typeof $steps["invokeGlobalAction"] === "object" &&
+                            typeof $steps["invokeGlobalAction"].then ===
+                              "function"
+                          ) {
+                            $steps["invokeGlobalAction"] = await $steps[
+                              "invokeGlobalAction"
+                            ];
+                          }
+                        }}
+                        role={"img"}
+                      />
                     </div>
                     <div
                       className={classNames(
