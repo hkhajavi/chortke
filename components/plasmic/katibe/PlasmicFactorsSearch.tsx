@@ -126,6 +126,7 @@ export type PlasmicFactorsSearch__OverridesType = {
   btnInvoiceInfo?: Flex__<typeof Button>;
   detailsDataApiRequest?: Flex__<typeof ApiRequest>;
   waitingIcon3?: Flex__<"svg">;
+  link?: Flex__<"a"> & Partial<LinkProps>;
   gridNoData2?: Flex__<"div">;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
   sideEffectRefresh?: Flex__<typeof SideEffect>;
@@ -4131,57 +4132,43 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                           />
                         );
                       })()}
-                      <Icon42Icon
-                        className={classNames(projectcss.all, sty.svg__iQb5C)}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["invokeGlobalAction"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    (() => {
-                                      try {
-                                        return (
-                                          "https://katibe.paziresh24.com/factor-print/?factorid=" +
-                                          $state.invoicelist[currentIndex]
-                                            .factorid +
-                                          "&customertype=" +
-                                          ($state.currentAccountType == "userid"
-                                            ? "user"
-                                            : "center")
-                                        );
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
-                                      }
-                                    })()
-                                  ]
-                                };
-                                return $globalActions[
-                                  "Hamdast.openLink"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["invokeGlobalAction"] != null &&
-                            typeof $steps["invokeGlobalAction"] === "object" &&
-                            typeof $steps["invokeGlobalAction"].then ===
-                              "function"
-                          ) {
-                            $steps["invokeGlobalAction"] = await $steps[
-                              "invokeGlobalAction"
-                            ];
+                      <PlasmicLink__
+                        data-plasmic-name={"link"}
+                        data-plasmic-override={overrides.link}
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.a,
+                          sty.link
+                        )}
+                        component={Link}
+                        href={(() => {
+                          try {
+                            return (
+                              "https://katibe.paziresh24.com/factor-print/?factorid=" +
+                              $state.invoicelist[currentIndex].factorid +
+                              "&customertype=" +
+                              ($state.currentAccountType == "userid"
+                                ? "user"
+                                : "center")
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
                           }
-                        }}
-                        role={"img"}
-                      />
+                        })()}
+                        platform={"nextjs"}
+                        target={"_blank"}
+                      >
+                        <Icon42Icon
+                          className={classNames(projectcss.all, sty.svg__iQb5C)}
+                          role={"img"}
+                        />
+                      </PlasmicLink__>
                     </div>
                     <div
                       className={classNames(
@@ -5233,6 +5220,7 @@ const PlasmicDescendants = {
     "btnInvoiceInfo",
     "detailsDataApiRequest",
     "waitingIcon3",
+    "link",
     "gridNoData2",
     "sideEffectPageLoad",
     "sideEffectRefresh",
@@ -5262,6 +5250,7 @@ const PlasmicDescendants = {
     "btnInvoiceInfo",
     "detailsDataApiRequest",
     "waitingIcon3",
+    "link",
     "gridNoData2"
   ],
   cbAccounts: ["cbAccounts"],
@@ -5298,7 +5287,8 @@ const PlasmicDescendants = {
     "dialogNewInvoiceDetails",
     "btnInvoiceInfo",
     "detailsDataApiRequest",
-    "waitingIcon3"
+    "waitingIcon3",
+    "link"
   ],
   dialogNewInvoiceDetails: [
     "dialogNewInvoiceDetails",
@@ -5309,6 +5299,7 @@ const PlasmicDescendants = {
   btnInvoiceInfo: ["btnInvoiceInfo"],
   detailsDataApiRequest: ["detailsDataApiRequest", "waitingIcon3"],
   waitingIcon3: ["waitingIcon3"],
+  link: ["link"],
   gridNoData2: ["gridNoData2"],
   sideEffectPageLoad: ["sideEffectPageLoad"],
   sideEffectRefresh: ["sideEffectRefresh"],
@@ -5342,6 +5333,7 @@ type NodeDefaultElementType = {
   btnInvoiceInfo: typeof Button;
   detailsDataApiRequest: typeof ApiRequest;
   waitingIcon3: "svg";
+  link: "a";
   gridNoData2: "div";
   sideEffectPageLoad: typeof SideEffect;
   sideEffectRefresh: typeof SideEffect;
@@ -5431,6 +5423,7 @@ export const PlasmicFactorsSearch = Object.assign(
     btnInvoiceInfo: makeNodeComponent("btnInvoiceInfo"),
     detailsDataApiRequest: makeNodeComponent("detailsDataApiRequest"),
     waitingIcon3: makeNodeComponent("waitingIcon3"),
+    link: makeNodeComponent("link"),
     gridNoData2: makeNodeComponent("gridNoData2"),
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
     sideEffectRefresh: makeNodeComponent("sideEffectRefresh"),

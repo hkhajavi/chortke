@@ -2934,10 +2934,13 @@
     color: var(--token-JP-pI4-MAOWS);
   }
 }
+.link {
+  margin-right: 10px;
+  display: flex;
+}
 .svg__iQb5C {
   object-fit: cover;
   max-width: 100%;
-  margin-right: 10px;
   cursor: pointer;
   height: 1em;
 }
