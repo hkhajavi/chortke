@@ -1961,7 +1961,8 @@ function PlasmicFactorPrint__RenderFunc(props: {
 
               $steps["print"] =
                 $steps.getFactorDetails.status == 200 &&
-                $steps.getCustomerDetails.status == 200
+                $steps.getCustomerDetails.status == 200 &&
+                $ctx.query.factorid > 0
                   ? (() => {
                       const actionArgs = {
                         customFunction: async () => {
