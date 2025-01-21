@@ -63,6 +63,8 @@ import Button from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
+import { useScreenVariants as useScreenVariantsbr2UhI7UlpvR } from "../fragment_icons/PlasmicGlobalVariant__Screen"; // plasmic-import: BR2UhI7ulpvR/globalVariant
+
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -166,6 +168,10 @@ function PlasmicFactorPrint__RenderFunc(props: {
     $ctx,
     $queries: {},
     $refs
+  });
+
+  const globalVariants = ensureGlobalVariants({
+    screen: useScreenVariantsbr2UhI7UlpvR()
   });
 
   return (
@@ -326,7 +332,7 @@ function PlasmicFactorPrint__RenderFunc(props: {
                             <React.Fragment>
                               {(() => {
                                 try {
-                                  return $ctx.query.factorid;
+                                  return $state.factorDetails.data.factorid;
                                 } catch (e) {
                                   if (
                                     e instanceof TypeError ||
@@ -375,6 +381,115 @@ function PlasmicFactorPrint__RenderFunc(props: {
                               projectcss.all,
                               projectcss.__wab_text,
                               sty.text__nXeW5
+                            )}
+                          >
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return (() => {
+                                    const gregorianDate = new Date(
+                                      $state.factorDetails.data.registerdate
+                                    );
+                                    const persianDate = new Intl.DateTimeFormat(
+                                      "fa-IR"
+                                    ).format(gregorianDate);
+                                    return persianDate;
+                                  })();
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "1403/11/05";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__i2DwM)}>
+                <div className={classNames(projectcss.all, sty.freeBox__fva9V)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__vaYOy)}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__bk4Ln)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__zDyuQ
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__om05V
+                          )}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text___5Xrb
+                            )}
+                          >
+                            {
+                              "\u0634\u0645\u0627\u0631\u0647 \u0641\u0627\u06a9\u062a\u0648\u0631:"
+                            }
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__nuIoW
+                            )}
+                          >
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return $ctx.query.factorid;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "1324";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          </div>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__j8QJn
+                          )}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__mEYy
+                            )}
+                          >
+                            {"\u062a\u0627\u0631\u06cc\u062e:"}
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__t1SNh
                             )}
                           >
                             <React.Fragment>
@@ -1028,9 +1143,9 @@ function PlasmicFactorPrint__RenderFunc(props: {
                               sty.text__l4333
                             )}
                           >
-                            {
-                              "\u0645\u0628\u0644\u063a \u0647\u0631 \u0648\u0627\u062d\u062f (\u0631\u06cc\u0627\u0644)"
-                            }
+                            {hasVariant(globalVariants, "screen", "mobileOnly")
+                              ? "\u0645\u0628\u0644\u063a"
+                              : "\u0645\u0628\u0644\u063a \u0647\u0631 \u0648\u0627\u062d\u062f (\u0631\u06cc\u0627\u0644)"}
                           </div>
                         </div>
                         <div
@@ -1046,7 +1161,9 @@ function PlasmicFactorPrint__RenderFunc(props: {
                               sty.text__tUxA
                             )}
                           >
-                            {"\u062c\u0645\u0639 (\u0631\u06cc\u0627\u0644)"}
+                            {hasVariant(globalVariants, "screen", "mobileOnly")
+                              ? "\u062c\u0645\u0639"
+                              : "\u062c\u0645\u0639 (\u0631\u06cc\u0627\u0644)"}
                           </div>
                         </div>
                       </div>
@@ -1519,6 +1636,19 @@ function PlasmicFactorPrint__RenderFunc(props: {
             data-plasmic-name={"sideEffect"}
             data-plasmic-override={overrides.sideEffect}
             className={classNames("__wab_instance", sty.sideEffect)}
+            deps={(() => {
+              try {
+                return [$ctx.query.factorid, $ctx.query.customertype];
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return undefined;
+                }
+                throw e;
+              }
+            })()}
             onMount={async () => {
               const $steps = {};
 
