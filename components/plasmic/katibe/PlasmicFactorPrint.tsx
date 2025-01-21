@@ -326,7 +326,7 @@ function PlasmicFactorPrint__RenderFunc(props: {
                             <React.Fragment>
                               {(() => {
                                 try {
-                                  return $state.factorDetails.data.factorid;
+                                  return $ctx.query.factorid;
                                 } catch (e) {
                                   if (
                                     e instanceof TypeError ||
