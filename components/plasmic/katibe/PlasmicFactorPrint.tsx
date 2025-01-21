@@ -93,7 +93,6 @@ export type PlasmicFactorPrint__OverridesType = {
   holderPrint?: Flex__<"section">;
   img?: Flex__<typeof PlasmicImg__>;
   section?: Flex__<"section">;
-  button?: Flex__<typeof Button>;
   sideEffect?: Flex__<typeof SideEffect>;
   svg?: Flex__<"svg">;
 };
@@ -156,6 +155,12 @@ function PlasmicFactorPrint__RenderFunc(props: {
       },
       {
         path: "waiting",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => true
+      },
+      {
+        path: "isPrint",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => true
@@ -1578,6 +1583,128 @@ function PlasmicFactorPrint__RenderFunc(props: {
                   </div>
                 </div>
               </div>
+              {(() => {
+                try {
+                  return $state.isPrint;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return true;
+                  }
+                  throw e;
+                }
+              })() ? (
+                <div className={classNames(projectcss.all, sty.freeBox__o3T1)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__zePl)}
+                  >
+                    <Button
+                      children2={
+                        "\u0686\u0627\u067e \u0641\u0627\u06a9\u062a\u0648\u0631"
+                      }
+                      className={classNames("__wab_instance", sty.button__r8Jw)}
+                      color={"softBlue"}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["updateIsPrint"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["isPrint"]
+                                },
+                                operation: 0,
+                                value: false
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateIsPrint"] != null &&
+                          typeof $steps["updateIsPrint"] === "object" &&
+                          typeof $steps["updateIsPrint"].then === "function"
+                        ) {
+                          $steps["updateIsPrint"] = await $steps[
+                            "updateIsPrint"
+                          ];
+                        }
+
+                        $steps["runCode"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                customFunction: async () => {
+                                  return window.print();
+                                }
+                              };
+                              return (({ customFunction }) => {
+                                return customFunction();
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["runCode"] != null &&
+                          typeof $steps["runCode"] === "object" &&
+                          typeof $steps["runCode"].then === "function"
+                        ) {
+                          $steps["runCode"] = await $steps["runCode"];
+                        }
+
+                        $steps["updateIsPrint2"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["isPrint"]
+                                },
+                                operation: 0,
+                                value: true
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateIsPrint2"] != null &&
+                          typeof $steps["updateIsPrint2"] === "object" &&
+                          typeof $steps["updateIsPrint2"].then === "function"
+                        ) {
+                          $steps["updateIsPrint2"] = await $steps[
+                            "updateIsPrint2"
+                          ];
+                        }
+                      }}
+                    />
+                  </div>
+                </div>
+              ) : null}
             </section>
           ) : null}
           {(() => {
@@ -1601,12 +1728,10 @@ function PlasmicFactorPrint__RenderFunc(props: {
               <div className={classNames(projectcss.all, sty.freeBox__fAUpA)}>
                 <div className={classNames(projectcss.all, sty.freeBox__fkvIo)}>
                   <Button
-                    data-plasmic-name={"button"}
-                    data-plasmic-override={overrides.button}
                     children2={
                       "\u0686\u0627\u067e \u0641\u0627\u06a9\u062a\u0648\u0631"
                     }
-                    className={classNames("__wab_instance", sty.button)}
+                    className={classNames("__wab_instance", sty.button__gsuA)}
                     color={"softBlue"}
                     onClick={async event => {
                       const $steps = {};
@@ -1872,14 +1997,12 @@ const PlasmicDescendants = {
     "holderPrint",
     "img",
     "section",
-    "button",
     "sideEffect",
     "svg"
   ],
   holderPrint: ["holderPrint", "img"],
   img: ["img"],
-  section: ["section", "button"],
-  button: ["button"],
+  section: ["section"],
   sideEffect: ["sideEffect"],
   svg: ["svg"]
 } as const;
@@ -1891,7 +2014,6 @@ type NodeDefaultElementType = {
   holderPrint: "section";
   img: typeof PlasmicImg__;
   section: "section";
-  button: typeof Button;
   sideEffect: typeof SideEffect;
   svg: "svg";
 };
@@ -1959,7 +2081,6 @@ export const PlasmicFactorPrint = Object.assign(
     holderPrint: makeNodeComponent("holderPrint"),
     img: makeNodeComponent("img"),
     section: makeNodeComponent("section"),
-    button: makeNodeComponent("button"),
     sideEffect: makeNodeComponent("sideEffect"),
     svg: makeNodeComponent("svg"),
 
