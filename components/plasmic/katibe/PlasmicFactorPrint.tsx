@@ -163,7 +163,7 @@ function PlasmicFactorPrint__RenderFunc(props: {
         path: "isPrint",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => true
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -1664,6 +1664,42 @@ function PlasmicFactorPrint__RenderFunc(props: {
                         ) {
                           $steps["runCode"] = await $steps["runCode"];
                         }
+
+                        $steps["updateIsPrint2"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["isPrint"]
+                                },
+                                operation: 0,
+                                value: true
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateIsPrint2"] != null &&
+                          typeof $steps["updateIsPrint2"] === "object" &&
+                          typeof $steps["updateIsPrint2"].then === "function"
+                        ) {
+                          $steps["updateIsPrint2"] = await $steps[
+                            "updateIsPrint2"
+                          ];
+                        }
                       }}
                     />
                   </div>
@@ -1921,6 +1957,28 @@ function PlasmicFactorPrint__RenderFunc(props: {
                 $steps["updateFactorDetails3"] = await $steps[
                   "updateFactorDetails3"
                 ];
+              }
+
+              $steps["print"] =
+                $steps.getFactorDetails.status == 200 &&
+                $steps.getCustomerDetails.status == 200
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return window.print();
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["print"] != null &&
+                typeof $steps["print"] === "object" &&
+                typeof $steps["print"].then === "function"
+              ) {
+                $steps["print"] = await $steps["print"];
               }
             }}
           />
