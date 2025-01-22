@@ -18,20 +18,16 @@ export interface GlobalContextsProviderProps {
   fragmentProps?: Partial<
     Omit<React.ComponentProps<typeof Fragment>, "children">
   >;
-
   growthBookProps?: Partial<
     Omit<React.ComponentProps<typeof GrowthBook>, "children">
   >;
-
   splunkProps?: Partial<Omit<React.ComponentProps<typeof Splunk>, "children">>;
   embedCssProps?: Partial<
     Omit<React.ComponentProps<typeof EmbedCss>, "children">
   >;
-
   antdConfigProviderProps?: Partial<
     Omit<React.ComponentProps<typeof AntdConfigProvider>, "children">
   >;
-
   hamdastProps?: Partial<
     Omit<React.ComponentProps<typeof Hamdast>, "children">
   >;
@@ -106,7 +102,7 @@ export default function GlobalContextsProvider(
             css={
               embedCssProps && "css" in embedCssProps
                 ? embedCssProps.css!
-                : undefined
+                : "@page {\r\n  size: A4 landscape;  \r\n  margin: 0;\r\n}\r\n\r\n@media print {\r\n  .page {\r\n    margin: 0;\r\n    border: initial;\r\n    border-radius: initial;\r\n    width: initial;\r\n    min-height: initial;\r\n    box-shadow: initial;\r\n    background: initial;\r\n    page-break-after: always;\r\n  }\r\n}"
             }
           >
             <AntdConfigProvider
