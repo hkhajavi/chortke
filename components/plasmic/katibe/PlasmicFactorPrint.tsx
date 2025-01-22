@@ -74,9 +74,9 @@ import plasmic_fragment_design_system_css from "../fragment_design_system/plasmi
 import projectcss from "../chortke/plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicFactorPrint.module.css"; // plasmic-import: Y4-ibBMrkvma/css
 
+import Icon2Icon from "../chortke/icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
 import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
-import Icon2Icon from "../chortke/icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
 
 createPlasmicElementProxy;
 
@@ -93,9 +93,9 @@ export type PlasmicFactorPrint__OverridesType = {
   factorPrint?: Flex__<"div">;
   holderPrint?: Flex__<"section">;
   img?: Flex__<typeof PlasmicImg__>;
+  svg?: Flex__<"svg">;
   section?: Flex__<"section">;
   sideEffect?: Flex__<typeof SideEffect>;
-  svg?: Flex__<"svg">;
   embedHtml?: Flex__<typeof Embed>;
 };
 
@@ -265,6 +265,26 @@ function PlasmicFactorPrint__RenderFunc(props: {
                   />
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__pLoip)}>
+                  {(() => {
+                    try {
+                      return $state.waiting;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <Icon2Icon
+                      data-plasmic-name={"svg"}
+                      data-plasmic-override={overrides.svg}
+                      className={classNames(projectcss.all, sty.svg)}
+                      role={"img"}
+                    />
+                  ) : null}
                   <div
                     className={classNames(
                       projectcss.all,
@@ -2055,30 +2075,6 @@ function PlasmicFactorPrint__RenderFunc(props: {
             }}
           />
 
-          {(() => {
-            try {
-              return $state.waiting;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return true;
-              }
-              throw e;
-            }
-          })() ? (
-            <div className={classNames(projectcss.all, sty.freeBox__nOf08)}>
-              <div className={classNames(projectcss.all, sty.freeBox__cQoQk)}>
-                <Icon2Icon
-                  data-plasmic-name={"svg"}
-                  data-plasmic-override={overrides.svg}
-                  className={classNames(projectcss.all, sty.svg)}
-                  role={"img"}
-                />
-              </div>
-            </div>
-          ) : null}
           <Embed
             data-plasmic-name={"embedHtml"}
             data-plasmic-override={overrides.embedHtml}
@@ -2098,16 +2094,16 @@ const PlasmicDescendants = {
     "factorPrint",
     "holderPrint",
     "img",
+    "svg",
     "section",
     "sideEffect",
-    "svg",
     "embedHtml"
   ],
-  holderPrint: ["holderPrint", "img"],
+  holderPrint: ["holderPrint", "img", "svg"],
   img: ["img"],
+  svg: ["svg"],
   section: ["section"],
   sideEffect: ["sideEffect"],
-  svg: ["svg"],
   embedHtml: ["embedHtml"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -2117,9 +2113,9 @@ type NodeDefaultElementType = {
   factorPrint: "div";
   holderPrint: "section";
   img: typeof PlasmicImg__;
+  svg: "svg";
   section: "section";
   sideEffect: typeof SideEffect;
-  svg: "svg";
   embedHtml: typeof Embed;
 };
 
@@ -2185,9 +2181,9 @@ export const PlasmicFactorPrint = Object.assign(
     // Helper components rendering sub-elements
     holderPrint: makeNodeComponent("holderPrint"),
     img: makeNodeComponent("img"),
+    svg: makeNodeComponent("svg"),
     section: makeNodeComponent("section"),
     sideEffect: makeNodeComponent("sideEffect"),
-    svg: makeNodeComponent("svg"),
     embedHtml: makeNodeComponent("embedHtml"),
 
     // Metadata about props expected for PlasmicFactorPrint
