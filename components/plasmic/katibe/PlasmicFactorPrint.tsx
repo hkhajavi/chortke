@@ -223,1371 +223,1093 @@ function PlasmicFactorPrint__RenderFunc(props: {
             ``
           )}
         >
-          {(() => {
-            try {
-              return !$state.waiting;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return true;
-              }
-              throw e;
-            }
-          })() ? (
-            <section
-              data-plasmic-name={"holderPrint"}
-              data-plasmic-override={overrides.holderPrint}
-              className={classNames(projectcss.all, sty.holderPrint)}
-              id={"holderPrint"}
-            >
-              <div className={classNames(projectcss.all, sty.freeBox__nz3Y7)}>
-                <div className={classNames(projectcss.all, sty.freeBox__rtplh)}>
-                  <PlasmicImg__
-                    data-plasmic-name={"img"}
-                    data-plasmic-override={overrides.img}
-                    alt={""}
-                    className={classNames(sty.img)}
-                    displayHeight={"auto"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"50px"}
-                    loading={"lazy"}
-                    src={{
-                      src: "/plasmic/chortke/images/logo5E03Fe79Svg.svg",
-                      fullWidth: 102.473,
-                      fullHeight: 108.85,
-                      aspectRatio: 0.941415
-                    }}
-                  />
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__pLoip)}>
-                  {(() => {
-                    try {
-                      return $state.waiting;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
+          <section
+            data-plasmic-name={"holderPrint"}
+            data-plasmic-override={overrides.holderPrint}
+            className={classNames(projectcss.all, sty.holderPrint)}
+            id={"holderPrint"}
+          >
+            <div className={classNames(projectcss.all, sty.freeBox__nz3Y7)}>
+              <div className={classNames(projectcss.all, sty.freeBox__rtplh)}>
+                <PlasmicImg__
+                  data-plasmic-name={"img"}
+                  data-plasmic-override={overrides.img}
+                  alt={""}
+                  className={classNames(sty.img)}
+                  displayHeight={"auto"}
+                  displayMaxHeight={"none"}
+                  displayMaxWidth={"100%"}
+                  displayMinHeight={"0"}
+                  displayMinWidth={"0"}
+                  displayWidth={"50px"}
+                  loading={"lazy"}
+                  src={{
+                    src: "/plasmic/chortke/images/logo5E03Fe79Svg.svg",
+                    fullWidth: 102.473,
+                    fullHeight: 108.85,
+                    aspectRatio: 0.941415
+                  }}
+                />
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__pLoip)}>
+                {(() => {
+                  try {
+                    return $state.waiting;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
                     }
-                  })() ? (
-                    <Icon2Icon
-                      data-plasmic-name={"svg"}
-                      data-plasmic-override={overrides.svg}
-                      className={classNames(projectcss.all, sty.svg)}
-                      role={"img"}
-                    />
-                  ) : null}
+                    throw e;
+                  }
+                })() ? (
+                  <Icon2Icon
+                    data-plasmic-name={"svg"}
+                    data-plasmic-override={overrides.svg}
+                    className={classNames(projectcss.all, sty.svg)}
+                    role={"img"}
+                  />
+                ) : null}
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__uGtiH
+                  )}
+                >
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return (
+                          ($state.factorDetails.data.meta.payment_status ==
+                            undefined ||
+                          $state.factorDetails.data.meta.payment_status ==
+                            "unpaid"
+                            ? "پیش فاکتور "
+                            : "") + $state.factorDetails.data.title
+                        ).replaceAll("فاکتور فاکتور", "فاکتور");
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "\u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628 \u0641\u0631\u0648\u0634 \u06a9\u0627\u0644\u0627 \u0648 \u062e\u062f\u0645\u0627\u062a \u0645\u0647\u0631 1403";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__yhjD0)}>
+                <div className={classNames(projectcss.all, sty.freeBox__p9Vwk)}>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__uGtiH
-                    )}
+                    className={classNames(projectcss.all, sty.freeBox___5YOgQ)}
                   >
-                    <React.Fragment>
-                      {(() => {
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__ct617)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__k2UiI
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__gMqA5
+                          )}
+                        >
+                          {
+                            "\u0634\u0645\u0627\u0631\u0647 \u0641\u0627\u06a9\u062a\u0648\u0631:"
+                          }
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__w3I7D
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__xThtd
+                          )}
+                        >
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return $state.factorDetails.data.factorid;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "1324";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__p7Lea)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__kgHmk
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___2D5Ib
+                          )}
+                        >
+                          {"\u062a\u0627\u0631\u06cc\u062e:"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__sf6G2
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__nXeW5
+                          )}
+                        >
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return (() => {
+                                  const gregorianDate = new Date(
+                                    $state.factorDetails.data.registerdate
+                                  );
+                                  const persianDate = new Intl.DateTimeFormat(
+                                    "fa-IR"
+                                  ).format(gregorianDate);
+                                  return persianDate;
+                                })();
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "1403/11/05";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className={classNames(projectcss.all, sty.freeBox__i2DwM)}>
+              <div className={classNames(projectcss.all, sty.freeBox__fva9V)}>
+                <div className={classNames(projectcss.all, sty.freeBox__vaYOy)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__bk4Ln)}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__zDyuQ)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__om05V
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___5Xrb
+                          )}
+                        >
+                          {
+                            "\u0634\u0645\u0627\u0631\u0647 \u0641\u0627\u06a9\u062a\u0648\u0631:"
+                          }
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__nuIoW
+                          )}
+                        >
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return $ctx.query.factorid;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "1324";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__j8QJn
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__mEYy
+                          )}
+                        >
+                          {"\u062a\u0627\u0631\u06cc\u062e:"}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__t1SNh
+                          )}
+                        >
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return (() => {
+                                  const gregorianDate = new Date(
+                                    $state.factorDetails.data.registerdate
+                                  );
+                                  const persianDate = new Intl.DateTimeFormat(
+                                    "fa-IR"
+                                  ).format(gregorianDate);
+                                  return persianDate;
+                                })();
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "1403/11/05";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className={classNames(projectcss.all, sty.freeBox__eHnT2)}>
+              <div className={classNames(projectcss.all, sty.freeBox___3R9Zx)}>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox___97R6D)}
+                >
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__fIgT0)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___8801M
+                      )}
+                    >
+                      {
+                        "\u0645\u0634\u062e\u0635\u0627\u062a \u0641\u0631\u0648\u0634\u0646\u062f\u0647"
+                      }
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__uXztw)}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__qhDUj)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__fItva
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___8SsVs
+                          )}
+                        >
+                          {
+                            "\u0646\u0627\u0645: \u0633\u067e\u0647\u0631 \u0633\u0644\u0627\u0645\u062a \u06a9\u0648\u06cc\u0631 \u0627\u06cc\u0633\u0627\u062a\u06cc\u0633"
+                          }
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__r8FDr
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__lDu4Z
+                          )}
+                        >
+                          {
+                            "\u06a9\u062f \u0627\u0642\u062a\u0635\u0627\u062f\u06cc: 14005241283"
+                          }
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___0ML5
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__jhSe7
+                          )}
+                        >
+                          {
+                            "\u0634\u0645\u0627\u0631\u0647 \u062b\u0628\u062a: 15708"
+                          }
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__jVe7E
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__q0WkU
+                          )}
+                        >
+                          {
+                            "\u0634\u0646\u0627\u0633\u0647 \u0645\u0644\u06cc: 14005241283"
+                          }
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__ws3IP)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__lcXbd
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__lx1Sz
+                          )}
+                        >
+                          {" \u06a9\u062f\u067e\u0633\u062a\u06cc: 8917697998"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__rxSXw
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__jWpiq
+                          )}
+                        >
+                          {" \u062a\u0644\u0641\u0646: 36286033"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__oCXyV
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__x12E2
+                          )}
+                        >
+                          {
+                            "\u0622\u062f\u0631\u0633: \u06cc\u0632\u062f - \u062e\u06cc\u0627\u0628\u0627\u0646 \u0645\u0637\u0647\u0631\u06cc - \u067e\u0644\u0627\u06a9 \u06f1\u06f0\u06f8 - \u067e\u0627\u0631\u06a9 \u0639\u0644\u0645 \u0648 \u0641\u0646\u0627\u0648\u0631\u06cc \u06cc\u0632\u062f"
+                          }
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__hJ3K
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___7HkYf
+                          )}
+                        >
+                          {" \u0641\u06a9\u0633:"}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className={classNames(projectcss.all, sty.freeBox__ytz6)}>
+              <div className={classNames(projectcss.all, sty.freeBox__iUuzy)}>
+                <div className={classNames(projectcss.all, sty.freeBox__kxLxa)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__ycOLi)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___3F4Cs
+                      )}
+                    >
+                      {
+                        "\u0645\u0634\u062e\u0635\u0627\u062a \u062e\u0631\u06cc\u062f\u0627\u0631"
+                      }
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__ate3W)}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__rnSxy)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__yVqVx
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__e49S9
+                          )}
+                        >
+                          {"\u0646\u0627\u0645: "}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__wspCn
+                          )}
+                        >
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return $state.customerDetails.data.name;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__mt1EL
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___6Jfxo
+                          )}
+                        >
+                          {
+                            "\u06a9\u062f \u0627\u0642\u062a\u0635\u0627\u062f\u06cc: "
+                          }
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__rbo33
+                          )}
+                        >
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return $state.customerDetails.data
+                                  .economic_code;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "\u06a9\u062f \u0627\u0642\u062a\u0635\u0627\u062f\u06cc: ";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__keAJl
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__eTz26
+                          )}
+                        >
+                          {
+                            "\u0634\u0645\u0627\u0631\u0647 \u062b\u0628\u062a: "
+                          }
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__wxUXq
+                          )}
+                        >
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return $state.customerDetails.data
+                                  .registration_number;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "\u0634\u0645\u0627\u0631\u0647 \u062b\u0628\u062a: ";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__aI2Im
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__x9PLo
+                          )}
+                        >
+                          {
+                            "\u0634\u0646\u0627\u0633\u0647 \u0645\u0644\u06cc: "
+                          }
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__ycq73
+                          )}
+                        >
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return $state.customerDetails.data.national_id;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "\u0634\u0646\u0627\u0633\u0647 \u0645\u0644\u06cc: ";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__qUer)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__erYrA
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__x4Zfj
+                          )}
+                        >
+                          {" \u06a9\u062f\u067e\u0633\u062a\u06cc: "}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__cvTpF
+                          )}
+                        >
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return $state.customerDetails.data.postal_code;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return " \u06a9\u062f\u067e\u0633\u062a\u06cc: ";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__di802
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__frW0T
+                          )}
+                        >
+                          {" \u062a\u0644\u0641\u0646: "}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__rM4Ez
+                          )}
+                        >
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return $state.customerDetails.data.phone;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return " \u062a\u0644\u0641\u0646: ";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__x3Ru
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___2Fv8U
+                          )}
+                        >
+                          {"\u0622\u062f\u0631\u0633: "}
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__cBtqW
+                          )}
+                        >
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return $state.customerDetails.data.address;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "\u0646\u0634\u0627\u0646\u06cc: ";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__zpZ0I
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__puxAg
+                          )}
+                        >
+                          {" \u0641\u06a9\u0633:"}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className={classNames(projectcss.all, sty.freeBox__aeShn)}>
+              <div className={classNames(projectcss.all, sty.freeBox__mkpRo)}>
+                <div className={classNames(projectcss.all, sty.freeBox__owYb9)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__lmrCx)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__wxlud
+                      )}
+                    >
+                      {
+                        "\u0645\u0634\u062e\u0635\u0627\u062a \u06a9\u0627\u0644\u0627 \u0648 \u062e\u062f\u0645\u0627\u062a"
+                      }
+                    </div>
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__oobK)}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__wh0Xe)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__usDvd
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__xszIy
+                          )}
+                        >
+                          {"\u0631\u062f\u06cc\u0641"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__hzXRf
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__bCaWg
+                          )}
+                        >
+                          {"\u0639\u0646\u0648\u0627\u0646"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__zO4Bh
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__bxEwb
+                          )}
+                        >
+                          {"\u062a\u0639\u062f\u0627\u062f"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___7GdFh
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__l4333
+                          )}
+                        >
+                          {hasVariant(globalVariants, "screen", "mobileOnly")
+                            ? "\u0645\u0628\u0644\u063a"
+                            : "\u0645\u0628\u0644\u063a \u0647\u0631 \u0648\u0627\u062d\u062f (\u0631\u06cc\u0627\u0644)"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__snl67
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__tUxA
+                          )}
+                        >
+                          {hasVariant(globalVariants, "screen", "mobileOnly")
+                            ? "\u062c\u0645\u0639"
+                            : "\u062c\u0645\u0639 (\u0631\u06cc\u0627\u0644)"}
+                        </div>
+                      </div>
+                    </div>
+                    {(_par =>
+                      !_par ? [] : Array.isArray(_par) ? _par : [_par])(
+                      (() => {
                         try {
-                          return (
-                            ($state.factorDetails.data.meta.payment_status ==
-                              undefined ||
-                            $state.factorDetails.data.meta.payment_status ==
-                              "unpaid"
-                              ? "پیش فاکتور "
-                              : "") + $state.factorDetails.data.title
-                          ).replaceAll("فاکتور فاکتور", "فاکتور");
+                          return $state.factorDetails.data.services;
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
                             e?.plasmicType === "PlasmicUndefinedDataError"
                           ) {
-                            return "\u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628 \u0641\u0631\u0648\u0634 \u06a9\u0627\u0644\u0627 \u0648 \u062e\u062f\u0645\u0627\u062a \u0645\u0647\u0631 1403";
+                            return [];
                           }
                           throw e;
                         }
-                      })()}
-                    </React.Fragment>
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__yhjD0)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__p9Vwk)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___5YOgQ
-                      )}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__ct617
-                        )}
-                      >
+                      })()
+                    ).map((__plasmic_item_0, __plasmic_idx_0) => {
+                      const currentItem = __plasmic_item_0;
+                      const currentIndex = __plasmic_idx_0;
+                      return (
                         <div
                           className={classNames(
                             projectcss.all,
-                            sty.freeBox__k2UiI
+                            sty.freeBox__sG6Kz
                           )}
+                          key={currentIndex}
                         >
                           <div
                             className={classNames(
                               projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__gMqA5
+                              sty.freeBox__oNka8
                             )}
                           >
-                            {
-                              "\u0634\u0645\u0627\u0631\u0647 \u0641\u0627\u06a9\u062a\u0648\u0631:"
-                            }
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__w3I7D
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__xThtd
-                            )}
-                          >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return $state.factorDetails.data.factorid;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "1324";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__p7Lea
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__kgHmk
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___2D5Ib
-                            )}
-                          >
-                            {"\u062a\u0627\u0631\u06cc\u062e:"}
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__sf6G2
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__nXeW5
-                            )}
-                          >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (() => {
-                                    const gregorianDate = new Date(
-                                      $state.factorDetails.data.registerdate
-                                    );
-                                    const persianDate = new Intl.DateTimeFormat(
-                                      "fa-IR"
-                                    ).format(gregorianDate);
-                                    return persianDate;
-                                  })();
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "1403/11/05";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__i2DwM)}>
-                <div className={classNames(projectcss.all, sty.freeBox__fva9V)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__vaYOy)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__bk4Ln)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__zDyuQ
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__om05V
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___5Xrb
-                            )}
-                          >
-                            {
-                              "\u0634\u0645\u0627\u0631\u0647 \u0641\u0627\u06a9\u062a\u0648\u0631:"
-                            }
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__nuIoW
-                            )}
-                          >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return $ctx.query.factorid;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "1324";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__j8QJn
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__mEYy
-                            )}
-                          >
-                            {"\u062a\u0627\u0631\u06cc\u062e:"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__t1SNh
-                            )}
-                          >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (() => {
-                                    const gregorianDate = new Date(
-                                      $state.factorDetails.data.registerdate
-                                    );
-                                    const persianDate = new Intl.DateTimeFormat(
-                                      "fa-IR"
-                                    ).format(gregorianDate);
-                                    return persianDate;
-                                  })();
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "1403/11/05";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__eHnT2)}>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___3R9Zx)}
-                >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___97R6D)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__fIgT0)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___8801M
-                        )}
-                      >
-                        {
-                          "\u0645\u0634\u062e\u0635\u0627\u062a \u0641\u0631\u0648\u0634\u0646\u062f\u0647"
-                        }
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__uXztw)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__qhDUj
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__fItva
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___8SsVs
-                            )}
-                          >
-                            {
-                              "\u0646\u0627\u0645: \u0633\u067e\u0647\u0631 \u0633\u0644\u0627\u0645\u062a \u06a9\u0648\u06cc\u0631 \u0627\u06cc\u0633\u0627\u062a\u06cc\u0633"
-                            }
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__r8FDr
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__lDu4Z
-                            )}
-                          >
-                            {
-                              "\u06a9\u062f \u0627\u0642\u062a\u0635\u0627\u062f\u06cc: 14005241283"
-                            }
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox___0ML5
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__jhSe7
-                            )}
-                          >
-                            {
-                              "\u0634\u0645\u0627\u0631\u0647 \u062b\u0628\u062a: 15708"
-                            }
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__jVe7E
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__q0WkU
-                            )}
-                          >
-                            {
-                              "\u0634\u0646\u0627\u0633\u0647 \u0645\u0644\u06cc: 14005241283"
-                            }
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__ws3IP
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__lcXbd
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__lx1Sz
-                            )}
-                          >
-                            {
-                              " \u06a9\u062f\u067e\u0633\u062a\u06cc: 8917697998"
-                            }
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__rxSXw
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__jWpiq
-                            )}
-                          >
-                            {" \u062a\u0644\u0641\u0646: 36286033"}
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__oCXyV
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__x12E2
-                            )}
-                          >
-                            {
-                              "\u0622\u062f\u0631\u0633: \u06cc\u0632\u062f - \u062e\u06cc\u0627\u0628\u0627\u0646 \u0645\u0637\u0647\u0631\u06cc - \u067e\u0644\u0627\u06a9 \u06f1\u06f0\u06f8 - \u067e\u0627\u0631\u06a9 \u0639\u0644\u0645 \u0648 \u0641\u0646\u0627\u0648\u0631\u06cc \u06cc\u0632\u062f"
-                            }
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__hJ3K
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___7HkYf
-                            )}
-                          >
-                            {" \u0641\u06a9\u0633:"}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__ytz6)}>
-                <div className={classNames(projectcss.all, sty.freeBox__iUuzy)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__kxLxa)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__ycOLi)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___3F4Cs
-                        )}
-                      >
-                        {
-                          "\u0645\u0634\u062e\u0635\u0627\u062a \u062e\u0631\u06cc\u062f\u0627\u0631"
-                        }
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__ate3W)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__rnSxy
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__yVqVx
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__e49S9
-                            )}
-                          >
-                            {"\u0646\u0627\u0645: "}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__wspCn
-                            )}
-                          >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return $state.customerDetails.data.name;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__mt1EL
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___6Jfxo
-                            )}
-                          >
-                            {
-                              "\u06a9\u062f \u0627\u0642\u062a\u0635\u0627\u062f\u06cc: "
-                            }
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__rbo33
-                            )}
-                          >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return $state.customerDetails.data
-                                    .economic_code;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "\u06a9\u062f \u0627\u0642\u062a\u0635\u0627\u062f\u06cc: ";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__keAJl
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__eTz26
-                            )}
-                          >
-                            {
-                              "\u0634\u0645\u0627\u0631\u0647 \u062b\u0628\u062a: "
-                            }
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__wxUXq
-                            )}
-                          >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return $state.customerDetails.data
-                                    .registration_number;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "\u0634\u0645\u0627\u0631\u0647 \u062b\u0628\u062a: ";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__aI2Im
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__x9PLo
-                            )}
-                          >
-                            {
-                              "\u0634\u0646\u0627\u0633\u0647 \u0645\u0644\u06cc: "
-                            }
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__ycq73
-                            )}
-                          >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return $state.customerDetails.data
-                                    .national_id;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "\u0634\u0646\u0627\u0633\u0647 \u0645\u0644\u06cc: ";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__qUer
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__erYrA
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__x4Zfj
-                            )}
-                          >
-                            {" \u06a9\u062f\u067e\u0633\u062a\u06cc: "}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__cvTpF
-                            )}
-                          >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return $state.customerDetails.data
-                                    .postal_code;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return " \u06a9\u062f\u067e\u0633\u062a\u06cc: ";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__di802
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__frW0T
-                            )}
-                          >
-                            {" \u062a\u0644\u0641\u0646: "}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__rM4Ez
-                            )}
-                          >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return $state.customerDetails.data.phone;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return " \u062a\u0644\u0641\u0646: ";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__x3Ru
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___2Fv8U
-                            )}
-                          >
-                            {"\u0622\u062f\u0631\u0633: "}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__cBtqW
-                            )}
-                          >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return $state.customerDetails.data.address;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "\u0646\u0634\u0627\u0646\u06cc: ";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__zpZ0I
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__puxAg
-                            )}
-                          >
-                            {" \u0641\u06a9\u0633:"}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__aeShn)}>
-                <div className={classNames(projectcss.all, sty.freeBox__mkpRo)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__owYb9)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__lmrCx)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__wxlud
-                        )}
-                      >
-                        {
-                          "\u0645\u0634\u062e\u0635\u0627\u062a \u06a9\u0627\u0644\u0627 \u0648 \u062e\u062f\u0645\u0627\u062a"
-                        }
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__oobK)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__wh0Xe
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__usDvd
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__xszIy
-                            )}
-                          >
-                            {"\u0631\u062f\u06cc\u0641"}
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__hzXRf
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__bCaWg
-                            )}
-                          >
-                            {"\u0639\u0646\u0648\u0627\u0646"}
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__zO4Bh
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__bxEwb
-                            )}
-                          >
-                            {"\u062a\u0639\u062f\u0627\u062f"}
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox___7GdFh
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__l4333
-                            )}
-                          >
-                            {hasVariant(globalVariants, "screen", "mobileOnly")
-                              ? "\u0645\u0628\u0644\u063a"
-                              : "\u0645\u0628\u0644\u063a \u0647\u0631 \u0648\u0627\u062d\u062f (\u0631\u06cc\u0627\u0644)"}
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__snl67
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__tUxA
-                            )}
-                          >
-                            {hasVariant(globalVariants, "screen", "mobileOnly")
-                              ? "\u062c\u0645\u0639"
-                              : "\u062c\u0645\u0639 (\u0631\u06cc\u0627\u0644)"}
-                          </div>
-                        </div>
-                      </div>
-                      {(_par =>
-                        !_par ? [] : Array.isArray(_par) ? _par : [_par])(
-                        (() => {
-                          try {
-                            return $state.factorDetails.data.services;
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return [];
-                            }
-                            throw e;
-                          }
-                        })()
-                      ).map((__plasmic_item_0, __plasmic_idx_0) => {
-                        const currentItem = __plasmic_item_0;
-                        const currentIndex = __plasmic_idx_0;
-                        return (
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__sG6Kz
-                            )}
-                            key={currentIndex}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__oNka8
-                              )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__i6Tee
-                                )}
-                              >
-                                <React.Fragment>
-                                  {(() => {
-                                    try {
-                                      return currentIndex + 1;
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return "\u0631\u062f\u06cc\u0641";
-                                      }
-                                      throw e;
-                                    }
-                                  })()}
-                                </React.Fragment>
-                              </div>
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__dbpwn
-                              )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__hDiRo
-                                )}
-                              >
-                                <React.Fragment>
-                                  {(() => {
-                                    try {
-                                      return currentItem.service;
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return "\u0639\u0646\u0648\u0627\u0646";
-                                      }
-                                      throw e;
-                                    }
-                                  })()}
-                                </React.Fragment>
-                              </div>
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__cXg3O
-                              )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__bCxNm
-                                )}
-                              >
-                                <React.Fragment>
-                                  {(() => {
-                                    try {
-                                      return new Intl.NumberFormat(
-                                        "fa-IR"
-                                      ).format(currentItem.count);
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return "\u062a\u0639\u062f\u0627\u062f";
-                                      }
-                                      throw e;
-                                    }
-                                  })()}
-                                </React.Fragment>
-                              </div>
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__dccvf
-                              )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__snw3H
-                                )}
-                              >
-                                <React.Fragment>
-                                  {(() => {
-                                    try {
-                                      return new Intl.NumberFormat(
-                                        "fa-IR"
-                                      ).format(currentItem.price);
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return "\u0645\u0628\u0644\u063a \u0647\u0631 \u0648\u0627\u062d\u062f (\u0631\u06cc\u0627\u0644)";
-                                      }
-                                      throw e;
-                                    }
-                                  })()}
-                                </React.Fragment>
-                              </div>
-                            </div>
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__ot1Bh
-                              )}
-                            >
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text___2LJQf
-                                )}
-                              >
-                                <React.Fragment>
-                                  {(() => {
-                                    try {
-                                      return new Intl.NumberFormat(
-                                        "fa-IR"
-                                      ).format(
-                                        currentItem.price * currentItem.count
-                                      );
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return "\u062c\u0645\u0639";
-                                      }
-                                      throw e;
-                                    }
-                                  })()}
-                                </React.Fragment>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })}
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__dEThx
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__vzXkG
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__bf9Oj
-                            )}
-                          >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (
-                                    "تخفیف: " +
-                                    new Intl.NumberFormat("fa-IR").format(
-                                      $state.factorDetails.data.discountprice
-                                    ) +
-                                    " ریال"
-                                  );
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__gFsK7
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__jawms
-                            )}
-                          >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (
-                                    "مالیات: " +
-                                    new Intl.NumberFormat("fa-IR").format(
-                                      $state.factorDetails.data.vatprice
-                                    ) +
-                                    " ریال"
-                                  );
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox___1VFyU
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__aQa9R
-                            )}
-                          >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (
-                                    "قابل پرداخت: " +
-                                    new Intl.NumberFormat("fa-IR").format(
-                                      $state.factorDetails.data.finalprice
-                                    ) +
-                                    " ریال"
-                                  );
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__cy7P6
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox___7A877
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___136Ni
-                            )}
-                          >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return $state.factorDetails.data.description;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          </div>
-                          {(() => {
-                            try {
-                              return (
-                                $state.factorDetails.data.due_date !=
-                                  undefined &&
-                                $state.factorDetails.data.due_date.length > 0 &&
-                                $state.factorDetails.data.meta.payment_status ==
-                                  "unpaid"
-                              );
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return true;
-                              }
-                              throw e;
-                            }
-                          })() ? (
                             <div
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text__lUh
+                                sty.text__i6Tee
                               )}
                             >
                               <React.Fragment>
                                 {(() => {
                                   try {
-                                    return (
-                                      "مهلت پرداخت: " +
-                                      (() => {
-                                        const gregorianDate = new Date(
-                                          $state.factorDetails.data.due_date
-                                        );
-                                        const persianDate =
-                                          new Intl.DateTimeFormat(
-                                            "fa-IR"
-                                          ).format(gregorianDate);
-                                        return persianDate;
-                                      })()
+                                    return currentIndex + 1;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "\u0631\u062f\u06cc\u0641";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__dbpwn
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__hDiRo
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return currentItem.service;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "\u0639\u0646\u0648\u0627\u0646";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__cXg3O
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__bCxNm
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return new Intl.NumberFormat(
+                                      "fa-IR"
+                                    ).format(currentItem.count);
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "\u062a\u0639\u062f\u0627\u062f";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__dccvf
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__snw3H
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return new Intl.NumberFormat(
+                                      "fa-IR"
+                                    ).format(currentItem.price);
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "\u0645\u0628\u0644\u063a \u0647\u0631 \u0648\u0627\u062d\u062f (\u0631\u06cc\u0627\u0644)";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__ot1Bh
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___2LJQf
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return new Intl.NumberFormat(
+                                      "fa-IR"
+                                    ).format(
+                                      currentItem.price * currentItem.count
                                     );
                                   } catch (e) {
                                     if (
@@ -1595,203 +1317,399 @@ function PlasmicFactorPrint__RenderFunc(props: {
                                       e?.plasmicType ===
                                         "PlasmicUndefinedDataError"
                                     ) {
-                                      return "\u0645\u0647\u0644\u062a \u067e\u0631\u062f\u0627\u062e\u062a: ";
+                                      return "\u062c\u0645\u0639";
                                     }
                                     throw e;
                                   }
                                 })()}
                               </React.Fragment>
                             </div>
-                          ) : null}
+                          </div>
                         </div>
+                      );
+                    })}
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__dEThx)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__vzXkG
+                        )}
+                      >
                         <div
                           className={classNames(
                             projectcss.all,
-                            sty.freeBox__e1VcL
+                            projectcss.__wab_text,
+                            sty.text__bf9Oj
                           )}
                         >
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return (
+                                  "تخفیف: " +
+                                  new Intl.NumberFormat("fa-IR").format(
+                                    $state.factorDetails.data.discountprice
+                                  ) +
+                                  " ریال"
+                                );
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__gFsK7
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__jawms
+                          )}
+                        >
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return (
+                                  "مالیات: " +
+                                  new Intl.NumberFormat("fa-IR").format(
+                                    $state.factorDetails.data.vatprice
+                                  ) +
+                                  " ریال"
+                                );
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___1VFyU
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__aQa9R
+                          )}
+                        >
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return (
+                                  "قابل پرداخت: " +
+                                  new Intl.NumberFormat("fa-IR").format(
+                                    $state.factorDetails.data.finalprice
+                                  ) +
+                                  " ریال"
+                                );
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        </div>
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__cy7P6)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___7A877
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___136Ni
+                          )}
+                        >
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return $state.factorDetails.data.description;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        </div>
+                        {(() => {
+                          try {
+                            return (
+                              $state.factorDetails.data.due_date != undefined &&
+                              $state.factorDetails.data.due_date.length > 0 &&
+                              $state.factorDetails.data.meta.payment_status ==
+                                "unpaid"
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })() ? (
                           <div
                             className={classNames(
                               projectcss.all,
                               projectcss.__wab_text,
-                              sty.text__aYaJ
+                              sty.text__lUh
                             )}
                           >
                             <React.Fragment>
                               {(() => {
                                 try {
-                                  return "جمع کل:";
+                                  return (
+                                    "مهلت پرداخت: " +
+                                    (() => {
+                                      const gregorianDate = new Date(
+                                        $state.factorDetails.data.due_date
+                                      );
+                                      const persianDate =
+                                        new Intl.DateTimeFormat("fa-IR").format(
+                                          gregorianDate
+                                        );
+                                      return persianDate;
+                                    })()
+                                  );
                                 } catch (e) {
                                   if (
                                     e instanceof TypeError ||
                                     e?.plasmicType ===
                                       "PlasmicUndefinedDataError"
                                   ) {
-                                    return "\u062c\u0645\u0639 \u06a9\u0644";
+                                    return "\u0645\u0647\u0644\u062a \u067e\u0631\u062f\u0627\u062e\u062a: ";
                                   }
                                   throw e;
                                 }
                               })()}
                             </React.Fragment>
                           </div>
+                        ) : null}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__e1VcL
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__aYaJ
+                          )}
+                        >
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return "جمع کل:";
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "\u062c\u0645\u0639 \u06a9\u0644";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__nTtl7)}>
-                <div className={classNames(projectcss.all, sty.freeBox__tw2B3)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__nUvDh
-                    )}
-                  >
-                    {
-                      "\u0645\u0647\u0631 \u0648 \u0627\u0645\u0636\u0627\u06cc \u0641\u0631\u0648\u0634\u0646\u062f\u0647"
-                    }
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__gyA7Q)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__vWKij
-                    )}
-                  >
-                    {
-                      "\u0645\u0647\u0631 \u0648 \u0627\u0645\u0636\u0627\u06cc \u062e\u0631\u06cc\u062f\u0627\u0631"
-                    }
-                  </div>
+            </div>
+            <div className={classNames(projectcss.all, sty.freeBox__nTtl7)}>
+              <div className={classNames(projectcss.all, sty.freeBox__tw2B3)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__nUvDh
+                  )}
+                >
+                  {
+                    "\u0645\u0647\u0631 \u0648 \u0627\u0645\u0636\u0627\u06cc \u0641\u0631\u0648\u0634\u0646\u062f\u0647"
+                  }
                 </div>
               </div>
-              {(() => {
-                try {
-                  return $state.isPrint;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return true;
+              <div className={classNames(projectcss.all, sty.freeBox__gyA7Q)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__vWKij
+                  )}
+                >
+                  {
+                    "\u0645\u0647\u0631 \u0648 \u0627\u0645\u0636\u0627\u06cc \u062e\u0631\u06cc\u062f\u0627\u0631"
                   }
-                  throw e;
-                }
-              })() ? (
-                <div className={classNames(projectcss.all, sty.freeBox__o3T1)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__zePl)}
-                  >
-                    <Button
-                      children2={
-                        "\u0686\u0627\u067e \u0641\u0627\u06a9\u062a\u0648\u0631"
-                      }
-                      className={classNames("__wab_instance", sty.button__r8Jw)}
-                      color={"softBlue"}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["updateIsPrint"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["isPrint"]
-                                },
-                                operation: 0,
-                                value: false
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateIsPrint"] != null &&
-                          typeof $steps["updateIsPrint"] === "object" &&
-                          typeof $steps["updateIsPrint"].then === "function"
-                        ) {
-                          $steps["updateIsPrint"] = await $steps[
-                            "updateIsPrint"
-                          ];
-                        }
-
-                        $steps["runCode"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                customFunction: async () => {
-                                  return window.print();
-                                }
-                              };
-                              return (({ customFunction }) => {
-                                return customFunction();
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["runCode"] != null &&
-                          typeof $steps["runCode"] === "object" &&
-                          typeof $steps["runCode"].then === "function"
-                        ) {
-                          $steps["runCode"] = await $steps["runCode"];
-                        }
-
-                        $steps["updateIsPrint2"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["isPrint"]
-                                },
-                                operation: 0,
-                                value: true
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateIsPrint2"] != null &&
-                          typeof $steps["updateIsPrint2"] === "object" &&
-                          typeof $steps["updateIsPrint2"].then === "function"
-                        ) {
-                          $steps["updateIsPrint2"] = await $steps[
-                            "updateIsPrint2"
-                          ];
-                        }
-                      }}
-                    />
-                  </div>
                 </div>
-              ) : null}
-            </section>
-          ) : null}
+              </div>
+            </div>
+            {(() => {
+              try {
+                return $state.isPrint;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox__o3T1)}>
+                <div className={classNames(projectcss.all, sty.freeBox__zePl)}>
+                  <Button
+                    children2={
+                      "\u0686\u0627\u067e \u0641\u0627\u06a9\u062a\u0648\u0631"
+                    }
+                    className={classNames("__wab_instance", sty.button__r8Jw)}
+                    color={"softBlue"}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["updateIsPrint"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["isPrint"]
+                              },
+                              operation: 0,
+                              value: false
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateIsPrint"] != null &&
+                        typeof $steps["updateIsPrint"] === "object" &&
+                        typeof $steps["updateIsPrint"].then === "function"
+                      ) {
+                        $steps["updateIsPrint"] = await $steps["updateIsPrint"];
+                      }
+
+                      $steps["runCode"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return window.print();
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["runCode"] != null &&
+                        typeof $steps["runCode"] === "object" &&
+                        typeof $steps["runCode"].then === "function"
+                      ) {
+                        $steps["runCode"] = await $steps["runCode"];
+                      }
+
+                      $steps["updateIsPrint2"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["isPrint"]
+                              },
+                              operation: 0,
+                              value: true
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateIsPrint2"] != null &&
+                        typeof $steps["updateIsPrint2"] === "object" &&
+                        typeof $steps["updateIsPrint2"].then === "function"
+                      ) {
+                        $steps["updateIsPrint2"] = await $steps[
+                          "updateIsPrint2"
+                        ];
+                      }
+                    }}
+                  />
+                </div>
+              </div>
+            ) : null}
+          </section>
           {(() => {
             try {
               return !$state.waiting;
@@ -2052,7 +1970,6 @@ function PlasmicFactorPrint__RenderFunc(props: {
                 $steps.getFactorDetails.status == 200 &&
                 $steps.getCustomerDetails.status == 200 &&
                 $ctx.query.factorid > 0 &&
-                $ctx.query.usertype.length > 0 &&
                 $state.waiting == false
                   ? (() => {
                       const actionArgs = {
