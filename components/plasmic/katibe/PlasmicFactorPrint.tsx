@@ -278,7 +278,7 @@ function PlasmicFactorPrint__RenderFunc(props: {
                             "unpaid"
                               ? "پیش فاکتور "
                               : "") + $state.factorDetails.data.title
-                          );
+                          ).replaceAll("فاکتور فاکتور", "فاکتور");
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
@@ -1528,7 +1528,9 @@ function PlasmicFactorPrint__RenderFunc(props: {
                               return (
                                 $state.factorDetails.data.due_date !=
                                   undefined &&
-                                $state.factorDetails.data.due_date.length > 0
+                                $state.factorDetails.data.due_date.length > 0 &&
+                                $state.factorDetails.data.meta.payment_status ==
+                                  "unpaid"
                               );
                             } catch (e) {
                               if (
