@@ -273,7 +273,12 @@ function PlasmicFactorPrint__RenderFunc(props: {
                     <React.Fragment>
                       {(() => {
                         try {
-                          return $state.factorDetails.data.title;
+                          return (
+                            ($state.factorDetails.data.meta.payment_status ==
+                            "unpaid"
+                              ? "پیش فاکتور "
+                              : "") + $state.factorDetails.data.title
+                          );
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
@@ -1518,6 +1523,60 @@ function PlasmicFactorPrint__RenderFunc(props: {
                               })()}
                             </React.Fragment>
                           </div>
+                          {(() => {
+                            try {
+                              return (
+                                $state.factorDetails.data.due_date !=
+                                  undefined &&
+                                $state.factorDetails.data.due_date.length > 0
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
+                            }
+                          })() ? (
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__lUh
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return (
+                                      "مهلت پرداخت: " +
+                                      (() => {
+                                        const gregorianDate = new Date(
+                                          $state.factorDetails.data.due_date
+                                        );
+                                        const persianDate =
+                                          new Intl.DateTimeFormat(
+                                            "fa-IR"
+                                          ).format(gregorianDate);
+                                        return persianDate;
+                                      })()
+                                    );
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "\u0645\u0647\u0644\u062a \u067e\u0631\u062f\u0627\u062e\u062a: ";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                          ) : null}
                         </div>
                         <div
                           className={classNames(

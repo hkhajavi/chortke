@@ -1539,6 +1539,14 @@
   max-width: 100%;
   min-width: 0;
 }
+.text__lUh {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-weight: 700;
+  min-width: 0;
+}
 .freeBox__e1VcL {
   flex-direction: column;
   position: relative;
