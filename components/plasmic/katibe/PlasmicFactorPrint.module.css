@@ -104,13 +104,6 @@
     grid-column-end: span 7;
   }
 }
-.svg {
-  object-fit: cover;
-  max-width: 100%;
-  width: 50px;
-  height: 40px;
-  flex-shrink: 0;
-}
 .text__uGtiH {
   position: relative;
   width: auto;
@@ -1668,7 +1661,7 @@
   width: auto;
   height: 1em;
 }
-.section {
+.section__llxZs {
   display: grid;
   position: relative;
   align-content: flex-start;
@@ -1687,7 +1680,7 @@
     )
     minmax(0, var(--plsmc-wide-chunk)) 1fr var(--plsmc-viewport-gap);
 }
-.section > * {
+.section__llxZs > * {
   grid-column: 4;
 }
 .freeBox__fAUpA {
@@ -1735,4 +1728,31 @@
 .embedHtml:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
+}
+.section__n5Noq {
+  display: grid;
+  position: relative;
+  align-content: flex-start;
+  justify-items: center;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  grid-column-start: 1 !important;
+  grid-column-end: -1 !important;
+  grid-template-columns:
+    var(--plsmc-viewport-gap) 1fr minmax(0, var(--plsmc-wide-chunk))
+    min(
+      var(--plsmc-standard-width),
+      calc(100% - var(--plsmc-viewport-gap) - var(--plsmc-viewport-gap))
+    )
+    minmax(0, var(--plsmc-wide-chunk)) 1fr var(--plsmc-viewport-gap);
+}
+.section__n5Noq > * {
+  grid-column: 4;
+}
+.svg {
+  object-fit: cover;
+  max-width: 100%;
+  width: 50px;
+  height: 40px;
 }

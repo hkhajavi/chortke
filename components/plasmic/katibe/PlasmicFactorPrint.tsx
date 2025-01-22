@@ -74,9 +74,9 @@ import plasmic_fragment_design_system_css from "../fragment_design_system/plasmi
 import projectcss from "../chortke/plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicFactorPrint.module.css"; // plasmic-import: Y4-ibBMrkvma/css
 
-import Icon2Icon from "../chortke/icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
 import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
+import Icon2Icon from "../chortke/icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
 
 createPlasmicElementProxy;
 
@@ -93,10 +93,9 @@ export type PlasmicFactorPrint__OverridesType = {
   factorPrint?: Flex__<"div">;
   holderPrint?: Flex__<"section">;
   img?: Flex__<typeof PlasmicImg__>;
-  svg?: Flex__<"svg">;
-  section?: Flex__<"section">;
   sideEffect?: Flex__<typeof SideEffect>;
   embedHtml?: Flex__<typeof Embed>;
+  svg?: Flex__<"svg">;
 };
 
 export interface DefaultFactorPrintProps {}
@@ -252,26 +251,6 @@ function PlasmicFactorPrint__RenderFunc(props: {
                 />
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__pLoip)}>
-                {(() => {
-                  try {
-                    return $state.waiting;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return true;
-                    }
-                    throw e;
-                  }
-                })() ? (
-                  <Icon2Icon
-                    data-plasmic-name={"svg"}
-                    data-plasmic-override={overrides.svg}
-                    className={classNames(projectcss.all, sty.svg)}
-                    role={"img"}
-                  />
-                ) : null}
                 <div
                   className={classNames(
                     projectcss.all,
@@ -1723,11 +1702,7 @@ function PlasmicFactorPrint__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <section
-              data-plasmic-name={"section"}
-              data-plasmic-override={overrides.section}
-              className={classNames(projectcss.all, sty.section)}
-            >
+            <section className={classNames(projectcss.all, sty.section__llxZs)}>
               <div className={classNames(projectcss.all, sty.freeBox__fAUpA)}>
                 <div className={classNames(projectcss.all, sty.freeBox__fkvIo)}>
                   <Button
@@ -1966,6 +1941,30 @@ function PlasmicFactorPrint__RenderFunc(props: {
                 ];
               }
 
+              $steps["updateFactorDetails4"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          return setTimeout(function () {}, 2000);
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateFactorDetails4"] != null &&
+                typeof $steps["updateFactorDetails4"] === "object" &&
+                typeof $steps["updateFactorDetails4"].then === "function"
+              ) {
+                $steps["updateFactorDetails4"] = await $steps[
+                  "updateFactorDetails4"
+                ];
+              }
+
               $steps["print"] =
                 $steps.getFactorDetails.status == 200 &&
                 $steps.getCustomerDetails.status == 200 &&
@@ -2000,6 +1999,29 @@ function PlasmicFactorPrint__RenderFunc(props: {
               '<script type="text/javascript">\r\n    (function(c,l,a,r,i,t,y){\r\n        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\r\n        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;\r\n        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);\r\n    })(window, document, "clarity", "script", "pq37fqev3s");\r\n</script>'
             }
           />
+
+          {(() => {
+            try {
+              return $state.waiting;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return true;
+              }
+              throw e;
+            }
+          })() ? (
+            <section className={classNames(projectcss.all, sty.section__n5Noq)}>
+              <Icon2Icon
+                data-plasmic-name={"svg"}
+                data-plasmic-override={overrides.svg}
+                className={classNames(projectcss.all, sty.svg)}
+                role={"img"}
+              />
+            </section>
+          ) : null}
         </div>
       </div>
     </React.Fragment>
@@ -2011,17 +2033,15 @@ const PlasmicDescendants = {
     "factorPrint",
     "holderPrint",
     "img",
-    "svg",
-    "section",
     "sideEffect",
-    "embedHtml"
+    "embedHtml",
+    "svg"
   ],
-  holderPrint: ["holderPrint", "img", "svg"],
+  holderPrint: ["holderPrint", "img"],
   img: ["img"],
-  svg: ["svg"],
-  section: ["section"],
   sideEffect: ["sideEffect"],
-  embedHtml: ["embedHtml"]
+  embedHtml: ["embedHtml"],
+  svg: ["svg"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -2030,10 +2050,9 @@ type NodeDefaultElementType = {
   factorPrint: "div";
   holderPrint: "section";
   img: typeof PlasmicImg__;
-  svg: "svg";
-  section: "section";
   sideEffect: typeof SideEffect;
   embedHtml: typeof Embed;
+  svg: "svg";
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -2098,10 +2117,9 @@ export const PlasmicFactorPrint = Object.assign(
     // Helper components rendering sub-elements
     holderPrint: makeNodeComponent("holderPrint"),
     img: makeNodeComponent("img"),
-    svg: makeNodeComponent("svg"),
-    section: makeNodeComponent("section"),
     sideEffect: makeNodeComponent("sideEffect"),
     embedHtml: makeNodeComponent("embedHtml"),
+    svg: makeNodeComponent("svg"),
 
     // Metadata about props expected for PlasmicFactorPrint
     internalVariantProps: PlasmicFactorPrint__VariantProps,
