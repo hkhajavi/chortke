@@ -2032,6 +2032,7 @@ function PlasmicFactorPrint__RenderFunc(props: {
                 $steps.getFactorDetails.status == 200 &&
                 $steps.getCustomerDetails.status == 200 &&
                 $ctx.query.factorid > 0 &&
+                $ctx.query.usertype.length > 0 &&
                 $state.waiting == false
                   ? (() => {
                       const actionArgs = {
