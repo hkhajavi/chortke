@@ -214,7 +214,7 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  text-align: left;
+  text-align: right;
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -274,7 +274,7 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  text-align: left;
+  text-align: right;
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
