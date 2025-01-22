@@ -1840,34 +1840,36 @@ function PlasmicFactorPrint__RenderFunc(props: {
             onMount={async () => {
               const $steps = {};
 
-              $steps["getFactorDetails"] = true
-                ? (() => {
-                    const actionArgs = {
-                      args: [
-                        undefined,
-                        (() => {
-                          try {
-                            return (
-                              "https://apigw.paziresh24.com/katibe/v1/factors/p24/" +
-                              $ctx.query.factorid
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
+              $steps["getFactorDetails"] =
+                $ctx.query.factorid > 0
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          undefined,
+                          (() => {
+                            try {
+                              return (
+                                "https://apigw.paziresh24.com/katibe/v1/factors/p24/" +
+                                $ctx.query.factorid
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()
-                      ]
-                    };
-                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                      ...actionArgs.args
-                    ]);
-                  })()
-                : undefined;
+                          })()
+                        ]
+                      };
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
+                    })()
+                  : undefined;
               if (
                 $steps["getFactorDetails"] != null &&
                 typeof $steps["getFactorDetails"] === "object" &&
@@ -1913,37 +1915,39 @@ function PlasmicFactorPrint__RenderFunc(props: {
                 ];
               }
 
-              $steps["getCustomerDetails"] = true
-                ? (() => {
-                    const actionArgs = {
-                      args: [
-                        undefined,
-                        (() => {
-                          try {
-                            return (
-                              "https://apigw.paziresh24.com/financialaccount/v1/profiles" +
-                              ($ctx.query.customertype == "center"
-                                ? "?centerid=" +
-                                  $state.factorDetails.data.customerid
-                                : "")
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
+              $steps["getCustomerDetails"] =
+                $steps.getFactorDetails.status == 200
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          undefined,
+                          (() => {
+                            try {
+                              return (
+                                "https://apigw.paziresh24.com/financialaccount/v1/profiles" +
+                                ($ctx.query.customertype == "center"
+                                  ? "?centerid=" +
+                                    $state.factorDetails.data.customerid
+                                  : "")
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()
-                      ]
-                    };
-                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                      ...actionArgs.args
-                    ]);
-                  })()
-                : undefined;
+                          })()
+                        ]
+                      };
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
+                    })()
+                  : undefined;
               if (
                 $steps["getCustomerDetails"] != null &&
                 typeof $steps["getCustomerDetails"] === "object" &&
