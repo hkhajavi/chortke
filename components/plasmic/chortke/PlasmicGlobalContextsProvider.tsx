@@ -102,7 +102,7 @@ export default function GlobalContextsProvider(
             css={
               embedCssProps && "css" in embedCssProps
                 ? embedCssProps.css!
-                : "@page {\r\n  size: A4 landscape;  \r\n  margin: 0;\r\n}\r\n\r\n@media print {\r\n  .page {\r\n    margin: 0;\r\n    border: initial;\r\n    border-radius: initial;\r\n    width: initial;\r\n    min-height: initial;\r\n    box-shadow: initial;\r\n    background: initial;\r\n    page-break-after: always;\r\n  }\r\n}"
+                : "\r\n@media print{ @page { size: A4 landscape; margin:3px 3px 3px 3px; } }\r\n"
             }
           >
             <AntdConfigProvider
