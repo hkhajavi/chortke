@@ -88,7 +88,7 @@ import Icon2Icon from "../chortke/icons/PlasmicIcon__Icon2"; // plasmic-import: 
 import SearchSvgIcon from "../chortke/icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
 import CheckSvgIcon from "../chortke/icons/PlasmicIcon__CheckSvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
 import Icon39Icon from "./icons/PlasmicIcon__Icon39"; // plasmic-import: I-Qer-jgPJtD/icon
-import Icon42Icon from "./icons/PlasmicIcon__Icon42"; // plasmic-import: hHYxopWBHknS/icon
+import Icon43Icon from "./icons/PlasmicIcon__Icon43"; // plasmic-import: 9LnHpep74tBB/icon
 
 createPlasmicElementProxy;
 
@@ -4164,7 +4164,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                         platform={"nextjs"}
                         target={"_blank"}
                       >
-                        <Icon42Icon
+                        <Icon43Icon
                           className={classNames(projectcss.all, sty.svg__iQb5C)}
                           role={"img"}
                         />
