@@ -277,7 +277,9 @@ function PlasmicFactorPrint__RenderFunc(props: {
                         try {
                           return (
                             ($state.factorDetails.data.meta.payment_status ==
-                            "unpaid"
+                              undefined ||
+                            $state.factorDetails.data.meta.payment_status ==
+                              "unpaid"
                               ? "پیش فاکتور "
                               : "") + $state.factorDetails.data.title
                           ).replaceAll("فاکتور فاکتور", "فاکتور");
@@ -2029,7 +2031,8 @@ function PlasmicFactorPrint__RenderFunc(props: {
               $steps["print"] =
                 $steps.getFactorDetails.status == 200 &&
                 $steps.getCustomerDetails.status == 200 &&
-                $ctx.query.factorid > 0
+                $ctx.query.factorid > 0 &&
+                $state.waiting == false
                   ? (() => {
                       const actionArgs = {
                         customFunction: async () => {
