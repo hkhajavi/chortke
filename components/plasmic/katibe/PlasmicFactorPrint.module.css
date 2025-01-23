@@ -1548,28 +1548,6 @@
   margin-top: 5px;
   min-width: 0;
 }
-.freeBox__e1VcL {
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
-  min-width: 0;
-  display: none;
-  padding: 8px;
-  border-width: 1px;
-  border-style: solid;
-}
-.text__aYaJ {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  text-align: left;
-  min-width: 0;
-}
 .freeBox__nTtl7 {
   display: grid;
   position: relative;

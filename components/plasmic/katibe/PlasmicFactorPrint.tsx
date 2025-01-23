@@ -1456,8 +1456,10 @@ function PlasmicFactorPrint__RenderFunc(props: {
                             return (
                               $state.factorDetails.data.due_date != undefined &&
                               $state.factorDetails.data.due_date.length > 0 &&
-                              $state.factorDetails.data.meta.payment_status ==
-                                "unpaid"
+                              ($state.factorDetails.data.meta.payment_status ==
+                                "unpaid" ||
+                                $state.factorDetails.data.meta.payment_status ==
+                                  undefined)
                             );
                           } catch (e) {
                             if (
@@ -1506,36 +1508,6 @@ function PlasmicFactorPrint__RenderFunc(props: {
                             </React.Fragment>
                           </div>
                         ) : null}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__e1VcL
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__aYaJ
-                          )}
-                        >
-                          <React.Fragment>
-                            {(() => {
-                              try {
-                                return "جمع کل:";
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "\u062c\u0645\u0639 \u06a9\u0644";
-                                }
-                                throw e;
-                              }
-                            })()}
-                          </React.Fragment>
-                        </div>
                       </div>
                     </div>
                   </div>
