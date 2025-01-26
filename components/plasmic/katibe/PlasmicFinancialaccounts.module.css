@@ -296,7 +296,7 @@
 .freeBox__kEd6I {
   display: grid;
   position: relative;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(1, minmax(0, 1fr));
   width: 100%;
   height: auto;
   max-width: 100%;
@@ -335,33 +335,6 @@
   height: 1em;
 }
 .svg__vZlr1 {
-  position: relative;
-  object-fit: cover;
-  width: auto;
-  height: 1em;
-}
-.freeBox__ixqR {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  justify-content: center;
-  align-items: flex-start;
-  min-width: 0;
-  padding: 8px;
-}
-.button__ruiUf:global(.__wab_instance) {
-  max-width: 100%;
-}
-.svg__aaE7I {
-  position: relative;
-  object-fit: cover;
-  width: auto;
-  height: 1em;
-}
-.svg___0IBsz {
   position: relative;
   object-fit: cover;
   width: auto;
@@ -635,6 +608,10 @@
   align-items: center;
   min-width: 0;
   padding: 8px;
+}
+.sideEffectGetCardInquiry:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
 }
 .freeBox___5XxFc {
   display: grid;
