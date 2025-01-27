@@ -1217,12 +1217,12 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         onClick={async event => {
                           const $steps = {};
 
-                          $steps["updateWaiting"] = true
+                          $steps["updateWaitingProfile"] = true
                             ? (() => {
                                 const actionArgs = {
                                   variable: {
                                     objRoot: $state,
-                                    variablePath: ["waiting"]
+                                    variablePath: ["waitingProfile"]
                                   },
                                   operation: 0,
                                   value: true
@@ -1244,12 +1244,14 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               })()
                             : undefined;
                           if (
-                            $steps["updateWaiting"] != null &&
-                            typeof $steps["updateWaiting"] === "object" &&
-                            typeof $steps["updateWaiting"].then === "function"
+                            $steps["updateWaitingProfile"] != null &&
+                            typeof $steps["updateWaitingProfile"] ===
+                              "object" &&
+                            typeof $steps["updateWaitingProfile"].then ===
+                              "function"
                           ) {
-                            $steps["updateWaiting"] = await $steps[
-                              "updateWaiting"
+                            $steps["updateWaitingProfile"] = await $steps[
+                              "updateWaitingProfile"
                             ];
                           }
 
@@ -1349,7 +1351,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                 const actionArgs = {
                                   variable: {
                                     objRoot: $state,
-                                    variablePath: ["waiting"]
+                                    variablePath: ["waitingProfile"]
                                   },
                                   operation: 0,
                                   value: false
