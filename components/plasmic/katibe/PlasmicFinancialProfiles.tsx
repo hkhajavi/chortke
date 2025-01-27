@@ -4384,7 +4384,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                             const uniqueData = [];
                             const seenIds = new Set();
                             data.forEach(item => {
-                              if (!seenIds.has(item.id)) {
+                              if (
+                                !seenIds.has(item.id) &&
+                                item.account != "expense"
+                              ) {
                                 seenIds.add(item.id);
                                 uniqueData.push(item);
                               }
