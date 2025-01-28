@@ -4273,39 +4273,41 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               ];
                             }
 
-                            $steps["updateRecuringSetlementCount"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["recuringSetlementCount"]
-                                    },
-                                    operation: 2
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
+                            $steps["updateRecuringSetlementCount"] =
+                              $steps.recurringSettlement.status == 200
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["recuringSetlementCount"]
+                                      },
+                                      operation: 2
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
 
-                                    const oldValue = $stateGet(
-                                      objRoot,
-                                      variablePath
-                                    );
-                                    $stateSet(
-                                      objRoot,
-                                      variablePath,
-                                      oldValue + 1
-                                    );
-                                    return oldValue + 1;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
+                                      const oldValue = $stateGet(
+                                        objRoot,
+                                        variablePath
+                                      );
+                                      $stateSet(
+                                        objRoot,
+                                        variablePath,
+                                        oldValue + 1
+                                      );
+                                      return oldValue + 1;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
                             if (
                               $steps["updateRecuringSetlementCount"] != null &&
                               typeof $steps["updateRecuringSetlementCount"] ===
@@ -4443,35 +4445,39 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               ];
                             }
 
-                            $steps["setDeleteMessage"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: [
-                                        "recurringSettlementMessage"
-                                      ]
-                                    },
-                                    operation: 0,
-                                    value:
-                                      $steps.deleteSettlementStatus.data.message
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
+                            $steps["setDeleteMessage"] =
+                              $steps.deleteSettlementStatus.data.message !=
+                              undefined
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: [
+                                          "recurringSettlementMessage"
+                                        ]
+                                      },
+                                      operation: 0,
+                                      value:
+                                        $steps.deleteSettlementStatus.data
+                                          .message
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
 
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
                             if (
                               $steps["setDeleteMessage"] != null &&
                               typeof $steps["setDeleteMessage"] === "object" &&
@@ -4596,39 +4602,41 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               ];
                             }
 
-                            $steps["refreshRecuringSettlement"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["recuringSetlementCount"]
-                                    },
-                                    operation: 2
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
+                            $steps["refreshRecuringSettlement"] =
+                              $steps.deleteSettlementStatus.status == 200
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["recuringSetlementCount"]
+                                      },
+                                      operation: 2
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
 
-                                    const oldValue = $stateGet(
-                                      objRoot,
-                                      variablePath
-                                    );
-                                    $stateSet(
-                                      objRoot,
-                                      variablePath,
-                                      oldValue + 1
-                                    );
-                                    return oldValue + 1;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
+                                      const oldValue = $stateGet(
+                                        objRoot,
+                                        variablePath
+                                      );
+                                      $stateSet(
+                                        objRoot,
+                                        variablePath,
+                                        oldValue + 1
+                                      );
+                                      return oldValue + 1;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
                             if (
                               $steps["refreshRecuringSettlement"] != null &&
                               typeof $steps["refreshRecuringSettlement"] ===
