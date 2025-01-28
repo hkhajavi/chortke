@@ -4552,6 +4552,68 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 ];
               }
 
+              $steps["updateWaitingUserAccount"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["waitingUserAccount"]
+                      },
+                      operation: 0,
+                      value: true
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateWaitingUserAccount"] != null &&
+                typeof $steps["updateWaitingUserAccount"] === "object" &&
+                typeof $steps["updateWaitingUserAccount"].then === "function"
+              ) {
+                $steps["updateWaitingUserAccount"] = await $steps[
+                  "updateWaitingUserAccount"
+                ];
+              }
+
+              $steps["updateWaitingSettlement"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["waitingSettlement"]
+                      },
+                      operation: 0,
+                      value: true
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateWaitingSettlement"] != null &&
+                typeof $steps["updateWaitingSettlement"] === "object" &&
+                typeof $steps["updateWaitingSettlement"].then === "function"
+              ) {
+                $steps["updateWaitingSettlement"] = await $steps[
+                  "updateWaitingSettlement"
+                ];
+              }
+
               $steps["getProfile"] = true
                 ? (() => {
                     const actionArgs = {
@@ -4653,37 +4715,6 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
               ) {
                 $steps["updateWaitingProfile"] = await $steps[
                   "updateWaitingProfile"
-                ];
-              }
-
-              $steps["updateWaitingUserAccount"] = true
-                ? (() => {
-                    const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["waitingUserAccount"]
-                      },
-                      operation: 0,
-                      value: true
-                    };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
-                      }
-                      const { objRoot, variablePath } = variable;
-
-                      $stateSet(objRoot, variablePath, value);
-                      return value;
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["updateWaitingUserAccount"] != null &&
-                typeof $steps["updateWaitingUserAccount"] === "object" &&
-                typeof $steps["updateWaitingUserAccount"].then === "function"
-              ) {
-                $steps["updateWaitingUserAccount"] = await $steps[
-                  "updateWaitingUserAccount"
                 ];
               }
 
@@ -4790,37 +4821,6 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
               ) {
                 $steps["updateWaitingUserAccount2"] = await $steps[
                   "updateWaitingUserAccount2"
-                ];
-              }
-
-              $steps["updateWaitingSettlement"] = true
-                ? (() => {
-                    const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["waitingSettlement"]
-                      },
-                      operation: 0,
-                      value: true
-                    };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
-                      }
-                      const { objRoot, variablePath } = variable;
-
-                      $stateSet(objRoot, variablePath, value);
-                      return value;
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["updateWaitingSettlement"] != null &&
-                typeof $steps["updateWaitingSettlement"] === "object" &&
-                typeof $steps["updateWaitingSettlement"].then === "function"
-              ) {
-                $steps["updateWaitingSettlement"] = await $steps[
-                  "updateWaitingSettlement"
                 ];
               }
 
