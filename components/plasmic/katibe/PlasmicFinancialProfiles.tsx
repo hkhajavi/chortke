@@ -4347,6 +4347,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                             "__wab_instance",
                             sty.btnDeleteRecuringSettlement
                           )}
+                          color={"blue"}
                           onClick={async event => {
                             const $steps = {};
 
@@ -4392,7 +4393,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               ? (() => {
                                   const actionArgs = {
                                     args: [
-                                      "DELETE",
+                                      "PUT",
                                       (() => {
                                         try {
                                           return "https://apigw.paziresh24.com/ganjname/v1/recurring-settlement";
@@ -5196,9 +5197,6 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                     const actionArgs = {
                       customFunction: async () => {
                         return (() => {
-                          $state.useraccounts = [];
-                          $state.cardInquiry = {};
-                          $state.profile = {};
                           $state.recurringSettlementList = [];
                           return $state.accounts.forEach(account => {
                             if (account.uniqueid == $state.cbAccounts.value) {
