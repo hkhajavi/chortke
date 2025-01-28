@@ -65,8 +65,6 @@ import Button from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
 import Dialog from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
 import Button2 from "../../Button"; // plasmic-import: 0wu_ZE1f8SuT/component
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
-import RadioGroup from "../../RadioGroup"; // plasmic-import: tqHTZfyBziuN/component
-import Radio from "../../Radio"; // plasmic-import: Cbq_rTXOD16b/component
 import { AntdRadioGroup } from "@plasmicpkgs/antd5/skinny/registerRadio";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
 
@@ -118,11 +116,13 @@ export type PlasmicFinancialProfiles__OverridesType = {
   txtBan?: Flex__<typeof TextInput>;
   txtBank?: Flex__<typeof TextInput>;
   sideEffectGetCardInquiry2?: Flex__<typeof SideEffect>;
-  settlementStatus?: Flex__<typeof RadioGroup>;
   accountSettlement?: Flex__<typeof AntdRadioGroup>;
   txtPaymentNumber?: Flex__<typeof TextInput>;
+  btnActiveRecuringSettlement?: Flex__<typeof Button>;
+  btnDeleteRecuringSettlement?: Flex__<typeof Button>;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
   loadProfile?: Flex__<typeof SideEffect>;
+  refreshRecuringSettlement?: Flex__<typeof SideEffect>;
 };
 
 export interface DefaultFinancialProfilesProps {}
@@ -468,12 +468,6 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "settlementStatus.value",
-        type: "private",
-        variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
-      },
-      {
         path: "accountSettlement.value",
         type: "private",
         variableType: "text",
@@ -540,6 +534,12 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "recuringSetlementCount",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
@@ -2031,6 +2031,58 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                   await $steps["deleteRequest"];
                                               }
 
+                                              $steps["updateMessage"] = true
+                                                ? (() => {
+                                                    const actionArgs = {
+                                                      variable: {
+                                                        objRoot: $state,
+                                                        variablePath: [
+                                                          "message"
+                                                        ]
+                                                      },
+                                                      operation: 0,
+                                                      value:
+                                                        $steps.deleteRequest
+                                                          .data.message
+                                                    };
+                                                    return (({
+                                                      variable,
+                                                      value,
+                                                      startIndex,
+                                                      deleteCount
+                                                    }) => {
+                                                      if (!variable) {
+                                                        return;
+                                                      }
+                                                      const {
+                                                        objRoot,
+                                                        variablePath
+                                                      } = variable;
+
+                                                      $stateSet(
+                                                        objRoot,
+                                                        variablePath,
+                                                        value
+                                                      );
+                                                      return value;
+                                                    })?.apply(null, [
+                                                      actionArgs
+                                                    ]);
+                                                  })()
+                                                : undefined;
+                                              if (
+                                                $steps["updateMessage"] !=
+                                                  null &&
+                                                typeof $steps[
+                                                  "updateMessage"
+                                                ] === "object" &&
+                                                typeof $steps["updateMessage"]
+                                                  .then === "function"
+                                              ) {
+                                                $steps["updateMessage"] =
+                                                  await $steps["updateMessage"];
+                                              }
+
                                               $steps[
                                                 "updateWaitingUserAccount2"
                                               ] = true
@@ -2160,7 +2212,21 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                       const actionArgs = {
                                                         args: [
                                                           "error",
-                                                          "\u062e\u0637\u0627 \u062f\u0631 \u062d\u0630\u0641 \u062d\u0633\u0627\u0628 \u0628\u0627\u0646\u06a9\u06cc"
+                                                          (() => {
+                                                            try {
+                                                              return $state.message;
+                                                            } catch (e) {
+                                                              if (
+                                                                e instanceof
+                                                                  TypeError ||
+                                                                e?.plasmicType ===
+                                                                  "PlasmicUndefinedDataError"
+                                                              ) {
+                                                                return undefined;
+                                                              }
+                                                              throw e;
+                                                            }
+                                                          })()
                                                         ]
                                                       };
                                                       return $globalActions[
@@ -3702,622 +3768,886 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 </div>
               </div>
             ) : null}
-            <div className={classNames(projectcss.all, sty.freeBox__vXn0U)}>
-              <div className={classNames(projectcss.all, sty.freeBox__hGHti)}>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___5PkPs
-                  )}
-                >
-                  {
-                    "\u062a\u0633\u0648\u06cc\u0647 \u062e\u0648\u062f\u06a9\u0627\u0631 \u0631\u0648\u0632\u0627\u0646\u0647"
-                  }
-                </div>
-                {(() => {
-                  try {
-                    return $state.waitingSettlement;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return true;
+            {(() => {
+              try {
+                return !$state.waiting;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox__vXn0U)}>
+                <div className={classNames(projectcss.all, sty.freeBox__hGHti)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___5PkPs
+                    )}
+                  >
+                    {
+                      "\u062a\u0633\u0648\u06cc\u0647 \u062e\u0648\u062f\u06a9\u0627\u0631 \u0631\u0648\u0632\u0627\u0646\u0647"
                     }
-                    throw e;
-                  }
-                })() ? (
-                  <Icon2Icon
-                    className={classNames(projectcss.all, sty.svg___8BmBs)}
-                    role={"img"}
-                  />
-                ) : null}
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox___1CP)}>
-                <div className={classNames(projectcss.all, sty.freeBox__qwE5F)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__cTeH0)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__rKpWh
-                      )}
-                    >
-                      {"\u0648\u0636\u0639\u06cc\u062a:"}
-                    </div>
-                    <RadioGroup
-                      data-plasmic-name={"settlementStatus"}
-                      data-plasmic-override={overrides.settlementStatus}
-                      className={classNames(
-                        "__wab_instance",
-                        sty.settlementStatus
-                      )}
-                      defaultValue={(() => {
-                        try {
-                          return $state.recurringSettlementList.length > 0
-                            ? "enable"
-                            : "disable";
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return undefined;
-                          }
-                          throw e;
-                        }
-                      })()}
-                      label={null}
-                      onChange={async (...eventArgs: any) => {
-                        generateStateOnChangeProp($state, [
-                          "settlementStatus",
-                          "value"
-                        ]).apply(null, eventArgs);
-
-                        if (
-                          eventArgs.length > 1 &&
-                          eventArgs[1] &&
-                          eventArgs[1]._plasmic_state_init_
-                        ) {
-                          return;
-                        }
-                      }}
-                      options={
-                        <Stack__
-                          as={"div"}
-                          hasGap={true}
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__ldkOq
-                          )}
-                        >
-                          <Radio
-                            className={classNames(
-                              "__wab_instance",
-                              sty.radio___3JNy
-                            )}
-                            label={"\u0641\u0639\u0627\u0644"}
-                            value={"enable"}
-                          />
-
-                          <Radio
-                            className={classNames(
-                              "__wab_instance",
-                              sty.radio__uRMlA
-                            )}
-                            label={"\u063a\u06cc\u0631\u0641\u0639\u0627\u0644"}
-                            value={"disable"}
-                          />
-                        </Stack__>
-                      }
-                    />
                   </div>
+                  {(() => {
+                    try {
+                      return $state.waitingSettlement;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <Icon2Icon
+                      className={classNames(projectcss.all, sty.svg___8BmBs)}
+                      role={"img"}
+                    />
+                  ) : null}
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox___1CP)}>
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__u4WOp)}
+                    className={classNames(projectcss.all, sty.freeBox__qwE5F)}
                   >
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___75Lbt
-                      )}
+                      className={classNames(projectcss.all, sty.freeBox__cTeH0)}
                     >
-                      {"\u062d\u0633\u0627\u0628:"}
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__ihKmx
+                        )}
+                      >
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return $state.recurringSettlementList.length > 0
+                                ? "تسویه حساب خودکار" + "" + " فعال می‌باشد."
+                                : "تسویه حساب خودکار غیرفعال است.";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
+                      </div>
                     </div>
-                    <AntdRadioGroup
-                      data-plasmic-name={"accountSettlement"}
-                      data-plasmic-override={overrides.accountSettlement}
-                      children={null}
-                      className={classNames(
-                        "__wab_instance",
-                        sty.accountSettlement
-                      )}
-                      defaultValue={(() => {
-                        try {
-                          return $state.recurringSettlementList[0].accountid;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return undefined;
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__u4WOp)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___75Lbt
+                        )}
+                      >
+                        {"\u062d\u0633\u0627\u0628:"}
+                      </div>
+                      <AntdRadioGroup
+                        data-plasmic-name={"accountSettlement"}
+                        data-plasmic-override={overrides.accountSettlement}
+                        children={null}
+                        className={classNames(
+                          "__wab_instance",
+                          sty.accountSettlement
+                        )}
+                        defaultValue={(() => {
+                          try {
+                            return $state.recurringSettlementList[0].accountid;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
                           }
-                          throw e;
-                        }
-                      })()}
-                      onChange={async (...eventArgs: any) => {
-                        generateStateOnChangeProp($state, [
+                        })()}
+                        onChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "accountSettlement",
+                            "value"
+                          ]).apply(null, eventArgs);
+                        }}
+                        optionType={"default"}
+                        options={(() => {
+                          try {
+                            return $state.useraccounts.map(account => ({
+                              label: account.name + "-" + account.cardid,
+                              value: account.accountid
+                            }));
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()}
+                        value={generateStateValueProp($state, [
                           "accountSettlement",
                           "value"
-                        ]).apply(null, eventArgs);
-                      }}
-                      optionType={"default"}
-                      options={(() => {
+                        ])}
+                      />
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__vfGbM)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__qoBx8
+                        )}
+                      >
+                        {
+                          "\u0634\u0646\u0627\u0633\u0647 \u0648\u0627\u0631\u06cc\u0632:"
+                        }
+                      </div>
+                      <TextInput
+                        data-plasmic-name={"txtPaymentNumber"}
+                        data-plasmic-override={overrides.txtPaymentNumber}
+                        className={classNames(
+                          "__wab_instance",
+                          sty.txtPaymentNumber
+                        )}
+                        onChange={async (...eventArgs: any) => {
+                          ((...eventArgs) => {
+                            generateStateOnChangeProp($state, [
+                              "txtPaymentNumber",
+                              "value"
+                            ])((e => e.target?.value).apply(null, eventArgs));
+                          }).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
+                        placeholder={
+                          "\u0634\u0646\u0627\u0633\u0647 \u0648\u0627\u0631\u06cc\u0632 \u062f\u0631 \u0635\u0648\u0631\u062a \u0644\u0632\u0648\u0645"
+                        }
+                        type={"number"}
+                        value={
+                          generateStateValueProp($state, [
+                            "txtPaymentNumber",
+                            "value"
+                          ]) ?? ""
+                        }
+                      />
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___2TmJ5
+                      )}
+                    >
+                      {(() => {
                         try {
-                          return $state.useraccounts.map(account => ({
-                            label: account.name + "-" + account.cardid,
-                            value: account.accountid
-                          }));
+                          return $state.recurringSettlementList.length == 0;
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
                             e?.plasmicType === "PlasmicUndefinedDataError"
                           ) {
-                            return [];
+                            return true;
                           }
                           throw e;
                         }
-                      })()}
-                      value={generateStateValueProp($state, [
-                        "accountSettlement",
-                        "value"
-                      ])}
-                    />
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__vfGbM)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__qoBx8
-                      )}
-                    >
-                      {
-                        "\u0634\u0646\u0627\u0633\u0647 \u0648\u0627\u0631\u06cc\u0632:"
-                      }
+                      })() ? (
+                        <Button
+                          data-plasmic-name={"btnActiveRecuringSettlement"}
+                          data-plasmic-override={
+                            overrides.btnActiveRecuringSettlement
+                          }
+                          children2={
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__mYa5N
+                              )}
+                            >
+                              {"\u0641\u0639\u0627\u0644 \u06a9\u0646"}
+                            </div>
+                          }
+                          className={classNames(
+                            "__wab_instance",
+                            sty.btnActiveRecuringSettlement
+                          )}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["errorAccount"] =
+                              $state.useraccounts.length == 0
+                                ? (() => {
+                                    const actionArgs = {
+                                      args: [
+                                        "error",
+                                        "\u0644\u0637\u0641\u0627 \u06cc\u06a9 \u062d\u0633\u0627\u0628 \u062a\u0639\u0631\u06cc\u0641 \u0646\u0645\u0627\u06cc\u06cc\u062f."
+                                      ]
+                                    };
+                                    return $globalActions[
+                                      "Fragment.showToast"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["errorAccount"] != null &&
+                              typeof $steps["errorAccount"] === "object" &&
+                              typeof $steps["errorAccount"].then === "function"
+                            ) {
+                              $steps["errorAccount"] = await $steps[
+                                "errorAccount"
+                              ];
+                            }
+
+                            $steps["updateWaitingSettlement"] =
+                              $state.useraccounts.length > 0
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["waitingSettlement"]
+                                      },
+                                      operation: 0,
+                                      value: true
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["updateWaitingSettlement"] != null &&
+                              typeof $steps["updateWaitingSettlement"] ===
+                                "object" &&
+                              typeof $steps["updateWaitingSettlement"].then ===
+                                "function"
+                            ) {
+                              $steps["updateWaitingSettlement"] = await $steps[
+                                "updateWaitingSettlement"
+                              ];
+                            }
+
+                            $steps["recurringSettlement"] =
+                              $state.useraccounts.length > 0
+                                ? (() => {
+                                    const actionArgs = {
+                                      args: [
+                                        "POST",
+                                        (() => {
+                                          try {
+                                            return "https://apigw.paziresh24.com/ganjname/v1/recurring-settlement";
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return undefined;
+                                            }
+                                            throw e;
+                                          }
+                                        })(),
+                                        undefined,
+                                        (() => {
+                                          try {
+                                            return {
+                                              accountid:
+                                                $state.useraccounts[0]
+                                                  .accountid,
+                                              payment_number:
+                                                $state.txtPaymentNumber.value
+                                            };
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return undefined;
+                                            }
+                                            throw e;
+                                          }
+                                        })()
+                                      ]
+                                    };
+                                    return $globalActions[
+                                      "Fragment.apiRequest"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["recurringSettlement"] != null &&
+                              typeof $steps["recurringSettlement"] ===
+                                "object" &&
+                              typeof $steps["recurringSettlement"].then ===
+                                "function"
+                            ) {
+                              $steps["recurringSettlement"] = await $steps[
+                                "recurringSettlement"
+                              ];
+                            }
+
+                            $steps["getMessage"] =
+                              $steps.recurringSettlement.data.message !=
+                              undefined
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: [
+                                          "recurringSettlementMessage"
+                                        ]
+                                      },
+                                      operation: 0,
+                                      value:
+                                        $steps.recurringSettlement.data.message
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["getMessage"] != null &&
+                              typeof $steps["getMessage"] === "object" &&
+                              typeof $steps["getMessage"].then === "function"
+                            ) {
+                              $steps["getMessage"] = await $steps["getMessage"];
+                            }
+
+                            $steps["alertSuccessRecurring"] =
+                              $steps.recurringSettlement.status == 200
+                                ? (() => {
+                                    const actionArgs = {
+                                      args: [
+                                        undefined,
+                                        (() => {
+                                          try {
+                                            return $state.recurringSettlementMessage;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return undefined;
+                                            }
+                                            throw e;
+                                          }
+                                        })()
+                                      ]
+                                    };
+                                    return $globalActions[
+                                      "Fragment.showToast"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["alertSuccessRecurring"] != null &&
+                              typeof $steps["alertSuccessRecurring"] ===
+                                "object" &&
+                              typeof $steps["alertSuccessRecurring"].then ===
+                                "function"
+                            ) {
+                              $steps["alertSuccessRecurring"] = await $steps[
+                                "alertSuccessRecurring"
+                              ];
+                            }
+
+                            $steps["alertError"] =
+                              $steps.recurringSettlement.status != 200
+                                ? (() => {
+                                    const actionArgs = {
+                                      args: [
+                                        "error",
+                                        (() => {
+                                          try {
+                                            return $state.recurringSettlementMessage;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return undefined;
+                                            }
+                                            throw e;
+                                          }
+                                        })()
+                                      ]
+                                    };
+                                    return $globalActions[
+                                      "Fragment.showToast"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["alertError"] != null &&
+                              typeof $steps["alertError"] === "object" &&
+                              typeof $steps["alertError"].then === "function"
+                            ) {
+                              $steps["alertError"] = await $steps["alertError"];
+                            }
+
+                            $steps["waitingFalse2"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["waitingSettlement"]
+                                    },
+                                    operation: 0,
+                                    value: false
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["waitingFalse2"] != null &&
+                              typeof $steps["waitingFalse2"] === "object" &&
+                              typeof $steps["waitingFalse2"].then === "function"
+                            ) {
+                              $steps["waitingFalse2"] = await $steps[
+                                "waitingFalse2"
+                              ];
+                            }
+
+                            $steps["updateRecuringSetlementCount"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["recuringSetlementCount"]
+                                    },
+                                    operation: 2
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    const oldValue = $stateGet(
+                                      objRoot,
+                                      variablePath
+                                    );
+                                    $stateSet(
+                                      objRoot,
+                                      variablePath,
+                                      oldValue + 1
+                                    );
+                                    return oldValue + 1;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateRecuringSetlementCount"] != null &&
+                              typeof $steps["updateRecuringSetlementCount"] ===
+                                "object" &&
+                              typeof $steps["updateRecuringSetlementCount"]
+                                .then === "function"
+                            ) {
+                              $steps["updateRecuringSetlementCount"] =
+                                await $steps["updateRecuringSetlementCount"];
+                            }
+                          }}
+                          size={"compact"}
+                        />
+                      ) : null}
+                      {(() => {
+                        try {
+                          return $state.recurringSettlementList.length > 0;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <Button
+                          data-plasmic-name={"btnDeleteRecuringSettlement"}
+                          data-plasmic-override={
+                            overrides.btnDeleteRecuringSettlement
+                          }
+                          children2={
+                            "\u063a\u06cc\u0631\u0641\u0639\u0627\u0644 \u06a9\u0646"
+                          }
+                          className={classNames(
+                            "__wab_instance",
+                            sty.btnDeleteRecuringSettlement
+                          )}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["updateWaitingSettlement"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["waitingSettlement"]
+                                    },
+                                    operation: 0,
+                                    value: true
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateWaitingSettlement"] != null &&
+                              typeof $steps["updateWaitingSettlement"] ===
+                                "object" &&
+                              typeof $steps["updateWaitingSettlement"].then ===
+                                "function"
+                            ) {
+                              $steps["updateWaitingSettlement"] = await $steps[
+                                "updateWaitingSettlement"
+                              ];
+                            }
+
+                            $steps["deleteSettlementStatus"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    args: [
+                                      "DELETE",
+                                      (() => {
+                                        try {
+                                          return "https://apigw.paziresh24.com/ganjname/v1/recurring-settlement";
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return undefined;
+                                          }
+                                          throw e;
+                                        }
+                                      })(),
+                                      undefined,
+                                      (() => {
+                                        try {
+                                          return {
+                                            accountid:
+                                              $state.recurringSettlementList[0]
+                                                .accountid
+                                          };
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return undefined;
+                                          }
+                                          throw e;
+                                        }
+                                      })()
+                                    ]
+                                  };
+                                  return $globalActions[
+                                    "Fragment.apiRequest"
+                                  ]?.apply(null, [...actionArgs.args]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["deleteSettlementStatus"] != null &&
+                              typeof $steps["deleteSettlementStatus"] ===
+                                "object" &&
+                              typeof $steps["deleteSettlementStatus"].then ===
+                                "function"
+                            ) {
+                              $steps["deleteSettlementStatus"] = await $steps[
+                                "deleteSettlementStatus"
+                              ];
+                            }
+
+                            $steps["setDeleteMessage"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: [
+                                        "recurringSettlementMessage"
+                                      ]
+                                    },
+                                    operation: 0,
+                                    value:
+                                      $steps.deleteSettlementStatus.data.message
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["setDeleteMessage"] != null &&
+                              typeof $steps["setDeleteMessage"] === "object" &&
+                              typeof $steps["setDeleteMessage"].then ===
+                                "function"
+                            ) {
+                              $steps["setDeleteMessage"] = await $steps[
+                                "setDeleteMessage"
+                              ];
+                            }
+
+                            $steps["alertDeleteError"] =
+                              $steps.deleteSettlementStatus.status != 200
+                                ? (() => {
+                                    const actionArgs = {
+                                      args: [
+                                        "error",
+                                        (() => {
+                                          try {
+                                            return $state.recurringSettlementMessage;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return undefined;
+                                            }
+                                            throw e;
+                                          }
+                                        })()
+                                      ]
+                                    };
+                                    return $globalActions[
+                                      "Fragment.showToast"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["alertDeleteError"] != null &&
+                              typeof $steps["alertDeleteError"] === "object" &&
+                              typeof $steps["alertDeleteError"].then ===
+                                "function"
+                            ) {
+                              $steps["alertDeleteError"] = await $steps[
+                                "alertDeleteError"
+                              ];
+                            }
+
+                            $steps["alertDeleteSuccess"] =
+                              $steps.deleteSettlementStatus.status == 200
+                                ? (() => {
+                                    const actionArgs = {
+                                      args: [
+                                        undefined,
+                                        (() => {
+                                          try {
+                                            return $state.recurringSettlementMessage;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return undefined;
+                                            }
+                                            throw e;
+                                          }
+                                        })()
+                                      ]
+                                    };
+                                    return $globalActions[
+                                      "Fragment.showToast"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["alertDeleteSuccess"] != null &&
+                              typeof $steps["alertDeleteSuccess"] ===
+                                "object" &&
+                              typeof $steps["alertDeleteSuccess"].then ===
+                                "function"
+                            ) {
+                              $steps["alertDeleteSuccess"] = await $steps[
+                                "alertDeleteSuccess"
+                              ];
+                            }
+
+                            $steps["waitingFalse"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["waitingSettlement"]
+                                    },
+                                    operation: 0,
+                                    value: false
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["waitingFalse"] != null &&
+                              typeof $steps["waitingFalse"] === "object" &&
+                              typeof $steps["waitingFalse"].then === "function"
+                            ) {
+                              $steps["waitingFalse"] = await $steps[
+                                "waitingFalse"
+                              ];
+                            }
+
+                            $steps["refreshRecuringSettlement"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["recuringSetlementCount"]
+                                    },
+                                    operation: 2
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    const oldValue = $stateGet(
+                                      objRoot,
+                                      variablePath
+                                    );
+                                    $stateSet(
+                                      objRoot,
+                                      variablePath,
+                                      oldValue + 1
+                                    );
+                                    return oldValue + 1;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["refreshRecuringSettlement"] != null &&
+                              typeof $steps["refreshRecuringSettlement"] ===
+                                "object" &&
+                              typeof $steps["refreshRecuringSettlement"]
+                                .then === "function"
+                            ) {
+                              $steps["refreshRecuringSettlement"] =
+                                await $steps["refreshRecuringSettlement"];
+                            }
+                          }}
+                          size={"compact"}
+                        />
+                      ) : null}
                     </div>
-                    <TextInput
-                      data-plasmic-name={"txtPaymentNumber"}
-                      data-plasmic-override={overrides.txtPaymentNumber}
-                      className={classNames(
-                        "__wab_instance",
-                        sty.txtPaymentNumber
-                      )}
-                      onChange={async (...eventArgs: any) => {
-                        ((...eventArgs) => {
-                          generateStateOnChangeProp($state, [
-                            "txtPaymentNumber",
-                            "value"
-                          ])((e => e.target?.value).apply(null, eventArgs));
-                        }).apply(null, eventArgs);
-
-                        if (
-                          eventArgs.length > 1 &&
-                          eventArgs[1] &&
-                          eventArgs[1]._plasmic_state_init_
-                        ) {
-                          return;
-                        }
-                      }}
-                      placeholder={
-                        "\u0634\u0646\u0627\u0633\u0647 \u0648\u0627\u0631\u06cc\u0632 \u062f\u0631 \u0635\u0648\u0631\u062a \u0644\u0632\u0648\u0645"
-                      }
-                      type={"number"}
-                      value={
-                        generateStateValueProp($state, [
-                          "txtPaymentNumber",
-                          "value"
-                        ]) ?? ""
-                      }
-                    />
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___2TmJ5)}
-                  >
-                    <Button
-                      children2={"\u0630\u062e\u06cc\u0631\u0647"}
-                      className={classNames(
-                        "__wab_instance",
-                        sty.button__loo9J
-                      )}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["errorAccount"] =
-                          $state.accountSettlement.value == undefined ||
-                          $state.accountSettlement.value < 1
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    "error",
-                                    "\u0644\u0637\u0641\u0627 \u06cc\u06a9 \u062d\u0633\u0627\u0628 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f."
-                                  ]
-                                };
-                                return $globalActions[
-                                  "Fragment.showToast"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
-                        if (
-                          $steps["errorAccount"] != null &&
-                          typeof $steps["errorAccount"] === "object" &&
-                          typeof $steps["errorAccount"].then === "function"
-                        ) {
-                          $steps["errorAccount"] = await $steps["errorAccount"];
-                        }
-
-                        $steps["updateWaitingSettlement"] =
-                          $state.accountSettlement.value == undefined ||
-                          $state.accountSettlement.value < 1
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["waitingSettlement"]
-                                  },
-                                  operation: 0,
-                                  value: true
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
-
-                                  $stateSet(objRoot, variablePath, value);
-                                  return value;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                        if (
-                          $steps["updateWaitingSettlement"] != null &&
-                          typeof $steps["updateWaitingSettlement"] ===
-                            "object" &&
-                          typeof $steps["updateWaitingSettlement"].then ===
-                            "function"
-                        ) {
-                          $steps["updateWaitingSettlement"] = await $steps[
-                            "updateWaitingSettlement"
-                          ];
-                        }
-
-                        $steps["recurringSettlement"] =
-                          $state.settlementStatus.value == "enable" &&
-                          ($state.accountSettlement.value == undefined ||
-                            $state.accountSettlement.value < 1)
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    "POST",
-                                    (() => {
-                                      try {
-                                        return "https://apigw.paziresh24.com/ganjname/v1/recurring-settlement";
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
-                                      }
-                                    })(),
-                                    undefined,
-                                    (() => {
-                                      try {
-                                        return {
-                                          accountid:
-                                            $state.accountSettlement.value,
-                                          payment_number:
-                                            $state.txtPaymentNumber.value
-                                        };
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
-                                      }
-                                    })()
-                                  ]
-                                };
-                                return $globalActions[
-                                  "Fragment.apiRequest"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
-                        if (
-                          $steps["recurringSettlement"] != null &&
-                          typeof $steps["recurringSettlement"] === "object" &&
-                          typeof $steps["recurringSettlement"].then ===
-                            "function"
-                        ) {
-                          $steps["recurringSettlement"] = await $steps[
-                            "recurringSettlement"
-                          ];
-                        }
-
-                        $steps["updateRecurringSettlementMessage"] =
-                          $steps.recurringSettlement.data.message !=
-                            undefined &&
-                          $state.settlementStatus.value == "enable"
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["recurringSettlementMessage"]
-                                  },
-                                  operation: 0,
-                                  value: $steps.recurringSettlement.data.message
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
-
-                                  $stateSet(objRoot, variablePath, value);
-                                  return value;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                        if (
-                          $steps["updateRecurringSettlementMessage"] != null &&
-                          typeof $steps["updateRecurringSettlementMessage"] ===
-                            "object" &&
-                          typeof $steps["updateRecurringSettlementMessage"]
-                            .then === "function"
-                        ) {
-                          $steps["updateRecurringSettlementMessage"] =
-                            await $steps["updateRecurringSettlementMessage"];
-                        }
-
-                        $steps["deleteSettlementStatus"] =
-                          $state.settlementStatus.value == "disable"
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    "DELETE",
-                                    (() => {
-                                      try {
-                                        return "https://apigw.paziresh24.com/ganjname/v1/recurring-settlement";
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
-                                      }
-                                    })(),
-                                    undefined,
-                                    (() => {
-                                      try {
-                                        return {
-                                          accountid:
-                                            $state.recurringSettlementList[0]
-                                              .accountid
-                                        };
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
-                                      }
-                                    })()
-                                  ]
-                                };
-                                return $globalActions[
-                                  "Fragment.apiRequest"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
-                        if (
-                          $steps["deleteSettlementStatus"] != null &&
-                          typeof $steps["deleteSettlementStatus"] ===
-                            "object" &&
-                          typeof $steps["deleteSettlementStatus"].then ===
-                            "function"
-                        ) {
-                          $steps["deleteSettlementStatus"] = await $steps[
-                            "deleteSettlementStatus"
-                          ];
-                        }
-
-                        $steps["updateRecurringSettlementMessage2"] =
-                          $steps.deleteSettlementStatus.status == 200
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["recurringSettlementMessage"]
-                                  },
-                                  operation: 0,
-                                  value:
-                                    $steps.deleteSettlementStatus.data.message
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
-
-                                  $stateSet(objRoot, variablePath, value);
-                                  return value;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                        if (
-                          $steps["updateRecurringSettlementMessage2"] != null &&
-                          typeof $steps["updateRecurringSettlementMessage2"] ===
-                            "object" &&
-                          typeof $steps["updateRecurringSettlementMessage2"]
-                            .then === "function"
-                        ) {
-                          $steps["updateRecurringSettlementMessage2"] =
-                            await $steps["updateRecurringSettlementMessage2"];
-                        }
-
-                        $steps["alertSuccess"] =
-                          ($steps.recurringSettlement.status == 200 &&
-                            $state.settlementStatus.value == "enable") ||
-                          ($steps.deleteSettlementStatus.status == 200 &&
-                            $state.settlementStatus.value == "disable")
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    undefined,
-                                    (() => {
-                                      try {
-                                        return $state.recurringSettlementMessage;
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
-                                      }
-                                    })()
-                                  ]
-                                };
-                                return $globalActions[
-                                  "Fragment.showToast"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
-                        if (
-                          $steps["alertSuccess"] != null &&
-                          typeof $steps["alertSuccess"] === "object" &&
-                          typeof $steps["alertSuccess"].then === "function"
-                        ) {
-                          $steps["alertSuccess"] = await $steps["alertSuccess"];
-                        }
-
-                        $steps["alertError"] =
-                          ($steps.recurringSettlement.status != 200 &&
-                            $state.settlementStatus.value == "enable") ||
-                          ($steps.deleteSettlementStatus.status != 200 &&
-                            $state.settlementStatus.value == "disable")
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    "error",
-                                    (() => {
-                                      try {
-                                        return $state.recurringSettlementMessage;
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
-                                      }
-                                    })()
-                                  ]
-                                };
-                                return $globalActions[
-                                  "Fragment.showToast"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
-                        if (
-                          $steps["alertError"] != null &&
-                          typeof $steps["alertError"] === "object" &&
-                          typeof $steps["alertError"].then === "function"
-                        ) {
-                          $steps["alertError"] = await $steps["alertError"];
-                        }
-
-                        $steps["updateWaitingSettlement2"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["waitingSettlement"]
-                                },
-                                operation: 0,
-                                value: false
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateWaitingSettlement2"] != null &&
-                          typeof $steps["updateWaitingSettlement2"] ===
-                            "object" &&
-                          typeof $steps["updateWaitingSettlement2"].then ===
-                            "function"
-                        ) {
-                          $steps["updateWaitingSettlement2"] = await $steps[
-                            "updateWaitingSettlement2"
-                          ];
-                        }
-                      }}
-                      size={"compact"}
-                    />
                   </div>
                 </div>
               </div>
-            </div>
+            ) : null}
           </section>
           <SideEffect
             data-plasmic-name={"sideEffectPageLoad"}
@@ -4823,6 +5153,98 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                   "updateWaitingUserAccount2"
                 ];
               }
+            }}
+          />
+
+          <SideEffect
+            data-plasmic-name={"refreshRecuringSettlement"}
+            data-plasmic-override={overrides.refreshRecuringSettlement}
+            className={classNames(
+              "__wab_instance",
+              sty.refreshRecuringSettlement
+            )}
+            deps={(() => {
+              try {
+                return [
+                  $state.cbAccounts.value,
+                  $state.loadProfileCount,
+                  $state.recuringSetlementCount
+                ];
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return undefined;
+                }
+                throw e;
+              }
+            })()}
+            onMount={async () => {
+              const $steps = {};
+
+              $steps["runCode"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          $state.useraccounts = [];
+                          $state.cardInquiry = {};
+                          $state.profile = {};
+                          $state.recurringSettlementList = [];
+                          return $state.accounts.forEach(account => {
+                            if (account.uniqueid == $state.cbAccounts.value) {
+                              $state.currentAccountType = account.type;
+                              $state.currentAccountId = account.id;
+                              $state.currentAccountTitle = account.name;
+                            }
+                          });
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["runCode"] != null &&
+                typeof $steps["runCode"] === "object" &&
+                typeof $steps["runCode"].then === "function"
+              ) {
+                $steps["runCode"] = await $steps["runCode"];
+              }
+
+              $steps["updateWaitingSettlement"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["waitingSettlement"]
+                      },
+                      operation: 0,
+                      value: true
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateWaitingSettlement"] != null &&
+                typeof $steps["updateWaitingSettlement"] === "object" &&
+                typeof $steps["updateWaitingSettlement"].then === "function"
+              ) {
+                $steps["updateWaitingSettlement"] = await $steps[
+                  "updateWaitingSettlement"
+                ];
+              }
 
               $steps["getRecurringSettlement"] = true
                 ? (() => {
@@ -4902,33 +5324,6 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 ];
               }
 
-              $steps["selectRecuringSettlement"] = true
-                ? (() => {
-                    const actionArgs = {
-                      customFunction: async () => {
-                        return (() => {
-                          if ($state.recurringSettlementList.length > 0) {
-                            return ($state.accountSettlement.value =
-                              $state.recurringSettlementList[0].accountid);
-                          }
-                        })();
-                      }
-                    };
-                    return (({ customFunction }) => {
-                      return customFunction();
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["selectRecuringSettlement"] != null &&
-                typeof $steps["selectRecuringSettlement"] === "object" &&
-                typeof $steps["selectRecuringSettlement"].then === "function"
-              ) {
-                $steps["selectRecuringSettlement"] = await $steps[
-                  "selectRecuringSettlement"
-                ];
-              }
-
               $steps["updateWaiting2"] = true
                 ? (() => {
                     const actionArgs = {
@@ -4984,11 +5379,13 @@ const PlasmicDescendants = {
     "txtBan",
     "txtBank",
     "sideEffectGetCardInquiry2",
-    "settlementStatus",
     "accountSettlement",
     "txtPaymentNumber",
+    "btnActiveRecuringSettlement",
+    "btnDeleteRecuringSettlement",
     "sideEffectPageLoad",
-    "loadProfile"
+    "loadProfile",
+    "refreshRecuringSettlement"
   ],
   section: [
     "section",
@@ -5007,9 +5404,10 @@ const PlasmicDescendants = {
     "txtBan",
     "txtBank",
     "sideEffectGetCardInquiry2",
-    "settlementStatus",
     "accountSettlement",
-    "txtPaymentNumber"
+    "txtPaymentNumber",
+    "btnActiveRecuringSettlement",
+    "btnDeleteRecuringSettlement"
   ],
   cbAccounts: ["cbAccounts"],
   txtName: ["txtName"],
@@ -5026,11 +5424,13 @@ const PlasmicDescendants = {
   txtBan: ["txtBan"],
   txtBank: ["txtBank"],
   sideEffectGetCardInquiry2: ["sideEffectGetCardInquiry2"],
-  settlementStatus: ["settlementStatus"],
   accountSettlement: ["accountSettlement"],
   txtPaymentNumber: ["txtPaymentNumber"],
+  btnActiveRecuringSettlement: ["btnActiveRecuringSettlement"],
+  btnDeleteRecuringSettlement: ["btnDeleteRecuringSettlement"],
   sideEffectPageLoad: ["sideEffectPageLoad"],
-  loadProfile: ["loadProfile"]
+  loadProfile: ["loadProfile"],
+  refreshRecuringSettlement: ["refreshRecuringSettlement"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -5053,11 +5453,13 @@ type NodeDefaultElementType = {
   txtBan: typeof TextInput;
   txtBank: typeof TextInput;
   sideEffectGetCardInquiry2: typeof SideEffect;
-  settlementStatus: typeof RadioGroup;
   accountSettlement: typeof AntdRadioGroup;
   txtPaymentNumber: typeof TextInput;
+  btnActiveRecuringSettlement: typeof Button;
+  btnDeleteRecuringSettlement: typeof Button;
   sideEffectPageLoad: typeof SideEffect;
   loadProfile: typeof SideEffect;
+  refreshRecuringSettlement: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -5136,11 +5538,17 @@ export const PlasmicFinancialProfiles = Object.assign(
     txtBan: makeNodeComponent("txtBan"),
     txtBank: makeNodeComponent("txtBank"),
     sideEffectGetCardInquiry2: makeNodeComponent("sideEffectGetCardInquiry2"),
-    settlementStatus: makeNodeComponent("settlementStatus"),
     accountSettlement: makeNodeComponent("accountSettlement"),
     txtPaymentNumber: makeNodeComponent("txtPaymentNumber"),
+    btnActiveRecuringSettlement: makeNodeComponent(
+      "btnActiveRecuringSettlement"
+    ),
+    btnDeleteRecuringSettlement: makeNodeComponent(
+      "btnDeleteRecuringSettlement"
+    ),
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
     loadProfile: makeNodeComponent("loadProfile"),
+    refreshRecuringSettlement: makeNodeComponent("refreshRecuringSettlement"),
 
     // Metadata about props expected for PlasmicFinancialProfiles
     internalVariantProps: PlasmicFinancialProfiles__VariantProps,
