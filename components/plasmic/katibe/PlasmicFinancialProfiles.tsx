@@ -3770,7 +3770,9 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
             ) : null}
             {(() => {
               try {
-                return !$state.waiting;
+                return (
+                  !$state.waiting && $state.currentAccountType == "centerid"
+                );
               } catch (e) {
                 if (
                   e instanceof TypeError ||
