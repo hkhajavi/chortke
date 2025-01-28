@@ -4349,7 +4349,6 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                             "__wab_instance",
                             sty.btnDeleteRecuringSettlement
                           )}
-                          color={"blue"}
                           onClick={async event => {
                             const $steps = {};
 
