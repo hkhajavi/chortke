@@ -1985,6 +1985,13 @@
   font-weight: 700;
   min-width: 0;
 }
+.text__mmoVa {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
 .text__dlkwU {
   position: relative;
   width: 100%;

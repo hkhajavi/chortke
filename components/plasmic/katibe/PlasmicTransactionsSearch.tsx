@@ -5533,12 +5533,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         <React.Fragment>
                           {(() => {
                             try {
-                              return (
-                                new Intl.NumberFormat("fa-IR").format(
-                                  $state.invoicelist[currentIndex].amount
-                                ) +
-                                "" +
-                                (currentItem.type == "withdraw" ? "-" : "+")
+                              return new Intl.NumberFormat("fa-IR").format(
+                                $state.invoicelist[currentIndex].amount
                               );
                             } catch (e) {
                               if (
@@ -5552,11 +5548,24 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                           })()}
                         </React.Fragment>
                       </div>
-                      <Icon29Icon
-                        className={classNames(projectcss.all, sty.svg__miQg)}
-                        role={"img"}
-                      />
-
+                      {(() => {
+                        try {
+                          return true;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <Icon29Icon
+                          className={classNames(projectcss.all, sty.svg__miQg)}
+                          role={"img"}
+                        />
+                      ) : null}
                       <Icon30Icon
                         className={classNames(projectcss.all, sty.svg__dWf9Y)}
                         role={"img"}
