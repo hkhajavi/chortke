@@ -2473,6 +2473,8 @@
     align-items: center;
     justify-content: center;
     grid-column-end: span 3;
+    height: 100%;
+    min-height: 0;
   }
 }
 .freeBox__c6Zhl {
@@ -2488,6 +2490,8 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__c6Zhl {
+    height: 100%;
+    min-height: 0;
     padding: 0px;
   }
 }
@@ -2504,6 +2508,12 @@
   min-width: 0;
   min-height: 0;
   padding: 0px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox___0FdJl {
+    height: 100%;
+    min-height: 0;
+  }
 }
 .text__uT85B {
   position: relative;
