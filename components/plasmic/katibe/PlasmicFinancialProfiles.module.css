@@ -661,6 +661,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__jD3Nw {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 0px;
   }
 }
 .freeBox__lzAfw {
@@ -929,6 +930,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__fpaOm {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    padding: 0px;
   }
 }
 .freeBox__wdX7Q {
@@ -1519,7 +1521,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__oa20O {
-    grid-column-end: span 2;
+    grid-column-end: span 3;
   }
 }
 .txtCardNumber:global(.__wab_instance) {
@@ -1974,7 +1976,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__cTeH0 {
-    grid-column-end: span 2;
+    grid-column-end: span 4;
   }
 }
 .text__ihKmx {
