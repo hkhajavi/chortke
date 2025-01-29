@@ -546,6 +546,12 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         type: "private",
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+      },
+      {
+        path: "completeLoad",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -4897,6 +4903,37 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 $steps["updateUserData"] = await $steps["updateUserData"];
               }
 
+              $steps["updateCompleteLoad"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["completeLoad"]
+                      },
+                      operation: 0,
+                      value: true
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateCompleteLoad"] != null &&
+                typeof $steps["updateCompleteLoad"] === "object" &&
+                typeof $steps["updateCompleteLoad"].then === "function"
+              ) {
+                $steps["updateCompleteLoad"] = await $steps[
+                  "updateCompleteLoad"
+                ];
+              }
+
               $steps["updateWaiting2"] = true
                 ? (() => {
                     const actionArgs = {
@@ -4925,6 +4962,69 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
               ) {
                 $steps["updateWaiting2"] = await $steps["updateWaiting2"];
               }
+
+              $steps["updateLoadProfileCount"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["loadProfileCount"]
+                      },
+                      operation: 2
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      const oldValue = $stateGet(objRoot, variablePath);
+                      $stateSet(objRoot, variablePath, oldValue + 1);
+                      return oldValue + 1;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateLoadProfileCount"] != null &&
+                typeof $steps["updateLoadProfileCount"] === "object" &&
+                typeof $steps["updateLoadProfileCount"].then === "function"
+              ) {
+                $steps["updateLoadProfileCount"] = await $steps[
+                  "updateLoadProfileCount"
+                ];
+              }
+
+              $steps["updateRecuringSetlementCount"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["recuringSetlementCount"]
+                      },
+                      operation: 2
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      const oldValue = $stateGet(objRoot, variablePath);
+                      $stateSet(objRoot, variablePath, oldValue + 1);
+                      return oldValue + 1;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateRecuringSetlementCount"] != null &&
+                typeof $steps["updateRecuringSetlementCount"] === "object" &&
+                typeof $steps["updateRecuringSetlementCount"].then ===
+                  "function"
+              ) {
+                $steps["updateRecuringSetlementCount"] = await $steps[
+                  "updateRecuringSetlementCount"
+                ];
+              }
             }}
           />
 
@@ -4948,7 +5048,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
             onMount={async () => {
               const $steps = {};
 
-              $steps["runCode"] = true
+              $steps["runCode"] = $state.completeLoad
                 ? (() => {
                     const actionArgs = {
                       customFunction: async () => {
@@ -4980,7 +5080,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 $steps["runCode"] = await $steps["runCode"];
               }
 
-              $steps["showWaitingProfile"] = true
+              $steps["showWaitingProfile"] = $state.completeLoad
                 ? (() => {
                     const actionArgs = {
                       variable: {
@@ -5011,7 +5111,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 ];
               }
 
-              $steps["updateWaitingUserAccount"] = true
+              $steps["updateWaitingUserAccount"] = $state.completeLoad
                 ? (() => {
                     const actionArgs = {
                       variable: {
@@ -5042,7 +5142,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 ];
               }
 
-              $steps["updateWaitingSettlement"] = true
+              $steps["updateWaitingSettlement"] = $state.completeLoad
                 ? (() => {
                     const actionArgs = {
                       variable: {
@@ -5073,7 +5173,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 ];
               }
 
-              $steps["getProfile"] = true
+              $steps["getProfile"] = $state.completeLoad
                 ? (() => {
                     const actionArgs = {
                       args: [
@@ -5112,7 +5212,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
               }
 
               $steps["updateProfile"] =
-                $steps.getProfile.status == 200
+                $steps.getProfile.status == 200 && $state.completeLoad
                   ? (() => {
                       const actionArgs = {
                         variable: {
@@ -5177,7 +5277,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 ];
               }
 
-              $steps["getUserAccounts"] = true
+              $steps["getUserAccounts"] = $state.completeLoad
                 ? (() => {
                     const actionArgs = {
                       args: [
@@ -5294,11 +5394,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
             )}
             deps={(() => {
               try {
-                return [
-                  $state.cbAccounts.value,
-                  $state.loadProfileCount,
-                  $state.recuringSetlementCount
-                ];
+                return [$state.cbAccounts.value, $state.recuringSetlementCount];
               } catch (e) {
                 if (
                   e instanceof TypeError ||
@@ -5312,7 +5408,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
             onMount={async () => {
               const $steps = {};
 
-              $steps["runCode"] = true
+              $steps["runCode"] = $state.completeLoad
                 ? (() => {
                     const actionArgs = {
                       customFunction: async () => {
@@ -5341,7 +5437,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 $steps["runCode"] = await $steps["runCode"];
               }
 
-              $steps["updateWaitingSettlement"] = true
+              $steps["updateWaitingSettlement"] = $state.completeLoad
                 ? (() => {
                     const actionArgs = {
                       variable: {
@@ -5372,7 +5468,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 ];
               }
 
-              $steps["getRecurringSettlement"] = true
+              $steps["getRecurringSettlement"] = $state.completeLoad
                 ? (() => {
                     const actionArgs = {
                       args: [
