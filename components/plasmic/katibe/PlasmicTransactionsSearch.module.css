@@ -2440,8 +2440,8 @@
   object-fit: cover;
   max-width: 100%;
   color: #0ba020;
-  width: 16px;
-  height: 16px;
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -2455,8 +2455,8 @@
   object-fit: cover;
   max-width: 100%;
   color: #f71a1a;
-  width: 15px;
-  height: 15px;
+  width: 14px;
+  height: 14px;
   flex-shrink: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
