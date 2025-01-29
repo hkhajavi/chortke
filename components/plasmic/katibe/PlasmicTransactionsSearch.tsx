@@ -132,8 +132,8 @@ export type PlasmicTransactionsSearch__OverridesType = {
   txtCardOwner?: Flex__<typeof TextInput>;
   txtCardIban?: Flex__<typeof TextInput>;
   txtCardBankName?: Flex__<typeof TextInput>;
-  radioAccounts?: Flex__<typeof AntdRadioGroup>;
   span?: Flex__<"span">;
+  radioAccounts?: Flex__<typeof AntdRadioGroup>;
   txtSettlementResult?: Flex__<"div">;
   gridInvoice1?: Flex__<"div">;
   gridNoData?: Flex__<"div">;
@@ -1630,13 +1630,27 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               sty.freeBox__ia83N
                             )}
                           >
-                            <Icon2Icon
-                              className={classNames(
-                                projectcss.all,
-                                sty.svg__dWtdr
-                              )}
-                              role={"img"}
-                            />
+                            {(() => {
+                              try {
+                                return true;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })() ? (
+                              <Icon2Icon
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.svg__dWtdr
+                                )}
+                                role={"img"}
+                              />
+                            ) : null}
                           </div>
                         ) : null}
                       </div>
@@ -2945,48 +2959,34 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         data-plasmic-override={overrides.dialogSettlement}
                         body={
                           <React.Fragment>
-                            {(() => {
-                              try {
-                                return $state.btnRegisterSettlementShow;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return true;
-                                }
-                                throw e;
-                              }
-                            })() ? (
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__w6Bk
-                                )}
-                              >
-                                <React.Fragment>
-                                  {(() => {
-                                    try {
-                                      return (
-                                        "طلب شما: " +
-                                        $state.txtReminderValue +
-                                        " ریال"
-                                      );
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return "\u0645\u0648\u062c\u0648\u062f\u06cc \u062d\u0633\u0627\u0628:";
-                                      }
-                                      throw e;
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__w6Bk
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return (
+                                      "طلب شما: " +
+                                      $state.txtReminderValue +
+                                      " ریال"
+                                    );
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "\u0645\u0648\u062c\u0648\u062f\u06cc \u062d\u0633\u0627\u0628:";
                                     }
-                                  })()}
-                                </React.Fragment>
-                              </div>
-                            ) : null}
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
                             {(() => {
                               try {
                                 return $state.btnRegisterSettlementShow;
@@ -4480,6 +4480,107 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     <div
                                       className={classNames(
                                         projectcss.all,
+                                        sty.freeBox__hRemA
+                                      )}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text__yN2Xi
+                                        )}
+                                      >
+                                        <React.Fragment>
+                                          {(() => {
+                                            try {
+                                              return $state
+                                                .bankAccountList[0] != undefined
+                                                ? $state.bankAccountList[0]
+                                                    .name +
+                                                    "-" +
+                                                    $state.bankAccountList[0]
+                                                      .cardid
+                                                : "";
+                                            } catch (e) {
+                                              if (
+                                                e instanceof TypeError ||
+                                                e?.plasmicType ===
+                                                  "PlasmicUndefinedDataError"
+                                              ) {
+                                                return "";
+                                              }
+                                              throw e;
+                                            }
+                                          })()}
+                                        </React.Fragment>
+                                      </div>
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text__zVwro
+                                        )}
+                                        onClick={async event => {
+                                          const $steps = {};
+
+                                          $steps["invokeGlobalAction"] = true
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  args: [
+                                                    "https://www.paziresh24.com/dashboard/apps/katibe/setting/"
+                                                  ]
+                                                };
+                                                return $globalActions[
+                                                  "Hamdast.openLink"
+                                                ]?.apply(null, [
+                                                  ...actionArgs.args
+                                                ]);
+                                              })()
+                                            : undefined;
+                                          if (
+                                            $steps["invokeGlobalAction"] !=
+                                              null &&
+                                            typeof $steps[
+                                              "invokeGlobalAction"
+                                            ] === "object" &&
+                                            typeof $steps["invokeGlobalAction"]
+                                              .then === "function"
+                                          ) {
+                                            $steps["invokeGlobalAction"] =
+                                              await $steps[
+                                                "invokeGlobalAction"
+                                              ];
+                                          }
+                                        }}
+                                      >
+                                        <React.Fragment>
+                                          <React.Fragment>{""}</React.Fragment>
+                                          {
+                                            <span
+                                              data-plasmic-name={"span"}
+                                              data-plasmic-override={
+                                                overrides.span
+                                              }
+                                              className={classNames(
+                                                projectcss.all,
+                                                projectcss.span,
+                                                projectcss.__wab_text,
+                                                projectcss.plasmic_default__inline,
+                                                sty.span
+                                              )}
+                                            >
+                                              {
+                                                "\u0645\u062f\u06cc\u0631\u06cc\u062a \u062d\u0633\u0627\u0628\u200c"
+                                              }
+                                            </span>
+                                          }
+                                          <React.Fragment>{""}</React.Fragment>
+                                        </React.Fragment>
+                                      </div>
+                                    </div>
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
                                         sty.freeBox___4NLF
                                       )}
                                     >
@@ -4556,76 +4657,6 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         </div>
                                       ) : null}
                                     </div>
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        sty.freeBox___31F1Z
-                                      )}
-                                    >
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
-                                          sty.text__zVwro
-                                        )}
-                                        onClick={async event => {
-                                          const $steps = {};
-
-                                          $steps["invokeGlobalAction"] = true
-                                            ? (() => {
-                                                const actionArgs = {
-                                                  args: [
-                                                    "https://www.paziresh24.com/dashboard/apps/katibe/setting/"
-                                                  ]
-                                                };
-                                                return $globalActions[
-                                                  "Hamdast.openLink"
-                                                ]?.apply(null, [
-                                                  ...actionArgs.args
-                                                ]);
-                                              })()
-                                            : undefined;
-                                          if (
-                                            $steps["invokeGlobalAction"] !=
-                                              null &&
-                                            typeof $steps[
-                                              "invokeGlobalAction"
-                                            ] === "object" &&
-                                            typeof $steps["invokeGlobalAction"]
-                                              .then === "function"
-                                          ) {
-                                            $steps["invokeGlobalAction"] =
-                                              await $steps[
-                                                "invokeGlobalAction"
-                                              ];
-                                          }
-                                        }}
-                                      >
-                                        <React.Fragment>
-                                          <React.Fragment>{""}</React.Fragment>
-                                          {
-                                            <span
-                                              data-plasmic-name={"span"}
-                                              data-plasmic-override={
-                                                overrides.span
-                                              }
-                                              className={classNames(
-                                                projectcss.all,
-                                                projectcss.span,
-                                                projectcss.__wab_text,
-                                                projectcss.plasmic_default__inline,
-                                                sty.span
-                                              )}
-                                            >
-                                              {
-                                                "\u0645\u062f\u06cc\u0631\u06cc\u062a \u062d\u0633\u0627\u0628\u200c"
-                                              }
-                                            </span>
-                                          }
-                                          <React.Fragment>{""}</React.Fragment>
-                                        </React.Fragment>
-                                      </div>
-                                    </div>
                                   </div>
                                 </div>
                               </div>
@@ -4699,23 +4730,25 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     onClick={async event => {
                                       const $steps = {};
 
-                                      $steps["alertSelectAccount"] =
-                                        $state.radioAccounts.value < 1 ||
-                                        $state.radioAccounts.value == undefined
-                                          ? (() => {
-                                              const actionArgs = {
-                                                args: [
-                                                  "error",
-                                                  "\u0644\u0637\u0641\u0627 \u06cc\u06a9 \u062d\u0633\u0627\u0628 \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0631\u062f\u0647 \u06cc\u0627 \u062d\u0633\u0627\u0628 \u062c\u062f\u06cc\u062f\u06cc \u062b\u0628\u062a \u0646\u0645\u0627\u06cc\u06cc\u062f."
-                                                ]
-                                              };
-                                              return $globalActions[
-                                                "Fragment.showToast"
-                                              ]?.apply(null, [
-                                                ...actionArgs.args
-                                              ]);
-                                            })()
-                                          : undefined;
+                                      $steps["alertSelectAccount"] = !(
+                                        $state.bankAccountList[0] !=
+                                          undefined &&
+                                        $state.bankAccountList[0].accountid > 0
+                                      )
+                                        ? (() => {
+                                            const actionArgs = {
+                                              args: [
+                                                "error",
+                                                "\u0644\u0637\u0641\u0627 \u062d\u0633\u0627\u0628 \u0628\u0627\u0646\u06a9\u06cc \u062a\u0639\u0631\u06cc\u0641 \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062a\u0633\u0648\u06cc\u0647 \u062b\u0628\u062a \u0646\u0645\u0627\u06cc\u06cc\u062f."
+                                              ]
+                                            };
+                                            return $globalActions[
+                                              "Fragment.showToast"
+                                            ]?.apply(null, [
+                                              ...actionArgs.args
+                                            ]);
+                                          })()
+                                        : undefined;
                                       if (
                                         $steps["alertSelectAccount"] != null &&
                                         typeof $steps["alertSelectAccount"] ===
@@ -4728,7 +4761,9 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       }
 
                                       $steps["updateWaitingSettlement"] =
-                                        $state.radioAccounts.value > 0
+                                        $state.bankAccountList[0] !=
+                                          undefined &&
+                                        $state.bankAccountList[0].accountid > 0
                                           ? (() => {
                                               const actionArgs = {
                                                 variable: {
@@ -4779,7 +4814,9 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       }
 
                                       $steps["requestSettlement"] =
-                                        $state.radioAccounts.value > 0
+                                        $state.bankAccountList[0] !=
+                                          undefined &&
+                                        $state.bankAccountList[0].accountid > 0
                                           ? (() => {
                                               const actionArgs = {
                                                 args: [
@@ -4790,8 +4827,9 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                     try {
                                                       return {
                                                         accountid: parseInt(
-                                                          $state.radioAccounts
-                                                            .value
+                                                          $state
+                                                            .bankAccountList[0]
+                                                            .accountid
                                                         ),
                                                         amount: parseInt(
                                                           $state
@@ -4886,21 +4924,22 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                           await $steps["setSettlementMeessage"];
                                       }
 
-                                      $steps["alertOk"] = false
-                                        ? (() => {
-                                            const actionArgs = {
-                                              args: [
-                                                undefined,
-                                                "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0634\u0645\u0627 \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u062b\u0628\u062a \u0634\u062f."
-                                              ]
-                                            };
-                                            return $globalActions[
-                                              "Fragment.showToast"
-                                            ]?.apply(null, [
-                                              ...actionArgs.args
-                                            ]);
-                                          })()
-                                        : undefined;
+                                      $steps["alertOk"] =
+                                        $steps.requestSettlement.status == 200
+                                          ? (() => {
+                                              const actionArgs = {
+                                                args: [
+                                                  undefined,
+                                                  "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0634\u0645\u0627 \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u062b\u0628\u062a \u0634\u062f."
+                                                ]
+                                              };
+                                              return $globalActions[
+                                                "Fragment.showToast"
+                                              ]?.apply(null, [
+                                                ...actionArgs.args
+                                              ]);
+                                            })()
+                                          : undefined;
                                       if (
                                         $steps["alertOk"] != null &&
                                         typeof $steps["alertOk"] === "object" &&
@@ -7618,8 +7657,8 @@ const PlasmicDescendants = {
     "txtCardOwner",
     "txtCardIban",
     "txtCardBankName",
-    "radioAccounts",
     "span",
+    "radioAccounts",
     "txtSettlementResult",
     "gridInvoice1",
     "gridNoData",
@@ -7660,8 +7699,8 @@ const PlasmicDescendants = {
     "txtCardOwner",
     "txtCardIban",
     "txtCardBankName",
-    "radioAccounts",
     "span",
+    "radioAccounts",
     "txtSettlementResult",
     "gridInvoice1",
     "gridNoData",
@@ -7693,8 +7732,8 @@ const PlasmicDescendants = {
     "txtCardOwner",
     "txtCardIban",
     "txtCardBankName",
-    "radioAccounts",
     "span",
+    "radioAccounts",
     "txtSettlementResult"
   ],
   cbProductlist: ["cbProductlist"],
@@ -7723,8 +7762,8 @@ const PlasmicDescendants = {
     "txtCardOwner",
     "txtCardIban",
     "txtCardBankName",
-    "radioAccounts",
     "span",
+    "radioAccounts",
     "txtSettlementResult"
   ],
   tabContent: ["tabContent", "txtSettlemenAmount"],
@@ -7740,8 +7779,8 @@ const PlasmicDescendants = {
   txtCardOwner: ["txtCardOwner"],
   txtCardIban: ["txtCardIban"],
   txtCardBankName: ["txtCardBankName"],
-  radioAccounts: ["radioAccounts"],
   span: ["span"],
+  radioAccounts: ["radioAccounts"],
   txtSettlementResult: ["txtSettlementResult"],
   gridInvoice1: ["gridInvoice1"],
   gridNoData: ["gridNoData"],
@@ -7797,8 +7836,8 @@ type NodeDefaultElementType = {
   txtCardOwner: typeof TextInput;
   txtCardIban: typeof TextInput;
   txtCardBankName: typeof TextInput;
-  radioAccounts: typeof AntdRadioGroup;
   span: "span";
+  radioAccounts: typeof AntdRadioGroup;
   txtSettlementResult: "div";
   gridInvoice1: "div";
   gridNoData: "div";
@@ -7899,8 +7938,8 @@ export const PlasmicTransactionsSearch = Object.assign(
     txtCardOwner: makeNodeComponent("txtCardOwner"),
     txtCardIban: makeNodeComponent("txtCardIban"),
     txtCardBankName: makeNodeComponent("txtCardBankName"),
-    radioAccounts: makeNodeComponent("radioAccounts"),
     span: makeNodeComponent("span"),
+    radioAccounts: makeNodeComponent("radioAccounts"),
     txtSettlementResult: makeNodeComponent("txtSettlementResult"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     gridNoData: makeNodeComponent("gridNoData"),
