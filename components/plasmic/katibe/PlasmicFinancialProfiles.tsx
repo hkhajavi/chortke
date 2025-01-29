@@ -676,47 +676,6 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
 
                       (async value => {
                         const $steps = {};
-
-                        $steps["updateLoadProfileCount"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["loadProfileCount"]
-                                },
-                                operation: 2
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                const oldValue = $stateGet(
-                                  objRoot,
-                                  variablePath
-                                );
-                                $stateSet(objRoot, variablePath, oldValue + 1);
-                                return oldValue + 1;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateLoadProfileCount"] != null &&
-                          typeof $steps["updateLoadProfileCount"] ===
-                            "object" &&
-                          typeof $steps["updateLoadProfileCount"].then ===
-                            "function"
-                        ) {
-                          $steps["updateLoadProfileCount"] = await $steps[
-                            "updateLoadProfileCount"
-                          ];
-                        }
                       }).apply(null, eventArgs);
                     }}
                     options={(() => {
