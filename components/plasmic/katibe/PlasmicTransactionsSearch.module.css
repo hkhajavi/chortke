@@ -1669,7 +1669,6 @@
   }
 }
 .freeBox___4NLF {
-  display: flex;
   flex-direction: column;
   position: relative;
   width: 100%;
@@ -1679,11 +1678,15 @@
   align-items: center;
   grid-column-end: span 3;
   min-width: 0;
+  display: none;
   padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox___4NLF {
     grid-column-end: span 1;
+    align-items: flex-start;
+    justify-content: center;
+    display: none;
   }
 }
 .radioAccounts:global(.__wab_instance) {
@@ -1715,6 +1718,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text__aMkdi {
     font-size: 12px;
+    width: auto;
   }
 }
 .freeBox__tKosu {
@@ -1873,8 +1877,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox___4Sdv1 {
-    grid-column-end: span 3;
-    display: none;
+    grid-column-end: span 2;
   }
 }
 .text__jtdsC {
@@ -1938,7 +1941,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__ciUy5 {
-    grid-column-end: span 6;
+    grid-column-end: span 7;
   }
 }
 .text__rxRpM {
@@ -2101,10 +2104,10 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__cmPjc {
-    display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    display: none;
   }
 }
 .text__cOvvm {
@@ -2320,8 +2323,7 @@
   .freeBox___9AGe {
     align-items: center;
     justify-content: center;
-    grid-column-end: span 3;
-    display: none;
+    grid-column-end: span 2;
   }
 }
 .text__xt3H4 {
@@ -2378,7 +2380,7 @@
   .freeBox__sDrrB {
     align-items: center;
     justify-content: center;
-    grid-column-end: span 6;
+    grid-column-end: span 7;
   }
 }
 .text__eRfYh {
@@ -2522,6 +2524,7 @@
   .freeBox___0FdJl {
     height: 100%;
     min-height: 0;
+    display: none;
   }
 }
 .text__uT85B {

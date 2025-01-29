@@ -660,7 +660,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__jD3Nw {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 .freeBox__lzAfw {
@@ -928,7 +928,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__fpaOm {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 .freeBox__wdX7Q {
