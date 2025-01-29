@@ -1959,13 +1959,14 @@
 }
 .freeBox__cTeH0 {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   position: relative;
   width: 100%;
   height: auto;
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
+  grid-column-end: span 3;
   min-width: 0;
   padding: 8px;
 }
@@ -1975,6 +1976,14 @@
   }
 }
 .text__ihKmx {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-weight: 700;
+  min-width: 0;
+}
+.text__dlkwU {
   position: relative;
   width: 100%;
   height: auto;

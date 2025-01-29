@@ -540,6 +540,12 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "userData",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
       }
     ],
     [$props, $ctx, $refs]
@@ -3771,7 +3777,9 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
             {(() => {
               try {
                 return (
-                  !$state.waiting && $state.currentAccountType == "centerid"
+                  !$state.waiting &&
+                  ($state.userData.isDoctor ||
+                    $state.currentAccountType == "centerid")
                 );
               } catch (e) {
                 if (
@@ -3827,6 +3835,31 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           projectcss.all,
                           projectcss.__wab_text,
                           sty.text__ihKmx
+                        )}
+                      >
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return $state.recurringSettlementList.length > 0
+                                ? "تسویه حساب خودکار" + "" + " فعال می‌باشد."
+                                : "تسویه حساب خودکار غیرفعال است.";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__dlkwU
                         )}
                       >
                         <React.Fragment>
@@ -4776,6 +4809,59 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 typeof $steps["runCode2"].then === "function"
               ) {
                 $steps["runCode2"] = await $steps["runCode2"];
+              }
+
+              $steps["getUsers"] = true
+                ? (() => {
+                    const actionArgs = {
+                      args: ["POST", "https://www.paziresh24.com/api/getUser"]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
+              if (
+                $steps["getUsers"] != null &&
+                typeof $steps["getUsers"] === "object" &&
+                typeof $steps["getUsers"].then === "function"
+              ) {
+                $steps["getUsers"] = await $steps["getUsers"];
+              }
+
+              $steps["updateUserData"] =
+                $steps.getUsers.status == 200
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["userData"]
+                        },
+                        operation: 0,
+                        value: $steps.getUsers.data
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updateUserData"] != null &&
+                typeof $steps["updateUserData"] === "object" &&
+                typeof $steps["updateUserData"].then === "function"
+              ) {
+                $steps["updateUserData"] = await $steps["updateUserData"];
               }
 
               $steps["updateWaiting2"] = true
