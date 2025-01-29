@@ -1497,7 +1497,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         style={{ fontWeight: 700 }}
                       >
                         {
-                          "\u0644\u06cc\u0633\u062a \u062d\u0633\u0627\u0628\u200c\u0647\u0627\u06cc \u0628\u0627\u0646\u06a9\u06cc"
+                          "\u062d\u0633\u0627\u0628 \u0628\u0627\u0646\u06a9\u06cc:"
                         }
                       </span>
                     </React.Fragment>
@@ -3414,82 +3414,99 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           </div>
                         }
                         trigger={
-                          <Button2
-                            children2={
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__de3
-                                )}
-                              >
-                                {
-                                  "\u062d\u0633\u0627\u0628 \u062c\u062f\u06cc\u062f"
-                                }
-                              </div>
-                            }
-                            endIcon={
-                              <Icon23Icon
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.svg___1RvSh
-                                )}
-                                role={"img"}
-                              />
-                            }
-                            onClick={async event => {
-                              const $steps = {};
-
-                              $steps["updateWaitingRegister"] = true
-                                ? (() => {
-                                    const actionArgs = {
-                                      variable: {
-                                        objRoot: $state,
-                                        variablePath: ["waitingRegister"]
-                                      },
-                                      operation: 0,
-                                      value: false
-                                    };
-                                    return (({
-                                      variable,
-                                      value,
-                                      startIndex,
-                                      deleteCount
-                                    }) => {
-                                      if (!variable) {
-                                        return;
-                                      }
-                                      const { objRoot, variablePath } =
-                                        variable;
-
-                                      $stateSet(objRoot, variablePath, value);
-                                      return value;
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
+                          (() => {
+                            try {
+                              return $state.useraccounts.length < 1;
+                            } catch (e) {
                               if (
-                                $steps["updateWaitingRegister"] != null &&
-                                typeof $steps["updateWaitingRegister"] ===
-                                  "object" &&
-                                typeof $steps["updateWaitingRegister"].then ===
-                                  "function"
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
                               ) {
-                                $steps["updateWaitingRegister"] = await $steps[
-                                  "updateWaitingRegister"
-                                ];
+                                return true;
                               }
-                            }}
-                            size={"compact"}
-                            startIcon={
-                              <Icon22Icon
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.svg__wPfF
-                                )}
-                                role={"img"}
-                              />
+                              throw e;
                             }
-                          />
+                          })() ? (
+                            <Button2
+                              children2={
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__de3
+                                  )}
+                                >
+                                  {
+                                    "\u062d\u0633\u0627\u0628 \u062c\u062f\u06cc\u062f"
+                                  }
+                                </div>
+                              }
+                              className={classNames(
+                                "__wab_instance",
+                                sty.button___3ZAdi
+                              )}
+                              endIcon={
+                                <Icon23Icon
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.svg___1RvSh
+                                  )}
+                                  role={"img"}
+                                />
+                              }
+                              onClick={async event => {
+                                const $steps = {};
+
+                                $steps["updateWaitingRegister"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: ["waitingRegister"]
+                                        },
+                                        operation: 0,
+                                        value: false
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        $stateSet(objRoot, variablePath, value);
+                                        return value;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["updateWaitingRegister"] != null &&
+                                  typeof $steps["updateWaitingRegister"] ===
+                                    "object" &&
+                                  typeof $steps["updateWaitingRegister"]
+                                    .then === "function"
+                                ) {
+                                  $steps["updateWaitingRegister"] =
+                                    await $steps["updateWaitingRegister"];
+                                }
+                              }}
+                              size={"compact"}
+                              startIcon={
+                                <Icon22Icon
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.svg__wPfF
+                                  )}
+                                  role={"img"}
+                                />
+                              }
+                            />
+                          ) : null
                         }
                       />
                     </div>
