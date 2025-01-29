@@ -3857,7 +3857,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         <React.Fragment>
                           {(() => {
                             try {
-                              return $state.recurringSettlementList.length > 0
+                              return $state.recurringSettlementList.length >
+                                0 && $state.recurringSettlementList.accountid
                                 ? "تسویه حساب خودکار" +
                                     (" برای حساب بانکی با شماره شبا " +
                                       $state.recurringSettlementList[0].iban) +
