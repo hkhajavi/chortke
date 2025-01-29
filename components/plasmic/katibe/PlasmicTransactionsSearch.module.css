@@ -1811,6 +1811,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__qf210 {
     grid-column-end: span 2;
+    display: none;
   }
 }
 .text__jsRo0 {
@@ -1926,7 +1927,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__ciUy5 {
-    grid-column-end: span 5;
+    grid-column-end: span 6;
   }
 }
 .text__rxRpM {
@@ -1990,7 +1991,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__jFRa {
-    grid-column-end: span 2;
+    grid-column-end: span 3;
     justify-content: center;
     align-items: center;
   }
@@ -2036,19 +2037,6 @@
     text-decoration-line: none;
     text-overflow: clip;
     min-width: 0;
-  }
-}
-.text__ry0YA {
-  position: relative;
-  width: auto;
-  height: auto;
-  max-width: 100%;
-  font-size: var(--token-5Ye_3XTSaP9X);
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .text__ry0YA {
-    align-self: center;
-    font-size: 0.6rem;
   }
 }
 .freeBox__f3WAs {
@@ -2100,6 +2088,14 @@
   min-height: 0;
   padding: 0px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__cmPjc {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
 .text__cOvvm {
   position: relative;
   width: 100%;
@@ -2124,7 +2120,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text__cOvvm {
     font-size: var(--token-5Ye_3XTSaP9X);
-    width: 100%;
+    width: auto;
     height: auto;
     max-width: 100%;
     padding-bottom: 0px;
@@ -2141,7 +2137,19 @@
     user-select: text;
     text-decoration-line: none;
     text-overflow: clip;
-    min-width: 0;
+  }
+}
+.text__ry0YA {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  font-size: var(--token-5Ye_3XTSaP9X);
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__ry0YA {
+    align-self: center;
+    font-size: 0.6rem;
   }
 }
 .freeBox__fVtJx {
@@ -2264,6 +2272,7 @@
     align-items: center;
     justify-content: center;
     grid-column-end: span 2;
+    display: none;
   }
 }
 .text__dnCW {
@@ -2358,7 +2367,7 @@
   .freeBox__sDrrB {
     align-items: center;
     justify-content: center;
-    grid-column-end: span 5;
+    grid-column-end: span 6;
   }
 }
 .text__eRfYh {
@@ -2396,7 +2405,7 @@
   .freeBox___0NIcW {
     align-items: center;
     justify-content: center;
-    grid-column-end: span 2;
+    grid-column-end: span 3;
   }
 }
 .text__iZkK {
@@ -2421,6 +2430,7 @@
   width: 16px;
   height: 16px;
   flex-shrink: 0;
+  display: none;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .svg__miQg {
@@ -2436,6 +2446,7 @@
   width: 15px;
   height: 15px;
   flex-shrink: 0;
+  display: none;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .svg__dWf9Y {

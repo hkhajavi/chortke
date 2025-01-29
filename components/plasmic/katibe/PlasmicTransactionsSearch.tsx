@@ -5289,17 +5289,6 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                   >
                     {"\u0645\u0628\u0644\u063a "}
                   </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__ry0YA
-                    )}
-                  >
-                    {hasVariant(globalVariants, "screen", "mobileOnly")
-                      ? "(\u0631\u06cc\u0627\u0644)"
-                      : " (\u0631\u06cc\u0627\u0644)"}
-                  </div>
                 </div>
                 <div
                   className={classNames(
@@ -5325,6 +5314,17 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         {hasVariant(globalVariants, "screen", "mobileOnly")
                           ? "\u0645\u0627\u0646\u062f\u0647"
                           : "\u0645\u0627\u0646\u062f\u0647"}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__ry0YA
+                        )}
+                      >
+                        {hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "(\u0631\u06cc\u0627\u0644)"
+                          : " (\u0631\u06cc\u0627\u0644)"}
                       </div>
                     </div>
                     <div
@@ -5533,8 +5533,12 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         <React.Fragment>
                           {(() => {
                             try {
-                              return new Intl.NumberFormat("fa-IR").format(
-                                $state.invoicelist[currentIndex].amount
+                              return (
+                                new Intl.NumberFormat("fa-IR").format(
+                                  $state.invoicelist[currentIndex].amount
+                                ) +
+                                "" +
+                                (currentItem.type == "withdraw" ? "-" : "+")
                               );
                             } catch (e) {
                               if (
@@ -5548,42 +5552,15 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                           })()}
                         </React.Fragment>
                       </div>
-                      {(() => {
-                        try {
-                          return currentItem.type == "deposit";
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })() ? (
-                        <Icon29Icon
-                          className={classNames(projectcss.all, sty.svg__miQg)}
-                          role={"img"}
-                        />
-                      ) : null}
-                      {(() => {
-                        try {
-                          return currentItem.type == "withdraw";
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })() ? (
-                        <Icon30Icon
-                          className={classNames(projectcss.all, sty.svg__dWf9Y)}
-                          role={"img"}
-                        />
-                      ) : null}
+                      <Icon29Icon
+                        className={classNames(projectcss.all, sty.svg__miQg)}
+                        role={"img"}
+                      />
+
+                      <Icon30Icon
+                        className={classNames(projectcss.all, sty.svg__dWf9Y)}
+                        role={"img"}
+                      />
                     </div>
                     <div
                       className={classNames(
@@ -7458,11 +7435,11 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                           customFunction: async () => {
                             return (() => {
                               if ($steps.getProductWallet.data.data.balance > 0)
-                                $state.txtReminderTextValue = "طلب شما: ";
+                                $state.txtReminderTextValue = "موجودی: ";
                               else if (
                                 $steps.getProductWallet.data.data.balance == 0
                               )
-                                $state.txtReminderTextValue = "بدهی/طلب شما: ";
+                                $state.txtReminderTextValue = "موجودی: ";
                               else $state.txtReminderTextValue = "بدهی شما: ";
                               return $steps.getProductWallet.data.data
                                 .balance >= 0
