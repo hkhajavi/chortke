@@ -4575,7 +4575,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                             ? (() => {
                                                 const actionArgs = {
                                                   args: [
-                                                    "https://www.paziresh24.com/dashboard/apps/katibe/account/"
+                                                    "https://www.paziresh24.com/dashboard/apps/katibe/setting/"
                                                   ]
                                                 };
                                                 return $globalActions[
