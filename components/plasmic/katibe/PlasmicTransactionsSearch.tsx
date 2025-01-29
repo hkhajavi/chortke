@@ -89,8 +89,8 @@ import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; 
 import Icon2Icon from "../chortke/icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
 import SearchSvgIcon from "../chortke/icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
 import CheckSvgIcon from "../chortke/icons/PlasmicIcon__CheckSvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
-import Icon29Icon from "./icons/PlasmicIcon__Icon29"; // plasmic-import: v6n1zIPv27O2/icon
-import Icon30Icon from "./icons/PlasmicIcon__Icon30"; // plasmic-import: b5udc-7LsSfj/icon
+import Icon44Icon from "./icons/PlasmicIcon__Icon44"; // plasmic-import: BqWt4mC1I6f6/icon
+import Icon45Icon from "./icons/PlasmicIcon__Icon45"; // plasmic-import: ZLOL59vKkeZc/icon
 
 createPlasmicElementProxy;
 
@@ -5550,7 +5550,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       </div>
                       {(() => {
                         try {
-                          return true;
+                          return currentItem.type == "deposit";
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
@@ -5561,15 +5561,29 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                           throw e;
                         }
                       })() ? (
-                        <Icon29Icon
+                        <Icon44Icon
                           className={classNames(projectcss.all, sty.svg__miQg)}
                           role={"img"}
                         />
                       ) : null}
-                      <Icon30Icon
-                        className={classNames(projectcss.all, sty.svg__dWf9Y)}
-                        role={"img"}
-                      />
+                      {(() => {
+                        try {
+                          return currentItem.type == "withdraw";
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <Icon45Icon
+                          className={classNames(projectcss.all, sty.svg__dWf9Y)}
+                          role={"img"}
+                        />
+                      ) : null}
                     </div>
                     <div
                       className={classNames(
