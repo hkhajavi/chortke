@@ -4025,7 +4025,11 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                     >
                       {(() => {
                         try {
-                          return $state.recurringSettlementList.length == 0;
+                          return (
+                            $state.recurringSettlementList.length == 0 ||
+                            $state.recurringSettlementList[0].accountid ==
+                              undefined
+                          );
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
@@ -4384,7 +4388,11 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                       ) : null}
                       {(() => {
                         try {
-                          return $state.recurringSettlementList.length > 0;
+                          return (
+                            $state.recurringSettlementList.length > 0 &&
+                            $state.recurringSettlementList[0].accountid !=
+                              undefined
+                          );
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
