@@ -3878,7 +3878,11 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                       </div>
                       {(() => {
                         try {
-                          return $state.recurringSettlementList.length > 0;
+                          return (
+                            $state.recurringSettlementList.length > 0 &&
+                            $state.recurringSettlementList.accountid !=
+                              undefined
+                          );
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
