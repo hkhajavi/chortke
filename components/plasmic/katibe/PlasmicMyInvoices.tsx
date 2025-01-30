@@ -202,6 +202,7 @@ function PlasmicMyInvoices__RenderFunc(props: {
             <TabsContainer
               data-plasmic-name={"tabsContainer"}
               data-plasmic-override={overrides.tabsContainer}
+              className={classNames("__wab_instance", sty.tabsContainer)}
               initialKey={"tab1"}
             >
               <DataCtxReader__>

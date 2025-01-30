@@ -124,6 +124,7 @@ export interface DefaultDialogProps {
   title?: React.ReactNode;
   trigger?: React.ReactNode;
   noTrigger?: SingleBooleanChoiceArg<"noTrigger">;
+  className?: string;
 }
 
 const $$ = {};
@@ -200,6 +201,18 @@ function PlasmicDialog__RenderFunc(props: {
       data-plasmic-override={overrides.dialog}
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
+      className={classNames(
+        "__wab_instance",
+        projectcss.root_reset,
+        projectcss.plasmic_default_styles,
+        projectcss.plasmic_mixins,
+        projectcss.plasmic_tokens,
+        plasmic_antd_5_hostless_css.plasmic_tokens,
+        plasmic_plasmic_rich_components_css.plasmic_tokens,
+        plasmic_fragment_design_system_css.plasmic_tokens,
+        sty.dialog,
+        { [sty.dialognoTrigger]: hasVariant($state, "noTrigger", "noTrigger") }
+      )}
       onOpenChange={async (...eventArgs: any) => {
         generateStateOnChangeProp($state, ["dialog", "open"]).apply(
           null,
