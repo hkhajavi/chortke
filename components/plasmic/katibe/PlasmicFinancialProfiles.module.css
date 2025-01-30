@@ -715,6 +715,7 @@
   height: auto;
   max-width: 100%;
   grid-column-end: span 2;
+  background: #c4c3c8;
   min-width: 0;
   padding: 8px;
   border-width: 1px;
@@ -758,6 +759,7 @@
   width: 100%;
   height: auto;
   max-width: 100%;
+  background: #c4c3c8;
   min-width: 0;
   padding: 8px;
   border-width: 1px;
@@ -803,6 +805,7 @@
   height: auto;
   max-width: 100%;
   grid-column-end: span 2;
+  background: #c4c3c8;
   min-width: 0;
   padding: 8px;
   border-width: 1px;
@@ -846,6 +849,7 @@
   width: 100%;
   height: auto;
   max-width: 100%;
+  background: #c4c3c8;
   min-width: 0;
   padding: 8px;
   border-width: 1px;
@@ -889,6 +893,7 @@
   width: 100%;
   height: auto;
   max-width: 100%;
+  background: #c4c3c8;
   min-width: 0;
   padding: 8px;
   border-width: 1px;
