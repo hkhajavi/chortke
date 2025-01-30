@@ -298,7 +298,7 @@
   width: auto;
   height: 1em;
 }
-.section {
+.section__eFgfC {
   display: grid;
   position: relative;
   align-content: flex-start;
@@ -316,11 +316,11 @@
     )
     minmax(0, var(--plsmc-wide-chunk)) 1fr var(--plsmc-viewport-gap);
 }
-.section > * {
+.section__eFgfC > * {
   grid-column: 4;
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .section {
+  .section__eFgfC {
     width: 100%;
     justify-self: flex-start;
     grid-column-start: 1 !important;
@@ -328,7 +328,7 @@
   }
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .section > * {
+  .section__eFgfC > * {
     grid-column: 4;
   }
 }
@@ -350,6 +350,7 @@
   justify-content: center;
   align-items: flex-end;
   align-content: stretch;
+  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
   grid-column-start: 1 !important;
   grid-column-end: -1 !important;
   padding: 8px;
@@ -430,6 +431,29 @@
     min-width: 0;
   }
 }
+.section__jlUjK {
+  display: grid;
+  position: relative;
+  align-content: flex-start;
+  justify-items: center;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  margin-top: 10px;
+  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+  grid-column-start: 1 !important;
+  grid-column-end: -1 !important;
+  grid-template-columns:
+    var(--plsmc-viewport-gap) 1fr minmax(0, var(--plsmc-wide-chunk))
+    min(
+      var(--plsmc-standard-width),
+      calc(100% - var(--plsmc-viewport-gap) - var(--plsmc-viewport-gap))
+    )
+    minmax(0, var(--plsmc-wide-chunk)) 1fr var(--plsmc-viewport-gap);
+}
+.section__jlUjK > * {
+  grid-column: 4;
+}
 .gridCalculator2 {
   display: grid;
   position: relative;
@@ -444,7 +468,7 @@
   justify-content: center;
   align-items: flex-end;
   align-content: stretch;
-  margin-top: 10px;
+  margin-top: 0px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   margin-left: 1px;
@@ -2440,7 +2464,7 @@
   object-fit: cover;
   max-width: 100%;
   color: #0ba020;
-  width: 14px;
+  width: 10px;
   height: 14px;
   flex-shrink: 0;
 }
@@ -2455,7 +2479,7 @@
   object-fit: cover;
   max-width: 100%;
   color: #f71a1a;
-  width: 14px;
+  width: 10px;
   height: 14px;
   flex-shrink: 0;
 }
