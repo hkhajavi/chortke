@@ -1462,7 +1462,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         style={{ fontWeight: 700 }}
                       >
                         {
-                          "\u062d\u0633\u0627\u0628 \u0628\u0627\u0646\u06a9\u06cc:"
+                          "\u062d\u0633\u0627\u0628 \u0628\u0627\u0646\u06a9\u06cc"
                         }
                       </span>
                     </React.Fragment>
