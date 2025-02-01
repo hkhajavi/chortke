@@ -4587,6 +4587,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                           ];
                         }
                       }}
+                      size={"compact"}
                     />
                   ) : null}
                   {(() => {

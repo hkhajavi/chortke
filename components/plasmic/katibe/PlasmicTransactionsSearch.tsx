@@ -7094,6 +7094,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             $steps["showMoreBtn"] = await $steps["showMoreBtn"];
                           }
                         }}
+                        size={"compact"}
                       />
                     ) : null}
                     {(() => {
