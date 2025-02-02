@@ -2011,6 +2011,22 @@
   padding-top: 6px;
   min-width: 0;
 }
+.txtRecurrintSettlementPaymentNumber:global(.__wab_instance) {
+  max-width: 100%;
+  margin-top: 10px;
+}
+.svg__uo4V {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.svg__rZtI0 {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
 .freeBox__u4WOp {
   flex-direction: column;
   position: relative;

@@ -116,6 +116,7 @@ export type PlasmicFinancialProfiles__OverridesType = {
   txtBan?: Flex__<typeof TextInput>;
   txtBank?: Flex__<typeof TextInput>;
   sideEffectGetCardInquiry2?: Flex__<typeof SideEffect>;
+  txtRecurrintSettlementPaymentNumber?: Flex__<typeof TextInput>;
   accountSettlement?: Flex__<typeof AntdRadioGroup>;
   txtPaymentNumber?: Flex__<typeof TextInput>;
   btnActiveRecuringSettlement?: Flex__<typeof Button>;
@@ -552,6 +553,12 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "txtRecurrintSettlementPaymentNumber.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -3812,8 +3819,16 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               return $state.recurringSettlementList.length >
                                 0 && $state.recurringSettlementList[0].accountid
                                 ? "تسویه حساب خودکار" +
-                                    (" برای حساب بانکی با شماره شبا " +
-                                      $state.recurringSettlementList[0].iban) +
+                                    (" برای شماره شبا " +
+                                      $state.recurringSettlementList[0].iban +
+                                      ($state.recurringSettlementList[0]
+                                        .payment_number != undefined &&
+                                      $state.recurringSettlementList[0]
+                                        .payment_number.length > 1
+                                        ? " با شناسه واربز " +
+                                          $state.recurringSettlementList[0]
+                                            .payment_number
+                                        : "")) +
                                     " فعال می‌باشد."
                                 : "تسویه حساب خودکار غیرفعال است.";
                             } catch (e) {
@@ -3885,6 +3900,61 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                             "\u0631\u0648\u0632\u0627\u0646\u0647 7\u0635\u0628\u062d \u06a9\u0644 \u0645\u0648\u062c\u0648\u062f\u06cc \u062d\u0633\u0627\u0628 \u0628\u0647\u200c\u0635\u0648\u0631\u062a \u067e\u0627\u06cc\u0627 \u0628\u0631\u0627\u06cc \u0634\u0645\u0627 \u0648\u0627\u0631\u06cc\u0632 \u0645\u06cc\u200c\u0634\u0648\u062f"
                           }
                         </div>
+                      ) : null}
+                      {(() => {
+                        try {
+                          return (
+                            $state.recurringSettlementList.length == 0 ||
+                            $state.recurringSettlementList[0].accountid ==
+                              undefined
+                          );
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <TextInput
+                          data-plasmic-name={
+                            "txtRecurrintSettlementPaymentNumber"
+                          }
+                          data-plasmic-override={
+                            overrides.txtRecurrintSettlementPaymentNumber
+                          }
+                          className={classNames(
+                            "__wab_instance",
+                            sty.txtRecurrintSettlementPaymentNumber
+                          )}
+                          onChange={async (...eventArgs: any) => {
+                            ((...eventArgs) => {
+                              generateStateOnChangeProp($state, [
+                                "txtRecurrintSettlementPaymentNumber",
+                                "value"
+                              ])((e => e.target?.value).apply(null, eventArgs));
+                            }).apply(null, eventArgs);
+
+                            if (
+                              eventArgs.length > 1 &&
+                              eventArgs[1] &&
+                              eventArgs[1]._plasmic_state_init_
+                            ) {
+                              return;
+                            }
+                          }}
+                          placeholder={
+                            "\u0634\u0646\u0627\u0633\u0647 \u0648\u0627\u0631\u06cc\u0632\u060c \u062f\u0631\u0635\u0648\u0631\u062a \u0644\u0632\u0648\u0645"
+                          }
+                          value={
+                            generateStateValueProp($state, [
+                              "txtRecurrintSettlementPaymentNumber",
+                              "value"
+                            ]) ?? ""
+                          }
+                        />
                       ) : null}
                     </div>
                     <div
@@ -4136,7 +4206,9 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                 $state.useraccounts[0]
                                                   .accountid,
                                               payment_number:
-                                                $state.txtPaymentNumber.value
+                                                $state
+                                                  .txtRecurrintSettlementPaymentNumber
+                                                  .value
                                             };
                                           } catch (e) {
                                             if (
@@ -5576,6 +5648,7 @@ const PlasmicDescendants = {
     "txtBan",
     "txtBank",
     "sideEffectGetCardInquiry2",
+    "txtRecurrintSettlementPaymentNumber",
     "accountSettlement",
     "txtPaymentNumber",
     "btnActiveRecuringSettlement",
@@ -5601,6 +5674,7 @@ const PlasmicDescendants = {
     "txtBan",
     "txtBank",
     "sideEffectGetCardInquiry2",
+    "txtRecurrintSettlementPaymentNumber",
     "accountSettlement",
     "txtPaymentNumber",
     "btnActiveRecuringSettlement",
@@ -5621,6 +5695,7 @@ const PlasmicDescendants = {
   txtBan: ["txtBan"],
   txtBank: ["txtBank"],
   sideEffectGetCardInquiry2: ["sideEffectGetCardInquiry2"],
+  txtRecurrintSettlementPaymentNumber: ["txtRecurrintSettlementPaymentNumber"],
   accountSettlement: ["accountSettlement"],
   txtPaymentNumber: ["txtPaymentNumber"],
   btnActiveRecuringSettlement: ["btnActiveRecuringSettlement"],
@@ -5650,6 +5725,7 @@ type NodeDefaultElementType = {
   txtBan: typeof TextInput;
   txtBank: typeof TextInput;
   sideEffectGetCardInquiry2: typeof SideEffect;
+  txtRecurrintSettlementPaymentNumber: typeof TextInput;
   accountSettlement: typeof AntdRadioGroup;
   txtPaymentNumber: typeof TextInput;
   btnActiveRecuringSettlement: typeof Button;
@@ -5735,6 +5811,9 @@ export const PlasmicFinancialProfiles = Object.assign(
     txtBan: makeNodeComponent("txtBan"),
     txtBank: makeNodeComponent("txtBank"),
     sideEffectGetCardInquiry2: makeNodeComponent("sideEffectGetCardInquiry2"),
+    txtRecurrintSettlementPaymentNumber: makeNodeComponent(
+      "txtRecurrintSettlementPaymentNumber"
+    ),
     accountSettlement: makeNodeComponent("accountSettlement"),
     txtPaymentNumber: makeNodeComponent("txtPaymentNumber"),
     btnActiveRecuringSettlement: makeNodeComponent(
