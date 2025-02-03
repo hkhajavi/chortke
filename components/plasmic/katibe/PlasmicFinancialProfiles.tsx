@@ -2924,7 +2924,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                 "POST",
                                                 (() => {
                                                   try {
-                                                    return "https://apigw.paziresh24.com/financialaccount/v1/useraccountbycardid";
+                                                    return "https://apigw.paziresh24.com/financialaccount/v1/useraccount";
                                                   } catch (e) {
                                                     if (
                                                       e instanceof TypeError ||
