@@ -3824,7 +3824,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                 }).apply(null, eventArgs);
                                               }}
                                               placeholder={
-                                                "\u0634\u0645\u0627\u0631\u0647 \u0634\u0628\u0627 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                                                "\u0644\u0637\u0641\u0627 \u0634\u0645\u0627\u0631\u0647 \u0634\u0628\u0627 \u0631\u0627 \u0648\u0627\u0631\u062f \u0646\u0645\u0627\u06cc\u06cc\u062f"
                                               }
                                               value={
                                                 generateStateValueProp($state, [
