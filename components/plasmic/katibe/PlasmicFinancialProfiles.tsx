@@ -125,9 +125,9 @@ export type PlasmicFinancialProfiles__OverridesType = {
   txtName5?: Flex__<typeof TextInput>;
   txtBan2?: Flex__<typeof TextInput>;
   txtBank2?: Flex__<typeof TextInput>;
+  txtIbanPaymentNumber?: Flex__<typeof TextInput>;
   sideEffectGetCardInquiry2?: Flex__<typeof SideEffect>;
   sideEffectGetIbanInquiry?: Flex__<typeof SideEffect>;
-  txtRecurrintSettlementPaymentNumber?: Flex__<typeof TextInput>;
   accountSettlement?: Flex__<typeof AntdRadioGroup>;
   txtPaymentNumber?: Flex__<typeof TextInput>;
   btnActiveRecuringSettlement?: Flex__<typeof Button>;
@@ -566,12 +566,6 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => false
       },
       {
-        path: "txtRecurrintSettlementPaymentNumber.value",
-        type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
-      },
-      {
         path: "txtIban.value",
         type: "private",
         variableType: "text",
@@ -649,6 +643,12 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "txtIbanPaymentNumber.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ``
       }
     ],
     [$props, $ctx, $refs]
@@ -1819,6 +1819,33 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                   {(() => {
                                     try {
                                       return currentItem.iban;
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "\u0634\u0628\u0627";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__zVtgy
+                                )}
+                              >
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return currentItem.payment_number
+                                        ? "شناسه واریز: " +
+                                            currentItem.payment_number
+                                        : "";
                                     } catch (e) {
                                       if (
                                         e instanceof TypeError ||
@@ -4273,6 +4300,108 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                           <div
                                             className={classNames(
                                               projectcss.all,
+                                              sty.freeBox__qc7VY
+                                            )}
+                                          >
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                sty.freeBox___1YzRs
+                                              )}
+                                            >
+                                              <div
+                                                className={classNames(
+                                                  projectcss.all,
+                                                  projectcss.__wab_text,
+                                                  sty.text__suAvn
+                                                )}
+                                              >
+                                                {
+                                                  "\u0634\u0646\u0627\u0633\u0647 \u0648\u0627\u0631\u06cc\u0632:"
+                                                }
+                                              </div>
+                                            </div>
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                sty.freeBox__hswDl
+                                              )}
+                                            >
+                                              <TextInput
+                                                data-plasmic-name={
+                                                  "txtIbanPaymentNumber"
+                                                }
+                                                data-plasmic-override={
+                                                  overrides.txtIbanPaymentNumber
+                                                }
+                                                className={classNames(
+                                                  "__wab_instance",
+                                                  sty.txtIbanPaymentNumber
+                                                )}
+                                                onChange={async (
+                                                  ...eventArgs: any
+                                                ) => {
+                                                  ((...eventArgs) => {
+                                                    generateStateOnChangeProp(
+                                                      $state,
+                                                      [
+                                                        "txtIbanPaymentNumber",
+                                                        "value"
+                                                      ]
+                                                    )(
+                                                      (e =>
+                                                        e.target?.value).apply(
+                                                        null,
+                                                        eventArgs
+                                                      )
+                                                    );
+                                                  }).apply(null, eventArgs);
+
+                                                  if (
+                                                    eventArgs.length > 1 &&
+                                                    eventArgs[1] &&
+                                                    eventArgs[1]
+                                                      ._plasmic_state_init_
+                                                  ) {
+                                                    return;
+                                                  }
+                                                }}
+                                                placeholder={
+                                                  "\u0634\u0646\u0627\u0633\u0647 \u0648\u0627\u0631\u06cc\u0632 \u062f\u0631 \u0635\u0648\u0631\u062a \u0644\u0632\u0648\u0645"
+                                                }
+                                                value={
+                                                  generateStateValueProp(
+                                                    $state,
+                                                    [
+                                                      "txtIbanPaymentNumber",
+                                                      "value"
+                                                    ]
+                                                  ) ?? ""
+                                                }
+                                              />
+                                            </div>
+                                          </div>
+                                        ) : null}
+                                        {(() => {
+                                          try {
+                                            return (
+                                              $state.ibanInquiry.data !=
+                                              undefined
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return true;
+                                            }
+                                            throw e;
+                                          }
+                                        })() ? (
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
                                               sty.freeBox__c5G1I
                                             )}
                                           >
@@ -4456,7 +4585,11 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                                       $state.currentAccountType ==
                                                                       "centerid"
                                                                         ? $state.currentAccountId
-                                                                        : ""
+                                                                        : "",
+                                                                    payment_number:
+                                                                      $state
+                                                                        .txtIbanPaymentNumber
+                                                                        .value
                                                                   };
                                                                 } catch (e) {
                                                                   if (
@@ -5723,61 +5856,6 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           }
                         </div>
                       ) : null}
-                      {(() => {
-                        try {
-                          return (
-                            $state.recurringSettlementList.length == 0 ||
-                            $state.recurringSettlementList[0].accountid ==
-                              undefined
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })() ? (
-                        <TextInput
-                          data-plasmic-name={
-                            "txtRecurrintSettlementPaymentNumber"
-                          }
-                          data-plasmic-override={
-                            overrides.txtRecurrintSettlementPaymentNumber
-                          }
-                          className={classNames(
-                            "__wab_instance",
-                            sty.txtRecurrintSettlementPaymentNumber
-                          )}
-                          onChange={async (...eventArgs: any) => {
-                            ((...eventArgs) => {
-                              generateStateOnChangeProp($state, [
-                                "txtRecurrintSettlementPaymentNumber",
-                                "value"
-                              ])((e => e.target?.value).apply(null, eventArgs));
-                            }).apply(null, eventArgs);
-
-                            if (
-                              eventArgs.length > 1 &&
-                              eventArgs[1] &&
-                              eventArgs[1]._plasmic_state_init_
-                            ) {
-                              return;
-                            }
-                          }}
-                          placeholder={
-                            "\u0634\u0646\u0627\u0633\u0647 \u0648\u0627\u0631\u06cc\u0632\u060c \u062f\u0631\u0635\u0648\u0631\u062a \u0644\u0632\u0648\u0645"
-                          }
-                          value={
-                            generateStateValueProp($state, [
-                              "txtRecurrintSettlementPaymentNumber",
-                              "value"
-                            ]) ?? ""
-                          }
-                        />
-                      ) : null}
                     </div>
                     <div
                       className={classNames(projectcss.all, sty.freeBox__u4WOp)}
@@ -6025,12 +6103,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                           try {
                                             return {
                                               accountid:
-                                                $state.useraccounts[0]
-                                                  .accountid,
-                                              payment_number:
-                                                $state
-                                                  .txtRecurrintSettlementPaymentNumber
-                                                  .value
+                                                $state.useraccounts[0].accountid
                                             };
                                           } catch (e) {
                                             if (
@@ -7475,9 +7548,9 @@ const PlasmicDescendants = {
     "txtName5",
     "txtBan2",
     "txtBank2",
+    "txtIbanPaymentNumber",
     "sideEffectGetCardInquiry2",
     "sideEffectGetIbanInquiry",
-    "txtRecurrintSettlementPaymentNumber",
     "accountSettlement",
     "txtPaymentNumber",
     "btnActiveRecuringSettlement",
@@ -7508,9 +7581,9 @@ const PlasmicDescendants = {
     "txtName5",
     "txtBan2",
     "txtBank2",
+    "txtIbanPaymentNumber",
     "sideEffectGetCardInquiry2",
     "sideEffectGetIbanInquiry",
-    "txtRecurrintSettlementPaymentNumber",
     "accountSettlement",
     "txtPaymentNumber",
     "btnActiveRecuringSettlement",
@@ -7536,7 +7609,8 @@ const PlasmicDescendants = {
     "txtIban",
     "txtName5",
     "txtBan2",
-    "txtBank2"
+    "txtBank2",
+    "txtIbanPaymentNumber"
   ],
   tabsContainer: [
     "tabsContainer",
@@ -7548,7 +7622,8 @@ const PlasmicDescendants = {
     "txtIban",
     "txtName5",
     "txtBan2",
-    "txtBank2"
+    "txtBank2",
+    "txtIbanPaymentNumber"
   ],
   tabUnderline: ["tabUnderline"],
   txtCardNumber: ["txtCardNumber"],
@@ -7559,9 +7634,9 @@ const PlasmicDescendants = {
   txtName5: ["txtName5"],
   txtBan2: ["txtBan2"],
   txtBank2: ["txtBank2"],
+  txtIbanPaymentNumber: ["txtIbanPaymentNumber"],
   sideEffectGetCardInquiry2: ["sideEffectGetCardInquiry2"],
   sideEffectGetIbanInquiry: ["sideEffectGetIbanInquiry"],
-  txtRecurrintSettlementPaymentNumber: ["txtRecurrintSettlementPaymentNumber"],
   accountSettlement: ["accountSettlement"],
   txtPaymentNumber: ["txtPaymentNumber"],
   btnActiveRecuringSettlement: ["btnActiveRecuringSettlement"],
@@ -7596,9 +7671,9 @@ type NodeDefaultElementType = {
   txtName5: typeof TextInput;
   txtBan2: typeof TextInput;
   txtBank2: typeof TextInput;
+  txtIbanPaymentNumber: typeof TextInput;
   sideEffectGetCardInquiry2: typeof SideEffect;
   sideEffectGetIbanInquiry: typeof SideEffect;
-  txtRecurrintSettlementPaymentNumber: typeof TextInput;
   accountSettlement: typeof AntdRadioGroup;
   txtPaymentNumber: typeof TextInput;
   btnActiveRecuringSettlement: typeof Button;
@@ -7689,11 +7764,9 @@ export const PlasmicFinancialProfiles = Object.assign(
     txtName5: makeNodeComponent("txtName5"),
     txtBan2: makeNodeComponent("txtBan2"),
     txtBank2: makeNodeComponent("txtBank2"),
+    txtIbanPaymentNumber: makeNodeComponent("txtIbanPaymentNumber"),
     sideEffectGetCardInquiry2: makeNodeComponent("sideEffectGetCardInquiry2"),
     sideEffectGetIbanInquiry: makeNodeComponent("sideEffectGetIbanInquiry"),
-    txtRecurrintSettlementPaymentNumber: makeNodeComponent(
-      "txtRecurrintSettlementPaymentNumber"
-    ),
     accountSettlement: makeNodeComponent("accountSettlement"),
     txtPaymentNumber: makeNodeComponent("txtPaymentNumber"),
     btnActiveRecuringSettlement: makeNodeComponent(
