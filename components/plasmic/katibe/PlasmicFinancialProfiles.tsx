@@ -4691,63 +4691,6 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                   }
 
                                                   $steps[
-                                                    "updateCbAccountsValue"
-                                                  ] = true
-                                                    ? (() => {
-                                                        const actionArgs = {
-                                                          variable: {
-                                                            objRoot: $state,
-                                                            variablePath: [
-                                                              "cbAccounts",
-                                                              "value"
-                                                            ]
-                                                          },
-                                                          operation: 0
-                                                        };
-                                                        return (({
-                                                          variable,
-                                                          value,
-                                                          startIndex,
-                                                          deleteCount
-                                                        }) => {
-                                                          if (!variable) {
-                                                            return;
-                                                          }
-                                                          const {
-                                                            objRoot,
-                                                            variablePath
-                                                          } = variable;
-
-                                                          $stateSet(
-                                                            objRoot,
-                                                            variablePath,
-                                                            value
-                                                          );
-                                                          return value;
-                                                        })?.apply(null, [
-                                                          actionArgs
-                                                        ]);
-                                                      })()
-                                                    : undefined;
-                                                  if (
-                                                    $steps[
-                                                      "updateCbAccountsValue"
-                                                    ] != null &&
-                                                    typeof $steps[
-                                                      "updateCbAccountsValue"
-                                                    ] === "object" &&
-                                                    typeof $steps[
-                                                      "updateCbAccountsValue"
-                                                    ].then === "function"
-                                                  ) {
-                                                    $steps[
-                                                      "updateCbAccountsValue"
-                                                    ] = await $steps[
-                                                      "updateCbAccountsValue"
-                                                    ];
-                                                  }
-
-                                                  $steps[
                                                     "updateCbAccountsValue2"
                                                   ] = true
                                                     ? (() => {
