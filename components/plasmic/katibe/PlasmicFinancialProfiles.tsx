@@ -3325,6 +3325,9 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                                       "centerid"
                                                                         ? $state.currentAccountId
                                                                         : "",
+                                                                    iban: $state
+                                                                      .txtcardIban
+                                                                      .value,
                                                                     account_number:
                                                                       "",
                                                                     bank_name:
