@@ -840,6 +840,7 @@
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
+  grid-column-end: span 2;
   min-width: 0;
   padding: 8px;
 }
@@ -918,6 +919,16 @@
   height: auto;
   max-width: 100%;
 }
+.freeBox__qUer {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0px;
+}
 .freeBox__aI2Im {
   display: flex;
   flex-direction: row;
@@ -945,16 +956,6 @@
   width: auto;
   height: auto;
   max-width: 100%;
-}
-.freeBox__qUer {
-  display: grid;
-  position: relative;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-  padding: 0px;
 }
 .freeBox__erYrA {
   display: flex;
@@ -1023,7 +1024,7 @@
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
-  grid-column-end: span 2;
+  grid-column-end: span 1;
   min-width: 0;
   padding: 8px;
 }

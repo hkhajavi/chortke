@@ -823,6 +823,10 @@ function PlasmicFactorPrint__RenderFunc(props: {
                           </React.Fragment>
                         </div>
                       </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__qUer)}
+                    >
                       <div
                         className={classNames(
                           projectcss.all,
@@ -864,10 +868,6 @@ function PlasmicFactorPrint__RenderFunc(props: {
                           </React.Fragment>
                         </div>
                       </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__qUer)}
-                    >
                       <div
                         className={classNames(
                           projectcss.all,
