@@ -779,7 +779,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                       try {
                         return $state.accounts.map(item => ({
                           value: item.uniqueid.toString(),
-                          label: item.name
+                          label: item.name.replace("هزینه‌های ", "")
                         }));
                       } catch (e) {
                         if (
@@ -6743,10 +6743,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                             const uniqueData = [];
                             const seenIds = new Set();
                             data.forEach(item => {
-                              if (
-                                !seenIds.has(item.id) &&
-                                item.account != "expense"
-                              ) {
+                              if (!seenIds.has(item.id)) {
                                 seenIds.add(item.id);
                                 uniqueData.push(item);
                               }
