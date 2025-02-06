@@ -875,7 +875,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         try {
                           return $state.currentAccountType == "userid"
                             ? "اطلاعات حقیقی"
-                            : "اطلاعات حقوقی";
+                            : " اطلاعات حقوقی";
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
