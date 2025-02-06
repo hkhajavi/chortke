@@ -1729,7 +1729,7 @@
   min-width: 0;
   padding: 8px;
 }
-.txtName4:global(.__wab_instance) {
+.txtCardownerName:global(.__wab_instance) {
   max-width: 100%;
 }
 .svg__xvgJi {
@@ -1804,7 +1804,7 @@
   min-width: 0;
   padding: 8px;
 }
-.txtBan:global(.__wab_instance) {
+.txtcardIban:global(.__wab_instance) {
   max-width: 100%;
 }
 .svg__mFgpe {
@@ -1879,7 +1879,7 @@
   min-width: 0;
   padding: 8px;
 }
-.txtBank:global(.__wab_instance) {
+.txtcardBank:global(.__wab_instance) {
   max-width: 100%;
 }
 .svg__trYnc {
@@ -2126,7 +2126,7 @@
   min-width: 0;
   padding: 8px;
 }
-.txtName5:global(.__wab_instance) {
+.txtibanownerName:global(.__wab_instance) {
   max-width: 100%;
 }
 .svg__wj0Z {
@@ -2201,7 +2201,7 @@
   min-width: 0;
   padding: 8px;
 }
-.txtBan2:global(.__wab_instance) {
+.txtIbanaccountNumber:global(.__wab_instance) {
   max-width: 100%;
 }
 .svg__iaUo4 {
@@ -2276,7 +2276,7 @@
   min-width: 0;
   padding: 8px;
 }
-.txtBank2:global(.__wab_instance) {
+.txtIbaNbankName:global(.__wab_instance) {
   max-width: 100%;
 }
 .svg__cc0Ql {

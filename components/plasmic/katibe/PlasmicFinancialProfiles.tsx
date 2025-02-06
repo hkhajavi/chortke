@@ -118,13 +118,13 @@ export type PlasmicFinancialProfiles__OverridesType = {
   tabsContainer?: Flex__<typeof TabsContainer>;
   tabUnderline?: Flex__<typeof TabUnderline>;
   txtCardNumber?: Flex__<typeof TextInput>;
-  txtName4?: Flex__<typeof TextInput>;
-  txtBan?: Flex__<typeof TextInput>;
-  txtBank?: Flex__<typeof TextInput>;
+  txtCardownerName?: Flex__<typeof TextInput>;
+  txtcardIban?: Flex__<typeof TextInput>;
+  txtcardBank?: Flex__<typeof TextInput>;
   txtIban?: Flex__<typeof TextInput>;
-  txtName5?: Flex__<typeof TextInput>;
-  txtBan2?: Flex__<typeof TextInput>;
-  txtBank2?: Flex__<typeof TextInput>;
+  txtibanownerName?: Flex__<typeof TextInput>;
+  txtIbanaccountNumber?: Flex__<typeof TextInput>;
+  txtIbaNbankName?: Flex__<typeof TextInput>;
   txtIbanPaymentNumber?: Flex__<typeof TextInput>;
   sideEffectGetCardInquiry2?: Flex__<typeof SideEffect>;
   sideEffectGetIbanInquiry?: Flex__<typeof SideEffect>;
@@ -388,7 +388,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "txtName4.value",
+        path: "txtCardownerName.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
@@ -407,7 +407,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
           })()
       },
       {
-        path: "txtBan.value",
+        path: "txtcardIban.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
@@ -426,7 +426,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
           })()
       },
       {
-        path: "txtBank.value",
+        path: "txtcardBank.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
@@ -572,7 +572,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
       },
       {
-        path: "txtName5.value",
+        path: "txtibanownerName.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
@@ -595,7 +595,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
           })()
       },
       {
-        path: "txtBan2.value",
+        path: "txtIbanaccountNumber.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
@@ -614,7 +614,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
           })()
       },
       {
-        path: "txtBank2.value",
+        path: "txtIbaNbankName.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
@@ -2883,13 +2883,15 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                               )}
                                             >
                                               <TextInput
-                                                data-plasmic-name={"txtName4"}
+                                                data-plasmic-name={
+                                                  "txtCardownerName"
+                                                }
                                                 data-plasmic-override={
-                                                  overrides.txtName4
+                                                  overrides.txtCardownerName
                                                 }
                                                 className={classNames(
                                                   "__wab_instance",
-                                                  sty.txtName4
+                                                  sty.txtCardownerName
                                                 )}
                                                 isDisabled={true}
                                                 onChange={async (
@@ -2898,7 +2900,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                   ((...eventArgs) => {
                                                     generateStateOnChangeProp(
                                                       $state,
-                                                      ["txtName4", "value"]
+                                                      [
+                                                        "txtCardownerName",
+                                                        "value"
+                                                      ]
                                                     )(
                                                       (e =>
                                                         e.target?.value).apply(
@@ -2920,7 +2925,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                 value={
                                                   generateStateValueProp(
                                                     $state,
-                                                    ["txtName4", "value"]
+                                                    [
+                                                      "txtCardownerName",
+                                                      "value"
+                                                    ]
                                                   ) ?? ""
                                                 }
                                               />
@@ -2974,13 +2982,15 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                               )}
                                             >
                                               <TextInput
-                                                data-plasmic-name={"txtBan"}
+                                                data-plasmic-name={
+                                                  "txtcardIban"
+                                                }
                                                 data-plasmic-override={
-                                                  overrides.txtBan
+                                                  overrides.txtcardIban
                                                 }
                                                 className={classNames(
                                                   "__wab_instance",
-                                                  sty.txtBan
+                                                  sty.txtcardIban
                                                 )}
                                                 isDisabled={true}
                                                 onChange={async (
@@ -2989,7 +2999,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                   ((...eventArgs) => {
                                                     generateStateOnChangeProp(
                                                       $state,
-                                                      ["txtBan", "value"]
+                                                      ["txtcardIban", "value"]
                                                     )(
                                                       (e =>
                                                         e.target?.value).apply(
@@ -3011,7 +3021,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                 value={
                                                   generateStateValueProp(
                                                     $state,
-                                                    ["txtBan", "value"]
+                                                    ["txtcardIban", "value"]
                                                   ) ?? ""
                                                 }
                                               />
@@ -3065,13 +3075,15 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                               )}
                                             >
                                               <TextInput
-                                                data-plasmic-name={"txtBank"}
+                                                data-plasmic-name={
+                                                  "txtcardBank"
+                                                }
                                                 data-plasmic-override={
-                                                  overrides.txtBank
+                                                  overrides.txtcardBank
                                                 }
                                                 className={classNames(
                                                   "__wab_instance",
-                                                  sty.txtBank
+                                                  sty.txtcardBank
                                                 )}
                                                 isDisabled={true}
                                                 onChange={async (
@@ -3080,7 +3092,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                   ((...eventArgs) => {
                                                     generateStateOnChangeProp(
                                                       $state,
-                                                      ["txtBank", "value"]
+                                                      ["txtcardBank", "value"]
                                                     )(
                                                       (e =>
                                                         e.target?.value).apply(
@@ -3102,7 +3114,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                 value={
                                                   generateStateValueProp(
                                                     $state,
-                                                    ["txtBank", "value"]
+                                                    ["txtcardBank", "value"]
                                                   ) ?? ""
                                                 }
                                               />
@@ -3312,7 +3324,17 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                                       $state.currentAccountType ==
                                                                       "centerid"
                                                                         ? $state.currentAccountId
-                                                                        : ""
+                                                                        : "",
+                                                                    account_number:
+                                                                      "",
+                                                                    bank_name:
+                                                                      $state
+                                                                        .txtcardBank
+                                                                        .value,
+                                                                    owner_name:
+                                                                      $state
+                                                                        .txtCardownerName
+                                                                        .value
                                                                   };
                                                                 } catch (e) {
                                                                   if (
@@ -4054,13 +4076,15 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                               )}
                                             >
                                               <TextInput
-                                                data-plasmic-name={"txtName5"}
+                                                data-plasmic-name={
+                                                  "txtibanownerName"
+                                                }
                                                 data-plasmic-override={
-                                                  overrides.txtName5
+                                                  overrides.txtibanownerName
                                                 }
                                                 className={classNames(
                                                   "__wab_instance",
-                                                  sty.txtName5
+                                                  sty.txtibanownerName
                                                 )}
                                                 isDisabled={true}
                                                 onChange={async (
@@ -4069,7 +4093,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                   ((...eventArgs) => {
                                                     generateStateOnChangeProp(
                                                       $state,
-                                                      ["txtName5", "value"]
+                                                      [
+                                                        "txtibanownerName",
+                                                        "value"
+                                                      ]
                                                     )(
                                                       (e =>
                                                         e.target?.value).apply(
@@ -4091,7 +4118,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                 value={
                                                   generateStateValueProp(
                                                     $state,
-                                                    ["txtName5", "value"]
+                                                    [
+                                                      "txtibanownerName",
+                                                      "value"
+                                                    ]
                                                   ) ?? ""
                                                 }
                                               />
@@ -4146,13 +4176,15 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                               )}
                                             >
                                               <TextInput
-                                                data-plasmic-name={"txtBan2"}
+                                                data-plasmic-name={
+                                                  "txtIbanaccountNumber"
+                                                }
                                                 data-plasmic-override={
-                                                  overrides.txtBan2
+                                                  overrides.txtIbanaccountNumber
                                                 }
                                                 className={classNames(
                                                   "__wab_instance",
-                                                  sty.txtBan2
+                                                  sty.txtIbanaccountNumber
                                                 )}
                                                 isDisabled={true}
                                                 onChange={async (
@@ -4161,7 +4193,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                   ((...eventArgs) => {
                                                     generateStateOnChangeProp(
                                                       $state,
-                                                      ["txtBan2", "value"]
+                                                      [
+                                                        "txtIbanaccountNumber",
+                                                        "value"
+                                                      ]
                                                     )(
                                                       (e =>
                                                         e.target?.value).apply(
@@ -4183,7 +4218,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                 value={
                                                   generateStateValueProp(
                                                     $state,
-                                                    ["txtBan2", "value"]
+                                                    [
+                                                      "txtIbanaccountNumber",
+                                                      "value"
+                                                    ]
                                                   ) ?? ""
                                                 }
                                               />
@@ -4236,13 +4274,15 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                               )}
                                             >
                                               <TextInput
-                                                data-plasmic-name={"txtBank2"}
+                                                data-plasmic-name={
+                                                  "txtIbaNbankName"
+                                                }
                                                 data-plasmic-override={
-                                                  overrides.txtBank2
+                                                  overrides.txtIbaNbankName
                                                 }
                                                 className={classNames(
                                                   "__wab_instance",
-                                                  sty.txtBank2
+                                                  sty.txtIbaNbankName
                                                 )}
                                                 isDisabled={true}
                                                 onChange={async (
@@ -4251,7 +4291,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                   ((...eventArgs) => {
                                                     generateStateOnChangeProp(
                                                       $state,
-                                                      ["txtBank2", "value"]
+                                                      [
+                                                        "txtIbaNbankName",
+                                                        "value"
+                                                      ]
                                                     )(
                                                       (e =>
                                                         e.target?.value).apply(
@@ -4273,7 +4316,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                 value={
                                                   generateStateValueProp(
                                                     $state,
-                                                    ["txtBank2", "value"]
+                                                    ["txtIbaNbankName", "value"]
                                                   ) ?? ""
                                                 }
                                               />
@@ -4589,6 +4632,18 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                                     payment_number:
                                                                       $state
                                                                         .txtIbanPaymentNumber
+                                                                        .value,
+                                                                    account_number:
+                                                                      $state
+                                                                        .txtIbanaccountNumber
+                                                                        .value,
+                                                                    bank_name:
+                                                                      $state
+                                                                        .txtIbaNbankName
+                                                                        .value,
+                                                                    owner_name:
+                                                                      $state
+                                                                        .txtibanownerName
                                                                         .value
                                                                   };
                                                                 } catch (e) {
@@ -7484,13 +7539,13 @@ const PlasmicDescendants = {
     "tabsContainer",
     "tabUnderline",
     "txtCardNumber",
-    "txtName4",
-    "txtBan",
-    "txtBank",
+    "txtCardownerName",
+    "txtcardIban",
+    "txtcardBank",
     "txtIban",
-    "txtName5",
-    "txtBan2",
-    "txtBank2",
+    "txtibanownerName",
+    "txtIbanaccountNumber",
+    "txtIbaNbankName",
     "txtIbanPaymentNumber",
     "sideEffectGetCardInquiry2",
     "sideEffectGetIbanInquiry",
@@ -7517,13 +7572,13 @@ const PlasmicDescendants = {
     "tabsContainer",
     "tabUnderline",
     "txtCardNumber",
-    "txtName4",
-    "txtBan",
-    "txtBank",
+    "txtCardownerName",
+    "txtcardIban",
+    "txtcardBank",
     "txtIban",
-    "txtName5",
-    "txtBan2",
-    "txtBank2",
+    "txtibanownerName",
+    "txtIbanaccountNumber",
+    "txtIbaNbankName",
     "txtIbanPaymentNumber",
     "sideEffectGetCardInquiry2",
     "sideEffectGetIbanInquiry",
@@ -7546,37 +7601,37 @@ const PlasmicDescendants = {
     "tabsContainer",
     "tabUnderline",
     "txtCardNumber",
-    "txtName4",
-    "txtBan",
-    "txtBank",
+    "txtCardownerName",
+    "txtcardIban",
+    "txtcardBank",
     "txtIban",
-    "txtName5",
-    "txtBan2",
-    "txtBank2",
+    "txtibanownerName",
+    "txtIbanaccountNumber",
+    "txtIbaNbankName",
     "txtIbanPaymentNumber"
   ],
   tabsContainer: [
     "tabsContainer",
     "tabUnderline",
     "txtCardNumber",
-    "txtName4",
-    "txtBan",
-    "txtBank",
+    "txtCardownerName",
+    "txtcardIban",
+    "txtcardBank",
     "txtIban",
-    "txtName5",
-    "txtBan2",
-    "txtBank2",
+    "txtibanownerName",
+    "txtIbanaccountNumber",
+    "txtIbaNbankName",
     "txtIbanPaymentNumber"
   ],
   tabUnderline: ["tabUnderline"],
   txtCardNumber: ["txtCardNumber"],
-  txtName4: ["txtName4"],
-  txtBan: ["txtBan"],
-  txtBank: ["txtBank"],
+  txtCardownerName: ["txtCardownerName"],
+  txtcardIban: ["txtcardIban"],
+  txtcardBank: ["txtcardBank"],
   txtIban: ["txtIban"],
-  txtName5: ["txtName5"],
-  txtBan2: ["txtBan2"],
-  txtBank2: ["txtBank2"],
+  txtibanownerName: ["txtibanownerName"],
+  txtIbanaccountNumber: ["txtIbanaccountNumber"],
+  txtIbaNbankName: ["txtIbaNbankName"],
   txtIbanPaymentNumber: ["txtIbanPaymentNumber"],
   sideEffectGetCardInquiry2: ["sideEffectGetCardInquiry2"],
   sideEffectGetIbanInquiry: ["sideEffectGetIbanInquiry"],
@@ -7607,13 +7662,13 @@ type NodeDefaultElementType = {
   tabsContainer: typeof TabsContainer;
   tabUnderline: typeof TabUnderline;
   txtCardNumber: typeof TextInput;
-  txtName4: typeof TextInput;
-  txtBan: typeof TextInput;
-  txtBank: typeof TextInput;
+  txtCardownerName: typeof TextInput;
+  txtcardIban: typeof TextInput;
+  txtcardBank: typeof TextInput;
   txtIban: typeof TextInput;
-  txtName5: typeof TextInput;
-  txtBan2: typeof TextInput;
-  txtBank2: typeof TextInput;
+  txtibanownerName: typeof TextInput;
+  txtIbanaccountNumber: typeof TextInput;
+  txtIbaNbankName: typeof TextInput;
   txtIbanPaymentNumber: typeof TextInput;
   sideEffectGetCardInquiry2: typeof SideEffect;
   sideEffectGetIbanInquiry: typeof SideEffect;
@@ -7700,13 +7755,13 @@ export const PlasmicFinancialProfiles = Object.assign(
     tabsContainer: makeNodeComponent("tabsContainer"),
     tabUnderline: makeNodeComponent("tabUnderline"),
     txtCardNumber: makeNodeComponent("txtCardNumber"),
-    txtName4: makeNodeComponent("txtName4"),
-    txtBan: makeNodeComponent("txtBan"),
-    txtBank: makeNodeComponent("txtBank"),
+    txtCardownerName: makeNodeComponent("txtCardownerName"),
+    txtcardIban: makeNodeComponent("txtcardIban"),
+    txtcardBank: makeNodeComponent("txtcardBank"),
     txtIban: makeNodeComponent("txtIban"),
-    txtName5: makeNodeComponent("txtName5"),
-    txtBan2: makeNodeComponent("txtBan2"),
-    txtBank2: makeNodeComponent("txtBank2"),
+    txtibanownerName: makeNodeComponent("txtibanownerName"),
+    txtIbanaccountNumber: makeNodeComponent("txtIbanaccountNumber"),
+    txtIbaNbankName: makeNodeComponent("txtIbaNbankName"),
     txtIbanPaymentNumber: makeNodeComponent("txtIbanPaymentNumber"),
     sideEffectGetCardInquiry2: makeNodeComponent("sideEffectGetCardInquiry2"),
     sideEffectGetIbanInquiry: makeNodeComponent("sideEffectGetIbanInquiry"),
