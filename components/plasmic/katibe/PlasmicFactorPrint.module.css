@@ -70,7 +70,7 @@
   align-items: center;
   grid-column-end: span 3;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__rtplh {
@@ -97,7 +97,7 @@
   align-items: center;
   grid-column-end: span 5;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__pLoip {
@@ -479,7 +479,7 @@
   justify-content: flex-start;
   align-items: center;
   min-width: 0;
-  padding: 8px;
+  padding: 8px 8px 0px;
 }
 .freeBox___97R6D {
   display: grid;
@@ -542,7 +542,7 @@
   height: auto;
   max-width: 100%;
   min-width: 0;
-  padding: 0px;
+  padding: 0px 0px 8px;
 }
 .freeBox__fItva {
   display: flex;
@@ -551,10 +551,10 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__fItva {
@@ -575,10 +575,10 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__r8FDr {
@@ -599,10 +599,10 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox___0ML5 {
@@ -623,10 +623,10 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__jVe7E {
@@ -657,10 +657,10 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__lcXbd {
@@ -681,10 +681,10 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__rxSXw {
@@ -705,11 +705,11 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
+  align-items: flex-start;
   grid-column-end: span 2;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__oCXyV {
@@ -752,7 +752,7 @@
   justify-self: flex-start;
   grid-column-start: 1 !important;
   grid-column-end: -1 !important;
-  padding: 0px 8px 8px;
+  padding: 0px 8px;
   margin: 0px;
   border-style: solid;
 }
@@ -829,7 +829,7 @@
   height: auto;
   max-width: 100%;
   min-width: 0;
-  padding: 0px;
+  padding: 0px 0px 8px;
 }
 .freeBox__yVqVx {
   display: flex;
@@ -842,7 +842,7 @@
   align-items: center;
   grid-column-end: span 2;
   min-width: 0;
-  padding: 8px;
+  padding: 0px 8px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__yVqVx {
@@ -871,7 +871,7 @@
   justify-content: flex-start;
   align-items: center;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__mt1EL {
@@ -900,7 +900,7 @@
   justify-content: flex-start;
   align-items: center;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__keAJl {
@@ -938,7 +938,7 @@
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
-  padding: 8px;
+  padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__aI2Im {
@@ -967,7 +967,7 @@
   justify-content: flex-start;
   align-items: center;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__erYrA {
@@ -996,7 +996,7 @@
   justify-content: flex-start;
   align-items: center;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__di802 {
@@ -1026,7 +1026,7 @@
   align-items: center;
   grid-column-end: span 1;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__x3Ru {
@@ -1088,7 +1088,7 @@
   justify-content: flex-start;
   align-items: center;
   min-width: 0;
-  padding: 8px;
+  padding: 8px 8px 0px;
 }
 .freeBox__owYb9 {
   display: grid;
@@ -1100,7 +1100,7 @@
   grid-column-start: 3 !important;
   grid-column-end: -3 !important;
   border-radius: 10px;
-  padding: 8px;
+  padding: 8px 8px 0px;
   margin: 0px;
   border-width: 3px;
   border-style: solid;
@@ -1141,7 +1141,7 @@
   justify-content: flex-start;
   align-items: center;
   min-width: 0;
-  padding: 8px;
+  padding: 0px 8px;
 }
 .freeBox__wh0Xe {
   display: grid;
@@ -1161,10 +1161,10 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__usDvd {
@@ -1187,11 +1187,11 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   grid-column-end: span 2;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 .text__bCaWg {
   position: relative;
@@ -1209,10 +1209,10 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__zO4Bh {
@@ -1235,10 +1235,10 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 .text__l4333 {
   position: relative;
@@ -1256,10 +1256,10 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__snl67 {
@@ -1558,7 +1558,7 @@
   max-width: 100%;
   grid-column-start: 1 !important;
   grid-column-end: -1 !important;
-  padding: 0px 8px 8px;
+  padding: 0px 8px;
 }
 .freeBox__tw2B3 {
   display: flex;
