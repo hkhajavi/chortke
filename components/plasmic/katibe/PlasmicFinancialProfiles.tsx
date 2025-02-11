@@ -132,6 +132,7 @@ export type PlasmicFinancialProfiles__OverridesType = {
   txtPaymentNumber?: Flex__<typeof TextInput>;
   btnActiveRecuringSettlement?: Flex__<typeof Button>;
   btnDeleteRecuringSettlement?: Flex__<typeof Button>;
+  link?: Flex__<"a"> & Partial<LinkProps>;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
   loadProfile?: Flex__<typeof SideEffect>;
   refreshRecuringSettlement?: Flex__<typeof SideEffect>;
@@ -6683,6 +6684,73 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 </div>
               </div>
             ) : null}
+            {(() => {
+              try {
+                return !$state.waiting;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox__kIGjG)}>
+                <div className={classNames(projectcss.all, sty.freeBox__gKL5)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__jn61K
+                    )}
+                  >
+                    <React.Fragment>
+                      <React.Fragment>
+                        {
+                          "\u062f\u0631\u0635\u0648\u0631\u062a \u0646\u06cc\u0627\u0632 \u0628\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc "
+                        }
+                      </React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {
+                          "\u067e\u06cc\u0631\u0627\u0645\u0648\u0646 \u0627\u06cc\u0646 \u0635\u0641\u062d\u0647"
+                        }
+                      </span>
+                      <React.Fragment>
+                        {"\u060c \u0628\u0647 \u0622\u06cc\u200c\u062f\u06cc "}
+                      </React.Fragment>
+                      {
+                        <PlasmicLink__
+                          data-plasmic-name={"link"}
+                          data-plasmic-override={overrides.link}
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.a,
+                            projectcss.__wab_text,
+                            projectcss.plasmic_default__inline,
+                            sty.link
+                          )}
+                          component={Link}
+                          href={"https://t.me/hojatkhajavi"}
+                          platform={"nextjs"}
+                        >
+                          {"@hojatkhajavi"}
+                        </PlasmicLink__>
+                      }
+                      <React.Fragment>
+                        {
+                          " \u062f\u0631 \u062a\u0644\u06af\u0631\u0627\u0645 \u067e\u06cc\u0627\u0645 \u062f\u0647\u06cc\u062f."
+                        }
+                      </React.Fragment>
+                    </React.Fragment>
+                  </div>
+                </div>
+              </div>
+            ) : null}
           </section>
           <SideEffect
             data-plasmic-name={"sideEffectPageLoad"}
@@ -7665,6 +7733,7 @@ const PlasmicDescendants = {
     "txtPaymentNumber",
     "btnActiveRecuringSettlement",
     "btnDeleteRecuringSettlement",
+    "link",
     "sideEffectPageLoad",
     "loadProfile",
     "refreshRecuringSettlement"
@@ -7697,7 +7766,8 @@ const PlasmicDescendants = {
     "accountSettlement",
     "txtPaymentNumber",
     "btnActiveRecuringSettlement",
-    "btnDeleteRecuringSettlement"
+    "btnDeleteRecuringSettlement",
+    "link"
   ],
   cbAccounts: ["cbAccounts"],
   txtName: ["txtName"],
@@ -7751,6 +7821,7 @@ const PlasmicDescendants = {
   txtPaymentNumber: ["txtPaymentNumber"],
   btnActiveRecuringSettlement: ["btnActiveRecuringSettlement"],
   btnDeleteRecuringSettlement: ["btnDeleteRecuringSettlement"],
+  link: ["link"],
   sideEffectPageLoad: ["sideEffectPageLoad"],
   loadProfile: ["loadProfile"],
   refreshRecuringSettlement: ["refreshRecuringSettlement"]
@@ -7788,6 +7859,7 @@ type NodeDefaultElementType = {
   txtPaymentNumber: typeof TextInput;
   btnActiveRecuringSettlement: typeof Button;
   btnDeleteRecuringSettlement: typeof Button;
+  link: "a";
   sideEffectPageLoad: typeof SideEffect;
   loadProfile: typeof SideEffect;
   refreshRecuringSettlement: typeof SideEffect;
@@ -7885,6 +7957,7 @@ export const PlasmicFinancialProfiles = Object.assign(
     btnDeleteRecuringSettlement: makeNodeComponent(
       "btnDeleteRecuringSettlement"
     ),
+    link: makeNodeComponent("link"),
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
     loadProfile: makeNodeComponent("loadProfile"),
     refreshRecuringSettlement: makeNodeComponent("refreshRecuringSettlement"),

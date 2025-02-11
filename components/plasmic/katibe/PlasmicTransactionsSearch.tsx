@@ -142,6 +142,7 @@ export type PlasmicTransactionsSearch__OverridesType = {
   detailsDataApiRequest?: Flex__<typeof ApiRequest>;
   waitingIcon3?: Flex__<"svg">;
   gridNoData2?: Flex__<"div">;
+  link?: Flex__<"a"> & Partial<LinkProps>;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
   sideEffectRefresh?: Flex__<typeof SideEffect>;
   embedHtml?: Flex__<typeof Embed>;
@@ -7118,6 +7119,59 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                   </div>
                 </div>
               </section>
+              <div className={classNames(projectcss.all, sty.freeBox___9VWgP)}>
+                <div className={classNames(projectcss.all, sty.freeBox__cR6Zz)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___6Eou
+                    )}
+                  >
+                    <React.Fragment>
+                      <React.Fragment>
+                        {
+                          "\u062f\u0631\u0635\u0648\u0631\u062a \u0646\u06cc\u0627\u0632 \u0628\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc "
+                        }
+                      </React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {
+                          "\u067e\u06cc\u0631\u0627\u0645\u0648\u0646 \u0627\u06cc\u0646 \u0635\u0641\u062d\u0647"
+                        }
+                      </span>
+                      <React.Fragment>
+                        {"\u060c \u0628\u0647 \u0622\u06cc\u200c\u062f\u06cc "}
+                      </React.Fragment>
+                      {
+                        <PlasmicLink__
+                          data-plasmic-name={"link"}
+                          data-plasmic-override={overrides.link}
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.a,
+                            projectcss.__wab_text,
+                            projectcss.plasmic_default__inline,
+                            sty.link
+                          )}
+                          component={Link}
+                          href={"https://t.me/hojatkhajavi"}
+                          platform={"nextjs"}
+                        >
+                          {"@hojatkhajavi"}
+                        </PlasmicLink__>
+                      }
+                      <React.Fragment>
+                        {
+                          " \u062f\u0631 \u062a\u0644\u06af\u0631\u0627\u0645 \u067e\u06cc\u0627\u0645 \u062f\u0647\u06cc\u062f."
+                        }
+                      </React.Fragment>
+                    </React.Fragment>
+                  </div>
+                </div>
+              </div>
             </section>
             <SideEffect
               data-plasmic-name={"sideEffectPageLoad"}
@@ -7818,6 +7872,7 @@ const PlasmicDescendants = {
     "detailsDataApiRequest",
     "waitingIcon3",
     "gridNoData2",
+    "link",
     "sideEffectPageLoad",
     "sideEffectRefresh",
     "embedHtml"
@@ -7917,6 +7972,7 @@ const PlasmicDescendants = {
   detailsDataApiRequest: ["detailsDataApiRequest", "waitingIcon3"],
   waitingIcon3: ["waitingIcon3"],
   gridNoData2: ["gridNoData2"],
+  link: ["link"],
   sideEffectPageLoad: ["sideEffectPageLoad"],
   sideEffectRefresh: ["sideEffectRefresh"],
   embedHtml: ["embedHtml"]
@@ -7962,6 +8018,7 @@ type NodeDefaultElementType = {
   detailsDataApiRequest: typeof ApiRequest;
   waitingIcon3: "svg";
   gridNoData2: "div";
+  link: "a";
   sideEffectPageLoad: typeof SideEffect;
   sideEffectRefresh: typeof SideEffect;
   embedHtml: typeof Embed;
@@ -8063,6 +8120,7 @@ export const PlasmicTransactionsSearch = Object.assign(
     detailsDataApiRequest: makeNodeComponent("detailsDataApiRequest"),
     waitingIcon3: makeNodeComponent("waitingIcon3"),
     gridNoData2: makeNodeComponent("gridNoData2"),
+    link: makeNodeComponent("link"),
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
     sideEffectRefresh: makeNodeComponent("sideEffectRefresh"),
     embedHtml: makeNodeComponent("embedHtml"),
