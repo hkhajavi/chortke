@@ -6735,7 +6735,28 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                             sty.link
                           )}
                           component={Link}
-                          href={"https://t.me/hojatkhajavi"}
+                          href={""}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["openLink"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    args: ["https://t.me/hojatkhajavi"]
+                                  };
+                                  return $globalActions[
+                                    "Hamdast.openLink"
+                                  ]?.apply(null, [...actionArgs.args]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["openLink"] != null &&
+                              typeof $steps["openLink"] === "object" &&
+                              typeof $steps["openLink"].then === "function"
+                            ) {
+                              $steps["openLink"] = await $steps["openLink"];
+                            }
+                          }}
                           platform={"nextjs"}
                         >
                           {"@hojatkhajavi"}
