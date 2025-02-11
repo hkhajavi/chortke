@@ -2945,6 +2945,12 @@
   cursor: pointer;
   height: 1em;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .svg__iQb5C {
+    width: 12px;
+    flex-shrink: 0;
+  }
+}
 .freeBox___8Q2Zh {
   display: flex;
   position: relative;
