@@ -649,6 +649,12 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ``
+      },
+      {
+        path: "centerInfo",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
       }
     ],
     [$props, $ctx, $refs]
@@ -849,7 +855,9 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
             {(() => {
               try {
                 return (
-                  !$state.waiting && $state.currentAccountType == "centerid"
+                  !$state.waiting &&
+                  $state.currentAccountType == "centerid" &&
+                  $state.centerInfo.type_id == 2
                 );
               } catch (e) {
                 if (
@@ -7051,6 +7059,108 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 $steps["showWaitingProfile"] = await $steps[
                   "showWaitingProfile"
                 ];
+              }
+
+              $steps["clearCenterInfo"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["centerInfo"]
+                      },
+                      operation: 0,
+                      value: {}
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["clearCenterInfo"] != null &&
+                typeof $steps["clearCenterInfo"] === "object" &&
+                typeof $steps["clearCenterInfo"].then === "function"
+              ) {
+                $steps["clearCenterInfo"] = await $steps["clearCenterInfo"];
+              }
+
+              $steps["getCentersInfo"] =
+                $state.currentAccountType == "centerid"
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          undefined,
+                          (() => {
+                            try {
+                              return (
+                                "https://apigw.paziresh24.com/v1/centers/" +
+                                $state.currentAccountId
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        ]
+                      };
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
+                    })()
+                  : undefined;
+              if (
+                $steps["getCentersInfo"] != null &&
+                typeof $steps["getCentersInfo"] === "object" &&
+                typeof $steps["getCentersInfo"].then === "function"
+              ) {
+                $steps["getCentersInfo"] = await $steps["getCentersInfo"];
+              }
+
+              $steps["setCenterInfo"] =
+                $state.currentAccountType == "centerid"
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["centerInfo"]
+                        },
+                        operation: 0,
+                        value: $steps.getCentersInfo.data
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["setCenterInfo"] != null &&
+                typeof $steps["setCenterInfo"] === "object" &&
+                typeof $steps["setCenterInfo"].then === "function"
+              ) {
+                $steps["setCenterInfo"] = await $steps["setCenterInfo"];
               }
 
               $steps["updateWaitingUserAccount"] = $state.completeLoad
