@@ -4630,6 +4630,39 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                             sty.button__y0Pj8
                                           )}
                                           color={"softBlue"}
+                                          onClick={async event => {
+                                            const $steps = {};
+
+                                            $steps["invokeGlobalAction"] = true
+                                              ? (() => {
+                                                  const actionArgs = {
+                                                    args: [
+                                                      "https://www.paziresh24.com/dashboard/apps/katibe/setting/"
+                                                    ]
+                                                  };
+                                                  return $globalActions[
+                                                    "Hamdast.openLink"
+                                                  ]?.apply(null, [
+                                                    ...actionArgs.args
+                                                  ]);
+                                                })()
+                                              : undefined;
+                                            if (
+                                              $steps["invokeGlobalAction"] !=
+                                                null &&
+                                              typeof $steps[
+                                                "invokeGlobalAction"
+                                              ] === "object" &&
+                                              typeof $steps[
+                                                "invokeGlobalAction"
+                                              ].then === "function"
+                                            ) {
+                                              $steps["invokeGlobalAction"] =
+                                                await $steps[
+                                                  "invokeGlobalAction"
+                                                ];
+                                            }
+                                          }}
                                           size={"minimal"}
                                         />
                                       </div>
