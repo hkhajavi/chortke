@@ -131,7 +131,6 @@ export type PlasmicTransactionsSearch__OverridesType = {
   txtCardOwner?: Flex__<typeof TextInput>;
   txtCardIban?: Flex__<typeof TextInput>;
   txtCardBankName?: Flex__<typeof TextInput>;
-  span?: Flex__<"span">;
   radioAccounts?: Flex__<typeof AntdRadioGroup>;
   txtSettlementResult?: Flex__<"div">;
   gridInvoice1?: Flex__<"div">;
@@ -4595,9 +4594,9 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                   undefined
                                                   ? $state.bankAccountList[0]
                                                       .name +
-                                                      "-" +
+                                                      " - " +
                                                       $state.bankAccountList[0]
-                                                        .cardid
+                                                        .iban
                                                   : "";
                                               } catch (e) {
                                                 if (
@@ -4612,74 +4611,27 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                             })()}
                                           </React.Fragment>
                                         </div>
-                                        <div
+                                        <Button2
+                                          children2={
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                projectcss.__wab_text,
+                                                sty.text__wu0Yc
+                                              )}
+                                            >
+                                              {
+                                                "\u0645\u062f\u06cc\u0631\u06cc\u062a \u062d\u0633\u0627\u0628"
+                                              }
+                                            </div>
+                                          }
                                           className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text__zVwro
+                                            "__wab_instance",
+                                            sty.button__y0Pj8
                                           )}
-                                          onClick={async event => {
-                                            const $steps = {};
-
-                                            $steps["invokeGlobalAction"] = true
-                                              ? (() => {
-                                                  const actionArgs = {
-                                                    args: [
-                                                      "https://www.paziresh24.com/dashboard/apps/katibe/setting/"
-                                                    ]
-                                                  };
-                                                  return $globalActions[
-                                                    "Hamdast.openLink"
-                                                  ]?.apply(null, [
-                                                    ...actionArgs.args
-                                                  ]);
-                                                })()
-                                              : undefined;
-                                            if (
-                                              $steps["invokeGlobalAction"] !=
-                                                null &&
-                                              typeof $steps[
-                                                "invokeGlobalAction"
-                                              ] === "object" &&
-                                              typeof $steps[
-                                                "invokeGlobalAction"
-                                              ].then === "function"
-                                            ) {
-                                              $steps["invokeGlobalAction"] =
-                                                await $steps[
-                                                  "invokeGlobalAction"
-                                                ];
-                                            }
-                                          }}
-                                        >
-                                          <React.Fragment>
-                                            <React.Fragment>
-                                              {""}
-                                            </React.Fragment>
-                                            {
-                                              <span
-                                                data-plasmic-name={"span"}
-                                                data-plasmic-override={
-                                                  overrides.span
-                                                }
-                                                className={classNames(
-                                                  projectcss.all,
-                                                  projectcss.span,
-                                                  projectcss.__wab_text,
-                                                  projectcss.plasmic_default__inline,
-                                                  sty.span
-                                                )}
-                                              >
-                                                {
-                                                  "\u0645\u062f\u06cc\u0631\u06cc\u062a \u062d\u0633\u0627\u0628\u200c"
-                                                }
-                                              </span>
-                                            }
-                                            <React.Fragment>
-                                              {""}
-                                            </React.Fragment>
-                                          </React.Fragment>
-                                        </div>
+                                          color={"softBlue"}
+                                          size={"minimal"}
+                                        />
                                       </div>
                                       <div
                                         className={classNames(
@@ -7882,7 +7834,6 @@ const PlasmicDescendants = {
     "txtCardOwner",
     "txtCardIban",
     "txtCardBankName",
-    "span",
     "radioAccounts",
     "txtSettlementResult",
     "gridInvoice1",
@@ -7924,7 +7875,6 @@ const PlasmicDescendants = {
     "txtCardOwner",
     "txtCardIban",
     "txtCardBankName",
-    "span",
     "radioAccounts",
     "txtSettlementResult"
   ],
@@ -7954,7 +7904,6 @@ const PlasmicDescendants = {
     "txtCardOwner",
     "txtCardIban",
     "txtCardBankName",
-    "span",
     "radioAccounts",
     "txtSettlementResult"
   ],
@@ -7971,7 +7920,6 @@ const PlasmicDescendants = {
   txtCardOwner: ["txtCardOwner"],
   txtCardIban: ["txtCardIban"],
   txtCardBankName: ["txtCardBankName"],
-  span: ["span"],
   radioAccounts: ["radioAccounts"],
   txtSettlementResult: ["txtSettlementResult"],
   gridInvoice1: ["gridInvoice1"],
@@ -8028,7 +7976,6 @@ type NodeDefaultElementType = {
   txtCardOwner: typeof TextInput;
   txtCardIban: typeof TextInput;
   txtCardBankName: typeof TextInput;
-  span: "span";
   radioAccounts: typeof AntdRadioGroup;
   txtSettlementResult: "div";
   gridInvoice1: "div";
@@ -8130,7 +8077,6 @@ export const PlasmicTransactionsSearch = Object.assign(
     txtCardOwner: makeNodeComponent("txtCardOwner"),
     txtCardIban: makeNodeComponent("txtCardIban"),
     txtCardBankName: makeNodeComponent("txtCardBankName"),
-    span: makeNodeComponent("span"),
     radioAccounts: makeNodeComponent("radioAccounts"),
     txtSettlementResult: makeNodeComponent("txtSettlementResult"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
