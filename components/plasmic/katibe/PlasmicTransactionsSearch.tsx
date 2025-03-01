@@ -2257,7 +2257,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                       amount:
                                                         $state.paymentAmount,
                                                       centerid:
-                                                        $state.currentAccountId,
+                                                        $state.currentAccountType ==
+                                                        "centerid"
+                                                          ? $state.currentAccountId
+                                                          : "",
                                                       account:
                                                         $state.currentAccountAccount
                                                     };
