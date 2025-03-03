@@ -7361,6 +7361,54 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                   ];
                 }
 
+                $steps["getUsers"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        args: ["POST", "https://www.paziresh24.com/api/getUser"]
+                      };
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
+                    })()
+                  : undefined;
+                if (
+                  $steps["getUsers"] != null &&
+                  typeof $steps["getUsers"] === "object" &&
+                  typeof $steps["getUsers"].then === "function"
+                ) {
+                  $steps["getUsers"] = await $steps["getUsers"];
+                }
+
+                $steps["updateUserData"] =
+                  $steps.getUsers.status == 200
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return (() => {
+                              if ($steps.getUsers.data.isDoctor == true) {
+                                return $state.accounts.forEach(item => {
+                                  if (item.account === "p24") {
+                                    item.name = "ویزیت آنلاین " + item.name;
+                                  }
+                                });
+                              }
+                            })();
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["updateUserData"] != null &&
+                  typeof $steps["updateUserData"] === "object" &&
+                  typeof $steps["updateUserData"].then === "function"
+                ) {
+                  $steps["updateUserData"] = await $steps["updateUserData"];
+                }
+
                 $steps["isLoadAccountTrue"] = true
                   ? (() => {
                       const actionArgs = {

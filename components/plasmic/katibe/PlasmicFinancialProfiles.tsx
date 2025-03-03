@@ -6913,26 +6913,21 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 $steps.getUsers.status == 200
                   ? (() => {
                       const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["userData"]
-                        },
-                        operation: 0,
-                        value: $steps.getUsers.data
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
+                        customFunction: async () => {
+                          return (() => {
+                            $state.userData = $steps.getUsers.data;
+                            if ($steps.getUsers.data.isDoctor == true) {
+                              return $state.accounts.forEach(item => {
+                                if (item.account === "p24") {
+                                  item.name = "ویزیت آنلاین " + item.name;
+                                }
+                              });
+                            }
+                          })();
                         }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
                       })?.apply(null, [actionArgs]);
                     })()
                   : undefined;
