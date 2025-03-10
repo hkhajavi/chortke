@@ -473,20 +473,6 @@
       "cssFilePath": "plasmic/chortke/plasmic.module.css",
       "components": [
         {
-          "id": "XSAvgKpp1Uaz",
-          "name": "Homepage",
-          "type": "managed",
-          "projectId": "afXULSfGYmou2jFpEc2QWJ",
-          "renderModuleFilePath": "plasmic/chortke/PlasmicHomepage.tsx",
-          "importSpec": {
-            "modulePath": "../src/pages/index.tsx"
-          },
-          "cssFilePath": "plasmic/chortke/PlasmicHomepage.module.css",
-          "scheme": "blackbox",
-          "componentType": "page",
-          "path": "/"
-        },
-        {
           "id": "SePhlRlvEn3n",
           "name": "TextInput",
           "type": "managed",
@@ -813,6 +799,20 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/financial-profiles"
+        },
+        {
+          "id": "M6YdBfvgHP0a",
+          "name": "HomePage",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/katibe/PlasmicHomePage.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/index.tsx"
+          },
+          "cssFilePath": "plasmic/katibe/PlasmicHomePage.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/"
         }
       ],
       "icons": [
@@ -1080,6 +1080,21 @@
           "id": "ZLOL59vKkeZc",
           "name": "Icon45Icon",
           "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon45.tsx"
+        },
+        {
+          "id": "mwPyen4LrNG1",
+          "name": "CircleIcon",
+          "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Circle.tsx"
+        },
+        {
+          "id": "EP_i2IXtsLJs",
+          "name": "ChevronDownIcon",
+          "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__ChevronDown.tsx"
+        },
+        {
+          "id": "jAWmXkrjKTW3",
+          "name": "Icon46Icon",
+          "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon46.tsx"
         }
       ],
       "images": [
@@ -1282,6 +1297,11 @@
           "id": "b5TXx0bICNup",
           "name": "image 39",
           "filePath": "../public/plasmic/katibe/images/image39.svg"
+        },
+        {
+          "id": "_gry8SNs7LKq",
+          "name": "image 40",
+          "filePath": "../public/plasmic/katibe/images/image40.png"
         }
       ],
       "indirect": false,
