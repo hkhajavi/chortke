@@ -645,7 +645,6 @@
 .text__oorKb {
   white-space: pre;
   color: #eff6ff;
-  font-family: "Montserrat", sans-serif;
   font-size: 24px;
   font-weight: 400;
   font-style: normal;
@@ -749,7 +748,6 @@
 .text__iTiFi {
   white-space: pre;
   color: #1e3a8a;
-  font-family: "Montserrat", sans-serif;
   font-size: 24px;
   font-weight: 400;
   font-style: normal;
@@ -915,7 +913,6 @@
   width: 100%;
   height: auto;
   max-width: 800px;
-  font-family: "Inter", sans-serif;
   font-size: 48px;
   font-weight: 700;
   font-style: normal;
@@ -978,7 +975,6 @@
   width: 100%;
   height: auto;
   max-width: 800px;
-  font-family: "Inter", sans-serif;
   font-size: 48px;
   font-weight: 700;
   font-style: normal;
@@ -1000,7 +996,6 @@
   max-width: 800px;
   margin-top: 12px;
   font-weight: 500;
-  font-family: "Montserrat", sans-serif;
   font-size: 24px;
   font-style: normal;
   color: #00000080;
@@ -1036,7 +1031,6 @@
   width: 100%;
   height: auto;
   max-width: 800px;
-  font-family: "Inter", sans-serif;
   font-size: 48px;
   font-weight: 700;
   font-style: normal;
@@ -1058,7 +1052,6 @@
   max-width: 800px;
   margin-top: 12px;
   font-weight: 500;
-  font-family: "Montserrat", sans-serif;
   font-size: 24px;
   font-style: normal;
   color: #00000080;
@@ -7387,7 +7380,6 @@
   height: auto;
   max-width: 939px;
   margin-top: 0px;
-  font-family: "Montserrat", sans-serif;
   font-size: 20px;
   font-weight: 400;
   font-style: normal;
@@ -8168,7 +8160,6 @@
   height: auto;
   max-width: 800px;
   text-align: center;
-  font-family: "Montserrat", sans-serif;
   font-size: 18px;
   padding-top: 0px;
   color: #ffffff;
