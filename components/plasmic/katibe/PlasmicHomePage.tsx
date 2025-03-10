@@ -360,9 +360,32 @@ function PlasmicHomePage__RenderFunc(props: {
                           "__wab_instance",
                           sty.ariaButton___6Begg
                         )}
-                        href={
-                          "https://www.apidog.com/apidoc/shared-6f3a7605-05e6-4d8c-9c9a-72ab01518afb"
-                        }
+                        onPress={async event => {
+                          const $steps = {};
+
+                          $steps["invokeGlobalAction"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  args: [
+                                    "https://www.apidog.com/apidoc/shared-6f3a7605-05e6-4d8c-9c9a-72ab01518afb"
+                                  ]
+                                };
+                                return $globalActions[
+                                  "Hamdast.openLink"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["invokeGlobalAction"] != null &&
+                            typeof $steps["invokeGlobalAction"] === "object" &&
+                            typeof $steps["invokeGlobalAction"].then ===
+                              "function"
+                          ) {
+                            $steps["invokeGlobalAction"] = await $steps[
+                              "invokeGlobalAction"
+                            ];
+                          }
+                        }}
                         target={$props.openLinkInNewTab ? "_blank" : "_self"}
                       >
                         {false ? (
@@ -504,6 +527,32 @@ function PlasmicHomePage__RenderFunc(props: {
                       "__wab_instance",
                       sty.ariaButton__fjKyV
                     )}
+                    onPress={async event => {
+                      const $steps = {};
+
+                      $steps["invokeGlobalAction"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                "https://www.apidog.com/apidoc/shared-6f3a7605-05e6-4d8c-9c9a-72ab01518afb"
+                              ]
+                            };
+                            return $globalActions["Hamdast.openLink"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
+                      if (
+                        $steps["invokeGlobalAction"] != null &&
+                        typeof $steps["invokeGlobalAction"] === "object" &&
+                        typeof $steps["invokeGlobalAction"].then === "function"
+                      ) {
+                        $steps["invokeGlobalAction"] = await $steps[
+                          "invokeGlobalAction"
+                        ];
+                      }
+                    }}
                     target={$props.openLinkInNewTab ? "_blank" : "_self"}
                   >
                     {false ? (
@@ -585,39 +634,24 @@ function PlasmicHomePage__RenderFunc(props: {
                     onPress={async event => {
                       const $steps = {};
 
-                      $steps["updateTextInput2Value"] = true
+                      $steps["invokeGlobalAction"] = true
                         ? (() => {
                             const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["textInput2", "value"]
-                              },
-                              operation: 0
+                              args: ["https://t.me/hojatkhajavi"]
                             };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
+                            return $globalActions["Hamdast.openLink"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
                           })()
                         : undefined;
                       if (
-                        $steps["updateTextInput2Value"] != null &&
-                        typeof $steps["updateTextInput2Value"] === "object" &&
-                        typeof $steps["updateTextInput2Value"].then ===
-                          "function"
+                        $steps["invokeGlobalAction"] != null &&
+                        typeof $steps["invokeGlobalAction"] === "object" &&
+                        typeof $steps["invokeGlobalAction"].then === "function"
                       ) {
-                        $steps["updateTextInput2Value"] = await $steps[
-                          "updateTextInput2Value"
+                        $steps["invokeGlobalAction"] = await $steps[
+                          "invokeGlobalAction"
                         ];
                       }
                     }}
@@ -4441,9 +4475,34 @@ function PlasmicHomePage__RenderFunc(props: {
                   sty.text__iuQ6N
                 )}
               >
-                {
-                  "\u062a\u0645\u0627\u0645\u06cc \u062d\u0642\u0648\u0642 \u0645\u062d\u0641\u0648\u0638 \u0645\u06cc\u200c\u0628\u0627\u0634\u062f."
-                }
+                <React.Fragment>
+                  <React.Fragment>
+                    {
+                      "\u062c\u0647\u062a \u06a9\u0633\u0628 \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0628\u06cc\u0634\u062a\u0631\u060c \u0628\u0627 \u0622\u06cc\u200c\u062f\u06cc "
+                    }
+                  </React.Fragment>
+                  {
+                    <PlasmicLink__
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.a,
+                        projectcss.__wab_text,
+                        projectcss.plasmic_default__inline,
+                        sty.link___8Nb2
+                      )}
+                      component={Link}
+                      href={"https://t.me/hojatkhajavi"}
+                      platform={"nextjs"}
+                    >
+                      {"@hojatkhajavi"}
+                    </PlasmicLink__>
+                  }
+                  <React.Fragment>
+                    {
+                      " \u062f\u0631 \u062a\u0644\u06af\u0631\u0627\u0645 \u0627\u0631\u062a\u0628\u0627\u0637 \u0628\u06af\u06cc\u0631\u06cc\u062f."
+                    }
+                  </React.Fragment>
+                </React.Fragment>
               </div>
             </div>
           </div>
