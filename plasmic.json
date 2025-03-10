@@ -624,20 +624,6 @@
           "plumeType": "button"
         },
         {
-          "id": "GjxR5_VkIiX-",
-          "name": "MyInvoices",
-          "type": "managed",
-          "projectId": "afXULSfGYmou2jFpEc2QWJ",
-          "renderModuleFilePath": "plasmic/katibe/PlasmicMyInvoices.tsx",
-          "importSpec": {
-            "modulePath": "../src/pages/transactions.tsx"
-          },
-          "cssFilePath": "plasmic/katibe/PlasmicMyInvoices.module.css",
-          "scheme": "blackbox",
-          "componentType": "page",
-          "path": "/transactions"
-        },
-        {
           "id": "42tFBTdMKvt2",
           "name": "Dialog2",
           "type": "managed",
@@ -649,20 +635,6 @@
           "cssFilePath": "plasmic/katibe/PlasmicDialog2.module.css",
           "scheme": "blackbox",
           "componentType": "component"
-        },
-        {
-          "id": "Nb8_yMmNDQBL",
-          "name": "Financialaccounts",
-          "type": "managed",
-          "projectId": "afXULSfGYmou2jFpEc2QWJ",
-          "renderModuleFilePath": "plasmic/katibe/PlasmicFinancialaccounts.tsx",
-          "importSpec": {
-            "modulePath": "../src/pages/accounts.tsx"
-          },
-          "cssFilePath": "plasmic/katibe/PlasmicFinancialaccounts.module.css",
-          "scheme": "blackbox",
-          "componentType": "page",
-          "path": "/accounts"
         },
         {
           "id": "X-9VpIiu6hFS",
@@ -691,20 +663,6 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/factors-search"
-        },
-        {
-          "id": "L5_xWrUT2kGZ",
-          "name": "ProductAdminDelete",
-          "type": "managed",
-          "projectId": "afXULSfGYmou2jFpEc2QWJ",
-          "renderModuleFilePath": "plasmic/katibe/PlasmicProductAdminDelete.tsx",
-          "importSpec": {
-            "modulePath": "../src/pages/productAdmin-delete.tsx"
-          },
-          "cssFilePath": "plasmic/katibe/PlasmicProductAdminDelete.module.css",
-          "scheme": "blackbox",
-          "componentType": "page",
-          "path": "/productAdmin-delete"
         },
         {
           "id": "xi8G6lqOVIEm",

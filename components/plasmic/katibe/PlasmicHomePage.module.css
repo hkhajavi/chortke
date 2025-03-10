@@ -148,13 +148,16 @@
   max-height: 50px;
   min-width: 0;
 }
+.link___6QWfm {
+  margin-top: -20px;
+  display: flex;
+}
 .img__xoepJ {
   object-fit: cover;
   width: 75px;
   height: 100%;
   max-width: none;
   max-height: none;
-  margin-top: -20px;
   flex-shrink: 0;
   min-height: 0;
 }
@@ -7636,15 +7639,15 @@
   width: 100%;
   max-width: 100%;
   min-width: 0;
-  padding: 64px 64px 14px;
+  padding: 13px 64px 14px;
 }
 .freeBox__e0Jbj {
-  display: flex;
   position: relative;
   max-width: 1140px;
   flex-direction: row;
   width: 100%;
   min-width: 0;
+  display: none;
 }
 .freeBox__e0Jbj > :global(.__wab_flex-container) {
   flex-direction: row;
@@ -7668,7 +7671,6 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__e0Jbj {
-    display: flex;
     flex-direction: column;
   }
 }

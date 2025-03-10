@@ -176,6 +176,8 @@ function PlasmicHomePage__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const $globalActions = useGlobalActions?.();
+
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -271,22 +273,57 @@ function PlasmicHomePage__RenderFunc(props: {
                   component={Link}
                   platform={"nextjs"}
                 >
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__xoepJ)}
-                    displayHeight={"100%"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"none"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"75px"}
-                    src={{
-                      src: "/plasmic/chortke/images/logo5E03Fe79Svg.svg",
-                      fullWidth: 102.473,
-                      fullHeight: 108.85,
-                      aspectRatio: 0.941415
-                    }}
-                  />
+                  <PlasmicLink__
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.a,
+                      sty.link___6QWfm
+                    )}
+                    component={Link}
+                    platform={"nextjs"}
+                  >
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__xoepJ)}
+                      displayHeight={"100%"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"none"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"75px"}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["invokeGlobalAction"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                args: ["https://www.paziresh24.com"]
+                              };
+                              return $globalActions["Hamdast.openLink"]?.apply(
+                                null,
+                                [...actionArgs.args]
+                              );
+                            })()
+                          : undefined;
+                        if (
+                          $steps["invokeGlobalAction"] != null &&
+                          typeof $steps["invokeGlobalAction"] === "object" &&
+                          typeof $steps["invokeGlobalAction"].then ===
+                            "function"
+                        ) {
+                          $steps["invokeGlobalAction"] = await $steps[
+                            "invokeGlobalAction"
+                          ];
+                        }
+                      }}
+                      src={{
+                        src: "/plasmic/chortke/images/logo5E03Fe79Svg.svg",
+                        fullWidth: 102.473,
+                        fullHeight: 108.85,
+                        aspectRatio: 0.941415
+                      }}
+                    />
+                  </PlasmicLink__>
                 </PlasmicLink__>
                 <Stack__
                   as={"div"}
@@ -745,7 +782,7 @@ function PlasmicHomePage__RenderFunc(props: {
                       >
                         {hasVariant(globalVariants, "screen", "mobileOnly")
                           ? "5,2X"
-                          : "5+"}
+                          : "3+"}
                       </h3>
                       <div
                         className={classNames(
@@ -756,7 +793,7 @@ function PlasmicHomePage__RenderFunc(props: {
                       >
                         {hasVariant(globalVariants, "screen", "mobileOnly")
                           ? "Average traffic increase"
-                          : "\u0631\u0648\u0634\u200c \u067e\u0631\u062f\u0627\u062e\u062a"}
+                          : "\u0631\u0648\u0634\u200c\u0647\u0627\u06cc \u067e\u0631\u062f\u0627\u062e\u062a"}
                       </div>
                     </div>
                     <div
