@@ -233,6 +233,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .link__aJmpr {
     line-height: 1.4;
+    display: none;
   }
 }
 .link__wlZa {
@@ -8176,6 +8177,6 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__iuQ6N {
-    font-size: 20px;
+    font-size: 16px;
   }
 }

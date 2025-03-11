@@ -631,7 +631,7 @@ function PlasmicHomePage__RenderFunc(props: {
                       "__wab_instance",
                       sty.ariaButton__jXaIl
                     )}
-                    href={"tel:09157405770"}
+                    href={""}
                   >
                     {false ? (
                       <div
