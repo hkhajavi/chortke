@@ -3474,7 +3474,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
 
                                                   $steps[
                                                     "updateCbAccountsValue"
-                                                  ] = true
+                                                  ] = false
                                                     ? (() => {
                                                         const actionArgs = {
                                                           variable: {
