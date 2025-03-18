@@ -2604,206 +2604,185 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                       sty.freeBox__k5Ywt
                                     )}
                                   >
-                                    {(() => {
-                                      try {
-                                        return $state.centerInfo.type_id == 2;
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return true;
-                                        }
-                                        throw e;
-                                      }
-                                    })() ? (
-                                      <div
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__brxRe
+                                      )}
+                                    >
+                                      <TabButton
                                         className={classNames(
-                                          projectcss.all,
-                                          sty.freeBox__brxRe
+                                          "__wab_instance",
+                                          sty.tabButton__sneAj
                                         )}
+                                        tabKey={"tab1"}
                                       >
-                                        <TabButton
-                                          className={classNames(
-                                            "__wab_instance",
-                                            sty.tabButton__sneAj
-                                          )}
-                                          tabKey={"tab1"}
-                                        >
-                                          <Button
-                                            children2={
-                                              <div
-                                                className={classNames(
-                                                  projectcss.all,
-                                                  projectcss.__wab_text,
-                                                  sty.text__vTzm4
-                                                )}
-                                              >
-                                                {
-                                                  "\u062b\u0628\u062a \u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a"
-                                                }
-                                              </div>
-                                            }
-                                            className={classNames(
-                                              "__wab_instance",
-                                              sty.button__njcTf
-                                            )}
-                                            color={"text"}
-                                            onClick={async event => {
-                                              const $steps = {};
-
-                                              $steps["updateCardInquiry"] = true
-                                                ? (() => {
-                                                    const actionArgs = {
-                                                      variable: {
-                                                        objRoot: $state,
-                                                        variablePath: [
-                                                          "cardInquiry"
-                                                        ]
-                                                      },
-                                                      operation: 0,
-                                                      value: {}
-                                                    };
-                                                    return (({
-                                                      variable,
-                                                      value,
-                                                      startIndex,
-                                                      deleteCount
-                                                    }) => {
-                                                      if (!variable) {
-                                                        return;
-                                                      }
-                                                      const {
-                                                        objRoot,
-                                                        variablePath
-                                                      } = variable;
-
-                                                      $stateSet(
-                                                        objRoot,
-                                                        variablePath,
-                                                        value
-                                                      );
-                                                      return value;
-                                                    })?.apply(null, [
-                                                      actionArgs
-                                                    ]);
-                                                  })()
-                                                : undefined;
-                                              if (
-                                                $steps["updateCardInquiry"] !=
-                                                  null &&
-                                                typeof $steps[
-                                                  "updateCardInquiry"
-                                                ] === "object" &&
-                                                typeof $steps[
-                                                  "updateCardInquiry"
-                                                ].then === "function"
-                                              ) {
-                                                $steps["updateCardInquiry"] =
-                                                  await $steps[
-                                                    "updateCardInquiry"
-                                                  ];
+                                        <Button
+                                          children2={
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                projectcss.__wab_text,
+                                                sty.text__vTzm4
+                                              )}
+                                            >
+                                              {
+                                                "\u062b\u0628\u062a \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a"
                                               }
-                                            }}
-                                          />
-                                        </TabButton>
-                                        <TabButton
-                                          className={classNames(
-                                            "__wab_instance",
-                                            sty.tabButton___9U3SR
-                                          )}
-                                          tabKey={"tab2"}
-                                        >
-                                          <Button
-                                            children2={
-                                              <div
-                                                className={classNames(
-                                                  projectcss.all,
-                                                  projectcss.__wab_text,
-                                                  sty.text__eHdgV
-                                                )}
-                                              >
-                                                {
-                                                  "\u062b\u0628\u062a \u0634\u0645\u0627\u0631\u0647 \u0634\u0628\u0627"
-                                                }
-                                              </div>
-                                            }
-                                            className={classNames(
-                                              "__wab_instance",
-                                              sty.button__l80IW
-                                            )}
-                                            color={"text"}
-                                            onClick={async event => {
-                                              const $steps = {};
-
-                                              $steps["updateCardInquiry"] = true
-                                                ? (() => {
-                                                    const actionArgs = {
-                                                      variable: {
-                                                        objRoot: $state,
-                                                        variablePath: [
-                                                          "cardInquiry"
-                                                        ]
-                                                      },
-                                                      operation: 0,
-                                                      value: {}
-                                                    };
-                                                    return (({
-                                                      variable,
-                                                      value,
-                                                      startIndex,
-                                                      deleteCount
-                                                    }) => {
-                                                      if (!variable) {
-                                                        return;
-                                                      }
-                                                      const {
-                                                        objRoot,
-                                                        variablePath
-                                                      } = variable;
-
-                                                      $stateSet(
-                                                        objRoot,
-                                                        variablePath,
-                                                        value
-                                                      );
-                                                      return value;
-                                                    })?.apply(null, [
-                                                      actionArgs
-                                                    ]);
-                                                  })()
-                                                : undefined;
-                                              if (
-                                                $steps["updateCardInquiry"] !=
-                                                  null &&
-                                                typeof $steps[
-                                                  "updateCardInquiry"
-                                                ] === "object" &&
-                                                typeof $steps[
-                                                  "updateCardInquiry"
-                                                ].then === "function"
-                                              ) {
-                                                $steps["updateCardInquiry"] =
-                                                  await $steps[
-                                                    "updateCardInquiry"
-                                                  ];
-                                              }
-                                            }}
-                                          />
-                                        </TabButton>
-                                        <TabUnderline
-                                          data-plasmic-name={"tabUnderline"}
-                                          data-plasmic-override={
-                                            overrides.tabUnderline
+                                            </div>
                                           }
                                           className={classNames(
                                             "__wab_instance",
-                                            sty.tabUnderline
+                                            sty.button__njcTf
                                           )}
+                                          color={"text"}
+                                          onClick={async event => {
+                                            const $steps = {};
+
+                                            $steps["updateCardInquiry"] = true
+                                              ? (() => {
+                                                  const actionArgs = {
+                                                    variable: {
+                                                      objRoot: $state,
+                                                      variablePath: [
+                                                        "cardInquiry"
+                                                      ]
+                                                    },
+                                                    operation: 0,
+                                                    value: {}
+                                                  };
+                                                  return (({
+                                                    variable,
+                                                    value,
+                                                    startIndex,
+                                                    deleteCount
+                                                  }) => {
+                                                    if (!variable) {
+                                                      return;
+                                                    }
+                                                    const {
+                                                      objRoot,
+                                                      variablePath
+                                                    } = variable;
+
+                                                    $stateSet(
+                                                      objRoot,
+                                                      variablePath,
+                                                      value
+                                                    );
+                                                    return value;
+                                                  })?.apply(null, [actionArgs]);
+                                                })()
+                                              : undefined;
+                                            if (
+                                              $steps["updateCardInquiry"] !=
+                                                null &&
+                                              typeof $steps[
+                                                "updateCardInquiry"
+                                              ] === "object" &&
+                                              typeof $steps["updateCardInquiry"]
+                                                .then === "function"
+                                            ) {
+                                              $steps["updateCardInquiry"] =
+                                                await $steps[
+                                                  "updateCardInquiry"
+                                                ];
+                                            }
+                                          }}
                                         />
-                                      </div>
-                                    ) : null}
+                                      </TabButton>
+                                      <TabButton
+                                        className={classNames(
+                                          "__wab_instance",
+                                          sty.tabButton___9U3SR
+                                        )}
+                                        tabKey={"tab2"}
+                                      >
+                                        <Button
+                                          children2={
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                projectcss.__wab_text,
+                                                sty.text__eHdgV
+                                              )}
+                                            >
+                                              {
+                                                "\u062b\u0628\u062a \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0634\u0628\u0627"
+                                              }
+                                            </div>
+                                          }
+                                          className={classNames(
+                                            "__wab_instance",
+                                            sty.button__l80IW
+                                          )}
+                                          color={"text"}
+                                          onClick={async event => {
+                                            const $steps = {};
+
+                                            $steps["updateCardInquiry"] = true
+                                              ? (() => {
+                                                  const actionArgs = {
+                                                    variable: {
+                                                      objRoot: $state,
+                                                      variablePath: [
+                                                        "cardInquiry"
+                                                      ]
+                                                    },
+                                                    operation: 0,
+                                                    value: {}
+                                                  };
+                                                  return (({
+                                                    variable,
+                                                    value,
+                                                    startIndex,
+                                                    deleteCount
+                                                  }) => {
+                                                    if (!variable) {
+                                                      return;
+                                                    }
+                                                    const {
+                                                      objRoot,
+                                                      variablePath
+                                                    } = variable;
+
+                                                    $stateSet(
+                                                      objRoot,
+                                                      variablePath,
+                                                      value
+                                                    );
+                                                    return value;
+                                                  })?.apply(null, [actionArgs]);
+                                                })()
+                                              : undefined;
+                                            if (
+                                              $steps["updateCardInquiry"] !=
+                                                null &&
+                                              typeof $steps[
+                                                "updateCardInquiry"
+                                              ] === "object" &&
+                                              typeof $steps["updateCardInquiry"]
+                                                .then === "function"
+                                            ) {
+                                              $steps["updateCardInquiry"] =
+                                                await $steps[
+                                                  "updateCardInquiry"
+                                                ];
+                                            }
+                                          }}
+                                        />
+                                      </TabButton>
+                                      <TabUnderline
+                                        data-plasmic-name={"tabUnderline"}
+                                        data-plasmic-override={
+                                          overrides.tabUnderline
+                                        }
+                                        className={classNames(
+                                          "__wab_instance",
+                                          sty.tabUnderline
+                                        )}
+                                      />
+                                    </div>
                                     <div
                                       className={classNames(
                                         projectcss.all,
