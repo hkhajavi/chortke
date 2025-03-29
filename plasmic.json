@@ -771,6 +771,20 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/"
+        },
+        {
+          "id": "MmniM6bNfP8F",
+          "name": "IpgMessage",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/katibe/PlasmicIpgMessage.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/ipg-message.tsx"
+          },
+          "cssFilePath": "plasmic/katibe/PlasmicIpgMessage.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/ipg-message"
         }
       ],
       "icons": [
@@ -2144,8 +2158,7 @@
           "componentImportPath": "@plasmicpkgs/react-aria/skinny/registerDialog"
         }
       ],
-      "customFunctions": [],
-      "jsBundleThemes": []
+      "customFunctions": []
     }
   ],
   "globalVariants": {
@@ -2174,6 +2187,6 @@
   "nextjsConfig": {
     "pagesDir": "../src/pages"
   },
-  "cliVersion": "0.1.335",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.335/dist/plasmic.schema.json"
+  "cliVersion": "0.1.337",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.337/dist/plasmic.schema.json"
 }

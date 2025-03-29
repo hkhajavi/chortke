@@ -1,6 +1,6 @@
-// @ts-nocheck
 /* eslint-disable */
 /* tslint:disable */
+// @ts-nocheck
 /* prettier-ignore-start */
 
 /** @jsxRuntime classic */
@@ -76,9 +76,7 @@ export type PlasmicInvoiceDetails__VariantsArgs = {};
 type VariantPropType = keyof PlasmicInvoiceDetails__VariantsArgs;
 export const PlasmicInvoiceDetails__VariantProps = new Array<VariantPropType>();
 
-export type PlasmicInvoiceDetails__ArgsType = {
-  invoiceDetails?: any;
-};
+export type PlasmicInvoiceDetails__ArgsType = { invoiceDetails?: any };
 type ArgPropType = keyof PlasmicInvoiceDetails__ArgsType;
 export const PlasmicInvoiceDetails__ArgProps = new Array<ArgPropType>(
   "invoiceDetails"
@@ -294,15 +292,15 @@ type NodeComponentProps<T extends NodeNameType> =
     args?: PlasmicInvoiceDetails__ArgsType;
     overrides?: NodeOverridesType<T>;
   } & Omit<PlasmicInvoiceDetails__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
-    /* Specify args directly as props*/ Omit<
-      PlasmicInvoiceDetails__ArgsType,
-      ReservedPropsType
-    > &
-    /* Specify overrides for each element directly as props*/ Omit<
+    // Specify args directly as props
+    Omit<PlasmicInvoiceDetails__ArgsType, ReservedPropsType> &
+    // Specify overrides for each element directly as props
+    Omit<
       NodeOverridesType<T>,
       ReservedPropsType | VariantPropType | ArgPropType
     > &
-    /* Specify props for the root element*/ Omit<
+    // Specify props for the root element
+    Omit<
       Partial<React.ComponentProps<NodeDefaultElementType[T]>>,
       ReservedPropsType | VariantPropType | ArgPropType | DescendantsType<T>
     >;
