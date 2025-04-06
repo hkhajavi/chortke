@@ -7577,143 +7577,6 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                   $steps["runCode"] = await $steps["runCode"];
                 }
 
-                $steps["getInvoiceList"] = $state.isLoadAccount
-                  ? (() => {
-                      const actionArgs = {
-                        args: [
-                          undefined,
-                          (() => {
-                            try {
-                              return $state.requestInvoiceUrl;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
-                            }
-                          })()
-                        ]
-                      };
-                      return $globalActions["Fragment.apiRequest"]?.apply(
-                        null,
-                        [...actionArgs.args]
-                      );
-                    })()
-                  : undefined;
-                if (
-                  $steps["getInvoiceList"] != null &&
-                  typeof $steps["getInvoiceList"] === "object" &&
-                  typeof $steps["getInvoiceList"].then === "function"
-                ) {
-                  $steps["getInvoiceList"] = await $steps["getInvoiceList"];
-                }
-
-                $steps["updateInvoicelist"] =
-                  $steps.getInvoiceList.status == 200 &&
-                  $steps.getInvoiceList.data.status == true &&
-                  $state.isLoadAccount
-                    ? (() => {
-                        const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["invoicelist"]
-                          },
-                          operation: 0,
-                          value: $steps.getInvoiceList.data.data
-                        };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
-                          }
-                          const { objRoot, variablePath } = variable;
-
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                if (
-                  $steps["updateInvoicelist"] != null &&
-                  typeof $steps["updateInvoicelist"] === "object" &&
-                  typeof $steps["updateInvoicelist"].then === "function"
-                ) {
-                  $steps["updateInvoicelist"] = await $steps[
-                    "updateInvoicelist"
-                  ];
-                }
-
-                $steps["runCode2"] = $state.isLoadAccount
-                  ? (() => {
-                      const actionArgs = {
-                        customFunction: async () => {
-                          return (() => {
-                            if (
-                              $steps.getInvoiceList.status == 200 &&
-                              $steps.getInvoiceList.data.data !== undefined &&
-                              $steps.getInvoiceList.data.data.length ==
-                                $state.limit
-                            )
-                              return ($state.showMoreBtn = true);
-                            else return ($state.showMoreBtn = false);
-                          })();
-                        }
-                      };
-                      return (({ customFunction }) => {
-                        return customFunction();
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["runCode2"] != null &&
-                  typeof $steps["runCode2"] === "object" &&
-                  typeof $steps["runCode2"].then === "function"
-                ) {
-                  $steps["runCode2"] = await $steps["runCode2"];
-                }
-
-                $steps["updateWaiting"] =
-                  $state.updatewallet == false && $state.isLoadAccount
-                    ? (() => {
-                        const actionArgs = {
-                          variable: {
-                            objRoot: $state,
-                            variablePath: ["waiting"]
-                          },
-                          operation: 0,
-                          value: false
-                        };
-                        return (({
-                          variable,
-                          value,
-                          startIndex,
-                          deleteCount
-                        }) => {
-                          if (!variable) {
-                            return;
-                          }
-                          const { objRoot, variablePath } = variable;
-
-                          $stateSet(objRoot, variablePath, value);
-                          return value;
-                        })?.apply(null, [actionArgs]);
-                      })()
-                    : undefined;
-                if (
-                  $steps["updateWaiting"] != null &&
-                  typeof $steps["updateWaiting"] === "object" &&
-                  typeof $steps["updateWaiting"].then === "function"
-                ) {
-                  $steps["updateWaiting"] = await $steps["updateWaiting"];
-                }
-
                 $steps["getProductWallet"] =
                   $state.updatewallet && $state.isLoadAccount
                     ? (() => {
@@ -7850,6 +7713,143 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                   $steps["updateReminderWallet"] = await $steps[
                     "updateReminderWallet"
                   ];
+                }
+
+                $steps["getInvoiceList"] = $state.isLoadAccount
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          undefined,
+                          (() => {
+                            try {
+                              return $state.requestInvoiceUrl;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        ]
+                      };
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
+                    })()
+                  : undefined;
+                if (
+                  $steps["getInvoiceList"] != null &&
+                  typeof $steps["getInvoiceList"] === "object" &&
+                  typeof $steps["getInvoiceList"].then === "function"
+                ) {
+                  $steps["getInvoiceList"] = await $steps["getInvoiceList"];
+                }
+
+                $steps["updateInvoicelist"] =
+                  $steps.getInvoiceList.status == 200 &&
+                  $steps.getInvoiceList.data.status == true &&
+                  $state.isLoadAccount
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["invoicelist"]
+                          },
+                          operation: 0,
+                          value: $steps.getInvoiceList.data.data
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["updateInvoicelist"] != null &&
+                  typeof $steps["updateInvoicelist"] === "object" &&
+                  typeof $steps["updateInvoicelist"].then === "function"
+                ) {
+                  $steps["updateInvoicelist"] = await $steps[
+                    "updateInvoicelist"
+                  ];
+                }
+
+                $steps["runCode2"] = $state.isLoadAccount
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return (() => {
+                            if (
+                              $steps.getInvoiceList.status == 200 &&
+                              $steps.getInvoiceList.data.data !== undefined &&
+                              $steps.getInvoiceList.data.data.length ==
+                                $state.limit
+                            )
+                              return ($state.showMoreBtn = true);
+                            else return ($state.showMoreBtn = false);
+                          })();
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["runCode2"] != null &&
+                  typeof $steps["runCode2"] === "object" &&
+                  typeof $steps["runCode2"].then === "function"
+                ) {
+                  $steps["runCode2"] = await $steps["runCode2"];
+                }
+
+                $steps["updateWaiting"] =
+                  $state.updatewallet == false && $state.isLoadAccount
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["waiting"]
+                          },
+                          operation: 0,
+                          value: false
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["updateWaiting"] != null &&
+                  typeof $steps["updateWaiting"] === "object" &&
+                  typeof $steps["updateWaiting"].then === "function"
+                ) {
+                  $steps["updateWaiting"] = await $steps["updateWaiting"];
                 }
 
                 $steps["runCode3"] = true
