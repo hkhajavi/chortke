@@ -602,6 +602,12 @@ function PlasmicFactorsSearch__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "userData",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
       }
     ],
     [$props, $ctx, $refs]
@@ -4652,12 +4658,82 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                   $steps["showWaiting"] = await $steps["showWaiting"];
                 }
 
+                $steps["getUser"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        args: ["POST", "https://www.paziresh24.com/api/getUser"]
+                      };
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
+                    })()
+                  : undefined;
+                if (
+                  $steps["getUser"] != null &&
+                  typeof $steps["getUser"] === "object" &&
+                  typeof $steps["getUser"].then === "function"
+                ) {
+                  $steps["getUser"] = await $steps["getUser"];
+                }
+
+                $steps["updateUserData"] =
+                  $steps.getUser.status == 200
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["userData"]
+                          },
+                          operation: 0,
+                          value: $steps.getUser.data
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["updateUserData"] != null &&
+                  typeof $steps["updateUserData"] === "object" &&
+                  typeof $steps["updateUserData"].then === "function"
+                ) {
+                  $steps["updateUserData"] = await $steps["updateUserData"];
+                }
+
                 $steps["getUserAccounts"] = true
                   ? (() => {
                       const actionArgs = {
                         args: [
                           undefined,
-                          "https://apigw.paziresh24.com/transaction/v1/useraccounts?type=factor"
+                          (() => {
+                            try {
+                              return (
+                                "https://apigw.paziresh24.com/katibe/v1/useraccounts?type=factor&user_id=" +
+                                ($state.userData?.result?.id ||
+                                  Math.random().toString(36).substring(2, 15))
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
                         ]
                       };
                       return $globalActions["Fragment.apiRequest"]?.apply(

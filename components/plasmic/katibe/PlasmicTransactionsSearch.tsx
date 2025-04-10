@@ -724,6 +724,12 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "userData",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
       }
     ],
     [$props, $ctx, $refs]
@@ -7223,13 +7229,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                   $steps["showWaiting"] = await $steps["showWaiting"];
                 }
 
-                $steps["getUserAccounts"] = true
+                $steps["getUsers"] = true
                   ? (() => {
                       const actionArgs = {
-                        args: [
-                          undefined,
-                          "https://apigw.paziresh24.com/katibe/v1/useraccounts"
-                        ]
+                        args: ["POST", "https://www.paziresh24.com/api/getUser"]
                       };
                       return $globalActions["Fragment.apiRequest"]?.apply(
                         null,
@@ -7238,72 +7241,60 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     })()
                   : undefined;
                 if (
-                  $steps["getUserAccounts"] != null &&
-                  typeof $steps["getUserAccounts"] === "object" &&
-                  typeof $steps["getUserAccounts"].then === "function"
+                  $steps["getUsers"] != null &&
+                  typeof $steps["getUsers"] === "object" &&
+                  typeof $steps["getUsers"].then === "function"
                 ) {
-                  $steps["getUserAccounts"] = await $steps["getUserAccounts"];
+                  $steps["getUsers"] = await $steps["getUsers"];
                 }
 
-                $steps["runCode"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        customFunction: async () => {
-                          return (() => {
-                            if ($steps.getUserAccounts.status == 200) {
-                              return ($state.accounts =
-                                $steps.getUserAccounts.data.data);
-                            }
-                          })();
-                        }
-                      };
-                      return (({ customFunction }) => {
-                        return customFunction();
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
+                $steps["updateUserData"] =
+                  $steps.getUsers.status == 200
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["userData"]
+                          },
+                          operation: 0,
+                          value: $steps.getUsers.data
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
                 if (
-                  $steps["runCode"] != null &&
-                  typeof $steps["runCode"] === "object" &&
-                  typeof $steps["runCode"].then === "function"
+                  $steps["updateUserData"] != null &&
+                  typeof $steps["updateUserData"] === "object" &&
+                  typeof $steps["updateUserData"].then === "function"
                 ) {
-                  $steps["runCode"] = await $steps["runCode"];
+                  $steps["updateUserData"] = await $steps["updateUserData"];
                 }
 
-                $steps["runCode2"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        customFunction: async () => {
-                          return (() => {
-                            if ($state.accounts.length > 0)
-                              return ($state.cbAccounts.value =
-                                $state.accounts[
-                                  $state.accounts.length - 1
-                                ].uniqueid);
-                          })();
-                        }
-                      };
-                      return (({ customFunction }) => {
-                        return customFunction();
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-                if (
-                  $steps["runCode2"] != null &&
-                  typeof $steps["runCode2"] === "object" &&
-                  typeof $steps["runCode2"].then === "function"
-                ) {
-                  $steps["runCode2"] = await $steps["runCode2"];
-                }
-
-                $steps["getProductList"] = false
+                $steps["getUserAccounts"] = true
                   ? (() => {
                       const actionArgs = {
                         args: [
                           undefined,
                           (() => {
                             try {
-                              return "https://apigw.paziresh24.com/transaction/v1/userproductlist";
+                              return (
+                                "https://apigw.paziresh24.com/katibe/v1/useraccounts?user_id=" +
+                                ($state.userData?.result?.id ||
+                                  Math.random().toString(36).substring(2, 15))
+                              );
                             } catch (e) {
                               if (
                                 e instanceof TypeError ||
@@ -7323,61 +7314,33 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     })()
                   : undefined;
                 if (
-                  $steps["getProductList"] != null &&
-                  typeof $steps["getProductList"] === "object" &&
-                  typeof $steps["getProductList"].then === "function"
+                  $steps["getUserAccounts"] != null &&
+                  typeof $steps["getUserAccounts"] === "object" &&
+                  typeof $steps["getUserAccounts"].then === "function"
                 ) {
-                  $steps["getProductList"] = await $steps["getProductList"];
+                  $steps["getUserAccounts"] = await $steps["getUserAccounts"];
                 }
 
-                $steps["setProductListVariable2"] = false
-                  ? (() => {
-                      const actionArgs = {
-                        customFunction: async () => {
-                          return $steps.getProductList.status == 200 &&
-                            $steps.getProductList.data.status == true
-                            ? ($state.productList = [
-                                {
-                                  productid: 0,
-                                  name: "همه"
-                                },
-                                ...$steps.getProductList.data.data
-                              ])
-                            : ($state.productList = []);
-                        }
-                      };
-                      return (({ customFunction }) => {
-                        return customFunction();
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
+                $steps["runCode"] =
+                  $steps.getUserAccounts.status == 200
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return ($state.accounts =
+                              $steps.getUserAccounts.data.data);
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
                 if (
-                  $steps["setProductListVariable2"] != null &&
-                  typeof $steps["setProductListVariable2"] === "object" &&
-                  typeof $steps["setProductListVariable2"].then === "function"
+                  $steps["runCode"] != null &&
+                  typeof $steps["runCode"] === "object" &&
+                  typeof $steps["runCode"].then === "function"
                 ) {
-                  $steps["setProductListVariable2"] = await $steps[
-                    "setProductListVariable2"
-                  ];
-                }
-
-                $steps["getUsers"] = true
-                  ? (() => {
-                      const actionArgs = {
-                        args: ["POST", "https://www.paziresh24.com/api/getUser"]
-                      };
-                      return $globalActions["Fragment.apiRequest"]?.apply(
-                        null,
-                        [...actionArgs.args]
-                      );
-                    })()
-                  : undefined;
-                if (
-                  $steps["getUsers"] != null &&
-                  typeof $steps["getUsers"] === "object" &&
-                  typeof $steps["getUsers"].then === "function"
-                ) {
-                  $steps["getUsers"] = await $steps["getUsers"];
+                  $steps["runCode"] = await $steps["runCode"];
                 }
 
                 $steps["updateUserData"] =
@@ -7407,6 +7370,32 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                   typeof $steps["updateUserData"].then === "function"
                 ) {
                   $steps["updateUserData"] = await $steps["updateUserData"];
+                }
+
+                $steps["runCode2"] = true
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return (() => {
+                            if ($state.accounts.length > 0)
+                              return ($state.cbAccounts.value =
+                                $state.accounts[
+                                  $state.accounts.length - 1
+                                ].uniqueid);
+                          })();
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+                if (
+                  $steps["runCode2"] != null &&
+                  typeof $steps["runCode2"] === "object" &&
+                  typeof $steps["runCode2"].then === "function"
+                ) {
+                  $steps["runCode2"] = await $steps["runCode2"];
                 }
 
                 $steps["isLoadAccountTrue"] = true
