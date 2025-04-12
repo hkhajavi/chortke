@@ -6934,7 +6934,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         (() => {
                           try {
                             return (
-                              "https://apigw.paziresh24.com/katibe/v1/useraccounts?user_id=" +
+                              "https://apigw.paziresh24.com/katibe-useraccounts?user_id=" +
                               ($state.userData?.result?.id ||
                                 Math.random().toString(36).substring(2, 15))
                             );
