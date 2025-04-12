@@ -4926,7 +4926,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                 const actionArgs = {
                                                   args: [
                                                     "POST",
-                                                    "https://apigw.paziresh24.com/ganjname/v1/settlement/vandar",
+                                                    "https://apigw.paziresh24.com/ganjname/v1/settlement/saman",
                                                     undefined,
                                                     (() => {
                                                       try {
