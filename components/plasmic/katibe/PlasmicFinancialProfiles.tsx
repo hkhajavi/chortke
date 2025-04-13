@@ -5132,7 +5132,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                   {(() => {
                                     try {
                                       return (
-                                        "ثبت حساب" +
+                                        "ثبت شماره کارت" +
                                         ($state.currentAccountType == "centerid"
                                           ? " برای " +
                                             $state.currentAccountTitle
