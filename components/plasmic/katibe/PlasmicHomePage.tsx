@@ -61,6 +61,7 @@ import {
 
 import { BaseButton } from "@plasmicpkgs/react-aria/skinny/registerButton";
 import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
+import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 
 import { useScreenVariants as useScreenVariantsbr2UhI7UlpvR } from "../fragment_icons/PlasmicGlobalVariant__Screen"; // plasmic-import: BR2UhI7ulpvR/globalVariant
 
@@ -134,6 +135,7 @@ export type PlasmicHomePage__OverridesType = {
   softBackground?: Flex__<"div">;
   border?: Flex__<"div">;
   interactionEffect?: Flex__<"div">;
+  embedHtml?: Flex__<typeof Embed>;
 };
 
 export interface DefaultHomePageProps {}
@@ -4482,6 +4484,14 @@ function PlasmicHomePage__RenderFunc(props: {
               </div>
             </div>
           </div>
+          <Embed
+            data-plasmic-name={"embedHtml"}
+            data-plasmic-override={overrides.embedHtml}
+            className={classNames("__wab_instance", sty.embedHtml)}
+            code={
+              '<script type="text/javascript">\r\n    (function(c,l,a,r,i,t,y){\r\n        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\r\n        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;\r\n        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);\r\n    })(window, document, "clarity", "script", "r4dnfd1o1h");\r\n</script>'
+            }
+          />
         </div>
       </div>
     </React.Fragment>
@@ -4529,7 +4539,8 @@ const PlasmicDescendants = {
     "textInput",
     "softBackground",
     "border",
-    "interactionEffect"
+    "interactionEffect",
+    "embedHtml"
   ],
   headerHeroSection: [
     "headerHeroSection",
@@ -4580,7 +4591,8 @@ const PlasmicDescendants = {
   textInput: ["textInput"],
   softBackground: ["softBackground"],
   border: ["border"],
-  interactionEffect: ["interactionEffect"]
+  interactionEffect: ["interactionEffect"],
+  embedHtml: ["embedHtml"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -4626,6 +4638,7 @@ type NodeDefaultElementType = {
   softBackground: "div";
   border: "div";
   interactionEffect: "div";
+  embedHtml: typeof Embed;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -4727,6 +4740,7 @@ export const PlasmicHomePage = Object.assign(
     softBackground: makeNodeComponent("softBackground"),
     border: makeNodeComponent("border"),
     interactionEffect: makeNodeComponent("interactionEffect"),
+    embedHtml: makeNodeComponent("embedHtml"),
 
     // Metadata about props expected for PlasmicHomePage
     internalVariantProps: PlasmicHomePage__VariantProps,
