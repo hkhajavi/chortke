@@ -730,6 +730,18 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
         type: "private",
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+      },
+      {
+        path: "settlementMessage",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "settlementActive",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => true
       }
     ],
     [$props, $ctx, $refs]
@@ -2799,6 +2811,62 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 $steps["runCode"] = await $steps["runCode"];
                               }
 
+                              $steps["getSettlementMessage"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      args: [
+                                        undefined,
+                                        "https://apigw.paziresh24.com/ganjname/v1/message"
+                                      ]
+                                    };
+                                    return $globalActions[
+                                      "Fragment.apiRequest"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["getSettlementMessage"] != null &&
+                                typeof $steps["getSettlementMessage"] ===
+                                  "object" &&
+                                typeof $steps["getSettlementMessage"].then ===
+                                  "function"
+                              ) {
+                                $steps["getSettlementMessage"] = await $steps[
+                                  "getSettlementMessage"
+                                ];
+                              }
+
+                              $steps["runCode3"] =
+                                $steps.getSettlementMessage.status == 200
+                                  ? (() => {
+                                      const actionArgs = {
+                                        customFunction: async () => {
+                                          return (() => {
+                                            if (
+                                              $steps.getSettlementMessage
+                                                .status == 200
+                                            ) {
+                                              $state.settlementMessage =
+                                                $steps.getSettlementMessage.data.message;
+                                              return ($state.settlementActive =
+                                                $steps.getSettlementMessage.data.active);
+                                            }
+                                          })();
+                                        }
+                                      };
+                                      return (({ customFunction }) => {
+                                        return customFunction();
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                              if (
+                                $steps["runCode3"] != null &&
+                                typeof $steps["runCode3"] === "object" &&
+                                typeof $steps["runCode3"].then === "function"
+                              ) {
+                                $steps["runCode3"] = await $steps["runCode3"];
+                              }
+
                               $steps["openDialog"] =
                                 $state.bankAccountList.length > 0
                                   ? (() => {
@@ -2994,10 +3062,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 ? (() => {
                                     const actionArgs = {
                                       customFunction: async () => {
-                                        return (() => {
-                                          return ($state.dialogSettlement.open =
-                                            true);
-                                        })();
+                                        return ($state.dialogSettlement.open =
+                                          true);
                                       }
                                     };
                                     return (({ customFunction }) => {
@@ -4828,7 +4894,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       )}
                                       isDisabled={(() => {
                                         try {
-                                          return $state.waitingSettlement;
+                                          return (
+                                            $state.waitingSettlement ||
+                                            !$state.settlementActive
+                                          );
                                         } catch (e) {
                                           if (
                                             e instanceof TypeError ||
@@ -5317,6 +5386,59 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   ) : null}
                                 </div>
                               </div>
+                              {(() => {
+                                try {
+                                  return $state.settlementMessage.length > 0;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return true;
+                                  }
+                                  throw e;
+                                }
+                              })() ? (
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__gad6C
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__uIkZw
+                                    )}
+                                  >
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__ii5A3
+                                      )}
+                                    >
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return $state.settlementMessage;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
+                                    </div>
+                                  </div>
+                                </div>
+                              ) : null}
                             </React.Fragment>
                           }
                           className={classNames(
