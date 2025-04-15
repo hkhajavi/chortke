@@ -1847,6 +1847,11 @@
   min-width: 0;
   padding: 8px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__gad6C {
+    padding: 0px;
+  }
+}
 .freeBox__uIkZw {
   display: flex;
   flex-direction: column;
@@ -1867,6 +1872,11 @@
   text-align: center;
   font-weight: 700;
   min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__ii5A3 {
+    font-size: var(--token-5Ye_3XTSaP9X);
+  }
 }
 .gridInvoice1 {
   display: grid;
