@@ -742,6 +742,12 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => true
+      },
+      {
+        path: "settlementService",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => "saman"
       }
     ],
     [$props, $ctx, $refs]
@@ -2878,8 +2884,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                             ) {
                                               $state.settlementMessage =
                                                 $steps.getSettlementMessage.data.message;
-                                              return ($state.settlementActive =
-                                                $steps.getSettlementMessage.data.active);
+                                              $state.settlementActive =
+                                                $steps.getSettlementMessage.data.active;
+                                              return ($state.settlementService =
+                                                $steps.getSettlementMessage.data.service);
                                             }
                                           })();
                                         }
@@ -5039,7 +5047,26 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                 const actionArgs = {
                                                   args: [
                                                     "POST",
-                                                    "https://apigw.paziresh24.com/ganjname/v1/settlement/saman",
+                                                    (() => {
+                                                      try {
+                                                        return (() => {
+                                                          return (
+                                                            "https://apigw.paziresh24.com/ganjname/v1/settlement/" +
+                                                            $state.settlementService
+                                                          );
+                                                        })();
+                                                      } catch (e) {
+                                                        if (
+                                                          e instanceof
+                                                            TypeError ||
+                                                          e?.plasmicType ===
+                                                            "PlasmicUndefinedDataError"
+                                                        ) {
+                                                          return undefined;
+                                                        }
+                                                        throw e;
+                                                      }
+                                                    })(),
                                                     undefined,
                                                     (() => {
                                                       try {
