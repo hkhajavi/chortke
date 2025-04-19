@@ -6774,7 +6774,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
             ) : null}
             {(() => {
               try {
-                return !$state.waiting;
+                return !$state.waiting && $state.userData?.isDoctor;
               } catch (e) {
                 if (
                   e instanceof TypeError ||
