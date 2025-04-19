@@ -3182,10 +3182,12 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                           {(() => {
                                             try {
                                               return (
-                                                $state.cardInquiry &&
-                                                $state.cardInquiry.IBAN &&
-                                                $state.cardInquiry.IBAN.length >
-                                                  0
+                                                /*$state.cardInquiry && $state.cardInquiry.IBAN && 
+                                        $state.cardInquiry.IBAN.length > 0
+                                        $state.txtCardNumber.value.length == 16
+                                        */
+
+                                                true
                                               );
                                             } catch (e) {
                                               if (
@@ -3233,6 +3235,24 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     "__wab_instance",
                                                     sty.button___2GCbB
                                                   )}
+                                                  isDisabled={(() => {
+                                                    try {
+                                                      return (
+                                                        $state.txtCardNumber
+                                                          .value.length != 16
+                                                      );
+                                                    } catch (e) {
+                                                      if (
+                                                        e instanceof
+                                                          TypeError ||
+                                                        e?.plasmicType ===
+                                                          "PlasmicUndefinedDataError"
+                                                      ) {
+                                                        return [];
+                                                      }
+                                                      throw e;
+                                                    }
+                                                  })()}
                                                   onClick={async event => {
                                                     const $steps = {};
 
@@ -3384,19 +3404,23 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                                         "centerid"
                                                                           ? $state.currentAccountId
                                                                           : "",
-                                                                      iban: $state
-                                                                        .txtcardIban
-                                                                        .value,
+                                                                      iban:
+                                                                        $state
+                                                                          .txtcardIban
+                                                                          .value ||
+                                                                        "",
                                                                       account_number:
                                                                         "",
                                                                       bank_name:
                                                                         $state
                                                                           .txtcardBank
-                                                                          .value,
+                                                                          .value ||
+                                                                        "",
                                                                       owner_name:
                                                                         $state
                                                                           .txtCardownerName
-                                                                          .value
+                                                                          .value ||
+                                                                        ""
                                                                     };
                                                                   } catch (e) {
                                                                     if (
@@ -5285,7 +5309,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         const $steps = {};
 
                         $steps["updateWaitingRegister3"] =
-                          $state.txtCardNumber.value.length != 16
+                          $state.txtCardNumber.value.length != 16 && false
                             ? (() => {
                                 const actionArgs = {
                                   variable: {
@@ -5324,7 +5348,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         }
 
                         $steps["updateWaitingRegister"] =
-                          $state.txtCardNumber.value.length == 16
+                          $state.txtCardNumber.value.length == 16 && false
                             ? (() => {
                                 const actionArgs = {
                                   variable: {
@@ -5361,7 +5385,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           ];
                         }
 
-                        $steps["runCode"] = true
+                        $steps["runCode"] = false
                           ? (() => {
                               const actionArgs = {
                                 customFunction: async () => {
@@ -5395,36 +5419,35 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           $steps["runCode"] = await $steps["runCode"];
                         }
 
-                        $steps["getCardInquiry"] =
-                          $state.txtCardNumber.value.length == 16
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    undefined,
-                                    (() => {
-                                      try {
-                                        return (
-                                          "https://api.paziresh24.com/V1/doctor/payments/iban-inquiry/?card_number=" +
-                                          $state.txtCardNumber.value
-                                        );
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
+                        $steps["getCardInquiry"] = false
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  undefined,
+                                  (() => {
+                                    try {
+                                      return (
+                                        "https://api.paziresh24.com/V1/doctor/payments/iban-inquiry/?card_number=" +
+                                        $state.txtCardNumber.value
+                                      );
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
                                       }
-                                    })()
-                                  ]
-                                };
-                                return $globalActions[
-                                  "Fragment.apiRequest"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
+                                      throw e;
+                                    }
+                                  })()
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.apiRequest"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
                         if (
                           $steps["getCardInquiry"] != null &&
                           typeof $steps["getCardInquiry"] === "object" &&
@@ -5436,7 +5459,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         }
 
                         $steps["updateCardInquiry"] =
-                          $steps.getCardInquiry.status == 200
+                          $steps.getCardInquiry.status == 200 && false
                             ? (() => {
                                 const actionArgs = {
                                   variable: {
@@ -5473,7 +5496,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         }
 
                         $steps["invokeGlobalAction2"] =
-                          $steps.getCardInquiry.status != 200
+                          $steps.getCardInquiry.status != 200 && false
                             ? (() => {
                                 const actionArgs = {
                                   args: [
