@@ -3239,7 +3239,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     try {
                                                       return (
                                                         $state.txtCardNumber
-                                                          .value.length != 16
+                                                          .value.length != 16 ||
+                                                        $state.waitingRegister
                                                       );
                                                     } catch (e) {
                                                       if (
