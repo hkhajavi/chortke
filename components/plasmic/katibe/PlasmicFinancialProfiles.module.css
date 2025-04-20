@@ -1653,7 +1653,13 @@
   width: 100%;
   height: auto;
   max-width: 100%;
+  font-size: var(--token-5Ye_3XTSaP9X);
   min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__sDeeX {
+    font-size: var(--token-VrIY9r5RDQZ_);
+  }
 }
 .freeBox__oa20O {
   display: flex;
