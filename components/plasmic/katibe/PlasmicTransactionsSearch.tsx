@@ -2385,6 +2385,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     try {
                       return (
                         $state.reminderWallet > 0 &&
+                        !$state.waiting &&
                         (($state.currentAccountAccount == "organization" &&
                           $state.currentAccountType == "centerid") ||
                           ($state.currentAccountAccount == "p24" &&
