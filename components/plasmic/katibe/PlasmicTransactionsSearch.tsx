@@ -4601,28 +4601,6 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       await $steps["setSettlementMeessage"];
                                   }
 
-                                  $steps["alertOk"] =
-                                    $steps.requestSettlement.status == 200
-                                      ? (() => {
-                                          const actionArgs = {
-                                            args: [
-                                              undefined,
-                                              "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0634\u0645\u0627 \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u062b\u0628\u062a \u0634\u062f."
-                                            ]
-                                          };
-                                          return $globalActions[
-                                            "Fragment.showToast"
-                                          ]?.apply(null, [...actionArgs.args]);
-                                        })()
-                                      : undefined;
-                                  if (
-                                    $steps["alertOk"] != null &&
-                                    typeof $steps["alertOk"] === "object" &&
-                                    typeof $steps["alertOk"].then === "function"
-                                  ) {
-                                    $steps["alertOk"] = await $steps["alertOk"];
-                                  }
-
                                   $steps["alertError"] =
                                     $steps.requestSettlement.status != 200
                                       ? (() => {
@@ -4705,6 +4683,32 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       await $steps["updateWaitingSettlement2"];
                                   }
 
+                                  $steps["runCode"] =
+                                    $steps.requestSettlement.status == 200
+                                      ? (() => {
+                                          const actionArgs = {
+                                            customFunction: async () => {
+                                              return (() => {
+                                                $state.settlementResultShow =
+                                                  true;
+                                                return ($state.btnRegisterSettlementShow =
+                                                  false);
+                                              })();
+                                            }
+                                          };
+                                          return (({ customFunction }) => {
+                                            return customFunction();
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                  if (
+                                    $steps["runCode"] != null &&
+                                    typeof $steps["runCode"] === "object" &&
+                                    typeof $steps["runCode"].then === "function"
+                                  ) {
+                                    $steps["runCode"] = await $steps["runCode"];
+                                  }
+
                                   $steps["refresh"] =
                                     $steps.requestSettlement.status == 200
                                       ? (() => {
@@ -4748,32 +4752,6 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     typeof $steps["refresh"].then === "function"
                                   ) {
                                     $steps["refresh"] = await $steps["refresh"];
-                                  }
-
-                                  $steps["runCode"] =
-                                    $steps.requestSettlement.status == 200
-                                      ? (() => {
-                                          const actionArgs = {
-                                            customFunction: async () => {
-                                              return (() => {
-                                                $state.settlementResultShow =
-                                                  true;
-                                                return ($state.btnRegisterSettlementShow =
-                                                  false);
-                                              })();
-                                            }
-                                          };
-                                          return (({ customFunction }) => {
-                                            return customFunction();
-                                          })?.apply(null, [actionArgs]);
-                                        })()
-                                      : undefined;
-                                  if (
-                                    $steps["runCode"] != null &&
-                                    typeof $steps["runCode"] === "object" &&
-                                    typeof $steps["runCode"].then === "function"
-                                  ) {
-                                    $steps["runCode"] = await $steps["runCode"];
                                   }
                                 }}
                                 size={
