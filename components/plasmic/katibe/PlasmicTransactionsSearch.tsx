@@ -4755,8 +4755,12 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       ? (() => {
                                           const actionArgs = {
                                             customFunction: async () => {
-                                              return ($state.dialogSettlement.open =
-                                                false);
+                                              return (() => {
+                                                $state.settlementResultShow =
+                                                  true;
+                                                return ($state.btnRegisterSettlementShow =
+                                                  false);
+                                              })();
                                             }
                                           };
                                           return (({ customFunction }) => {
