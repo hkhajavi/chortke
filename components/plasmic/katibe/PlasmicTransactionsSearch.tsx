@@ -139,7 +139,6 @@ export type PlasmicTransactionsSearch__OverridesType = {
   waitingIcon3?: Flex__<"svg">;
   gridNoData2?: Flex__<"div">;
   gridNoData?: Flex__<"div">;
-  link?: Flex__<"a"> & Partial<LinkProps>;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
   sideEffectRefresh?: Flex__<typeof SideEffect>;
   embedHtml?: Flex__<typeof Embed>;
@@ -6706,7 +6705,55 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       <React.Fragment>
                         <React.Fragment>
                           {
-                            "\u062f\u0631\u0635\u0648\u0631\u062a \u0646\u06cc\u0627\u0632 \u0628\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc "
+                            "\u0645\u0645\u06a9\u0646 \u0627\u0633\u062a \u0628\u0631\u062e\u06cc \u0627\u0632 \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627\u06cc \u0634\u0645\u0627 \u062f\u0631 \u0633\u06cc\u0633\u062a\u0645 \u0645\u0627\u0644\u06cc \u0642\u0628\u0644\u06cc \u062b\u0628\u062a \u0634\u062f\u0647 \u0628\u0627\u0634\u062f. \u062c\u0647\u062a \u0628\u0631\u0631\u0633\u06cc\u060c \u0644\u0637\u0641\u0627\u064b \u0628\u0647 "
+                          }
+                        </React.Fragment>
+                        {
+                          <PlasmicLink__
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.a,
+                              projectcss.__wab_text,
+                              projectcss.plasmic_default__inline,
+                              sty.link__okEcB
+                            )}
+                            component={Link}
+                            href={""}
+                            onClick={async event => {
+                              const $steps = {};
+
+                              $steps["invokeGlobalAction"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      args: [
+                                        "https://dr.paziresh24.com/setting/payment"
+                                      ]
+                                    };
+                                    return $globalActions[
+                                      "Hamdast.openLink"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["invokeGlobalAction"] != null &&
+                                typeof $steps["invokeGlobalAction"] ===
+                                  "object" &&
+                                typeof $steps["invokeGlobalAction"].then ===
+                                  "function"
+                              ) {
+                                $steps["invokeGlobalAction"] = await $steps[
+                                  "invokeGlobalAction"
+                                ];
+                              }
+                            }}
+                            platform={"nextjs"}
+                          >
+                            {"\u0627\u06cc\u0646 \u0635\u0641\u062d\u0647"}
+                          </PlasmicLink__>
+                        }
+                        <React.Fragment>
+                          {
+                            " \u0645\u0631\u0627\u062c\u0639\u0647 \u06a9\u0646\u06cc\u062f.\n\u062f\u0631\u0635\u0648\u0631\u062a \u0646\u06cc\u0627\u0632 \u0628\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc "
                           }
                         </React.Fragment>
                         <span
@@ -6726,14 +6773,12 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         </React.Fragment>
                         {
                           <PlasmicLink__
-                            data-plasmic-name={"link"}
-                            data-plasmic-override={overrides.link}
                             className={classNames(
                               projectcss.all,
                               projectcss.a,
                               projectcss.__wab_text,
                               projectcss.plasmic_default__inline,
-                              sty.link
+                              sty.link___9RRn
                             )}
                             component={Link}
                             href={""}
@@ -7497,7 +7542,6 @@ const PlasmicDescendants = {
     "waitingIcon3",
     "gridNoData2",
     "gridNoData",
-    "link",
     "sideEffectPageLoad",
     "sideEffectRefresh",
     "embedHtml"
@@ -7570,7 +7614,6 @@ const PlasmicDescendants = {
   waitingIcon3: ["waitingIcon3"],
   gridNoData2: ["gridNoData2"],
   gridNoData: ["gridNoData"],
-  link: ["link"],
   sideEffectPageLoad: ["sideEffectPageLoad"],
   sideEffectRefresh: ["sideEffectRefresh"],
   embedHtml: ["embedHtml"]
@@ -7613,7 +7656,6 @@ type NodeDefaultElementType = {
   waitingIcon3: "svg";
   gridNoData2: "div";
   gridNoData: "div";
-  link: "a";
   sideEffectPageLoad: typeof SideEffect;
   sideEffectRefresh: typeof SideEffect;
   embedHtml: typeof Embed;
@@ -7712,7 +7754,6 @@ export const PlasmicTransactionsSearch = Object.assign(
     waitingIcon3: makeNodeComponent("waitingIcon3"),
     gridNoData2: makeNodeComponent("gridNoData2"),
     gridNoData: makeNodeComponent("gridNoData"),
-    link: makeNodeComponent("link"),
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
     sideEffectRefresh: makeNodeComponent("sideEffectRefresh"),
     embedHtml: makeNodeComponent("embedHtml"),
