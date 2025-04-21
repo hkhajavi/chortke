@@ -1406,7 +1406,7 @@
 .freeBox___3QYm {
   display: grid;
   position: relative;
-  grid-template-columns: repeat(1, minmax(0, 1fr));
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   width: 100%;
   height: auto;
   max-width: 100%;
@@ -1415,6 +1415,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox___3QYm {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     padding: 0px;
   }
 }
@@ -1427,9 +1428,15 @@
   max-width: 100%;
   justify-content: center;
   align-items: center;
+  grid-column-end: span 12;
   min-width: 0;
   padding: 8px;
   border-width: 1px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__t18Be {
+    grid-column-end: span 5;
+  }
 }
 .text__ipDnc {
   position: relative;
