@@ -4417,6 +4417,368 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 })()}
                                 onClick={async event => {
                                   const $steps = {};
+
+                                  $steps["alertSelectAccount"] = !(
+                                    $state.bankAccountList[0] != undefined &&
+                                    $state.bankAccountList[0].accountid > 0
+                                  )
+                                    ? (() => {
+                                        const actionArgs = {
+                                          args: [
+                                            "error",
+                                            "\u0644\u0637\u0641\u0627 \u062d\u0633\u0627\u0628 \u0628\u0627\u0646\u06a9\u06cc \u062a\u0639\u0631\u06cc\u0641 \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062a\u0633\u0648\u06cc\u0647 \u062b\u0628\u062a \u0646\u0645\u0627\u06cc\u06cc\u062f."
+                                          ]
+                                        };
+                                        return $globalActions[
+                                          "Fragment.showToast"
+                                        ]?.apply(null, [...actionArgs.args]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["alertSelectAccount"] != null &&
+                                    typeof $steps["alertSelectAccount"] ===
+                                      "object" &&
+                                    typeof $steps["alertSelectAccount"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["alertSelectAccount"] = await $steps[
+                                      "alertSelectAccount"
+                                    ];
+                                  }
+
+                                  $steps["updateWaitingSettlement"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: ["waitingSettlement"]
+                                          },
+                                          operation: 0,
+                                          value: true
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["updateWaitingSettlement"] != null &&
+                                    typeof $steps["updateWaitingSettlement"] ===
+                                      "object" &&
+                                    typeof $steps["updateWaitingSettlement"]
+                                      .then === "function"
+                                  ) {
+                                    $steps["updateWaitingSettlement"] =
+                                      await $steps["updateWaitingSettlement"];
+                                  }
+
+                                  $steps["requestSettlement"] =
+                                    $state.bankAccountList[0] != undefined &&
+                                    $state.bankAccountList[0].accountid > 0
+                                      ? (() => {
+                                          const actionArgs = {
+                                            args: [
+                                              "POST",
+                                              (() => {
+                                                try {
+                                                  return (
+                                                    "https://apigw.paziresh24.com/ganjname/v1/settlement/" +
+                                                    $state.settlementService
+                                                  );
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return undefined;
+                                                  }
+                                                  throw e;
+                                                }
+                                              })(),
+                                              undefined,
+                                              (() => {
+                                                try {
+                                                  return {
+                                                    accountid: parseInt(
+                                                      $state.bankAccountList[0]
+                                                        .accountid
+                                                    ),
+                                                    amount: parseInt(
+                                                      $state.txtSettlemenAmount
+                                                        .value
+                                                    ),
+                                                    productid: parseInt(
+                                                      $state.cbProductlist.value
+                                                    )
+                                                  };
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return undefined;
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()
+                                            ]
+                                          };
+                                          return $globalActions[
+                                            "Fragment.apiRequest"
+                                          ]?.apply(null, [...actionArgs.args]);
+                                        })()
+                                      : undefined;
+                                  if (
+                                    $steps["requestSettlement"] != null &&
+                                    typeof $steps["requestSettlement"] ===
+                                      "object" &&
+                                    typeof $steps["requestSettlement"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["requestSettlement"] = await $steps[
+                                      "requestSettlement"
+                                    ];
+                                  }
+
+                                  $steps["setSettlementMeessage"] =
+                                    $steps.requestSettlement.status != 200
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: [
+                                                "settlementMessage"
+                                              ]
+                                            },
+                                            operation: 0,
+                                            value:
+                                              $steps.requestSettlement.data
+                                                .message
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                  if (
+                                    $steps["setSettlementMeessage"] != null &&
+                                    typeof $steps["setSettlementMeessage"] ===
+                                      "object" &&
+                                    typeof $steps["setSettlementMeessage"]
+                                      .then === "function"
+                                  ) {
+                                    $steps["setSettlementMeessage"] =
+                                      await $steps["setSettlementMeessage"];
+                                  }
+
+                                  $steps["alertOk"] =
+                                    $steps.requestSettlement.status == 200
+                                      ? (() => {
+                                          const actionArgs = {
+                                            args: [
+                                              undefined,
+                                              "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0634\u0645\u0627 \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u062b\u0628\u062a \u0634\u062f."
+                                            ]
+                                          };
+                                          return $globalActions[
+                                            "Fragment.showToast"
+                                          ]?.apply(null, [...actionArgs.args]);
+                                        })()
+                                      : undefined;
+                                  if (
+                                    $steps["alertOk"] != null &&
+                                    typeof $steps["alertOk"] === "object" &&
+                                    typeof $steps["alertOk"].then === "function"
+                                  ) {
+                                    $steps["alertOk"] = await $steps["alertOk"];
+                                  }
+
+                                  $steps["alertError"] =
+                                    $steps.requestSettlement.status != 200
+                                      ? (() => {
+                                          const actionArgs = {
+                                            args: [
+                                              "error",
+                                              (() => {
+                                                try {
+                                                  return $state.requestSettlementMessage;
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return undefined;
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()
+                                            ]
+                                          };
+                                          return $globalActions[
+                                            "Fragment.showToast"
+                                          ]?.apply(null, [...actionArgs.args]);
+                                        })()
+                                      : undefined;
+                                  if (
+                                    $steps["alertError"] != null &&
+                                    typeof $steps["alertError"] === "object" &&
+                                    typeof $steps["alertError"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["alertError"] = await $steps[
+                                      "alertError"
+                                    ];
+                                  }
+
+                                  $steps["updateWaitingSettlement2"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: ["waitingSettlement"]
+                                          },
+                                          operation: 0,
+                                          value: false
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["updateWaitingSettlement2"] !=
+                                      null &&
+                                    typeof $steps[
+                                      "updateWaitingSettlement2"
+                                    ] === "object" &&
+                                    typeof $steps["updateWaitingSettlement2"]
+                                      .then === "function"
+                                  ) {
+                                    $steps["updateWaitingSettlement2"] =
+                                      await $steps["updateWaitingSettlement2"];
+                                  }
+
+                                  $steps["refresh"] =
+                                    $steps.requestSettlement.status == 200
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: [
+                                                "firstRequestCount"
+                                              ]
+                                            },
+                                            operation: 2
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            const oldValue = $stateGet(
+                                              objRoot,
+                                              variablePath
+                                            );
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              oldValue + 1
+                                            );
+                                            return oldValue + 1;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                  if (
+                                    $steps["refresh"] != null &&
+                                    typeof $steps["refresh"] === "object" &&
+                                    typeof $steps["refresh"].then === "function"
+                                  ) {
+                                    $steps["refresh"] = await $steps["refresh"];
+                                  }
+
+                                  $steps["runCode"] =
+                                    $steps.requestSettlement.status == 200
+                                      ? (() => {
+                                          const actionArgs = {
+                                            customFunction: async () => {
+                                              return (() => {
+                                                $state.settlementResultShow =
+                                                  true;
+                                                return ($state.btnRegisterSettlementShow =
+                                                  false);
+                                              })();
+                                            }
+                                          };
+                                          return (({ customFunction }) => {
+                                            return customFunction();
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                  if (
+                                    $steps["runCode"] != null &&
+                                    typeof $steps["runCode"] === "object" &&
+                                    typeof $steps["runCode"].then === "function"
+                                  ) {
+                                    $steps["runCode"] = await $steps["runCode"];
+                                  }
                                 }}
                                 size={
                                   hasVariant(
