@@ -4523,9 +4523,6 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                     amount: parseInt(
                                                       $state.txtSettlemenAmount
                                                         .value
-                                                    ),
-                                                    productid: parseInt(
-                                                      $state.cbProductlist.value
                                                     )
                                                   };
                                                 } catch (e) {
