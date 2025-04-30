@@ -5039,25 +5039,6 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       }
                       trigger={null}
                     />
-
-                    {(() => {
-                      try {
-                        return $state.waiting;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return true;
-                        }
-                        throw e;
-                      }
-                    })() ? (
-                      <Icon2Icon
-                        className={classNames(projectcss.all, sty.svg__dWtdr)}
-                        role={"img"}
-                      />
-                    ) : null}
                   </div>
                   {(() => {
                     try {
@@ -5164,6 +5145,28 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       </div>
                     </div>
                   ) : null}
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__wkNii)}
+                  >
+                    {(() => {
+                      try {
+                        return $state.waiting;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
+                        }
+                        throw e;
+                      }
+                    })() ? (
+                      <Icon2Icon
+                        className={classNames(projectcss.all, sty.svg__dWtdr)}
+                        role={"img"}
+                      />
+                    ) : null}
+                  </div>
                 </div>
                 <div
                   data-plasmic-name={"gridInvoice13"}

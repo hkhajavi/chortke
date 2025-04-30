@@ -1716,19 +1716,6 @@
     font-size: var(--token-5Ye_3XTSaP9X);
   }
 }
-.svg__dWtdr {
-  object-fit: cover;
-  max-width: 100%;
-  width: auto;
-  height: 25px;
-  margin-top: 0px;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .svg__dWtdr {
-    height: 25px;
-    flex-shrink: 0;
-  }
-}
 .freeBox___2BtoD {
   display: flex;
   flex-direction: row;
@@ -1808,6 +1795,31 @@
     user-select: text;
     text-decoration-line: none;
     text-overflow: clip;
+  }
+}
+.freeBox__wkNii {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  grid-column-end: span 6;
+  min-width: 0;
+  padding: 8px;
+}
+.svg__dWtdr {
+  object-fit: cover;
+  max-width: 100%;
+  width: auto;
+  height: 25px;
+  margin-top: 0px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .svg__dWtdr {
+    height: 25px;
   }
 }
 .gridInvoice13 {
@@ -2186,6 +2198,7 @@
   height: auto;
   max-width: 100%;
   font-size: var(--token-5Ye_3XTSaP9X);
+  display: none;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__yvEUs {
