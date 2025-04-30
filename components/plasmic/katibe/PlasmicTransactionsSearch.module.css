@@ -3836,6 +3836,7 @@
   .button__wSsDp:global(.__wab_instance) {
     height: 30px;
     flex-shrink: 0;
+    display: flex;
   }
 }
 .svg__ptR3Q {

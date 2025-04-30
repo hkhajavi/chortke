@@ -6697,10 +6697,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     ? (() => {
                         try {
                           return (
-                            !$state.waiting &&
-                            $state.invoicelist.length > 0 &&
-                            !$state.waitingLoading &&
-                            $state.showMoreBtn
+                            (!$state.waiting &&
+                              $state.invoicelist.length > 0 &&
+                              $state.showMoreBtn) ||
+                            $state.waitingLoading
                           );
                         } catch (e) {
                           if (
@@ -6715,10 +6715,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     : (() => {
                         try {
                           return (
-                            !$state.waiting &&
-                            $state.invoicelist.length > 0 &&
-                            !$state.waitingLoading &&
-                            $state.showMoreBtn
+                            (!$state.waiting &&
+                              $state.invoicelist.length > 0 &&
+                              $state.showMoreBtn) ||
+                            $state.waitingLoading
                           );
                         } catch (e) {
                           if (
@@ -6744,157 +6744,252 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       )}
                       id={"grid_calculator"}
                     >
-                      <Button2
-                        children2={
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__vVwD4
-                            )}
-                          >
-                            {
-                              "\u0646\u0645\u0627\u06cc\u0634 \u0628\u06cc\u0634\u062a\u0631..."
+                      {(
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? (() => {
+                              try {
+                                return !$state.waitingLoading;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })()
+                          : (() => {
+                              try {
+                                return !$state.waitingLoading;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })()
+                      ) ? (
+                        <Button2
+                          children2={
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__vVwD4
+                              )}
+                            >
+                              {
+                                "\u0646\u0645\u0627\u06cc\u0634 \u0628\u06cc\u0634\u062a\u0631..."
+                              }
+                            </div>
+                          }
+                          className={classNames(
+                            "__wab_instance",
+                            sty.button__wSsDp
+                          )}
+                          color={"softBlue"}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["updateWaitingLoading"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["waitingLoading"]
+                                    },
+                                    operation: 0,
+                                    value: true
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateWaitingLoading"] != null &&
+                              typeof $steps["updateWaitingLoading"] ===
+                                "object" &&
+                              typeof $steps["updateWaitingLoading"].then ===
+                                "function"
+                            ) {
+                              $steps["updateWaitingLoading"] = await $steps[
+                                "updateWaitingLoading"
+                              ];
                             }
-                          </div>
-                        }
-                        className={classNames(
-                          "__wab_instance",
-                          sty.button__wSsDp
-                        )}
-                        color={"softBlue"}
-                        onClick={async event => {
-                          const $steps = {};
 
-                          $steps["updateWaitingLoading"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["waitingLoading"]
-                                  },
-                                  operation: 0,
-                                  value: true
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
+                            $steps["runCode"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return ($state.pageNumber += 1);
+                                    }
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["runCode"] != null &&
+                              typeof $steps["runCode"] === "object" &&
+                              typeof $steps["runCode"].then === "function"
+                            ) {
+                              $steps["runCode"] = await $steps["runCode"];
+                            }
 
-                                  $stateSet(objRoot, variablePath, value);
-                                  return value;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["updateWaitingLoading"] != null &&
-                            typeof $steps["updateWaitingLoading"] ===
-                              "object" &&
-                            typeof $steps["updateWaitingLoading"].then ===
-                              "function"
-                          ) {
-                            $steps["updateWaitingLoading"] = await $steps[
-                              "updateWaitingLoading"
-                            ];
-                          }
-
-                          $steps["runCode"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  customFunction: async () => {
-                                    return ($state.pageNumber += 1);
-                                  }
-                                };
-                                return (({ customFunction }) => {
-                                  return customFunction();
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["runCode"] != null &&
-                            typeof $steps["runCode"] === "object" &&
-                            typeof $steps["runCode"].then === "function"
-                          ) {
-                            $steps["runCode"] = await $steps["runCode"];
-                          }
-
-                          $steps["getInvoiceList"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    undefined,
-                                    (() => {
-                                      try {
-                                        return (() => {
+                            $steps["getInvoiceList"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    args: [
+                                      undefined,
+                                      (() => {
+                                        try {
+                                          return (() => {
+                                            if (
+                                              $state.currentAccountType ==
+                                              "centerid"
+                                            )
+                                              return (
+                                                "https://apigw.paziresh24.com/katibe/v1/transactions/search/p24?centerid=" +
+                                                $state.currentAccountId +
+                                                "&limit=" +
+                                                $state.limit +
+                                                "&page=" +
+                                                $state.pageNumber +
+                                                "&account=" +
+                                                $state.currentAccountAccount
+                                              );
+                                            else
+                                              return (
+                                                "https://apigw.paziresh24.com/katibe/v1/transactions/search/p24?productid=0&limit=" +
+                                                $state.limit +
+                                                "&page=" +
+                                                $state.pageNumber +
+                                                "&account=" +
+                                                $state.currentAccountAccount
+                                              );
+                                          })();
+                                        } catch (e) {
                                           if (
-                                            $state.currentAccountType ==
-                                            "centerid"
-                                          )
-                                            return (
-                                              "https://apigw.paziresh24.com/katibe/v1/transactions/search/p24?centerid=" +
-                                              $state.currentAccountId +
-                                              "&limit=" +
-                                              $state.limit +
-                                              "&page=" +
-                                              $state.pageNumber +
-                                              "&account=" +
-                                              $state.currentAccountAccount
-                                            );
-                                          else
-                                            return (
-                                              "https://apigw.paziresh24.com/katibe/v1/transactions/search/p24?productid=0&limit=" +
-                                              $state.limit +
-                                              "&page=" +
-                                              $state.pageNumber +
-                                              "&account=" +
-                                              $state.currentAccountAccount
-                                            );
-                                        })();
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return undefined;
+                                          }
+                                          throw e;
                                         }
-                                        throw e;
-                                      }
-                                    })()
-                                  ]
-                                };
-                                return $globalActions[
-                                  "Fragment.apiRequest"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["getInvoiceList"] != null &&
-                            typeof $steps["getInvoiceList"] === "object" &&
-                            typeof $steps["getInvoiceList"].then === "function"
-                          ) {
-                            $steps["getInvoiceList"] = await $steps[
-                              "getInvoiceList"
-                            ];
-                          }
+                                      })()
+                                    ]
+                                  };
+                                  return $globalActions[
+                                    "Fragment.apiRequest"
+                                  ]?.apply(null, [...actionArgs.args]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["getInvoiceList"] != null &&
+                              typeof $steps["getInvoiceList"] === "object" &&
+                              typeof $steps["getInvoiceList"].then ===
+                                "function"
+                            ) {
+                              $steps["getInvoiceList"] = await $steps[
+                                "getInvoiceList"
+                              ];
+                            }
 
-                          $steps["runCode2"] =
-                            $steps.getInvoiceList.status == 200 &&
-                            $steps.getInvoiceList.data.status == true
+                            $steps["runCode2"] =
+                              $steps.getInvoiceList.status == 200 &&
+                              $steps.getInvoiceList.data.status == true
+                                ? (() => {
+                                    const actionArgs = {
+                                      customFunction: async () => {
+                                        return (() => {
+                                          return ($state.invoicelist = [
+                                            ...$state.invoicelist,
+                                            ...$steps.getInvoiceList.data.data
+                                          ]);
+                                        })();
+                                      }
+                                    };
+                                    return (({ customFunction }) => {
+                                      return customFunction();
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["runCode2"] != null &&
+                              typeof $steps["runCode2"] === "object" &&
+                              typeof $steps["runCode2"].then === "function"
+                            ) {
+                              $steps["runCode2"] = await $steps["runCode2"];
+                            }
+
+                            $steps["updateWaitingLoading2"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["waitingLoading"]
+                                    },
+                                    operation: 0,
+                                    value: false
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateWaitingLoading2"] != null &&
+                              typeof $steps["updateWaitingLoading2"] ===
+                                "object" &&
+                              typeof $steps["updateWaitingLoading2"].then ===
+                                "function"
+                            ) {
+                              $steps["updateWaitingLoading2"] = await $steps[
+                                "updateWaitingLoading2"
+                              ];
+                            }
+
+                            $steps["showMoreBtn"] = true
                               ? (() => {
                                   const actionArgs = {
                                     customFunction: async () => {
                                       return (() => {
-                                        return ($state.invoicelist = [
-                                          ...$state.invoicelist,
-                                          ...$steps.getInvoiceList.data.data
-                                        ]);
+                                        if (
+                                          $steps.getInvoiceList.status != 200 ||
+                                          $steps.getInvoiceList.data.data
+                                            .length != $state.limit
+                                        )
+                                          return ($state.showMoreBtn = false);
                                       })();
                                     }
                                   };
@@ -6903,82 +6998,19 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   })?.apply(null, [actionArgs]);
                                 })()
                               : undefined;
-                          if (
-                            $steps["runCode2"] != null &&
-                            typeof $steps["runCode2"] === "object" &&
-                            typeof $steps["runCode2"].then === "function"
-                          ) {
-                            $steps["runCode2"] = await $steps["runCode2"];
-                          }
-
-                          $steps["updateWaitingLoading2"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["waitingLoading"]
-                                  },
-                                  operation: 0,
-                                  value: false
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
-
-                                  $stateSet(objRoot, variablePath, value);
-                                  return value;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["updateWaitingLoading2"] != null &&
-                            typeof $steps["updateWaitingLoading2"] ===
-                              "object" &&
-                            typeof $steps["updateWaitingLoading2"].then ===
-                              "function"
-                          ) {
-                            $steps["updateWaitingLoading2"] = await $steps[
-                              "updateWaitingLoading2"
-                            ];
-                          }
-
-                          $steps["showMoreBtn"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  customFunction: async () => {
-                                    return (() => {
-                                      if (
-                                        $steps.getInvoiceList.status != 200 ||
-                                        $steps.getInvoiceList.data.data
-                                          .length != $state.limit
-                                      )
-                                        return ($state.showMoreBtn = false);
-                                    })();
-                                  }
-                                };
-                                return (({ customFunction }) => {
-                                  return customFunction();
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["showMoreBtn"] != null &&
-                            typeof $steps["showMoreBtn"] === "object" &&
-                            typeof $steps["showMoreBtn"].then === "function"
-                          ) {
-                            $steps["showMoreBtn"] = await $steps["showMoreBtn"];
-                          }
-                        }}
-                        size={"compact"}
-                      />
-
+                            if (
+                              $steps["showMoreBtn"] != null &&
+                              typeof $steps["showMoreBtn"] === "object" &&
+                              typeof $steps["showMoreBtn"].then === "function"
+                            ) {
+                              $steps["showMoreBtn"] = await $steps[
+                                "showMoreBtn"
+                              ];
+                            }
+                          }}
+                          size={"compact"}
+                        />
+                      ) : null}
                       {(() => {
                         try {
                           return $state.waitingLoading;
