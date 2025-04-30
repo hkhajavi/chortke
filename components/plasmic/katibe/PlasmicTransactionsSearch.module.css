@@ -475,6 +475,7 @@
   justify-self: flex-start;
   background: linear-gradient(0deg, #f4f4f4 0%, #bbc2c8 99%, #fbfdff 100%) 0% 0% /
     100% 100% repeat;
+  min-height: 50px;
   grid-column-start: 1 !important;
   grid-column-end: -1 !important;
   padding: 8px;
