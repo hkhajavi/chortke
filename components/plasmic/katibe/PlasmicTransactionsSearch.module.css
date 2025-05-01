@@ -1781,6 +1781,7 @@
     user-select: text;
     text-decoration-line: none;
     text-overflow: clip;
+    display: block;
   }
 }
 .text__aa1Jv {
@@ -1789,7 +1790,6 @@
   height: auto;
   max-width: 100%;
   min-width: 0;
-  display: none;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__aa1Jv {

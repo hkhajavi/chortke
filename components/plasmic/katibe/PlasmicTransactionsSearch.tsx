@@ -5171,90 +5171,144 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         sty.freeBox___2BtoD
                       )}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__wQg70
-                        )}
-                      >
-                        {hasVariant(globalVariants, "screen", "mobileOnly") ? (
-                          "\u06a9\u0644 \u062f\u0631\u0622\u0645\u062f: "
-                        ) : (
-                          <React.Fragment>
-                            {(() => {
+                      {(
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? true
+                          : (() => {
                               try {
-                                return $state.transactionsReport?.data?.deposit
-                                  ? "کل درآمد: " +
-                                      ($state.transactionsReport.data.deposit.toLocaleString(
+                                return (
+                                  $state.transactionsReport.data.deposit > 0
+                                );
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })()
+                      ) ? (
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__wQg70
+                          )}
+                        >
+                          {hasVariant(
+                            globalVariants,
+                            "screen",
+                            "mobileOnly"
+                          ) ? (
+                            "\u06a9\u0644 \u062f\u0631\u0622\u0645\u062f: "
+                          ) : (
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return $state.transactionsReport?.data
+                                    ?.deposit
+                                    ? "کل درآمد: " +
+                                        ($state.transactionsReport.data.deposit.toLocaleString(
+                                          "fa-IR"
+                                        ) +
+                                          " ریال")
+                                    : "";
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "\u06a9\u0644 \u062f\u0631\u0622\u0645\u062f:  000\u0631\u06cc\u0627\u0644";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          )}
+                        </div>
+                      ) : null}
+                      {(
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? true
+                          : (() => {
+                              try {
+                                return (
+                                  $state.transactionsReport.data.deposit > 0
+                                );
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })()
+                      ) ? (
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__aa1Jv
+                          )}
+                        >
+                          {hasVariant(
+                            globalVariants,
+                            "screen",
+                            "mobileOnly"
+                          ) ? (
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return $state.transactionsReport?.data
+                                    ?.deposit
+                                    ? $state.transactionsReport.data.deposit.toLocaleString(
                                         "fa-IR"
-                                      ) +
-                                        " ریال")
-                                  : "";
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "\u06a9\u0644 \u062f\u0631\u0622\u0645\u062f:  000\u0631\u06cc\u0627\u0644";
+                                      ) + " ریال"
+                                    : "0 ریال";
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "\u06a9\u0644 \u062f\u0631\u0622\u0645\u062f:  000\u0631\u06cc\u0627\u0644";
+                                  }
+                                  throw e;
                                 }
-                                throw e;
-                              }
-                            })()}
-                          </React.Fragment>
-                        )}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__aa1Jv
-                        )}
-                      >
-                        {hasVariant(globalVariants, "screen", "mobileOnly") ? (
-                          <React.Fragment>
-                            {(() => {
-                              try {
-                                return $state.transactionsReport?.data?.deposit
-                                  ? $state.transactionsReport.data.deposit.toLocaleString(
-                                      "fa-IR"
-                                    ) + " ریال"
-                                  : "";
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "\u06a9\u0644 \u062f\u0631\u0622\u0645\u062f:  000\u0631\u06cc\u0627\u0644";
+                              })()}
+                            </React.Fragment>
+                          ) : (
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return $state.transactionsReport?.data
+                                    ?.deposit
+                                    ? "کل درآمد: " +
+                                        ($state.transactionsReport.data.deposit.toLocaleString(
+                                          "fa-IR"
+                                        ) +
+                                          " ریال")
+                                    : "";
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "\u06a9\u0644 \u062f\u0631\u0622\u0645\u062f:  000\u0631\u06cc\u0627\u0644";
+                                  }
+                                  throw e;
                                 }
-                                throw e;
-                              }
-                            })()}
-                          </React.Fragment>
-                        ) : (
-                          <React.Fragment>
-                            {(() => {
-                              try {
-                                return $state.transactionsReport?.data?.deposit
-                                  ? "کل درآمد: " +
-                                      ($state.transactionsReport.data.deposit.toLocaleString(
-                                        "fa-IR"
-                                      ) +
-                                        " ریال")
-                                  : "";
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "\u06a9\u0644 \u062f\u0631\u0622\u0645\u062f:  000\u0631\u06cc\u0627\u0644";
-                                }
-                                throw e;
-                              }
-                            })()}
-                          </React.Fragment>
-                        )}
-                      </div>
+                              })()}
+                            </React.Fragment>
+                          )}
+                        </div>
+                      ) : null}
                     </div>
                   ) : null}
                   {(() => {
@@ -7537,6 +7591,38 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                   typeof $steps["runCode"].then === "function"
                 ) {
                   $steps["runCode"] = await $steps["runCode"];
+                }
+
+                $steps["userAccount200"] =
+                  $steps.getUserAccounts.status != 200
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return ($state.accounts = [
+                              {
+                                id: $state.userData.result.id,
+                                name:
+                                  $state.userData.result.name +
+                                  " " +
+                                  $state.userData.result.family,
+                                type: "userid",
+                                account: "p24",
+                                uniqueid: "p24" + $state.userData.result.id
+                              }
+                            ]);
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["userAccount200"] != null &&
+                  typeof $steps["userAccount200"] === "object" &&
+                  typeof $steps["userAccount200"].then === "function"
+                ) {
+                  $steps["userAccount200"] = await $steps["userAccount200"];
                 }
 
                 $steps["updateUserData"] =
