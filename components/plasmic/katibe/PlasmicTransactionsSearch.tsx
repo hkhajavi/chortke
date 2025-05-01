@@ -5171,65 +5171,39 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         sty.freeBox___2BtoD
                       )}
                     >
-                      {(
-                        hasVariant(globalVariants, "screen", "mobileOnly")
-                          ? true
-                          : (() => {
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__wQg70
+                        )}
+                      >
+                        {hasVariant(globalVariants, "screen", "mobileOnly") ? (
+                          "\u06a9\u0644 \u062f\u0631\u0622\u0645\u062f: "
+                        ) : (
+                          <React.Fragment>
+                            {(() => {
                               try {
-                                return (
-                                  $state.transactionsReport.data.deposit > 0
-                                );
+                                return $state.transactionsReport?.data?.deposit
+                                  ? "کل درآمد: " +
+                                      ($state.transactionsReport.data.deposit.toLocaleString(
+                                        "fa-IR"
+                                      ) +
+                                        " ریال")
+                                  : "";
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||
                                   e?.plasmicType === "PlasmicUndefinedDataError"
                                 ) {
-                                  return true;
+                                  return "\u06a9\u0644 \u062f\u0631\u0622\u0645\u062f:  000\u0631\u06cc\u0627\u0644";
                                 }
                                 throw e;
                               }
-                            })()
-                      ) ? (
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__wQg70
-                          )}
-                        >
-                          {hasVariant(
-                            globalVariants,
-                            "screen",
-                            "mobileOnly"
-                          ) ? (
-                            "\u06a9\u0644 \u062f\u0631\u0622\u0645\u062f: "
-                          ) : (
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return $state.transactionsReport?.data
-                                    ?.deposit
-                                    ? "کل درآمد: " +
-                                        ($state.transactionsReport.data.deposit.toLocaleString(
-                                          "fa-IR"
-                                        ) +
-                                          " ریال")
-                                    : "";
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "\u06a9\u0644 \u062f\u0631\u0622\u0645\u062f:  000\u0631\u06cc\u0627\u0644";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          )}
-                        </div>
-                      ) : null}
+                            })()}
+                          </React.Fragment>
+                        )}
+                      </div>
                       {(
                         hasVariant(globalVariants, "screen", "mobileOnly")
                           ? true
