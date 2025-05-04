@@ -3724,6 +3724,48 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                             {"\u0639\u0646\u0648\u0627\u0646"}
                                           </div>
                                         </div>
+                                        {(
+                                          hasVariant(
+                                            globalVariants,
+                                            "screen",
+                                            "mobileOnly"
+                                          )
+                                            ? true
+                                            : false
+                                        ) ? (
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              sty.freeBox__vNHzI
+                                            )}
+                                          >
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                projectcss.__wab_text,
+                                                sty.text__iXQh
+                                              )}
+                                            >
+                                              {"\u0645\u0627\u0644\u06a9"}
+                                            </div>
+                                          </div>
+                                        ) : null}
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox___76ENc
+                                          )}
+                                        >
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__hziUl
+                                            )}
+                                          >
+                                            {"\u0645\u0627\u0644\u06a9"}
+                                          </div>
+                                        </div>
                                         <div
                                           className={classNames(
                                             projectcss.all,
@@ -3863,6 +3905,38 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                     {(() => {
                                                       try {
                                                         return currentItem.name;
+                                                      } catch (e) {
+                                                        if (
+                                                          e instanceof
+                                                            TypeError ||
+                                                          e?.plasmicType ===
+                                                            "PlasmicUndefinedDataError"
+                                                        ) {
+                                                          return "\u0639\u0646\u0648\u0627\u0646";
+                                                        }
+                                                        throw e;
+                                                      }
+                                                    })()}
+                                                  </React.Fragment>
+                                                </div>
+                                              </div>
+                                              <div
+                                                className={classNames(
+                                                  projectcss.all,
+                                                  sty.freeBox__ujEqk
+                                                )}
+                                              >
+                                                <div
+                                                  className={classNames(
+                                                    projectcss.all,
+                                                    projectcss.__wab_text,
+                                                    sty.text__f3SeD
+                                                  )}
+                                                >
+                                                  <React.Fragment>
+                                                    {(() => {
+                                                      try {
+                                                        return currentItem.owner_name;
                                                       } catch (e) {
                                                         if (
                                                           e instanceof
