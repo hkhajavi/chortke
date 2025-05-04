@@ -92,7 +92,6 @@ export const PlasmicFactorPrint__ArgProps = new Array<ArgPropType>();
 export type PlasmicFactorPrint__OverridesType = {
   factorPrint?: Flex__<"div">;
   holderPrint?: Flex__<"section">;
-  img?: Flex__<typeof PlasmicImg__>;
   sideEffect?: Flex__<typeof SideEffect>;
   embedHtml?: Flex__<typeof Embed>;
   svg?: Flex__<"svg">;
@@ -231,10 +230,8 @@ function PlasmicFactorPrint__RenderFunc(props: {
             <div className={classNames(projectcss.all, sty.freeBox__nz3Y7)}>
               <div className={classNames(projectcss.all, sty.freeBox__rtplh)}>
                 <PlasmicImg__
-                  data-plasmic-name={"img"}
-                  data-plasmic-override={overrides.img}
                   alt={""}
-                  className={classNames(sty.img)}
+                  className={classNames(sty.img__xY1H3)}
                   displayHeight={"auto"}
                   displayMaxHeight={"none"}
                   displayMaxWidth={"100%"}
@@ -1527,6 +1524,40 @@ function PlasmicFactorPrint__RenderFunc(props: {
                     "\u0645\u0647\u0631 \u0648 \u0627\u0645\u0636\u0627\u06cc \u0641\u0631\u0648\u0634\u0646\u062f\u0647"
                   }
                 </div>
+                {(() => {
+                  try {
+                    return (
+                      $state.factorDetails?.data?.meta?.payment_status &&
+                      $state.factorDetails.data.meta.payment_status == "paid"
+                    );
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })() ? (
+                  <PlasmicImg__
+                    alt={""}
+                    className={classNames(sty.img__wKmQ)}
+                    displayHeight={"auto"}
+                    displayMaxHeight={"none"}
+                    displayMaxWidth={"100%"}
+                    displayMinHeight={"0"}
+                    displayMinWidth={"0"}
+                    displayWidth={"164px"}
+                    loading={"lazy"}
+                    src={{
+                      src: "/plasmic/katibe/images/signPng.png",
+                      fullWidth: 431,
+                      fullHeight: 254,
+                      aspectRatio: undefined
+                    }}
+                  />
+                ) : null}
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__gyA7Q)}>
                 <div
@@ -2001,16 +2032,8 @@ function PlasmicFactorPrint__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  factorPrint: [
-    "factorPrint",
-    "holderPrint",
-    "img",
-    "sideEffect",
-    "embedHtml",
-    "svg"
-  ],
-  holderPrint: ["holderPrint", "img"],
-  img: ["img"],
+  factorPrint: ["factorPrint", "holderPrint", "sideEffect", "embedHtml", "svg"],
+  holderPrint: ["holderPrint"],
   sideEffect: ["sideEffect"],
   embedHtml: ["embedHtml"],
   svg: ["svg"]
@@ -2021,7 +2044,6 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   factorPrint: "div";
   holderPrint: "section";
-  img: typeof PlasmicImg__;
   sideEffect: typeof SideEffect;
   embedHtml: typeof Embed;
   svg: "svg";
@@ -2088,7 +2110,6 @@ export const PlasmicFactorPrint = Object.assign(
   {
     // Helper components rendering sub-elements
     holderPrint: makeNodeComponent("holderPrint"),
-    img: makeNodeComponent("img"),
     sideEffect: makeNodeComponent("sideEffect"),
     embedHtml: makeNodeComponent("embedHtml"),
     svg: makeNodeComponent("svg"),

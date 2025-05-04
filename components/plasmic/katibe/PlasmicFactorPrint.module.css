@@ -77,13 +77,13 @@
     grid-column-end: span 2;
   }
 }
-.img {
+.img__xY1H3 {
   object-fit: cover;
   max-width: 100%;
   margin-bottom: 0px;
   width: 50px;
 }
-.img > picture > img {
+.img__xY1H3 > picture > img {
   object-fit: cover;
 }
 .freeBox__pLoip {
@@ -1580,6 +1580,17 @@
   text-align: center;
   font-weight: 700;
   min-width: 0;
+}
+.img__wKmQ {
+  object-fit: cover;
+  max-width: 100%;
+  width: 164px;
+  margin-top: -50px;
+  margin-right: 0px;
+  margin-left: 100px;
+}
+.img__wKmQ > picture > img {
+  object-fit: cover;
 }
 .freeBox__gyA7Q {
   display: flex;

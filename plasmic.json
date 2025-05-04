@@ -1274,6 +1274,11 @@
           "id": "_gry8SNs7LKq",
           "name": "image 40",
           "filePath": "../public/plasmic/katibe/images/image40.png"
+        },
+        {
+          "id": "gE2fpHubSnTi",
+          "name": "sign.png",
+          "filePath": "../public/plasmic/katibe/images/signPng.png"
         }
       ],
       "indirect": false,
