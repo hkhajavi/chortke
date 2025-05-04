@@ -1527,6 +1527,7 @@ function PlasmicFactorPrint__RenderFunc(props: {
                 {(() => {
                   try {
                     return (
+                      false &&
                       $state.factorDetails?.data?.meta?.payment_status &&
                       $state.factorDetails.data.meta.payment_status == "paid"
                     );
