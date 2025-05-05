@@ -89,6 +89,7 @@ import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; 
 import SearchSvgIcon from "../chortke/icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
 import CheckSvgIcon from "../chortke/icons/PlasmicIcon__CheckSvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
 import Icon2Icon from "../chortke/icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
+import Icon47Icon from "./icons/PlasmicIcon__Icon47"; // plasmic-import: MwxnRV3Jbx5Y/icon
 import Icon44Icon from "./icons/PlasmicIcon__Icon44"; // plasmic-import: BqWt4mC1I6f6/icon
 import Icon45Icon from "./icons/PlasmicIcon__Icon45"; // plasmic-import: ZLOL59vKkeZc/icon
 
@@ -135,7 +136,6 @@ export type PlasmicTransactionsSearch__OverridesType = {
   gridInvoice13?: Flex__<"div">;
   gridInvoice12?: Flex__<"div">;
   dialogNewInvoiceDetails?: Flex__<typeof Dialog>;
-  btnInvoiceInfo?: Flex__<typeof Button>;
   detailsDataApiRequest?: Flex__<typeof ApiRequest>;
   waitingIcon3?: Flex__<"svg">;
   gridNoData2?: Flex__<"div">;
@@ -5358,13 +5358,30 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     id={"grid_calculator"}
                   >
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__a7Zen
-                      )}
+                      className={classNames(projectcss.all, sty.freeBox__mbCvb)}
                     >
-                      {"\u0639\u0646\u0648\u0627\u0646"}
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__rnFbu
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__a7Zen
+                          )}
+                        >
+                          {"\u0639\u0646\u0648\u0627\u0646"}
+                        </div>
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__baC4H
+                        )}
+                      />
                     </div>
                   </div>
                   <div
@@ -5553,25 +5570,738 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         <div
                           className={classNames(
                             projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__eRfYh
+                            sty.freeBox__oq7Ka
                           )}
                         >
-                          <React.Fragment>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__vw0BX
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__eRfYh
+                              )}
+                            >
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return $state.invoicelist[currentIndex]
+                                      .title;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "\u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628 \u0647\u0632\u06cc\u0646\u0647 \u0646\u0648\u0628\u062a \u062f\u0647\u06cc \u062a\u06cc\u0631 \u0645\u0627\u0647 1403";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            </div>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__vypev
+                            )}
+                          >
                             {(() => {
                               try {
-                                return $state.invoicelist[currentIndex].title;
+                                return (
+                                  $state.userData?.isDoctor &&
+                                  currentItem.productid == 6
+                                );
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||
                                   e?.plasmicType === "PlasmicUndefinedDataError"
                                 ) {
-                                  return "\u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628 \u0647\u0632\u06cc\u0646\u0647 \u0646\u0648\u0628\u062a \u062f\u0647\u06cc \u062a\u06cc\u0631 \u0645\u0627\u0647 1403";
+                                  return true;
                                 }
                                 throw e;
                               }
-                            })()}
-                          </React.Fragment>
+                            })()
+                              ? (() => {
+                                  const child$Props = {
+                                    body: (
+                                      <ApiRequest
+                                        data-plasmic-name={
+                                          "detailsDataApiRequest"
+                                        }
+                                        data-plasmic-override={
+                                          overrides.detailsDataApiRequest
+                                        }
+                                        className={classNames(
+                                          "__wab_instance",
+                                          sty.detailsDataApiRequest
+                                        )}
+                                        errorDisplay={
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__yw4
+                                            )}
+                                          >
+                                            <React.Fragment>
+                                              {(() => {
+                                                try {
+                                                  return "خطا در دریافت اطلاعات، لطفا دوباره تلاش نمایید.";
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return "Error fetching data";
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()}
+                                            </React.Fragment>
+                                          </div>
+                                        }
+                                        loadingDisplay={
+                                          <Icon2Icon
+                                            data-plasmic-name={"waitingIcon3"}
+                                            data-plasmic-override={
+                                              overrides.waitingIcon3
+                                            }
+                                            className={classNames(
+                                              projectcss.all,
+                                              sty.waitingIcon3
+                                            )}
+                                            role={"img"}
+                                          />
+                                        }
+                                        method={"GET"}
+                                        onError={async (...eventArgs: any) => {
+                                          generateStateOnChangeProp($state, [
+                                            "detailsDataApiRequest",
+                                            __plasmic_idx_0,
+                                            "error"
+                                          ]).apply(null, eventArgs);
+                                        }}
+                                        onLoading={async (
+                                          ...eventArgs: any
+                                        ) => {
+                                          generateStateOnChangeProp($state, [
+                                            "detailsDataApiRequest",
+                                            __plasmic_idx_0,
+                                            "loading"
+                                          ]).apply(null, eventArgs);
+                                        }}
+                                        onSuccess={async (
+                                          ...eventArgs: any
+                                        ) => {
+                                          generateStateOnChangeProp($state, [
+                                            "detailsDataApiRequest",
+                                            __plasmic_idx_0,
+                                            "data"
+                                          ]).apply(null, eventArgs);
+                                        }}
+                                        url={(() => {
+                                          try {
+                                            return (
+                                              "https://apigw.paziresh24.com/katibe/v1/transactions/p24/" +
+                                              $state.invoicelist[currentIndex]
+                                                .transactionid
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return undefined;
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox__h3IzX
+                                          )}
+                                        >
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              sty.freeBox__ssNs
+                                            )}
+                                          >
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                projectcss.__wab_text,
+                                                sty.text__trdl6
+                                              )}
+                                            >
+                                              {
+                                                "\u0639\u0646\u0648\u0627\u0646:"
+                                              }
+                                            </div>
+                                          </div>
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              sty.freeBox___0Yj7
+                                            )}
+                                          >
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                projectcss.__wab_text,
+                                                sty.text__cz8TE
+                                              )}
+                                            >
+                                              <React.Fragment>
+                                                {(() => {
+                                                  try {
+                                                    return $state
+                                                      .detailsDataApiRequest[
+                                                      currentIndex
+                                                    ].data.data.title;
+                                                  } catch (e) {
+                                                    if (
+                                                      e instanceof TypeError ||
+                                                      e?.plasmicType ===
+                                                        "PlasmicUndefinedDataError"
+                                                    ) {
+                                                      return "";
+                                                    }
+                                                    throw e;
+                                                  }
+                                                })()}
+                                              </React.Fragment>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        {(_par =>
+                                          !_par
+                                            ? []
+                                            : Array.isArray(_par)
+                                            ? _par
+                                            : [_par])(
+                                          (() => {
+                                            try {
+                                              return $state
+                                                .detailsDataApiRequest[
+                                                currentIndex
+                                              ].data.data.services;
+                                            } catch (e) {
+                                              if (
+                                                e instanceof TypeError ||
+                                                e?.plasmicType ===
+                                                  "PlasmicUndefinedDataError"
+                                              ) {
+                                                return [];
+                                              }
+                                              throw e;
+                                            }
+                                          })()
+                                        ).map(
+                                          (
+                                            __plasmic_item_1,
+                                            __plasmic_idx_1
+                                          ) => {
+                                            const currentItem =
+                                              __plasmic_item_1;
+                                            const currentIndex =
+                                              __plasmic_idx_1;
+                                            return (
+                                              <div
+                                                className={classNames(
+                                                  projectcss.all,
+                                                  sty.freeBox__ljqV8
+                                                )}
+                                                dir={"rtl"}
+                                                key={currentIndex}
+                                              >
+                                                <div
+                                                  className={classNames(
+                                                    projectcss.all,
+                                                    sty.freeBox__b7Bz3
+                                                  )}
+                                                >
+                                                  <div
+                                                    className={classNames(
+                                                      projectcss.all,
+                                                      projectcss.__wab_text,
+                                                      sty.text__bThOo
+                                                    )}
+                                                  >
+                                                    <React.Fragment>
+                                                      {(() => {
+                                                        try {
+                                                          return "جزئیات:";
+                                                        } catch (e) {
+                                                          if (
+                                                            e instanceof
+                                                              TypeError ||
+                                                            e?.plasmicType ===
+                                                              "PlasmicUndefinedDataError"
+                                                          ) {
+                                                            return "\u062c\u0632\u0626\u06cc\u0627\u062a:";
+                                                          }
+                                                          throw e;
+                                                        }
+                                                      })()}
+                                                    </React.Fragment>
+                                                  </div>
+                                                </div>
+                                                <div
+                                                  className={classNames(
+                                                    projectcss.all,
+                                                    sty.freeBox__g5Zyu
+                                                  )}
+                                                >
+                                                  <div
+                                                    className={classNames(
+                                                      projectcss.all,
+                                                      projectcss.__wab_text,
+                                                      sty.text__pl20H
+                                                    )}
+                                                    dir={"rtl"}
+                                                  >
+                                                    <React.Fragment>
+                                                      {(() => {
+                                                        try {
+                                                          return (() => {
+                                                            return currentItem.count >
+                                                              1
+                                                              ? currentItem.service +
+                                                                  " - " +
+                                                                  new Intl.NumberFormat(
+                                                                    "fa-IR"
+                                                                  ).format(
+                                                                    currentItem.count
+                                                                  ) +
+                                                                  "عدد"
+                                                              : currentItem.service;
+                                                          })();
+                                                        } catch (e) {
+                                                          if (
+                                                            e instanceof
+                                                              TypeError ||
+                                                            e?.plasmicType ===
+                                                              "PlasmicUndefinedDataError"
+                                                          ) {
+                                                            return "";
+                                                          }
+                                                          throw e;
+                                                        }
+                                                      })()}
+                                                    </React.Fragment>
+                                                  </div>
+                                                </div>
+                                                <Stack__
+                                                  as={"div"}
+                                                  hasGap={true}
+                                                  className={classNames(
+                                                    projectcss.all,
+                                                    sty.freeBox__hklwu
+                                                  )}
+                                                >
+                                                  <div
+                                                    className={classNames(
+                                                      projectcss.all,
+                                                      projectcss.__wab_text,
+                                                      sty.text___4ZDte
+                                                    )}
+                                                  >
+                                                    {
+                                                      "\u0645\u0628\u0644\u063a:"
+                                                    }
+                                                  </div>
+                                                </Stack__>
+                                                <div
+                                                  className={classNames(
+                                                    projectcss.all,
+                                                    sty.freeBox__eiK6X
+                                                  )}
+                                                >
+                                                  <div
+                                                    className={classNames(
+                                                      projectcss.all,
+                                                      projectcss.__wab_text,
+                                                      sty.text__txDbl
+                                                    )}
+                                                  >
+                                                    <React.Fragment>
+                                                      {(() => {
+                                                        try {
+                                                          return (
+                                                            new Intl.NumberFormat(
+                                                              "fa-IR"
+                                                            ).format(
+                                                              currentItem.price *
+                                                                currentItem.count
+                                                            ) +
+                                                            " " +
+                                                            "ریال"
+                                                          );
+                                                        } catch (e) {
+                                                          if (
+                                                            e instanceof
+                                                              TypeError ||
+                                                            e?.plasmicType ===
+                                                              "PlasmicUndefinedDataError"
+                                                          ) {
+                                                            return "";
+                                                          }
+                                                          throw e;
+                                                        }
+                                                      })()}
+                                                    </React.Fragment>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                            );
+                                          }
+                                        )}
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox__k3Ell
+                                          )}
+                                        >
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              sty.freeBox__kGqd1
+                                            )}
+                                          >
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                projectcss.__wab_text,
+                                                sty.text__mzAi
+                                              )}
+                                            >
+                                              {
+                                                "\u062a\u0627\u0631\u06cc\u062e \u062b\u0628\u062a:"
+                                              }
+                                            </div>
+                                          </div>
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              sty.freeBox__ni1DC
+                                            )}
+                                          >
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                projectcss.__wab_text,
+                                                sty.text__pkPec
+                                              )}
+                                            >
+                                              <React.Fragment>
+                                                {(() => {
+                                                  try {
+                                                    return (
+                                                      $state.invoicelist[
+                                                        currentIndex
+                                                      ].register_time +
+                                                      " " +
+                                                      new Date(
+                                                        $state.invoicelist[
+                                                          currentIndex
+                                                        ].register_date
+                                                      ).toLocaleDateString(
+                                                        "fa-IR"
+                                                      )
+                                                    );
+                                                  } catch (e) {
+                                                    if (
+                                                      e instanceof TypeError ||
+                                                      e?.plasmicType ===
+                                                        "PlasmicUndefinedDataError"
+                                                    ) {
+                                                      return "";
+                                                    }
+                                                    throw e;
+                                                  }
+                                                })()}
+                                              </React.Fragment>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox__uL7Ud
+                                          )}
+                                        >
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              sty.freeBox___4Ddl4
+                                            )}
+                                          >
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                projectcss.__wab_text,
+                                                sty.text__txu5
+                                              )}
+                                            >
+                                              {
+                                                "\u062a\u0627\u0631\u06cc\u062e \u0646\u0648\u0628\u062a:"
+                                              }
+                                            </div>
+                                          </div>
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              sty.freeBox___2B2H5
+                                            )}
+                                          >
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                projectcss.__wab_text,
+                                                sty.text__kwCg
+                                              )}
+                                            >
+                                              <React.Fragment>
+                                                {(() => {
+                                                  try {
+                                                    return $state
+                                                      .detailsDataApiRequest[
+                                                      currentIndex
+                                                    ].data.data.metadata
+                                                      .book_time;
+                                                  } catch (e) {
+                                                    if (
+                                                      e instanceof TypeError ||
+                                                      e?.plasmicType ===
+                                                        "PlasmicUndefinedDataError"
+                                                    ) {
+                                                      return "";
+                                                    }
+                                                    throw e;
+                                                  }
+                                                })()}
+                                              </React.Fragment>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        {(() => {
+                                          try {
+                                            return $state.detailsDataApiRequest[
+                                              currentIndex
+                                            ].data.data !== undefined &&
+                                              $state.detailsDataApiRequest[
+                                                currentIndex
+                                              ].data.data.meta !== undefined &&
+                                              $state.detailsDataApiRequest[
+                                                currentIndex
+                                              ].data.data.meta.RefNum !==
+                                                undefined
+                                              ? true
+                                              : false;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return true;
+                                            }
+                                            throw e;
+                                          }
+                                        })() ? (
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              sty.freeBox__ePzDe
+                                            )}
+                                          >
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                sty.freeBox__fuMq
+                                              )}
+                                            >
+                                              <div
+                                                className={classNames(
+                                                  projectcss.all,
+                                                  projectcss.__wab_text,
+                                                  sty.text__rwal
+                                                )}
+                                              >
+                                                {
+                                                  "\u0634\u0646\u0627\u0633\u0647 \u067e\u0631\u062f\u0627\u062e\u062a:"
+                                                }
+                                              </div>
+                                            </div>
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                sty.freeBox__fZvD
+                                              )}
+                                            >
+                                              <div
+                                                className={classNames(
+                                                  projectcss.all,
+                                                  projectcss.__wab_text,
+                                                  sty.text__lza2H
+                                                )}
+                                              >
+                                                {hasVariant(
+                                                  globalVariants,
+                                                  "screen",
+                                                  "mobileOnly"
+                                                ) ? (
+                                                  <React.Fragment>
+                                                    {(() => {
+                                                      try {
+                                                        return $state
+                                                          .detailsDataApiRequest[
+                                                          currentIndex
+                                                        ].data.data.meta.RRN;
+                                                      } catch (e) {
+                                                        if (
+                                                          e instanceof
+                                                            TypeError ||
+                                                          e?.plasmicType ===
+                                                            "PlasmicUndefinedDataError"
+                                                        ) {
+                                                          return "";
+                                                        }
+                                                        throw e;
+                                                      }
+                                                    })()}
+                                                  </React.Fragment>
+                                                ) : (
+                                                  <React.Fragment>
+                                                    {(() => {
+                                                      try {
+                                                        return $state
+                                                          .detailsDataApiRequest[
+                                                          currentIndex
+                                                        ].data.data.meta.RRN;
+                                                      } catch (e) {
+                                                        if (
+                                                          e instanceof
+                                                            TypeError ||
+                                                          e?.plasmicType ===
+                                                            "PlasmicUndefinedDataError"
+                                                        ) {
+                                                          return "";
+                                                        }
+                                                        throw e;
+                                                      }
+                                                    })()}
+                                                  </React.Fragment>
+                                                )}
+                                              </div>
+                                            </div>
+                                          </div>
+                                        ) : null}
+                                      </ApiRequest>
+                                    ),
+                                    className: classNames(
+                                      "__wab_instance",
+                                      sty.dialogNewInvoiceDetails
+                                    ),
+                                    onOpenChange: async (...eventArgs: any) => {
+                                      generateStateOnChangeProp($state, [
+                                        "dialogNewInvoiceDetails",
+                                        __plasmic_idx_0,
+                                        "open"
+                                      ]).apply(null, eventArgs);
+
+                                      if (
+                                        eventArgs.length > 1 &&
+                                        eventArgs[1] &&
+                                        eventArgs[1]._plasmic_state_init_
+                                      ) {
+                                        return;
+                                      }
+                                    },
+                                    open: generateStateValueProp($state, [
+                                      "dialogNewInvoiceDetails",
+                                      __plasmic_idx_0,
+                                      "open"
+                                    ]),
+                                    title: (
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox__s2Pz
+                                        )}
+                                      >
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox__dt8V1,
+                                            ``
+                                          )}
+                                          dir={"rtl"}
+                                        >
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.text__sEqkN
+                                            )}
+                                          >
+                                            {
+                                              "\u062c\u0632\u0626\u06cc\u0627\u062a \u062a\u0631\u0627\u06a9\u0646\u0634"
+                                            }
+                                          </div>
+                                        </div>
+                                      </div>
+                                    ),
+                                    trigger: (
+                                      <Icon47Icon
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.svg__nUmde
+                                        )}
+                                        role={"img"}
+                                      />
+                                    )
+                                  };
+
+                                  initializePlasmicStates(
+                                    $state,
+                                    [
+                                      {
+                                        name: "dialogNewInvoiceDetails[].open",
+                                        initFunc: ({
+                                          $props,
+                                          $state,
+                                          $queries
+                                        }) => false
+                                      }
+                                    ],
+                                    [__plasmic_idx_0]
+                                  );
+                                  return (
+                                    <Dialog
+                                      data-plasmic-name={
+                                        "dialogNewInvoiceDetails"
+                                      }
+                                      data-plasmic-override={
+                                        overrides.dialogNewInvoiceDetails
+                                      }
+                                      {...child$Props}
+                                    />
+                                  );
+                                })()
+                              : null}
+                          </div>
                         </div>
                       </div>
                       <div
@@ -5661,1060 +6391,27 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         <div
                           className={classNames(
                             projectcss.all,
-                            sty.freeBox__c6Zhl
+                            projectcss.__wab_text,
+                            sty.text__uT85B
                           )}
                         >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox___0FdJl
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__uT85B
-                              )}
-                            >
-                              <React.Fragment>
-                                {(() => {
-                                  try {
-                                    return new Intl.NumberFormat(
-                                      "fa-IR"
-                                    ).format(
-                                      $state.invoicelist[currentIndex].balance
-                                    );
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return "25.300.000";
-                                    }
-                                    throw e;
-                                  }
-                                })()}
-                              </React.Fragment>
-                            </div>
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__pyCyG
-                            )}
-                          >
+                          <React.Fragment>
                             {(() => {
-                              const child$Props = {
-                                body: (
-                                  <ApiRequest
-                                    data-plasmic-name={"detailsDataApiRequest"}
-                                    data-plasmic-override={
-                                      overrides.detailsDataApiRequest
-                                    }
-                                    className={classNames(
-                                      "__wab_instance",
-                                      sty.detailsDataApiRequest
-                                    )}
-                                    errorDisplay={
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
-                                          sty.text__yw4
-                                        )}
-                                      >
-                                        <React.Fragment>
-                                          {(() => {
-                                            try {
-                                              return "خطا در دریافت اطلاعات، لطفا دوباره تلاش نمایید.";
-                                            } catch (e) {
-                                              if (
-                                                e instanceof TypeError ||
-                                                e?.plasmicType ===
-                                                  "PlasmicUndefinedDataError"
-                                              ) {
-                                                return "Error fetching data";
-                                              }
-                                              throw e;
-                                            }
-                                          })()}
-                                        </React.Fragment>
-                                      </div>
-                                    }
-                                    loadingDisplay={
-                                      <Icon2Icon
-                                        data-plasmic-name={"waitingIcon3"}
-                                        data-plasmic-override={
-                                          overrides.waitingIcon3
-                                        }
-                                        className={classNames(
-                                          projectcss.all,
-                                          sty.waitingIcon3
-                                        )}
-                                        role={"img"}
-                                      />
-                                    }
-                                    method={"GET"}
-                                    onError={async (...eventArgs: any) => {
-                                      generateStateOnChangeProp($state, [
-                                        "detailsDataApiRequest",
-                                        __plasmic_idx_0,
-                                        "error"
-                                      ]).apply(null, eventArgs);
-                                    }}
-                                    onLoading={async (...eventArgs: any) => {
-                                      generateStateOnChangeProp($state, [
-                                        "detailsDataApiRequest",
-                                        __plasmic_idx_0,
-                                        "loading"
-                                      ]).apply(null, eventArgs);
-                                    }}
-                                    onSuccess={async (...eventArgs: any) => {
-                                      generateStateOnChangeProp($state, [
-                                        "detailsDataApiRequest",
-                                        __plasmic_idx_0,
-                                        "data"
-                                      ]).apply(null, eventArgs);
-                                    }}
-                                    url={(() => {
-                                      try {
-                                        return (
-                                          "https://apigw.paziresh24.com/katibe/v1/factors/p24/" +
-                                          $state.invoicelist[currentIndex]
-                                            .factorid
-                                        );
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
-                                      }
-                                    })()}
-                                  >
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        sty.freeBox__h3IzX
-                                      )}
-                                    >
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          sty.freeBox__ssNs
-                                        )}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text__trdl6
-                                          )}
-                                        >
-                                          {"\u0639\u0646\u0648\u0627\u0646:"}
-                                        </div>
-                                      </div>
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          sty.freeBox___0Yj7
-                                        )}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text__cz8TE
-                                          )}
-                                        >
-                                          <React.Fragment>
-                                            {(() => {
-                                              try {
-                                                return $state
-                                                  .detailsDataApiRequest[
-                                                  currentIndex
-                                                ].data.data.title;
-                                              } catch (e) {
-                                                if (
-                                                  e instanceof TypeError ||
-                                                  e?.plasmicType ===
-                                                    "PlasmicUndefinedDataError"
-                                                ) {
-                                                  return "";
-                                                }
-                                                throw e;
-                                              }
-                                            })()}
-                                          </React.Fragment>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        sty.freeBox__yBS
-                                      )}
-                                    >
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          sty.freeBox__uBoJc
-                                        )}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text__fIxYa
-                                          )}
-                                        >
-                                          {hasVariant(
-                                            globalVariants,
-                                            "screen",
-                                            "mobileOnly"
-                                          )
-                                            ? "\u062a\u0648\u0636\u06cc\u062d\u0627\u062a:"
-                                            : "\u062a\u0648\u0636\u06cc\u062d\u0627\u062a:"}
-                                        </div>
-                                      </div>
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          sty.freeBox__fdZjo
-                                        )}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text__eQi9P
-                                          )}
-                                        >
-                                          <React.Fragment>
-                                            {(() => {
-                                              try {
-                                                return $state
-                                                  .detailsDataApiRequest[
-                                                  currentIndex
-                                                ].data.data.description;
-                                              } catch (e) {
-                                                if (
-                                                  e instanceof TypeError ||
-                                                  e?.plasmicType ===
-                                                    "PlasmicUndefinedDataError"
-                                                ) {
-                                                  return "";
-                                                }
-                                                throw e;
-                                              }
-                                            })()}
-                                          </React.Fragment>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        sty.freeBox__ejjBj
-                                      )}
-                                    >
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          sty.freeBox__akye
-                                        )}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text___8ODck
-                                          )}
-                                        >
-                                          {hasVariant(
-                                            globalVariants,
-                                            "screen",
-                                            "mobileOnly"
-                                          )
-                                            ? "\u06a9\u062f:"
-                                            : "\u06a9\u062f:"}
-                                        </div>
-                                      </div>
-                                      <Stack__
-                                        as={"div"}
-                                        hasGap={true}
-                                        className={classNames(
-                                          projectcss.all,
-                                          sty.freeBox__vQtGl
-                                        )}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text__h60I0
-                                          )}
-                                        >
-                                          {hasVariant(
-                                            globalVariants,
-                                            "screen",
-                                            "mobileOnly"
-                                          ) ? (
-                                            <React.Fragment>
-                                              {(() => {
-                                                try {
-                                                  return $state
-                                                    .detailsDataApiRequest[
-                                                    currentIndex
-                                                  ].data.data.invoiceid;
-                                                } catch (e) {
-                                                  if (
-                                                    e instanceof TypeError ||
-                                                    e?.plasmicType ===
-                                                      "PlasmicUndefinedDataError"
-                                                  ) {
-                                                    return "";
-                                                  }
-                                                  throw e;
-                                                }
-                                              })()}
-                                            </React.Fragment>
-                                          ) : (
-                                            <React.Fragment>
-                                              {(() => {
-                                                try {
-                                                  return $state
-                                                    .detailsDataApiRequest[
-                                                    currentIndex
-                                                  ].data.data.factorid;
-                                                } catch (e) {
-                                                  if (
-                                                    e instanceof TypeError ||
-                                                    e?.plasmicType ===
-                                                      "PlasmicUndefinedDataError"
-                                                  ) {
-                                                    return "";
-                                                  }
-                                                  throw e;
-                                                }
-                                              })()}
-                                            </React.Fragment>
-                                          )}
-                                        </div>
-                                      </Stack__>
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          sty.freeBox__svBw
-                                        )}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text___7XVfj
-                                          )}
-                                        >
-                                          {"\u0632\u0645\u0627\u0646:"}
-                                        </div>
-                                      </div>
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          sty.freeBox__iLjit
-                                        )}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text___4Edxq
-                                          )}
-                                        >
-                                          <React.Fragment>
-                                            {(() => {
-                                              try {
-                                                return (
-                                                  $state.detailsDataApiRequest[
-                                                    currentIndex
-                                                  ].data.data.registertime +
-                                                  " " +
-                                                  (() => {
-                                                    const gregorianDate =
-                                                      new Date(
-                                                        $state.detailsDataApiRequest[
-                                                          currentIndex
-                                                        ].data.data.registerdate
-                                                      );
-                                                    const persianDate =
-                                                      new Intl.DateTimeFormat(
-                                                        "fa-IR"
-                                                      ).format(gregorianDate);
-                                                    return persianDate;
-                                                  })()
-                                                );
-                                              } catch (e) {
-                                                if (
-                                                  e instanceof TypeError ||
-                                                  e?.plasmicType ===
-                                                    "PlasmicUndefinedDataError"
-                                                ) {
-                                                  return "";
-                                                }
-                                                throw e;
-                                              }
-                                            })()}
-                                          </React.Fragment>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    {(_par =>
-                                      !_par
-                                        ? []
-                                        : Array.isArray(_par)
-                                        ? _par
-                                        : [_par])(
-                                      (() => {
-                                        try {
-                                          return $state.detailsDataApiRequest[
-                                            currentIndex
-                                          ].data.data.services;
-                                        } catch (e) {
-                                          if (
-                                            e instanceof TypeError ||
-                                            e?.plasmicType ===
-                                              "PlasmicUndefinedDataError"
-                                          ) {
-                                            return [];
-                                          }
-                                          throw e;
-                                        }
-                                      })()
-                                    ).map(
-                                      (__plasmic_item_1, __plasmic_idx_1) => {
-                                        const currentItem = __plasmic_item_1;
-                                        const currentIndex = __plasmic_idx_1;
-                                        return (
-                                          <div
-                                            className={classNames(
-                                              projectcss.all,
-                                              sty.freeBox__ljqV8
-                                            )}
-                                            dir={"rtl"}
-                                            key={currentIndex}
-                                          >
-                                            <div
-                                              className={classNames(
-                                                projectcss.all,
-                                                sty.freeBox__b7Bz3
-                                              )}
-                                            >
-                                              <div
-                                                className={classNames(
-                                                  projectcss.all,
-                                                  projectcss.__wab_text,
-                                                  sty.text__bThOo
-                                                )}
-                                              >
-                                                <React.Fragment>
-                                                  {(() => {
-                                                    try {
-                                                      return "جزئیات:";
-                                                    } catch (e) {
-                                                      if (
-                                                        e instanceof
-                                                          TypeError ||
-                                                        e?.plasmicType ===
-                                                          "PlasmicUndefinedDataError"
-                                                      ) {
-                                                        return "\u062c\u0632\u0626\u06cc\u0627\u062a:";
-                                                      }
-                                                      throw e;
-                                                    }
-                                                  })()}
-                                                </React.Fragment>
-                                              </div>
-                                            </div>
-                                            <div
-                                              className={classNames(
-                                                projectcss.all,
-                                                sty.freeBox__g5Zyu
-                                              )}
-                                            >
-                                              <div
-                                                className={classNames(
-                                                  projectcss.all,
-                                                  projectcss.__wab_text,
-                                                  sty.text__pl20H
-                                                )}
-                                                dir={"rtl"}
-                                              >
-                                                <React.Fragment>
-                                                  {(() => {
-                                                    try {
-                                                      return (() => {
-                                                        return currentItem.count >
-                                                          1
-                                                          ? currentItem.service +
-                                                              " - " +
-                                                              new Intl.NumberFormat(
-                                                                "fa-IR"
-                                                              ).format(
-                                                                currentItem.count
-                                                              ) +
-                                                              "عدد"
-                                                          : currentItem.service;
-                                                      })();
-                                                    } catch (e) {
-                                                      if (
-                                                        e instanceof
-                                                          TypeError ||
-                                                        e?.plasmicType ===
-                                                          "PlasmicUndefinedDataError"
-                                                      ) {
-                                                        return "";
-                                                      }
-                                                      throw e;
-                                                    }
-                                                  })()}
-                                                </React.Fragment>
-                                              </div>
-                                            </div>
-                                            <Stack__
-                                              as={"div"}
-                                              hasGap={true}
-                                              className={classNames(
-                                                projectcss.all,
-                                                sty.freeBox__hklwu
-                                              )}
-                                            >
-                                              <div
-                                                className={classNames(
-                                                  projectcss.all,
-                                                  projectcss.__wab_text,
-                                                  sty.text___4ZDte
-                                                )}
-                                              >
-                                                {"\u0645\u0628\u0644\u063a:"}
-                                              </div>
-                                            </Stack__>
-                                            <div
-                                              className={classNames(
-                                                projectcss.all,
-                                                sty.freeBox__eiK6X
-                                              )}
-                                            >
-                                              <div
-                                                className={classNames(
-                                                  projectcss.all,
-                                                  projectcss.__wab_text,
-                                                  sty.text__txDbl
-                                                )}
-                                              >
-                                                <React.Fragment>
-                                                  {(() => {
-                                                    try {
-                                                      return (
-                                                        new Intl.NumberFormat(
-                                                          "fa-IR"
-                                                        ).format(
-                                                          currentItem.price *
-                                                            currentItem.count
-                                                        ) +
-                                                        " " +
-                                                        "ریال"
-                                                      );
-                                                    } catch (e) {
-                                                      if (
-                                                        e instanceof
-                                                          TypeError ||
-                                                        e?.plasmicType ===
-                                                          "PlasmicUndefinedDataError"
-                                                      ) {
-                                                        return "";
-                                                      }
-                                                      throw e;
-                                                    }
-                                                  })()}
-                                                </React.Fragment>
-                                              </div>
-                                            </div>
-                                          </div>
-                                        );
-                                      }
-                                    )}
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        sty.freeBox__k3Ell
-                                      )}
-                                    >
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          sty.freeBox__kGqd1
-                                        )}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text__mzAi
-                                          )}
-                                        >
-                                          {"\u062c\u0645\u0639 \u06a9\u0644:"}
-                                        </div>
-                                      </div>
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          sty.freeBox__ni1DC
-                                        )}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text__pkPec
-                                          )}
-                                        >
-                                          <React.Fragment>
-                                            {(() => {
-                                              try {
-                                                return (
-                                                  new Intl.NumberFormat(
-                                                    "fa-IR"
-                                                  ).format(
-                                                    $state
-                                                      .detailsDataApiRequest[
-                                                      currentIndex
-                                                    ].data.data.sumprice
-                                                  ) + " ریال"
-                                                );
-                                              } catch (e) {
-                                                if (
-                                                  e instanceof TypeError ||
-                                                  e?.plasmicType ===
-                                                    "PlasmicUndefinedDataError"
-                                                ) {
-                                                  return "";
-                                                }
-                                                throw e;
-                                              }
-                                            })()}
-                                          </React.Fragment>
-                                        </div>
-                                      </div>
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          sty.freeBox__dgxC7
-                                        )}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text__xcEK
-                                          )}
-                                        >
-                                          {"\u062a\u062e\u0641\u06cc\u0641:"}
-                                        </div>
-                                      </div>
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          sty.freeBox__dVMik
-                                        )}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text__eHx6P
-                                          )}
-                                        >
-                                          <React.Fragment>
-                                            {(() => {
-                                              try {
-                                                return (
-                                                  new Intl.NumberFormat(
-                                                    "fa-IR"
-                                                  ).format(
-                                                    $state
-                                                      .detailsDataApiRequest[
-                                                      currentIndex
-                                                    ].data.data.discountprice
-                                                  ) + " ریال"
-                                                );
-                                              } catch (e) {
-                                                if (
-                                                  e instanceof TypeError ||
-                                                  e?.plasmicType ===
-                                                    "PlasmicUndefinedDataError"
-                                                ) {
-                                                  return "";
-                                                }
-                                                throw e;
-                                              }
-                                            })()}
-                                          </React.Fragment>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        sty.freeBox__fUqp
-                                      )}
-                                    >
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          sty.freeBox__vOeX4
-                                        )}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text___4Xpk1
-                                          )}
-                                        >
-                                          {
-                                            "\u0645\u0627\u0644\u06cc\u0627\u062a:"
-                                          }
-                                        </div>
-                                      </div>
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          sty.freeBox__kSiz8
-                                        )}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text__rZrzc
-                                          )}
-                                        >
-                                          <React.Fragment>
-                                            {(() => {
-                                              try {
-                                                return (
-                                                  new Intl.NumberFormat(
-                                                    "fa-IR"
-                                                  ).format(
-                                                    $state
-                                                      .detailsDataApiRequest[
-                                                      currentIndex
-                                                    ].data.data.vatprice
-                                                  ) + " ریال"
-                                                );
-                                              } catch (e) {
-                                                if (
-                                                  e instanceof TypeError ||
-                                                  e?.plasmicType ===
-                                                    "PlasmicUndefinedDataError"
-                                                ) {
-                                                  return "";
-                                                }
-                                                throw e;
-                                              }
-                                            })()}
-                                          </React.Fragment>
-                                        </div>
-                                      </div>
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          sty.freeBox__t4Pub
-                                        )}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text__moT1O
-                                          )}
-                                        >
-                                          {
-                                            "\u0645\u0628\u0644\u063a \u0646\u0647\u0627\u06cc\u06cc:"
-                                          }
-                                        </div>
-                                      </div>
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          sty.freeBox__sQsGm
-                                        )}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
-                                            sty.text__aYred
-                                          )}
-                                        >
-                                          <React.Fragment>
-                                            {(() => {
-                                              try {
-                                                return (
-                                                  new Intl.NumberFormat(
-                                                    "fa-IR"
-                                                  ).format(
-                                                    $state
-                                                      .detailsDataApiRequest[
-                                                      currentIndex
-                                                    ].data.data.finalprice
-                                                  ) + " ریال"
-                                                );
-                                              } catch (e) {
-                                                if (
-                                                  e instanceof TypeError ||
-                                                  e?.plasmicType ===
-                                                    "PlasmicUndefinedDataError"
-                                                ) {
-                                                  return "";
-                                                }
-                                                throw e;
-                                              }
-                                            })()}
-                                          </React.Fragment>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    {(() => {
-                                      try {
-                                        return $state.detailsDataApiRequest[
-                                          currentIndex
-                                        ].data.data !== undefined &&
-                                          $state.detailsDataApiRequest[
-                                            currentIndex
-                                          ].data.data.meta !== undefined &&
-                                          $state.detailsDataApiRequest[
-                                            currentIndex
-                                          ].data.data.meta.RefNum !== undefined
-                                          ? true
-                                          : false;
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return true;
-                                        }
-                                        throw e;
-                                      }
-                                    })() ? (
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          sty.freeBox__ePzDe
-                                        )}
-                                      >
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            sty.freeBox__fuMq
-                                          )}
-                                        >
-                                          <div
-                                            className={classNames(
-                                              projectcss.all,
-                                              projectcss.__wab_text,
-                                              sty.text__rwal
-                                            )}
-                                          >
-                                            {
-                                              "\u0634\u0646\u0627\u0633\u0647 \u067e\u0631\u062f\u0627\u062e\u062a:"
-                                            }
-                                          </div>
-                                        </div>
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            sty.freeBox__fZvD
-                                          )}
-                                        >
-                                          <div
-                                            className={classNames(
-                                              projectcss.all,
-                                              projectcss.__wab_text,
-                                              sty.text__lza2H
-                                            )}
-                                          >
-                                            {hasVariant(
-                                              globalVariants,
-                                              "screen",
-                                              "mobileOnly"
-                                            ) ? (
-                                              <React.Fragment>
-                                                {(() => {
-                                                  try {
-                                                    return $state
-                                                      .detailsDataApiRequest[
-                                                      currentIndex
-                                                    ].data.data.meta.RRN;
-                                                  } catch (e) {
-                                                    if (
-                                                      e instanceof TypeError ||
-                                                      e?.plasmicType ===
-                                                        "PlasmicUndefinedDataError"
-                                                    ) {
-                                                      return "";
-                                                    }
-                                                    throw e;
-                                                  }
-                                                })()}
-                                              </React.Fragment>
-                                            ) : (
-                                              <React.Fragment>
-                                                {(() => {
-                                                  try {
-                                                    return $state
-                                                      .detailsDataApiRequest[
-                                                      currentIndex
-                                                    ].data.data.meta.RRN;
-                                                  } catch (e) {
-                                                    if (
-                                                      e instanceof TypeError ||
-                                                      e?.plasmicType ===
-                                                        "PlasmicUndefinedDataError"
-                                                    ) {
-                                                      return "";
-                                                    }
-                                                    throw e;
-                                                  }
-                                                })()}
-                                              </React.Fragment>
-                                            )}
-                                          </div>
-                                        </div>
-                                      </div>
-                                    ) : null}
-                                  </ApiRequest>
-                                ),
-                                className: classNames(
-                                  "__wab_instance",
-                                  sty.dialogNewInvoiceDetails
-                                ),
-                                onOpenChange: async (...eventArgs: any) => {
-                                  generateStateOnChangeProp($state, [
-                                    "dialogNewInvoiceDetails",
-                                    __plasmic_idx_0,
-                                    "open"
-                                  ]).apply(null, eventArgs);
-
-                                  if (
-                                    eventArgs.length > 1 &&
-                                    eventArgs[1] &&
-                                    eventArgs[1]._plasmic_state_init_
-                                  ) {
-                                    return;
-                                  }
-                                },
-                                open: generateStateValueProp($state, [
-                                  "dialogNewInvoiceDetails",
-                                  __plasmic_idx_0,
-                                  "open"
-                                ]),
-                                title: (
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      sty.freeBox__s2Pz
-                                    )}
-                                  >
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        sty.freeBox__dt8V1,
-                                        ``
-                                      )}
-                                      dir={"rtl"}
-                                    >
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
-                                          sty.text__sEqkN
-                                        )}
-                                      >
-                                        {
-                                          "\u062c\u0632\u0626\u06cc\u0627\u062a \u0641\u0627\u06a9\u062a\u0648\u0631"
-                                        }
-                                      </div>
-                                    </div>
-                                  </div>
-                                ),
-                                trigger: (
-                                  <Button
-                                    data-plasmic-name={"btnInvoiceInfo"}
-                                    data-plasmic-override={
-                                      overrides.btnInvoiceInfo
-                                    }
-                                    children2={
-                                      <div
-                                        className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
-                                          sty.text__vzf3
-                                        )}
-                                      >
-                                        {"..."}
-                                      </div>
-                                    }
-                                    className={classNames(
-                                      "__wab_instance",
-                                      sty.btnInvoiceInfo
-                                    )}
-                                    color={"softGreen"}
-                                    onClick={async event => {
-                                      const $steps = {};
-                                    }}
-                                    size={
-                                      hasVariant(
-                                        globalVariants,
-                                        "screen",
-                                        "mobileOnly"
-                                      )
-                                        ? "minimal"
-                                        : undefined
-                                    }
-                                  />
-                                )
-                              };
-
-                              initializePlasmicStates(
-                                $state,
-                                [
-                                  {
-                                    name: "dialogNewInvoiceDetails[].open",
-                                    initFunc: ({ $props, $state, $queries }) =>
-                                      false
-                                  }
-                                ],
-                                [__plasmic_idx_0]
-                              );
-                              return (
-                                <Dialog
-                                  data-plasmic-name={"dialogNewInvoiceDetails"}
-                                  data-plasmic-override={
-                                    overrides.dialogNewInvoiceDetails
-                                  }
-                                  {...child$Props}
-                                />
-                              );
+                              try {
+                                return new Intl.NumberFormat("fa-IR").format(
+                                  $state.invoicelist[currentIndex].balance
+                                );
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "25.300.000";
+                                }
+                                throw e;
+                              }
                             })()}
-                          </div>
+                          </React.Fragment>
                         </div>
                       </div>
                     </div>
@@ -8242,7 +7939,6 @@ const PlasmicDescendants = {
     "gridInvoice13",
     "gridInvoice12",
     "dialogNewInvoiceDetails",
-    "btnInvoiceInfo",
     "detailsDataApiRequest",
     "waitingIcon3",
     "gridNoData2",
@@ -8326,17 +8022,14 @@ const PlasmicDescendants = {
   gridInvoice12: [
     "gridInvoice12",
     "dialogNewInvoiceDetails",
-    "btnInvoiceInfo",
     "detailsDataApiRequest",
     "waitingIcon3"
   ],
   dialogNewInvoiceDetails: [
     "dialogNewInvoiceDetails",
-    "btnInvoiceInfo",
     "detailsDataApiRequest",
     "waitingIcon3"
   ],
-  btnInvoiceInfo: ["btnInvoiceInfo"],
   detailsDataApiRequest: ["detailsDataApiRequest", "waitingIcon3"],
   waitingIcon3: ["waitingIcon3"],
   gridNoData2: ["gridNoData2"],
@@ -8379,7 +8072,6 @@ type NodeDefaultElementType = {
   gridInvoice13: "div";
   gridInvoice12: "div";
   dialogNewInvoiceDetails: typeof Dialog;
-  btnInvoiceInfo: typeof Button;
   detailsDataApiRequest: typeof ApiRequest;
   waitingIcon3: "svg";
   gridNoData2: "div";
@@ -8478,7 +8170,6 @@ export const PlasmicTransactionsSearch = Object.assign(
     gridInvoice13: makeNodeComponent("gridInvoice13"),
     gridInvoice12: makeNodeComponent("gridInvoice12"),
     dialogNewInvoiceDetails: makeNodeComponent("dialogNewInvoiceDetails"),
-    btnInvoiceInfo: makeNodeComponent("btnInvoiceInfo"),
     detailsDataApiRequest: makeNodeComponent("detailsDataApiRequest"),
     waitingIcon3: makeNodeComponent("waitingIcon3"),
     gridNoData2: makeNodeComponent("gridNoData2"),
