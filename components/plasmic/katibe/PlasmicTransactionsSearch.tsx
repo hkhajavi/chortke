@@ -5614,7 +5614,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                           >
                             {(() => {
                               try {
-                                return currentItem.productid == 6;
+                                return (
+                                  currentItem.productid == 6 &&
+                                  !currentItem.title.includes("بازگشت")
+                                );
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||

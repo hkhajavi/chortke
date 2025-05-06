@@ -2905,7 +2905,6 @@
   justify-content: flex-start;
   align-items: center;
   grid-column-end: span 2;
-  border-left-width: 1px;
   border-left-style: solid;
   min-width: 0;
   padding: 8px;
@@ -3018,7 +3017,6 @@
   justify-content: flex-start;
   align-items: center;
   grid-column-end: span 2;
-  border-left-width: 1px;
   border-left-style: solid;
   min-width: 0;
   padding: 8px;
