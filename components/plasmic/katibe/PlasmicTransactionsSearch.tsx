@@ -181,6 +181,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
   };
 
   const __nextRouter = useNextRouter();
+
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
@@ -5613,10 +5614,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                           >
                             {(() => {
                               try {
-                                return (
-                                  $state.userData?.isDoctor &&
-                                  currentItem.productid == 6
-                                );
+                                return currentItem.productid == 6;
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||
@@ -5731,24 +5729,6 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                             sty.freeBox__h3IzX
                                           )}
                                         >
-                                          <div
-                                            className={classNames(
-                                              projectcss.all,
-                                              sty.freeBox__ssNs
-                                            )}
-                                          >
-                                            <div
-                                              className={classNames(
-                                                projectcss.all,
-                                                projectcss.__wab_text,
-                                                sty.text__trdl6
-                                              )}
-                                            >
-                                              {
-                                                "\u0639\u0646\u0648\u0627\u0646:"
-                                              }
-                                            </div>
-                                          </div>
                                           <div
                                             className={classNames(
                                               projectcss.all,
@@ -6075,11 +6055,103 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                               <React.Fragment>
                                                 {(() => {
                                                   try {
-                                                    return $state
-                                                      .detailsDataApiRequest[
-                                                      currentIndex
-                                                    ].data.data.metadata
-                                                      .book_time;
+                                                    return (
+                                                      new Date(
+                                                        $state
+                                                          .detailsDataApiRequest[
+                                                          currentIndex
+                                                        ].data.data.metadata
+                                                          .book_time * 1000
+                                                      ).getHours() +
+                                                      ":" +
+                                                      new Date(
+                                                        $state
+                                                          .detailsDataApiRequest[
+                                                          currentIndex
+                                                        ].data.data.metadata
+                                                          .book_time * 1000
+                                                      ).getMinutes() +
+                                                      ":00" +
+                                                      " " +
+                                                      new Date(
+                                                        $state
+                                                          .detailsDataApiRequest[
+                                                          currentIndex
+                                                        ].data.data.metadata
+                                                          .book_time * 1000
+                                                      ).toLocaleDateString(
+                                                        "fa-IR"
+                                                      )
+                                                    );
+                                                  } catch (e) {
+                                                    if (
+                                                      e instanceof TypeError ||
+                                                      e?.plasmicType ===
+                                                        "PlasmicUndefinedDataError"
+                                                    ) {
+                                                      return "";
+                                                    }
+                                                    throw e;
+                                                  }
+                                                })()}
+                                              </React.Fragment>
+                                            </div>
+                                          </div>
+                                        </div>
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            sty.freeBox__ffrgj
+                                          )}
+                                        >
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              sty.freeBox__cvdzv
+                                            )}
+                                          >
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                projectcss.__wab_text,
+                                                sty.text__k4GR
+                                              )}
+                                            >
+                                              {
+                                                "\u0642\u0628\u0636 \u0646\u0648\u0628\u062a:"
+                                              }
+                                            </div>
+                                          </div>
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              sty.freeBox__qMemg
+                                            )}
+                                          >
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                projectcss.__wab_text,
+                                                sty.text__v5YEk
+                                              )}
+                                            >
+                                              <React.Fragment>
+                                                {(() => {
+                                                  try {
+                                                    return (
+                                                      "https://www.paziresh24.com/receipt/" +
+                                                      $state
+                                                        .detailsDataApiRequest[
+                                                        currentIndex
+                                                      ].data.data.metadata
+                                                        .center_id +
+                                                      "/" +
+                                                      $state
+                                                        .detailsDataApiRequest[
+                                                        currentIndex
+                                                      ].data.data.metadata
+                                                        .book_id
+                                                    );
                                                   } catch (e) {
                                                     if (
                                                       e instanceof TypeError ||
