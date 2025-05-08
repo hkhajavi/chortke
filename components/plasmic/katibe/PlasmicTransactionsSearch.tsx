@@ -61,9 +61,9 @@ import {
 
 import Button from "../../Button"; // plasmic-import: 0wu_ZE1f8SuT/component
 import Select from "../../Select"; // plasmic-import: 7wkEfmUYAcMf/component
+import Button2 from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
 import Dialog from "../../Dialog"; // plasmic-import: nYtkLnbqtkXY/component
 import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
-import Button2 from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
 import Dialog2 from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
 import { TabContent } from "@plasmicpkgs/plasmic-tabs";
 import { AntdRadioGroup } from "@plasmicpkgs/antd5/skinny/registerRadio";
@@ -113,6 +113,8 @@ export type PlasmicTransactionsSearch__OverridesType = {
   btnLogout?: Flex__<"a"> & Partial<LinkProps>;
   btnLogin?: Flex__<typeof Button>;
   cbAccounts?: Flex__<typeof Select>;
+  btnFilter?: Flex__<typeof Button2>;
+  btnFilterClear?: Flex__<typeof Button2>;
   gridInvoice1?: Flex__<"div">;
   txtRemainingText?: Flex__<"div">;
   txtRemainingValue?: Flex__<"div">;
@@ -732,6 +734,12 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
         type: "private",
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+      },
+      {
+        path: "bookDate",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -1216,7 +1224,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             ? (() => {
                                 const actionArgs = {
                                   customFunction: async () => {
-                                    return ($state.bankAccountList = []);
+                                    return (() => {
+                                      $state.bankAccountList = [];
+                                      return ($state.bookDate = "");
+                                    })();
                                   }
                                 };
                                 return (({ customFunction }) => {
@@ -1334,6 +1345,240 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       ])}
                     />
                   </div>
+                  {(() => {
+                    try {
+                      return (
+                        $state.currentAccountType == "centerid" &&
+                        $state.userData?.isDoctor &&
+                        !$state.waiting
+                      );
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__uosbZ)}
+                    >
+                      {(() => {
+                        try {
+                          return $state.bookDate == "";
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <Button2
+                          data-plasmic-name={"btnFilter"}
+                          data-plasmic-override={overrides.btnFilter}
+                          children2={
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___8KUms
+                              )}
+                            >
+                              {
+                                "\u0645\u0631\u0627\u062c\u0639\u06cc\u0646 \u0627\u0645\u0631\u0648\u0632"
+                              }
+                            </div>
+                          }
+                          className={classNames(
+                            "__wab_instance",
+                            sty.btnFilter
+                          )}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["runCode"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return ($state.bookDate = new Date()
+                                        .toISOString()
+                                        .split("T")[0]);
+                                    }
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["runCode"] != null &&
+                              typeof $steps["runCode"] === "object" &&
+                              typeof $steps["runCode"].then === "function"
+                            ) {
+                              $steps["runCode"] = await $steps["runCode"];
+                            }
+
+                            $steps["updateFirstRequestCount"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["firstRequestCount"]
+                                    },
+                                    operation: 2
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    const oldValue = $stateGet(
+                                      objRoot,
+                                      variablePath
+                                    );
+                                    $stateSet(
+                                      objRoot,
+                                      variablePath,
+                                      oldValue + 1
+                                    );
+                                    return oldValue + 1;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateFirstRequestCount"] != null &&
+                              typeof $steps["updateFirstRequestCount"] ===
+                                "object" &&
+                              typeof $steps["updateFirstRequestCount"].then ===
+                                "function"
+                            ) {
+                              $steps["updateFirstRequestCount"] = await $steps[
+                                "updateFirstRequestCount"
+                              ];
+                            }
+                          }}
+                          size={"compact"}
+                        />
+                      ) : null}
+                      {(() => {
+                        try {
+                          return $state.bookDate != "";
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <Button2
+                          data-plasmic-name={"btnFilterClear"}
+                          data-plasmic-override={overrides.btnFilterClear}
+                          children2={
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___1V2NI
+                              )}
+                            >
+                              {
+                                "\u0646\u0645\u0627\u06cc\u0634 \u0647\u0645\u0647"
+                              }
+                            </div>
+                          }
+                          className={classNames(
+                            "__wab_instance",
+                            sty.btnFilterClear
+                          )}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["runCode"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return (() => {
+                                        return ($state.bookDate = "");
+                                      })();
+                                    }
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["runCode"] != null &&
+                              typeof $steps["runCode"] === "object" &&
+                              typeof $steps["runCode"].then === "function"
+                            ) {
+                              $steps["runCode"] = await $steps["runCode"];
+                            }
+
+                            $steps["updateFirstRequestCount"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["firstRequestCount"]
+                                    },
+                                    operation: 2
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    const oldValue = $stateGet(
+                                      objRoot,
+                                      variablePath
+                                    );
+                                    $stateSet(
+                                      objRoot,
+                                      variablePath,
+                                      oldValue + 1
+                                    );
+                                    return oldValue + 1;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateFirstRequestCount"] != null &&
+                              typeof $steps["updateFirstRequestCount"] ===
+                                "object" &&
+                              typeof $steps["updateFirstRequestCount"].then ===
+                                "function"
+                            ) {
+                              $steps["updateFirstRequestCount"] = await $steps[
+                                "updateFirstRequestCount"
+                              ];
+                            }
+                          }}
+                          size={"compact"}
+                        />
+                      ) : null}
+                    </div>
+                  ) : null}
                 </div>
               ) : null}
               <section
@@ -5180,7 +5425,23 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         )}
                       >
                         {hasVariant(globalVariants, "screen", "mobileOnly") ? (
-                          "\u06a9\u0644 \u062f\u0631\u0622\u0645\u062f: "
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return $state.bookDate == ""
+                                  ? "کل درآمد: "
+                                  : "درآمد امروز: ";
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "\u06a9\u0644 \u062f\u0631\u0622\u0645\u062f: ";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
                         ) : (
                           <React.Fragment>
                             {(() => {
@@ -5263,7 +5524,9 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 try {
                                   return $state.transactionsReport?.data
                                     ?.deposit
-                                    ? "کل درآمد: " +
+                                    ? ($state.bookDate == ""
+                                        ? "کل درآمد: "
+                                        : "درآمد امروز: ") +
                                         ($state.transactionsReport.data.deposit.toLocaleString(
                                           "fa-IR"
                                         ) +
@@ -7666,6 +7929,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     $state.pageNumber +
                                     "&account=" +
                                     account.account;
+                                  +"&book_date=" + $state.bookDate;
                                   $state.currentCenterid = "";
                                   $state.requestWalletUrl =
                                     "https://apigw.paziresh24.com/katibe/v1/transactions/balance/p24?productid=0&account=" +
@@ -7683,7 +7947,9 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     "&centerid=" +
                                     account.id +
                                     "&account=" +
-                                    account.account;
+                                    account.account +
+                                    "&book_date=" +
+                                    $state.bookDate;
                                   $state.requestWalletUrl =
                                     "https://apigw.paziresh24.com/katibe/v1/transactions/balance/p24?productid=7&centerid=" +
                                     account.id +
@@ -8012,9 +8278,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                           (() => {
                             try {
                               return (
-                                "https://apigw.paziresh24.com/katibe/v1/transactions/report/p24" +
+                                "https://apigw.paziresh24.com/katibe/v1/transactions/report/p24?book_date=" +
+                                $state.bookDate +
                                 ($state.currentAccountType == "centerid"
-                                  ? "?centerid=" + $state.currentAccountId
+                                  ? "&centerid=" + $state.currentAccountId
                                   : "")
                               );
                             } catch (e) {
@@ -8109,6 +8376,8 @@ const PlasmicDescendants = {
     "btnLogout",
     "btnLogin",
     "cbAccounts",
+    "btnFilter",
+    "btnFilterClear",
     "gridInvoice1",
     "txtRemainingText",
     "txtRemainingValue",
@@ -8146,6 +8415,8 @@ const PlasmicDescendants = {
   btnLogout: ["btnLogout"],
   btnLogin: ["btnLogin"],
   cbAccounts: ["cbAccounts"],
+  btnFilter: ["btnFilter"],
+  btnFilterClear: ["btnFilterClear"],
   gridInvoice1: [
     "gridInvoice1",
     "txtRemainingText",
@@ -8242,6 +8513,8 @@ type NodeDefaultElementType = {
   btnLogout: "a";
   btnLogin: typeof Button;
   cbAccounts: typeof Select;
+  btnFilter: typeof Button2;
+  btnFilterClear: typeof Button2;
   gridInvoice1: "div";
   txtRemainingText: "div";
   txtRemainingValue: "div";
@@ -8340,6 +8613,8 @@ export const PlasmicTransactionsSearch = Object.assign(
     btnLogout: makeNodeComponent("btnLogout"),
     btnLogin: makeNodeComponent("btnLogin"),
     cbAccounts: makeNodeComponent("cbAccounts"),
+    btnFilter: makeNodeComponent("btnFilter"),
+    btnFilterClear: makeNodeComponent("btnFilterClear"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     txtRemainingText: makeNodeComponent("txtRemainingText"),
     txtRemainingValue: makeNodeComponent("txtRemainingValue"),
