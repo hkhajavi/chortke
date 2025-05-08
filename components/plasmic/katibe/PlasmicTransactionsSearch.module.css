@@ -452,6 +452,8 @@
     height: 100%;
     align-items: center;
     justify-content: center;
+    padding-right: 0px;
+    padding-left: 0px;
     min-height: 0;
   }
 }
