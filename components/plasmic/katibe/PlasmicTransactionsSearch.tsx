@@ -7111,6 +7111,53 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         <React.Fragment>
                           <React.Fragment>
                             {
+                              "\u067e\u0632\u0634\u06a9 \u06af\u0631\u0627\u0645\u06cc\u060c \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627\u06cc \u0645\u0648\u062c\u0648\u062f \u062f\u0631 "
+                            }
+                          </React.Fragment>
+                          <span
+                            className={
+                              "plasmic_default__all plasmic_default__span"
+                            }
+                            style={{ fontWeight: 700 }}
+                          >
+                            {
+                              "\u0632\u0645\u0627\u0646 \u0627\u062e\u0630 \u0646\u0648\u0628\u062a"
+                            }
+                          </span>
+                          <React.Fragment>
+                            {
+                              " \u062b\u0628\u062a \u0634\u062f\u0647\u200c \u0648 \u0628\u0647 \u0645\u0646\u0638\u0648\u0631 "
+                            }
+                          </React.Fragment>
+                          <span
+                            className={
+                              "plasmic_default__all plasmic_default__span"
+                            }
+                            style={{ fontWeight: 700 }}
+                          >
+                            {
+                              "\u062a\u0627\u0631\u06cc\u062e \u0646\u0648\u0628\u062a"
+                            }
+                          </span>
+                          <React.Fragment>
+                            {
+                              " \u0646\u0645\u06cc\u200c\u0628\u0627\u0634\u062f."
+                            }
+                          </React.Fragment>
+                        </React.Fragment>
+                      )}
+                    </div>
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__wtKMd
+                      )}
+                    >
+                      {hasVariant(globalVariants, "screen", "mobileOnly") ? (
+                        <React.Fragment>
+                          <React.Fragment>
+                            {
                               "\u062f\u0631\u0635\u0648\u0631\u062a \u0646\u06cc\u0627\u0632 \u0628\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc "
                             }
                           </React.Fragment>
@@ -7136,7 +7183,78 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 projectcss.a,
                                 projectcss.__wab_text,
                                 projectcss.plasmic_default__inline,
-                                sty.link__thlGx
+                                sty.link__kvcEd
+                              )}
+                              component={Link}
+                              href={""}
+                              onClick={async event => {
+                                const $steps = {};
+
+                                $steps["openLink"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        args: ["https://t.me/hojatkhajavi"]
+                                      };
+                                      return $globalActions[
+                                        "Hamdast.openLink"
+                                      ]?.apply(null, [...actionArgs.args]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["openLink"] != null &&
+                                  typeof $steps["openLink"] === "object" &&
+                                  typeof $steps["openLink"].then === "function"
+                                ) {
+                                  $steps["openLink"] = await $steps["openLink"];
+                                }
+                              }}
+                              platform={"nextjs"}
+                            >
+                              {hasVariant(
+                                globalVariants,
+                                "screen",
+                                "mobileOnly"
+                              )
+                                ? "@hojatkhajavi"
+                                : "@hojatkhajavi"}
+                            </PlasmicLink__>
+                          }
+                          <React.Fragment>
+                            {
+                              " \u062f\u0631 \u062a\u0644\u06af\u0631\u0627\u0645 \u067e\u06cc\u0627\u0645 \u062f\u0647\u06cc\u062f."
+                            }
+                          </React.Fragment>
+                        </React.Fragment>
+                      ) : (
+                        <React.Fragment>
+                          <React.Fragment>
+                            {
+                              "\u062f\u0631\u0635\u0648\u0631\u062a \u0646\u06cc\u0627\u0632 \u0628\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc "
+                            }
+                          </React.Fragment>
+                          <span
+                            className={
+                              "plasmic_default__all plasmic_default__span"
+                            }
+                            style={{ fontWeight: 700 }}
+                          >
+                            {
+                              "\u067e\u06cc\u0631\u0627\u0645\u0648\u0646 \u0627\u06cc\u0646 \u0635\u0641\u062d\u0647"
+                            }
+                          </span>
+                          <React.Fragment>
+                            {
+                              "\u060c \u0628\u0647 \u0622\u06cc\u200c\u062f\u06cc "
+                            }
+                          </React.Fragment>
+                          {
+                            <PlasmicLink__
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.a,
+                                projectcss.__wab_text,
+                                projectcss.plasmic_default__inline,
+                                sty.link__kvcEd
                               )}
                               component={Link}
                               href={""}
