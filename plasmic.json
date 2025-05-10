@@ -785,6 +785,20 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/ipg-message"
+        },
+        {
+          "id": "BF9WF06JkxeV",
+          "name": "PaymentMethods",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/katibe/PlasmicPaymentMethods.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/payment-methods.tsx"
+          },
+          "cssFilePath": "plasmic/katibe/PlasmicPaymentMethods.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/payment-methods"
         }
       ],
       "icons": [
