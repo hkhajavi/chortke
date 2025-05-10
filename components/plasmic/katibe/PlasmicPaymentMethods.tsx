@@ -399,12 +399,9 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                 try {
                                   return {
                                     productid: 1,
-                                    returnlink: globalThis.atob(
-                                      $ctx.query.returnlink
-                                    ),
-                                    cancel_returnlink: globalThis.atob(
-                                      $ctx.query.cancel_returnlink
-                                    ),
+                                    returnlink: $ctx.query.returnlink,
+                                    cancel_returnlink:
+                                      $ctx.query.cancel_returnlink,
                                     title: "افزایش موجودی",
                                     amount: $ctx.query.amount - $state.balance
                                   };
@@ -556,21 +553,49 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                     children2={"\u0628\u0627\u0632\u06af\u0634\u062a"}
                     className={classNames("__wab_instance", sty.button___1HrS)}
                     color={"softBlue"}
-                    link={(() => {
-                      try {
-                        return $ctx.query.cancel_returnlink
-                          ? globalThis.atob($ctx.query.cancel_returnlink)
-                          : "https://www.paziresh24.com";
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return undefined;
-                        }
-                        throw e;
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["invokeGlobalAction"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                (() => {
+                                  try {
+                                    return $ctx.query.cancel_returnlink
+                                      ? globalThis.atob(
+                                          $ctx.query.cancel_returnlink
+                                        )
+                                      : "https://www.paziresh24.com";
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()
+                              ]
+                            };
+                            return $globalActions["Hamdast.openLink"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
+                      if (
+                        $steps["invokeGlobalAction"] != null &&
+                        typeof $steps["invokeGlobalAction"] === "object" &&
+                        typeof $steps["invokeGlobalAction"].then === "function"
+                      ) {
+                        $steps["invokeGlobalAction"] = await $steps[
+                          "invokeGlobalAction"
+                        ];
                       }
-                    })()}
+                    }}
                   />
                 </PlasmicLink__>
               </div>
