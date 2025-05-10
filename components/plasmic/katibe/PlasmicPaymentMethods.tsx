@@ -90,6 +90,7 @@ export type PlasmicPaymentMethods__OverridesType = {
   root?: Flex__<"div">;
   section?: Flex__<"section">;
   svg?: Flex__<"svg">;
+  link?: Flex__<"a"> & Partial<LinkProps>;
   embedHtml?: Flex__<typeof Embed>;
   sideEffect?: Flex__<typeof SideEffect>;
 };
@@ -398,9 +399,12 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                 try {
                                   return {
                                     productid: 1,
-                                    returnlink: $ctx.query.returnlink,
-                                    cancel_returnlink:
-                                      $ctx.query.cancel_returnlink,
+                                    returnlink: globalThis.atob(
+                                      $ctx.query.returnlink
+                                    ),
+                                    cancel_returnlink: globalThis.atob(
+                                      $ctx.query.cancel_returnlink
+                                    ),
                                     title: "افزایش موجودی",
                                     amount: $ctx.query.amount - $state.balance
                                   };
@@ -541,57 +545,34 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                   }}
                 />
 
-                <Button
-                  children2={"\u0628\u0627\u0632\u06af\u0634\u062a"}
-                  className={classNames("__wab_instance", sty.button___1HrS)}
-                  color={"softBlue"}
-                  onClick={async event => {
-                    const $steps = {};
-
-                    $steps["goToPage"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            destination: (() => {
-                              try {
-                                return $ctx.query.cancel_returnlink
-                                  ? globalThis.atob(
-                                      $ctx.query.cancel_returnlink
-                                    )
-                                  : "https://www.paziresh24.com";
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return undefined;
-                                }
-                                throw e;
-                              }
-                            })()
-                          };
-                          return (({ destination }) => {
-                            if (
-                              typeof destination === "string" &&
-                              destination.startsWith("#")
-                            ) {
-                              document
-                                .getElementById(destination.substr(1))
-                                .scrollIntoView({ behavior: "smooth" });
-                            } else {
-                              __nextRouter?.push(destination);
-                            }
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["goToPage"] != null &&
-                      typeof $steps["goToPage"] === "object" &&
-                      typeof $steps["goToPage"].then === "function"
-                    ) {
-                      $steps["goToPage"] = await $steps["goToPage"];
-                    }
-                  }}
-                />
+                <PlasmicLink__
+                  data-plasmic-name={"link"}
+                  data-plasmic-override={overrides.link}
+                  className={classNames(projectcss.all, projectcss.a, sty.link)}
+                  component={Link}
+                  platform={"nextjs"}
+                >
+                  <Button
+                    children2={"\u0628\u0627\u0632\u06af\u0634\u062a"}
+                    className={classNames("__wab_instance", sty.button___1HrS)}
+                    color={"softBlue"}
+                    link={(() => {
+                      try {
+                        return $ctx.query.cancel_returnlink
+                          ? globalThis.atob($ctx.query.cancel_returnlink)
+                          : "https://www.paziresh24.com";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()}
+                  />
+                </PlasmicLink__>
               </div>
             </div>
           </section>
@@ -675,9 +656,10 @@ function PlasmicPaymentMethods__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "section", "svg", "embedHtml", "sideEffect"],
-  section: ["section", "svg"],
+  root: ["root", "section", "svg", "link", "embedHtml", "sideEffect"],
+  section: ["section", "svg", "link"],
   svg: ["svg"],
+  link: ["link"],
   embedHtml: ["embedHtml"],
   sideEffect: ["sideEffect"]
 } as const;
@@ -688,6 +670,7 @@ type NodeDefaultElementType = {
   root: "div";
   section: "section";
   svg: "svg";
+  link: "a";
   embedHtml: typeof Embed;
   sideEffect: typeof SideEffect;
 };
@@ -754,6 +737,7 @@ export const PlasmicPaymentMethods = Object.assign(
     // Helper components rendering sub-elements
     section: makeNodeComponent("section"),
     svg: makeNodeComponent("svg"),
+    link: makeNodeComponent("link"),
     embedHtml: makeNodeComponent("embedHtml"),
     sideEffect: makeNodeComponent("sideEffect"),
 
