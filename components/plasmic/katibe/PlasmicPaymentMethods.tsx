@@ -247,48 +247,6 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                 ) : null}
               </div>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__au6T8)}>
-              <div className={classNames(projectcss.all, sty.freeBox__sfTyP)}>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__bm6Te
-                  )}
-                >
-                  {
-                    "\u0645\u0628\u0644\u063a \u0642\u0627\u0628\u0644 \u067e\u0631\u062f\u0627\u062e\u062a:"
-                  }
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__aG9R2
-                  )}
-                >
-                  <React.Fragment>
-                    {(() => {
-                      try {
-                        return (
-                          new Intl.NumberFormat("fa-IR").format(
-                            $ctx.query.amount || 0
-                          ) + " ریال"
-                        );
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return "";
-                        }
-                        throw e;
-                      }
-                    })()}
-                  </React.Fragment>
-                </div>
-              </div>
-            </div>
             <div className={classNames(projectcss.all, sty.freeBox__xTKzb)}>
               <div className={classNames(projectcss.all, sty.freeBox__gdSfj)}>
                 <div
@@ -315,6 +273,48 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                         return (
                           new Intl.NumberFormat("fa-IR").format(
                             $state.balance || 0
+                          ) + " ریال"
+                        );
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
+                </div>
+              </div>
+            </div>
+            <div className={classNames(projectcss.all, sty.freeBox__au6T8)}>
+              <div className={classNames(projectcss.all, sty.freeBox__sfTyP)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__bm6Te
+                  )}
+                >
+                  {
+                    "\u0645\u0628\u0644\u063a \u0642\u0627\u0628\u0644 \u067e\u0631\u062f\u0627\u062e\u062a:"
+                  }
+                </div>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__aG9R2
+                  )}
+                >
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return (
+                          new Intl.NumberFormat("fa-IR").format(
+                            $ctx.query.amount - $state.balance || 0
                           ) + " ریال"
                         );
                       } catch (e) {
@@ -540,10 +540,53 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                     }
                   }}
                 />
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__yCgQb)}>
+
                 <Button
+                  children2={"\u0628\u0627\u0632\u06af\u0634\u062a"}
                   className={classNames("__wab_instance", sty.button___1HrS)}
+                  color={"softBlue"}
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["invokeGlobalAction"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              (() => {
+                                try {
+                                  return (
+                                    $ctx.query.cancel_returnlink ||
+                                    "https://www.paziresh24.com"
+                                  );
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()
+                            ]
+                          };
+                          return $globalActions["Hamdast.openLink"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction"] != null &&
+                      typeof $steps["invokeGlobalAction"] === "object" &&
+                      typeof $steps["invokeGlobalAction"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction"] = await $steps[
+                        "invokeGlobalAction"
+                      ];
+                    }
+                  }}
                 />
               </div>
             </div>
