@@ -59,6 +59,9 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import { AntdAccordion } from "@plasmicpkgs/antd5/skinny/registerCollapse";
+import { accordionHelpers as AntdAccordion_Helpers } from "@plasmicpkgs/antd5/skinny/registerCollapse";
+import { AntdAccordionItem } from "@plasmicpkgs/antd5/skinny/registerCollapse";
 import Button from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
@@ -90,6 +93,7 @@ export type PlasmicPaymentMethods__OverridesType = {
   root?: Flex__<"div">;
   section?: Flex__<"section">;
   svg?: Flex__<"svg">;
+  accordion?: Flex__<typeof AntdAccordion>;
   link?: Flex__<"a"> & Partial<LinkProps>;
   embedHtml?: Flex__<typeof Embed>;
   sideEffect?: Flex__<typeof SideEffect>;
@@ -157,6 +161,17 @@ function PlasmicPaymentMethods__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "accordion.activePanelId",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        onMutate: generateOnMutateForSpec(
+          "activePanelId",
+          AntdAccordion_Helpers
+        )
       }
     ],
     [$props, $ctx, $refs]
@@ -332,216 +347,390 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                 </div>
               </div>
             </div>
+            <div className={classNames(projectcss.all, sty.freeBox__wADcr)}>
+              {(() => {
+                const child$Props = {
+                  activeKey: generateStateValueProp($state, [
+                    "accordion",
+                    "activePanelId"
+                  ]),
+                  bordered: true,
+                  className: classNames("__wab_instance", sty.accordion),
+                  items: (
+                    <React.Fragment>
+                      <AntdAccordionItem
+                        className={classNames(
+                          "__wab_instance",
+                          sty.accordionItem___8Gjun
+                        )}
+                        id={1}
+                        label2={
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__k4Fll
+                            )}
+                          >
+                            {
+                              "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a"
+                            }
+                          </div>
+                        }
+                        showArrow={true}
+                      >
+                        <Button
+                          children2={
+                            "\u0627\u0631\u0633\u0627\u0644 \u0628\u0647 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a"
+                          }
+                          className={classNames(
+                            "__wab_instance",
+                            sty.button__rYgx
+                          )}
+                          isDisabled={(() => {
+                            try {
+                              return $state.waiting;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return [];
+                              }
+                              throw e;
+                            }
+                          })()}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["updateWaiting"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["waiting"]
+                                    },
+                                    operation: 0,
+                                    value: true
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateWaiting"] != null &&
+                              typeof $steps["updateWaiting"] === "object" &&
+                              typeof $steps["updateWaiting"].then === "function"
+                            ) {
+                              $steps["updateWaiting"] = await $steps[
+                                "updateWaiting"
+                              ];
+                            }
+
+                            $steps["paymentRequest"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    args: [
+                                      "POST",
+                                      "https://apigw.paziresh24.com/katibe/v1/paymentlink/p24",
+                                      (() => {
+                                        try {
+                                          return {
+                                            productid: 1,
+                                            returnlink: $ctx.query.returnlink,
+                                            cancel_returnlink:
+                                              $ctx.query.cancel_returnlink,
+                                            title: "افزایش موجودی",
+                                            amount:
+                                              $ctx.query.amount - $state.balance
+                                          };
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return undefined;
+                                          }
+                                          throw e;
+                                        }
+                                      })()
+                                    ]
+                                  };
+                                  return $globalActions[
+                                    "Fragment.apiRequest"
+                                  ]?.apply(null, [...actionArgs.args]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["paymentRequest"] != null &&
+                              typeof $steps["paymentRequest"] === "object" &&
+                              typeof $steps["paymentRequest"].then ===
+                                "function"
+                            ) {
+                              $steps["paymentRequest"] = await $steps[
+                                "paymentRequest"
+                              ];
+                            }
+
+                            $steps["updatePaymentLink"] =
+                              $steps.paymentRequest.status == 200 &&
+                              $steps.paymentRequest.data.status == true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["paymentLink"]
+                                      },
+                                      operation: 0,
+                                      value:
+                                        $steps.paymentRequest.data.data.link
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["updatePaymentLink"] != null &&
+                              typeof $steps["updatePaymentLink"] === "object" &&
+                              typeof $steps["updatePaymentLink"].then ===
+                                "function"
+                            ) {
+                              $steps["updatePaymentLink"] = await $steps[
+                                "updatePaymentLink"
+                              ];
+                            }
+
+                            $steps["redirectUser"] =
+                              $steps.paymentRequest.status == 200 &&
+                              $steps.paymentRequest.data.status == true
+                                ? (() => {
+                                    const actionArgs = {
+                                      args: [
+                                        (() => {
+                                          try {
+                                            return $state.paymentLink;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return undefined;
+                                            }
+                                            throw e;
+                                          }
+                                        })()
+                                      ]
+                                    };
+                                    return $globalActions[
+                                      "Hamdast.openLink"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["redirectUser"] != null &&
+                              typeof $steps["redirectUser"] === "object" &&
+                              typeof $steps["redirectUser"].then === "function"
+                            ) {
+                              $steps["redirectUser"] = await $steps[
+                                "redirectUser"
+                              ];
+                            }
+
+                            $steps["updateWaiting2"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["waiting"]
+                                    },
+                                    operation: 0,
+                                    value: false
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateWaiting2"] != null &&
+                              typeof $steps["updateWaiting2"] === "object" &&
+                              typeof $steps["updateWaiting2"].then ===
+                                "function"
+                            ) {
+                              $steps["updateWaiting2"] = await $steps[
+                                "updateWaiting2"
+                              ];
+                            }
+                          }}
+                        />
+                      </AntdAccordionItem>
+                      <AntdAccordionItem
+                        className={classNames(
+                          "__wab_instance",
+                          sty.accordionItem__u9Sgw
+                        )}
+                        id={2}
+                        label2={
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__chiep
+                            )}
+                          >
+                            {
+                              "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a"
+                            }
+                          </div>
+                        }
+                        showArrow={true}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__vQCxv
+                          )}
+                        >
+                          {
+                            "\u062c\u0647\u062a \u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a\u060c \u0644\u0637\u0641\u0627 \u0645\u0628\u0644\u063a \u0642\u0627\u0628\u0644 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0647 \u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a 6037.6915.2631.6161 \u0628\u0647 \u0646\u0627\u0645 \u062d\u062c\u062a \u062e\u0648\u0627\u062c\u0648\u06cc \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u0628\u0631\u0631\u0633\u06cc \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u06a9\u0644\u06cc\u06a9 \u0646\u0645\u0627\u06cc\u06cc\u062f."
+                          }
+                        </div>
+                        <Button
+                          children2={
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__ekWh
+                              )}
+                            >
+                              {
+                                "\u0628\u0631\u0631\u0633\u06cc \u067e\u0631\u062f\u0627\u062e\u062a"
+                              }
+                            </div>
+                          }
+                          className={classNames(
+                            "__wab_instance",
+                            sty.button___0ZCe
+                          )}
+                        />
+                      </AntdAccordionItem>
+                      <AntdAccordionItem
+                        className={classNames(
+                          "__wab_instance",
+                          sty.accordionItem__gAtO
+                        )}
+                        id={"3"}
+                        label2={
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__cR8FC
+                            )}
+                          >
+                            {
+                              "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u0634\u0628\u0627"
+                            }
+                          </div>
+                        }
+                        showArrow={true}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__hBa52
+                          )}
+                        >
+                          {
+                            "\u062c\u0647\u062a \u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u0634\u0628\u0627\u060c \u0644\u0637\u0641\u0627 \u0645\u0628\u0644\u063a \u0642\u0627\u0628\u0644 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0647 \u0634\u0628\u0627 IR30 0190 0000 0031 1582 0780 06 \u0628\u0647 \u0646\u0627\u0645 \u062d\u062c\u062a \u062e\u0648\u0627\u062c\u0648\u06cc \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u0628\u0631\u0631\u0633\u06cc \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u06a9\u0644\u06cc\u06a9 \u0646\u0645\u0627\u06cc\u06cc\u062f."
+                          }
+                        </div>
+                        <Button
+                          children2={
+                            "\u0628\u0631\u0631\u0633\u06cc \u067e\u0631\u062f\u0627\u062e\u062a"
+                          }
+                          className={classNames(
+                            "__wab_instance",
+                            sty.button__agIkY
+                          )}
+                        />
+                      </AntdAccordionItem>
+                    </React.Fragment>
+                  ),
+                  onChange: async (...eventArgs: any) => {
+                    generateStateOnChangePropForCodeComponents(
+                      $state,
+                      "activePanelId",
+                      ["accordion", "activePanelId"],
+                      AntdAccordion_Helpers
+                    ).apply(null, eventArgs);
+                  }
+                };
+                initializeCodeComponentStates(
+                  $state,
+                  [
+                    {
+                      name: "activePanelId",
+                      plasmicStateName: "accordion.activePanelId"
+                    }
+                  ],
+                  [],
+                  AntdAccordion_Helpers ?? {},
+                  child$Props
+                );
+
+                return (
+                  <AntdAccordion
+                    data-plasmic-name={"accordion"}
+                    data-plasmic-override={overrides.accordion}
+                    {...child$Props}
+                  />
+                );
+              })()}
+            </div>
             <div className={classNames(projectcss.all, sty.freeBox__zv6Q)}>
               <div className={classNames(projectcss.all, sty.freeBox__yowNc)}>
-                <Button
-                  children2={
-                    "\u0627\u0631\u0633\u0627\u0644 \u0628\u0647 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a"
-                  }
-                  className={classNames("__wab_instance", sty.button__rYgx)}
-                  isDisabled={(() => {
-                    try {
-                      return $state.waiting;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return [];
-                      }
-                      throw e;
-                    }
-                  })()}
-                  onClick={async event => {
-                    const $steps = {};
-
-                    $steps["updateWaiting"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["waiting"]
-                            },
-                            operation: 0,
-                            value: true
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
-                            }
-                            const { objRoot, variablePath } = variable;
-
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateWaiting"] != null &&
-                      typeof $steps["updateWaiting"] === "object" &&
-                      typeof $steps["updateWaiting"].then === "function"
-                    ) {
-                      $steps["updateWaiting"] = await $steps["updateWaiting"];
-                    }
-
-                    $steps["paymentRequest"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            args: [
-                              "POST",
-                              "https://apigw.paziresh24.com/katibe/v1/paymentlink/p24",
-                              (() => {
-                                try {
-                                  return {
-                                    productid: 1,
-                                    returnlink: $ctx.query.returnlink,
-                                    cancel_returnlink:
-                                      $ctx.query.cancel_returnlink,
-                                    title: "افزایش موجودی",
-                                    amount: $ctx.query.amount - $state.balance
-                                  };
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return undefined;
-                                  }
-                                  throw e;
-                                }
-                              })()
-                            ]
-                          };
-                          return $globalActions["Fragment.apiRequest"]?.apply(
-                            null,
-                            [...actionArgs.args]
-                          );
-                        })()
-                      : undefined;
-                    if (
-                      $steps["paymentRequest"] != null &&
-                      typeof $steps["paymentRequest"] === "object" &&
-                      typeof $steps["paymentRequest"].then === "function"
-                    ) {
-                      $steps["paymentRequest"] = await $steps["paymentRequest"];
-                    }
-
-                    $steps["updatePaymentLink"] =
-                      $steps.paymentRequest.status == 200 &&
-                      $steps.paymentRequest.data.status == true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["paymentLink"]
-                              },
-                              operation: 0,
-                              value: $steps.paymentRequest.data.data.link
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                    if (
-                      $steps["updatePaymentLink"] != null &&
-                      typeof $steps["updatePaymentLink"] === "object" &&
-                      typeof $steps["updatePaymentLink"].then === "function"
-                    ) {
-                      $steps["updatePaymentLink"] = await $steps[
-                        "updatePaymentLink"
-                      ];
-                    }
-
-                    $steps["redirectUser"] =
-                      $steps.paymentRequest.status == 200 &&
-                      $steps.paymentRequest.data.status == true
-                        ? (() => {
-                            const actionArgs = {
-                              args: [
-                                (() => {
-                                  try {
-                                    return $state.paymentLink;
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
-                                    }
-                                    throw e;
-                                  }
-                                })()
-                              ]
-                            };
-                            return $globalActions["Hamdast.openLink"]?.apply(
-                              null,
-                              [...actionArgs.args]
-                            );
-                          })()
-                        : undefined;
-                    if (
-                      $steps["redirectUser"] != null &&
-                      typeof $steps["redirectUser"] === "object" &&
-                      typeof $steps["redirectUser"].then === "function"
-                    ) {
-                      $steps["redirectUser"] = await $steps["redirectUser"];
-                    }
-
-                    $steps["updateWaiting2"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["waiting"]
-                            },
-                            operation: 0,
-                            value: false
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
-                            }
-                            const { objRoot, variablePath } = variable;
-
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateWaiting2"] != null &&
-                      typeof $steps["updateWaiting2"] === "object" &&
-                      typeof $steps["updateWaiting2"].then === "function"
-                    ) {
-                      $steps["updateWaiting2"] = await $steps["updateWaiting2"];
-                    }
-                  }}
-                />
-
                 <PlasmicLink__
                   data-plasmic-name={"link"}
                   data-plasmic-override={overrides.link}
@@ -550,7 +739,17 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                   platform={"nextjs"}
                 >
                   <Button
-                    children2={"\u0628\u0627\u0632\u06af\u0634\u062a"}
+                    children2={
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__jkj2Q
+                        )}
+                      >
+                        {"\u0628\u0627\u0632\u06af\u0634\u062a"}
+                      </div>
+                    }
                     className={classNames("__wab_instance", sty.button___1HrS)}
                     color={"softBlue"}
                     onClick={async event => {
@@ -600,6 +799,21 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                 </PlasmicLink__>
               </div>
             </div>
+            {(() => {
+              try {
+                return true;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox__wKy41)} />
+            ) : null}
           </section>
           <Embed
             data-plasmic-name={"embedHtml"}
@@ -681,9 +895,18 @@ function PlasmicPaymentMethods__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "section", "svg", "link", "embedHtml", "sideEffect"],
-  section: ["section", "svg", "link"],
+  root: [
+    "root",
+    "section",
+    "svg",
+    "accordion",
+    "link",
+    "embedHtml",
+    "sideEffect"
+  ],
+  section: ["section", "svg", "accordion", "link"],
   svg: ["svg"],
+  accordion: ["accordion"],
   link: ["link"],
   embedHtml: ["embedHtml"],
   sideEffect: ["sideEffect"]
@@ -695,6 +918,7 @@ type NodeDefaultElementType = {
   root: "div";
   section: "section";
   svg: "svg";
+  accordion: typeof AntdAccordion;
   link: "a";
   embedHtml: typeof Embed;
   sideEffect: typeof SideEffect;
@@ -762,6 +986,7 @@ export const PlasmicPaymentMethods = Object.assign(
     // Helper components rendering sub-elements
     section: makeNodeComponent("section"),
     svg: makeNodeComponent("svg"),
+    accordion: makeNodeComponent("accordion"),
     link: makeNodeComponent("link"),
     embedHtml: makeNodeComponent("embedHtml"),
     sideEffect: makeNodeComponent("sideEffect"),
