@@ -548,43 +548,46 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                   onClick={async event => {
                     const $steps = {};
 
-                    $steps["invokeGlobalAction"] = true
+                    $steps["goToPage"] = true
                       ? (() => {
                           const actionArgs = {
-                            args: [
-                              (() => {
-                                try {
-                                  return (
-                                    $ctx.query.cancel_returnlink ||
-                                    "https://www.paziresh24.com"
-                                  );
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return undefined;
-                                  }
-                                  throw e;
+                            destination: (() => {
+                              try {
+                                return (
+                                  $ctx.query.cancel_returnlink ||
+                                  "https://www.paziresh24.com"
+                                );
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
                                 }
-                              })()
-                            ]
+                                throw e;
+                              }
+                            })()
                           };
-                          return $globalActions["Hamdast.openLink"]?.apply(
-                            null,
-                            [...actionArgs.args]
-                          );
+                          return (({ destination }) => {
+                            if (
+                              typeof destination === "string" &&
+                              destination.startsWith("#")
+                            ) {
+                              document
+                                .getElementById(destination.substr(1))
+                                .scrollIntoView({ behavior: "smooth" });
+                            } else {
+                              __nextRouter?.push(destination);
+                            }
+                          })?.apply(null, [actionArgs]);
                         })()
                       : undefined;
                     if (
-                      $steps["invokeGlobalAction"] != null &&
-                      typeof $steps["invokeGlobalAction"] === "object" &&
-                      typeof $steps["invokeGlobalAction"].then === "function"
+                      $steps["goToPage"] != null &&
+                      typeof $steps["goToPage"] === "object" &&
+                      typeof $steps["goToPage"].then === "function"
                     ) {
-                      $steps["invokeGlobalAction"] = await $steps[
-                        "invokeGlobalAction"
-                      ];
+                      $steps["goToPage"] = await $steps["goToPage"];
                     }
                   }}
                 />
