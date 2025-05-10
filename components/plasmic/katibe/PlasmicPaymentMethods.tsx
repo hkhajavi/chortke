@@ -90,7 +90,6 @@ export type PlasmicPaymentMethods__OverridesType = {
   root?: Flex__<"div">;
   section?: Flex__<"section">;
   svg?: Flex__<"svg">;
-  button?: Flex__<typeof Button>;
   embedHtml?: Flex__<typeof Embed>;
   sideEffect?: Flex__<typeof SideEffect>;
 };
@@ -213,7 +212,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                   <React.Fragment>
                     {(() => {
                       try {
-                        return $ctx.query.title;
+                        return $ctx.query.title || "عملیات پرداخت";
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
@@ -273,7 +272,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                       try {
                         return (
                           new Intl.NumberFormat("fa-IR").format(
-                            $ctx.query.amount
+                            $ctx.query.amount || 0
                           ) + " ریال"
                         );
                       } catch (e) {
@@ -315,7 +314,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                       try {
                         return (
                           new Intl.NumberFormat("fa-IR").format(
-                            $state.balance
+                            $state.balance || 0
                           ) + " ریال"
                         );
                       } catch (e) {
@@ -335,12 +334,10 @@ function PlasmicPaymentMethods__RenderFunc(props: {
             <div className={classNames(projectcss.all, sty.freeBox__zv6Q)}>
               <div className={classNames(projectcss.all, sty.freeBox__yowNc)}>
                 <Button
-                  data-plasmic-name={"button"}
-                  data-plasmic-override={overrides.button}
                   children2={
                     "\u0627\u0631\u0633\u0627\u0644 \u0628\u0647 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a"
                   }
-                  className={classNames("__wab_instance", sty.button)}
+                  className={classNames("__wab_instance", sty.button__rYgx)}
                   isDisabled={(() => {
                     try {
                       return $state.waiting;
@@ -402,7 +399,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                   return {
                                     productid: 1,
                                     returnlink: $ctx.query.returnlink,
-                                    returnlink: $ctx.query.cancel_returnlink,
+                                    cancel_returnlink:
+                                      $ctx.query.cancel_returnlink,
                                     title: "افزایش موجودی",
                                     amount: $ctx.query.amount - $state.balance
                                   };
@@ -543,7 +541,11 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                   }}
                 />
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__yCgQb)} />
+              <div className={classNames(projectcss.all, sty.freeBox__yCgQb)}>
+                <Button
+                  className={classNames("__wab_instance", sty.button___1HrS)}
+                />
+              </div>
             </div>
           </section>
           <Embed
@@ -626,10 +628,9 @@ function PlasmicPaymentMethods__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "section", "svg", "button", "embedHtml", "sideEffect"],
-  section: ["section", "svg", "button"],
+  root: ["root", "section", "svg", "embedHtml", "sideEffect"],
+  section: ["section", "svg"],
   svg: ["svg"],
-  button: ["button"],
   embedHtml: ["embedHtml"],
   sideEffect: ["sideEffect"]
 } as const;
@@ -640,7 +641,6 @@ type NodeDefaultElementType = {
   root: "div";
   section: "section";
   svg: "svg";
-  button: typeof Button;
   embedHtml: typeof Embed;
   sideEffect: typeof SideEffect;
 };
@@ -707,7 +707,6 @@ export const PlasmicPaymentMethods = Object.assign(
     // Helper components rendering sub-elements
     section: makeNodeComponent("section"),
     svg: makeNodeComponent("svg"),
-    button: makeNodeComponent("button"),
     embedHtml: makeNodeComponent("embedHtml"),
     sideEffect: makeNodeComponent("sideEffect"),
 
