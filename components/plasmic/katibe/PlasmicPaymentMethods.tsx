@@ -2368,51 +2368,15 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                 $steps["updateBalance"] = await $steps["updateBalance"];
               }
 
-              $steps["splunk"] = false
+              $steps["splunk"] = true
                 ? (() => {
                     const actionArgs = {
                       args: [
-                        "POST",
-                        "https://0df6aabc-cda8-477a-812d-d6fae1d03694.hsvc.ir:31708/services/collector",
+                        "GET",
+                        "https://apigw.paziresh24.com/katibe/v1/payment/methods/load",
                         undefined,
-                        (() => {
-                          try {
-                            return {
-                              event: {
-                                userid: $state.me.users[0],
-                                request: "redirect-page"
-                              },
-                              sourcetype: "log",
-                              index: "katibe-methods"
-                            };
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
-                            }
-                            throw e;
-                          }
-                        })(),
-                        (() => {
-                          try {
-                            return {
-                              headers: {
-                                Authorization:
-                                  "Splunk 8b7fb7ef-5925-47a6-9ccb-e1ce3a9770e9"
-                              }
-                            };
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
-                            }
-                            throw e;
-                          }
-                        })()
+                        undefined,
+                        undefined
                       ]
                     };
                     return $globalActions["Fragment.apiRequest"]?.apply(null, [
