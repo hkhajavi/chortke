@@ -257,7 +257,11 @@ function PlasmicPaymentMethods__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           (() => {
             try {
-              return $ctx.query.amount - $state.balance;
+              return (() => {
+                return $ctx.query.amount - $state.balance > 0
+                  ? $ctx.query.amount - $state.balance
+                  : 0;
+              })();
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -1386,9 +1390,14 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                     initFunc: ({ $props, $state, $queries }) =>
                                       (() => {
                                         try {
-                                          return (
-                                            $ctx.query.amount - $state.balance
-                                          );
+                                          return (() => {
+                                            return $ctx.query.amount -
+                                              $state.balance >
+                                              0
+                                              ? $ctx.query.amount -
+                                                  $state.balance
+                                              : 0;
+                                          })();
                                         } catch (e) {
                                           if (
                                             e instanceof TypeError ||
