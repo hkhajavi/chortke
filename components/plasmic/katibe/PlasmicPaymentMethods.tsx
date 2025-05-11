@@ -96,7 +96,7 @@ export type PlasmicPaymentMethods__OverridesType = {
   accordion?: Flex__<typeof AntdAccordion>;
   link?: Flex__<"a"> & Partial<LinkProps>;
   embedHtml?: Flex__<typeof Embed>;
-  sideEffect?: Flex__<typeof SideEffect>;
+  sideEffectPageLoad?: Flex__<typeof SideEffect>;
 };
 
 export interface DefaultPaymentMethodsProps {}
@@ -185,6 +185,18 @@ function PlasmicPaymentMethods__RenderFunc(props: {
           "activePanelId",
           AntdAccordion_Helpers
         )
+      },
+      {
+        path: "me",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+      },
+      {
+        path: "verifyResponse",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
       }
     ],
     [$props, $ctx, $refs]
@@ -696,6 +708,222 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                             "__wab_instance",
                             sty.button___0ZCe
                           )}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["updateWaiting"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["waiting"]
+                                    },
+                                    operation: 0,
+                                    value: true
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateWaiting"] != null &&
+                              typeof $steps["updateWaiting"] === "object" &&
+                              typeof $steps["updateWaiting"].then === "function"
+                            ) {
+                              $steps["updateWaiting"] = await $steps[
+                                "updateWaiting"
+                              ];
+                            }
+
+                            $steps["requestVerify"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    args: [
+                                      "POST",
+                                      "https://apigw.paziresh24.com/katibe/v1/payment/methods/verify",
+                                      undefined,
+                                      { method: "cardtocard" }
+                                    ]
+                                  };
+                                  return $globalActions[
+                                    "Fragment.apiRequest"
+                                  ]?.apply(null, [...actionArgs.args]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["requestVerify"] != null &&
+                              typeof $steps["requestVerify"] === "object" &&
+                              typeof $steps["requestVerify"].then === "function"
+                            ) {
+                              $steps["requestVerify"] = await $steps[
+                                "requestVerify"
+                              ];
+                            }
+
+                            $steps["verifyResponse"] =
+                              $steps.requestVerify.status == 200
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["verifyResponse"]
+                                      },
+                                      operation: 0,
+                                      value: $steps.requestVerify.data
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["verifyResponse"] != null &&
+                              typeof $steps["verifyResponse"] === "object" &&
+                              typeof $steps["verifyResponse"].then ===
+                                "function"
+                            ) {
+                              $steps["verifyResponse"] = await $steps[
+                                "verifyResponse"
+                              ];
+                            }
+
+                            $steps["updateWaiting2"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["waiting"]
+                                    },
+                                    operation: 0,
+                                    value: false
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateWaiting2"] != null &&
+                              typeof $steps["updateWaiting2"] === "object" &&
+                              typeof $steps["updateWaiting2"].then ===
+                                "function"
+                            ) {
+                              $steps["updateWaiting2"] = await $steps[
+                                "updateWaiting2"
+                              ];
+                            }
+
+                            $steps["alertSuccess"] =
+                              $steps.requestVerify.status == 200
+                                ? (() => {
+                                    const actionArgs = {
+                                      args: [
+                                        undefined,
+                                        (() => {
+                                          try {
+                                            return $state.verifyResponse
+                                              .message;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return undefined;
+                                            }
+                                            throw e;
+                                          }
+                                        })()
+                                      ]
+                                    };
+                                    return $globalActions[
+                                      "Fragment.showToast"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["alertSuccess"] != null &&
+                              typeof $steps["alertSuccess"] === "object" &&
+                              typeof $steps["alertSuccess"].then === "function"
+                            ) {
+                              $steps["alertSuccess"] = await $steps[
+                                "alertSuccess"
+                              ];
+                            }
+
+                            $steps["alertError"] =
+                              $steps.requestVerify.status !== 200
+                                ? (() => {
+                                    const actionArgs = {
+                                      args: [
+                                        "error",
+                                        (() => {
+                                          try {
+                                            return (
+                                              $state.verifyResponse.message ||
+                                              "خطا در بررسی پرداخت\u060C لطفا دوباره تلاش نمایید"
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return undefined;
+                                            }
+                                            throw e;
+                                          }
+                                        })()
+                                      ]
+                                    };
+                                    return $globalActions[
+                                      "Fragment.showToast"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["alertError"] != null &&
+                              typeof $steps["alertError"] === "object" &&
+                              typeof $steps["alertError"].then === "function"
+                            ) {
+                              $steps["alertError"] = await $steps["alertError"];
+                            }
+                          }}
                         />
                       </AntdAccordionItem>
                       <AntdAccordionItem
@@ -713,7 +941,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                             )}
                           >
                             {
-                              "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u0634\u0628\u0627"
+                              "\u067e\u0631\u062f\u0627\u062e\u062a \u067e\u0627\u06cc\u0627"
                             }
                           </div>
                         }
@@ -727,11 +955,33 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                           )}
                         >
                           <React.Fragment>
-                            <React.Fragment>
-                              {
-                                "\u062c\u0647\u062a \u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u0634\u0628\u0627\u060c \u0644\u0637\u0641\u0627 \u0645\u0628\u0644\u063a \u0642\u0627\u0628\u0644 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0647 \u0634\u0628\u0627 IR30 0190 0000 0031 1582 0780 06 \u0628\u0627 \u0634\u0646\u0627\u0633\u0647 \u067e\u0631\u062f\u0627\u062e\u062a 00000 \u0628\u0647 \u0646\u0627\u0645 \u062d\u062c\u062a \u062e\u0648\u0627\u062c\u0648\u06cc \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u0628\u0631\u0631\u0633\u06cc \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u06a9\u0644\u06cc\u06a9 \u0646\u0645\u0627\u06cc\u06cc\u062f. \n"
+                            {(() => {
+                              try {
+                                return (
+                                  "جهت پرداخت به‌صورت پایا/پل، لطفا مبلغ قابل پرداخت را به شماره شبا IR30 0190 0000 0031 1582 0780 06 با شناسه پرداخت " +
+                                  $state.me.users[0].id +
+                                  " به نام حجت خواجوی واریز کرده و سپس دکمه بررسی پرداخت را کلیک نمایید. "
+                                );
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "\u062c\u0647\u062a \u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0647\u200c\u0635\u0648\u0631\u062a \u067e\u0627\u06cc\u0627/\u067e\u0644\u060c \u0644\u0637\u0641\u0627 \u0645\u0628\u0644\u063a \u0642\u0627\u0628\u0644 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0647 \u0634\u0645\u0627\u0631\u0647 \u0634\u0628\u0627 IR30 0190 0000 0031 1582 0780 06 \u0628\u0627 \u0634\u0646\u0627\u0633\u0647 \u067e\u0631\u062f\u0627\u062e\u062a 00000 \u0628\u0647 \u0646\u0627\u0645 \u062d\u062c\u062a \u062e\u0648\u0627\u062c\u0648\u06cc \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u0628\u0631\u0631\u0633\u06cc \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u06a9\u0644\u06cc\u06a9 \u0646\u0645\u0627\u06cc\u06cc\u062f. ";
+                                }
+                                throw e;
                               }
-                            </React.Fragment>
+                            })()}
+                          </React.Fragment>
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__fkxfa
+                          )}
+                        >
+                          <React.Fragment>
                             <span
                               className={
                                 "plasmic_default__all plasmic_default__span"
@@ -746,12 +996,238 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                         </div>
                         <Button
                           children2={
-                            "\u0628\u0631\u0631\u0633\u06cc \u067e\u0631\u062f\u0627\u062e\u062a"
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__uftoF
+                              )}
+                            >
+                              {
+                                "\u0628\u0631\u0631\u0633\u06cc \u067e\u0631\u062f\u0627\u062e\u062a"
+                              }
+                            </div>
                           }
                           className={classNames(
                             "__wab_instance",
-                            sty.button__agIkY
+                            sty.button__fdn28
                           )}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["updateWaiting"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["waiting"]
+                                    },
+                                    operation: 0,
+                                    value: true
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateWaiting"] != null &&
+                              typeof $steps["updateWaiting"] === "object" &&
+                              typeof $steps["updateWaiting"].then === "function"
+                            ) {
+                              $steps["updateWaiting"] = await $steps[
+                                "updateWaiting"
+                              ];
+                            }
+
+                            $steps["requestVerify"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    args: [
+                                      "POST",
+                                      "https://apigw.paziresh24.com/katibe/v1/payment/methods/verify",
+                                      undefined,
+                                      { method: "paya" }
+                                    ]
+                                  };
+                                  return $globalActions[
+                                    "Fragment.apiRequest"
+                                  ]?.apply(null, [...actionArgs.args]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["requestVerify"] != null &&
+                              typeof $steps["requestVerify"] === "object" &&
+                              typeof $steps["requestVerify"].then === "function"
+                            ) {
+                              $steps["requestVerify"] = await $steps[
+                                "requestVerify"
+                              ];
+                            }
+
+                            $steps["verifyResponse"] =
+                              $steps.requestVerify.status == 200
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["verifyResponse"]
+                                      },
+                                      operation: 0,
+                                      value: $steps.requestVerify.data
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["verifyResponse"] != null &&
+                              typeof $steps["verifyResponse"] === "object" &&
+                              typeof $steps["verifyResponse"].then ===
+                                "function"
+                            ) {
+                              $steps["verifyResponse"] = await $steps[
+                                "verifyResponse"
+                              ];
+                            }
+
+                            $steps["updateWaiting2"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["waiting"]
+                                    },
+                                    operation: 0,
+                                    value: false
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateWaiting2"] != null &&
+                              typeof $steps["updateWaiting2"] === "object" &&
+                              typeof $steps["updateWaiting2"].then ===
+                                "function"
+                            ) {
+                              $steps["updateWaiting2"] = await $steps[
+                                "updateWaiting2"
+                              ];
+                            }
+
+                            $steps["alertSuccess"] =
+                              $steps.requestVerify.status == 200
+                                ? (() => {
+                                    const actionArgs = {
+                                      args: [
+                                        undefined,
+                                        (() => {
+                                          try {
+                                            return $state.verifyResponse
+                                              .message;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return undefined;
+                                            }
+                                            throw e;
+                                          }
+                                        })()
+                                      ]
+                                    };
+                                    return $globalActions[
+                                      "Fragment.showToast"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["alertSuccess"] != null &&
+                              typeof $steps["alertSuccess"] === "object" &&
+                              typeof $steps["alertSuccess"].then === "function"
+                            ) {
+                              $steps["alertSuccess"] = await $steps[
+                                "alertSuccess"
+                              ];
+                            }
+
+                            $steps["alertError"] =
+                              $steps.requestVerify.status !== 200
+                                ? (() => {
+                                    const actionArgs = {
+                                      args: [
+                                        "error",
+                                        (() => {
+                                          try {
+                                            return (
+                                              $state.verifyResponse.message ||
+                                              "خطا در بررسی پرداخت\u060C لطفا دوباره تلاش نمایید"
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return undefined;
+                                            }
+                                            throw e;
+                                          }
+                                        })()
+                                      ]
+                                    };
+                                    return $globalActions[
+                                      "Fragment.showToast"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["alertError"] != null &&
+                              typeof $steps["alertError"] === "object" &&
+                              typeof $steps["alertError"].then === "function"
+                            ) {
+                              $steps["alertError"] = await $steps["alertError"];
+                            }
+                          }}
                         />
                       </AntdAccordionItem>
                     </React.Fragment>
@@ -967,11 +1443,67 @@ function PlasmicPaymentMethods__RenderFunc(props: {
           />
 
           <SideEffect
-            data-plasmic-name={"sideEffect"}
-            data-plasmic-override={overrides.sideEffect}
-            className={classNames("__wab_instance", sty.sideEffect)}
+            data-plasmic-name={"sideEffectPageLoad"}
+            data-plasmic-override={overrides.sideEffectPageLoad}
+            className={classNames("__wab_instance", sty.sideEffectPageLoad)}
             onMount={async () => {
               const $steps = {};
+
+              $steps["me"] = true
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        undefined,
+                        "https://apigw.paziresh24.com/v1/auth/me"
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
+              if (
+                $steps["me"] != null &&
+                typeof $steps["me"] === "object" &&
+                typeof $steps["me"].then === "function"
+              ) {
+                $steps["me"] = await $steps["me"];
+              }
+
+              $steps["updateMe"] =
+                $steps.me.status == 200
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["me"]
+                        },
+                        operation: 0,
+                        value: $steps.me.data
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updateMe"] != null &&
+                typeof $steps["updateMe"] === "object" &&
+                typeof $steps["updateMe"].then === "function"
+              ) {
+                $steps["updateMe"] = await $steps["updateMe"];
+              }
 
               $steps["getBalance"] = true
                 ? (() => {
@@ -1044,14 +1576,14 @@ const PlasmicDescendants = {
     "accordion",
     "link",
     "embedHtml",
-    "sideEffect"
+    "sideEffectPageLoad"
   ],
   section: ["section", "svg", "accordion", "link"],
   svg: ["svg"],
   accordion: ["accordion"],
   link: ["link"],
   embedHtml: ["embedHtml"],
-  sideEffect: ["sideEffect"]
+  sideEffectPageLoad: ["sideEffectPageLoad"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1063,7 +1595,7 @@ type NodeDefaultElementType = {
   accordion: typeof AntdAccordion;
   link: "a";
   embedHtml: typeof Embed;
-  sideEffect: typeof SideEffect;
+  sideEffectPageLoad: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1131,7 +1663,7 @@ export const PlasmicPaymentMethods = Object.assign(
     accordion: makeNodeComponent("accordion"),
     link: makeNodeComponent("link"),
     embedHtml: makeNodeComponent("embedHtml"),
-    sideEffect: makeNodeComponent("sideEffect"),
+    sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
 
     // Metadata about props expected for PlasmicPaymentMethods
     internalVariantProps: PlasmicPaymentMethods__VariantProps,
