@@ -207,7 +207,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
-          "060570077700001597475001"
+          "340600481979808994170001"
       },
       {
         path: "textInput2.value",
