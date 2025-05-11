@@ -1528,6 +1528,34 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                             "alertError"
                                           ];
                                         }
+
+                                        $steps["updateWaiting3"] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                customFunction: async () => {
+                                                  return (() => {
+                                                    $state.txtPayaRpey.value =
+                                                      "";
+                                                    return ($state.dialog.open =
+                                                      false);
+                                                  })();
+                                                }
+                                              };
+                                              return (({ customFunction }) => {
+                                                return customFunction();
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["updateWaiting3"] != null &&
+                                          typeof $steps["updateWaiting3"] ===
+                                            "object" &&
+                                          typeof $steps["updateWaiting3"]
+                                            .then === "function"
+                                        ) {
+                                          $steps["updateWaiting3"] =
+                                            await $steps["updateWaiting3"];
+                                        }
                                       }}
                                     />
                                   </div>
