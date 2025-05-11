@@ -1316,7 +1316,13 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                               (() => {
                                 try {
                                   return $ctx.query.returnlink
-                                    ? globalThis.atob($ctx.query.returnlink)
+                                    ? globalThis
+                                        .atob($ctx.query.returnlink)
+                                        .includes("?")
+                                      ? globalThis.atob($ctx.query.returnlink) +
+                                        "&status=true"
+                                      : globalThis.atob($ctx.query.returnlink) +
+                                        "?status=true"
                                     : "https://www.paziresh24.com";
                                 } catch (e) {
                                   if (
@@ -1379,10 +1385,16 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                               args: [
                                 (() => {
                                   try {
-                                    return $ctx.query.cancel_returnlink
-                                      ? globalThis.atob(
-                                          $ctx.query.cancel_returnlink
-                                        )
+                                    return $ctx.query.returnlink
+                                      ? globalThis
+                                          .atob($ctx.query.returnlink)
+                                          .includes("?")
+                                        ? globalThis.atob(
+                                            $ctx.query.cancel_returnlink
+                                          ) + "&status=false"
+                                        : globalThis.atob(
+                                            $ctx.query.cancel_returnlink
+                                          ) + "?status=false"
                                       : "https://www.paziresh24.com";
                                   } catch (e) {
                                     if (
