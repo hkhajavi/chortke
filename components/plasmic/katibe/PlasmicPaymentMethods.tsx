@@ -492,8 +492,14 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                           return {
                                             productid: 1,
                                             returnlink: $ctx.query.returnlink,
-                                            cancel_returnlink:
-                                              $ctx.query.cancel_returnlink,
+                                            cancel_returnlink: globalThis.btoa(
+                                              "https://www.paziresh24.com/_/katibe/payments/?amount=" +
+                                                $ctx.query.amount +
+                                                "&returnlink=" +
+                                                $ctx.query.returnlink +
+                                                "&cancel_returnlink=" +
+                                                $ctx.query.cancel_returnlink
+                                            ),
                                             title: "افزایش موجودی",
                                             amount:
                                               $ctx.query.amount - $state.balance
