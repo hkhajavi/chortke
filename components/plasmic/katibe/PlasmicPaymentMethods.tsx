@@ -68,6 +68,8 @@ import Dialog from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 
+import { useScreenVariants as useScreenVariantsbr2UhI7UlpvR } from "../fragment_icons/PlasmicGlobalVariant__Screen"; // plasmic-import: BR2UhI7ulpvR/globalVariant
+
 import "@plasmicapp/react-web/lib/plasmic.css";
 
 import plasmic_antd_5_hostless_css from "../antd_5_hostless/plasmic.module.css"; // plasmic-import: ohDidvG9XsCeFumugENU3J/projectcss
@@ -102,6 +104,7 @@ export type PlasmicPaymentMethods__OverridesType = {
   accordion?: Flex__<typeof AntdAccordion>;
   textShowIban?: Flex__<typeof TextInput>;
   txtShowRpey?: Flex__<typeof TextInput>;
+  txtShowAmount?: Flex__<typeof TextInput>;
   dialog?: Flex__<typeof Dialog>;
   txtPayaRpey?: Flex__<typeof TextInput>;
   embedHtml?: Flex__<typeof Embed>;
@@ -246,6 +249,25 @@ function PlasmicPaymentMethods__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "txtShowAmount.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $ctx.query.amount - $state.balance;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -255,6 +277,10 @@ function PlasmicPaymentMethods__RenderFunc(props: {
     $ctx,
     $queries: {},
     $refs
+  });
+
+  const globalVariants = ensureGlobalVariants({
+    screen: useScreenVariantsbr2UhI7UlpvR()
   });
 
   return (
@@ -1273,6 +1299,151 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                           <div
                             className={classNames(
                               projectcss.all,
+                              sty.freeBox__leDkh
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___2Ha0Y
+                              )}
+                            >
+                              {"\u0645\u0628\u0644\u063a:"}
+                            </div>
+                            {(() => {
+                              const child$Props = {
+                                className: classNames(
+                                  "__wab_instance",
+                                  sty.txtShowAmount
+                                ),
+                                isDisabled: true,
+                                onChange: async (...eventArgs: any) => {
+                                  ((...eventArgs) => {
+                                    generateStateOnChangeProp($state, [
+                                      "txtShowAmount",
+                                      "value"
+                                    ])(
+                                      (e => e.target?.value).apply(
+                                        null,
+                                        eventArgs
+                                      )
+                                    );
+                                  }).apply(null, eventArgs);
+
+                                  if (
+                                    eventArgs.length > 1 &&
+                                    eventArgs[1] &&
+                                    eventArgs[1]._plasmic_state_init_
+                                  ) {
+                                    return;
+                                  }
+                                },
+                                placeholder: ``,
+                                value:
+                                  generateStateValueProp($state, [
+                                    "txtShowAmount",
+                                    "value"
+                                  ]) ?? ""
+                              };
+
+                              initializePlasmicStates(
+                                $state,
+                                [
+                                  {
+                                    name: "txtShowAmount.value",
+                                    initFunc: ({ $props, $state, $queries }) =>
+                                      (() => {
+                                        try {
+                                          return (
+                                            $ctx.query.amount - $state.balance
+                                          );
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return undefined;
+                                          }
+                                          throw e;
+                                        }
+                                      })()
+                                  }
+                                ],
+                                []
+                              );
+                              return (
+                                <TextInput
+                                  data-plasmic-name={"txtShowAmount"}
+                                  data-plasmic-override={
+                                    overrides.txtShowAmount
+                                  }
+                                  {...child$Props}
+                                />
+                              );
+                            })()}
+                            <Icon48Icon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg___0Dq3G
+                              )}
+                              onClick={async event => {
+                                const $steps = {};
+
+                                $steps["runCode"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        customFunction: async () => {
+                                          return $$.copyToClipboard(
+                                            $state.txtShowAmount.value
+                                          );
+                                        }
+                                      };
+                                      return (({ customFunction }) => {
+                                        return customFunction();
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["runCode"] != null &&
+                                  typeof $steps["runCode"] === "object" &&
+                                  typeof $steps["runCode"].then === "function"
+                                ) {
+                                  $steps["runCode"] = await $steps["runCode"];
+                                }
+
+                                $steps["invokeGlobalAction"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        args: [
+                                          undefined,
+                                          "\u0634\u0646\u0627\u0633\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u067e\u06cc \u0634\u062f."
+                                        ]
+                                      };
+                                      return $globalActions[
+                                        "Fragment.showToast"
+                                      ]?.apply(null, [...actionArgs.args]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["invokeGlobalAction"] != null &&
+                                  typeof $steps["invokeGlobalAction"] ===
+                                    "object" &&
+                                  typeof $steps["invokeGlobalAction"].then ===
+                                    "function"
+                                ) {
+                                  $steps["invokeGlobalAction"] = await $steps[
+                                    "invokeGlobalAction"
+                                  ];
+                                }
+                              }}
+                              role={"img"}
+                            />
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
                               sty.freeBox__mj9Bp
                             )}
                           >
@@ -2143,6 +2314,7 @@ const PlasmicDescendants = {
     "accordion",
     "textShowIban",
     "txtShowRpey",
+    "txtShowAmount",
     "dialog",
     "txtPayaRpey",
     "embedHtml",
@@ -2153,6 +2325,7 @@ const PlasmicDescendants = {
     "accordion",
     "textShowIban",
     "txtShowRpey",
+    "txtShowAmount",
     "dialog",
     "txtPayaRpey"
   ],
@@ -2160,11 +2333,13 @@ const PlasmicDescendants = {
     "accordion",
     "textShowIban",
     "txtShowRpey",
+    "txtShowAmount",
     "dialog",
     "txtPayaRpey"
   ],
   textShowIban: ["textShowIban"],
   txtShowRpey: ["txtShowRpey"],
+  txtShowAmount: ["txtShowAmount"],
   dialog: ["dialog", "txtPayaRpey"],
   txtPayaRpey: ["txtPayaRpey"],
   embedHtml: ["embedHtml"],
@@ -2179,6 +2354,7 @@ type NodeDefaultElementType = {
   accordion: typeof AntdAccordion;
   textShowIban: typeof TextInput;
   txtShowRpey: typeof TextInput;
+  txtShowAmount: typeof TextInput;
   dialog: typeof Dialog;
   txtPayaRpey: typeof TextInput;
   embedHtml: typeof Embed;
@@ -2249,6 +2425,7 @@ export const PlasmicPaymentMethods = Object.assign(
     accordion: makeNodeComponent("accordion"),
     textShowIban: makeNodeComponent("textShowIban"),
     txtShowRpey: makeNodeComponent("txtShowRpey"),
+    txtShowAmount: makeNodeComponent("txtShowAmount"),
     dialog: makeNodeComponent("dialog"),
     txtPayaRpey: makeNodeComponent("txtPayaRpey"),
     embedHtml: makeNodeComponent("embedHtml"),
