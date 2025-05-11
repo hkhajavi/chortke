@@ -94,7 +94,6 @@ export type PlasmicPaymentMethods__OverridesType = {
   section?: Flex__<"section">;
   svg?: Flex__<"svg">;
   accordion?: Flex__<typeof AntdAccordion>;
-  link?: Flex__<"a"> & Partial<LinkProps>;
   embedHtml?: Flex__<typeof Embed>;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
 };
@@ -1362,9 +1361,11 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                 />
 
                 <PlasmicLink__
-                  data-plasmic-name={"link"}
-                  data-plasmic-override={overrides.link}
-                  className={classNames(projectcss.all, projectcss.a, sty.link)}
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.a,
+                    sty.link__oh8Vp
+                  )}
                   component={Link}
                   platform={"nextjs"}
                 >
@@ -1433,6 +1434,44 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                     }}
                   />
                 </PlasmicLink__>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__uxN0)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text___4A4Nw
+                  )}
+                >
+                  <React.Fragment>
+                    <React.Fragment>
+                      {
+                        "\u062f\u0631 \u0635\u0648\u0631\u062a \u0646\u06cc\u0627\u0632 \u0628\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u067e\u06cc\u0631\u0627\u0645\u0648\u0646 \u0627\u06cc\u0646 \u0635\u0641\u062d\u0647\u060c \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u0645\u0648\u0628\u0627\u06cc\u0644 "
+                      }
+                    </React.Fragment>
+                    {
+                      <PlasmicLink__
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.a,
+                          projectcss.__wab_text,
+                          projectcss.plasmic_default__inline,
+                          sty.link__zZrtc
+                        )}
+                        component={Link}
+                        href={"tel:09384487404"}
+                        platform={"nextjs"}
+                      >
+                        {"09384487404"}
+                      </PlasmicLink__>
+                    }
+                    <React.Fragment>
+                      {
+                        " \u062a\u0645\u0627\u0633 \u0628\u06af\u06cc\u0631\u06cc\u062f."
+                      }
+                    </React.Fragment>
+                  </React.Fragment>
+                </div>
               </div>
             </div>
             {(() => {
@@ -1592,14 +1631,12 @@ const PlasmicDescendants = {
     "section",
     "svg",
     "accordion",
-    "link",
     "embedHtml",
     "sideEffectPageLoad"
   ],
-  section: ["section", "svg", "accordion", "link"],
+  section: ["section", "svg", "accordion"],
   svg: ["svg"],
   accordion: ["accordion"],
-  link: ["link"],
   embedHtml: ["embedHtml"],
   sideEffectPageLoad: ["sideEffectPageLoad"]
 } as const;
@@ -1611,7 +1648,6 @@ type NodeDefaultElementType = {
   section: "section";
   svg: "svg";
   accordion: typeof AntdAccordion;
-  link: "a";
   embedHtml: typeof Embed;
   sideEffectPageLoad: typeof SideEffect;
 };
@@ -1679,7 +1715,6 @@ export const PlasmicPaymentMethods = Object.assign(
     section: makeNodeComponent("section"),
     svg: makeNodeComponent("svg"),
     accordion: makeNodeComponent("accordion"),
-    link: makeNodeComponent("link"),
     embedHtml: makeNodeComponent("embedHtml"),
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
 
