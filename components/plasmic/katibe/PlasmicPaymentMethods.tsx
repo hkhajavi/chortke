@@ -166,7 +166,20 @@ function PlasmicPaymentMethods__RenderFunc(props: {
         path: "accordion.activePanelId",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "1",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.balance >= $ctx.query.amount ? 0 : 1;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })(),
 
         onMutate: generateOnMutateForSpec(
           "activePanelId",
@@ -328,11 +341,13 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                   <React.Fragment>
                     {(() => {
                       try {
-                        return (
-                          new Intl.NumberFormat("fa-IR").format(
-                            $ctx.query.amount - $state.balance || 0
-                          ) + " ریال"
-                        );
+                        return (() => {
+                          return $ctx.query.amount - $state.balance > 0
+                            ? new Intl.NumberFormat("fa-IR").format(
+                                $ctx.query.amount - $state.balance || 0
+                              ) + " ریال"
+                            : "0 ریال";
+                        })();
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
@@ -356,7 +371,19 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                   ]),
                   bordered: true,
                   className: classNames("__wab_instance", sty.accordion),
-                  defaultActiveKey: "1",
+                  defaultActiveKey: (() => {
+                    try {
+                      return $state.balance >= $ctx.query.amount ? 0 : 1;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })(),
                   expandIconPosition: "end",
                   ghost: false,
                   items: (
@@ -620,7 +647,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                             )}
                           >
                             {
-                              "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a"
+                              "\u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0627\u0631\u062a \u0628\u0647 \u06a9\u0627\u0631\u062a"
                             }
                           </div>
                         }
@@ -633,9 +660,23 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                             sty.text__vQCxv
                           )}
                         >
-                          {
-                            "\u062c\u0647\u062a \u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a\u060c \u0644\u0637\u0641\u0627 \u0645\u0628\u0644\u063a \u0642\u0627\u0628\u0644 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0647 \u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a 6037.6915.2631.6161 \u0628\u0647 \u0646\u0627\u0645 \u062d\u062c\u062a \u062e\u0648\u0627\u062c\u0648\u06cc \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u0628\u0631\u0631\u0633\u06cc \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u06a9\u0644\u06cc\u06a9 \u0646\u0645\u0627\u06cc\u06cc\u062f:"
-                          }
+                          <React.Fragment>
+                            <React.Fragment>
+                              {
+                                "\u062c\u0647\u062a \u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0647\u200c\u0635\u0648\u0631\u062a \u06a9\u0627\u0631\u062a \u0628\u0647 \u06a9\u0627\u0631\u062a\u060c \u0644\u0637\u0641\u0627 \u0645\u0628\u0644\u063a \u0642\u0627\u0628\u0644 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0647 \u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a 6037.6915.2631.6161 \u0628\u0647 \u0646\u0627\u0645 \u062d\u062c\u062a \u062e\u0648\u0627\u062c\u0648\u06cc \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u0628\u0631\u0631\u0633\u06cc \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u06a9\u0644\u06cc\u06a9 \u0646\u0645\u0627\u06cc\u06cc\u062f. \n"
+                              }
+                            </React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{ fontWeight: 700 }}
+                            >
+                              {
+                                "\u0644\u0637\u0641\u0627\u064b \u062a\u0648\u062c\u0647 \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u06cc\u062f \u06a9\u0647 \u0641\u0631\u0622\u06cc\u0646\u062f \u0634\u0627\u0631\u0698 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0628\u0647 \u0635\u0648\u0631\u062a \u06a9\u0627\u0631\u062a \u0628\u0647 \u06a9\u0627\u0631\u062a\u060c \u0686\u0646\u062f \u062f\u0642\u06cc\u0642\u0647 \u0632\u0645\u0627\u0646 \u0645\u06cc\u200c\u0628\u0631\u062f."
+                              }
+                            </span>
+                          </React.Fragment>
                         </div>
                         <Button
                           children2={
@@ -685,9 +726,23 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                             sty.text__hBa52
                           )}
                         >
-                          {
-                            "\u062c\u0647\u062a \u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u0634\u0628\u0627\u060c \u0644\u0637\u0641\u0627 \u0645\u0628\u0644\u063a \u0642\u0627\u0628\u0644 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0647 \u0634\u0628\u0627 IR30 0190 0000 0031 1582 0780 06 \u0628\u0647 \u0646\u0627\u0645 \u062d\u062c\u062a \u062e\u0648\u0627\u062c\u0648\u06cc \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u0628\u0631\u0631\u0633\u06cc \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u06a9\u0644\u06cc\u06a9 \u0646\u0645\u0627\u06cc\u06cc\u062f."
-                          }
+                          <React.Fragment>
+                            <React.Fragment>
+                              {
+                                "\u062c\u0647\u062a \u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u0634\u0628\u0627\u060c \u0644\u0637\u0641\u0627 \u0645\u0628\u0644\u063a \u0642\u0627\u0628\u0644 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0647 \u0634\u0628\u0627 IR30 0190 0000 0031 1582 0780 06 \u0628\u0627 \u0634\u0646\u0627\u0633\u0647 \u067e\u0631\u062f\u0627\u062e\u062a 00000 \u0628\u0647 \u0646\u0627\u0645 \u062d\u062c\u062a \u062e\u0648\u0627\u062c\u0648\u06cc \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u0628\u0631\u0631\u0633\u06cc \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u06a9\u0644\u06cc\u06a9 \u0646\u0645\u0627\u06cc\u06cc\u062f. \n"
+                              }
+                            </React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{ fontWeight: 700 }}
+                            >
+                              {
+                                "\u0644\u0637\u0641\u0627\u064b \u062a\u0648\u062c\u0647 \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u06cc\u062f \u06a9\u0647 \u062a\u0627\u06cc\u06cc\u062f \u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u0634\u0628\u0627 \u067e\u0633 \u0627\u0632 \u062a\u0623\u06cc\u06cc\u062f \u0628\u0627\u0646\u06a9 \u0648 \u0632\u0645\u0627\u0646\u200c\u0628\u0631 \u062e\u0648\u0627\u0647\u062f \u0628\u0648\u062f."
+                              }
+                            </span>
+                          </React.Fragment>
                         </div>
                         <Button
                           children2={
@@ -723,7 +778,29 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                   AntdAccordion_Helpers ?? {},
                   child$Props
                 );
-
+                initializePlasmicStates(
+                  $state,
+                  [
+                    {
+                      name: "accordion.activePanelId",
+                      initFunc: ({ $props, $state, $queries }) =>
+                        (() => {
+                          try {
+                            return $state.balance >= $ctx.query.amount ? 0 : 1;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                    }
+                  ],
+                  []
+                );
                 return (
                   <AntdAccordion
                     data-plasmic-name={"accordion"}
@@ -735,6 +812,67 @@ function PlasmicPaymentMethods__RenderFunc(props: {
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__zv6Q)}>
               <div className={classNames(projectcss.all, sty.freeBox__yowNc)}>
+                <Button
+                  children2={
+                    "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644"
+                  }
+                  className={classNames("__wab_instance", sty.button__pi3V)}
+                  isDisabled={(() => {
+                    try {
+                      return $state.balance < $ctx.query.amount;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
+                    }
+                  })()}
+                  onClick={async event => {
+                    const $steps = {};
+
+                    $steps["invokeGlobalAction"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              (() => {
+                                try {
+                                  return $ctx.query.returnlink
+                                    ? globalThis.atob($ctx.query.returnlink)
+                                    : "https://www.paziresh24.com";
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
+                                  }
+                                  throw e;
+                                }
+                              })()
+                            ]
+                          };
+                          return $globalActions["Hamdast.openLink"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["invokeGlobalAction"] != null &&
+                      typeof $steps["invokeGlobalAction"] === "object" &&
+                      typeof $steps["invokeGlobalAction"].then === "function"
+                    ) {
+                      $steps["invokeGlobalAction"] = await $steps[
+                        "invokeGlobalAction"
+                      ];
+                    }
+                  }}
+                />
+
                 <PlasmicLink__
                   data-plasmic-name={"link"}
                   data-plasmic-override={overrides.link}
