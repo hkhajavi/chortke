@@ -1449,7 +1449,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                       const actionArgs = {
                                         args: [
                                           undefined,
-                                          "\u0634\u0646\u0627\u0633\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u067e\u06cc \u0634\u062f."
+                                          "\u0645\u0628\u0644\u063a \u06a9\u067e\u06cc \u0634\u062f."
                                         ]
                                       };
                                       return $globalActions[
@@ -2357,6 +2357,66 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                 typeof $steps["updateBalance"].then === "function"
               ) {
                 $steps["updateBalance"] = await $steps["updateBalance"];
+              }
+
+              $steps["splunk"] = false
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        "POST",
+                        "https://0df6aabc-cda8-477a-812d-d6fae1d03694.hsvc.ir:31708/services/collector",
+                        undefined,
+                        (() => {
+                          try {
+                            return {
+                              event: {
+                                userid: $state.me.users[0],
+                                request: "redirect-page"
+                              },
+                              sourcetype: "log",
+                              index: "katibe-methods"
+                            };
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })(),
+                        (() => {
+                          try {
+                            return {
+                              headers: {
+                                Authorization:
+                                  "Splunk 8b7fb7ef-5925-47a6-9ccb-e1ce3a9770e9"
+                              }
+                            };
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
+              if (
+                $steps["splunk"] != null &&
+                typeof $steps["splunk"] === "object" &&
+                typeof $steps["splunk"].then === "function"
+              ) {
+                $steps["splunk"] = await $steps["splunk"];
               }
             }}
           />
