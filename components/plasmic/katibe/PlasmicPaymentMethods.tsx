@@ -63,6 +63,7 @@ import { AntdAccordion } from "@plasmicpkgs/antd5/skinny/registerCollapse";
 import { accordionHelpers as AntdAccordion_Helpers } from "@plasmicpkgs/antd5/skinny/registerCollapse";
 import { AntdAccordionItem } from "@plasmicpkgs/antd5/skinny/registerCollapse";
 import Button from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
+import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 
@@ -77,6 +78,8 @@ import sty from "./PlasmicPaymentMethods.module.css"; // plasmic-import: BF9WF06
 import Icon2Icon from "../chortke/icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
 import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
+import SearchSvgIcon from "../chortke/icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
+import CheckSvgIcon from "../chortke/icons/PlasmicIcon__CheckSvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
 
 createPlasmicElementProxy;
 
@@ -94,6 +97,8 @@ export type PlasmicPaymentMethods__OverridesType = {
   section?: Flex__<"section">;
   svg?: Flex__<"svg">;
   accordion?: Flex__<typeof AntdAccordion>;
+  textInput?: Flex__<typeof TextInput>;
+  textInput2?: Flex__<typeof TextInput>;
   embedHtml?: Flex__<typeof Embed>;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
 };
@@ -196,6 +201,32 @@ function PlasmicPaymentMethods__RenderFunc(props: {
         type: "private",
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+      },
+      {
+        path: "textInput.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          "060570077700001597475001"
+      },
+      {
+        path: "textInput2.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.me.users[0].id;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -955,49 +986,155 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                         <div
                           className={classNames(
                             projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__hBa52
+                            sty.freeBox__abHoO
                           )}
                         >
-                          <React.Fragment>
-                            {(() => {
-                              try {
-                                return (
-                                  "جهت پرداخت به‌صورت پایا/پُل، لطفا مبلغ قابل پرداخت را به شماره شبا IR300190000000311582078006 با توضیحات و شناسه پرداخت " +
-                                  $state.me.users[0].id +
-                                  " به نام حجت خواجوی واریز کرده و سپس دکمه بررسی پرداخت را کلیک نمایید. "
-                                );
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "\u062c\u0647\u062a \u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0647\u200c\u0635\u0648\u0631\u062a \u067e\u0627\u06cc\u0627/\u067e\u0644\u060c \u0644\u0637\u0641\u0627 \u0645\u0628\u0644\u063a \u0642\u0627\u0628\u0644 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0647 \u0634\u0645\u0627\u0631\u0647 \u0634\u0628\u0627 IR30 0190 0000 0031 1582 0780 06 \u0628\u0627 \u0634\u0646\u0627\u0633\u0647 \u067e\u0631\u062f\u0627\u062e\u062a 00000 \u0628\u0647 \u0646\u0627\u0645 \u062d\u062c\u062a \u062e\u0648\u0627\u062c\u0648\u06cc \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u0628\u0631\u0631\u0633\u06cc \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u06a9\u0644\u06cc\u06a9 \u0646\u0645\u0627\u06cc\u06cc\u062f. ";
-                                }
-                                throw e;
-                              }
-                            })()}
-                          </React.Fragment>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__fkxfa
-                          )}
-                        >
-                          <React.Fragment>
-                            <span
-                              className={
-                                "plasmic_default__all plasmic_default__span"
-                              }
-                              style={{ fontWeight: 700 }}
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__ttcF
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__hBa52
+                              )}
                             >
                               {
-                                "\u0644\u0637\u0641\u0627\u064b \u062a\u0648\u062c\u0647 \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u06cc\u062f \u06a9\u0647 \u062a\u0627\u06cc\u06cc\u062f \u067e\u0631\u062f\u0627\u062e\u062a\u060c \u0645\u0642\u062f\u0627\u0631\u06cc \u0632\u0645\u0627\u0646\u200c\u0628\u0631 \u062e\u0648\u0627\u0647\u062f \u0628\u0648\u062f."
+                                "\u062c\u0647\u062a \u0634\u0627\u0631\u0698 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0628\u0647\u200c\u0635\u0648\u0631\u062a \u067e\u0627\u06cc\u0627/\u067e\u064f\u0644\u060c \u0644\u0637\u0641\u0627 \u0645\u0628\u0644\u063a \u0642\u0627\u0628\u0644 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0647 \u0634\u0628\u0627 \u0632\u06cc\u0631 \u0628\u0627 \u062a\u0648\u0636\u06cc\u062d\u0627\u062a \u0648 \u0634\u0646\u0627\u0633\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u0628\u0631\u0631\u0633\u06cc \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u06a9\u0644\u06cc\u06a9 \u0646\u0645\u0627\u06cc\u06cc\u062f."
                               }
-                            </span>
-                          </React.Fragment>
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__fkxfa
+                              )}
+                            >
+                              <React.Fragment>
+                                <span
+                                  className={
+                                    "plasmic_default__all plasmic_default__span"
+                                  }
+                                  style={{ fontWeight: 700 }}
+                                >
+                                  {
+                                    "\u0644\u0637\u0641\u0627\u064b \u062a\u0648\u062c\u0647 \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u06cc\u062f \u06a9\u0647 \u062a\u0627\u06cc\u06cc\u062f \u067e\u0631\u062f\u0627\u062e\u062a\u060c \u0645\u0642\u062f\u0627\u0631\u06cc \u0632\u0645\u0627\u0646\u200c\u0628\u0631 \u062e\u0648\u0627\u0647\u062f \u0628\u0648\u062f."
+                                  }
+                                </span>
+                              </React.Fragment>
+                            </div>
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__j6U
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text___0Gopl
+                              )}
+                            >
+                              {
+                                "\u0634\u0645\u0627\u0631\u0647 \u0634\u0628\u0627:"
+                              }
+                            </div>
+                            <TextInput
+                              data-plasmic-name={"textInput"}
+                              data-plasmic-override={overrides.textInput}
+                              className={classNames(
+                                "__wab_instance",
+                                sty.textInput
+                              )}
+                              onChange={async (...eventArgs: any) => {
+                                ((...eventArgs) => {
+                                  generateStateOnChangeProp($state, [
+                                    "textInput",
+                                    "value"
+                                  ])(
+                                    (e => e.target?.value).apply(
+                                      null,
+                                      eventArgs
+                                    )
+                                  );
+                                }).apply(null, eventArgs);
+
+                                if (
+                                  eventArgs.length > 1 &&
+                                  eventArgs[1] &&
+                                  eventArgs[1]._plasmic_state_init_
+                                ) {
+                                  return;
+                                }
+                              }}
+                              placeholder={``}
+                              value={
+                                generateStateValueProp($state, [
+                                  "textInput",
+                                  "value"
+                                ]) ?? ""
+                              }
+                            />
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__c63Bw
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.__wab_text,
+                                sty.text__yrJg
+                              )}
+                            >
+                              {
+                                "\u0634\u0646\u0627\u0633\u0647 \u067e\u0631\u062f\u0627\u062e\u062a:"
+                              }
+                            </div>
+                            <TextInput
+                              data-plasmic-name={"textInput2"}
+                              data-plasmic-override={overrides.textInput2}
+                              className={classNames(
+                                "__wab_instance",
+                                sty.textInput2
+                              )}
+                              onChange={async (...eventArgs: any) => {
+                                ((...eventArgs) => {
+                                  generateStateOnChangeProp($state, [
+                                    "textInput2",
+                                    "value"
+                                  ])(
+                                    (e => e.target?.value).apply(
+                                      null,
+                                      eventArgs
+                                    )
+                                  );
+                                }).apply(null, eventArgs);
+
+                                if (
+                                  eventArgs.length > 1 &&
+                                  eventArgs[1] &&
+                                  eventArgs[1]._plasmic_state_init_
+                                ) {
+                                  return;
+                                }
+                              }}
+                              placeholder={``}
+                              value={
+                                generateStateValueProp($state, [
+                                  "textInput2",
+                                  "value"
+                                ]) ?? ""
+                              }
+                            />
+                          </div>
                         </div>
                         <Button
                           children2={
@@ -1631,12 +1768,16 @@ const PlasmicDescendants = {
     "section",
     "svg",
     "accordion",
+    "textInput",
+    "textInput2",
     "embedHtml",
     "sideEffectPageLoad"
   ],
-  section: ["section", "svg", "accordion"],
+  section: ["section", "svg", "accordion", "textInput", "textInput2"],
   svg: ["svg"],
-  accordion: ["accordion"],
+  accordion: ["accordion", "textInput", "textInput2"],
+  textInput: ["textInput"],
+  textInput2: ["textInput2"],
   embedHtml: ["embedHtml"],
   sideEffectPageLoad: ["sideEffectPageLoad"]
 } as const;
@@ -1648,6 +1789,8 @@ type NodeDefaultElementType = {
   section: "section";
   svg: "svg";
   accordion: typeof AntdAccordion;
+  textInput: typeof TextInput;
+  textInput2: typeof TextInput;
   embedHtml: typeof Embed;
   sideEffectPageLoad: typeof SideEffect;
 };
@@ -1715,6 +1858,8 @@ export const PlasmicPaymentMethods = Object.assign(
     section: makeNodeComponent("section"),
     svg: makeNodeComponent("svg"),
     accordion: makeNodeComponent("accordion"),
+    textInput: makeNodeComponent("textInput"),
+    textInput2: makeNodeComponent("textInput2"),
     embedHtml: makeNodeComponent("embedHtml"),
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
 

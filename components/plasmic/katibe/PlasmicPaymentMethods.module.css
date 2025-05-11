@@ -262,6 +262,28 @@
   max-width: 100%;
   min-width: 0;
 }
+.freeBox__abHoO {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 8px;
+}
+.freeBox__ttcF {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  grid-column-end: span 2;
+  min-width: 0;
+  padding: 0px;
+}
 .text__hBa52 {
   position: relative;
   height: auto;
@@ -275,6 +297,100 @@
   height: auto;
   max-width: 100%;
   min-width: 0;
+}
+.freeBox__j6U {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__j6U {
+    grid-column-end: span 2;
+  }
+}
+.text___0Gopl {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  min-width: 120px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text___0Gopl {
+    min-width: 90px;
+    font-size: var(--token-5Ye_3XTSaP9X);
+  }
+}
+.textInput:global(.__wab_instance) {
+  max-width: 100%;
+  width: 100%;
+  min-width: 0;
+}
+.svg___0RNjm {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.svg__fys4X {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.freeBox__c63Bw {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__c63Bw {
+    grid-column-end: span 2;
+  }
+}
+.text__yrJg {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  min-width: 120px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__yrJg {
+    min-width: 90px;
+    font-size: var(--token-5Ye_3XTSaP9X);
+  }
+}
+.textInput2:global(.__wab_instance) {
+  max-width: 100%;
+  width: 100%;
+  min-width: 0;
+}
+.svg__fdYsE {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.svg__fs7Dh {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
 }
 .button__fdn28:global(.__wab_instance) {
   max-width: 100%;
