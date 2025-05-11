@@ -81,6 +81,9 @@ import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"
 import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
 import SearchSvgIcon from "../chortke/icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
 import CheckSvgIcon from "../chortke/icons/PlasmicIcon__CheckSvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
+import Icon48Icon from "./icons/PlasmicIcon__Icon48"; // plasmic-import: ApzBD_j9CWGg/icon
+
+import __lib_copyToClipboard from "copy-to-clipboard";
 
 createPlasmicElementProxy;
 
@@ -97,8 +100,8 @@ export type PlasmicPaymentMethods__OverridesType = {
   root?: Flex__<"div">;
   section?: Flex__<"section">;
   accordion?: Flex__<typeof AntdAccordion>;
-  textInput?: Flex__<typeof TextInput>;
-  textInput2?: Flex__<typeof TextInput>;
+  textShowIban?: Flex__<typeof TextInput>;
+  txtShowRpey?: Flex__<typeof TextInput>;
   dialog?: Flex__<typeof Dialog>;
   txtPayaRpey?: Flex__<typeof TextInput>;
   embedHtml?: Flex__<typeof Embed>;
@@ -107,7 +110,9 @@ export type PlasmicPaymentMethods__OverridesType = {
 
 export interface DefaultPaymentMethodsProps {}
 
-const $$ = {};
+const $$ = {
+  copyToClipboard: __lib_copyToClipboard
+};
 
 function useNextRouter() {
   try {
@@ -205,14 +210,14 @@ function PlasmicPaymentMethods__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
       },
       {
-        path: "textInput.value",
+        path: "textShowIban.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
           "340600481979808994170001"
       },
       {
-        path: "textInput2.value",
+        path: "txtShowRpey.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) =>
@@ -1057,17 +1062,17 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                               }
                             </div>
                             <TextInput
-                              data-plasmic-name={"textInput"}
-                              data-plasmic-override={overrides.textInput}
+                              data-plasmic-name={"textShowIban"}
+                              data-plasmic-override={overrides.textShowIban}
                               className={classNames(
                                 "__wab_instance",
-                                sty.textInput
+                                sty.textShowIban
                               )}
                               isDisabled={true}
                               onChange={async (...eventArgs: any) => {
                                 ((...eventArgs) => {
                                   generateStateOnChangeProp($state, [
-                                    "textInput",
+                                    "textShowIban",
                                     "value"
                                   ])(
                                     (e => e.target?.value).apply(
@@ -1088,10 +1093,68 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                               placeholder={``}
                               value={
                                 generateStateValueProp($state, [
-                                  "textInput",
+                                  "textShowIban",
                                   "value"
                                 ]) ?? ""
                               }
+                            />
+
+                            <Icon48Icon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg__zx7YB
+                              )}
+                              onClick={async event => {
+                                const $steps = {};
+
+                                $steps["runCode"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        customFunction: async () => {
+                                          return $$.copyToClipboard(
+                                            $state.textShowIban.value
+                                          );
+                                        }
+                                      };
+                                      return (({ customFunction }) => {
+                                        return customFunction();
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["runCode"] != null &&
+                                  typeof $steps["runCode"] === "object" &&
+                                  typeof $steps["runCode"].then === "function"
+                                ) {
+                                  $steps["runCode"] = await $steps["runCode"];
+                                }
+
+                                $steps["invokeGlobalAction"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        args: [
+                                          undefined,
+                                          "\u0634\u0645\u0627\u0631\u0647 \u0634\u0628\u0627 \u06a9\u067e\u06cc \u0634\u062f."
+                                        ]
+                                      };
+                                      return $globalActions[
+                                        "Fragment.showToast"
+                                      ]?.apply(null, [...actionArgs.args]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["invokeGlobalAction"] != null &&
+                                  typeof $steps["invokeGlobalAction"] ===
+                                    "object" &&
+                                  typeof $steps["invokeGlobalAction"].then ===
+                                    "function"
+                                ) {
+                                  $steps["invokeGlobalAction"] = await $steps[
+                                    "invokeGlobalAction"
+                                  ];
+                                }
+                              }}
+                              role={"img"}
                             />
                           </div>
                           <div
@@ -1112,17 +1175,17 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                               }
                             </div>
                             <TextInput
-                              data-plasmic-name={"textInput2"}
-                              data-plasmic-override={overrides.textInput2}
+                              data-plasmic-name={"txtShowRpey"}
+                              data-plasmic-override={overrides.txtShowRpey}
                               className={classNames(
                                 "__wab_instance",
-                                sty.textInput2
+                                sty.txtShowRpey
                               )}
                               isDisabled={true}
                               onChange={async (...eventArgs: any) => {
                                 ((...eventArgs) => {
                                   generateStateOnChangeProp($state, [
-                                    "textInput2",
+                                    "txtShowRpey",
                                     "value"
                                   ])(
                                     (e => e.target?.value).apply(
@@ -1143,10 +1206,68 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                               placeholder={``}
                               value={
                                 generateStateValueProp($state, [
-                                  "textInput2",
+                                  "txtShowRpey",
                                   "value"
                                 ]) ?? ""
                               }
+                            />
+
+                            <Icon48Icon
+                              className={classNames(
+                                projectcss.all,
+                                sty.svg___1Oe0X
+                              )}
+                              onClick={async event => {
+                                const $steps = {};
+
+                                $steps["runCode"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        customFunction: async () => {
+                                          return $$.copyToClipboard(
+                                            $state.txtShowRpey.value
+                                          );
+                                        }
+                                      };
+                                      return (({ customFunction }) => {
+                                        return customFunction();
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["runCode"] != null &&
+                                  typeof $steps["runCode"] === "object" &&
+                                  typeof $steps["runCode"].then === "function"
+                                ) {
+                                  $steps["runCode"] = await $steps["runCode"];
+                                }
+
+                                $steps["invokeGlobalAction"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        args: [
+                                          undefined,
+                                          "\u0634\u0646\u0627\u0633\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u067e\u06cc \u0634\u062f."
+                                        ]
+                                      };
+                                      return $globalActions[
+                                        "Fragment.showToast"
+                                      ]?.apply(null, [...actionArgs.args]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["invokeGlobalAction"] != null &&
+                                  typeof $steps["invokeGlobalAction"] ===
+                                    "object" &&
+                                  typeof $steps["invokeGlobalAction"].then ===
+                                    "function"
+                                ) {
+                                  $steps["invokeGlobalAction"] = await $steps[
+                                    "invokeGlobalAction"
+                                  ];
+                                }
+                              }}
+                              role={"img"}
                             />
                           </div>
                           <div
@@ -2020,8 +2141,8 @@ const PlasmicDescendants = {
     "root",
     "section",
     "accordion",
-    "textInput",
-    "textInput2",
+    "textShowIban",
+    "txtShowRpey",
     "dialog",
     "txtPayaRpey",
     "embedHtml",
@@ -2030,14 +2151,20 @@ const PlasmicDescendants = {
   section: [
     "section",
     "accordion",
-    "textInput",
-    "textInput2",
+    "textShowIban",
+    "txtShowRpey",
     "dialog",
     "txtPayaRpey"
   ],
-  accordion: ["accordion", "textInput", "textInput2", "dialog", "txtPayaRpey"],
-  textInput: ["textInput"],
-  textInput2: ["textInput2"],
+  accordion: [
+    "accordion",
+    "textShowIban",
+    "txtShowRpey",
+    "dialog",
+    "txtPayaRpey"
+  ],
+  textShowIban: ["textShowIban"],
+  txtShowRpey: ["txtShowRpey"],
   dialog: ["dialog", "txtPayaRpey"],
   txtPayaRpey: ["txtPayaRpey"],
   embedHtml: ["embedHtml"],
@@ -2050,8 +2177,8 @@ type NodeDefaultElementType = {
   root: "div";
   section: "section";
   accordion: typeof AntdAccordion;
-  textInput: typeof TextInput;
-  textInput2: typeof TextInput;
+  textShowIban: typeof TextInput;
+  txtShowRpey: typeof TextInput;
   dialog: typeof Dialog;
   txtPayaRpey: typeof TextInput;
   embedHtml: typeof Embed;
@@ -2120,8 +2247,8 @@ export const PlasmicPaymentMethods = Object.assign(
     // Helper components rendering sub-elements
     section: makeNodeComponent("section"),
     accordion: makeNodeComponent("accordion"),
-    textInput: makeNodeComponent("textInput"),
-    textInput2: makeNodeComponent("textInput2"),
+    textShowIban: makeNodeComponent("textShowIban"),
+    txtShowRpey: makeNodeComponent("txtShowRpey"),
     dialog: makeNodeComponent("dialog"),
     txtPayaRpey: makeNodeComponent("txtPayaRpey"),
     embedHtml: makeNodeComponent("embedHtml"),
