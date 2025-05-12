@@ -598,7 +598,11 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                                 title: "افزایش موجودی",
                                                 amount:
                                                   $ctx.query.amount -
-                                                  $state.balance
+                                                  $state.balance,
+                                                receipt_id: $ctx.query
+                                                  .receipt_id
+                                                  ? $ctx.query.receipt_id
+                                                  : ""
                                               };
                                             } catch (e) {
                                               if (
