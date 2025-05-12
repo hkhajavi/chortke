@@ -782,263 +782,53 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                         <div
                           className={classNames(
                             projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__vQCxv
+                            sty.freeBox__wBqB
                           )}
                         >
-                          <React.Fragment>
-                            <React.Fragment>
-                              {
-                                "\u062c\u0647\u062a \u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0647\u200c\u0635\u0648\u0631\u062a \u06a9\u0627\u0631\u062a \u0628\u0647 \u06a9\u0627\u0631\u062a\u060c \u0644\u0637\u0641\u0627 \u0645\u0628\u0644\u063a \u0642\u0627\u0628\u0644 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0647 \u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a 6037691526316161 \u0628\u0647 \u0646\u0627\u0645 \u062d\u062c\u062a \u062e\u0648\u0627\u062c\u0648\u06cc \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u0628\u0631\u0631\u0633\u06cc \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u06a9\u0644\u06cc\u06a9 \u0646\u0645\u0627\u06cc\u06cc\u062f. \n"
-                              }
-                            </React.Fragment>
-                            <span
-                              className={
-                                "plasmic_default__all plasmic_default__span"
-                              }
-                              style={{ fontWeight: 700 }}
-                            >
-                              {
-                                "\u0644\u0637\u0641\u0627\u064b \u062a\u0648\u062c\u0647 \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u06cc\u062f \u06a9\u0647 \u0641\u0631\u0622\u06cc\u0646\u062f \u0634\u0627\u0631\u0698 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0628\u0647 \u0635\u0648\u0631\u062a \u06a9\u0627\u0631\u062a \u0628\u0647 \u06a9\u0627\u0631\u062a\u060c \u0686\u0646\u062f \u062f\u0642\u06cc\u0642\u0647 \u0632\u0645\u0627\u0646 \u0645\u06cc\u200c\u0628\u0631\u062f."
-                              }
-                            </span>
-                          </React.Fragment>
-                        </div>
-                        <Button
-                          children2={
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox___2Oe1
+                            )}
+                          >
                             <div
                               className={classNames(
                                 projectcss.all,
                                 projectcss.__wab_text,
-                                sty.text__ekWh
+                                sty.text__vQCxv
                               )}
                             >
-                              {
-                                "\u0628\u0631\u0631\u0633\u06cc \u067e\u0631\u062f\u0627\u062e\u062a"
-                              }
+                              <React.Fragment>
+                                <React.Fragment>
+                                  {
+                                    "\u062c\u0647\u062a \u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0627\u0631\u062a \u0628\u0647 \u06a9\u0627\u0631\u062a\u060c \u0644\u0637\u0641\u0627 \u0645\u0628\u0644\u063a \u0642\u0627\u0628\u0644 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0647 \u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a 5022291521469351 \u0628\u0647 \u0646\u0627\u0645 \u062d\u062c\u062a \u062e\u0648\u0627\u062c\u0648\u06cc \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u0631\u0633\u06cc\u062f \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0647 \u0634\u0645\u0627\u0631\u0647 "
+                                  }
+                                </React.Fragment>
+                                {
+                                  <PlasmicLink__
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.a,
+                                      projectcss.__wab_text,
+                                      projectcss.plasmic_default__inline,
+                                      sty.link__k4M8
+                                    )}
+                                    component={Link}
+                                    href={"tel:09384487404"}
+                                    platform={"nextjs"}
+                                  >
+                                    {"09384487404"}
+                                  </PlasmicLink__>
+                                }
+                                <React.Fragment>
+                                  {
+                                    " \u062f\u0631 \u062a\u0644\u06af\u0631\u0627\u0645 \u06cc\u0627 \u0648\u0627\u062a\u0633\u0627\u067e \u0627\u0631\u0633\u0627\u0644 \u0646\u0645\u0627\u06cc\u06cc\u062f. "
+                                  }
+                                </React.Fragment>
+                              </React.Fragment>
                             </div>
-                          }
-                          className={classNames(
-                            "__wab_instance",
-                            sty.button___0ZCe
-                          )}
-                          onClick={async event => {
-                            const $steps = {};
-
-                            $steps["updateWaiting"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["waiting"]
-                                    },
-                                    operation: 0,
-                                    value: true
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["updateWaiting"] != null &&
-                              typeof $steps["updateWaiting"] === "object" &&
-                              typeof $steps["updateWaiting"].then === "function"
-                            ) {
-                              $steps["updateWaiting"] = await $steps[
-                                "updateWaiting"
-                              ];
-                            }
-
-                            $steps["requestVerify"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    args: [
-                                      "POST",
-                                      "https://apigw.paziresh24.com/katibe/v1/payment/methods/verify",
-                                      undefined,
-                                      { method: "cardtocard" }
-                                    ]
-                                  };
-                                  return $globalActions[
-                                    "Fragment.apiRequest"
-                                  ]?.apply(null, [...actionArgs.args]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["requestVerify"] != null &&
-                              typeof $steps["requestVerify"] === "object" &&
-                              typeof $steps["requestVerify"].then === "function"
-                            ) {
-                              $steps["requestVerify"] = await $steps[
-                                "requestVerify"
-                              ];
-                            }
-
-                            $steps["verifyResponse"] =
-                              $steps.requestVerify.status == 200
-                                ? (() => {
-                                    const actionArgs = {
-                                      variable: {
-                                        objRoot: $state,
-                                        variablePath: ["verifyResponse"]
-                                      },
-                                      operation: 0,
-                                      value: $steps.requestVerify.data
-                                    };
-                                    return (({
-                                      variable,
-                                      value,
-                                      startIndex,
-                                      deleteCount
-                                    }) => {
-                                      if (!variable) {
-                                        return;
-                                      }
-                                      const { objRoot, variablePath } =
-                                        variable;
-
-                                      $stateSet(objRoot, variablePath, value);
-                                      return value;
-                                    })?.apply(null, [actionArgs]);
-                                  })()
-                                : undefined;
-                            if (
-                              $steps["verifyResponse"] != null &&
-                              typeof $steps["verifyResponse"] === "object" &&
-                              typeof $steps["verifyResponse"].then ===
-                                "function"
-                            ) {
-                              $steps["verifyResponse"] = await $steps[
-                                "verifyResponse"
-                              ];
-                            }
-
-                            $steps["updateWaiting2"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["waiting"]
-                                    },
-                                    operation: 0,
-                                    value: false
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["updateWaiting2"] != null &&
-                              typeof $steps["updateWaiting2"] === "object" &&
-                              typeof $steps["updateWaiting2"].then ===
-                                "function"
-                            ) {
-                              $steps["updateWaiting2"] = await $steps[
-                                "updateWaiting2"
-                              ];
-                            }
-
-                            $steps["alertSuccess"] =
-                              $steps.requestVerify.status == 200
-                                ? (() => {
-                                    const actionArgs = {
-                                      args: [
-                                        undefined,
-                                        (() => {
-                                          try {
-                                            return $state.verifyResponse
-                                              .message;
-                                          } catch (e) {
-                                            if (
-                                              e instanceof TypeError ||
-                                              e?.plasmicType ===
-                                                "PlasmicUndefinedDataError"
-                                            ) {
-                                              return undefined;
-                                            }
-                                            throw e;
-                                          }
-                                        })()
-                                      ]
-                                    };
-                                    return $globalActions[
-                                      "Fragment.showToast"
-                                    ]?.apply(null, [...actionArgs.args]);
-                                  })()
-                                : undefined;
-                            if (
-                              $steps["alertSuccess"] != null &&
-                              typeof $steps["alertSuccess"] === "object" &&
-                              typeof $steps["alertSuccess"].then === "function"
-                            ) {
-                              $steps["alertSuccess"] = await $steps[
-                                "alertSuccess"
-                              ];
-                            }
-
-                            $steps["alertError"] =
-                              $steps.requestVerify.status !== 200
-                                ? (() => {
-                                    const actionArgs = {
-                                      args: [
-                                        "error",
-                                        (() => {
-                                          try {
-                                            return (
-                                              $state.verifyResponse.message ||
-                                              "خطا در بررسی پرداخت\u060C لطفا دوباره تلاش نمایید"
-                                            );
-                                          } catch (e) {
-                                            if (
-                                              e instanceof TypeError ||
-                                              e?.plasmicType ===
-                                                "PlasmicUndefinedDataError"
-                                            ) {
-                                              return undefined;
-                                            }
-                                            throw e;
-                                          }
-                                        })()
-                                      ]
-                                    };
-                                    return $globalActions[
-                                      "Fragment.showToast"
-                                    ]?.apply(null, [...actionArgs.args]);
-                                  })()
-                                : undefined;
-                            if (
-                              $steps["alertError"] != null &&
-                              typeof $steps["alertError"] === "object" &&
-                              typeof $steps["alertError"].then === "function"
-                            ) {
-                              $steps["alertError"] = await $steps["alertError"];
-                            }
-                          }}
-                        />
+                          </div>
+                        </div>
                       </AntdAccordionItem>
                       <AntdAccordionItem
                         className={classNames(
