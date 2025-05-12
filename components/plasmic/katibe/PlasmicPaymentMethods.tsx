@@ -1984,6 +1984,34 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                       ["accordion", "activePanelId"],
                       AntdAccordion_Helpers
                     ).apply(null, eventArgs);
+
+                    (async activeIds => {
+                      const $steps = {};
+
+                      $steps["invokeGlobalAction"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                undefined,
+                                "https://apigw.paziresh24.com/katibe/v1/payment/methods/load?type=changePaymentType"
+                              ]
+                            };
+                            return $globalActions["Fragment.apiRequest"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
+                      if (
+                        $steps["invokeGlobalAction"] != null &&
+                        typeof $steps["invokeGlobalAction"] === "object" &&
+                        typeof $steps["invokeGlobalAction"].then === "function"
+                      ) {
+                        $steps["invokeGlobalAction"] = await $steps[
+                          "invokeGlobalAction"
+                        ];
+                      }
+                    }).apply(null, eventArgs);
                   },
                   size: "middle"
                 };
@@ -2368,12 +2396,12 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                 $steps["updateBalance"] = await $steps["updateBalance"];
               }
 
-              $steps["splunk"] = true
+              $steps["n8NSplunk"] = true
                 ? (() => {
                     const actionArgs = {
                       args: [
                         "GET",
-                        "https://apigw.paziresh24.com/katibe/v1/payment/methods/load",
+                        "https://apigw.paziresh24.com/katibe/v1/payment/methods/load?type=load",
                         undefined,
                         undefined,
                         undefined
@@ -2385,11 +2413,11 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                   })()
                 : undefined;
               if (
-                $steps["splunk"] != null &&
-                typeof $steps["splunk"] === "object" &&
-                typeof $steps["splunk"].then === "function"
+                $steps["n8NSplunk"] != null &&
+                typeof $steps["n8NSplunk"] === "object" &&
+                typeof $steps["n8NSplunk"].then === "function"
               ) {
-                $steps["splunk"] = await $steps["splunk"];
+                $steps["n8NSplunk"] = await $steps["n8NSplunk"];
               }
             }}
           />
