@@ -1263,26 +1263,6 @@
   max-width: 100%;
   object-fit: cover;
 }
-.apiRequest:global(.__wab_instance) {
-  max-width: 100%;
-  object-fit: cover;
-}
-.text__ixqoJ {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-  display: none;
-}
-.text__fhu4X {
-  position: relative;
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  min-width: 0;
-  display: none;
-}
 .sideEffectAutoverify:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
