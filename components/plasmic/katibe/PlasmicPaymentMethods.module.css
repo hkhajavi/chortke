@@ -661,7 +661,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text___9ZY1T {
-    font-size: var(--token-5Ye_3XTSaP9X);
+    font-size: var(--token-VrIY9r5RDQZ_);
   }
 }
 .freeBox__nRvg {
@@ -851,6 +851,11 @@
   height: auto;
   max-width: 100%;
   min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text___1S9Tj {
+    font-size: var(--token-5Ye_3XTSaP9X);
+  }
 }
 .freeBox__iJfeu {
   display: flex;
