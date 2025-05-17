@@ -1882,6 +1882,48 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                 onClick={async event => {
                                   const $steps = {};
 
+                                  $steps["cardToCardVerifyNull"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: ["cardToCardVerify"]
+                                          },
+                                          operation: 0,
+                                          value: {}
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["cardToCardVerifyNull"] != null &&
+                                    typeof $steps["cardToCardVerifyNull"] ===
+                                      "object" &&
+                                    typeof $steps["cardToCardVerifyNull"]
+                                      .then === "function"
+                                  ) {
+                                    $steps["cardToCardVerifyNull"] =
+                                      await $steps["cardToCardVerifyNull"];
+                                  }
+
                                   $steps["updateWaitingcardtocard"] = true
                                     ? (() => {
                                         const actionArgs = {
@@ -1924,7 +1966,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                       await $steps["updateWaitingcardtocard"];
                                   }
 
-                                  $steps["paymentP24CardtocardVerify"] = true
+                                  $steps["verify"] = true
                                     ? (() => {
                                         const actionArgs = {
                                           args: [
@@ -1962,23 +2004,15 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                       })()
                                     : undefined;
                                   if (
-                                    $steps["paymentP24CardtocardVerify"] !=
-                                      null &&
-                                    typeof $steps[
-                                      "paymentP24CardtocardVerify"
-                                    ] === "object" &&
-                                    typeof $steps["paymentP24CardtocardVerify"]
-                                      .then === "function"
+                                    $steps["verify"] != null &&
+                                    typeof $steps["verify"] === "object" &&
+                                    typeof $steps["verify"].then === "function"
                                   ) {
-                                    $steps["paymentP24CardtocardVerify"] =
-                                      await $steps[
-                                        "paymentP24CardtocardVerify"
-                                      ];
+                                    $steps["verify"] = await $steps["verify"];
                                   }
 
                                   $steps["updateCardToCardVerify"] =
-                                    $steps.paymentP24CardtocardVerify.status ==
-                                    200
+                                    $steps.verify.status == 200
                                       ? (() => {
                                           const actionArgs = {
                                             variable: {
@@ -1986,9 +2020,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                               variablePath: ["cardToCardVerify"]
                                             },
                                             operation: 0,
-                                            value:
-                                              $steps.paymentP24CardtocardVerify
-                                                .data
+                                            value: $steps.verify.data
                                           };
                                           return (({
                                             variable,
@@ -2113,7 +2145,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                   }
 
                                   $steps["redirect"] =
-                                    ($state.cardToCardVerify.status = true)
+                                    $state.cardToCardVerify.status == true
                                       ? (() => {
                                           const actionArgs = {
                                             args: [
@@ -3343,7 +3375,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
             onMount={async () => {
               const $steps = {};
 
-              $steps["paymentP24CardtocardVerify"] = true
+              $steps["paymentP24CardtocardVerify"] = false
                 ? (() => {
                     const actionArgs = {
                       args: [
@@ -3381,33 +3413,27 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                 ];
               }
 
-              $steps["updateWaiting2"] =
-                $steps.paymentP24CardtocardVerify.status == 200
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["cardToCardVerify"]
-                        },
-                        operation: 0,
-                        value: $steps.paymentP24CardtocardVerify.data
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
+              $steps["updateWaiting2"] = false
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["cardToCardVerify"]
+                      },
+                      operation: 0,
+                      value: $steps.paymentP24CardtocardVerify.data
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
 
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
               if (
                 $steps["updateWaiting2"] != null &&
                 typeof $steps["updateWaiting2"] === "object" &&
@@ -3416,39 +3442,38 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                 $steps["updateWaiting2"] = await $steps["updateWaiting2"];
               }
 
-              $steps["redirect"] =
-                $state.cardToCardVerify.status == 200
-                  ? (() => {
-                      const actionArgs = {
-                        args: [
-                          (() => {
-                            try {
-                              return $ctx.query.returnlink
-                                ? globalThis
-                                    .atob($ctx.query.returnlink)
-                                    .includes("?")
-                                  ? globalThis.atob($ctx.query.returnlink) +
-                                    "&status=true"
-                                  : globalThis.atob($ctx.query.returnlink) +
-                                    "?status=true"
-                                : "https://www.paziresh24.com/dashboard/appointments/";
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
+              $steps["redirect"] = false
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        (() => {
+                          try {
+                            return $ctx.query.returnlink
+                              ? globalThis
+                                  .atob($ctx.query.returnlink)
+                                  .includes("?")
+                                ? globalThis.atob($ctx.query.returnlink) +
+                                  "&status=true"
+                                : globalThis.atob($ctx.query.returnlink) +
+                                  "?status=true"
+                              : "https://www.paziresh24.com/dashboard/appointments/";
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
                             }
-                          })()
-                        ]
-                      };
-                      return $globalActions["Hamdast.openLink"]?.apply(null, [
-                        ...actionArgs.args
-                      ]);
-                    })()
-                  : undefined;
+                            throw e;
+                          }
+                        })()
+                      ]
+                    };
+                    return $globalActions["Hamdast.openLink"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
               if (
                 $steps["redirect"] != null &&
                 typeof $steps["redirect"] === "object" &&
