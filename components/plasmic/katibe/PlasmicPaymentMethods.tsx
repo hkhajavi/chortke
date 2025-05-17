@@ -1370,10 +1370,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                 <React.Fragment>
                                   {(() => {
                                     try {
-                                      return (
-                                        "پرداخت کارت به کارت" +
-                                        $state.cardToCardAutoCheck
-                                      );
+                                      return "پرداخت کارت به کارت";
                                     } catch (e) {
                                       if (
                                         e instanceof TypeError ||
