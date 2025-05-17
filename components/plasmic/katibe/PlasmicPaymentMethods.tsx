@@ -1955,7 +1955,13 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                                 return {
                                                   factorid:
                                                     $state.cardToCardRequest
-                                                      .factorid
+                                                      .factorid,
+                                                  number:
+                                                    $state.cardToCardAutoCheck +
+                                                    "" +
+                                                    Math.floor(
+                                                      Math.random() * 1000
+                                                    )
                                                 };
                                               } catch (e) {
                                                 if (
@@ -2124,48 +2130,6 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                   ) {
                                     $steps["updateWaitingcardtocard2"] =
                                       await $steps["updateWaitingcardtocard2"];
-                                  }
-
-                                  $steps["updateWaiting"] = true
-                                    ? (() => {
-                                        const actionArgs = {
-                                          variable: {
-                                            objRoot: $state,
-                                            variablePath: ["waiting"]
-                                          },
-                                          operation: 0
-                                        };
-                                        return (({
-                                          variable,
-                                          value,
-                                          startIndex,
-                                          deleteCount
-                                        }) => {
-                                          if (!variable) {
-                                            return;
-                                          }
-                                          const { objRoot, variablePath } =
-                                            variable;
-
-                                          $stateSet(
-                                            objRoot,
-                                            variablePath,
-                                            value
-                                          );
-                                          return value;
-                                        })?.apply(null, [actionArgs]);
-                                      })()
-                                    : undefined;
-                                  if (
-                                    $steps["updateWaiting"] != null &&
-                                    typeof $steps["updateWaiting"] ===
-                                      "object" &&
-                                    typeof $steps["updateWaiting"].then ===
-                                      "function"
-                                  ) {
-                                    $steps["updateWaiting"] = await $steps[
-                                      "updateWaiting"
-                                    ];
                                   }
 
                                   $steps["redirect"] =
@@ -3529,7 +3493,10 @@ function PlasmicPaymentMethods__RenderFunc(props: {
               try {
                 return {
                   factorid: $state.cardToCardRequest.factorid,
-                  number: $state.cardToCardAutoCheck
+                  number:
+                    $state.cardToCardAutoCheck +
+                    "" +
+                    Math.floor(Math.random() * 1000)
                 };
               } catch (e) {
                 if (
