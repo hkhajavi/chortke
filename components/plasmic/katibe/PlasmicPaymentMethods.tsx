@@ -67,6 +67,7 @@ import { accordionHelpers as AntdAccordion_Helpers } from "@plasmicpkgs/antd5/sk
 import { AntdAccordionItem } from "@plasmicpkgs/antd5/skinny/registerCollapse";
 import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
 import Dialog from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
+import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: hVBOtSJvmbc4/codeComponent
 
 import { useScreenVariants as useScreenVariantsbr2UhI7UlpvR } from "../fragment_icons/PlasmicGlobalVariant__Screen"; // plasmic-import: BR2UhI7ulpvR/globalVariant
 
@@ -113,6 +114,7 @@ export type PlasmicPaymentMethods__OverridesType = {
   dialog?: Flex__<typeof Dialog>;
   txtPayaRpey?: Flex__<typeof TextInput>;
   sideEffect?: Flex__<typeof SideEffect>;
+  apiRequest?: Flex__<typeof ApiRequest>;
   sideEffectAutoverify?: Flex__<typeof SideEffect>;
 };
 
@@ -357,6 +359,24 @@ function PlasmicPaymentMethods__RenderFunc(props: {
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "apiRequest.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "apiRequest.error",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "apiRequest.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -3359,7 +3379,9 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                       customFunction: async () => {
                         return setInterval(() => {
                           if ($state.hasCardToCardRequest) {
+                            //  $refs.ApiRequest.refresh();
                             $state.cardToCardAutoCheck += 1;
+                            $state.apiRequest.refresh();
                           }
                         }, 5000);
                       }
@@ -3379,13 +3401,139 @@ function PlasmicPaymentMethods__RenderFunc(props: {
             }}
           />
 
-          <SideEffect
-            data-plasmic-name={"sideEffectAutoverify"}
-            data-plasmic-override={overrides.sideEffectAutoverify}
-            className={classNames("__wab_instance", sty.sideEffectAutoverify)}
-            deps={(() => {
+          <ApiRequest
+            data-plasmic-name={"apiRequest"}
+            data-plasmic-override={overrides.apiRequest}
+            className={classNames("__wab_instance", sty.apiRequest)}
+            errorDisplay={
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__fhu4X
+                )}
+              >
+                {"Error fetching data"}
+              </div>
+            }
+            loadingDisplay={
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__ixqoJ
+                )}
+              >
+                {"Loading..."}
+              </div>
+            }
+            method={"GET"}
+            onError={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["apiRequest", "error"]).apply(
+                null,
+                eventArgs
+              );
+            }}
+            onLoading={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, [
+                "apiRequest",
+                "loading"
+              ]).apply(null, eventArgs);
+            }}
+            onSuccess={async (...eventArgs: any) => {
+              generateStateOnChangeProp($state, ["apiRequest", "data"]).apply(
+                null,
+                eventArgs
+              );
+
+              (async data => {
+                const $steps = {};
+
+                $steps["updateCardToCardVerify"] =
+                  $state.apiRequest.status == 200
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["cardToCardVerify"]
+                          },
+                          operation: 0,
+                          value: $state.apiRequest.data
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["updateCardToCardVerify"] != null &&
+                  typeof $steps["updateCardToCardVerify"] === "object" &&
+                  typeof $steps["updateCardToCardVerify"].then === "function"
+                ) {
+                  $steps["updateCardToCardVerify"] = await $steps[
+                    "updateCardToCardVerify"
+                  ];
+                }
+
+                $steps["redirect"] =
+                  $state.apiRequest.data.status == true
+                    ? (() => {
+                        const actionArgs = {
+                          args: [
+                            (() => {
+                              try {
+                                return $ctx.query.returnlink
+                                  ? globalThis
+                                      .atob($ctx.query.returnlink)
+                                      .includes("?")
+                                    ? globalThis.atob($ctx.query.returnlink) +
+                                      "&status=true"
+                                    : globalThis.atob($ctx.query.returnlink) +
+                                      "?status=true"
+                                  : "https://www.paziresh24.com/dashboard/appointments/";
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return undefined;
+                                }
+                                throw e;
+                              }
+                            })()
+                          ]
+                        };
+                        return $globalActions["Hamdast.openLink"]?.apply(null, [
+                          ...actionArgs.args
+                        ]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["redirect"] != null &&
+                  typeof $steps["redirect"] === "object" &&
+                  typeof $steps["redirect"].then === "function"
+                ) {
+                  $steps["redirect"] = await $steps["redirect"];
+                }
+              }).apply(null, eventArgs);
+            }}
+            params={(() => {
               try {
-                return $state.cardToCardAutoCheck;
+                return {
+                  factorid: $state.cardToCardRequest.factorid,
+                  number: $state.cardToCardAutoCheck
+                };
               } catch (e) {
                 if (
                   e instanceof TypeError ||
@@ -3396,6 +3544,15 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                 throw e;
               }
             })()}
+            url={
+              "https://apigw.paziresh24.com/katibe/v1/payment/p24/cardtocard/verify"
+            }
+          />
+
+          <SideEffect
+            data-plasmic-name={"sideEffectAutoverify"}
+            data-plasmic-override={overrides.sideEffectAutoverify}
+            className={classNames("__wab_instance", sty.sideEffectAutoverify)}
             onMount={async () => {
               const $steps = {};
 
@@ -3534,6 +3691,7 @@ const PlasmicDescendants = {
     "dialog",
     "txtPayaRpey",
     "sideEffect",
+    "apiRequest",
     "sideEffectAutoverify"
   ],
   embedHtml: ["embedHtml"],
@@ -3556,6 +3714,7 @@ const PlasmicDescendants = {
   dialog: ["dialog", "txtPayaRpey"],
   txtPayaRpey: ["txtPayaRpey"],
   sideEffect: ["sideEffect"],
+  apiRequest: ["apiRequest"],
   sideEffectAutoverify: ["sideEffectAutoverify"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -3574,6 +3733,7 @@ type NodeDefaultElementType = {
   dialog: typeof Dialog;
   txtPayaRpey: typeof TextInput;
   sideEffect: typeof SideEffect;
+  apiRequest: typeof ApiRequest;
   sideEffectAutoverify: typeof SideEffect;
 };
 
@@ -3648,6 +3808,7 @@ export const PlasmicPaymentMethods = Object.assign(
     dialog: makeNodeComponent("dialog"),
     txtPayaRpey: makeNodeComponent("txtPayaRpey"),
     sideEffect: makeNodeComponent("sideEffect"),
+    apiRequest: makeNodeComponent("apiRequest"),
     sideEffectAutoverify: makeNodeComponent("sideEffectAutoverify"),
 
     // Metadata about props expected for PlasmicPaymentMethods
