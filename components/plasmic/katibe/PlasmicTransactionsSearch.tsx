@@ -663,17 +663,23 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
       {
         path: "detailsDataApiRequest[].data",
         type: "private",
-        variableType: "object"
+        variableType: "object",
+
+        refName: "detailsDataApiRequest"
       },
       {
         path: "detailsDataApiRequest[].error",
         type: "private",
-        variableType: "object"
+        variableType: "object",
+
+        refName: "detailsDataApiRequest"
       },
       {
         path: "detailsDataApiRequest[].loading",
         type: "private",
-        variableType: "boolean"
+        variableType: "boolean",
+
+        refName: "detailsDataApiRequest"
       },
       {
         path: "paymentLink",
@@ -5969,6 +5975,9 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                             __plasmic_idx_0,
                                             "data"
                                           ]).apply(null, eventArgs);
+                                        }}
+                                        ref={ref => {
+                                          $refs["detailsDataApiRequest"] = ref;
                                         }}
                                         url={(() => {
                                           try {

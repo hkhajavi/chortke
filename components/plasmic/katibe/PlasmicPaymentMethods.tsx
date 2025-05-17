@@ -3360,11 +3360,17 @@ function PlasmicPaymentMethods__RenderFunc(props: {
             onMount={async () => {
               const $steps = {};
 
-              $steps["runCode"] = false
+              $steps["runCode"] = true
                 ? (() => {
                     const actionArgs = {
                       customFunction: async () => {
-                        return (() => {})();
+                        return setInterval(() => {
+                          if ($state.hasCardToCardRequest) {
+                            // $refs.ApiRequest.refresh();
+                            $state.cardToCardAutoCheck += 1;
+                            //    $state.apiRequest.refresh
+                          }
+                        }, 30000);
                       }
                     };
                     return (({ customFunction }) => {
@@ -3386,6 +3392,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
             data-plasmic-name={"sideEffectAutoverify"}
             data-plasmic-override={overrides.sideEffectAutoverify}
             className={classNames("__wab_instance", sty.sideEffectAutoverify)}
+            deps={undefined}
             onMount={async () => {
               const $steps = {};
 
