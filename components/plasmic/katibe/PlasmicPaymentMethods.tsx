@@ -1879,6 +1879,20 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                   "__wab_instance",
                                   sty.button__psvuj
                                 )}
+                                isDisabled={(() => {
+                                  try {
+                                    return $state.waitingcardtocard;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return [];
+                                    }
+                                    throw e;
+                                  }
+                                })()}
                                 onClick={async event => {
                                   const $steps = {};
 
