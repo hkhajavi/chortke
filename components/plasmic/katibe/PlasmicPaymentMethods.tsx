@@ -3378,7 +3378,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                           if ($state.hasCardToCardRequest) {
                             //  $refs.ApiRequest.refresh();
                             $state.cardToCardAutoCheck += 1;
-                            $state.apiRequest.refresh();
+                            $state.apiRequest.refresh;
                           }
                         }, 5000);
                       }
