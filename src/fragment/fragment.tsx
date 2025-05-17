@@ -59,8 +59,17 @@ export const Fragment = ({
               ...previewApiConfig,
               ...config,
             });
-          }
-          if (method !== "GET") {
+          } else if (method === "DELETE") {
+            result = await axios.delete(url, {
+              params,
+              data: {
+                ...body,
+              },
+              ...apiConfig,
+              ...previewApiConfig,
+              ...config,
+            });
+          } else {
             result = await axios[
               method.toLowerCase() as "post" | "delete" | "put" | "patch"
             ](url, body, {
@@ -76,6 +85,9 @@ export const Fragment = ({
             return error.response;
           }
         }
+      },
+      wait: (duration: number = 1000) => {
+        return new Promise((resolve) => setTimeout(resolve, duration));
       },
     }),
     []
@@ -173,6 +185,20 @@ export const fragmentMeta: GlobalContextMeta<FragmentProps> = {
           type: {
             type: "number",
             defaultValueHint: 3000,
+          },
+        },
+      ],
+    },
+    wait: {
+      displayName: "Wait",
+      parameters: [
+        {
+          name: "duration",
+          type: {
+            type: "number",
+            defaultValueHint: 1000,
+            defaultValue: 1000,
+            helpText: "executes after a specified delay (in milliseconds).",
           },
         },
       ],
