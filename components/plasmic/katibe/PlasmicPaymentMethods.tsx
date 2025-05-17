@@ -1350,7 +1350,10 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                 <React.Fragment>
                                   {(() => {
                                     try {
-                                      return "پرداخت کارت به کارت";
+                                      return (
+                                        "پرداخت کارت به کارت" +
+                                        $state.cardToCardAutoCheck
+                                      );
                                     } catch (e) {
                                       if (
                                         e instanceof TypeError ||
@@ -1427,7 +1430,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                   {(() => {
                                     try {
                                       return (
-                                        "اگر نمی‌توانید از درگاه پرداخت استفاده کنید، لطفاً  مبلغ " +
+                                        "اگر نمی‌توانید از درگاه پرداخت استفاده کنید، " +
                                         (new Intl.NumberFormat("fa-IR").format(
                                           $state.cardToCardRequest.new_price ||
                                             0
@@ -2149,7 +2152,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                   }
 
                                   $steps["redirect"] =
-                                    ($state.cardToCardHasVerify.status = true)
+                                    ($state.cardToCardVerify.status = true)
                                       ? (() => {
                                           const actionArgs = {
                                             args: [
