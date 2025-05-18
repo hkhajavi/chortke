@@ -631,6 +631,7 @@
   height: auto;
   max-width: 100%;
   white-space: pre-wrap;
+  color: #040404;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__cZn4Q {

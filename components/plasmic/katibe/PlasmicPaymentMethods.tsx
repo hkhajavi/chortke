@@ -1435,7 +1435,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                           " ریال") +
                                         " به شماره کارت " +
                                         $state.cardToCardRequest.cardid +
-                                        " واریز کرده و سپس دکمه  بررسی کارت به کارت  را بزنید."
+                                        " واریز کرده و سپس دکمه بررسی کارت به کارت را بزنید."
                                       );
                                     } catch (e) {
                                       if (
