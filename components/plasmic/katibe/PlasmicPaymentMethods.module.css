@@ -661,6 +661,15 @@
   color: #ece414;
   flex-shrink: 0;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .svg___0ZGaE {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    color: #ffaf00;
+    flex-shrink: 0;
+  }
+}
 .text___9ZY1T {
   position: relative;
   width: auto;
@@ -672,6 +681,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text___9ZY1T {
     font-size: var(--token-VrIY9r5RDQZ_);
+    white-space: pre-wrap;
   }
 }
 .freeBox__nRvg {
