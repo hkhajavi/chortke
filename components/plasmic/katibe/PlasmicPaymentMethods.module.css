@@ -652,12 +652,21 @@
   min-width: 0;
   padding: 8px;
 }
+.svg___0ZGaE {
+  object-fit: cover;
+  max-width: 100%;
+  width: 50px;
+  height: 30px;
+  color: #ece414;
+  flex-shrink: 0;
+}
 .text___9ZY1T {
   position: relative;
   width: auto;
   height: auto;
   max-width: 100%;
   white-space: pre;
+  padding-left: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text___9ZY1T {

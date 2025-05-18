@@ -1457,6 +1457,14 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                 sty.freeBox__wYe6N
                               )}
                             >
+                              <Icon50Icon
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.svg___0ZGaE
+                                )}
+                                role={"img"}
+                              />
+
                               <div
                                 className={classNames(
                                   projectcss.all,
@@ -1490,7 +1498,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                       style={{ fontWeight: 700 }}
                                     >
                                       {
-                                        "\u062f\u0631 \u0646\u0638\u0631 \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u06cc\u062f \u0645\u0628\u0644\u063a \u067e\u0631\u062f\u0627\u062e\u062a\u06cc \u062f\u0642\u06cc\u0642\u0627 \u0647\u0645\u06cc\u0646 \u0639\u062f\u062f \u0628\u0627\u0634\u062f."
+                                        "\u062c\u0647\u062a \u0628\u0631\u0631\u0633\u06cc \u0648 \u062a\u0627\u06cc\u06cc\u062f \u0646\u0648\u0628\u062a\u060c \u0645\u0628\u0644\u063a \u067e\u0631\u062f\u0627\u062e\u062a\u06cc \u062f\u0642\u06cc\u0642\u0627\u064b \u0647\u0645\u06cc\u0646 \u0639\u062f\u062f \u0628\u0627\u0634\u062f \u0648 \u0644\u0637\u0641\u0627 \u0627\u0632 \u0648\u0627\u0631\u06cc\u0632 \u062f\u0631 \u0632\u0645\u0627\u0646 \u062f\u06cc\u06af\u0631 \u062e\u0648\u062f\u062f\u0627\u0631\u06cc \u0646\u0645\u0627\u06cc\u06cc\u062f."
                                       }
                                     </span>
                                   </React.Fragment>
