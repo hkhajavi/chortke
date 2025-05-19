@@ -80,9 +80,9 @@ import sty from "./PlasmicPaymentMethods.module.css"; // plasmic-import: BF9WF06
 
 import Icon49Icon from "./icons/PlasmicIcon__Icon49"; // plasmic-import: iAW7s13VGmu9/icon
 import Icon2Icon from "../chortke/icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
+import Icon50Icon from "./icons/PlasmicIcon__Icon50"; // plasmic-import: xtxGD9pXGJw4/icon
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
 import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
-import Icon50Icon from "./icons/PlasmicIcon__Icon50"; // plasmic-import: xtxGD9pXGJw4/icon
 import Icon51Icon from "./icons/PlasmicIcon__Icon51"; // plasmic-import: 72UEWeMBzzpH/icon
 import SearchSvgIcon from "../chortke/icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
 import CheckSvgIcon from "../chortke/icons/PlasmicIcon__CheckSvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
@@ -612,7 +612,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                 $steps["updateWaiting2"] = await $steps["updateWaiting2"];
               }
 
-              $steps["ipLocation"] = false
+              $steps["ipLocation"] = true
                 ? (() => {
                     const actionArgs = {
                       args: [
@@ -972,6 +972,56 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                             </div>
                           </Stack__>
                         </div>
+                        {(() => {
+                          try {
+                            return (
+                              $state.iplocation.length > 0 &&
+                              $state.iplocation.toLowerCase().trim() != "iran"
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })() ? (
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__x2KwW
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__eWHpU
+                              )}
+                            >
+                              <Icon50Icon
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.svg__bW8Gj
+                                )}
+                                role={"img"}
+                              />
+
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__bfbye
+                                )}
+                              >
+                                {
+                                  "\u06a9\u0627\u0631\u0628\u0631 \u06af\u0631\u0627\u0645\u06cc\u060c \u0628\u0647\u200c\u0646\u0638\u0631 \u0645\u06cc\u200c\u0631\u0633\u062f \u0641\u06cc\u0644\u062a\u0631\u0634\u06a9\u0646 \u06cc\u0627 VPN \u0634\u0645\u0627 \u0641\u0639\u0627\u0644 \u0627\u0633\u062a. \u0644\u0637\u0641\u0627\u064b \u0622\u0646 \u0631\u0627 \u062e\u0627\u0645\u0648\u0634 \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u201c\u0627\u0631\u0633\u0627\u0644 \u0628\u0647 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a\u201d \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f."
+                                }
+                              </div>
+                            </div>
+                          </div>
+                        ) : null}
                         <div
                           className={classNames(
                             projectcss.all,
@@ -1235,56 +1285,6 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                             />
                           </div>
                         </div>
-                        {(() => {
-                          try {
-                            return (
-                              $state.iplocation.length > 0 &&
-                              $state.iplocation.toLowerCase().trim() != "iran"
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return true;
-                            }
-                            throw e;
-                          }
-                        })() ? (
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__x2KwW
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__eWHpU
-                              )}
-                            >
-                              <Icon50Icon
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.svg__bW8Gj
-                                )}
-                                role={"img"}
-                              />
-
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__bfbye
-                                )}
-                              >
-                                {
-                                  "\u06a9\u0627\u0631\u0628\u0631 \u06af\u0631\u0627\u0645\u06cc\u060c \u0628\u0647\u200c\u0646\u0638\u0631 \u0645\u06cc\u200c\u0631\u0633\u062f \u06a9\u0647 \u0641\u06cc\u0644\u062a\u0631\u0634\u06a9\u0646 \u06cc\u0627 VPN \u0634\u0645\u0627 \u0641\u0639\u0627\u0644 \u0627\u0633\u062a. \u0644\u0637\u0641\u0627\u064b \u0622\u0646 \u0631\u0627 \u062e\u0627\u0645\u0648\u0634 \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u201c\u0627\u0631\u0633\u0627\u0644 \u0628\u0647 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a\u201d \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f."
-                                }
-                              </div>
-                            </div>
-                          </div>
-                        ) : null}
                       </AntdAccordionItem>
                       <AntdAccordionItem
                         className={classNames(
