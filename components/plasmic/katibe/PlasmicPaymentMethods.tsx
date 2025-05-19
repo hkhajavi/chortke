@@ -3477,11 +3477,9 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                       customFunction: async () => {
                         return setInterval(() => {
                           if ($state.hasCardToCardRequest) {
-                            // $refs.ApiRequest.refresh();
                             $state.cardToCardAutoCheck += 1;
-                            //    $state.apiRequest.refresh
                           }
-                        }, 30000);
+                        }, 5000);
                       }
                     };
                     return (({ customFunction }) => {
@@ -3503,11 +3501,23 @@ function PlasmicPaymentMethods__RenderFunc(props: {
             data-plasmic-name={"sideEffectAutoverify"}
             data-plasmic-override={overrides.sideEffectAutoverify}
             className={classNames("__wab_instance", sty.sideEffectAutoverify)}
-            deps={undefined}
+            deps={(() => {
+              try {
+                return [$state.cardToCardAutoCheck];
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return undefined;
+                }
+                throw e;
+              }
+            })()}
             onMount={async () => {
               const $steps = {};
 
-              $steps["paymentP24CardtocardVerify"] = false
+              $steps["paymentP24CardtocardVerify"] = true
                 ? (() => {
                     const actionArgs = {
                       args: [
@@ -3545,27 +3555,33 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                 ];
               }
 
-              $steps["updateWaiting2"] = false
-                ? (() => {
-                    const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["cardToCardVerify"]
-                      },
-                      operation: 0,
-                      value: $steps.paymentP24CardtocardVerify.data
-                    };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
-                      }
-                      const { objRoot, variablePath } = variable;
+              $steps["updateWaiting2"] =
+                $steps.paymentP24CardtocardVerify.status == 200
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["cardToCardVerify"]
+                        },
+                        operation: 0,
+                        value: $steps.paymentP24CardtocardVerify.data
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
 
-                      $stateSet(objRoot, variablePath, value);
-                      return value;
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
               if (
                 $steps["updateWaiting2"] != null &&
                 typeof $steps["updateWaiting2"] === "object" &&
@@ -3574,38 +3590,96 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                 $steps["updateWaiting2"] = await $steps["updateWaiting2"];
               }
 
-              $steps["redirect"] = false
+              $steps["getBalance"] = true
                 ? (() => {
                     const actionArgs = {
                       args: [
-                        (() => {
-                          try {
-                            return $ctx.query.returnlink
-                              ? globalThis
-                                  .atob($ctx.query.returnlink)
-                                  .includes("?")
-                                ? globalThis.atob($ctx.query.returnlink) +
-                                  "&status=true"
-                                : globalThis.atob($ctx.query.returnlink) +
-                                  "?status=true"
-                              : "https://www.paziresh24.com/dashboard/appointments/";
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
-                            }
-                            throw e;
-                          }
-                        })()
+                        undefined,
+                        "https://apigw.paziresh24.com/katibe/v1/transactions/balance/p24"
                       ]
                     };
-                    return $globalActions["Hamdast.openLink"]?.apply(null, [
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
                       ...actionArgs.args
                     ]);
                   })()
                 : undefined;
+              if (
+                $steps["getBalance"] != null &&
+                typeof $steps["getBalance"] === "object" &&
+                typeof $steps["getBalance"].then === "function"
+              ) {
+                $steps["getBalance"] = await $steps["getBalance"];
+              }
+
+              $steps["updateBalance"] =
+                $steps.getBalance.status == 200
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["balance"]
+                        },
+                        operation: 0,
+                        value: $steps.getBalance.data.data.balance
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updateBalance"] != null &&
+                typeof $steps["updateBalance"] === "object" &&
+                typeof $steps["updateBalance"].then === "function"
+              ) {
+                $steps["updateBalance"] = await $steps["updateBalance"];
+              }
+
+              $steps["redirect"] =
+                $state.cardToCardVerify.status == 200 ||
+                $state.balance >= $ctx.query.amount
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          (() => {
+                            try {
+                              return $ctx.query.returnlink
+                                ? globalThis
+                                    .atob($ctx.query.returnlink)
+                                    .includes("?")
+                                  ? globalThis.atob($ctx.query.returnlink) +
+                                    "&status=true"
+                                  : globalThis.atob($ctx.query.returnlink) +
+                                    "?status=true"
+                                : "https://www.paziresh24.com/dashboard/appointments/";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        ]
+                      };
+                      return $globalActions["Hamdast.openLink"]?.apply(null, [
+                        ...actionArgs.args
+                      ]);
+                    })()
+                  : undefined;
               if (
                 $steps["redirect"] != null &&
                 typeof $steps["redirect"] === "object" &&
