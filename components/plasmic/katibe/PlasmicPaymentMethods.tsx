@@ -1468,7 +1468,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                       }}
                                     >
                                       {
-                                        "\u00a0\u00a0 \u0628\u0627\u0634\u062f. \u062f\u0631 \u0635\u0648\u0631\u062a \u0647\u0631 \u06af\u0648\u0646\u0647 \u0645\u063a\u0627\u06cc\u0631\u062a (\u062d\u062a\u06cc \u06cc\u06a9 \u0631\u06cc\u0627\u0644 \u06a9\u0645\u062a\u0631 \u06cc\u0627 \u0628\u06cc\u0634\u062a\u0631)\u060c \u062a\u0627\u06cc\u06cc\u062f \u0627\u0646\u062c\u0627\u0645 \u0646\u062e\u0648\u0627\u0647\u062f \u0634\u062f."
+                                        "\u00a0\u00a0 \u0628\u0627\u0634\u062f. \u062f\u0631 \u0635\u0648\u0631\u062a \u0645\u063a\u0627\u06cc\u0631\u062a (\u06cc\u06a9 \u0631\u06cc\u0627\u0644 \u06a9\u0645\u062a\u0631 \u06cc\u0627 \u0628\u06cc\u0634\u062a\u0631)\u060c \u062a\u0627\u06cc\u06cc\u062f \u0627\u0646\u062c\u0627\u0645 \u0646\u062e\u0648\u0627\u0647\u062f \u0634\u062f."
                                       }
                                     </span>
                                   </React.Fragment>
@@ -1509,7 +1509,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                       }}
                                     >
                                       {
-                                        " \u0628\u0627\u0634\u062f. \u062f\u0631 \u0635\u0648\u0631\u062a \u0647\u0631 \u06af\u0648\u0646\u0647 \u0645\u063a\u0627\u06cc\u0631\u062a (\u062d\u062a\u06cc \u06cc\u06a9 \u0631\u06cc\u0627\u0644 \u06a9\u0645\u062a\u0631 \u06cc\u0627 \u0628\u06cc\u0634\u062a\u0631)\u060c \u062a\u0627\u06cc\u06cc\u062f \u0627\u0646\u062c\u0627\u0645 \u0646\u062e\u0648\u0627\u0647\u062f \u0634\u062f."
+                                        " \u0628\u0627\u0634\u062f. \u062f\u0631 \u0635\u0648\u0631\u062a \u0645\u063a\u0627\u06cc\u0631\u062a (\u06cc\u06a9 \u0631\u06cc\u0627\u0644 \u06a9\u0645\u062a\u0631 \u06cc\u0627 \u0628\u06cc\u0634\u062a\u0631)\u060c \u062a\u0627\u06cc\u06cc\u062f \u0627\u0646\u062c\u0627\u0645 \u0646\u062e\u0648\u0627\u0647\u062f \u0634\u062f."
                                       }
                                     </span>
                                   </React.Fragment>
