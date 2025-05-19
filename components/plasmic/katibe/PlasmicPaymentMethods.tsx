@@ -3479,7 +3479,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                           if ($state.hasCardToCardRequest) {
                             $state.cardToCardAutoCheck += 1;
                           }
-                        }, 5000);
+                        }, 10000);
                       }
                     };
                     return (({ customFunction }) => {
