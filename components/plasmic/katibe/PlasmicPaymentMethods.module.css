@@ -438,6 +438,11 @@
   margin-right: 10px;
   color: #ff0000;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__bfbye {
+    font-size: var(--token-VrIY9r5RDQZ_);
+  }
+}
 .freeBox__vHu42 {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
