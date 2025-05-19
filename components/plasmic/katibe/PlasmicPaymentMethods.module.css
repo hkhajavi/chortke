@@ -768,9 +768,13 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text__gyNYl {
     min-width: 90px;
-    font-size: var(--token-5Ye_3XTSaP9X);
+    font-size: var(--token-VrIY9r5RDQZ_);
     text-align: left;
     margin-left: 5px;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    padding-bottom: 0px;
   }
 }
 .txtShowRpey3:global(.__wab_instance) {
