@@ -1438,7 +1438,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                         "plasmic_default__all plasmic_default__span"
                                       }
                                       style={{
-                                        color: "var(--token-fDNuFs9Skt3p)"
+                                        color: "var(--token-fDNuFs9Skt3p)",
+                                        fontWeight: 700
                                       }}
                                     >
                                       {
@@ -1466,7 +1467,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                         "plasmic_default__all plasmic_default__span"
                                       }
                                       style={{
-                                        color: "var(--token-fDNuFs9Skt3p)"
+                                        color: "var(--token-fDNuFs9Skt3p)",
+                                        fontWeight: 700
                                       }}
                                     >
                                       {
