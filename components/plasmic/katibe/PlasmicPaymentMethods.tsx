@@ -1446,13 +1446,14 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                         "\u062f\u0642\u06cc\u0642\u0627 \u0645\u0628\u0644\u063a \u0632\u06cc\u0631 \u0631\u0627 \u06a9\u0627\u0631\u062a \u0628\u0647 \u06a9\u0627\u0631\u062a \u06a9\u0646\u06cc\u062f."
                                       }
                                     </span>
-                                    <React.Fragment>{""}</React.Fragment>
+                                    <React.Fragment>{"\n"}</React.Fragment>
                                     <span
                                       className={
                                         "plasmic_default__all plasmic_default__span"
                                       }
                                       style={{
-                                        color: "var(--token-HEGGDBNcnkKS)"
+                                        color: "var(--token-HEGGDBNcnkKS)",
+                                        fontWeight: 300
                                       }}
                                     >
                                       {
