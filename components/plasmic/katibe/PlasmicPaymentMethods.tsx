@@ -447,62 +447,6 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                 $steps["updateWaiting"] = await $steps["updateWaiting"];
               }
 
-              $steps["me"] = true
-                ? (() => {
-                    const actionArgs = {
-                      args: [
-                        undefined,
-                        "https://apigw.paziresh24.com/v1/auth/me"
-                      ]
-                    };
-                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                      ...actionArgs.args
-                    ]);
-                  })()
-                : undefined;
-              if (
-                $steps["me"] != null &&
-                typeof $steps["me"] === "object" &&
-                typeof $steps["me"].then === "function"
-              ) {
-                $steps["me"] = await $steps["me"];
-              }
-
-              $steps["updateMe"] =
-                $steps.me.status == 200
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["me"]
-                        },
-                        operation: 0,
-                        value: $steps.me.data
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-              if (
-                $steps["updateMe"] != null &&
-                typeof $steps["updateMe"] === "object" &&
-                typeof $steps["updateMe"].then === "function"
-              ) {
-                $steps["updateMe"] = await $steps["updateMe"];
-              }
-
               $steps["getBalance"] = true
                 ? (() => {
                     const actionArgs = {
@@ -559,7 +503,101 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                 $steps["updateBalance"] = await $steps["updateBalance"];
               }
 
-              $steps["n8NSplunk"] = true
+              $steps["redirectToReturnLink"] =
+                $steps.getBalance.status == 200 &&
+                $state.balance >= $ctx.query.amount
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          (() => {
+                            try {
+                              return $ctx.query.returnlink
+                                ? globalThis
+                                    .atob($ctx.query.returnlink)
+                                    .includes("?")
+                                  ? globalThis.atob($ctx.query.returnlink) +
+                                    "&status=true"
+                                  : globalThis.atob($ctx.query.returnlink) +
+                                    "?status=true"
+                                : "https://www.paziresh24.com/dashboard/appointments/";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        ]
+                      };
+                      return $globalActions["Hamdast.openLink"]?.apply(null, [
+                        ...actionArgs.args
+                      ]);
+                    })()
+                  : undefined;
+              if (
+                $steps["redirectToReturnLink"] != null &&
+                typeof $steps["redirectToReturnLink"] === "object" &&
+                typeof $steps["redirectToReturnLink"].then === "function"
+              ) {
+                $steps["redirectToReturnLink"] = await $steps[
+                  "redirectToReturnLink"
+                ];
+              }
+
+              $steps["me"] = false
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        undefined,
+                        "https://apigw.paziresh24.com/v1/auth/me"
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
+              if (
+                $steps["me"] != null &&
+                typeof $steps["me"] === "object" &&
+                typeof $steps["me"].then === "function"
+              ) {
+                $steps["me"] = await $steps["me"];
+              }
+
+              $steps["updateMe"] = false
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["me"]
+                      },
+                      operation: 0,
+                      value: $steps.me.data
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateMe"] != null &&
+                typeof $steps["updateMe"] === "object" &&
+                typeof $steps["updateMe"].then === "function"
+              ) {
+                $steps["updateMe"] = await $steps["updateMe"];
+              }
+
+              $steps["n8NSplunk"] = false
                 ? (() => {
                     const actionArgs = {
                       args: [
@@ -3662,7 +3700,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                         (() => {
                           try {
                             return {
-                              factorid: $state.cardToCardRequest.factorid
+                              factorid: $state.cardToCardRequest.factorid,
+                              type: "auto"
                             };
                           } catch (e) {
                             if (
