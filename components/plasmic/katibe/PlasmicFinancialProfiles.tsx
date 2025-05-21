@@ -133,7 +133,6 @@ export type PlasmicFinancialProfiles__OverridesType = {
   txtPaymentNumber?: Flex__<typeof TextInput>;
   btnActiveRecuringSettlement?: Flex__<typeof Button>;
   btnDeleteRecuringSettlement?: Flex__<typeof Button>;
-  link?: Flex__<"a"> & Partial<LinkProps>;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
   loadProfile?: Flex__<typeof SideEffect>;
   refreshRecuringSettlement?: Flex__<typeof SideEffect>;
@@ -659,6 +658,12 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         type: "private",
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+      },
+      {
+        path: "editProfileShow",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -2846,30 +2851,9 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                 sty.text__sDeeX
                                               )}
                                             >
-                                              <React.Fragment>
-                                                {(() => {
-                                                  try {
-                                                    return (
-                                                      "لطفاً توجه داشته باشید که برای ادامه فرآیند، لازم است شماره کارت خود را وارد کنید. شماره کارت باید به نام شما بوده و با کد ملی " +
-                                                      $state.userData.result
-                                                        .national_code +
-                                                      " و شماره موبایل " +
-                                                      $state.userData.result
-                                                        .cell +
-                                                      " بررسی می‌شود."
-                                                    );
-                                                  } catch (e) {
-                                                    if (
-                                                      e instanceof TypeError ||
-                                                      e?.plasmicType ===
-                                                        "PlasmicUndefinedDataError"
-                                                    ) {
-                                                      return "\u0644\u0637\u0641\u0627\u064b \u062a\u0648\u062c\u0647 \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u06cc\u062f \u06a9\u0647 \u0628\u0631\u0627\u06cc \u0627\u062f\u0627\u0645\u0647 \u0641\u0631\u0622\u06cc\u0646\u062f\u060c \u0644\u0627\u0632\u0645 \u0627\u0633\u062a \u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a \u062e\u0648\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f. \u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a \u0628\u0627\u06cc\u062f \u0628\u0647 \u0646\u0627\u0645 \u0634\u0645\u0627 \u0628\u0648\u062f\u0647 \u0648 \u0628\u0627 \u06a9\u062f \u0645\u0644\u06cc 123456789 \u0648 \u0634\u0645\u0627\u0631\u0647 \u0645\u0648\u0628\u0627\u06cc\u0644 0915369874 \u062b\u0628\u062a \u0634\u062f\u0647 \u0628\u0627\u0634\u062f.";
-                                                    }
-                                                    throw e;
-                                                  }
-                                                })()}
-                                              </React.Fragment>
+                                              {
+                                                "\u0644\u0637\u0641\u0627\u064b \u062a\u0648\u062c\u0647 \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u06cc\u062f \u06a9\u0647 \u0628\u0631\u0627\u06cc \u0627\u062f\u0627\u0645\u0647 \u0641\u0631\u0622\u06cc\u0646\u062f\u060c \u0644\u0627\u0632\u0645 \u0627\u0633\u062a \u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a \u062e\u0648\u062f \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f. \u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a \u0628\u0627\u06cc\u062f \u0628\u0647 \u0646\u0627\u0645 \u0634\u0645\u0627 \u0628\u0648\u062f\u0647 \u0648 \u0628\u0627 \u06a9\u062f \u0645\u0644\u06cc 123456789 \u0648 \u0634\u0645\u0627\u0631\u0647 \u0645\u0648\u0628\u0627\u06cc\u0644 0915369874 \u062b\u0628\u062a \u0634\u062f\u0647 \u0628\u0627\u0634\u062f."
+                                              }
                                             </div>
                                           </div>
                                           <div
@@ -3865,6 +3849,63 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                         "updateCbAccountsValue6"
                                                       ] = await $steps[
                                                         "updateCbAccountsValue6"
+                                                      ];
+                                                    }
+
+                                                    $steps["editprofileShow"] =
+                                                      $steps.registerAccount
+                                                        .status == 403
+                                                        ? (() => {
+                                                            const actionArgs = {
+                                                              variable: {
+                                                                objRoot: $state,
+                                                                variablePath: [
+                                                                  "editProfileShow"
+                                                                ]
+                                                              },
+                                                              operation: 0,
+                                                              value: true
+                                                            };
+                                                            return (({
+                                                              variable,
+                                                              value,
+                                                              startIndex,
+                                                              deleteCount
+                                                            }) => {
+                                                              if (!variable) {
+                                                                return;
+                                                              }
+                                                              const {
+                                                                objRoot,
+                                                                variablePath
+                                                              } = variable;
+
+                                                              $stateSet(
+                                                                objRoot,
+                                                                variablePath,
+                                                                value
+                                                              );
+                                                              return value;
+                                                            })?.apply(null, [
+                                                              actionArgs
+                                                            ]);
+                                                          })()
+                                                        : undefined;
+                                                    if (
+                                                      $steps[
+                                                        "editprofileShow"
+                                                      ] != null &&
+                                                      typeof $steps[
+                                                        "editprofileShow"
+                                                      ] === "object" &&
+                                                      typeof $steps[
+                                                        "editprofileShow"
+                                                      ].then === "function"
+                                                    ) {
+                                                      $steps[
+                                                        "editprofileShow"
+                                                      ] = await $steps[
+                                                        "editprofileShow"
                                                       ];
                                                     }
                                                   }}
@@ -5322,6 +5363,35 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                             />
                           }
                         />
+                      ) : null}
+                      {(() => {
+                        try {
+                          return $state.editProfileShow;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <PlasmicLink__
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.a,
+                            projectcss.__wab_text,
+                            sty.link__vxpdT
+                          )}
+                          component={Link}
+                          href={"https://www.paziresh24.com/dashboard/profile/"}
+                          platform={"nextjs"}
+                        >
+                          {
+                            "\u0648\u06cc\u0631\u0627\u06cc\u0634 \u0634\u0645\u0627\u0631\u0647 \u0645\u0644\u06cc \u0648 \u0645\u0648\u0628\u0627\u06cc\u0644"
+                          }
+                        </PlasmicLink__>
                       ) : null}
                     </div>
                     <SideEffect
@@ -6853,14 +6923,12 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                       </React.Fragment>
                       {
                         <PlasmicLink__
-                          data-plasmic-name={"link"}
-                          data-plasmic-override={overrides.link}
                           className={classNames(
                             projectcss.all,
                             projectcss.a,
                             projectcss.__wab_text,
                             projectcss.plasmic_default__inline,
-                            sty.link
+                            sty.link__a8Kxf
                           )}
                           component={Link}
                           href={""}
@@ -7935,7 +8003,6 @@ const PlasmicDescendants = {
     "txtPaymentNumber",
     "btnActiveRecuringSettlement",
     "btnDeleteRecuringSettlement",
-    "link",
     "sideEffectPageLoad",
     "loadProfile",
     "refreshRecuringSettlement",
@@ -7969,8 +8036,7 @@ const PlasmicDescendants = {
     "accountSettlement",
     "txtPaymentNumber",
     "btnActiveRecuringSettlement",
-    "btnDeleteRecuringSettlement",
-    "link"
+    "btnDeleteRecuringSettlement"
   ],
   cbAccounts: ["cbAccounts"],
   txtName: ["txtName"],
@@ -8024,7 +8090,6 @@ const PlasmicDescendants = {
   txtPaymentNumber: ["txtPaymentNumber"],
   btnActiveRecuringSettlement: ["btnActiveRecuringSettlement"],
   btnDeleteRecuringSettlement: ["btnDeleteRecuringSettlement"],
-  link: ["link"],
   sideEffectPageLoad: ["sideEffectPageLoad"],
   loadProfile: ["loadProfile"],
   refreshRecuringSettlement: ["refreshRecuringSettlement"],
@@ -8063,7 +8128,6 @@ type NodeDefaultElementType = {
   txtPaymentNumber: typeof TextInput;
   btnActiveRecuringSettlement: typeof Button;
   btnDeleteRecuringSettlement: typeof Button;
-  link: "a";
   sideEffectPageLoad: typeof SideEffect;
   loadProfile: typeof SideEffect;
   refreshRecuringSettlement: typeof SideEffect;
@@ -8162,7 +8226,6 @@ export const PlasmicFinancialProfiles = Object.assign(
     btnDeleteRecuringSettlement: makeNodeComponent(
       "btnDeleteRecuringSettlement"
     ),
-    link: makeNodeComponent("link"),
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
     loadProfile: makeNodeComponent("loadProfile"),
     refreshRecuringSettlement: makeNodeComponent("refreshRecuringSettlement"),
