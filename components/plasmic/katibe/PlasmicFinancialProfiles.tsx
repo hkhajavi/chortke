@@ -2860,7 +2860,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                   {(() => {
                                                     try {
                                                       return (
-                                                        ". شماره کارت باید متعلق به شما بوده و با کد ملی " +
+                                                        "شماره کارت باید متعلق به شما بوده و با کد ملی" +
                                                         $state.userData.result
                                                           .national_code +
                                                         " و شماره موبایل " +
@@ -2886,7 +2886,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                   {(() => {
                                                     try {
                                                       return (
-                                                        ". شماره کارت باید متعلق به شما بوده و با کد ملی " +
+                                                        "شماره کارت باید متعلق به شما بوده و با کد ملی" +
                                                         $state.userData.result
                                                           .national_code +
                                                         " و شماره موبایل " +
