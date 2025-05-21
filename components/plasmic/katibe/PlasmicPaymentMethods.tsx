@@ -2194,6 +2194,9 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                                   factorid:
                                                     $state.cardToCardRequest
                                                       .factorid,
+                                                  new_price:
+                                                    $state.cardToCardRequest
+                                                      .new_price,
                                                   number:
                                                     $state.cardToCardAutoCheck +
                                                     "" +
