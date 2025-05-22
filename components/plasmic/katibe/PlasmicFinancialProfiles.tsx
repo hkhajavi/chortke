@@ -6991,6 +6991,40 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                     )}
                   >
                     <React.Fragment>
+                      <React.Fragment>{""}</React.Fragment>
+                      {
+                        <PlasmicLink__
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.a,
+                            projectcss.__wab_text,
+                            projectcss.plasmic_default__inline,
+                            sty.link__cgDo7
+                          )}
+                          component={Link}
+                          href={
+                            "https://www.paziresh24.com/dashboard/apps/drapp/service/"
+                          }
+                          platform={"nextjs"}
+                        >
+                          {
+                            "\u062a\u063a\u06cc\u06cc\u0631 \u0645\u0628\u0644\u063a \u0648\u06cc\u0632\u06cc\u062a"
+                          }
+                        </PlasmicLink__>
+                      }
+                      <React.Fragment>{""}</React.Fragment>
+                    </React.Fragment>
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__frGpM)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__k9Y
+                    )}
+                  >
+                    <React.Fragment>
                       <React.Fragment>
                         {
                           "\u062f\u0631\u0635\u0648\u0631\u062a \u0646\u06cc\u0627\u0632 \u0628\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc "
@@ -7014,7 +7048,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                             projectcss.a,
                             projectcss.__wab_text,
                             projectcss.plasmic_default__inline,
-                            sty.link__a8Kxf
+                            sty.link__ej7Dt
                           )}
                           component={Link}
                           href={""}
