@@ -1703,6 +1703,7 @@
 .link__rbCfp {
   margin-right: 10px;
   font-size: var(--token-5Ye_3XTSaP9X);
+  cursor: pointer;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .link__rbCfp {
@@ -2535,6 +2536,7 @@
 }
 .link__vxpdT {
   margin-right: 10px;
+  cursor: pointer;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .link__vxpdT {
@@ -2857,6 +2859,9 @@
   .text__jn61K {
     font-size: var(--token-VrIY9r5RDQZ_);
   }
+}
+.link__cgDo7 {
+  cursor: pointer;
 }
 .freeBox__frGpM {
   display: flex;
