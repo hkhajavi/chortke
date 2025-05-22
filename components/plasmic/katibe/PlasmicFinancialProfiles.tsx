@@ -2909,38 +2909,55 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                 </React.Fragment>
                                               )}
                                             </div>
-                                            {(() => {
-                                              try {
-                                                return $state.editProfileShow;
-                                              } catch (e) {
+                                            <PlasmicLink__
+                                              className={classNames(
+                                                projectcss.all,
+                                                projectcss.a,
+                                                projectcss.__wab_text,
+                                                sty.link__rbCfp
+                                              )}
+                                              component={Link}
+                                              onClick={async event => {
+                                                const $steps = {};
+
+                                                $steps["invokeGlobalAction"] =
+                                                  true
+                                                    ? (() => {
+                                                        const actionArgs = {
+                                                          args: [
+                                                            "https://www.paziresh24.com/dashboard/profile/"
+                                                          ]
+                                                        };
+                                                        return $globalActions[
+                                                          "Hamdast.openLink"
+                                                        ]?.apply(null, [
+                                                          ...actionArgs.args
+                                                        ]);
+                                                      })()
+                                                    : undefined;
                                                 if (
-                                                  e instanceof TypeError ||
-                                                  e?.plasmicType ===
-                                                    "PlasmicUndefinedDataError"
+                                                  $steps[
+                                                    "invokeGlobalAction"
+                                                  ] != null &&
+                                                  typeof $steps[
+                                                    "invokeGlobalAction"
+                                                  ] === "object" &&
+                                                  typeof $steps[
+                                                    "invokeGlobalAction"
+                                                  ].then === "function"
                                                 ) {
-                                                  return true;
+                                                  $steps["invokeGlobalAction"] =
+                                                    await $steps[
+                                                      "invokeGlobalAction"
+                                                    ];
                                                 }
-                                                throw e;
+                                              }}
+                                              platform={"nextjs"}
+                                            >
+                                              {
+                                                "\u0648\u06cc\u0631\u0627\u06cc\u0634 \u0634\u0645\u0627\u0631\u0647 \u0645\u0644\u06cc \u0648 \u0645\u0648\u0628\u0627\u06cc\u0644"
                                               }
-                                            })() ? (
-                                              <PlasmicLink__
-                                                className={classNames(
-                                                  projectcss.all,
-                                                  projectcss.a,
-                                                  projectcss.__wab_text,
-                                                  sty.link__rbCfp
-                                                )}
-                                                component={Link}
-                                                href={
-                                                  "https://www.paziresh24.com/dashboard/profile/"
-                                                }
-                                                platform={"nextjs"}
-                                              >
-                                                {
-                                                  "\u0648\u06cc\u0631\u0627\u06cc\u0634 \u0634\u0645\u0627\u0631\u0647 \u0645\u0644\u06cc \u0648 \u0645\u0648\u0628\u0627\u06cc\u0644"
-                                                }
-                                              </PlasmicLink__>
-                                            ) : null}
+                                            </PlasmicLink__>
                                           </div>
                                           <div
                                             className={classNames(
@@ -7002,9 +7019,33 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                             sty.link__cgDo7
                           )}
                           component={Link}
-                          href={
-                            "https://www.paziresh24.com/dashboard/apps/drapp/service/"
-                          }
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["invokeGlobalAction"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    args: [
+                                      "https://www.paziresh24.com/dashboard/apps/drapp/service/"
+                                    ]
+                                  };
+                                  return $globalActions[
+                                    "Hamdast.openLink"
+                                  ]?.apply(null, [...actionArgs.args]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["invokeGlobalAction"] != null &&
+                              typeof $steps["invokeGlobalAction"] ===
+                                "object" &&
+                              typeof $steps["invokeGlobalAction"].then ===
+                                "function"
+                            ) {
+                              $steps["invokeGlobalAction"] = await $steps[
+                                "invokeGlobalAction"
+                              ];
+                            }
+                          }}
                           platform={"nextjs"}
                         >
                           {
