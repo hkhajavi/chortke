@@ -5893,7 +5893,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             {(() => {
                               try {
                                 return (
-                                  currentItem.productid == 6 &&
+                                  (currentItem.productid == 6 ||
+                                    currentItem.title.includes("تسویه")) &&
                                   !currentItem.title.includes("بازگشت")
                                 );
                               } catch (e) {
@@ -6299,89 +6300,457 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                             </div>
                                           </div>
                                         </div>
-                                        <div
-                                          className={classNames(
-                                            projectcss.all,
-                                            sty.freeBox__uL7Ud
-                                          )}
-                                        >
+                                        {(() => {
+                                          try {
+                                            return (
+                                              $state.detailsDataApiRequest[
+                                                currentIndex
+                                              ].data.transaction_type == "book"
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return true;
+                                            }
+                                            throw e;
+                                          }
+                                        })() ? (
                                           <div
                                             className={classNames(
                                               projectcss.all,
-                                              sty.freeBox___4Ddl4
+                                              sty.freeBox__uL7Ud
                                             )}
                                           >
                                             <div
                                               className={classNames(
                                                 projectcss.all,
-                                                projectcss.__wab_text,
-                                                sty.text__txu5
+                                                sty.freeBox___4Ddl4
                                               )}
                                             >
-                                              {
-                                                "\u062a\u0627\u0631\u06cc\u062e \u0646\u0648\u0628\u062a:"
-                                              }
+                                              <div
+                                                className={classNames(
+                                                  projectcss.all,
+                                                  projectcss.__wab_text,
+                                                  sty.text__txu5
+                                                )}
+                                              >
+                                                {
+                                                  "\u062a\u0627\u0631\u06cc\u062e \u0646\u0648\u0628\u062a:"
+                                                }
+                                              </div>
                                             </div>
-                                          </div>
-                                          <div
-                                            className={classNames(
-                                              projectcss.all,
-                                              sty.freeBox___2B2H5
-                                            )}
-                                          >
                                             <div
                                               className={classNames(
                                                 projectcss.all,
-                                                projectcss.__wab_text,
-                                                sty.text__kwCg
+                                                sty.freeBox___2B2H5
                                               )}
                                             >
-                                              <React.Fragment>
-                                                {(() => {
-                                                  try {
-                                                    return (
-                                                      new Date(
-                                                        $state
-                                                          .detailsDataApiRequest[
-                                                          currentIndex
-                                                        ].data.data.metadata
-                                                          .book_time * 1000
-                                                      ).getHours() +
-                                                      ":" +
-                                                      new Date(
-                                                        $state
-                                                          .detailsDataApiRequest[
-                                                          currentIndex
-                                                        ].data.data.metadata
-                                                          .book_time * 1000
-                                                      ).getMinutes() +
-                                                      ":00" +
-                                                      " " +
-                                                      new Date(
-                                                        $state
-                                                          .detailsDataApiRequest[
-                                                          currentIndex
-                                                        ].data.data.metadata
-                                                          .book_time * 1000
-                                                      ).toLocaleDateString(
-                                                        "fa-IR"
-                                                      )
-                                                    );
-                                                  } catch (e) {
-                                                    if (
-                                                      e instanceof TypeError ||
-                                                      e?.plasmicType ===
-                                                        "PlasmicUndefinedDataError"
-                                                    ) {
-                                                      return "";
+                                              <div
+                                                className={classNames(
+                                                  projectcss.all,
+                                                  projectcss.__wab_text,
+                                                  sty.text__kwCg
+                                                )}
+                                              >
+                                                <React.Fragment>
+                                                  {(() => {
+                                                    try {
+                                                      return (
+                                                        new Date(
+                                                          $state
+                                                            .detailsDataApiRequest[
+                                                            currentIndex
+                                                          ].data.data.metadata
+                                                            .book_time * 1000
+                                                        ).getHours() +
+                                                        ":" +
+                                                        new Date(
+                                                          $state
+                                                            .detailsDataApiRequest[
+                                                            currentIndex
+                                                          ].data.data.metadata
+                                                            .book_time * 1000
+                                                        ).getMinutes() +
+                                                        ":00" +
+                                                        " " +
+                                                        new Date(
+                                                          $state
+                                                            .detailsDataApiRequest[
+                                                            currentIndex
+                                                          ].data.data.metadata
+                                                            .book_time * 1000
+                                                        ).toLocaleDateString(
+                                                          "fa-IR"
+                                                        )
+                                                      );
+                                                    } catch (e) {
+                                                      if (
+                                                        e instanceof
+                                                          TypeError ||
+                                                        e?.plasmicType ===
+                                                          "PlasmicUndefinedDataError"
+                                                      ) {
+                                                        return "";
+                                                      }
+                                                      throw e;
                                                     }
-                                                    throw e;
-                                                  }
-                                                })()}
-                                              </React.Fragment>
+                                                  })()}
+                                                </React.Fragment>
+                                              </div>
                                             </div>
                                           </div>
-                                        </div>
+                                        ) : null}
+                                        {(() => {
+                                          try {
+                                            return (
+                                              $state.detailsDataApiRequest[
+                                                currentIndex
+                                              ].data.transaction_type ==
+                                              "settlement"
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return true;
+                                            }
+                                            throw e;
+                                          }
+                                        })() ? (
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              sty.freeBox__g3Huk
+                                            )}
+                                          >
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                sty.freeBox__munBy
+                                              )}
+                                            >
+                                              <div
+                                                className={classNames(
+                                                  projectcss.all,
+                                                  projectcss.__wab_text,
+                                                  sty.text___2H3Dy
+                                                )}
+                                              >
+                                                {
+                                                  "\u0634\u0646\u0627\u0633\u0647 \u067e\u06cc\u06af\u06cc\u0631\u06cc:"
+                                                }
+                                              </div>
+                                            </div>
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                sty.freeBox__dpCpu
+                                              )}
+                                            >
+                                              <div
+                                                className={classNames(
+                                                  projectcss.all,
+                                                  projectcss.__wab_text,
+                                                  sty.text__amr4N
+                                                )}
+                                              >
+                                                <React.Fragment>
+                                                  {(() => {
+                                                    try {
+                                                      return (
+                                                        $state
+                                                          .detailsDataApiRequest[
+                                                          currentIndex
+                                                        ].data.data
+                                                          .referenceNumber ||
+                                                        "-"
+                                                      );
+                                                    } catch (e) {
+                                                      if (
+                                                        e instanceof
+                                                          TypeError ||
+                                                        e?.plasmicType ===
+                                                          "PlasmicUndefinedDataError"
+                                                      ) {
+                                                        return "";
+                                                      }
+                                                      throw e;
+                                                    }
+                                                  })()}
+                                                </React.Fragment>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        ) : null}
+                                        {(() => {
+                                          try {
+                                            return (
+                                              $state.detailsDataApiRequest[
+                                                currentIndex
+                                              ].data.transaction_type ==
+                                              "settlement"
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return true;
+                                            }
+                                            throw e;
+                                          }
+                                        })() ? (
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              sty.freeBox__tcQ6F
+                                            )}
+                                          >
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                sty.freeBox__m7LLb
+                                              )}
+                                            >
+                                              <div
+                                                className={classNames(
+                                                  projectcss.all,
+                                                  projectcss.__wab_text,
+                                                  sty.text___0W17O
+                                                )}
+                                              >
+                                                {
+                                                  "\u0634\u0645\u0627\u0631\u0647 \u0634\u0628\u0627:"
+                                                }
+                                              </div>
+                                            </div>
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                sty.freeBox__dahuW
+                                              )}
+                                            >
+                                              <div
+                                                className={classNames(
+                                                  projectcss.all,
+                                                  projectcss.__wab_text,
+                                                  sty.text__n7Ue0
+                                                )}
+                                              >
+                                                <React.Fragment>
+                                                  {(() => {
+                                                    try {
+                                                      return (
+                                                        $state
+                                                          .detailsDataApiRequest[
+                                                          currentIndex
+                                                        ].data.data.iban || "-"
+                                                      );
+                                                    } catch (e) {
+                                                      if (
+                                                        e instanceof
+                                                          TypeError ||
+                                                        e?.plasmicType ===
+                                                          "PlasmicUndefinedDataError"
+                                                      ) {
+                                                        return "";
+                                                      }
+                                                      throw e;
+                                                    }
+                                                  })()}
+                                                </React.Fragment>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        ) : null}
+                                        {(() => {
+                                          try {
+                                            return (
+                                              $state.detailsDataApiRequest[
+                                                currentIndex
+                                              ].data.transaction_type ==
+                                              "settlement"
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return true;
+                                            }
+                                            throw e;
+                                          }
+                                        })() ? (
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              sty.freeBox__qnnOv
+                                            )}
+                                          >
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                sty.freeBox__jJr
+                                              )}
+                                            >
+                                              <div
+                                                className={classNames(
+                                                  projectcss.all,
+                                                  projectcss.__wab_text,
+                                                  sty.text__kFztQ
+                                                )}
+                                              >
+                                                {
+                                                  "\u0648\u0636\u0639\u06cc\u062a:"
+                                                }
+                                              </div>
+                                            </div>
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                sty.freeBox__fnOgw
+                                              )}
+                                            >
+                                              {(() => {
+                                                try {
+                                                  return (
+                                                    $state
+                                                      .detailsDataApiRequest[
+                                                      currentIndex
+                                                    ].data.data.status == "DONE"
+                                                  );
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return true;
+                                                  }
+                                                  throw e;
+                                                }
+                                              })() ? (
+                                                <Button2
+                                                  children2={
+                                                    <div
+                                                      className={classNames(
+                                                        projectcss.all,
+                                                        projectcss.__wab_text,
+                                                        sty.text___9Zmh
+                                                      )}
+                                                    >
+                                                      {
+                                                        "\u067e\u0631\u062f\u0627\u062e\u062a \u0634\u062f\u0647"
+                                                      }
+                                                    </div>
+                                                  }
+                                                  className={classNames(
+                                                    "__wab_instance",
+                                                    sty.button___2VZf
+                                                  )}
+                                                  color={"softGreen"}
+                                                  size={"minimal"}
+                                                />
+                                              ) : null}
+                                              {(() => {
+                                                try {
+                                                  return (
+                                                    $state
+                                                      .detailsDataApiRequest[
+                                                      currentIndex
+                                                    ].data.data.status !=
+                                                      "DONE" &&
+                                                    $state
+                                                      .detailsDataApiRequest[
+                                                      currentIndex
+                                                    ].data.data.status !=
+                                                      "FAILED"
+                                                  );
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return true;
+                                                  }
+                                                  throw e;
+                                                }
+                                              })() ? (
+                                                <Button2
+                                                  children2={
+                                                    <div
+                                                      className={classNames(
+                                                        projectcss.all,
+                                                        projectcss.__wab_text,
+                                                        sty.text__pIPpq
+                                                      )}
+                                                    >
+                                                      {
+                                                        "\u0627\u0631\u0633\u0627\u0644 \u0634\u062f\u0647"
+                                                      }
+                                                    </div>
+                                                  }
+                                                  className={classNames(
+                                                    "__wab_instance",
+                                                    sty.button__d0JsY
+                                                  )}
+                                                  color={"softSand"}
+                                                  size={"minimal"}
+                                                />
+                                              ) : null}
+                                              {(() => {
+                                                try {
+                                                  return (
+                                                    $state
+                                                      .detailsDataApiRequest[
+                                                      currentIndex
+                                                    ].data.data.status ==
+                                                    "FAILED"
+                                                  );
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return true;
+                                                  }
+                                                  throw e;
+                                                }
+                                              })() ? (
+                                                <Button2
+                                                  children2={
+                                                    <div
+                                                      className={classNames(
+                                                        projectcss.all,
+                                                        projectcss.__wab_text,
+                                                        sty.text__oszHz
+                                                      )}
+                                                    >
+                                                      {
+                                                        "\u0628\u0631\u06af\u0634\u062a \u062e\u0648\u0631\u062f\u0647"
+                                                      }
+                                                    </div>
+                                                  }
+                                                  className={classNames(
+                                                    "__wab_instance",
+                                                    sty.button___70Kzs
+                                                  )}
+                                                  color={"softRed"}
+                                                  size={"minimal"}
+                                                />
+                                              ) : null}
+                                            </div>
+                                          </div>
+                                        ) : null}
                                         <div
                                           className={classNames(
                                             projectcss.all,
