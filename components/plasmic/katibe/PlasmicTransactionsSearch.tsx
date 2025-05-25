@@ -6671,7 +6671,12 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                       .detailsDataApiRequest[
                                                       currentIndex
                                                     ].data.data.status !=
-                                                      "FAILED"
+                                                      "FAILED" &&
+                                                    $state
+                                                      .detailsDataApiRequest[
+                                                      currentIndex
+                                                    ].data.data.status !=
+                                                      "REJECTED"
                                                   );
                                                 } catch (e) {
                                                   if (
@@ -6713,7 +6718,12 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                       .detailsDataApiRequest[
                                                       currentIndex
                                                     ].data.data.status ==
-                                                    "FAILED"
+                                                      "FAILED" ||
+                                                    $state
+                                                      .detailsDataApiRequest[
+                                                      currentIndex
+                                                    ].data.data.status ==
+                                                      "REJECTED"
                                                   );
                                                 } catch (e) {
                                                   if (
