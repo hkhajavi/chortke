@@ -1495,7 +1495,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                       }}
                                     >
                                       {
-                                        "\u00a0\u062f\u0631 \u063a\u06cc\u0631 \u0627\u06cc\u0646\u0635\u0648\u0631\u062a (\u062d\u062a\u06cc \u06cc\u06a9 \u0631\u06cc\u0627\u0644 \u06a9\u0645\u062a\u0631 \u06cc\u0627 \u0628\u06cc\u0634\u062a\u0631)\u060c \u0646\u0648\u0628\u062a \u0634\u0645\u0627 \u062a\u0627\u06cc\u06cc\u062f \u0646\u062e\u0648\u0627\u0647\u062f \u0634\u062f."
+                                        "\u00a0\u062f\u0631 \u063a\u06cc\u0631 \u0627\u06cc\u0646 \u0635\u0648\u0631\u062a (\u062d\u062a\u06cc \u06cc\u06a9 \u0631\u06cc\u0627\u0644 \u06a9\u0645\u062a\u0631 \u06cc\u0627 \u0628\u06cc\u0634\u062a\u0631)\u060c \u0646\u0648\u0628\u062a \u0634\u0645\u0627 \u062a\u0627\u06cc\u06cc\u062f \u0646\u062e\u0648\u0627\u0647\u062f \u0634\u062f."
                                       }
                                     </span>
                                   </React.Fragment>
@@ -1524,7 +1524,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                       }}
                                     >
                                       {
-                                        " \u062f\u0631 \u063a\u06cc\u0631 \u0627\u06cc\u0646\u0635\u0648\u0631\u062a (\u062d\u062a\u06cc \u06cc\u06a9 \u0631\u06cc\u0627\u0644 \u06a9\u0645\u062a\u0631 \u06cc\u0627 \u0628\u06cc\u0634\u062a\u0631)\u060c \u0646\u0648\u0628\u062a \u0634\u0645\u0627 \u062a\u0627\u06cc\u06cc\u062f \u0646\u062e\u0648\u0627\u0647\u062f \u0634\u062f."
+                                        " \u062f\u0631 \u063a\u06cc\u0631 \u0627\u06cc\u0646 \u0635\u0648\u0631\u062a (\u062d\u062a\u06cc \u06cc\u06a9 \u0631\u06cc\u0627\u0644 \u06a9\u0645\u062a\u0631 \u06cc\u0627 \u0628\u06cc\u0634\u062a\u0631)\u060c \u0646\u0648\u0628\u062a \u0634\u0645\u0627 \u062a\u0627\u06cc\u06cc\u062f \u0646\u062e\u0648\u0627\u0647\u062f \u0634\u062f."
                                       }
                                     </span>
                                   </React.Fragment>
@@ -2075,7 +2075,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                             >
                               <Button
                                 children2={
-                                  "\u06a9\u0627\u0631\u062a \u0628\u0647 \u06a9\u0627\u0631\u062a \u06a9\u0631\u062f\u0645"
+                                  "\u0628\u0631\u0631\u0633\u06cc \u06a9\u0627\u0631\u062a \u0628\u0647 \u06a9\u0627\u0631\u062a"
                                 }
                                 className={classNames(
                                   "__wab_instance",
