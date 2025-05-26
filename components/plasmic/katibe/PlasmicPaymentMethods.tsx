@@ -2004,7 +2004,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                   <React.Fragment>
                                     <React.Fragment>
                                       {
-                                        "\u0647\u0646\u0648\u0632 \u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u067e\u0631\u062f\u0627\u062e\u062a \u0646\u0634\u062f\u0647 \u0627\u0633\u062a. \u0627\u06af\u0631 \u067e\u0631\u062f\u0627\u062e\u062a \u062e\u0648\u062f \u0631\u0627 \u0627\u0646\u062c\u0627\u0645 \u062f\u0627\u062f\u0647\u200c\u0627\u06cc\u062f\u060c \u0644\u0637\u0641\u0627\u064b \u062f\u0648\u0628\u0627\u0631\u0647 \u062f\u06a9\u0645\u0647 \u201c\u0628\u0631\u0631\u0633\u06cc \u06a9\u0627\u0631\u062a \u0628\u0647 \u06a9\u0627\u0631\u062a\u201d \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f \u06cc\u0627 \u0631\u0633\u06cc\u062f \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0647 \u0634\u0645\u0627\u0631\u0647  "
+                                        "\u067e\u0631\u062f\u0627\u062e\u062a \u0634\u0645\u0627 \u062a\u0627\u06cc\u06cc\u062f \u0646\u0634\u062f\u0647. \u0627\u06af\u0631 \u06a9\u0627\u0631\u062a \u0628\u0647 \u06a9\u0627\u0631\u062a \u06a9\u0631\u062f\u0647\u200c\u0627\u06cc\u062f\u060c \u0631\u0633\u06cc\u062f \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0647 \u0634\u0645\u0627\u0631\u0647  "
                                       }
                                     </React.Fragment>
                                     {
@@ -2075,7 +2075,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                             >
                               <Button
                                 children2={
-                                  "\u0628\u0631\u0631\u0633\u06cc \u06a9\u0627\u0631\u062a \u0628\u0647 \u06a9\u0627\u0631\u062a"
+                                  "\u06a9\u0627\u0631\u062a \u0628\u0647 \u06a9\u0627\u0631\u062a \u06a9\u0631\u062f\u0645"
                                 }
                                 className={classNames(
                                   "__wab_instance",
