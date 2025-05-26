@@ -210,6 +210,19 @@ function PlasmicIpgMessage__RenderFunc(props: {
             data-plasmic-name={"pageLoad"}
             data-plasmic-override={overrides.pageLoad}
             className={classNames("__wab_instance", sty.pageLoad)}
+            deps={(() => {
+              try {
+                return [$ctx.query.err];
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return undefined;
+                }
+                throw e;
+              }
+            })()}
             onMount={async () => {
               const $steps = {};
 
