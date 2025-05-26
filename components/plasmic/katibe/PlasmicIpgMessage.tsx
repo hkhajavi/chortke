@@ -60,6 +60,7 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import Button from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
+import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -88,6 +89,7 @@ export type PlasmicIpgMessage__OverridesType = {
   text?: Flex__<"div">;
   link?: Flex__<"a"> & Partial<LinkProps>;
   button?: Flex__<typeof Button>;
+  pageLoad?: Flex__<typeof SideEffect>;
 };
 
 export interface DefaultIpgMessageProps {}
@@ -130,6 +132,8 @@ function PlasmicIpgMessage__RenderFunc(props: {
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
+
+  const $globalActions = useGlobalActions?.();
 
   return (
     <React.Fragment>
@@ -202,6 +206,52 @@ function PlasmicIpgMessage__RenderFunc(props: {
               className={classNames("__wab_instance", sty.button)}
             />
           </PlasmicLink__>
+          <SideEffect
+            data-plasmic-name={"pageLoad"}
+            data-plasmic-override={overrides.pageLoad}
+            className={classNames("__wab_instance", sty.pageLoad)}
+            onMount={async () => {
+              const $steps = {};
+
+              $steps["invokeGlobalAction"] = true
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        undefined,
+                        (() => {
+                          try {
+                            return (
+                              "https://apigw.paziresh24.com/katibe/v1/payment/methods/load?type=ipg-" +
+                              $ctx.query.err
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
+              if (
+                $steps["invokeGlobalAction"] != null &&
+                typeof $steps["invokeGlobalAction"] === "object" &&
+                typeof $steps["invokeGlobalAction"].then === "function"
+              ) {
+                $steps["invokeGlobalAction"] = await $steps[
+                  "invokeGlobalAction"
+                ];
+              }
+            }}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -209,10 +259,11 @@ function PlasmicIpgMessage__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "text", "link", "button"],
+  root: ["root", "text", "link", "button", "pageLoad"],
   text: ["text"],
   link: ["link", "button"],
-  button: ["button"]
+  button: ["button"],
+  pageLoad: ["pageLoad"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -222,6 +273,7 @@ type NodeDefaultElementType = {
   text: "div";
   link: "a";
   button: typeof Button;
+  pageLoad: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -287,6 +339,7 @@ export const PlasmicIpgMessage = Object.assign(
     text: makeNodeComponent("text"),
     link: makeNodeComponent("link"),
     button: makeNodeComponent("button"),
+    pageLoad: makeNodeComponent("pageLoad"),
 
     // Metadata about props expected for PlasmicIpgMessage
     internalVariantProps: PlasmicIpgMessage__VariantProps,
