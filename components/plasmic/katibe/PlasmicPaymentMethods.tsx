@@ -597,7 +597,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                 $steps["updateMe"] = await $steps["updateMe"];
               }
 
-              $steps["n8NSplunk"] = false
+              $steps["n8NSplunk"] = true
                 ? (() => {
                     const actionArgs = {
                       args: [
