@@ -742,20 +742,19 @@ function PlasmicPay__RenderFunc(props: {
                                 try {
                                   return {
                                     productid: 1,
-                                    returnlink: $ctx.query.returnlink,
+                                    returnlink: globalThis.btoa(
+                                      "https://www.paziresh24.com/_/katibe/pay/" +
+                                        $ctx.query.id
+                                    ),
                                     cancel_returnlink: globalThis.btoa(
-                                      "https://www.paziresh24.com/_/katibe/payments/?amount=" +
-                                        $ctx.query.amount +
-                                        "&returnlink=" +
-                                        $ctx.query.returnlink +
-                                        "&cancel_returnlink=" +
-                                        $ctx.query.cancel_returnlink
+                                      "https://www.paziresh24.com/_/katibe/pay/" +
+                                        $ctx.query.id
                                     ),
                                     title: "افزایش موجودی",
-                                    amount: $ctx.query.amount - $state.balance,
-                                    receipt_id: $ctx.query.receipt_id
-                                      ? $ctx.query.receipt_id
-                                      : ""
+                                    amount:
+                                      $state.splits.user_amount -
+                                      $state.balance,
+                                    receipt_id: $state.splits.receipt_id
                                   };
                                 } catch (e) {
                                   if (
