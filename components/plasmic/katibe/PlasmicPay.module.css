@@ -117,6 +117,7 @@
   }
 }
 .freeBox__nOn1Q {
+  display: grid;
   position: relative;
   grid-template-columns: repeat(1, minmax(0, 1fr));
   width: 100%;
@@ -124,7 +125,6 @@
   max-width: 100%;
   grid-column-start: 1 !important;
   grid-column-end: -1 !important;
-  display: none;
   padding: 8px;
 }
 .freeBox__lE0A8 {

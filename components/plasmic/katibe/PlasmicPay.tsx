@@ -279,7 +279,7 @@ function PlasmicPay__RenderFunc(props: {
             className={classNames("__wab_instance", sty.sideEffectPageLoad)}
             deps={(() => {
               try {
-                return [$ctx.params.id, $ctx.query.id];
+                return [$ctx.params.id];
               } catch (e) {
                 if (
                   e instanceof TypeError ||
@@ -322,35 +322,37 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["updateWaiting"] = await $steps["updateWaiting"];
               }
 
-              $steps["getSplits"] = true
-                ? (() => {
-                    const actionArgs = {
-                      args: [
-                        undefined,
-                        (() => {
-                          try {
-                            return (
-                              "https://apigw.paziresh24.com/katibe/v1/splits/details/p24/" +
-                              ($ctx.params.id || $ctx.query.id)
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
+              $steps["getSplits"] =
+                $ctx.params.id != undefined
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          undefined,
+                          (() => {
+                            try {
+                              return (
+                                "https://apigw.paziresh24.com/katibe/v1/splits/details/p24/" +
+                                ($ctx.params.id || $ctx.query.id)
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })(),
-                        undefined
-                      ]
-                    };
-                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                      ...actionArgs.args
-                    ]);
-                  })()
-                : undefined;
+                          })(),
+                          undefined
+                        ]
+                      };
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
+                    })()
+                  : undefined;
               if (
                 $steps["getSplits"] != null &&
                 typeof $steps["getSplits"] === "object" &&
@@ -360,7 +362,7 @@ function PlasmicPay__RenderFunc(props: {
               }
 
               $steps["updateSplits"] =
-                $steps.getSplits.status == 200
+                $steps.getSplits.status == 200 && $ctx.params.id != undefined
                   ? (() => {
                       const actionArgs = {
                         variable: {
@@ -541,7 +543,7 @@ function PlasmicPay__RenderFunc(props: {
                   <React.Fragment>
                     {(() => {
                       try {
-                        return $ctx.query.title || "عملیات پرداخت";
+                        return $state.splits.title;
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
@@ -757,11 +759,11 @@ function PlasmicPay__RenderFunc(props: {
                                     productid: 1,
                                     returnlink: globalThis.btoa(
                                       "https://apigw.paziresh24.com/katibe/v1/splits/pay/p24/" +
-                                        ($ctx.query.id || $ctx.params.id)
+                                        $ctx.params.id
                                     ),
                                     cancel_returnlink: globalThis.btoa(
                                       "https://www.paziresh24.com/_/katibe/pay/" +
-                                        $ctx.query.id
+                                        $ctx.params.id
                                     ),
                                     title: "افزایش موجودی",
                                     amount:
