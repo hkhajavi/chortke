@@ -799,6 +799,20 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/payment-methods"
+        },
+        {
+          "id": "fXYKZYfose53",
+          "name": "Pay",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/katibe/PlasmicPay.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/payment-methods-2.tsx"
+          },
+          "cssFilePath": "plasmic/katibe/PlasmicPay.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/payment-methods-2"
         }
       ],
       "icons": [
