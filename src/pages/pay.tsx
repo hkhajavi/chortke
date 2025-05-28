@@ -4,23 +4,23 @@ import * as React from "react";
 import { PageParamsProvider as PageParamsProvider__ } from "@plasmicapp/react-web/lib/host";
 import GlobalContextsProvider from "../../components/plasmic/chortke/PlasmicGlobalContextsProvider";
 
-import { PlasmicPay } from "../../components/plasmic/katibe/PlasmicPay";
+import { PlasmicPayId } from "../../components/plasmic/katibe/PlasmicPayId";
 import { useRouter } from "next/router";
 
-function Pay() {
-  // Use PlasmicPay to render this component as it was
+function PayId() {
+  // Use PlasmicPayId to render this component as it was
   // designed in Plasmic, by activating the appropriate variants,
   // attaching the appropriate event handlers, etc.  You
   // can also install whatever React hooks you need here to manage state or
   // fetch data.
   //
-  // Props you can pass into PlasmicPay are:
+  // Props you can pass into PlasmicPayId are:
   // 1. Variants you want to activate,
   // 2. Contents for slots you want to fill,
   // 3. Overrides for any named node in the component to attach behavior and data,
   // 4. Props to set on the root node.
   //
-  // By default, PlasmicPay is wrapped by your project's global
+  // By default, PlasmicPayId is wrapped by your project's global
   // variant context providers. These wrappers may be moved to
   // Next.js Custom App component
   // (https://nextjs.org/docs/advanced-features/custom-app).
@@ -32,10 +32,10 @@ function Pay() {
         params={useRouter()?.query}
         query={useRouter()?.query}
       >
-        <PlasmicPay />
+        <PlasmicPayId />
       </PageParamsProvider__>
     </GlobalContextsProvider>
   );
 }
 
-export default Pay;
+export default PayId;
