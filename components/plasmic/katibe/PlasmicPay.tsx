@@ -756,8 +756,8 @@ function PlasmicPay__RenderFunc(props: {
                                   return {
                                     productid: 1,
                                     returnlink: globalThis.btoa(
-                                      "https://www.paziresh24.com/_/katibe/pay/" +
-                                        $ctx.query.id
+                                      "https://apigw.paziresh24.com/katibe/v1/splits/pay/p24/" +
+                                        ($ctx.query.id || $ctx.params.id)
                                     ),
                                     cancel_returnlink: globalThis.btoa(
                                       "https://www.paziresh24.com/_/katibe/pay/" +
