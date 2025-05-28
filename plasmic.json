@@ -802,17 +802,17 @@
         },
         {
           "id": "fXYKZYfose53",
-          "name": "PayId",
+          "name": "Pay",
           "type": "managed",
           "projectId": "afXULSfGYmou2jFpEc2QWJ",
-          "renderModuleFilePath": "plasmic/katibe/PlasmicPayId.tsx",
+          "renderModuleFilePath": "plasmic/katibe/PlasmicPay.tsx",
           "importSpec": {
-            "modulePath": "../src/pages/pay.tsx"
+            "modulePath": "../src/pages/pay/[id].tsx"
           },
-          "cssFilePath": "plasmic/katibe/PlasmicPayId.module.css",
+          "cssFilePath": "plasmic/katibe/PlasmicPay.module.css",
           "scheme": "blackbox",
           "componentType": "page",
-          "path": "/pay"
+          "path": "/pay/[id]"
         }
       ],
       "icons": [

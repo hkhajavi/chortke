@@ -234,7 +234,20 @@ function PlasmicPay__RenderFunc(props: {
 
   return (
     <React.Fragment>
-      <Head></Head>
+      <Head>
+        <meta name="twitter:card" content="summary" />
+        <title key="title">{PlasmicPay.pageMetadata.title}</title>
+        <meta
+          key="og:title"
+          property="og:title"
+          content={PlasmicPay.pageMetadata.title}
+        />
+        <meta
+          key="twitter:title"
+          name="twitter:title"
+          content={PlasmicPay.pageMetadata.title}
+        />
+      </Head>
 
       <style>{`
         body {
@@ -266,7 +279,7 @@ function PlasmicPay__RenderFunc(props: {
             className={classNames("__wab_instance", sty.sideEffectPageLoad)}
             deps={(() => {
               try {
-                return [$ctx.query.id];
+                return [$ctx.params.id];
               } catch (e) {
                 if (
                   e instanceof TypeError ||
@@ -318,7 +331,7 @@ function PlasmicPay__RenderFunc(props: {
                           try {
                             return (
                               "https://apigw.paziresh24.com/katibe/v1/splits/details/p24/" +
-                              $ctx.query.id
+                              $ctx.params.id
                             );
                           } catch (e) {
                             if (
@@ -991,7 +1004,7 @@ export const PlasmicPay = Object.assign(
 
     // Page metadata
     pageMetadata: {
-      title: "",
+      title: "پرداخت",
       description: "",
       ogImageSrc: "",
       canonical: ""
