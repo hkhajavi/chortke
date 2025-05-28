@@ -279,7 +279,7 @@ function PlasmicPay__RenderFunc(props: {
             className={classNames("__wab_instance", sty.sideEffectPageLoad)}
             deps={(() => {
               try {
-                return [$ctx.params.id];
+                return [$ctx.params.id, $ctx.query.id];
               } catch (e) {
                 if (
                   e instanceof TypeError ||
@@ -331,7 +331,7 @@ function PlasmicPay__RenderFunc(props: {
                           try {
                             return (
                               "https://apigw.paziresh24.com/katibe/v1/splits/details/p24/" +
-                              $ctx.params.id
+                              ($ctx.params.id || $ctx.query.id)
                             );
                           } catch (e) {
                             if (
