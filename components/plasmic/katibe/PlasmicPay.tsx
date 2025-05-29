@@ -396,6 +396,76 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["updateSplits"] = await $steps["updateSplits"];
               }
 
+              $steps["redirectFalse"] =
+                $state.splits.status == "canceled"
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          (() => {
+                            try {
+                              return $state.splits.return_link.includes("?")
+                                ? $state.splits.return_link + "&status=false"
+                                : $state.splits.return_link + "?status=false";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        ]
+                      };
+                      return $globalActions["Hamdast.openLink"]?.apply(null, [
+                        ...actionArgs.args
+                      ]);
+                    })()
+                  : undefined;
+              if (
+                $steps["redirectFalse"] != null &&
+                typeof $steps["redirectFalse"] === "object" &&
+                typeof $steps["redirectFalse"].then === "function"
+              ) {
+                $steps["redirectFalse"] = await $steps["redirectFalse"];
+              }
+
+              $steps["redirectTrue"] =
+                $state.splits.transferid > 0
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          (() => {
+                            try {
+                              return $state.splits.return_link.includes("?")
+                                ? $state.splits.return_link + "&status=true"
+                                : $state.splits.return_link + "?status=true";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        ]
+                      };
+                      return $globalActions["Hamdast.openLink"]?.apply(null, [
+                        ...actionArgs.args
+                      ]);
+                    })()
+                  : undefined;
+              if (
+                $steps["redirectTrue"] != null &&
+                typeof $steps["redirectTrue"] === "object" &&
+                typeof $steps["redirectTrue"].then === "function"
+              ) {
+                $steps["redirectTrue"] = await $steps["redirectTrue"];
+              }
+
               $steps["getBalance"] = true
                 ? (() => {
                     const actionArgs = {
