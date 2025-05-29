@@ -73,10 +73,10 @@ import plasmic_fragment_design_system_css from "../fragment_design_system/plasmi
 import projectcss from "../chortke/plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicPay.module.css"; // plasmic-import: fXYKZYfose53/css
 
-import Icon2Icon from "../chortke/icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
 import Icon50Icon from "./icons/PlasmicIcon__Icon50"; // plasmic-import: xtxGD9pXGJw4/icon
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
 import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
+import Icon2Icon from "../chortke/icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
 
 createPlasmicElementProxy;
 
@@ -677,24 +677,6 @@ function PlasmicPay__RenderFunc(props: {
                     })()}
                   </React.Fragment>
                 </div>
-                {(() => {
-                  try {
-                    return $state.waiting;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return true;
-                    }
-                    throw e;
-                  }
-                })() ? (
-                  <Icon2Icon
-                    className={classNames(projectcss.all, sty.svg__qi1Yn)}
-                    role={"img"}
-                  />
-                ) : null}
               </div>
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__wlFOn)}>
@@ -870,7 +852,10 @@ function PlasmicPay__RenderFunc(props: {
               <div className={classNames(projectcss.all, sty.freeBox__fzrje)}>
                 {(() => {
                   try {
-                    return $state.splits.user_amount > $state.balance;
+                    return (
+                      !$state.waiting &&
+                      $state.splits.user_amount > $state.balance
+                    );
                   } catch (e) {
                     if (
                       e instanceof TypeError ||
@@ -1104,7 +1089,10 @@ function PlasmicPay__RenderFunc(props: {
                 ) : null}
                 {(() => {
                   try {
-                    return $state.splits.user_amount <= $state.balance;
+                    return (
+                      !$state.waiting &&
+                      $state.splits.user_amount <= $state.balance
+                    );
                   } catch (e) {
                     if (
                       e instanceof TypeError ||
@@ -1208,6 +1196,24 @@ function PlasmicPay__RenderFunc(props: {
                       }
                     }}
                     size={"compact"}
+                  />
+                ) : null}
+                {(() => {
+                  try {
+                    return $state.waiting;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })() ? (
+                  <Icon2Icon
+                    className={classNames(projectcss.all, sty.svg__qi1Yn)}
+                    role={"img"}
                   />
                 ) : null}
               </div>
