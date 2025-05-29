@@ -61,6 +61,7 @@ import {
 
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import Button from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
+import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 
 import { useScreenVariants as useScreenVariantsbr2UhI7UlpvR } from "../fragment_icons/PlasmicGlobalVariant__Screen"; // plasmic-import: BR2UhI7ulpvR/globalVariant
 
@@ -92,6 +93,7 @@ export type PlasmicPay__OverridesType = {
   pay?: Flex__<"div">;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
   section?: Flex__<"section">;
+  embedHtml?: Flex__<typeof Embed>;
 };
 
 export interface DefaultPayProps {}
@@ -319,6 +321,99 @@ function PlasmicPay__RenderFunc(props: {
                 typeof $steps["updateWaiting"].then === "function"
               ) {
                 $steps["updateWaiting"] = await $steps["updateWaiting"];
+              }
+
+              $steps["me"] = true
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        undefined,
+                        "https://apigw.paziresh24.com/v1/auth/me"
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
+              if (
+                $steps["me"] != null &&
+                typeof $steps["me"] === "object" &&
+                typeof $steps["me"].then === "function"
+              ) {
+                $steps["me"] = await $steps["me"];
+              }
+
+              $steps["updateMe"] =
+                $steps.me.status == 200
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["me"]
+                        },
+                        operation: 0,
+                        value: $steps.me.data
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updateMe"] != null &&
+                typeof $steps["updateMe"] === "object" &&
+                typeof $steps["updateMe"].then === "function"
+              ) {
+                $steps["updateMe"] = await $steps["updateMe"];
+              }
+
+              $steps["redirectLogin"] =
+                $steps.me.status != 200
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          (() => {
+                            try {
+                              return (
+                                "https://www.paziresh24.com/login/?redirect_url=https://www.paziresh24.com/_/katibe/pay/" +
+                                $ctx.params.id +
+                                "/"
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        ]
+                      };
+                      return $globalActions["Hamdast.openLink"]?.apply(null, [
+                        ...actionArgs.args
+                      ]);
+                    })()
+                  : undefined;
+              if (
+                $steps["redirectLogin"] != null &&
+                typeof $steps["redirectLogin"] === "object" &&
+                typeof $steps["redirectLogin"].then === "function"
+              ) {
+                $steps["redirectLogin"] = await $steps["redirectLogin"];
               }
 
               $steps["getSplits"] =
@@ -1118,6 +1213,14 @@ function PlasmicPay__RenderFunc(props: {
               </div>
             </div>
           </section>
+          <Embed
+            data-plasmic-name={"embedHtml"}
+            data-plasmic-override={overrides.embedHtml}
+            className={classNames("__wab_instance", sty.embedHtml)}
+            code={
+              '<script type="text/javascript">\r\n    (function(c,l,a,r,i,t,y){\r\n        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\r\n        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;\r\n        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);\r\n    })(window, document, "clarity", "script", "rr61es0fkb");\r\n</script>'
+            }
+          />
         </div>
       </div>
     </React.Fragment>
@@ -1125,9 +1228,10 @@ function PlasmicPay__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  pay: ["pay", "sideEffectPageLoad", "section"],
+  pay: ["pay", "sideEffectPageLoad", "section", "embedHtml"],
   sideEffectPageLoad: ["sideEffectPageLoad"],
-  section: ["section"]
+  section: ["section"],
+  embedHtml: ["embedHtml"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1136,6 +1240,7 @@ type NodeDefaultElementType = {
   pay: "div";
   sideEffectPageLoad: typeof SideEffect;
   section: "section";
+  embedHtml: typeof Embed;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1200,6 +1305,7 @@ export const PlasmicPay = Object.assign(
     // Helper components rendering sub-elements
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
     section: makeNodeComponent("section"),
+    embedHtml: makeNodeComponent("embedHtml"),
 
     // Metadata about props expected for PlasmicPay
     internalVariantProps: PlasmicPay__VariantProps,
