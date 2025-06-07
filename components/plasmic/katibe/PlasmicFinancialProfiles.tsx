@@ -664,6 +664,12 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => false
+      },
+      {
+        path: "profileData",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
       }
     ],
     [$props, $ctx, $refs]
@@ -2861,8 +2867,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     try {
                                                       return (
                                                         "شماره کارت باید متعلق به شما بوده و با کد ملی" +
-                                                        $state.userData.result
-                                                          .national_code +
+                                                        ($state.profile
+                                                          .national_id ||
+                                                          $state.userData.result
+                                                            .national_code) +
                                                         " و شماره موبایل " +
                                                         $state.userData.result
                                                           .cell +
@@ -2887,8 +2895,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     try {
                                                       return (
                                                         "شماره کارت باید متعلق به شما بوده و با کد ملی" +
-                                                        $state.userData.result
-                                                          .national_code +
+                                                        ($state.profile
+                                                          .national_id ||
+                                                          $state.userData.result
+                                                            .national_code) +
                                                         " و شماره موبایل " +
                                                         $state.userData.result
                                                           .cell +
@@ -7464,6 +7474,64 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 $steps["updateRecuringSetlementCount"] = await $steps[
                   "updateRecuringSetlementCount"
                 ];
+              }
+
+              $steps["profile"] =
+                $state.userData.isDoctor == true
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          undefined,
+                          "https://api.paziresh24.com/V1/doctor/profile"
+                        ]
+                      };
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
+                    })()
+                  : undefined;
+              if (
+                $steps["profile"] != null &&
+                typeof $steps["profile"] === "object" &&
+                typeof $steps["profile"].then === "function"
+              ) {
+                $steps["profile"] = await $steps["profile"];
+              }
+
+              $steps["updateProfileData"] =
+                $steps.profile.status == 200 && $state.userData.isDoctor == true
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["profileData"]
+                        },
+                        operation: 0,
+                        value: $steps.profile.data.data
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updateProfileData"] != null &&
+                typeof $steps["updateProfileData"] === "object" &&
+                typeof $steps["updateProfileData"].then === "function"
+              ) {
+                $steps["updateProfileData"] = await $steps["updateProfileData"];
               }
             }}
           />
