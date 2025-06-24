@@ -2839,7 +2839,27 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   const actionArgs = {
                                     args: [
                                       undefined,
-                                      "https://apigw.paziresh24.com/ganjname/v1/message"
+                                      (() => {
+                                        try {
+                                          return (
+                                            "https://apigw.paziresh24.com/ganjname/v1/message" +
+                                            ($state.currentAccountAccount ==
+                                            "organization"
+                                              ? "?centerid=" +
+                                                $state.currentAccountId
+                                              : "")
+                                          );
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return undefined;
+                                          }
+                                          throw e;
+                                        }
+                                      })()
                                     ]
                                   };
                                   return $globalActions[
