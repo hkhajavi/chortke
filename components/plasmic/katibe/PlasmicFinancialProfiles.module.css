@@ -2830,12 +2830,12 @@
   height: auto;
   max-width: 100%;
   justify-self: flex-start;
+  margin-top: 10px;
   grid-column-start: 1 !important;
   grid-column-end: -1 !important;
   padding: 8px;
 }
 .freeBox__gKL5 {
-  display: flex;
   flex-direction: column;
   position: relative;
   width: 100%;
@@ -2844,6 +2844,7 @@
   justify-content: flex-start;
   align-items: center;
   min-width: 0;
+  display: none;
   padding: 0px;
 }
 .text__jn61K {
