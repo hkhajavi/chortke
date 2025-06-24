@@ -6444,7 +6444,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                 currentIndex
                                               ].data.transaction_type ==
                                                 "book" &&
-                                              !$state.userData?.isDoctor
+                                              $state.detailsDataApiRequest[
+                                                currentIndex
+                                              ].data.data.fromuserid ==
+                                                $state.userData.result.id
                                             );
                                           } catch (e) {
                                             if (
