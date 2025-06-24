@@ -6443,6 +6443,203 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                               $state.detailsDataApiRequest[
                                                 currentIndex
                                               ].data.transaction_type ==
+                                                "book" &&
+                                              !$state.userData?.isDoctor
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return true;
+                                            }
+                                            throw e;
+                                          }
+                                        })() ? (
+                                          <div
+                                            className={classNames(
+                                              projectcss.all,
+                                              sty.freeBox__s68Rn
+                                            )}
+                                          >
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                sty.freeBox__xqvX7
+                                              )}
+                                            >
+                                              <PlasmicLink__
+                                                className={classNames(
+                                                  projectcss.all,
+                                                  projectcss.a,
+                                                  sty.link__ht0H0
+                                                )}
+                                                component={Link}
+                                                href={(() => {
+                                                  try {
+                                                    return (
+                                                      "https://www.paziresh24.com/receipt/" +
+                                                      $state
+                                                        .detailsDataApiRequest[
+                                                        currentIndex
+                                                      ].data.data.metadata
+                                                        .center_id +
+                                                      "/" +
+                                                      $state
+                                                        .detailsDataApiRequest[
+                                                        currentIndex
+                                                      ].data.data.metadata
+                                                        .book_id +
+                                                      "/"
+                                                    );
+                                                  } catch (e) {
+                                                    if (
+                                                      e instanceof TypeError ||
+                                                      e?.plasmicType ===
+                                                        "PlasmicUndefinedDataError"
+                                                    ) {
+                                                      return undefined;
+                                                    }
+                                                    throw e;
+                                                  }
+                                                })()}
+                                                platform={"nextjs"}
+                                                target={"_blank"}
+                                              >
+                                                <Button2
+                                                  children2={
+                                                    "\u0642\u0628\u0636 \u0646\u0648\u0628\u062a"
+                                                  }
+                                                  className={classNames(
+                                                    "__wab_instance",
+                                                    sty.button__ciCdX
+                                                  )}
+                                                  color={"softBlue"}
+                                                  onClick={async event => {
+                                                    const $steps = {};
+
+                                                    $steps["updateUser"] = true
+                                                      ? (() => {
+                                                          const actionArgs = {
+                                                            variable: {
+                                                              objRoot: $state,
+                                                              variablePath: [
+                                                                "user"
+                                                              ]
+                                                            },
+                                                            operation: 0
+                                                          };
+                                                          return (({
+                                                            variable,
+                                                            value,
+                                                            startIndex,
+                                                            deleteCount
+                                                          }) => {
+                                                            if (!variable) {
+                                                              return;
+                                                            }
+                                                            const {
+                                                              objRoot,
+                                                              variablePath
+                                                            } = variable;
+
+                                                            $stateSet(
+                                                              objRoot,
+                                                              variablePath,
+                                                              value
+                                                            );
+                                                            return value;
+                                                          })?.apply(null, [
+                                                            actionArgs
+                                                          ]);
+                                                        })()
+                                                      : undefined;
+                                                    if (
+                                                      $steps["updateUser"] !=
+                                                        null &&
+                                                      typeof $steps[
+                                                        "updateUser"
+                                                      ] === "object" &&
+                                                      typeof $steps[
+                                                        "updateUser"
+                                                      ].then === "function"
+                                                    ) {
+                                                      $steps["updateUser"] =
+                                                        await $steps[
+                                                          "updateUser"
+                                                        ];
+                                                    }
+                                                  }}
+                                                  size={"compact"}
+                                                />
+                                              </PlasmicLink__>
+                                            </div>
+                                            <div
+                                              className={classNames(
+                                                projectcss.all,
+                                                sty.freeBox___6EQl
+                                              )}
+                                            >
+                                              <PlasmicLink__
+                                                className={classNames(
+                                                  projectcss.all,
+                                                  projectcss.a,
+                                                  sty.link__oE7Ki
+                                                )}
+                                                component={Link}
+                                                href={(() => {
+                                                  try {
+                                                    return (
+                                                      "https://www.paziresh24.com/invoice/" +
+                                                      $state
+                                                        .detailsDataApiRequest[
+                                                        currentIndex
+                                                      ].data.data.metadata
+                                                        .center_id +
+                                                      "/" +
+                                                      $state
+                                                        .detailsDataApiRequest[
+                                                        currentIndex
+                                                      ].data.data.metadata
+                                                        .book_id +
+                                                      "/"
+                                                    );
+                                                  } catch (e) {
+                                                    if (
+                                                      e instanceof TypeError ||
+                                                      e?.plasmicType ===
+                                                        "PlasmicUndefinedDataError"
+                                                    ) {
+                                                      return undefined;
+                                                    }
+                                                    throw e;
+                                                  }
+                                                })()}
+                                                platform={"nextjs"}
+                                                target={"_blank"}
+                                              >
+                                                <Button2
+                                                  children2={
+                                                    "\u0686\u0627\u067e \u0641\u0627\u06a9\u062a\u0648\u0631"
+                                                  }
+                                                  className={classNames(
+                                                    "__wab_instance",
+                                                    sty.button___0Pzzd
+                                                  )}
+                                                  color={"softBlue"}
+                                                  size={"compact"}
+                                                />
+                                              </PlasmicLink__>
+                                            </div>
+                                          </div>
+                                        ) : null}
+                                        {(() => {
+                                          try {
+                                            return (
+                                              $state.detailsDataApiRequest[
+                                                currentIndex
+                                              ].data.transaction_type ==
                                               "settlement"
                                             );
                                           } catch (e) {
