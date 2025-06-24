@@ -2843,8 +2843,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         try {
                                           return (
                                             "https://apigw.paziresh24.com/ganjname/v1/message" +
-                                            ($state.currentAccountAccount ==
-                                            "organization"
+                                            ($state.currentAccountType ==
+                                            "centerid"
                                               ? "?centerid=" +
                                                 $state.currentAccountId
                                               : "")
