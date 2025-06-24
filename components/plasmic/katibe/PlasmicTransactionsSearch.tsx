@@ -5311,9 +5311,22 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       sty.txtSettlementResult
                                     )}
                                   >
-                                    {
-                                      "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0634\u0645\u0627 \u062b\u0628\u062a \u0634\u062f \u0648 \u067e\u0633 \u0627\u0632 \u0627\u0646\u062c\u0627\u0645 \u0686\u0631\u062e\u0647 \u0628\u0627\u0646\u06a9\u06cc\u060c \u0628\u0647 \u062d\u0633\u0627\u0628\u200c\u062a\u0627\u0646 \u0648\u0627\u0631\u06cc\u0632 \u0645\u06cc\u200c\u0634\u0648\u062f."
-                                    }
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return $state.requestSettlementMessage;
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0634\u0645\u0627 \u062b\u0628\u062a \u0634\u062f \u0648 \u067e\u0633 \u0627\u0632 \u0627\u0646\u062c\u0627\u0645 \u0686\u0631\u062e\u0647 \u0628\u0627\u0646\u06a9\u06cc\u060c \u0628\u0647 \u062d\u0633\u0627\u0628\u200c\u062a\u0627\u0646 \u0648\u0627\u0631\u06cc\u0632 \u0645\u06cc\u200c\u0634\u0648\u062f.";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
                                   </div>
                                 ) : null}
                               </div>
