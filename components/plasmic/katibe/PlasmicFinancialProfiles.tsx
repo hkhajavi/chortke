@@ -1781,7 +1781,9 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                 <React.Fragment>
                                   {(() => {
                                     try {
-                                      return currentItem.ownername;
+                                      return currentItem.ownername
+                                        .replaceAll(",", "")
+                                        .replaceAll("  ", "");
                                     } catch (e) {
                                       if (
                                         e instanceof TypeError ||
@@ -2581,7 +2583,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           )}
                         >
                           {
-                            "\u0645\u062d\u062a\u0648\u0627\u06cc\u06cc \u062c\u0647\u062a \u0646\u0645\u0627\u06cc\u0634 \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f"
+                            "\u0644\u0637\u0641\u0627 \u06cc\u06a9 \u062d\u0633\u0627\u0628 \u062c\u062f\u06cc\u062f \u062b\u0628\u062a \u06a9\u0646\u06cc\u062f."
                           }
                         </div>
                       </div>
