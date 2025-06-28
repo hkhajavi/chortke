@@ -5490,21 +5490,44 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           throw e;
                         }
                       })() ? (
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.__wab_text,
-                            sty.link__vxpdT
-                          )}
-                          component={Link}
-                          href={"https://www.paziresh24.com/dashboard/profile/"}
-                          platform={"nextjs"}
-                        >
-                          {
+                        <Button
+                          children2={
                             "\u0648\u06cc\u0631\u0627\u06cc\u0634 \u0634\u0645\u0627\u0631\u0647 \u0645\u0644\u06cc \u0648 \u0645\u0648\u0628\u0627\u06cc\u0644"
                           }
-                        </PlasmicLink__>
+                          className={classNames(
+                            "__wab_instance",
+                            sty.button__abhsC
+                          )}
+                          color={"softBlue"}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["invokeGlobalAction"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    args: [
+                                      "https://www.paziresh24.com/dashboard/profile/"
+                                    ]
+                                  };
+                                  return $globalActions[
+                                    "Hamdast.openLink"
+                                  ]?.apply(null, [...actionArgs.args]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["invokeGlobalAction"] != null &&
+                              typeof $steps["invokeGlobalAction"] ===
+                                "object" &&
+                              typeof $steps["invokeGlobalAction"].then ===
+                                "function"
+                            ) {
+                              $steps["invokeGlobalAction"] = await $steps[
+                                "invokeGlobalAction"
+                              ];
+                            }
+                          }}
+                          size={"compact"}
+                        />
                       ) : null}
                     </div>
                     <SideEffect
