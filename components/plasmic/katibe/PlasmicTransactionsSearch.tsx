@@ -5421,7 +5421,12 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 "transfer-to-another-wallet"
                               ].hide &&
                               $state.reminderWallet > 0 &&
-                              false
+                              !$state.waiting &&
+                              (($state.currentAccountAccount ==
+                                "organization" &&
+                                $state.currentAccountType == "centerid") ||
+                                ($state.currentAccountAccount == "p24" &&
+                                  $state.currentAccountType == "userid"))
                             );
                           } catch (e) {
                             if (
