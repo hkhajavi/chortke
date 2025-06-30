@@ -5462,7 +5462,17 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         })() ? (
                           <Button2
                             children2={
-                              "\u0627\u0646\u062a\u0642\u0627\u0644 \u0648\u062c\u0640\u0640\u0647"
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text___7Ujb5
+                                )}
+                              >
+                                {
+                                  "\u0627\u0646\u062a\u0642\u0627\u0644 \u0648\u062c\u0640\u0640\u0647"
+                                }
+                              </div>
                             }
                             className={classNames(
                               "__wab_instance",
