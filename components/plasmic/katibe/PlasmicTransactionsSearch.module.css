@@ -1792,7 +1792,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .dialog:global(.__wab_instance):global(.__wab_instance) {
-    margin-top: 8px;
+    margin-top: 0px;
     width: 249px;
   }
 }
@@ -1804,6 +1804,7 @@
   .button__tt2JA:global(.__wab_instance) {
     margin-right: 0px;
     width: 100%;
+    margin-top: 8px;
     min-width: 0;
   }
 }
