@@ -91,11 +91,13 @@ export const PlasmicTransferToAnotherWallet__VariantProps =
 export type PlasmicTransferToAnotherWallet__ArgsType = {
   transferCenterid?: string;
   onTransferCenteridChange?: (val: string) => void;
+  onTransferedCountChange?: (val: string) => void;
 };
 type ArgPropType = keyof PlasmicTransferToAnotherWallet__ArgsType;
 export const PlasmicTransferToAnotherWallet__ArgProps = new Array<ArgPropType>(
   "transferCenterid",
-  "onTransferCenteridChange"
+  "onTransferCenteridChange",
+  "onTransferedCountChange"
 );
 
 export type PlasmicTransferToAnotherWallet__OverridesType = {
@@ -111,6 +113,7 @@ export type PlasmicTransferToAnotherWallet__OverridesType = {
 export interface DefaultTransferToAnotherWalletProps {
   transferCenterid?: string;
   onTransferCenteridChange?: (val: string) => void;
+  onTransferedCountChange?: (val: string) => void;
   className?: string;
 }
 
@@ -218,6 +221,14 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "transferedCount",
+        type: "readonly",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0,
+
+        onChangeProp: "onTransferedCountChange"
       }
     ],
     [$props, $ctx, $refs]
@@ -1078,6 +1089,43 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                     ) {
                       $steps["updateWaitingTransfer2"] = await $steps[
                         "updateWaitingTransfer2"
+                      ];
+                    }
+
+                    $steps["updateTransferedCount"] =
+                      $steps.transferConfirm.status == 200
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["transferedCount"]
+                              },
+                              operation: 2
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              const oldValue = $stateGet(objRoot, variablePath);
+                              $stateSet(objRoot, variablePath, oldValue + 1);
+                              return oldValue + 1;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                    if (
+                      $steps["updateTransferedCount"] != null &&
+                      typeof $steps["updateTransferedCount"] === "object" &&
+                      typeof $steps["updateTransferedCount"].then === "function"
+                    ) {
+                      $steps["updateTransferedCount"] = await $steps[
+                        "updateTransferedCount"
                       ];
                     }
                   }}

@@ -783,6 +783,12 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "transferToAnotherWallet.transferedCount",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -5368,6 +5374,22 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             generateStateOnChangeProp($state, [
                               "transferToAnotherWallet",
                               "transferCenterid"
+                            ]).apply(null, eventArgs);
+
+                            if (
+                              eventArgs.length > 1 &&
+                              eventArgs[1] &&
+                              eventArgs[1]._plasmic_state_init_
+                            ) {
+                              return;
+                            }
+                          }}
+                          onTransferedCountChange={async (
+                            ...eventArgs: any
+                          ) => {
+                            generateStateOnChangeProp($state, [
+                              "transferToAnotherWallet",
+                              "transferedCount"
                             ]).apply(null, eventArgs);
 
                             if (
