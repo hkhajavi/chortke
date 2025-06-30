@@ -1787,6 +1787,35 @@
     font-size: var(--token-5Ye_3XTSaP9X);
   }
 }
+.dialog:global(.__wab_instance):global(.__wab_instance) {
+  max-width: 100%;
+}
+.button__tt2JA:global(.__wab_instance) {
+  max-width: 100%;
+  margin-right: 8px;
+}
+.svg___0MVs9 {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.svg__q1Yh {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.text___690FN {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.transferToAnotherWallet:global(.__wab_instance) {
+  max-width: 100%;
+}
 .freeBox___2BtoD {
   display: flex;
   flex-direction: row;

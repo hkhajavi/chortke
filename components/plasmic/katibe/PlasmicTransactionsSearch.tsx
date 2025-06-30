@@ -67,6 +67,7 @@ import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/compone
 import Dialog2 from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
 import { TabContent } from "@plasmicpkgs/plasmic-tabs";
 import { AntdRadioGroup } from "@plasmicpkgs/antd5/skinny/registerRadio";
+import TransferToAnotherWallet from "../../TransferToAnotherWallet"; // plasmic-import: y7cY5QHMxpPK/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: hVBOtSJvmbc4/codeComponent
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
@@ -135,6 +136,8 @@ export type PlasmicTransactionsSearch__OverridesType = {
   txtCardBankName?: Flex__<typeof TextInput>;
   radioAccounts?: Flex__<typeof AntdRadioGroup>;
   txtSettlementResult?: Flex__<"div">;
+  dialog?: Flex__<typeof Dialog2>;
+  transferToAnotherWallet?: Flex__<typeof TransferToAnotherWallet>;
   gridInvoice13?: Flex__<"div">;
   gridInvoice12?: Flex__<"div">;
   dialogNewInvoiceDetails?: Flex__<typeof Dialog>;
@@ -752,6 +755,33 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
         type: "private",
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+      },
+      {
+        path: "dialog.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "transferToAnotherWallet.transferCenterid",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.currentAccountType == "centerid"
+                ? $state.currentAccountId
+                : "";
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -820,7 +850,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
       <div className={projectcss.plasmic_page_wrapper}>
         {(() => {
           try {
-            return true;
+            return !$ctx.GrowthBook.features["transfer-to-another-wallet"].hide;
           } catch (e) {
             if (
               e instanceof TypeError ||
@@ -5445,6 +5475,105 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         }
                         trigger={null}
                       />
+
+                      <Dialog2
+                        data-plasmic-name={"dialog"}
+                        data-plasmic-override={overrides.dialog}
+                        body={
+                          <TransferToAnotherWallet
+                            data-plasmic-name={"transferToAnotherWallet"}
+                            data-plasmic-override={
+                              overrides.transferToAnotherWallet
+                            }
+                            className={classNames(
+                              "__wab_instance",
+                              sty.transferToAnotherWallet
+                            )}
+                            onTransferCenteridChange={async (
+                              ...eventArgs: any
+                            ) => {
+                              generateStateOnChangeProp($state, [
+                                "transferToAnotherWallet",
+                                "transferCenterid"
+                              ]).apply(null, eventArgs);
+
+                              if (
+                                eventArgs.length > 1 &&
+                                eventArgs[1] &&
+                                eventArgs[1]._plasmic_state_init_
+                              ) {
+                                return;
+                              }
+                            }}
+                            transferCenterid={generateStateValueProp($state, [
+                              "transferToAnotherWallet",
+                              "transferCenterid"
+                            ])}
+                          />
+                        }
+                        className={classNames("__wab_instance", sty.dialog)}
+                        onOpenChange={async (...eventArgs: any) => {
+                          generateStateOnChangeProp($state, [
+                            "dialog",
+                            "open"
+                          ]).apply(null, eventArgs);
+
+                          if (
+                            eventArgs.length > 1 &&
+                            eventArgs[1] &&
+                            eventArgs[1]._plasmic_state_init_
+                          ) {
+                            return;
+                          }
+                        }}
+                        open={generateStateValueProp($state, [
+                          "dialog",
+                          "open"
+                        ])}
+                        title={
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text___690FN
+                            )}
+                          >
+                            {
+                              "\u0627\u0646\u062a\u0642\u0627\u0644 \u0648\u062c\u0647 \u0628\u0647 \u06a9\u0627\u0631\u0628\u0631 \u062f\u06cc\u06af\u0631"
+                            }
+                          </div>
+                        }
+                        trigger={
+                          (() => {
+                            try {
+                              return (
+                                !$ctx.GrowthBook.features[
+                                  "transfer-to-another-wallet"
+                                ].hide && $state.reminderWallet > 0
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return false;
+                              }
+                              throw e;
+                            }
+                          })() ? (
+                            <Button2
+                              children2={
+                                "\u0627\u0646\u062a\u0642\u0627\u0644 \u0648\u062c\u0640\u0640\u0647"
+                              }
+                              className={classNames(
+                                "__wab_instance",
+                                sty.button__tt2JA
+                              )}
+                              size={"compact"}
+                            />
+                          ) : null
+                        }
+                      />
                     </div>
                   ) : null}
                   {(() => {
@@ -9103,6 +9232,8 @@ const PlasmicDescendants = {
     "txtCardBankName",
     "radioAccounts",
     "txtSettlementResult",
+    "dialog",
+    "transferToAnotherWallet",
     "gridInvoice13",
     "gridInvoice12",
     "dialogNewInvoiceDetails",
@@ -9142,7 +9273,9 @@ const PlasmicDescendants = {
     "txtCardIban",
     "txtCardBankName",
     "radioAccounts",
-    "txtSettlementResult"
+    "txtSettlementResult",
+    "dialog",
+    "transferToAnotherWallet"
   ],
   txtRemainingText: ["txtRemainingText"],
   txtRemainingValue: ["txtRemainingValue"],
@@ -9187,6 +9320,8 @@ const PlasmicDescendants = {
   txtCardBankName: ["txtCardBankName"],
   radioAccounts: ["radioAccounts"],
   txtSettlementResult: ["txtSettlementResult"],
+  dialog: ["dialog", "transferToAnotherWallet"],
+  transferToAnotherWallet: ["transferToAnotherWallet"],
   gridInvoice13: ["gridInvoice13"],
   gridInvoice12: [
     "gridInvoice12",
@@ -9240,6 +9375,8 @@ type NodeDefaultElementType = {
   txtCardBankName: typeof TextInput;
   radioAccounts: typeof AntdRadioGroup;
   txtSettlementResult: "div";
+  dialog: typeof Dialog2;
+  transferToAnotherWallet: typeof TransferToAnotherWallet;
   gridInvoice13: "div";
   gridInvoice12: "div";
   dialogNewInvoiceDetails: typeof Dialog;
@@ -9340,6 +9477,8 @@ export const PlasmicTransactionsSearch = Object.assign(
     txtCardBankName: makeNodeComponent("txtCardBankName"),
     radioAccounts: makeNodeComponent("radioAccounts"),
     txtSettlementResult: makeNodeComponent("txtSettlementResult"),
+    dialog: makeNodeComponent("dialog"),
+    transferToAnotherWallet: makeNodeComponent("transferToAnotherWallet"),
     gridInvoice13: makeNodeComponent("gridInvoice13"),
     gridInvoice12: makeNodeComponent("gridInvoice12"),
     dialogNewInvoiceDetails: makeNodeComponent("dialogNewInvoiceDetails"),

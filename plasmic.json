@@ -813,6 +813,19 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/pay/[id]"
+        },
+        {
+          "id": "y7cY5QHMxpPK",
+          "name": "TransferToAnotherWallet",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/katibe/PlasmicTransferToAnotherWallet.tsx",
+          "importSpec": {
+            "modulePath": "TransferToAnotherWallet.tsx"
+          },
+          "cssFilePath": "plasmic/katibe/PlasmicTransferToAnotherWallet.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [

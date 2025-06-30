@@ -68,6 +68,8 @@
   left: auto;
   top: auto;
   background: #ffffff00;
+  text-align: right;
+  font-size: var(--token-5Ye_3XTSaP9X);
   min-width: 0;
   padding: 0px;
   border-width: 0px;
