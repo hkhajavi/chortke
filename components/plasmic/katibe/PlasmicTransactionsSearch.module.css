@@ -4259,6 +4259,10 @@
   max-width: 100%;
   object-fit: cover;
 }
+.growthBook:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
 .embedHtml:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
