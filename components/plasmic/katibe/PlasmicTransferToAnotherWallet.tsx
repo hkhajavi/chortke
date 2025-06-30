@@ -92,12 +92,14 @@ export type PlasmicTransferToAnotherWallet__ArgsType = {
   transferCenterid?: string;
   onTransferCenteridChange?: (val: string) => void;
   onTransferedCountChange?: (val: string) => void;
+  transferEvent?: () => void;
 };
 type ArgPropType = keyof PlasmicTransferToAnotherWallet__ArgsType;
 export const PlasmicTransferToAnotherWallet__ArgProps = new Array<ArgPropType>(
   "transferCenterid",
   "onTransferCenteridChange",
-  "onTransferedCountChange"
+  "onTransferedCountChange",
+  "transferEvent"
 );
 
 export type PlasmicTransferToAnotherWallet__OverridesType = {
@@ -114,6 +116,7 @@ export interface DefaultTransferToAnotherWalletProps {
   transferCenterid?: string;
   onTransferCenteridChange?: (val: string) => void;
   onTransferedCountChange?: (val: string) => void;
+  transferEvent?: () => void;
   className?: string;
 }
 
@@ -1092,40 +1095,24 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                       ];
                     }
 
-                    $steps["updateTransferedCount"] =
+                    $steps["runTransferEvent"] =
                       $steps.transferConfirm.status == 200
                         ? (() => {
                             const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["transferedCount"]
-                              },
-                              operation: 2
+                              eventRef: $props["transferEvent"]
                             };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              const oldValue = $stateGet(objRoot, variablePath);
-                              $stateSet(objRoot, variablePath, oldValue + 1);
-                              return oldValue + 1;
+                            return (({ eventRef, args }) => {
+                              return eventRef?.(...(args ?? []));
                             })?.apply(null, [actionArgs]);
                           })()
                         : undefined;
                     if (
-                      $steps["updateTransferedCount"] != null &&
-                      typeof $steps["updateTransferedCount"] === "object" &&
-                      typeof $steps["updateTransferedCount"].then === "function"
+                      $steps["runTransferEvent"] != null &&
+                      typeof $steps["runTransferEvent"] === "object" &&
+                      typeof $steps["runTransferEvent"].then === "function"
                     ) {
-                      $steps["updateTransferedCount"] = await $steps[
-                        "updateTransferedCount"
+                      $steps["runTransferEvent"] = await $steps[
+                        "runTransferEvent"
                       ];
                     }
                   }}

@@ -136,7 +136,7 @@ export type PlasmicTransactionsSearch__OverridesType = {
   txtCardBankName?: Flex__<typeof TextInput>;
   radioAccounts?: Flex__<typeof AntdRadioGroup>;
   txtSettlementResult?: Flex__<"div">;
-  dialog?: Flex__<typeof Dialog2>;
+  dialogTransfer?: Flex__<typeof Dialog2>;
   transferToAnotherWallet?: Flex__<typeof TransferToAnotherWallet>;
   gridInvoice13?: Flex__<"div">;
   gridInvoice12?: Flex__<"div">;
@@ -758,7 +758,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
       },
       {
-        path: "dialog.open",
+        path: "dialogTransfer.open",
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
@@ -5356,8 +5356,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     />
 
                     <Dialog2
-                      data-plasmic-name={"dialog"}
-                      data-plasmic-override={overrides.dialog}
+                      data-plasmic-name={"dialogTransfer"}
+                      data-plasmic-override={overrides.dialogTransfer}
                       body={
                         <TransferToAnotherWallet
                           data-plasmic-name={"transferToAnotherWallet"}
@@ -5404,12 +5404,86 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             "transferToAnotherWallet",
                             "transferCenterid"
                           ])}
+                          transferEvent={async () => {
+                            const $steps = {};
+
+                            $steps["closeDialog"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return ($state.dialogTransfer.open =
+                                        false);
+                                    }
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["closeDialog"] != null &&
+                              typeof $steps["closeDialog"] === "object" &&
+                              typeof $steps["closeDialog"].then === "function"
+                            ) {
+                              $steps["closeDialog"] = await $steps[
+                                "closeDialog"
+                              ];
+                            }
+
+                            $steps["updateFirstRequestCount"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["firstRequestCount"]
+                                    },
+                                    operation: 2
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    const oldValue = $stateGet(
+                                      objRoot,
+                                      variablePath
+                                    );
+                                    $stateSet(
+                                      objRoot,
+                                      variablePath,
+                                      oldValue + 1
+                                    );
+                                    return oldValue + 1;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateFirstRequestCount"] != null &&
+                              typeof $steps["updateFirstRequestCount"] ===
+                                "object" &&
+                              typeof $steps["updateFirstRequestCount"].then ===
+                                "function"
+                            ) {
+                              $steps["updateFirstRequestCount"] = await $steps[
+                                "updateFirstRequestCount"
+                              ];
+                            }
+                          }}
                         />
                       }
-                      className={classNames("__wab_instance", sty.dialog)}
+                      className={classNames(
+                        "__wab_instance",
+                        sty.dialogTransfer
+                      )}
                       onOpenChange={async (...eventArgs: any) => {
                         generateStateOnChangeProp($state, [
-                          "dialog",
+                          "dialogTransfer",
                           "open"
                         ]).apply(null, eventArgs);
 
@@ -5421,7 +5495,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                           return;
                         }
                       }}
-                      open={generateStateValueProp($state, ["dialog", "open"])}
+                      open={generateStateValueProp($state, [
+                        "dialogTransfer",
+                        "open"
+                      ])}
                       title={
                         <div
                           className={classNames(
@@ -8449,19 +8526,35 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
             data-plasmic-name={"sideEffectRefresh"}
             data-plasmic-override={overrides.sideEffectRefresh}
             className={classNames("__wab_instance", sty.sideEffectRefresh)}
-            deps={(() => {
-              try {
-                return [$state.firstRequestCount];
-              } catch (e) {
-                if (
-                  e instanceof TypeError ||
-                  e?.plasmicType === "PlasmicUndefinedDataError"
-                ) {
-                  return undefined;
-                }
-                throw e;
-              }
-            })()}
+            deps={
+              hasVariant(globalVariants, "screen", "mobileOnly")
+                ? (() => {
+                    try {
+                      return [$state.firstRequestCount];
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()
+                : (() => {
+                    try {
+                      return [$state.firstRequestCount];
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()
+            }
             onMount={async () => {
               const $steps = {};
 
@@ -9108,7 +9201,7 @@ const PlasmicDescendants = {
     "txtCardBankName",
     "radioAccounts",
     "txtSettlementResult",
-    "dialog",
+    "dialogTransfer",
     "transferToAnotherWallet",
     "gridInvoice13",
     "gridInvoice12",
@@ -9151,7 +9244,7 @@ const PlasmicDescendants = {
     "txtCardBankName",
     "radioAccounts",
     "txtSettlementResult",
-    "dialog",
+    "dialogTransfer",
     "transferToAnotherWallet"
   ],
   txtRemainingText: ["txtRemainingText"],
@@ -9197,7 +9290,7 @@ const PlasmicDescendants = {
   txtCardBankName: ["txtCardBankName"],
   radioAccounts: ["radioAccounts"],
   txtSettlementResult: ["txtSettlementResult"],
-  dialog: ["dialog", "transferToAnotherWallet"],
+  dialogTransfer: ["dialogTransfer", "transferToAnotherWallet"],
   transferToAnotherWallet: ["transferToAnotherWallet"],
   gridInvoice13: ["gridInvoice13"],
   gridInvoice12: [
@@ -9253,7 +9346,7 @@ type NodeDefaultElementType = {
   txtCardBankName: typeof TextInput;
   radioAccounts: typeof AntdRadioGroup;
   txtSettlementResult: "div";
-  dialog: typeof Dialog2;
+  dialogTransfer: typeof Dialog2;
   transferToAnotherWallet: typeof TransferToAnotherWallet;
   gridInvoice13: "div";
   gridInvoice12: "div";
@@ -9356,7 +9449,7 @@ export const PlasmicTransactionsSearch = Object.assign(
     txtCardBankName: makeNodeComponent("txtCardBankName"),
     radioAccounts: makeNodeComponent("radioAccounts"),
     txtSettlementResult: makeNodeComponent("txtSettlementResult"),
-    dialog: makeNodeComponent("dialog"),
+    dialogTransfer: makeNodeComponent("dialogTransfer"),
     transferToAnotherWallet: makeNodeComponent("transferToAnotherWallet"),
     gridInvoice13: makeNodeComponent("gridInvoice13"),
     gridInvoice12: makeNodeComponent("gridInvoice12"),
