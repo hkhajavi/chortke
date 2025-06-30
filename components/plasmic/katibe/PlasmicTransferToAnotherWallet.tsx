@@ -636,6 +636,45 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
               }
             />
           </div>
+          {(() => {
+            try {
+              return $state.transferMessage.length > 0;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return true;
+              }
+              throw e;
+            }
+          })() ? (
+            <div className={classNames(projectcss.all, sty.freeBox__yXoKs)}>
+              <div
+                className={classNames(
+                  projectcss.all,
+                  projectcss.__wab_text,
+                  sty.text__mHneo
+                )}
+              >
+                <React.Fragment>
+                  {(() => {
+                    try {
+                      return $state.transferMessage;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return "";
+                      }
+                      throw e;
+                    }
+                  })()}
+                </React.Fragment>
+              </div>
+            </div>
+          ) : null}
         </div>
       ) : null}
       {(() => {
@@ -755,45 +794,6 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
             }
           })() ? (
             <div className={classNames(projectcss.all, sty.freeBox__tIjIe)}>
-              {(() => {
-                try {
-                  return $state.transferMessage.length > 0;
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return true;
-                  }
-                  throw e;
-                }
-              })() ? (
-                <div className={classNames(projectcss.all, sty.freeBox__yXoKs)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__mHneo
-                    )}
-                  >
-                    <React.Fragment>
-                      {(() => {
-                        try {
-                          return $state.transferMessage;
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return "";
-                          }
-                          throw e;
-                        }
-                      })()}
-                    </React.Fragment>
-                  </div>
-                </div>
-              ) : null}
               <div className={classNames(projectcss.all, sty.freeBox__quMdf)}>
                 <Button
                   children2={
@@ -1107,7 +1107,7 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                         )}
                       >
                         {hasVariant(globalVariants, "screen", "mobileOnly")
-                          ? "\u062a\u0627\u06cc\u06cc\u062f \u0648 \u0627\u0646\u062a\u0642\u0627\u0644"
+                          ? "\u0628\u0627\u0632\u06af\u0634\u062a"
                           : "\u0628\u0627\u0632\u06af\u0634\u062a"}
                       </div>
                     }
