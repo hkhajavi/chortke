@@ -2116,7 +2116,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                         (() => {
                                                           try {
                                                             return (
-                                                              "https://apigw.paziresh24.com/financialaccount/v1/useraccounts?accountid=" +
+                                                              "https://apigw.paziresh24.com/financialaccount/v1/useraccounts-put?accountid=" +
                                                               currentItem.accountid
                                                             );
                                                           } catch (e) {
