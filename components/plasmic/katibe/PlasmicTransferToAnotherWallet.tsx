@@ -420,7 +420,10 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
           <div className={classNames(projectcss.all, sty.freeBox__gItPc)}>
             {(() => {
               try {
-                return $state.txtTransferPrice.value.length > 0;
+                return (
+                  $state.txtTransferPrice.value.length > 0 &&
+                  $state.txtTransferPrice.value != "0"
+                );
               } catch (e) {
                 if (
                   e instanceof TypeError ||
