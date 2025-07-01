@@ -2153,58 +2153,6 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                   await $steps["deleteRequest"];
                                               }
 
-                                              $steps["updateMessage"] = true
-                                                ? (() => {
-                                                    const actionArgs = {
-                                                      variable: {
-                                                        objRoot: $state,
-                                                        variablePath: [
-                                                          "message"
-                                                        ]
-                                                      },
-                                                      operation: 0,
-                                                      value:
-                                                        $steps.deleteRequest
-                                                          .data.message
-                                                    };
-                                                    return (({
-                                                      variable,
-                                                      value,
-                                                      startIndex,
-                                                      deleteCount
-                                                    }) => {
-                                                      if (!variable) {
-                                                        return;
-                                                      }
-                                                      const {
-                                                        objRoot,
-                                                        variablePath
-                                                      } = variable;
-
-                                                      $stateSet(
-                                                        objRoot,
-                                                        variablePath,
-                                                        value
-                                                      );
-                                                      return value;
-                                                    })?.apply(null, [
-                                                      actionArgs
-                                                    ]);
-                                                  })()
-                                                : undefined;
-                                              if (
-                                                $steps["updateMessage"] !=
-                                                  null &&
-                                                typeof $steps[
-                                                  "updateMessage"
-                                                ] === "object" &&
-                                                typeof $steps["updateMessage"]
-                                                  .then === "function"
-                                              ) {
-                                                $steps["updateMessage"] =
-                                                  await $steps["updateMessage"];
-                                              }
-
                                               $steps[
                                                 "updateWaitingUserAccount2"
                                               ] = true
@@ -2260,6 +2208,58 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                 ] = await $steps[
                                                   "updateWaitingUserAccount2"
                                                 ];
+                                              }
+
+                                              $steps["updateMessage"] = true
+                                                ? (() => {
+                                                    const actionArgs = {
+                                                      variable: {
+                                                        objRoot: $state,
+                                                        variablePath: [
+                                                          "message"
+                                                        ]
+                                                      },
+                                                      operation: 0,
+                                                      value:
+                                                        $steps.deleteRequest
+                                                          .data.message
+                                                    };
+                                                    return (({
+                                                      variable,
+                                                      value,
+                                                      startIndex,
+                                                      deleteCount
+                                                    }) => {
+                                                      if (!variable) {
+                                                        return;
+                                                      }
+                                                      const {
+                                                        objRoot,
+                                                        variablePath
+                                                      } = variable;
+
+                                                      $stateSet(
+                                                        objRoot,
+                                                        variablePath,
+                                                        value
+                                                      );
+                                                      return value;
+                                                    })?.apply(null, [
+                                                      actionArgs
+                                                    ]);
+                                                  })()
+                                                : undefined;
+                                              if (
+                                                $steps["updateMessage"] !=
+                                                  null &&
+                                                typeof $steps[
+                                                  "updateMessage"
+                                                ] === "object" &&
+                                                typeof $steps["updateMessage"]
+                                                  .then === "function"
+                                              ) {
+                                                $steps["updateMessage"] =
+                                                  await $steps["updateMessage"];
                                               }
 
                                               $steps["runCode"] =
@@ -2405,6 +2405,181 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                   await $steps[
                                                     "invokeGlobalAction3"
                                                   ];
+                                              }
+
+                                              $steps["updateCbAccountsValue"] =
+                                                true
+                                                  ? (() => {
+                                                      const actionArgs = {
+                                                        variable: {
+                                                          objRoot: $state,
+                                                          variablePath: [
+                                                            "cbAccounts",
+                                                            "value"
+                                                          ]
+                                                        },
+                                                        operation: 0
+                                                      };
+                                                      return (({
+                                                        variable,
+                                                        value,
+                                                        startIndex,
+                                                        deleteCount
+                                                      }) => {
+                                                        if (!variable) {
+                                                          return;
+                                                        }
+                                                        const {
+                                                          objRoot,
+                                                          variablePath
+                                                        } = variable;
+
+                                                        $stateSet(
+                                                          objRoot,
+                                                          variablePath,
+                                                          value
+                                                        );
+                                                        return value;
+                                                      })?.apply(null, [
+                                                        actionArgs
+                                                      ]);
+                                                    })()
+                                                  : undefined;
+                                              if (
+                                                $steps[
+                                                  "updateCbAccountsValue"
+                                                ] != null &&
+                                                typeof $steps[
+                                                  "updateCbAccountsValue"
+                                                ] === "object" &&
+                                                typeof $steps[
+                                                  "updateCbAccountsValue"
+                                                ].then === "function"
+                                              ) {
+                                                $steps[
+                                                  "updateCbAccountsValue"
+                                                ] = await $steps[
+                                                  "updateCbAccountsValue"
+                                                ];
+                                              }
+
+                                              $steps["refreshProfile"] =
+                                                $steps.deleteRequest.status ==
+                                                200
+                                                  ? (() => {
+                                                      const actionArgs = {
+                                                        variable: {
+                                                          objRoot: $state,
+                                                          variablePath: [
+                                                            "loadProfileCount"
+                                                          ]
+                                                        },
+                                                        operation: 2
+                                                      };
+                                                      return (({
+                                                        variable,
+                                                        value,
+                                                        startIndex,
+                                                        deleteCount
+                                                      }) => {
+                                                        if (!variable) {
+                                                          return;
+                                                        }
+                                                        const {
+                                                          objRoot,
+                                                          variablePath
+                                                        } = variable;
+
+                                                        const oldValue =
+                                                          $stateGet(
+                                                            objRoot,
+                                                            variablePath
+                                                          );
+                                                        $stateSet(
+                                                          objRoot,
+                                                          variablePath,
+                                                          oldValue + 1
+                                                        );
+                                                        return oldValue + 1;
+                                                      })?.apply(null, [
+                                                        actionArgs
+                                                      ]);
+                                                    })()
+                                                  : undefined;
+                                              if (
+                                                $steps["refreshProfile"] !=
+                                                  null &&
+                                                typeof $steps[
+                                                  "refreshProfile"
+                                                ] === "object" &&
+                                                typeof $steps["refreshProfile"]
+                                                  .then === "function"
+                                              ) {
+                                                $steps["refreshProfile"] =
+                                                  await $steps[
+                                                    "refreshProfile"
+                                                  ];
+                                              }
+
+                                              $steps[
+                                                "refreshRecuringSettlement"
+                                              ] = true
+                                                ? (() => {
+                                                    const actionArgs = {
+                                                      variable: {
+                                                        objRoot: $state,
+                                                        variablePath: [
+                                                          "recuringSetlementCount"
+                                                        ]
+                                                      },
+                                                      operation: 2
+                                                    };
+                                                    return (({
+                                                      variable,
+                                                      value,
+                                                      startIndex,
+                                                      deleteCount
+                                                    }) => {
+                                                      if (!variable) {
+                                                        return;
+                                                      }
+                                                      const {
+                                                        objRoot,
+                                                        variablePath
+                                                      } = variable;
+
+                                                      const oldValue =
+                                                        $stateGet(
+                                                          objRoot,
+                                                          variablePath
+                                                        );
+                                                      $stateSet(
+                                                        objRoot,
+                                                        variablePath,
+                                                        oldValue + 1
+                                                      );
+                                                      return oldValue + 1;
+                                                    })?.apply(null, [
+                                                      actionArgs
+                                                    ]);
+                                                  })()
+                                                : undefined;
+                                              if (
+                                                $steps[
+                                                  "refreshRecuringSettlement"
+                                                ] != null &&
+                                                typeof $steps[
+                                                  "refreshRecuringSettlement"
+                                                ] === "object" &&
+                                                typeof $steps[
+                                                  "refreshRecuringSettlement"
+                                                ].then === "function"
+                                              ) {
+                                                $steps[
+                                                  "refreshRecuringSettlement"
+                                                ] = await $steps[
+                                                  "refreshRecuringSettlement"
+                                                ];
                                               }
                                             }}
                                             size={"compact"}
@@ -2555,7 +2730,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                     : null}
                   {(() => {
                     try {
-                      return $state.useraccounts.length == 0;
+                      return (
+                        $state.useraccounts.length == 0 &&
+                        !$state.waitingUserAccount
+                      );
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
@@ -3602,6 +3780,63 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     }
 
                                                     $steps[
+                                                      "updateCbAccountsValue2"
+                                                    ] = true
+                                                      ? (() => {
+                                                          const actionArgs = {
+                                                            variable: {
+                                                              objRoot: $state,
+                                                              variablePath: [
+                                                                "waitingRegister"
+                                                              ]
+                                                            },
+                                                            operation: 0,
+                                                            value: false
+                                                          };
+                                                          return (({
+                                                            variable,
+                                                            value,
+                                                            startIndex,
+                                                            deleteCount
+                                                          }) => {
+                                                            if (!variable) {
+                                                              return;
+                                                            }
+                                                            const {
+                                                              objRoot,
+                                                              variablePath
+                                                            } = variable;
+
+                                                            $stateSet(
+                                                              objRoot,
+                                                              variablePath,
+                                                              value
+                                                            );
+                                                            return value;
+                                                          })?.apply(null, [
+                                                            actionArgs
+                                                          ]);
+                                                        })()
+                                                      : undefined;
+                                                    if (
+                                                      $steps[
+                                                        "updateCbAccountsValue2"
+                                                      ] != null &&
+                                                      typeof $steps[
+                                                        "updateCbAccountsValue2"
+                                                      ] === "object" &&
+                                                      typeof $steps[
+                                                        "updateCbAccountsValue2"
+                                                      ].then === "function"
+                                                    ) {
+                                                      $steps[
+                                                        "updateCbAccountsValue2"
+                                                      ] = await $steps[
+                                                        "updateCbAccountsValue2"
+                                                      ];
+                                                    }
+
+                                                    $steps[
                                                       "updateInsertAccountMessage2"
                                                     ] =
                                                       $steps.registerAccount
@@ -3717,63 +3952,6 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                         "updateCbAccountsValue"
                                                       ] = await $steps[
                                                         "updateCbAccountsValue"
-                                                      ];
-                                                    }
-
-                                                    $steps[
-                                                      "updateCbAccountsValue2"
-                                                    ] = true
-                                                      ? (() => {
-                                                          const actionArgs = {
-                                                            variable: {
-                                                              objRoot: $state,
-                                                              variablePath: [
-                                                                "waitingRegister"
-                                                              ]
-                                                            },
-                                                            operation: 0,
-                                                            value: false
-                                                          };
-                                                          return (({
-                                                            variable,
-                                                            value,
-                                                            startIndex,
-                                                            deleteCount
-                                                          }) => {
-                                                            if (!variable) {
-                                                              return;
-                                                            }
-                                                            const {
-                                                              objRoot,
-                                                              variablePath
-                                                            } = variable;
-
-                                                            $stateSet(
-                                                              objRoot,
-                                                              variablePath,
-                                                              value
-                                                            );
-                                                            return value;
-                                                          })?.apply(null, [
-                                                            actionArgs
-                                                          ]);
-                                                        })()
-                                                      : undefined;
-                                                    if (
-                                                      $steps[
-                                                        "updateCbAccountsValue2"
-                                                      ] != null &&
-                                                      typeof $steps[
-                                                        "updateCbAccountsValue2"
-                                                      ] === "object" &&
-                                                      typeof $steps[
-                                                        "updateCbAccountsValue2"
-                                                      ].then === "function"
-                                                    ) {
-                                                      $steps[
-                                                        "updateCbAccountsValue2"
-                                                      ] = await $steps[
-                                                        "updateCbAccountsValue2"
                                                       ];
                                                     }
 
@@ -6483,6 +6661,42 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               ];
                             }
 
+                            $steps["waitingFalse2"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["waitingSettlement"]
+                                    },
+                                    operation: 0,
+                                    value: false
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["waitingFalse2"] != null &&
+                              typeof $steps["waitingFalse2"] === "object" &&
+                              typeof $steps["waitingFalse2"].then === "function"
+                            ) {
+                              $steps["waitingFalse2"] = await $steps[
+                                "waitingFalse2"
+                              ];
+                            }
+
                             $steps["getMessage"] =
                               $steps.recurringSettlement.data.message !=
                               undefined
@@ -6595,42 +6809,6 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               typeof $steps["alertError"].then === "function"
                             ) {
                               $steps["alertError"] = await $steps["alertError"];
-                            }
-
-                            $steps["waitingFalse2"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["waitingSettlement"]
-                                    },
-                                    operation: 0,
-                                    value: false
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["waitingFalse2"] != null &&
-                              typeof $steps["waitingFalse2"] === "object" &&
-                              typeof $steps["waitingFalse2"].then === "function"
-                            ) {
-                              $steps["waitingFalse2"] = await $steps[
-                                "waitingFalse2"
-                              ];
                             }
 
                             $steps["updateRecuringSetlementCount"] =
@@ -7172,7 +7350,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
             onMount={async () => {
               const $steps = {};
 
-              $steps["updateWaiting"] = true
+              $steps["updateWaiting"] = false
                 ? (() => {
                     const actionArgs = {
                       variable: {
@@ -7199,6 +7377,37 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 typeof $steps["updateWaiting"].then === "function"
               ) {
                 $steps["updateWaiting"] = await $steps["updateWaiting"];
+              }
+
+              $steps["updateWaitingUserAccount"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["waitingUserAccount"]
+                      },
+                      operation: 0,
+                      value: true
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateWaitingUserAccount"] != null &&
+                typeof $steps["updateWaitingUserAccount"] === "object" &&
+                typeof $steps["updateWaitingUserAccount"].then === "function"
+              ) {
+                $steps["updateWaitingUserAccount"] = await $steps[
+                  "updateWaitingUserAccount"
+                ];
               }
 
               $steps["getUsers"] = true
@@ -7586,6 +7795,11 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                     const actionArgs = {
                       customFunction: async () => {
                         return (() => {
+                          $state.waiting = false;
+                          $state.waitingProfile = false;
+                          $state.waitingRegister = false;
+                          $state.waitingSettlement = false;
+                          $state.waitingUserAccount = false;
                           $state.useraccounts = [];
                           $state.cardInquiry = {};
                           $state.profile = {};
@@ -7777,7 +7991,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 ];
               }
 
-              $steps["updateWaitingSettlement"] = $state.completeLoad
+              $steps["updateWaitingSettlement"] = false
                 ? (() => {
                     const actionArgs = {
                       variable: {
@@ -8143,6 +8357,35 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 ];
               }
 
+              $steps["updateWaiting2"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["waitingSettlement"]
+                      },
+                      operation: 0,
+                      value: false
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateWaiting2"] != null &&
+                typeof $steps["updateWaiting2"] === "object" &&
+                typeof $steps["updateWaiting2"].then === "function"
+              ) {
+                $steps["updateWaiting2"] = await $steps["updateWaiting2"];
+              }
+
               $steps["updateRecurringSettlementList"] =
                 $steps.getRecurringSettlement.status == 200
                   ? (() => {
@@ -8179,35 +8422,6 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 $steps["updateRecurringSettlementList"] = await $steps[
                   "updateRecurringSettlementList"
                 ];
-              }
-
-              $steps["updateWaiting2"] = true
-                ? (() => {
-                    const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["waitingSettlement"]
-                      },
-                      operation: 0,
-                      value: false
-                    };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
-                      }
-                      const { objRoot, variablePath } = variable;
-
-                      $stateSet(objRoot, variablePath, value);
-                      return value;
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["updateWaiting2"] != null &&
-                typeof $steps["updateWaiting2"] === "object" &&
-                typeof $steps["updateWaiting2"].then === "function"
-              ) {
-                $steps["updateWaiting2"] = await $steps["updateWaiting2"];
               }
             }}
           />
