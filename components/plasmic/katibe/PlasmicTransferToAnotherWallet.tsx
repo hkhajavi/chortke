@@ -738,7 +738,7 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                   style={{ fontWeight: 700 }}
                 >
                   {
-                    "500 \u0645\u06cc\u0644\u06cc\u0648\u0646 \u0631\u06cc\u0627\u0644"
+                    "\u06cc\u06a9 \u0645\u06cc\u0644\u06cc\u0627\u0631\u062f \u0631\u06cc\u0627\u0644"
                   }
                 </span>
                 <React.Fragment>
