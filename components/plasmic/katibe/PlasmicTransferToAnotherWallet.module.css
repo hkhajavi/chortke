@@ -236,8 +236,15 @@
   height: auto;
   max-width: 100%;
   font-size: var(--token-5Ye_3XTSaP9X);
-  padding-bottom: 0px;
+  background: var(--token-DbGdjBpQ6R_X);
+  transition-property: all;
+  transition-duration: 1s;
   min-width: 0;
+  -webkit-transition-property: all;
+  -webkit-transition-duration: 1s;
+  border-radius: 5px;
+  padding: 8px;
+  border-width: 2px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__j9AWu {
