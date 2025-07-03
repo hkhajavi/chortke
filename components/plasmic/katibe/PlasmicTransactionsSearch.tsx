@@ -4638,7 +4638,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     {(() => {
                                       try {
                                         return (
-                                          $state.bankAccountList.length > 0
+                                          /*$state.bankAccountList.length>0*/
+                                          true
                                         );
                                       } catch (e) {
                                         if (
@@ -4709,7 +4710,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 </div>
                                 {(() => {
                                   try {
-                                    return $state.bankAccountList.length == 0;
+                                    return (
+                                      $state.bankAccountList.length == 0 &&
+                                      false
+                                    );
                                   } catch (e) {
                                     if (
                                       e instanceof TypeError ||
@@ -4883,40 +4887,39 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   onClick={async event => {
                                     const $steps = {};
 
-                                    $steps["updateWaitingSettlement3"] =
-                                      $state.bankAccountList.length == 0
-                                        ? (() => {
-                                            const actionArgs = {
-                                              variable: {
-                                                objRoot: $state,
-                                                variablePath: [
-                                                  "waitingSettlement"
-                                                ]
-                                              },
-                                              operation: 0,
-                                              value: true
-                                            };
-                                            return (({
-                                              variable,
-                                              value,
-                                              startIndex,
-                                              deleteCount
-                                            }) => {
-                                              if (!variable) {
-                                                return;
-                                              }
-                                              const { objRoot, variablePath } =
-                                                variable;
+                                    $steps["updateWaitingSettlement3"] = false
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: [
+                                                "waitingSettlement"
+                                              ]
+                                            },
+                                            operation: 0,
+                                            value: true
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
 
-                                              $stateSet(
-                                                objRoot,
-                                                variablePath,
-                                                value
-                                              );
-                                              return value;
-                                            })?.apply(null, [actionArgs]);
-                                          })()
-                                        : undefined;
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
                                     if (
                                       $steps["updateWaitingSettlement3"] !=
                                         null &&
@@ -4932,46 +4935,43 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         ];
                                     }
 
-                                    $steps["registerCardNumber"] =
-                                      $state.bankAccountList.length == 0
-                                        ? (() => {
-                                            const actionArgs = {
-                                              args: [
-                                                "POST",
-                                                "https://apigw.paziresh24.com/financialaccount/v1/useraccount",
-                                                undefined,
-                                                (() => {
-                                                  try {
-                                                    return {
-                                                      cardid:
-                                                        $state.txtCardNumber
-                                                          .value,
-                                                      centerid:
-                                                        $state.currentAccountType ==
-                                                        "centerid"
-                                                          ? $state.currentAccountId
-                                                          : ""
-                                                    };
-                                                  } catch (e) {
-                                                    if (
-                                                      e instanceof TypeError ||
-                                                      e?.plasmicType ===
-                                                        "PlasmicUndefinedDataError"
-                                                    ) {
-                                                      return undefined;
-                                                    }
-                                                    throw e;
+                                    $steps["registerCardNumber"] = false
+                                      ? (() => {
+                                          const actionArgs = {
+                                            args: [
+                                              "POST",
+                                              "https://apigw.paziresh24.com/financialaccount/v1/useraccount",
+                                              undefined,
+                                              (() => {
+                                                try {
+                                                  return {
+                                                    cardid:
+                                                      $state.txtCardNumber
+                                                        .value,
+                                                    centerid:
+                                                      $state.currentAccountType ==
+                                                      "centerid"
+                                                        ? $state.currentAccountId
+                                                        : ""
+                                                  };
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return undefined;
                                                   }
-                                                })()
-                                              ]
-                                            };
-                                            return $globalActions[
-                                              "Fragment.apiRequest"
-                                            ]?.apply(null, [
-                                              ...actionArgs.args
-                                            ]);
-                                          })()
-                                        : undefined;
+                                                  throw e;
+                                                }
+                                              })()
+                                            ]
+                                          };
+                                          return $globalActions[
+                                            "Fragment.apiRequest"
+                                          ]?.apply(null, [...actionArgs.args]);
+                                        })()
+                                      : undefined;
                                     if (
                                       $steps["registerCardNumber"] != null &&
                                       typeof $steps["registerCardNumber"] ===
@@ -4983,7 +4983,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         await $steps["registerCardNumber"];
                                     }
 
-                                    $steps["updateWaitingSettlement4"] = true
+                                    $steps["updateWaitingSettlement4"] = false
                                       ? (() => {
                                           const actionArgs = {
                                             variable: {
@@ -5031,9 +5031,30 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         ];
                                     }
 
+                                    $steps["toastSalam"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            args: [undefined, "salam"]
+                                          };
+                                          return $globalActions[
+                                            "Fragment.showToast"
+                                          ]?.apply(null, [...actionArgs.args]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["toastSalam"] != null &&
+                                      typeof $steps["toastSalam"] ===
+                                        "object" &&
+                                      typeof $steps["toastSalam"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["toastSalam"] = await $steps[
+                                        "toastSalam"
+                                      ];
+                                    }
+
                                     $steps["updateRequestSettlementMessage"] =
-                                      $steps.registerCardNumber.status != 200 &&
-                                      $state.bankAccountList.length == 0
+                                      false
                                         ? (() => {
                                             const actionArgs = {
                                               variable: {
@@ -5085,36 +5106,32 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         ];
                                     }
 
-                                    $steps["toastError"] =
-                                      $state.bankAccountList.length == 0 &&
-                                      $steps.registerCardNumber.status != 200
-                                        ? (() => {
-                                            const actionArgs = {
-                                              args: [
-                                                "error",
-                                                (() => {
-                                                  try {
-                                                    return $state.requestSettlementMessage;
-                                                  } catch (e) {
-                                                    if (
-                                                      e instanceof TypeError ||
-                                                      e?.plasmicType ===
-                                                        "PlasmicUndefinedDataError"
-                                                    ) {
-                                                      return undefined;
-                                                    }
-                                                    throw e;
+                                    $steps["toastError"] = false
+                                      ? (() => {
+                                          const actionArgs = {
+                                            args: [
+                                              "error",
+                                              (() => {
+                                                try {
+                                                  return $state.requestSettlementMessage;
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return undefined;
                                                   }
-                                                })()
-                                              ]
-                                            };
-                                            return $globalActions[
-                                              "Fragment.showToast"
-                                            ]?.apply(null, [
-                                              ...actionArgs.args
-                                            ]);
-                                          })()
-                                        : undefined;
+                                                  throw e;
+                                                }
+                                              })()
+                                            ]
+                                          };
+                                          return $globalActions[
+                                            "Fragment.showToast"
+                                          ]?.apply(null, [...actionArgs.args]);
+                                        })()
+                                      : undefined;
                                     if (
                                       $steps["toastError"] != null &&
                                       typeof $steps["toastError"] ===
@@ -5127,47 +5144,43 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       ];
                                     }
 
-                                    $steps["getUserAccounts"] =
-                                      $state.bankAccountList.length == 0 &&
-                                      $steps.registerCardNumber.status == 200
-                                        ? (() => {
-                                            const actionArgs = {
-                                              args: [
-                                                undefined,
-                                                (() => {
-                                                  try {
-                                                    return (() => {
-                                                      if (
-                                                        $state.currentAccountType ==
-                                                        "centerid"
-                                                      )
-                                                        return (
-                                                          "https://apigw.paziresh24.com/financialaccount/v1/useraccounts?centerid=" +
-                                                          $state.currentAccountId
-                                                        );
-                                                      else
-                                                        return "https://apigw.paziresh24.com/financialaccount/v1/useraccounts";
-                                                    })();
-                                                  } catch (e) {
+                                    $steps["getUserAccounts"] = false
+                                      ? (() => {
+                                          const actionArgs = {
+                                            args: [
+                                              undefined,
+                                              (() => {
+                                                try {
+                                                  return (() => {
                                                     if (
-                                                      e instanceof TypeError ||
-                                                      e?.plasmicType ===
-                                                        "PlasmicUndefinedDataError"
-                                                    ) {
-                                                      return undefined;
-                                                    }
-                                                    throw e;
+                                                      $state.currentAccountType ==
+                                                      "centerid"
+                                                    )
+                                                      return (
+                                                        "https://apigw.paziresh24.com/financialaccount/v1/useraccounts?centerid=" +
+                                                        $state.currentAccountId
+                                                      );
+                                                    else
+                                                      return "https://apigw.paziresh24.com/financialaccount/v1/useraccounts";
+                                                  })();
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return undefined;
                                                   }
-                                                })()
-                                              ]
-                                            };
-                                            return $globalActions[
-                                              "Fragment.apiRequest"
-                                            ]?.apply(null, [
-                                              ...actionArgs.args
-                                            ]);
-                                          })()
-                                        : undefined;
+                                                  throw e;
+                                                }
+                                              })()
+                                            ]
+                                          };
+                                          return $globalActions[
+                                            "Fragment.apiRequest"
+                                          ]?.apply(null, [...actionArgs.args]);
+                                        })()
+                                      : undefined;
                                     if (
                                       $steps["getUserAccounts"] != null &&
                                       typeof $steps["getUserAccounts"] ===
@@ -5180,42 +5193,38 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       ];
                                     }
 
-                                    $steps["updateBankAccountList"] =
-                                      $steps.getUserAccounts.status == 200 &&
-                                      $state.bankAccountList.length == 0
-                                        ? (() => {
-                                            const actionArgs = {
-                                              variable: {
-                                                objRoot: $state,
-                                                variablePath: [
-                                                  "bankAccountList"
-                                                ]
-                                              },
-                                              operation: 0,
-                                              value:
-                                                $steps.getUserAccounts.data.data
-                                            };
-                                            return (({
-                                              variable,
-                                              value,
-                                              startIndex,
-                                              deleteCount
-                                            }) => {
-                                              if (!variable) {
-                                                return;
-                                              }
-                                              const { objRoot, variablePath } =
-                                                variable;
+                                    $steps["updateBankAccountList"] = false
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: ["bankAccountList"]
+                                            },
+                                            operation: 0,
+                                            value:
+                                              $steps.getUserAccounts.data.data
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
 
-                                              $stateSet(
-                                                objRoot,
-                                                variablePath,
-                                                value
-                                              );
-                                              return value;
-                                            })?.apply(null, [actionArgs]);
-                                          })()
-                                        : undefined;
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
                                     if (
                                       $steps["updateBankAccountList"] != null &&
                                       typeof $steps["updateBankAccountList"] ===
@@ -5227,19 +5236,22 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         await $steps["updateBankAccountList"];
                                     }
 
-                                    $steps["alertSelectAccount"] = false
-                                      ? (() => {
-                                          const actionArgs = {
-                                            args: [
-                                              "error",
-                                              "\u0644\u0637\u0641\u0627 \u062d\u0633\u0627\u0628 \u0628\u0627\u0646\u06a9\u06cc \u062a\u0639\u0631\u06cc\u0641 \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062a\u0633\u0648\u06cc\u0647 \u062b\u0628\u062a \u0646\u0645\u0627\u06cc\u06cc\u062f."
-                                            ]
-                                          };
-                                          return $globalActions[
-                                            "Fragment.showToast"
-                                          ]?.apply(null, [...actionArgs.args]);
-                                        })()
-                                      : undefined;
+                                    $steps["alertSelectAccount"] =
+                                      $state.bankAccountList.length == 0
+                                        ? (() => {
+                                            const actionArgs = {
+                                              args: [
+                                                "error",
+                                                "\u0644\u0637\u0641\u0627 \u062d\u0633\u0627\u0628 \u0628\u0627\u0646\u06a9\u06cc \u062a\u0639\u0631\u06cc\u0641 \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062a\u0633\u0648\u06cc\u0647 \u062b\u0628\u062a \u0646\u0645\u0627\u06cc\u06cc\u062f."
+                                              ]
+                                            };
+                                            return $globalActions[
+                                              "Fragment.showToast"
+                                            ]?.apply(null, [
+                                              ...actionArgs.args
+                                            ]);
+                                          })()
+                                        : undefined;
                                     if (
                                       $steps["alertSelectAccount"] != null &&
                                       typeof $steps["alertSelectAccount"] ===
