@@ -5031,7 +5031,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         ];
                                     }
 
-                                    $steps["toastSalam"] = true
+                                    $steps["toastSalam"] = false
                                       ? (() => {
                                           const actionArgs = {
                                             args: [undefined, "salam"]
