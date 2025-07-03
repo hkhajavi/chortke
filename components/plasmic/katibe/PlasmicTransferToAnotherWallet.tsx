@@ -60,6 +60,7 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
+import Dialog from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
 import Button from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
@@ -76,6 +77,7 @@ import sty from "./PlasmicTransferToAnotherWallet.module.css"; // plasmic-import
 
 import SearchSvgIcon from "../chortke/icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
 import CheckSvgIcon from "../chortke/icons/PlasmicIcon__CheckSvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
+import Icon47Icon from "./icons/PlasmicIcon__Icon47"; // plasmic-import: MwxnRV3Jbx5Y/icon
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
 import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
 import Icon2Icon from "../chortke/icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
@@ -108,7 +110,7 @@ export type PlasmicTransferToAnotherWallet__OverridesType = {
   txtTransferPrice?: Flex__<typeof TextInput>;
   txtTitle?: Flex__<typeof TextInput>;
   txtTransferCode?: Flex__<typeof TextInput>;
-  svg?: Flex__<"svg">;
+  dialog?: Flex__<typeof Dialog>;
   sideEffect?: Flex__<typeof SideEffect>;
 };
 
@@ -232,6 +234,12 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => 0,
 
         onChangeProp: "onTransferedCountChange"
+      },
+      {
+        path: "dialog.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -406,6 +414,37 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                 ) {
                   return;
                 }
+
+                (async event => {
+                  const $steps = {};
+
+                  $steps["runCode"] = true
+                    ? (() => {
+                        const actionArgs = {
+                          customFunction: async () => {
+                            return (() => {
+                              if (
+                                parseInt($state.txtTransferPrice.value) >
+                                1000000000
+                              )
+                                return ($state.txtTransferPrice.value =
+                                  "1000000000");
+                            })();
+                          }
+                        };
+                        return (({ customFunction }) => {
+                          return customFunction();
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                  if (
+                    $steps["runCode"] != null &&
+                    typeof $steps["runCode"] === "object" &&
+                    typeof $steps["runCode"].then === "function"
+                  ) {
+                    $steps["runCode"] = await $steps["runCode"];
+                  }
+                }).apply(null, eventArgs);
               }}
               placeholder={
                 "\u0645\u0628\u0644\u063a - \u0631\u06cc\u0627\u0644"
@@ -723,88 +762,216 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
       })() ? (
         <div className={classNames(projectcss.all, sty.freeBox__yyv)}>
           <div className={classNames(projectcss.all, sty.freeBox__bEjdf)}>
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__j9AWu
-              )}
-            >
-              <React.Fragment>
-                <React.Fragment>
-                  {
-                    "*\u0633\u0642\u0641 \u0645\u0628\u0644\u063a \u0627\u0646\u062a\u0642\u0627\u0644 \u0648\u062c\u0647 \u062f\u0631 \u0647\u0631 \u0631\u0648\u0632 "
-                  }
-                </React.Fragment>
-                <span
-                  className={"plasmic_default__all plasmic_default__span"}
-                  style={{ fontWeight: 700 }}
+            <div className={classNames(projectcss.all, sty.freeBox__iIom)}>
+              <div className={classNames(projectcss.all, sty.freeBox__oOk1)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__j9AWu
+                  )}
                 >
-                  {
-                    "\u06cc\u06a9 \u0645\u06cc\u0644\u06cc\u0627\u0631\u062f \u0631\u06cc\u0627\u0644"
-                  }
-                </span>
-                <React.Fragment>
-                  {
-                    " \u0645\u06cc\u200c\u0628\u0627\u0634\u062f.\n*\u067e\u0633 \u0627\u0632 \u062a\u0623\u06cc\u06cc\u062f \u0627\u0646\u062a\u0642\u0627\u0644\u060c \u0645\u0628\u0644\u063a \u0645\u0646\u062a\u0642\u0644\u200c\u0634\u062f\u0647 "
-                  }
-                </React.Fragment>
-                <span
-                  className={"plasmic_default__all plasmic_default__span"}
-                  style={{ fontWeight: 700 }}
+                  <React.Fragment>
+                    <React.Fragment>
+                      {
+                        "*\u0633\u0642\u0641 \u0627\u0646\u062a\u0642\u0627\u0644 \u0648\u062c\u0647 \u062f\u0631 \u0647\u0631 \u0631\u0648\u0632 "
+                      }
+                    </React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {
+                        "\u06cc\u06a9 \u0645\u06cc\u0644\u06cc\u0627\u0631\u062f \u0631\u06cc\u0627\u0644"
+                      }
+                    </span>
+                    <React.Fragment>
+                      {
+                        " \u0645\u06cc\u200c\u0628\u0627\u0634\u062f.\n*\u067e\u0633 \u0627\u0632 \u062a\u0623\u06cc\u06cc\u062f \u0627\u0646\u062a\u0642\u0627\u0644\u060c \u0645\u0628\u0644\u063a \u0645\u0646\u062a\u0642\u0644\u200c\u0634\u062f\u0647 "
+                      }
+                    </React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {
+                        "\u0642\u0627\u0628\u0644 \u0628\u0627\u0632\u06af\u0634\u062a \u0646\u0645\u06cc\u200c\u0628\u0627\u0634\u062f"
+                      }
+                    </span>
+                    <React.Fragment>{".\n*"}</React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"\u067e\u0630\u06cc\u0631\u063424"}
+                    </span>
+                    <React.Fragment>
+                      {
+                        " \u0647\u06cc\u0686\u200c\u06af\u0648\u0646\u0647 \u0645\u0633\u0626\u0648\u0644\u06cc\u062a\u06cc \u062f\u0631 \u0642\u0628\u0627\u0644 \u0645\u0639\u0627\u0645\u0644\u0627\u062a \u0634\u062e\u0635\u06cc \u06cc\u0627 \u062a\u0648\u0627\u0641\u0642\u0627\u062a \u0634\u0645\u0627 \u0628\u0627 \u06a9\u0627\u0631\u0628\u0631 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0646\u062e\u0648\u0627\u0647\u062f \u062f\u0627\u0634\u062a.\n*"
+                      }
+                    </React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {
+                        "\u0627\u0645\u06a9\u0627\u0646 \u06af\u0632\u0627\u0631\u0634\u200c\u06af\u06cc\u0631\u06cc"
+                      }
+                    </span>
+                    <React.Fragment>
+                      {
+                        " \u0627\u0632 \u062a\u0631\u0627\u06a9\u0646\u0634\u200c \u0648\u0627\u0631\u06cc\u0632\u06cc \u0628\u0631\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0648\u062c\u0648\u062f \u062f\u0627\u0631\u062f.\n*\u0627\u06cc\u0646 \u0627\u0645\u06a9\u0627\u0646 \u062a\u0627\u0632\u0647 \u0631\u0627\u0647\u200c\u0627\u0646\u062f\u0627\u0632\u06cc \u0634\u062f\u0647 \u0648 \u062f\u0631 \u0645\u0631\u062d\u0644\u0647 \u062a\u0633\u062a \u0645\u06cc\u200c\u0628\u0627\u0634\u062f. \u0645\u0645\u06a9\u0646 \u0627\u0633\u062a \u062f\u0631 \u0622\u06cc\u0646\u062f\u0647 \u0628\u0627 "
+                      }
+                    </React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {
+                        "\u062a\u063a\u06cc\u06cc\u0631\u0627\u062a\u06cc \u0645\u0648\u0627\u062c\u0647 \u0634\u0648\u062f \u06cc\u0627 \u0628\u0631\u0648\u0632\u0631\u0633\u0627\u0646\u06cc \u06af\u0631\u062f\u062f"
+                      }
+                    </span>
+                    <React.Fragment>
+                      {".\n*\u062f\u0631\u06cc\u0627\u0641\u062a "}
+                    </React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {"\u06a9\u062f \u062a\u0623\u06cc\u06cc\u062f"}
+                    </span>
+                    <React.Fragment>
+                      {
+                        " \u0628\u0647 \u0645\u0646\u0632\u0644\u0647 \u067e\u0630\u06cc\u0631\u0634 \u0642\u0648\u0627\u0646\u06cc\u0646 \u0648 \u0645\u0642\u0631\u0631\u0627\u062a \u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4 \u0627\u0633\u062a."
+                      }
+                    </React.Fragment>
+                  </React.Fragment>
+                </div>
+              </div>
+              <div className={classNames(projectcss.all, sty.freeBox__d3ZKu)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__nwPe0
+                  )}
                 >
-                  {
-                    "\u0642\u0627\u0628\u0644 \u0628\u0627\u0632\u06af\u0634\u062a \u0646\u0645\u06cc\u200c\u0628\u0627\u0634\u062f"
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return $state.txtTransferPrice.value == "" ||
+                          (parseInt($state.txtTransferPrice.value) >= 0 &&
+                            parseInt($state.txtTransferPrice.value) <= 5000000)
+                          ? "*درخواست انتقال وجه شما شامل 10.000 ریال کارمزد می‌باشد."
+                          : parseInt($state.txtTransferPrice.value) > 5000000 &&
+                            parseInt($state.txtTransferPrice.value) <= 100000000
+                          ? "*درخواست انتقال وجه شما شامل 100.000 ریال کارمزد می‌باشد."
+                          : parseInt($state.txtTransferPrice.value) >
+                              100000000 &&
+                            parseInt($state.txtTransferPrice.value) <= 300000000
+                          ? "*درخواست انتقال وجه شما شامل 500.000 ریال کارمزد می‌باشد."
+                          : parseInt($state.txtTransferPrice.value) > 300000000
+                          ? "*درخواست انتقال وجه شما شامل 1000.000 ریال کارمزد می‌باشد."
+                          : "";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
+                </div>
+                <Dialog
+                  data-plasmic-name={"dialog"}
+                  data-plasmic-override={overrides.dialog}
+                  body={
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__ifEu2)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__hooZ
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__fCcHp
+                          )}
+                        >
+                          {
+                            "\u062a\u0627 5.000.000 \u0631\u06cc\u0627\u0644: 10.000 \u0631\u06cc\u0627\u0644"
+                          }
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___7HSVr
+                          )}
+                        >
+                          {
+                            "\u0627\u0632 5.000.000 \u062a\u0627 100.000.000 \u0631\u06cc\u0627\u0644: 100.000 \u0631\u06cc\u0627\u0644"
+                          }
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__dyLmt
+                          )}
+                        >
+                          {
+                            "\u0627\u0632 100.000.000 \u062a\u0627 300.000.000 \u0631\u06cc\u0627\u0644: 500.000 \u0631\u06cc\u0627\u0644"
+                          }
+                        </div>
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__bW7I
+                          )}
+                        >
+                          {
+                            "\u0627\u0632 300.000.000 \u062a\u0627 1000.000.000 \u0631\u06cc\u0627\u0644: 1.000.000 \u0631\u06cc\u0627\u0644"
+                          }
+                        </div>
+                      </div>
+                    </div>
                   }
-                </span>
-                <React.Fragment>{".\n*"}</React.Fragment>
-                <span
-                  className={"plasmic_default__all plasmic_default__span"}
-                  style={{ fontWeight: 700 }}
-                >
-                  {"\u067e\u0630\u06cc\u0631\u063424"}
-                </span>
-                <React.Fragment>
-                  {
-                    " \u0647\u06cc\u0686\u200c\u06af\u0648\u0646\u0647 \u0645\u0633\u0626\u0648\u0644\u06cc\u062a\u06cc \u062f\u0631 \u0642\u0628\u0627\u0644 \u0645\u0639\u0627\u0645\u0644\u0627\u062a \u0634\u062e\u0635\u06cc \u06cc\u0627 \u062a\u0648\u0627\u0641\u0642\u0627\u062a \u0634\u0645\u0627 \u0628\u0627 \u06a9\u0627\u0631\u0628\u0631 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0646\u062e\u0648\u0627\u0647\u062f \u062f\u0627\u0634\u062a.\n*"
+                  className={classNames("__wab_instance", sty.dialog)}
+                  onOpenChange={async (...eventArgs: any) => {
+                    generateStateOnChangeProp($state, ["dialog", "open"]).apply(
+                      null,
+                      eventArgs
+                    );
+
+                    if (
+                      eventArgs.length > 1 &&
+                      eventArgs[1] &&
+                      eventArgs[1]._plasmic_state_init_
+                    ) {
+                      return;
+                    }
+                  }}
+                  open={generateStateValueProp($state, ["dialog", "open"])}
+                  title={
+                    "\u06a9\u0627\u0631\u0645\u0632\u062f \u0627\u0646\u062a\u0642\u0627\u0644"
                   }
-                </React.Fragment>
-                <span
-                  className={"plasmic_default__all plasmic_default__span"}
-                  style={{ fontWeight: 700 }}
-                >
-                  {
-                    "\u0627\u0645\u06a9\u0627\u0646 \u06af\u0632\u0627\u0631\u0634\u200c\u06af\u06cc\u0631\u06cc"
+                  trigger={
+                    <Icon47Icon
+                      className={classNames(projectcss.all, sty.svg___5GyiH)}
+                      role={"img"}
+                    />
                   }
-                </span>
-                <React.Fragment>
-                  {
-                    " \u0627\u0632 \u062a\u0631\u0627\u06a9\u0646\u0634\u200c \u0648\u0627\u0631\u06cc\u0632\u06cc \u0628\u0631\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0648\u062c\u0648\u062f \u062f\u0627\u0631\u062f.\n*\u0627\u06cc\u0646 \u0627\u0645\u06a9\u0627\u0646 \u062f\u0631 \u0622\u06cc\u0646\u062f\u0647 \u0628\u0627 "
-                  }
-                </React.Fragment>
-                <span
-                  className={"plasmic_default__all plasmic_default__span"}
-                  style={{ fontWeight: 700 }}
-                >
-                  {"\u06a9\u0627\u0631\u0645\u0632\u062f"}
-                </span>
-                <React.Fragment>
-                  {
-                    " \u0647\u0645\u0631\u0627\u0647 \u062e\u0648\u0627\u0647\u062f \u0628\u0648\u062f.\n*\u062f\u0631\u06cc\u0627\u0641\u062a "
-                  }
-                </React.Fragment>
-                <span
-                  className={"plasmic_default__all plasmic_default__span"}
-                  style={{ fontWeight: 700 }}
-                >
-                  {"\u06a9\u062f \u062a\u0623\u06cc\u06cc\u062f"}
-                </span>
-                <React.Fragment>
-                  {
-                    " \u0628\u0647 \u0645\u0646\u0632\u0644\u0647 \u067e\u0630\u06cc\u0631\u0634 \u0642\u0648\u0627\u0646\u06cc\u0646 \u0648 \u0645\u0642\u0631\u0631\u0627\u062a \u067e\u0630\u06cc\u0631\u0634\u06f2\u06f4 \u0627\u0633\u062a."
-                  }
-                </React.Fragment>
-              </React.Fragment>
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -1579,9 +1746,7 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
             }
           })() ? (
             <Icon2Icon
-              data-plasmic-name={"svg"}
-              data-plasmic-override={overrides.svg}
-              className={classNames(projectcss.all, sty.svg)}
+              className={classNames(projectcss.all, sty.svg__rqrJz)}
               role={"img"}
             />
           ) : null}
@@ -1650,14 +1815,14 @@ const PlasmicDescendants = {
     "txtTransferPrice",
     "txtTitle",
     "txtTransferCode",
-    "svg",
+    "dialog",
     "sideEffect"
   ],
   txtTransferMobile: ["txtTransferMobile"],
   txtTransferPrice: ["txtTransferPrice"],
   txtTitle: ["txtTitle"],
   txtTransferCode: ["txtTransferCode"],
-  svg: ["svg"],
+  dialog: ["dialog"],
   sideEffect: ["sideEffect"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -1669,7 +1834,7 @@ type NodeDefaultElementType = {
   txtTransferPrice: typeof TextInput;
   txtTitle: typeof TextInput;
   txtTransferCode: typeof TextInput;
-  svg: "svg";
+  dialog: typeof Dialog;
   sideEffect: typeof SideEffect;
 };
 
@@ -1737,7 +1902,7 @@ export const PlasmicTransferToAnotherWallet = Object.assign(
     txtTransferPrice: makeNodeComponent("txtTransferPrice"),
     txtTitle: makeNodeComponent("txtTitle"),
     txtTransferCode: makeNodeComponent("txtTransferCode"),
-    svg: makeNodeComponent("svg"),
+    dialog: makeNodeComponent("dialog"),
     sideEffect: makeNodeComponent("sideEffect"),
 
     // Metadata about props expected for PlasmicTransferToAnotherWallet

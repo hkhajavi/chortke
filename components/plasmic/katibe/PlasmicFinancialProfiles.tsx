@@ -2407,62 +2407,6 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                   ];
                                               }
 
-                                              $steps["updateCbAccountsValue"] =
-                                                true
-                                                  ? (() => {
-                                                      const actionArgs = {
-                                                        variable: {
-                                                          objRoot: $state,
-                                                          variablePath: [
-                                                            "cbAccounts",
-                                                            "value"
-                                                          ]
-                                                        },
-                                                        operation: 0
-                                                      };
-                                                      return (({
-                                                        variable,
-                                                        value,
-                                                        startIndex,
-                                                        deleteCount
-                                                      }) => {
-                                                        if (!variable) {
-                                                          return;
-                                                        }
-                                                        const {
-                                                          objRoot,
-                                                          variablePath
-                                                        } = variable;
-
-                                                        $stateSet(
-                                                          objRoot,
-                                                          variablePath,
-                                                          value
-                                                        );
-                                                        return value;
-                                                      })?.apply(null, [
-                                                        actionArgs
-                                                      ]);
-                                                    })()
-                                                  : undefined;
-                                              if (
-                                                $steps[
-                                                  "updateCbAccountsValue"
-                                                ] != null &&
-                                                typeof $steps[
-                                                  "updateCbAccountsValue"
-                                                ] === "object" &&
-                                                typeof $steps[
-                                                  "updateCbAccountsValue"
-                                                ].then === "function"
-                                              ) {
-                                                $steps[
-                                                  "updateCbAccountsValue"
-                                                ] = await $steps[
-                                                  "updateCbAccountsValue"
-                                                ];
-                                              }
-
                                               $steps["refreshProfile"] =
                                                 $steps.deleteRequest.status ==
                                                 200
@@ -3202,6 +3146,38 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                 ]) ?? ""
                                               }
                                             />
+
+                                            {(() => {
+                                              try {
+                                                return (
+                                                  $state.txtCardNumber.value
+                                                    .length != 16 &&
+                                                  $state.txtCardNumber.value
+                                                    .length > 0
+                                                );
+                                              } catch (e) {
+                                                if (
+                                                  e instanceof TypeError ||
+                                                  e?.plasmicType ===
+                                                    "PlasmicUndefinedDataError"
+                                                ) {
+                                                  return true;
+                                                }
+                                                throw e;
+                                              }
+                                            })() ? (
+                                              <div
+                                                className={classNames(
+                                                  projectcss.all,
+                                                  projectcss.__wab_text,
+                                                  sty.text__zhA6H
+                                                )}
+                                              >
+                                                {
+                                                  "\u0644\u0637\u0641\u0627 \u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a \u0631\u0627 \u0628\u0647\u200c\u0635\u0648\u0631\u062a \u0635\u062d\u06cc\u062d \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."
+                                                }
+                                              </div>
+                                            ) : null}
                                           </div>
                                           {(() => {
                                             try {
