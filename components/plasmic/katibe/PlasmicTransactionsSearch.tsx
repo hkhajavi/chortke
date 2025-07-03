@@ -4868,10 +4868,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     try {
                                       return (
                                         $state.waitingSettlement ||
-                                        !$state.settlementActive ||
-                                        ($state.bankAccountList.length == 0 &&
-                                          $state.txtCardNumber.value.length !=
-                                            16)
+                                        !$state.settlementActive
+                                        /*||
+                                  ($state.bankAccountList.length==0 && $state.txtCardNumber.value.length != 16 )
+                                  */
                                       );
                                     } catch (e) {
                                       if (
