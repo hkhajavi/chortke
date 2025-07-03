@@ -1108,7 +1108,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__yCfYe {
-    font-size: var(--token-5Ye_3XTSaP9X);
+    font-size: var(--token-VrIY9r5RDQZ_);
   }
 }
 .freeBox__ebw {
@@ -1162,6 +1162,15 @@
   min-width: 0;
   padding: 8px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__um9GR {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    min-width: 0;
+    padding: 0px;
+  }
+}
 .freeBox__pyAb5 {
   display: flex;
   flex-direction: column;
@@ -1176,6 +1185,8 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__pyAb5 {
+    align-items: flex-start;
+    justify-content: center;
     padding: 0px;
   }
 }
@@ -1189,7 +1200,8 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__mbh1C {
-    font-size: var(--token-5Ye_3XTSaP9X);
+    font-size: var(--token-VrIY9r5RDQZ_);
+    white-space: pre;
   }
 }
 .freeBox__iSxgv {
@@ -1555,7 +1567,14 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox___0J2IS {
-    padding: 0px;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    min-width: 0;
+    padding: 5px;
   }
 }
 .freeBox__s5MKb {
@@ -1571,7 +1590,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__s5MKb {
     grid-template-columns: repeat(1, minmax(0, 1fr));
-    padding: 5px;
+    padding: 0px;
   }
 }
 .freeBox__hRemA {
@@ -1610,7 +1629,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .button__y0Pj8:global(.__wab_instance) {
-    margin-right: 0px;
+    margin-right: 8px;
   }
 }
 .svg___2RjTu {
