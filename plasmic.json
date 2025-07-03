@@ -826,6 +826,19 @@
           "cssFilePath": "plasmic/katibe/PlasmicTransferToAnotherWallet.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "E9Ce2L3VJnq0",
+          "name": "RegisterBankAccount",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/katibe/PlasmicRegisterBankAccount.tsx",
+          "importSpec": {
+            "modulePath": "RegisterBankAccount.tsx"
+          },
+          "cssFilePath": "plasmic/katibe/PlasmicRegisterBankAccount.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
