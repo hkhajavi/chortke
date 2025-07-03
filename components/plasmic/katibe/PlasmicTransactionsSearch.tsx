@@ -4949,7 +4949,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                       centerid:
                                                         $state.currentAccountType ==
                                                         "centerid"
-                                                          ? $state.currentCenterid
+                                                          ? $state.currentAccountId
                                                           : ""
                                                     };
                                                   } catch (e) {
