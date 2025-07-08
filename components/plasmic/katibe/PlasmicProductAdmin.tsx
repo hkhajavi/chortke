@@ -519,6 +519,12 @@ function PlasmicProductAdmin__RenderFunc(props: {
         path: "dialogAcceptInvoice[].open",
         type: "private",
         variableType: "boolean"
+      },
+      {
+        path: "apiMessage",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -3111,6 +3117,56 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         ];
                                       }
 
+                                      $steps["updateApiMessage"] =
+                                        $state.registerinvoiceUserid.length >
+                                          0 &&
+                                        $state.radioGroup.value != undefined &&
+                                        $state.radioGroup.value.length > 0
+                                          ? (() => {
+                                              const actionArgs = {
+                                                variable: {
+                                                  objRoot: $state,
+                                                  variablePath: ["apiMessage"]
+                                                },
+                                                operation: 0,
+                                                value:
+                                                  $steps.registerInvoiceApi.data
+                                                    .message
+                                              };
+                                              return (({
+                                                variable,
+                                                value,
+                                                startIndex,
+                                                deleteCount
+                                              }) => {
+                                                if (!variable) {
+                                                  return;
+                                                }
+                                                const {
+                                                  objRoot,
+                                                  variablePath
+                                                } = variable;
+
+                                                $stateSet(
+                                                  objRoot,
+                                                  variablePath,
+                                                  value
+                                                );
+                                                return value;
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                      if (
+                                        $steps["updateApiMessage"] != null &&
+                                        typeof $steps["updateApiMessage"] ===
+                                          "object" &&
+                                        typeof $steps["updateApiMessage"]
+                                          .then === "function"
+                                      ) {
+                                        $steps["updateApiMessage"] =
+                                          await $steps["updateApiMessage"];
+                                      }
+
                                       $steps["alertSucess"] =
                                         $steps.registerInvoiceApi.status ==
                                           200 &&
@@ -3149,7 +3205,21 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               const actionArgs = {
                                                 args: [
                                                   "error",
-                                                  "\u062e\u0637\u0627 \u062f\u0631 \u062b\u0628\u062a \u0635\u0648\u0631\u062a \u062d\u0633\u0627\u0628. \u0644\u0637\u0641\u0627 \u0645\u0642\u0627\u062f\u06cc\u0631 \u0648\u0627\u0631\u062f \u0634\u062f\u0647 \u0631\u0627 \u0628\u0631\u0631\u0633\u06cc \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                                                  (() => {
+                                                    try {
+                                                      return $state.apiMessage;
+                                                    } catch (e) {
+                                                      if (
+                                                        e instanceof
+                                                          TypeError ||
+                                                        e?.plasmicType ===
+                                                          "PlasmicUndefinedDataError"
+                                                      ) {
+                                                        return undefined;
+                                                      }
+                                                      throw e;
+                                                    }
+                                                  })()
                                                 ]
                                               };
                                               return $globalActions[
