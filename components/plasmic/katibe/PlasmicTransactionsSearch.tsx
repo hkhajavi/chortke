@@ -794,6 +794,12 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "recurringSettlement",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => []
       }
     ],
     [$props, $ctx, $refs]
@@ -3034,6 +3040,91 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                           ) {
                             $steps["updateBankAccountList"] = await $steps[
                               "updateBankAccountList"
+                            ];
+                          }
+
+                          $steps["getRecurringSettlement"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  args: [
+                                    undefined,
+                                    (() => {
+                                      try {
+                                        return (
+                                          "https://apigw.paziresh24.com/ganjname/v1/recurring-settlement/" +
+                                          ($state.currentAccountType ==
+                                          "centerid"
+                                            ? "?centerid=" +
+                                              $state.currentAccountId
+                                            : "")
+                                        );
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return undefined;
+                                        }
+                                        throw e;
+                                      }
+                                    })()
+                                  ]
+                                };
+                                return $globalActions[
+                                  "Fragment.apiRequest"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["getRecurringSettlement"] != null &&
+                            typeof $steps["getRecurringSettlement"] ===
+                              "object" &&
+                            typeof $steps["getRecurringSettlement"].then ===
+                              "function"
+                          ) {
+                            $steps["getRecurringSettlement"] = await $steps[
+                              "getRecurringSettlement"
+                            ];
+                          }
+
+                          $steps["updateRecurringSettlement"] =
+                            $steps.getRecurringSettlement.status == 200
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["recurringSettlement"]
+                                    },
+                                    operation: 0,
+                                    value:
+                                      $steps.getRecurringSettlement.data.data
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                          if (
+                            $steps["updateRecurringSettlement"] != null &&
+                            typeof $steps["updateRecurringSettlement"] ===
+                              "object" &&
+                            typeof $steps["updateRecurringSettlement"].then ===
+                              "function"
+                          ) {
+                            $steps["updateRecurringSettlement"] = await $steps[
+                              "updateRecurringSettlement"
                             ];
                           }
 
@@ -5728,6 +5819,82 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 </div>
                               ) : null}
                             </div>
+                            {(() => {
+                              try {
+                                return (
+                                  $state.userData.isDoctor &&
+                                  $state.recurringSettlement.length == 0
+                                );
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })() ? (
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__fsk0R
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__qtFsi
+                                  )}
+                                >
+                                  {hasVariant(
+                                    globalVariants,
+                                    "screen",
+                                    "mobileOnly"
+                                  )
+                                    ? "\u0628\u0627 \u0641\u0639\u0627\u0644\u200c\u0633\u0627\u0632\u06cc \u0627\u0645\u06a9\u0627\u0646 \u062a\u0633\u0648\u06cc\u0647\u200c\u062d\u0633\u0627\u0628 \u062e\u0648\u062f\u06a9\u0627\u0631\u060c \u0647\u0631 \u0631\u0648\u0632 \u0635\u0628\u062d \u0628\u0647\u200c\u0635\u0648\u0631\u062a \u062e\u0648\u062f\u06a9\u0627\u0631 \u0645\u0648\u062c\u0648\u062f\u06cc \u0634\u0645\u0627 \u0628\u0647 \u062d\u0633\u0627\u0628\u062a\u0627\u0646 \u0648\u0627\u0631\u06cc\u0632 \u062e\u0648\u0627\u0647\u062f \u0634\u062f."
+                                    : "\u0628\u0627 \u0641\u0639\u0627\u0644\u200c\u0633\u0627\u0632\u06cc \u0627\u0645\u06a9\u0627\u0646 \u062a\u0633\u0648\u06cc\u0647 \u062d\u0633\u0627\u0628 \u062e\u0648\u062f\u06a9\u0627\u0631\u060c \u0647\u0631 \u0631\u0648\u0632 \u0635\u0628\u062d \u0628\u0647\u200c\u0635\u0648\u0631\u062a \u062e\u0648\u062f\u06a9\u0627\u0631 \u0645\u0648\u062c\u0648\u062f\u06cc  \u0634\u0645\u0627 \u0628\u0647 \u062d\u0633\u0627\u0628 \u0628\u0627\u0646\u06a9\u06cc\u200c\u062a\u0627\u0646 \u0648\u0627\u0631\u06cc\u0632 \u062e\u0648\u0627\u0647\u062f \u0634\u062f!"}
+                                </div>
+                                <Button2
+                                  children2={
+                                    "\u0641\u0639\u0627\u0644 \u0633\u0627\u0632\u06cc \u062a\u0633\u0648\u06cc\u0647 \u062d\u0633\u0627\u0628 \u062e\u0648\u062f\u06a9\u0627\u0631"
+                                  }
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.button__iXuW8
+                                  )}
+                                  color={"softBlue"}
+                                  onClick={async event => {
+                                    const $steps = {};
+
+                                    $steps["invokeGlobalAction"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            args: [
+                                              "https://www.paziresh24.com/dashboard/apps/katibe/setting/"
+                                            ]
+                                          };
+                                          return $globalActions[
+                                            "Hamdast.openLink"
+                                          ]?.apply(null, [...actionArgs.args]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["invokeGlobalAction"] != null &&
+                                      typeof $steps["invokeGlobalAction"] ===
+                                        "object" &&
+                                      typeof $steps["invokeGlobalAction"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["invokeGlobalAction"] =
+                                        await $steps["invokeGlobalAction"];
+                                    }
+                                  }}
+                                  size={"compact"}
+                                />
+                              </div>
+                            ) : null}
                           </div>
                           {(() => {
                             try {
@@ -9054,6 +9221,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         return (() => {
                           $state.waiting = true;
                           $state.centerInfo = {};
+                          $state.recurringSettlement = [];
                           if ($state.updatewallet) {
                             $state.txtReminderTextValue = "";
                             $state.reminderWallet = 0;
