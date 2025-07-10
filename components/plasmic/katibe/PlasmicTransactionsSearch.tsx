@@ -5823,7 +5823,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               try {
                                 return (
                                   $state.userData.isDoctor &&
-                                  $state.recurringSettlement.length == 0
+                                  $state.recurringSettlement.length == 0 &&
+                                  $state.btnRegisterSettlementShow
                                 );
                               } catch (e) {
                                 if (
