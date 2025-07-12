@@ -1730,7 +1730,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__w6Eu {
-    font-size: var(--token-VrIY9r5RDQZ_);
+    font-size: var(--token-5Ye_3XTSaP9X);
   }
 }
 .svg__c0Tc {
@@ -1789,6 +1789,10 @@
   object-fit: cover;
   width: auto;
   height: 1em;
+}
+.text___5MXq {
+  font-weight: 700;
+  font-size: var(--token-VrIY9r5RDQZ_);
 }
 .svg__qkqvb {
   position: relative;
