@@ -1146,6 +1146,11 @@
           "id": "72UEWeMBzzpH",
           "name": "Icon51Icon",
           "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon51.tsx"
+        },
+        {
+          "id": "fl1ZOZIHaI_u",
+          "name": "Icon52Icon",
+          "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon52.tsx"
         }
       ],
       "images": [
@@ -1358,6 +1363,11 @@
           "id": "gE2fpHubSnTi",
           "name": "sign.png",
           "filePath": "../public/plasmic/katibe/images/signPng.png"
+        },
+        {
+          "id": "YsphnS4rqujI",
+          "name": "image 41",
+          "filePath": "../public/plasmic/katibe/images/image41.svg"
         }
       ],
       "indirect": false,

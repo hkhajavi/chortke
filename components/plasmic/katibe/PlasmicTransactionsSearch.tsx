@@ -62,9 +62,10 @@ import {
 import Button from "../../Button"; // plasmic-import: 0wu_ZE1f8SuT/component
 import Select from "../../Select"; // plasmic-import: 7wkEfmUYAcMf/component
 import Button2 from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
-import Dialog from "../../Dialog"; // plasmic-import: nYtkLnbqtkXY/component
+import Dialog from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
+import { DatePicker } from "@/fragment/components/date-picker"; // plasmic-import: BigXM4fJwC8U/codeComponent
+import Dialog2 from "../../Dialog"; // plasmic-import: nYtkLnbqtkXY/component
 import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
-import Dialog2 from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
 import { TabContent } from "@plasmicpkgs/plasmic-tabs";
 import TransferToAnotherWallet from "../../TransferToAnotherWallet"; // plasmic-import: y7cY5QHMxpPK/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: hVBOtSJvmbc4/codeComponent
@@ -86,6 +87,7 @@ import Icon11Icon from "../chortke/icons/PlasmicIcon__Icon11"; // plasmic-import
 import Icon6Icon from "../chortke/icons/PlasmicIcon__Icon6"; // plasmic-import: 7-KwYGGksEHB/icon
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
 import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
+import Icon52Icon from "./icons/PlasmicIcon__Icon52"; // plasmic-import: fl1ZOZIHaI_u/icon
 import SearchSvgIcon from "../chortke/icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
 import CheckSvgIcon from "../chortke/icons/PlasmicIcon__CheckSvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
 import Icon2Icon from "../chortke/icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
@@ -115,31 +117,33 @@ export type PlasmicTransactionsSearch__OverridesType = {
   cbAccounts?: Flex__<typeof Select>;
   btnFilter?: Flex__<typeof Button2>;
   btnFilterClear?: Flex__<typeof Button2>;
+  dialogFilterDate?: Flex__<typeof Dialog>;
+  datePicker?: Flex__<typeof DatePicker>;
   gridInvoice1?: Flex__<"div">;
   txtRemainingText?: Flex__<"div">;
   txtRemainingValue?: Flex__<"div">;
-  dialogIncreaseRemaining?: Flex__<typeof Dialog>;
+  dialogIncreaseRemaining?: Flex__<typeof Dialog2>;
   btnPay?: Flex__<typeof Button>;
   gridSelectprice?: Flex__<"div">;
   btnSelectAmount?: Flex__<typeof Button>;
   gridMyAmount?: Flex__<"div">;
   txtNewPaymentAmount?: Flex__<typeof TextInput>;
   btnSettlement?: Flex__<typeof Button2>;
-  dialogSettlement?: Flex__<typeof Dialog2>;
+  dialogSettlement?: Flex__<typeof Dialog>;
   tabContent?: Flex__<typeof TabContent>;
   txtSettlemenAmount?: Flex__<typeof TextInput>;
-  dialogRegisterAccount?: Flex__<typeof Dialog2>;
+  dialogRegisterAccount?: Flex__<typeof Dialog>;
   txtCardId?: Flex__<typeof TextInput>;
   txtCardOwner?: Flex__<typeof TextInput>;
   txtCardIban?: Flex__<typeof TextInput>;
   txtCardBankName?: Flex__<typeof TextInput>;
   txtCardNumber?: Flex__<typeof TextInput>;
   txtSettlementResult?: Flex__<"div">;
-  dialogTransfer?: Flex__<typeof Dialog2>;
+  dialogTransfer?: Flex__<typeof Dialog>;
   transferToAnotherWallet?: Flex__<typeof TransferToAnotherWallet>;
   gridInvoice13?: Flex__<"div">;
   gridInvoice12?: Flex__<"div">;
-  dialogNewInvoiceDetails?: Flex__<typeof Dialog>;
+  dialogNewInvoiceDetails?: Flex__<typeof Dialog2>;
   detailsDataApiRequest?: Flex__<typeof ApiRequest>;
   waitingIcon3?: Flex__<"svg">;
   gridNoData2?: Flex__<"div">;
@@ -800,6 +804,24 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
         type: "private",
         variableType: "array",
         initFunc: ({ $props, $state, $queries, $ctx }) => []
+      },
+      {
+        path: "dialogFilterDate.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "datePicker.value",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "datePicker.values",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => []
       }
     ],
     [$props, $ctx, $refs]
@@ -1398,7 +1420,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                   >
                     {(() => {
                       try {
-                        return $state.bookDate == "";
+                        return $state.bookDate == "" && false;
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
@@ -1501,7 +1523,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     ) : null}
                     {(() => {
                       try {
-                        return $state.bookDate != "";
+                        return $state.bookDate != "" && false;
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
@@ -1605,6 +1627,436 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         size={"compact"}
                       />
                     ) : null}
+                    <Dialog
+                      data-plasmic-name={"dialogFilterDate"}
+                      data-plasmic-override={overrides.dialogFilterDate}
+                      body={
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox__zilth
+                          )}
+                        >
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__wvlQ
+                            )}
+                          >
+                            <DatePicker
+                              data-plasmic-name={"datePicker"}
+                              data-plasmic-override={overrides.datePicker}
+                              className={classNames(
+                                "__wab_instance",
+                                sty.datePicker
+                              )}
+                              holidays={[]}
+                              locale={"fa"}
+                              mode={"single"}
+                              onChange={async (...eventArgs: any) => {
+                                generateStateOnChangeProp($state, [
+                                  "datePicker",
+                                  "value"
+                                ]).apply(null, eventArgs);
+                                generateStateOnChangeProp($state, [
+                                  "datePicker",
+                                  "values"
+                                ]).apply(null, eventArgs);
+
+                                (async date => {
+                                  const $steps = {};
+
+                                  $steps["updateBookDate"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: ["bookDate"]
+                                          },
+                                          operation: 0,
+                                          value: (() => {
+                                            function convertTimestampToDate(
+                                              unixTimestamp
+                                            ) {
+                                              const date = new Date(
+                                                unixTimestamp * 1000
+                                              );
+                                              const year =
+                                                date.getUTCFullYear();
+                                              const month = String(
+                                                date.getUTCMonth() + 1
+                                              ).padStart(2, "0");
+                                              const day = String(
+                                                date.getUTCDate()
+                                              ).padStart(2, "0");
+                                              const hours = String(
+                                                date.getUTCHours()
+                                              ).padStart(2, "0");
+                                              const minutes = String(
+                                                date.getUTCMinutes()
+                                              ).padStart(2, "0");
+                                              const seconds = String(
+                                                date.getUTCSeconds()
+                                              ).padStart(2, "0");
+                                              return `${year}-${month}-${day}`;
+                                            }
+                                            return convertTimestampToDate(
+                                              $state.datePicker.value
+                                            );
+                                          })()
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["updateBookDate"] != null &&
+                                    typeof $steps["updateBookDate"] ===
+                                      "object" &&
+                                    typeof $steps["updateBookDate"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["updateBookDate"] = await $steps[
+                                      "updateBookDate"
+                                    ];
+                                  }
+
+                                  $steps["runCode"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          customFunction: async () => {
+                                            return ($state.dialogFilterDate.open =
+                                              false);
+                                          }
+                                        };
+                                        return (({ customFunction }) => {
+                                          return customFunction();
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["runCode"] != null &&
+                                    typeof $steps["runCode"] === "object" &&
+                                    typeof $steps["runCode"].then === "function"
+                                  ) {
+                                    $steps["runCode"] = await $steps["runCode"];
+                                  }
+
+                                  $steps["updateFirstRequestCount"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: ["firstRequestCount"]
+                                          },
+                                          operation: 2
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          const oldValue = $stateGet(
+                                            objRoot,
+                                            variablePath
+                                          );
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            oldValue + 1
+                                          );
+                                          return oldValue + 1;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["updateFirstRequestCount"] != null &&
+                                    typeof $steps["updateFirstRequestCount"] ===
+                                      "object" &&
+                                    typeof $steps["updateFirstRequestCount"]
+                                      .then === "function"
+                                  ) {
+                                    $steps["updateFirstRequestCount"] =
+                                      await $steps["updateFirstRequestCount"];
+                                  }
+                                }).apply(null, eventArgs);
+                              }}
+                              value={generateStateValueProp($state, [
+                                "datePicker",
+                                "value"
+                              ])}
+                              values={generateStateValueProp($state, [
+                                "datePicker",
+                                "values"
+                              ])}
+                            />
+                          </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__m1NbQ
+                            )}
+                          >
+                            {(() => {
+                              try {
+                                return $state.bookDate.toString().length > 0;
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })() ? (
+                              <Button2
+                                children2={
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__ut8L
+                                    )}
+                                  >
+                                    {
+                                      "\u0646\u0645\u0627\u06cc\u0634 \u0647\u0645\u0647"
+                                    }
+                                  </div>
+                                }
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.button__kWlYn
+                                )}
+                                color={"softSand"}
+                                onClick={async event => {
+                                  const $steps = {};
+
+                                  $steps["updateBookDate"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: ["bookDate"]
+                                          },
+                                          operation: 0,
+                                          value: ""
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["updateBookDate"] != null &&
+                                    typeof $steps["updateBookDate"] ===
+                                      "object" &&
+                                    typeof $steps["updateBookDate"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["updateBookDate"] = await $steps[
+                                      "updateBookDate"
+                                    ];
+                                  }
+
+                                  $steps["runCode"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          customFunction: async () => {
+                                            return (() => {
+                                              return ($state.dialogFilterDate.open =
+                                                false);
+                                            })();
+                                          }
+                                        };
+                                        return (({ customFunction }) => {
+                                          return customFunction();
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["runCode"] != null &&
+                                    typeof $steps["runCode"] === "object" &&
+                                    typeof $steps["runCode"].then === "function"
+                                  ) {
+                                    $steps["runCode"] = await $steps["runCode"];
+                                  }
+
+                                  $steps["updateFirstRequestCount"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: ["firstRequestCount"]
+                                          },
+                                          operation: 2
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          const oldValue = $stateGet(
+                                            objRoot,
+                                            variablePath
+                                          );
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            oldValue + 1
+                                          );
+                                          return oldValue + 1;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["updateFirstRequestCount"] != null &&
+                                    typeof $steps["updateFirstRequestCount"] ===
+                                      "object" &&
+                                    typeof $steps["updateFirstRequestCount"]
+                                      .then === "function"
+                                  ) {
+                                    $steps["updateFirstRequestCount"] =
+                                      await $steps["updateFirstRequestCount"];
+                                  }
+                                }}
+                                size={"compact"}
+                              />
+                            ) : null}
+                          </div>
+                        </div>
+                      }
+                      className={classNames(
+                        "__wab_instance",
+                        sty.dialogFilterDate
+                      )}
+                      onOpenChange={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "dialogFilterDate",
+                          "open"
+                        ]).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
+                        }
+                      }}
+                      open={generateStateValueProp($state, [
+                        "dialogFilterDate",
+                        "open"
+                      ])}
+                      title={
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__sCnav
+                          )}
+                        >
+                          {
+                            "\u0641\u06cc\u0644\u062a\u0631 \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627 \u0628\u0631 \u0627\u0633\u0627\u0633 \u062a\u0627\u0631\u06cc\u062e \u0646\u0648\u0628\u062a:"
+                          }
+                        </div>
+                      }
+                      trigger={
+                        <React.Fragment>
+                          <Icon52Icon
+                            className={classNames(
+                              projectcss.all,
+                              sty.svg___0U5Lk
+                            )}
+                            role={"img"}
+                          />
+
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__eGsUa
+                            )}
+                          >
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return $state.bookDate.length > 0
+                                    ? "" +
+                                        (() => {
+                                          const gregorianDate = new Date(
+                                            $state.bookDate
+                                          );
+                                          const persianDate =
+                                            new Intl.DateTimeFormat(
+                                              "fa-IR"
+                                            ).format(gregorianDate);
+                                          return persianDate;
+                                        })()
+                                    : "";
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          </div>
+                        </React.Fragment>
+                      }
+                    />
                   </div>
                 ) : null}
               </div>
@@ -1747,7 +2199,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         )}
                       </div>
                     ) : null}
-                    <Dialog
+                    <Dialog2
                       data-plasmic-name={"dialogIncreaseRemaining"}
                       data-plasmic-override={overrides.dialogIncreaseRemaining}
                       body={
@@ -3195,7 +3647,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         size={"compact"}
                       />
                     ) : null}
-                    <Dialog2
+                    <Dialog
                       data-plasmic-name={"dialogSettlement"}
                       data-plasmic-override={overrides.dialogSettlement}
                       body={
@@ -3411,7 +3863,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     sty.freeBox__iSxgv
                                   )}
                                 >
-                                  <Dialog2
+                                  <Dialog
                                     data-plasmic-name={"dialogRegisterAccount"}
                                     data-plasmic-override={
                                       overrides.dialogRegisterAccount
@@ -6022,7 +6474,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       trigger={null}
                     />
 
-                    <Dialog2
+                    <Dialog
                       data-plasmic-name={"dialogTransfer"}
                       data-plasmic-override={overrides.dialogTransfer}
                       body={
@@ -7989,7 +8441,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   [__plasmic_idx_0]
                                 );
                                 return (
-                                  <Dialog
+                                  <Dialog2
                                     data-plasmic-name={
                                       "dialogNewInvoiceDetails"
                                     }
@@ -9849,6 +10301,8 @@ const PlasmicDescendants = {
     "cbAccounts",
     "btnFilter",
     "btnFilterClear",
+    "dialogFilterDate",
+    "datePicker",
     "gridInvoice1",
     "txtRemainingText",
     "txtRemainingValue",
@@ -9891,6 +10345,8 @@ const PlasmicDescendants = {
   cbAccounts: ["cbAccounts"],
   btnFilter: ["btnFilter"],
   btnFilterClear: ["btnFilterClear"],
+  dialogFilterDate: ["dialogFilterDate", "datePicker"],
+  datePicker: ["datePicker"],
   gridInvoice1: [
     "gridInvoice1",
     "txtRemainingText",
@@ -9994,31 +10450,33 @@ type NodeDefaultElementType = {
   cbAccounts: typeof Select;
   btnFilter: typeof Button2;
   btnFilterClear: typeof Button2;
+  dialogFilterDate: typeof Dialog;
+  datePicker: typeof DatePicker;
   gridInvoice1: "div";
   txtRemainingText: "div";
   txtRemainingValue: "div";
-  dialogIncreaseRemaining: typeof Dialog;
+  dialogIncreaseRemaining: typeof Dialog2;
   btnPay: typeof Button;
   gridSelectprice: "div";
   btnSelectAmount: typeof Button;
   gridMyAmount: "div";
   txtNewPaymentAmount: typeof TextInput;
   btnSettlement: typeof Button2;
-  dialogSettlement: typeof Dialog2;
+  dialogSettlement: typeof Dialog;
   tabContent: typeof TabContent;
   txtSettlemenAmount: typeof TextInput;
-  dialogRegisterAccount: typeof Dialog2;
+  dialogRegisterAccount: typeof Dialog;
   txtCardId: typeof TextInput;
   txtCardOwner: typeof TextInput;
   txtCardIban: typeof TextInput;
   txtCardBankName: typeof TextInput;
   txtCardNumber: typeof TextInput;
   txtSettlementResult: "div";
-  dialogTransfer: typeof Dialog2;
+  dialogTransfer: typeof Dialog;
   transferToAnotherWallet: typeof TransferToAnotherWallet;
   gridInvoice13: "div";
   gridInvoice12: "div";
-  dialogNewInvoiceDetails: typeof Dialog;
+  dialogNewInvoiceDetails: typeof Dialog2;
   detailsDataApiRequest: typeof ApiRequest;
   waitingIcon3: "svg";
   gridNoData2: "div";
@@ -10097,6 +10555,8 @@ export const PlasmicTransactionsSearch = Object.assign(
     cbAccounts: makeNodeComponent("cbAccounts"),
     btnFilter: makeNodeComponent("btnFilter"),
     btnFilterClear: makeNodeComponent("btnFilterClear"),
+    dialogFilterDate: makeNodeComponent("dialogFilterDate"),
+    datePicker: makeNodeComponent("datePicker"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     txtRemainingText: makeNodeComponent("txtRemainingText"),
     txtRemainingValue: makeNodeComponent("txtRemainingValue"),
