@@ -9222,7 +9222,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       <React.Fragment>
                         <React.Fragment>
                           {
-                            "\u062f\u0631\u0635\u0648\u0631\u062a \u0646\u06cc\u0627\u0632 \u0628\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc "
+                            "\u062f\u0631\u0635\u0648\u0631\u062a \u0646\u06cc\u0627\u0632 \u0628\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u06cc\u0627 \u0627\u0631\u0627\u0626\u0647 \u0646\u0638\u0631\u0627\u062a \u0648 \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u0627\u062a "
                           }
                         </React.Fragment>
                         <span
@@ -9289,7 +9289,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       <React.Fragment>
                         <React.Fragment>
                           {
-                            "\u062f\u0631\u0635\u0648\u0631\u062a \u0646\u06cc\u0627\u0632 \u0628\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc "
+                            "\u062f\u0631\u0635\u0648\u0631\u062a \u0646\u06cc\u0627\u0632 \u0628\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u06cc\u0627 \u0627\u0631\u0627\u0626\u0647 \u0646\u0638\u0631\u0627\u062a \u0648 \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u0627\u062a "
                           }
                         </React.Fragment>
                         <span
