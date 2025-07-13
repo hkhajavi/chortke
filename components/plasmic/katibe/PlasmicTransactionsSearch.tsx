@@ -6797,7 +6797,21 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 return $state.transactionsReport?.data?.deposit
                                   ? ($state.bookDate == ""
                                       ? "کل درآمد: "
-                                      : "درآمد امروز: ") +
+                                      : "درآمد " +
+                                        (
+                                          "" +
+                                          (() => {
+                                            const gregorianDate = new Date(
+                                              $state.bookDate
+                                            );
+                                            const persianDate =
+                                              new Intl.DateTimeFormat(
+                                                "fa-IR"
+                                              ).format(gregorianDate);
+                                            return persianDate;
+                                          })()
+                                        ).substring(5) +
+                                        ": ") +
                                       ($state.transactionsReport.data.deposit.toLocaleString(
                                         "fa-IR"
                                       ) +
