@@ -1843,6 +1843,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                       customFunction:
                                                         async () => {
                                                           return (() => {
+                                                            $state.filterTransactionType =
+                                                              "";
                                                             $state.dialogFilterDate.open =
                                                               false;
                                                             return ($state.dialogFilter.open =
@@ -2353,6 +2355,33 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         ];
                                     }
 
+                                    $steps["runCode"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            customFunction: async () => {
+                                              return (() => {
+                                                $state.bookDate = "";
+                                                return ($state.dialogFilter.open =
+                                                  false);
+                                              })();
+                                            }
+                                          };
+                                          return (({ customFunction }) => {
+                                            return customFunction();
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["runCode"] != null &&
+                                      typeof $steps["runCode"] === "object" &&
+                                      typeof $steps["runCode"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["runCode"] = await $steps[
+                                        "runCode"
+                                      ];
+                                    }
+
                                     $steps["updateFirstRequestCount"] = true
                                       ? (() => {
                                           const actionArgs = {
@@ -2400,32 +2429,6 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     ) {
                                       $steps["updateFirstRequestCount"] =
                                         await $steps["updateFirstRequestCount"];
-                                    }
-
-                                    $steps["runCode"] = true
-                                      ? (() => {
-                                          const actionArgs = {
-                                            customFunction: async () => {
-                                              return (() => {
-                                                return ($state.dialogFilter.open =
-                                                  false);
-                                              })();
-                                            }
-                                          };
-                                          return (({ customFunction }) => {
-                                            return customFunction();
-                                          })?.apply(null, [actionArgs]);
-                                        })()
-                                      : undefined;
-                                    if (
-                                      $steps["runCode"] != null &&
-                                      typeof $steps["runCode"] === "object" &&
-                                      typeof $steps["runCode"].then ===
-                                        "function"
-                                    ) {
-                                      $steps["runCode"] = await $steps[
-                                        "runCode"
-                                      ];
                                     }
                                   }).apply(null, eventArgs);
                                 }}
