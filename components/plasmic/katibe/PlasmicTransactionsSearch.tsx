@@ -64,6 +64,8 @@ import Select from "../../Select"; // plasmic-import: 7wkEfmUYAcMf/component
 import Button2 from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
 import Dialog from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
 import { DatePicker } from "@/fragment/components/date-picker"; // plasmic-import: BigXM4fJwC8U/codeComponent
+import RadioGroup from "../../RadioGroup"; // plasmic-import: tqHTZfyBziuN/component
+import Radio from "../../Radio"; // plasmic-import: Cbq_rTXOD16b/component
 import Dialog2 from "../../Dialog"; // plasmic-import: nYtkLnbqtkXY/component
 import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
 import { TabContent } from "@plasmicpkgs/plasmic-tabs";
@@ -87,6 +89,7 @@ import Icon11Icon from "../chortke/icons/PlasmicIcon__Icon11"; // plasmic-import
 import Icon6Icon from "../chortke/icons/PlasmicIcon__Icon6"; // plasmic-import: 7-KwYGGksEHB/icon
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
 import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
+import Icon54Icon from "./icons/PlasmicIcon__Icon54"; // plasmic-import: N3q4_1KLSfUU/icon
 import Icon52Icon from "./icons/PlasmicIcon__Icon52"; // plasmic-import: fl1ZOZIHaI_u/icon
 import SearchSvgIcon from "../chortke/icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
 import CheckSvgIcon from "../chortke/icons/PlasmicIcon__CheckSvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
@@ -117,8 +120,12 @@ export type PlasmicTransactionsSearch__OverridesType = {
   cbAccounts?: Flex__<typeof Select>;
   btnFilter?: Flex__<typeof Button2>;
   btnFilterClear?: Flex__<typeof Button2>;
+  dialogFilter?: Flex__<typeof Dialog>;
   dialogFilterDate?: Flex__<typeof Dialog>;
   datePicker?: Flex__<typeof DatePicker>;
+  radioTransactionType?: Flex__<typeof RadioGroup>;
+  rdAllTransaction?: Flex__<typeof Radio>;
+  rdSettlementTransaction?: Flex__<typeof Radio>;
   gridInvoice1?: Flex__<"div">;
   txtRemainingText?: Flex__<"div">;
   txtRemainingValue?: Flex__<"div">;
@@ -822,6 +829,30 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
         type: "private",
         variableType: "array",
         initFunc: ({ $props, $state, $queries, $ctx }) => []
+      },
+      {
+        path: "blockedamount",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "dialogFilter.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "filterTransactionType",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "radioTransactionType.value",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -1288,7 +1319,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 customFunction: async () => {
                                   return (() => {
                                     $state.bankAccountList = [];
-                                    return ($state.bookDate = "");
+                                    $state.bookDate = "";
+                                    return ($state.filterTransactionType = "");
                                   })();
                                 }
                               };
@@ -1400,11 +1432,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 </div>
                 {(() => {
                   try {
-                    return (
-                      $state.currentAccountType == "centerid" &&
-                      $state.userData?.isDoctor &&
-                      !$state.waiting
-                    );
+                    return $state.userData?.isDoctor && !$state.waiting;
                   } catch (e) {
                     if (
                       e instanceof TypeError ||
@@ -1628,358 +1656,870 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       />
                     ) : null}
                     <Dialog
-                      data-plasmic-name={"dialogFilterDate"}
-                      data-plasmic-override={overrides.dialogFilterDate}
+                      data-plasmic-name={"dialogFilter"}
+                      data-plasmic-override={overrides.dialogFilter}
                       body={
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__zilth
-                          )}
-                        >
+                        <React.Fragment>
                           <div
                             className={classNames(
                               projectcss.all,
-                              sty.freeBox__wvlQ
+                              sty.freeBox__yHwP4
                             )}
                           >
-                            <DatePicker
-                              data-plasmic-name={"datePicker"}
-                              data-plasmic-override={overrides.datePicker}
+                            <div
                               className={classNames(
-                                "__wab_instance",
-                                sty.datePicker
+                                projectcss.all,
+                                sty.freeBox__tOsh
                               )}
-                              holidays={[]}
-                              locale={"fa"}
-                              mode={"single"}
-                              onChange={async (...eventArgs: any) => {
-                                generateStateOnChangeProp($state, [
-                                  "datePicker",
-                                  "value"
-                                ]).apply(null, eventArgs);
-                                generateStateOnChangeProp($state, [
-                                  "datePicker",
-                                  "values"
-                                ]).apply(null, eventArgs);
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__jrWo4
+                                )}
+                              >
+                                {
+                                  "\u062a\u0627\u0631\u06cc\u062e \u0646\u0648\u0628\u062a:"
+                                }
+                              </div>
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox___4K79L
+                              )}
+                            >
+                              {(() => {
+                                try {
+                                  return (
+                                    //$state.currentAccountType=="centerid"
+                                    true
+                                  );
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return true;
+                                  }
+                                  throw e;
+                                }
+                              })() ? (
+                                <Dialog
+                                  data-plasmic-name={"dialogFilterDate"}
+                                  data-plasmic-override={
+                                    overrides.dialogFilterDate
+                                  }
+                                  body={
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.freeBox__zilth
+                                      )}
+                                    >
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox__wvlQ
+                                        )}
+                                      >
+                                        <DatePicker
+                                          data-plasmic-name={"datePicker"}
+                                          data-plasmic-override={
+                                            overrides.datePicker
+                                          }
+                                          className={classNames(
+                                            "__wab_instance",
+                                            sty.datePicker
+                                          )}
+                                          holidays={[]}
+                                          locale={"fa"}
+                                          mode={"single"}
+                                          onChange={async (
+                                            ...eventArgs: any
+                                          ) => {
+                                            generateStateOnChangeProp($state, [
+                                              "datePicker",
+                                              "value"
+                                            ]).apply(null, eventArgs);
+                                            generateStateOnChangeProp($state, [
+                                              "datePicker",
+                                              "values"
+                                            ]).apply(null, eventArgs);
 
-                                (async date => {
-                                  const $steps = {};
+                                            (async date => {
+                                              const $steps = {};
 
-                                  $steps["updateBookDate"] = true
-                                    ? (() => {
-                                        const actionArgs = {
-                                          variable: {
-                                            objRoot: $state,
-                                            variablePath: ["bookDate"]
-                                          },
-                                          operation: 0,
-                                          value: (() => {
-                                            function convertTimestampToDate(
-                                              unixTimestamp
-                                            ) {
-                                              const date = new Date(
-                                                unixTimestamp * 1000
-                                              );
-                                              const year =
-                                                date.getUTCFullYear();
-                                              const month = String(
-                                                date.getUTCMonth() + 1
-                                              ).padStart(2, "0");
-                                              const day = String(
-                                                date.getUTCDate()
-                                              ).padStart(2, "0");
-                                              const hours = String(
-                                                date.getUTCHours()
-                                              ).padStart(2, "0");
-                                              const minutes = String(
-                                                date.getUTCMinutes()
-                                              ).padStart(2, "0");
-                                              const seconds = String(
-                                                date.getUTCSeconds()
-                                              ).padStart(2, "0");
-                                              return `${year}-${month}-${day}`;
-                                            }
-                                            return convertTimestampToDate(
-                                              $state.datePicker.value
+                                              $steps["updateBookDate"] = true
+                                                ? (() => {
+                                                    const actionArgs = {
+                                                      variable: {
+                                                        objRoot: $state,
+                                                        variablePath: [
+                                                          "bookDate"
+                                                        ]
+                                                      },
+                                                      operation: 0,
+                                                      value: (() => {
+                                                        function convertTimestampToDate(
+                                                          unixTimestamp
+                                                        ) {
+                                                          const date = new Date(
+                                                            unixTimestamp * 1000
+                                                          );
+                                                          const year =
+                                                            date.getUTCFullYear();
+                                                          const month = String(
+                                                            date.getUTCMonth() +
+                                                              1
+                                                          ).padStart(2, "0");
+                                                          const day = String(
+                                                            date.getUTCDate()
+                                                          ).padStart(2, "0");
+                                                          const hours = String(
+                                                            date.getUTCHours()
+                                                          ).padStart(2, "0");
+                                                          const minutes =
+                                                            String(
+                                                              date.getUTCMinutes()
+                                                            ).padStart(2, "0");
+                                                          const seconds =
+                                                            String(
+                                                              date.getUTCSeconds()
+                                                            ).padStart(2, "0");
+                                                          return `${year}-${month}-${day}`;
+                                                        }
+                                                        return convertTimestampToDate(
+                                                          $state.datePicker
+                                                            .value
+                                                        );
+                                                      })()
+                                                    };
+                                                    return (({
+                                                      variable,
+                                                      value,
+                                                      startIndex,
+                                                      deleteCount
+                                                    }) => {
+                                                      if (!variable) {
+                                                        return;
+                                                      }
+                                                      const {
+                                                        objRoot,
+                                                        variablePath
+                                                      } = variable;
+
+                                                      $stateSet(
+                                                        objRoot,
+                                                        variablePath,
+                                                        value
+                                                      );
+                                                      return value;
+                                                    })?.apply(null, [
+                                                      actionArgs
+                                                    ]);
+                                                  })()
+                                                : undefined;
+                                              if (
+                                                $steps["updateBookDate"] !=
+                                                  null &&
+                                                typeof $steps[
+                                                  "updateBookDate"
+                                                ] === "object" &&
+                                                typeof $steps["updateBookDate"]
+                                                  .then === "function"
+                                              ) {
+                                                $steps["updateBookDate"] =
+                                                  await $steps[
+                                                    "updateBookDate"
+                                                  ];
+                                              }
+
+                                              $steps["runCode"] = true
+                                                ? (() => {
+                                                    const actionArgs = {
+                                                      customFunction:
+                                                        async () => {
+                                                          return (() => {
+                                                            $state.dialogFilterDate.open =
+                                                              false;
+                                                            return ($state.dialogFilter.open =
+                                                              false);
+                                                          })();
+                                                        }
+                                                    };
+                                                    return (({
+                                                      customFunction
+                                                    }) => {
+                                                      return customFunction();
+                                                    })?.apply(null, [
+                                                      actionArgs
+                                                    ]);
+                                                  })()
+                                                : undefined;
+                                              if (
+                                                $steps["runCode"] != null &&
+                                                typeof $steps["runCode"] ===
+                                                  "object" &&
+                                                typeof $steps["runCode"]
+                                                  .then === "function"
+                                              ) {
+                                                $steps["runCode"] =
+                                                  await $steps["runCode"];
+                                              }
+
+                                              $steps[
+                                                "updateFirstRequestCount"
+                                              ] = true
+                                                ? (() => {
+                                                    const actionArgs = {
+                                                      variable: {
+                                                        objRoot: $state,
+                                                        variablePath: [
+                                                          "firstRequestCount"
+                                                        ]
+                                                      },
+                                                      operation: 2
+                                                    };
+                                                    return (({
+                                                      variable,
+                                                      value,
+                                                      startIndex,
+                                                      deleteCount
+                                                    }) => {
+                                                      if (!variable) {
+                                                        return;
+                                                      }
+                                                      const {
+                                                        objRoot,
+                                                        variablePath
+                                                      } = variable;
+
+                                                      const oldValue =
+                                                        $stateGet(
+                                                          objRoot,
+                                                          variablePath
+                                                        );
+                                                      $stateSet(
+                                                        objRoot,
+                                                        variablePath,
+                                                        oldValue + 1
+                                                      );
+                                                      return oldValue + 1;
+                                                    })?.apply(null, [
+                                                      actionArgs
+                                                    ]);
+                                                  })()
+                                                : undefined;
+                                              if (
+                                                $steps[
+                                                  "updateFirstRequestCount"
+                                                ] != null &&
+                                                typeof $steps[
+                                                  "updateFirstRequestCount"
+                                                ] === "object" &&
+                                                typeof $steps[
+                                                  "updateFirstRequestCount"
+                                                ].then === "function"
+                                              ) {
+                                                $steps[
+                                                  "updateFirstRequestCount"
+                                                ] = await $steps[
+                                                  "updateFirstRequestCount"
+                                                ];
+                                              }
+                                            }).apply(null, eventArgs);
+                                          }}
+                                          value={generateStateValueProp(
+                                            $state,
+                                            ["datePicker", "value"]
+                                          )}
+                                          values={generateStateValueProp(
+                                            $state,
+                                            ["datePicker", "values"]
+                                          )}
+                                        />
+                                      </div>
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.freeBox__m1NbQ
+                                        )}
+                                      >
+                                        {(() => {
+                                          try {
+                                            return (
+                                              $state.bookDate.toString()
+                                                .length > 0
                                             );
-                                          })()
-                                        };
-                                        return (({
-                                          variable,
-                                          value,
-                                          startIndex,
-                                          deleteCount
-                                        }) => {
-                                          if (!variable) {
-                                            return;
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return true;
+                                            }
+                                            throw e;
                                           }
-                                          const { objRoot, variablePath } =
-                                            variable;
+                                        })() ? (
+                                          <Button2
+                                            children2={
+                                              <div
+                                                className={classNames(
+                                                  projectcss.all,
+                                                  projectcss.__wab_text,
+                                                  sty.text__ut8L
+                                                )}
+                                              >
+                                                {
+                                                  "\u0646\u0645\u0627\u06cc\u0634 \u0647\u0645\u0647"
+                                                }
+                                              </div>
+                                            }
+                                            className={classNames(
+                                              "__wab_instance",
+                                              sty.button__kWlYn
+                                            )}
+                                            color={"softSand"}
+                                            onClick={async event => {
+                                              const $steps = {};
 
-                                          $stateSet(
-                                            objRoot,
-                                            variablePath,
-                                            value
-                                          );
-                                          return value;
-                                        })?.apply(null, [actionArgs]);
-                                      })()
-                                    : undefined;
-                                  if (
-                                    $steps["updateBookDate"] != null &&
-                                    typeof $steps["updateBookDate"] ===
-                                      "object" &&
-                                    typeof $steps["updateBookDate"].then ===
-                                      "function"
-                                  ) {
-                                    $steps["updateBookDate"] = await $steps[
-                                      "updateBookDate"
-                                    ];
+                                              $steps["updateBookDate"] = true
+                                                ? (() => {
+                                                    const actionArgs = {
+                                                      variable: {
+                                                        objRoot: $state,
+                                                        variablePath: [
+                                                          "bookDate"
+                                                        ]
+                                                      },
+                                                      operation: 0,
+                                                      value: ""
+                                                    };
+                                                    return (({
+                                                      variable,
+                                                      value,
+                                                      startIndex,
+                                                      deleteCount
+                                                    }) => {
+                                                      if (!variable) {
+                                                        return;
+                                                      }
+                                                      const {
+                                                        objRoot,
+                                                        variablePath
+                                                      } = variable;
+
+                                                      $stateSet(
+                                                        objRoot,
+                                                        variablePath,
+                                                        value
+                                                      );
+                                                      return value;
+                                                    })?.apply(null, [
+                                                      actionArgs
+                                                    ]);
+                                                  })()
+                                                : undefined;
+                                              if (
+                                                $steps["updateBookDate"] !=
+                                                  null &&
+                                                typeof $steps[
+                                                  "updateBookDate"
+                                                ] === "object" &&
+                                                typeof $steps["updateBookDate"]
+                                                  .then === "function"
+                                              ) {
+                                                $steps["updateBookDate"] =
+                                                  await $steps[
+                                                    "updateBookDate"
+                                                  ];
+                                              }
+
+                                              $steps["runCode"] = true
+                                                ? (() => {
+                                                    const actionArgs = {
+                                                      customFunction:
+                                                        async () => {
+                                                          return (() => {
+                                                            $state.dialogFilterDate.open =
+                                                              false;
+                                                            return ($state.dialogFilter.open =
+                                                              false);
+                                                          })();
+                                                        }
+                                                    };
+                                                    return (({
+                                                      customFunction
+                                                    }) => {
+                                                      return customFunction();
+                                                    })?.apply(null, [
+                                                      actionArgs
+                                                    ]);
+                                                  })()
+                                                : undefined;
+                                              if (
+                                                $steps["runCode"] != null &&
+                                                typeof $steps["runCode"] ===
+                                                  "object" &&
+                                                typeof $steps["runCode"]
+                                                  .then === "function"
+                                              ) {
+                                                $steps["runCode"] =
+                                                  await $steps["runCode"];
+                                              }
+
+                                              $steps[
+                                                "updateFirstRequestCount"
+                                              ] = true
+                                                ? (() => {
+                                                    const actionArgs = {
+                                                      variable: {
+                                                        objRoot: $state,
+                                                        variablePath: [
+                                                          "firstRequestCount"
+                                                        ]
+                                                      },
+                                                      operation: 2
+                                                    };
+                                                    return (({
+                                                      variable,
+                                                      value,
+                                                      startIndex,
+                                                      deleteCount
+                                                    }) => {
+                                                      if (!variable) {
+                                                        return;
+                                                      }
+                                                      const {
+                                                        objRoot,
+                                                        variablePath
+                                                      } = variable;
+
+                                                      const oldValue =
+                                                        $stateGet(
+                                                          objRoot,
+                                                          variablePath
+                                                        );
+                                                      $stateSet(
+                                                        objRoot,
+                                                        variablePath,
+                                                        oldValue + 1
+                                                      );
+                                                      return oldValue + 1;
+                                                    })?.apply(null, [
+                                                      actionArgs
+                                                    ]);
+                                                  })()
+                                                : undefined;
+                                              if (
+                                                $steps[
+                                                  "updateFirstRequestCount"
+                                                ] != null &&
+                                                typeof $steps[
+                                                  "updateFirstRequestCount"
+                                                ] === "object" &&
+                                                typeof $steps[
+                                                  "updateFirstRequestCount"
+                                                ].then === "function"
+                                              ) {
+                                                $steps[
+                                                  "updateFirstRequestCount"
+                                                ] = await $steps[
+                                                  "updateFirstRequestCount"
+                                                ];
+                                              }
+                                            }}
+                                            size={"compact"}
+                                          />
+                                        ) : null}
+                                      </div>
+                                    </div>
                                   }
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.dialogFilterDate
+                                  )}
+                                  onOpenChange={async (...eventArgs: any) => {
+                                    generateStateOnChangeProp($state, [
+                                      "dialogFilterDate",
+                                      "open"
+                                    ]).apply(null, eventArgs);
 
-                                  $steps["runCode"] = true
-                                    ? (() => {
-                                        const actionArgs = {
-                                          customFunction: async () => {
-                                            return ($state.dialogFilterDate.open =
-                                              false);
-                                          }
-                                        };
-                                        return (({ customFunction }) => {
-                                          return customFunction();
-                                        })?.apply(null, [actionArgs]);
-                                      })()
-                                    : undefined;
-                                  if (
-                                    $steps["runCode"] != null &&
-                                    typeof $steps["runCode"] === "object" &&
-                                    typeof $steps["runCode"].then === "function"
-                                  ) {
-                                    $steps["runCode"] = await $steps["runCode"];
+                                    if (
+                                      eventArgs.length > 1 &&
+                                      eventArgs[1] &&
+                                      eventArgs[1]._plasmic_state_init_
+                                    ) {
+                                      return;
+                                    }
+                                  }}
+                                  open={generateStateValueProp($state, [
+                                    "dialogFilterDate",
+                                    "open"
+                                  ])}
+                                  title={
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__sCnav
+                                      )}
+                                    >
+                                      {
+                                        "\u0641\u06cc\u0644\u062a\u0631 \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627 \u0628\u0631 \u0627\u0633\u0627\u0633 \u062a\u0627\u0631\u06cc\u062e \u0646\u0648\u0628\u062a:"
+                                      }
+                                    </div>
                                   }
+                                  trigger={
+                                    <React.Fragment>
+                                      <Icon52Icon
+                                        className={classNames(
+                                          projectcss.all,
+                                          sty.svg___0U5Lk
+                                        )}
+                                        role={"img"}
+                                      />
 
-                                  $steps["updateFirstRequestCount"] = true
-                                    ? (() => {
-                                        const actionArgs = {
-                                          variable: {
-                                            objRoot: $state,
-                                            variablePath: ["firstRequestCount"]
-                                          },
-                                          operation: 2
-                                        };
-                                        return (({
-                                          variable,
-                                          value,
-                                          startIndex,
-                                          deleteCount
-                                        }) => {
-                                          if (!variable) {
-                                            return;
-                                          }
-                                          const { objRoot, variablePath } =
-                                            variable;
-
-                                          const oldValue = $stateGet(
-                                            objRoot,
-                                            variablePath
-                                          );
-                                          $stateSet(
-                                            objRoot,
-                                            variablePath,
-                                            oldValue + 1
-                                          );
-                                          return oldValue + 1;
-                                        })?.apply(null, [actionArgs]);
-                                      })()
-                                    : undefined;
-                                  if (
-                                    $steps["updateFirstRequestCount"] != null &&
-                                    typeof $steps["updateFirstRequestCount"] ===
-                                      "object" &&
-                                    typeof $steps["updateFirstRequestCount"]
-                                      .then === "function"
-                                  ) {
-                                    $steps["updateFirstRequestCount"] =
-                                      await $steps["updateFirstRequestCount"];
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text__pTlv0
+                                        )}
+                                      >
+                                        <React.Fragment>
+                                          {(() => {
+                                            try {
+                                              return $state.bookDate.length > 0
+                                                ? "" +
+                                                    (() => {
+                                                      const gregorianDate =
+                                                        new Date(
+                                                          $state.bookDate
+                                                        );
+                                                      const persianDate =
+                                                        new Intl.DateTimeFormat(
+                                                          "fa-IR"
+                                                        ).format(gregorianDate);
+                                                      return persianDate;
+                                                    })()
+                                                : "یک تاریخ مشخص کنید.";
+                                            } catch (e) {
+                                              if (
+                                                e instanceof TypeError ||
+                                                e?.plasmicType ===
+                                                  "PlasmicUndefinedDataError"
+                                              ) {
+                                                return "";
+                                              }
+                                              throw e;
+                                            }
+                                          })()}
+                                        </React.Fragment>
+                                      </div>
+                                    </React.Fragment>
                                   }
-                                }).apply(null, eventArgs);
-                              }}
-                              value={generateStateValueProp($state, [
-                                "datePicker",
-                                "value"
-                              ])}
-                              values={generateStateValueProp($state, [
-                                "datePicker",
-                                "values"
-                              ])}
-                            />
+                                />
+                              ) : null}
+                            </div>
                           </div>
                           <div
                             className={classNames(
                               projectcss.all,
-                              sty.freeBox__m1NbQ
+                              sty.freeBox___8NoMp
                             )}
                           >
-                            {(() => {
-                              try {
-                                return $state.bookDate.toString().length > 0;
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return true;
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox___9Bjhg
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__duFu
+                                )}
+                              >
+                                {
+                                  "\u0646\u0648\u0639 \u062a\u0631\u0627\u06a9\u0646\u0634:"
                                 }
-                                throw e;
-                              }
-                            })() ? (
-                              <Button2
-                                children2={
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__ut8L
-                                    )}
-                                  >
-                                    {
-                                      "\u0646\u0645\u0627\u06cc\u0634 \u0647\u0645\u0647"
-                                    }
-                                  </div>
+                              </div>
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__vuqUr
+                              )}
+                            >
+                              <RadioGroup
+                                data-plasmic-name={"radioTransactionType"}
+                                data-plasmic-override={
+                                  overrides.radioTransactionType
                                 }
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.button__kWlYn
+                                  sty.radioTransactionType
                                 )}
-                                color={"softSand"}
-                                onClick={async event => {
-                                  const $steps = {};
+                                defaultValue={(() => {
+                                  try {
+                                    return $state.filterTransactionType.length >
+                                      0
+                                      ? $state.filterTransactionType
+                                      : "0";
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "0";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                                label={null}
+                                onChange={async (...eventArgs: any) => {
+                                  generateStateOnChangeProp($state, [
+                                    "radioTransactionType",
+                                    "value"
+                                  ]).apply(null, eventArgs);
 
-                                  $steps["updateBookDate"] = true
-                                    ? (() => {
-                                        const actionArgs = {
-                                          variable: {
-                                            objRoot: $state,
-                                            variablePath: ["bookDate"]
-                                          },
-                                          operation: 0,
-                                          value: ""
-                                        };
-                                        return (({
-                                          variable,
-                                          value,
-                                          startIndex,
-                                          deleteCount
-                                        }) => {
-                                          if (!variable) {
-                                            return;
-                                          }
-                                          const { objRoot, variablePath } =
-                                            variable;
-
-                                          $stateSet(
-                                            objRoot,
-                                            variablePath,
-                                            value
-                                          );
-                                          return value;
-                                        })?.apply(null, [actionArgs]);
-                                      })()
-                                    : undefined;
                                   if (
-                                    $steps["updateBookDate"] != null &&
-                                    typeof $steps["updateBookDate"] ===
-                                      "object" &&
-                                    typeof $steps["updateBookDate"].then ===
-                                      "function"
+                                    eventArgs.length > 1 &&
+                                    eventArgs[1] &&
+                                    eventArgs[1]._plasmic_state_init_
                                   ) {
-                                    $steps["updateBookDate"] = await $steps[
-                                      "updateBookDate"
-                                    ];
+                                    return;
                                   }
 
-                                  $steps["runCode"] = true
-                                    ? (() => {
-                                        const actionArgs = {
-                                          customFunction: async () => {
-                                            return (() => {
-                                              return ($state.dialogFilterDate.open =
-                                                false);
-                                            })();
-                                          }
-                                        };
-                                        return (({ customFunction }) => {
-                                          return customFunction();
-                                        })?.apply(null, [actionArgs]);
-                                      })()
-                                    : undefined;
-                                  if (
-                                    $steps["runCode"] != null &&
-                                    typeof $steps["runCode"] === "object" &&
-                                    typeof $steps["runCode"].then === "function"
-                                  ) {
-                                    $steps["runCode"] = await $steps["runCode"];
-                                  }
+                                  (async val => {
+                                    const $steps = {};
 
-                                  $steps["updateFirstRequestCount"] = true
-                                    ? (() => {
-                                        const actionArgs = {
-                                          variable: {
-                                            objRoot: $state,
-                                            variablePath: ["firstRequestCount"]
-                                          },
-                                          operation: 2
-                                        };
-                                        return (({
-                                          variable,
-                                          value,
-                                          startIndex,
-                                          deleteCount
-                                        }) => {
-                                          if (!variable) {
-                                            return;
-                                          }
-                                          const { objRoot, variablePath } =
-                                            variable;
+                                    $steps["updateFilterTransactionType"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: [
+                                                "filterTransactionType"
+                                              ]
+                                            },
+                                            operation: 0,
+                                            value:
+                                              $state.radioTransactionType.value
+                                                .replaceAll("missing(1)", "")
+                                                .replaceAll("0", "")
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
 
-                                          const oldValue = $stateGet(
-                                            objRoot,
-                                            variablePath
-                                          );
-                                          $stateSet(
-                                            objRoot,
-                                            variablePath,
-                                            oldValue + 1
-                                          );
-                                          return oldValue + 1;
-                                        })?.apply(null, [actionArgs]);
-                                      })()
-                                    : undefined;
-                                  if (
-                                    $steps["updateFirstRequestCount"] != null &&
-                                    typeof $steps["updateFirstRequestCount"] ===
-                                      "object" &&
-                                    typeof $steps["updateFirstRequestCount"]
-                                      .then === "function"
-                                  ) {
-                                    $steps["updateFirstRequestCount"] =
-                                      await $steps["updateFirstRequestCount"];
-                                  }
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["updateFilterTransactionType"] !=
+                                        null &&
+                                      typeof $steps[
+                                        "updateFilterTransactionType"
+                                      ] === "object" &&
+                                      typeof $steps[
+                                        "updateFilterTransactionType"
+                                      ].then === "function"
+                                    ) {
+                                      $steps["updateFilterTransactionType"] =
+                                        await $steps[
+                                          "updateFilterTransactionType"
+                                        ];
+                                    }
+
+                                    $steps["updateFirstRequestCount"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: [
+                                                "firstRequestCount"
+                                              ]
+                                            },
+                                            operation: 2
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            const oldValue = $stateGet(
+                                              objRoot,
+                                              variablePath
+                                            );
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              oldValue + 1
+                                            );
+                                            return oldValue + 1;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["updateFirstRequestCount"] !=
+                                        null &&
+                                      typeof $steps[
+                                        "updateFirstRequestCount"
+                                      ] === "object" &&
+                                      typeof $steps["updateFirstRequestCount"]
+                                        .then === "function"
+                                    ) {
+                                      $steps["updateFirstRequestCount"] =
+                                        await $steps["updateFirstRequestCount"];
+                                    }
+
+                                    $steps["runCode"] = true
+                                      ? (() => {
+                                          const actionArgs = {
+                                            customFunction: async () => {
+                                              return (() => {
+                                                return ($state.dialogFilter.open =
+                                                  false);
+                                              })();
+                                            }
+                                          };
+                                          return (({ customFunction }) => {
+                                            return customFunction();
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                    if (
+                                      $steps["runCode"] != null &&
+                                      typeof $steps["runCode"] === "object" &&
+                                      typeof $steps["runCode"].then ===
+                                        "function"
+                                    ) {
+                                      $steps["runCode"] = await $steps[
+                                        "runCode"
+                                      ];
+                                    }
+                                  }).apply(null, eventArgs);
                                 }}
-                                size={"compact"}
+                                options={
+                                  <Stack__
+                                    as={"div"}
+                                    hasGap={true}
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__qGr8R
+                                    )}
+                                  >
+                                    <Radio
+                                      data-plasmic-name={"rdAllTransaction"}
+                                      data-plasmic-override={
+                                        overrides.rdAllTransaction
+                                      }
+                                      className={classNames(
+                                        "__wab_instance",
+                                        sty.rdAllTransaction
+                                      )}
+                                      label={
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__ehmCk
+                                          )}
+                                        >
+                                          {"\u0647\u0645\u0647 "}
+                                        </div>
+                                      }
+                                      value={"0"}
+                                    />
+
+                                    <Radio
+                                      data-plasmic-name={
+                                        "rdSettlementTransaction"
+                                      }
+                                      data-plasmic-override={
+                                        overrides.rdSettlementTransaction
+                                      }
+                                      className={classNames(
+                                        "__wab_instance",
+                                        sty.rdSettlementTransaction
+                                      )}
+                                      label={
+                                        <div
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.text__moO2K
+                                          )}
+                                        >
+                                          {
+                                            "\u062a\u0633\u0648\u06cc\u0647 \u062d\u0633\u0627\u0628"
+                                          }
+                                        </div>
+                                      }
+                                      value={"settlement"}
+                                    />
+                                  </Stack__>
+                                }
+                                showLabel={false}
                               />
-                            ) : null}
+                            </div>
                           </div>
-                        </div>
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__yvQrv
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__bQTfH
+                              )}
+                            >
+                              <Button2
+                                children2={"\u0627\u0639\u0645\u0627\u0644"}
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.button__rxLs
+                                )}
+                              />
+                            </div>
+                          </div>
+                        </React.Fragment>
                       }
-                      className={classNames(
-                        "__wab_instance",
-                        sty.dialogFilterDate
-                      )}
+                      className={classNames("__wab_instance", sty.dialogFilter)}
                       onOpenChange={async (...eventArgs: any) => {
                         generateStateOnChangeProp($state, [
-                          "dialogFilterDate",
+                          "dialogFilter",
                           "open"
                         ]).apply(null, eventArgs);
 
@@ -1992,69 +2532,17 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         }
                       }}
                       open={generateStateValueProp($state, [
-                        "dialogFilterDate",
+                        "dialogFilter",
                         "open"
                       ])}
                       title={
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__sCnav
-                          )}
-                        >
-                          {
-                            "\u0641\u06cc\u0644\u062a\u0631 \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627 \u0628\u0631 \u0627\u0633\u0627\u0633 \u062a\u0627\u0631\u06cc\u062e \u0646\u0648\u0628\u062a:"
-                          }
-                        </div>
+                        "\u0641\u06cc\u0644\u062a\u0631 \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627:"
                       }
                       trigger={
-                        <React.Fragment>
-                          <Icon52Icon
-                            className={classNames(
-                              projectcss.all,
-                              sty.svg___0U5Lk
-                            )}
-                            role={"img"}
-                          />
-
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__eGsUa
-                            )}
-                          >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return $state.bookDate.length > 0
-                                    ? "" +
-                                        (() => {
-                                          const gregorianDate = new Date(
-                                            $state.bookDate
-                                          );
-                                          const persianDate =
-                                            new Intl.DateTimeFormat(
-                                              "fa-IR"
-                                            ).format(gregorianDate);
-                                          return persianDate;
-                                        })()
-                                    : "";
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "";
-                                  }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
-                          </div>
-                        </React.Fragment>
+                        <Icon54Icon
+                          className={classNames(projectcss.all, sty.svg__qbMpi)}
+                          role={"img"}
+                        />
                       }
                     />
                   </div>
@@ -3250,7 +3738,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   customFunction: async () => {
                                     return (() => {
                                       $state.txtSettlemenAmount.value =
-                                        $state.reminderWallet;
+                                        $state.reminderWallet -
+                                        $state.blockedamount;
                                       $state.settlementResultShow = false;
                                       return ($state.btnRegisterSettlementShow =
                                         true);
@@ -3580,6 +4069,86 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             ];
                           }
 
+                          $steps["getBlockedAmount"] =
+                            $state.currentAccountType == "centerid" && false
+                              ? (() => {
+                                  const actionArgs = {
+                                    args: [
+                                      undefined,
+                                      (() => {
+                                        try {
+                                          return (
+                                            "https://apigw.paziresh24.com/katibe/v1/transactions/balance/p24/blocked?centerid=" +
+                                            $state.currentAccountId
+                                          );
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return undefined;
+                                          }
+                                          throw e;
+                                        }
+                                      })()
+                                    ]
+                                  };
+                                  return $globalActions[
+                                    "Fragment.apiRequest"
+                                  ]?.apply(null, [...actionArgs.args]);
+                                })()
+                              : undefined;
+                          if (
+                            $steps["getBlockedAmount"] != null &&
+                            typeof $steps["getBlockedAmount"] === "object" &&
+                            typeof $steps["getBlockedAmount"].then ===
+                              "function"
+                          ) {
+                            $steps["getBlockedAmount"] = await $steps[
+                              "getBlockedAmount"
+                            ];
+                          }
+
+                          $steps["updateBlockedamount"] =
+                            $state.currentAccountType == "centerid" && false
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["blockedamount"]
+                                    },
+                                    operation: 0,
+                                    value:
+                                      $steps.getBlockedAmount.data.data.amount
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                          if (
+                            $steps["updateBlockedamount"] != null &&
+                            typeof $steps["updateBlockedamount"] === "object" &&
+                            typeof $steps["updateBlockedamount"].then ===
+                              "function"
+                          ) {
+                            $steps["updateBlockedamount"] = await $steps[
+                              "updateBlockedamount"
+                            ];
+                          }
+
                           $steps["updateWaiting"] = true
                             ? (() => {
                                 const actionArgs = {
@@ -3762,7 +4331,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       (async event => {
                                         const $steps = {};
 
-                                        $steps["runCode"] = true
+                                        $steps["runCode"] = false
                                           ? (() => {
                                               const actionArgs = {
                                                 customFunction: async () => {
@@ -3772,10 +4341,15 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                         $state
                                                           .txtSettlemenAmount
                                                           .value
-                                                      ) > $state.reminderWallet
+                                                      ) >
+                                                      $state.reminderWallet -
+                                                        $state.blockedamount
                                                     ) {
                                                       return ($state.txtSettlemenAmount.value =
-                                                        $state.reminderWallet.toString());
+                                                        (
+                                                          $state.reminderWallet -
+                                                          $state.blockedamount
+                                                        ).toString());
                                                     }
                                                   })();
                                                 }
@@ -9697,6 +10271,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       customFunction: async () => {
                         return (() => {
                           $state.waiting = true;
+                          $state.blockedamount = 0;
                           $state.centerInfo = {};
                           $state.recurringSettlement = [];
                           if ($state.updatewallet) {
@@ -9720,7 +10295,11 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   "&page=" +
                                   $state.pageNumber +
                                   "&account=" +
-                                  account.account;
+                                  account.account +
+                                  "&book_date=" +
+                                  $state.bookDate +
+                                  "&transaction_type=" +
+                                  $state.filterTransactionType;
                                 +"&book_date=" + $state.bookDate;
                                 $state.currentCenterid = "";
                                 $state.requestWalletUrl =
@@ -9741,7 +10320,9 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   "&account=" +
                                   account.account +
                                   "&book_date=" +
-                                  $state.bookDate;
+                                  $state.bookDate +
+                                  "&transaction_type=" +
+                                  $state.filterTransactionType;
                                 $state.requestWalletUrl =
                                   "https://apigw.paziresh24.com/katibe/v1/transactions/balance/p24?productid=7&centerid=" +
                                   account.id +
@@ -10315,8 +10896,12 @@ const PlasmicDescendants = {
     "cbAccounts",
     "btnFilter",
     "btnFilterClear",
+    "dialogFilter",
     "dialogFilterDate",
     "datePicker",
+    "radioTransactionType",
+    "rdAllTransaction",
+    "rdSettlementTransaction",
     "gridInvoice1",
     "txtRemainingText",
     "txtRemainingValue",
@@ -10359,8 +10944,23 @@ const PlasmicDescendants = {
   cbAccounts: ["cbAccounts"],
   btnFilter: ["btnFilter"],
   btnFilterClear: ["btnFilterClear"],
+  dialogFilter: [
+    "dialogFilter",
+    "dialogFilterDate",
+    "datePicker",
+    "radioTransactionType",
+    "rdAllTransaction",
+    "rdSettlementTransaction"
+  ],
   dialogFilterDate: ["dialogFilterDate", "datePicker"],
   datePicker: ["datePicker"],
+  radioTransactionType: [
+    "radioTransactionType",
+    "rdAllTransaction",
+    "rdSettlementTransaction"
+  ],
+  rdAllTransaction: ["rdAllTransaction"],
+  rdSettlementTransaction: ["rdSettlementTransaction"],
   gridInvoice1: [
     "gridInvoice1",
     "txtRemainingText",
@@ -10464,8 +11064,12 @@ type NodeDefaultElementType = {
   cbAccounts: typeof Select;
   btnFilter: typeof Button2;
   btnFilterClear: typeof Button2;
+  dialogFilter: typeof Dialog;
   dialogFilterDate: typeof Dialog;
   datePicker: typeof DatePicker;
+  radioTransactionType: typeof RadioGroup;
+  rdAllTransaction: typeof Radio;
+  rdSettlementTransaction: typeof Radio;
   gridInvoice1: "div";
   txtRemainingText: "div";
   txtRemainingValue: "div";
@@ -10569,8 +11173,12 @@ export const PlasmicTransactionsSearch = Object.assign(
     cbAccounts: makeNodeComponent("cbAccounts"),
     btnFilter: makeNodeComponent("btnFilter"),
     btnFilterClear: makeNodeComponent("btnFilterClear"),
+    dialogFilter: makeNodeComponent("dialogFilter"),
     dialogFilterDate: makeNodeComponent("dialogFilterDate"),
     datePicker: makeNodeComponent("datePicker"),
+    radioTransactionType: makeNodeComponent("radioTransactionType"),
+    rdAllTransaction: makeNodeComponent("rdAllTransaction"),
+    rdSettlementTransaction: makeNodeComponent("rdSettlementTransaction"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     txtRemainingText: makeNodeComponent("txtRemainingText"),
     txtRemainingValue: makeNodeComponent("txtRemainingValue"),

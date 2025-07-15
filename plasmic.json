@@ -1151,6 +1151,21 @@
           "id": "fl1ZOZIHaI_u",
           "name": "Icon52Icon",
           "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon52.tsx"
+        },
+        {
+          "id": "comSWarmx0fN",
+          "name": "Icon53Icon",
+          "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon53.tsx"
+        },
+        {
+          "id": "N3q4_1KLSfUU",
+          "name": "Icon54Icon",
+          "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon54.tsx"
+        },
+        {
+          "id": "zST45FWNEENs",
+          "name": "Icon55Icon",
+          "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon55.tsx"
         }
       ],
       "images": [
