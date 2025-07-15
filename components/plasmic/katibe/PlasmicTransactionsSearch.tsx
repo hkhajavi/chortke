@@ -7285,9 +7285,25 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         <React.Fragment>
                           {(() => {
                             try {
-                              return $state.bookDate == ""
-                                ? "کل درآمد: "
-                                : "درآمد امروز: ";
+                              return $state.transactionsReport?.data?.deposit
+                                ? $state.bookDate == ""
+                                  ? "کل درآمد: "
+                                  : "درآمد " +
+                                    (
+                                      "" +
+                                      (() => {
+                                        const gregorianDate = new Date(
+                                          $state.bookDate
+                                        );
+                                        const persianDate =
+                                          new Intl.DateTimeFormat(
+                                            "fa-IR"
+                                          ).format(gregorianDate);
+                                        return persianDate;
+                                      })()
+                                    ).substring(5) +
+                                    ":"
+                                : "";
                             } catch (e) {
                               if (
                                 e instanceof TypeError ||
