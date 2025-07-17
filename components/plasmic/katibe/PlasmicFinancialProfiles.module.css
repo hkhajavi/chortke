@@ -2706,6 +2706,11 @@
   max-width: 100%;
   min-width: 0;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__mmoVa {
+    font-size: var(--token-5Ye_3XTSaP9X);
+  }
+}
 .text__dlkwU {
   position: relative;
   width: 100%;
@@ -2713,6 +2718,18 @@
   max-width: 100%;
   padding-top: 6px;
   min-width: 0;
+}
+.text___1CR2O {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text___1CR2O {
+    font-size: var(--token-5Ye_3XTSaP9X);
+  }
 }
 .freeBox__u4WOp {
   flex-direction: column;
