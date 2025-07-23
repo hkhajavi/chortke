@@ -62,6 +62,7 @@ import {
 import Select from "../../Select"; // plasmic-import: 7wkEfmUYAcMf/component
 import { Chart } from "@/fragment/components/chart"; // plasmic-import: -wp9y67o_-GK/codeComponent
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
+import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 
 import { useScreenVariants as useScreenVariantsbr2UhI7UlpvR } from "../fragment_icons/PlasmicGlobalVariant__Screen"; // plasmic-import: BR2UhI7ulpvR/globalVariant
 
@@ -94,6 +95,7 @@ export type PlasmicReport__OverridesType = {
   svg?: Flex__<"svg">;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
   sideEffectRefresh?: Flex__<typeof SideEffect>;
+  embedHtml?: Flex__<typeof Embed>;
 };
 
 export interface DefaultReportProps {}
@@ -948,6 +950,15 @@ function PlasmicReport__RenderFunc(props: {
               }
             }}
           />
+
+          <Embed
+            data-plasmic-name={"embedHtml"}
+            data-plasmic-override={overrides.embedHtml}
+            className={classNames("__wab_instance", sty.embedHtml)}
+            code={
+              '<script type="text/javascript">\r\n    (function(c,l,a,r,i,t,y){\r\n        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\r\n        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;\r\n        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);\r\n    })(window, document, "clarity", "script", "pq37fqev3s");\r\n</script>'
+            }
+          />
         </div>
       </div>
     </React.Fragment>
@@ -962,14 +973,16 @@ const PlasmicDescendants = {
     "fragmentChart",
     "svg",
     "sideEffectPageLoad",
-    "sideEffectRefresh"
+    "sideEffectRefresh",
+    "embedHtml"
   ],
   section: ["section", "cbAccounts", "fragmentChart", "svg"],
   cbAccounts: ["cbAccounts"],
   fragmentChart: ["fragmentChart"],
   svg: ["svg"],
   sideEffectPageLoad: ["sideEffectPageLoad"],
-  sideEffectRefresh: ["sideEffectRefresh"]
+  sideEffectRefresh: ["sideEffectRefresh"],
+  embedHtml: ["embedHtml"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -982,6 +995,7 @@ type NodeDefaultElementType = {
   svg: "svg";
   sideEffectPageLoad: typeof SideEffect;
   sideEffectRefresh: typeof SideEffect;
+  embedHtml: typeof Embed;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1050,6 +1064,7 @@ export const PlasmicReport = Object.assign(
     svg: makeNodeComponent("svg"),
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
     sideEffectRefresh: makeNodeComponent("sideEffectRefresh"),
+    embedHtml: makeNodeComponent("embedHtml"),
 
     // Metadata about props expected for PlasmicReport
     internalVariantProps: PlasmicReport__VariantProps,
