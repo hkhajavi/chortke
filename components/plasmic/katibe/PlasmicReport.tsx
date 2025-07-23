@@ -204,12 +204,73 @@ function PlasmicReport__RenderFunc(props: {
                   <Chart
                     data-plasmic-name={"fragmentChart"}
                     data-plasmic-override={overrides.fragmentChart}
-                    chartConfig={[
-                      { color: "#000000", type: "natural", dot: false }
-                    ]}
+                    chartConfig={(() => {
+                      const __composite = [
+                        {
+                          color: null,
+                          type: "natural",
+                          dot: false,
+                          key: null,
+                          label: null
+                        }
+                      ];
+                      __composite["0"]["color"] = "var(--token-ct9q_Fh0pmQL)";
+                      __composite["0"]["key"] = "value1";
+                      __composite["0"]["label"] = "key";
+                      return __composite;
+                    })()}
                     className={classNames("__wab_instance", sty.fragmentChart)}
+                    data={[
+                      { date: "2025-07-01", value1: 120, value2: 135 },
+                      { date: "2025-07-02", value1: 135, value2: 128 },
+                      { date: "2025-07-03", value1: 128, value2: 142 },
+                      { date: "2025-07-04", value1: 142, value2: 150 },
+                      { date: "2025-07-05", value1: 150, value2: 138 },
+                      { date: "2025-07-06", value1: 138, value2: 160 },
+                      { date: "2025-07-07", value1: 160, value2: 172 },
+                      { date: "2025-07-08", value1: 172, value2: 155 },
+                      { date: "2025-07-09", value1: 155, value2: 165 },
+                      { date: "2025-07-10", value1: 165, value2: 500 },
+                      { date: "2025-07-11", value1: 500, value2: 180 },
+                      { date: "2025-07-12", value1: 180, value2: 175 },
+                      { date: "2025-07-13", value1: 175, value2: 1900 },
+                      { date: "2025-07-14", value1: 1900, value2: 2000 },
+                      { date: "2025-07-15", value1: 2000, value2: null }
+                    ]}
+                    dataKey={(() => {
+                      const __composite = { key: null, label: null };
+                      __composite["key"] = "value";
+                      __composite["label"] = "123";
+                      return __composite;
+                    })()}
+                    label={true}
                     layout={"vertical"}
-                    type={"bar"}
+                    legend={true}
+                    nameKey={(() => {
+                      const __composite = { key: null, label: null };
+                      __composite["key"] = "date";
+                      __composite["label"] = "444";
+                      return __composite;
+                    })()}
+                    stack={false}
+                    type={"line"}
+                    xAxis={(() => {
+                      const __composite = {
+                        key: null,
+                        type: null,
+                        tickLine: null
+                      };
+                      __composite["key"] = "date";
+                      __composite["type"] = "category";
+                      __composite["tickLine"] = false;
+                      return __composite;
+                    })()}
+                    yAxis={(() => {
+                      const __composite = { key: null, type: null };
+                      __composite["key"] = "value1";
+                      __composite["type"] = "number";
+                      return __composite;
+                    })()}
                   />
                 </div>
               </div>
