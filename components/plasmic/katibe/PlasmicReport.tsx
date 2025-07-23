@@ -59,8 +59,11 @@ import {
   useGlobalActions
 } from "@plasmicapp/react-web/lib/host";
 
+import Select from "../../Select"; // plasmic-import: 7wkEfmUYAcMf/component
 import { Chart } from "@/fragment/components/chart"; // plasmic-import: -wp9y67o_-GK/codeComponent
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
+
+import { useScreenVariants as useScreenVariantsbr2UhI7UlpvR } from "../fragment_icons/PlasmicGlobalVariant__Screen"; // plasmic-import: BR2UhI7ulpvR/globalVariant
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -85,9 +88,12 @@ export const PlasmicReport__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicReport__OverridesType = {
   root?: Flex__<"div">;
+  section?: Flex__<"section">;
+  cbAccounts?: Flex__<typeof Select>;
   fragmentChart?: Flex__<typeof Chart>;
   svg?: Flex__<"svg">;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
+  sideEffectRefresh?: Flex__<typeof SideEffect>;
 };
 
 export interface DefaultReportProps {}
@@ -146,6 +152,61 @@ function PlasmicReport__RenderFunc(props: {
         type: "private",
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+      },
+      {
+        path: "cbAccounts.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.accounts[0].id;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "accounts",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => []
+      },
+      {
+        path: "refreshCount",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "chartdata",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => []
+      },
+      {
+        path: "currentAccountTitle",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "currentAccountId",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "currentAccountType",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -155,6 +216,10 @@ function PlasmicReport__RenderFunc(props: {
     $ctx,
     $queries: {},
     $refs
+  });
+
+  const globalVariants = ensureGlobalVariants({
+    screen: useScreenVariantsbr2UhI7UlpvR()
   });
 
   return (
@@ -185,111 +250,262 @@ function PlasmicReport__RenderFunc(props: {
             sty.root
           )}
         >
-          {(() => {
-            try {
-              return !$state.waiting;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return true;
+          <section
+            data-plasmic-name={"section"}
+            data-plasmic-override={overrides.section}
+            className={classNames(projectcss.all, sty.section)}
+          >
+            <div className={classNames(projectcss.all, sty.freeBox__uz8V)}>
+              <div className={classNames(projectcss.all, sty.freeBox__t8L4J)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__wDmEi
+                  )}
+                >
+                  <React.Fragment>
+                    {(() => {
+                      try {
+                        return "حساب کاربری:  ";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return "\u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc: ";
+                        }
+                        throw e;
+                      }
+                    })()}
+                  </React.Fragment>
+                </div>
+                <Select
+                  data-plasmic-name={"cbAccounts"}
+                  data-plasmic-override={overrides.cbAccounts}
+                  aria-label={"name"}
+                  aria-labelledby={"id"}
+                  className={classNames("__wab_instance", sty.cbAccounts)}
+                  name={"accounts"}
+                  onChange={async (...eventArgs: any) => {
+                    ((...eventArgs) => {
+                      generateStateOnChangeProp($state, [
+                        "cbAccounts",
+                        "value"
+                      ])(eventArgs[0]);
+                    }).apply(null, eventArgs);
+
+                    if (
+                      eventArgs.length > 1 &&
+                      eventArgs[1] &&
+                      eventArgs[1]._plasmic_state_init_
+                    ) {
+                      return;
+                    }
+
+                    (async value => {
+                      const $steps = {};
+
+                      $steps["updateRefreshCount"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["refreshCount"]
+                              },
+                              operation: 2
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
+
+                              const oldValue = $stateGet(objRoot, variablePath);
+                              $stateSet(objRoot, variablePath, oldValue + 1);
+                              return oldValue + 1;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["updateRefreshCount"] != null &&
+                        typeof $steps["updateRefreshCount"] === "object" &&
+                        typeof $steps["updateRefreshCount"].then === "function"
+                      ) {
+                        $steps["updateRefreshCount"] = await $steps[
+                          "updateRefreshCount"
+                        ];
+                      }
+                    }).apply(null, eventArgs);
+                  }}
+                  options={(() => {
+                    try {
+                      return $state.accounts.map(item => ({
+                        value: item.uniqueid.toString(),
+                        label: item.name.replace("هزینه‌های ", "")
+                      }));
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [
+                          { value: "option1", label: "Option 1" },
+                          { value: "option2", label: "Option 2" }
+                        ];
+                      }
+                      throw e;
+                    }
+                  })()}
+                  placeholder={
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__sTwgy
+                      )}
+                    >
+                      {hasVariant(globalVariants, "screen", "mobileOnly") ? (
+                        "\u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f"
+                      ) : (
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return "حساب مورد نظر را انتخاب نمایید";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "\u0645\u0631\u06a9\u0632 \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
+                      )}
+                    </div>
+                  }
+                  value={generateStateValueProp($state, [
+                    "cbAccounts",
+                    "value"
+                  ])}
+                />
+              </div>
+            </div>
+            {(() => {
+              try {
+                return !$state.waiting;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
               }
-              throw e;
-            }
-          })() ? (
-            <section className={classNames(projectcss.all, sty.section__lIisa)}>
+            })() ? (
               <div className={classNames(projectcss.all, sty.freeBox__hYyDj)}>
                 <div className={classNames(projectcss.all, sty.freeBox__bRMnq)}>
                   <Chart
                     data-plasmic-name={"fragmentChart"}
                     data-plasmic-override={overrides.fragmentChart}
+                    cartesianGrid={[]}
                     chartConfig={(() => {
                       const __composite = [
-                        {
-                          color: null,
-                          type: "natural",
-                          dot: false,
-                          key: null,
-                          label: null
-                        }
+                        { color: null, type: "natural", dot: false, key: null }
                       ];
                       __composite["0"]["color"] = "var(--token-ct9q_Fh0pmQL)";
-                      __composite["0"]["key"] = "value1";
-                      __composite["0"]["label"] = "key";
+                      __composite["0"]["key"] = "amount";
                       return __composite;
                     })()}
                     className={classNames("__wab_instance", sty.fragmentChart)}
-                    data={[
-                      { date: "2025-07-01", value1: 120, value2: 135 },
-                      { date: "2025-07-02", value1: 135, value2: 128 },
-                      { date: "2025-07-03", value1: 128, value2: 142 },
-                      { date: "2025-07-04", value1: 142, value2: 150 },
-                      { date: "2025-07-05", value1: 150, value2: 138 },
-                      { date: "2025-07-06", value1: 138, value2: 160 },
-                      { date: "2025-07-07", value1: 160, value2: 172 },
-                      { date: "2025-07-08", value1: 172, value2: 155 },
-                      { date: "2025-07-09", value1: 155, value2: 165 },
-                      { date: "2025-07-10", value1: 165, value2: 500 },
-                      { date: "2025-07-11", value1: 500, value2: 180 },
-                      { date: "2025-07-12", value1: 180, value2: 175 },
-                      { date: "2025-07-13", value1: 175, value2: 1900 },
-                      { date: "2025-07-14", value1: 1900, value2: 2000 },
-                      { date: "2025-07-15", value1: 2000, value2: null }
-                    ]}
+                    data={(() => {
+                      try {
+                        return $state.chartdata;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return undefined;
+                        }
+                        throw e;
+                      }
+                    })()}
                     dataKey={(() => {
-                      const __composite = { key: null, label: null };
-                      __composite["key"] = "value";
-                      __composite["label"] = "123";
+                      const __composite = { key: null };
+                      __composite["key"] = "name";
                       return __composite;
                     })()}
                     label={true}
-                    layout={"vertical"}
-                    legend={true}
+                    layout={"horizontal"}
+                    legend={false}
                     nameKey={(() => {
-                      const __composite = { key: null, label: null };
-                      __composite["key"] = "date";
-                      __composite["label"] = "444";
+                      const __composite = { key: null };
+                      __composite["key"] = "name";
                       return __composite;
                     })()}
                     stack={false}
-                    type={"line"}
+                    tooltip={(() => {
+                      const __composite = {
+                        enabled: null,
+                        indicator: null,
+                        hideLabel: null,
+                        hideIndicator: null
+                      };
+                      __composite["enabled"] = true;
+                      __composite["indicator"] = "line";
+                      __composite["hideLabel"] = false;
+                      __composite["hideIndicator"] = false;
+                      return __composite;
+                    })()}
+                    type={"bar"}
                     xAxis={(() => {
                       const __composite = {
                         key: null,
-                        type: null,
-                        tickLine: null
+                        enabled: null,
+                        type: null
                       };
-                      __composite["key"] = "date";
+                      __composite["key"] = "name";
+                      __composite["enabled"] = true;
                       __composite["type"] = "category";
-                      __composite["tickLine"] = false;
                       return __composite;
                     })()}
                     yAxis={(() => {
-                      const __composite = { key: null, type: null };
-                      __composite["key"] = "value1";
+                      const __composite = {
+                        key: null,
+                        enabled: null,
+                        type: null
+                      };
+                      __composite["key"] = "amount";
+                      __composite["enabled"] = true;
                       __composite["type"] = "number";
                       return __composite;
                     })()}
                   />
                 </div>
               </div>
-            </section>
-          ) : null}
-          {(() => {
-            try {
-              return $state.waiting;
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return true;
+            ) : null}
+            {(() => {
+              try {
+                return $state.waiting;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
               }
-              throw e;
-            }
-          })() ? (
-            <section className={classNames(projectcss.all, sty.section__izq4X)}>
+            })() ? (
               <div className={classNames(projectcss.all, sty.freeBox___9N3Pb)}>
                 <div
                   className={classNames(projectcss.all, sty.freeBox___8HgSs)}
@@ -302,8 +518,8 @@ function PlasmicReport__RenderFunc(props: {
                   />
                 </div>
               </div>
-            </section>
-          ) : null}
+            ) : null}
+          </section>
           <SideEffect
             data-plasmic-name={"sideEffectPageLoad"}
             data-plasmic-override={overrides.sideEffectPageLoad}
@@ -393,6 +609,129 @@ function PlasmicReport__RenderFunc(props: {
                 $steps["updateUserData"] = await $steps["updateUserData"];
               }
 
+              $steps["getUserAccounts"] = true
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        undefined,
+                        (() => {
+                          try {
+                            return (
+                              "https://apigw.paziresh24.com/katibe-useraccounts?user_id=" +
+                              ($state.userData?.result?.id ||
+                                Math.random().toString(36).substring(2, 15))
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
+              if (
+                $steps["getUserAccounts"] != null &&
+                typeof $steps["getUserAccounts"] === "object" &&
+                typeof $steps["getUserAccounts"].then === "function"
+              ) {
+                $steps["getUserAccounts"] = await $steps["getUserAccounts"];
+              }
+
+              $steps["updateWaiting3"] =
+                $steps.getUserAccounts.status == 200
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return (() => {
+                            const data = $steps.getUserAccounts.data.data;
+                            const uniqueData = [];
+                            const seenIds = new Set();
+                            data.forEach(item => {
+                              if (!seenIds.has(item.id)) {
+                                seenIds.add(item.id);
+                                uniqueData.push(item);
+                              }
+                            });
+                            return ($state.accounts = uniqueData);
+                          })();
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updateWaiting3"] != null &&
+                typeof $steps["updateWaiting3"] === "object" &&
+                typeof $steps["updateWaiting3"].then === "function"
+              ) {
+                $steps["updateWaiting3"] = await $steps["updateWaiting3"];
+              }
+
+              $steps["updateWaiting4"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          if ($state.accounts.length > 0)
+                            return ($state.cbAccounts.value =
+                              $state.accounts[
+                                $state.accounts.length - 1
+                              ].uniqueid);
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateWaiting4"] != null &&
+                typeof $steps["updateWaiting4"] === "object" &&
+                typeof $steps["updateWaiting4"].then === "function"
+              ) {
+                $steps["updateWaiting4"] = await $steps["updateWaiting4"];
+              }
+
+              $steps["updateWaiting5"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          if ($steps.getUsers.data.isDoctor == true) {
+                            return $state.accounts.forEach(item => {
+                              if (item.account === "p24") {
+                                item.name = "ویزیت آنلاین " + item.name;
+                              }
+                            });
+                          }
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateWaiting5"] != null &&
+                typeof $steps["updateWaiting5"] === "object" &&
+                typeof $steps["updateWaiting5"].then === "function"
+              ) {
+                $steps["updateWaiting5"] = await $steps["updateWaiting5"];
+              }
+
               $steps["updateWaiting2"] = true
                 ? (() => {
                     const actionArgs = {
@@ -421,6 +760,192 @@ function PlasmicReport__RenderFunc(props: {
               ) {
                 $steps["updateWaiting2"] = await $steps["updateWaiting2"];
               }
+
+              $steps["updateWaiting6"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["refreshCount"]
+                      },
+                      operation: 2
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      const oldValue = $stateGet(objRoot, variablePath);
+                      $stateSet(objRoot, variablePath, oldValue + 1);
+                      return oldValue + 1;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateWaiting6"] != null &&
+                typeof $steps["updateWaiting6"] === "object" &&
+                typeof $steps["updateWaiting6"].then === "function"
+              ) {
+                $steps["updateWaiting6"] = await $steps["updateWaiting6"];
+              }
+            }}
+          />
+
+          <SideEffect
+            data-plasmic-name={"sideEffectRefresh"}
+            data-plasmic-override={overrides.sideEffectRefresh}
+            className={classNames("__wab_instance", sty.sideEffectRefresh)}
+            deps={(() => {
+              try {
+                return [$state.refreshCount];
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return undefined;
+                }
+                throw e;
+              }
+            })()}
+            onMount={async () => {
+              const $steps = {};
+
+              $steps["runCode"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          $state.waiting = true;
+                          $state.chartdata = [];
+                          return $state.accounts.forEach(account => {
+                            if (account.uniqueid == $state.cbAccounts.value) {
+                              $state.currentAccountType = account.type;
+                              $state.currentAccountId = account.id;
+                              $state.currentAccountTitle = account.name;
+                            }
+                          });
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["runCode"] != null &&
+                typeof $steps["runCode"] === "object" &&
+                typeof $steps["runCode"].then === "function"
+              ) {
+                $steps["runCode"] = await $steps["runCode"];
+              }
+
+              $steps["transactionsP24IncomeMonthly"] = true
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        undefined,
+                        (() => {
+                          try {
+                            return (
+                              "https://apigw.paziresh24.com/katibe/v1/transactions/report/p24/income/monthly" +
+                              ($state.currentAccountType == "centerid"
+                                ? "?centerid=" + $state.currentAccountId
+                                : "")
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
+              if (
+                $steps["transactionsP24IncomeMonthly"] != null &&
+                typeof $steps["transactionsP24IncomeMonthly"] === "object" &&
+                typeof $steps["transactionsP24IncomeMonthly"].then ===
+                  "function"
+              ) {
+                $steps["transactionsP24IncomeMonthly"] = await $steps[
+                  "transactionsP24IncomeMonthly"
+                ];
+              }
+
+              $steps["updateWaiting2"] =
+                $steps.transactionsP24IncomeMonthly.status == 200
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["chartdata"]
+                        },
+                        operation: 0,
+                        value: $steps.transactionsP24IncomeMonthly.data.data
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updateWaiting2"] != null &&
+                typeof $steps["updateWaiting2"] === "object" &&
+                typeof $steps["updateWaiting2"].then === "function"
+              ) {
+                $steps["updateWaiting2"] = await $steps["updateWaiting2"];
+              }
+
+              $steps["updateWaiting3"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["waiting"]
+                      },
+                      operation: 0,
+                      value: false
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateWaiting3"] != null &&
+                typeof $steps["updateWaiting3"] === "object" &&
+                typeof $steps["updateWaiting3"].then === "function"
+              ) {
+                $steps["updateWaiting3"] = await $steps["updateWaiting3"];
+              }
             }}
           />
         </div>
@@ -430,19 +955,33 @@ function PlasmicReport__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "fragmentChart", "svg", "sideEffectPageLoad"],
+  root: [
+    "root",
+    "section",
+    "cbAccounts",
+    "fragmentChart",
+    "svg",
+    "sideEffectPageLoad",
+    "sideEffectRefresh"
+  ],
+  section: ["section", "cbAccounts", "fragmentChart", "svg"],
+  cbAccounts: ["cbAccounts"],
   fragmentChart: ["fragmentChart"],
   svg: ["svg"],
-  sideEffectPageLoad: ["sideEffectPageLoad"]
+  sideEffectPageLoad: ["sideEffectPageLoad"],
+  sideEffectRefresh: ["sideEffectRefresh"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
+  section: "section";
+  cbAccounts: typeof Select;
   fragmentChart: typeof Chart;
   svg: "svg";
   sideEffectPageLoad: typeof SideEffect;
+  sideEffectRefresh: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -505,9 +1044,12 @@ export const PlasmicReport = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
+    section: makeNodeComponent("section"),
+    cbAccounts: makeNodeComponent("cbAccounts"),
     fragmentChart: makeNodeComponent("fragmentChart"),
     svg: makeNodeComponent("svg"),
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
+    sideEffectRefresh: makeNodeComponent("sideEffectRefresh"),
 
     // Metadata about props expected for PlasmicReport
     internalVariantProps: PlasmicReport__VariantProps,

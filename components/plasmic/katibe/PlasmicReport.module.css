@@ -8,6 +8,7 @@
   justify-items: center;
   justify-content: flex-start;
   align-items: center;
+  background: #f1f5f9;
   min-width: 0;
   min-height: 0;
   grid-template-columns:
@@ -21,7 +22,7 @@
 .root > * {
   grid-column: 4;
 }
-.section__lIisa {
+.section {
   display: grid;
   position: relative;
   align-content: flex-start;
@@ -40,8 +41,123 @@
     )
     minmax(0, var(--plsmc-wide-chunk)) 1fr var(--plsmc-viewport-gap);
 }
-.section__lIisa > * {
+.section > * {
   grid-column: 4;
+}
+.freeBox__uz8V {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  margin-top: 10px;
+  margin-right: 1px;
+  margin-left: 1px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background: #ffffff;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-end;
+  align-content: stretch;
+  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+  grid-column-start: 1 !important;
+  grid-column-end: -1 !important;
+  padding: 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__uz8V {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+}
+.freeBox__t8L4J {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  grid-row-end: span 1;
+  grid-column-end: span 1;
+  min-width: 0;
+  padding: 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__t8L4J {
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    min-height: 0;
+  }
+}
+.text__wDmEi {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  white-space: pre;
+  padding-top: 0px;
+  font-family: var(--iran-sans-x);
+  font-weight: 700;
+  font-style: normal;
+  color: #535353;
+  text-align: center;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
+  font-size: 16px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__wDmEi {
+    font-size: var(--token-VrIY9r5RDQZ_);
+    white-space: pre;
+  }
+}
+.cbAccounts:global(.__wab_instance) {
+  max-width: 100%;
+  width: auto;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .cbAccounts:global(.__wab_instance) {
+    height: 39px;
+    width: 100%;
+    min-width: 0;
+    margin: 0px;
+  }
+}
+.text__sTwgy {
+  font-family: var(--iran-sans-x);
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  color: #706f6c;
+  text-align: right;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre;
+  user-select: text;
+  text-decoration-line: none !important;
+  text-overflow: ellipsis !important;
+  overflow: hidden;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__sTwgy {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    padding-bottom: 0px;
+    text-align: center;
+    font-size: 12px;
+    min-width: 0;
+  }
 }
 .freeBox__hYyDj {
   display: grid;
@@ -50,7 +166,20 @@
   width: 100%;
   height: auto;
   max-width: 100%;
-  min-width: 0;
+  margin-top: 10px;
+  margin-right: 1px;
+  margin-left: 1px;
+  background: #ffffff;
+  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-end;
+  align-content: stretch;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  grid-column-start: 1 !important;
+  grid-column-end: -1 !important;
   padding: 8px;
 }
 .freeBox__bRMnq {
@@ -70,27 +199,6 @@
   max-width: 100%;
   object-fit: cover;
   min-width: 0;
-}
-.section__izq4X {
-  display: grid;
-  position: relative;
-  align-content: flex-start;
-  justify-items: center;
-  width: 100%;
-  padding-left: 0;
-  padding-right: 0;
-  grid-column-start: 3 !important;
-  grid-column-end: -3 !important;
-  grid-template-columns:
-    var(--plsmc-viewport-gap) 1fr minmax(0, var(--plsmc-wide-chunk))
-    min(
-      var(--plsmc-standard-width),
-      calc(100% - var(--plsmc-viewport-gap) - var(--plsmc-viewport-gap))
-    )
-    minmax(0, var(--plsmc-wide-chunk)) 1fr var(--plsmc-viewport-gap);
-}
-.section__izq4X > * {
-  grid-column: 4;
 }
 .freeBox___9N3Pb {
   display: grid;
@@ -125,4 +233,8 @@
   max-width: 100%;
   object-fit: cover;
   position: relative;
+}
+.sideEffectRefresh:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
 }
