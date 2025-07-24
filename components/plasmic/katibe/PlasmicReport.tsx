@@ -421,10 +421,17 @@ function PlasmicReport__RenderFunc(props: {
                     cartesianGrid={[]}
                     chartConfig={(() => {
                       const __composite = [
-                        { color: null, type: "natural", dot: false, key: null }
+                        {
+                          color: null,
+                          type: "natural",
+                          dot: false,
+                          key: null,
+                          label: null
+                        }
                       ];
                       __composite["0"]["color"] = "var(--token-ct9q_Fh0pmQL)";
                       __composite["0"]["key"] = "amount";
+                      __composite["0"]["label"] = "\u0631\u06cc\u0627\u0644";
                       return __composite;
                     })()}
                     className={classNames("__wab_instance", sty.fragmentChart)}
@@ -518,6 +525,287 @@ function PlasmicReport__RenderFunc(props: {
                     className={classNames(projectcss.all, sty.svg)}
                     role={"img"}
                   />
+                </div>
+              </div>
+            ) : null}
+            {(() => {
+              try {
+                return !$state.waiting;
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return true;
+                }
+                throw e;
+              }
+            })() ? (
+              <div className={classNames(projectcss.all, sty.freeBox__reMvs)}>
+                <div className={classNames(projectcss.all, sty.freeBox__yI94Y)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__q7S9S
+                    )}
+                  >
+                    {hasVariant(globalVariants, "screen", "mobileOnly") ? (
+                      <React.Fragment>
+                        <React.Fragment>
+                          {
+                            "\u0645\u0645\u06a9\u0646 \u0627\u0633\u062a \u0628\u0631\u062e\u06cc \u0627\u0632 \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627\u06cc \u0634\u0645\u0627 \u062f\u0631 \u0633\u06cc\u0633\u062a\u0645 \u0645\u0627\u0644\u06cc \u0642\u0628\u0644\u06cc \u062b\u0628\u062a \u0634\u062f\u0647 \u0628\u0627\u0634\u062f. \u062c\u0647\u062a \u0628\u0631\u0631\u0633\u06cc\u060c \u0644\u0637\u0641\u0627\u064b \u0628\u0647 "
+                          }
+                        </React.Fragment>
+                        {
+                          <PlasmicLink__
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.a,
+                              projectcss.__wab_text,
+                              projectcss.plasmic_default__inline,
+                              sty.link___6GTw
+                            )}
+                            component={Link}
+                            href={""}
+                            platform={"nextjs"}
+                          >
+                            {hasVariant(globalVariants, "screen", "mobileOnly")
+                              ? "\u0627\u06cc\u0646 \u0635\u0641\u062d\u0647"
+                              : "\u0627\u06cc\u0646 \u0635\u0641\u062d\u0647"}
+                          </PlasmicLink__>
+                        }
+                        <React.Fragment>
+                          {
+                            " \u0645\u0631\u0627\u062c\u0639\u0647 \u06a9\u0646\u06cc\u062f."
+                          }
+                        </React.Fragment>
+                      </React.Fragment>
+                    ) : (
+                      <React.Fragment>
+                        <React.Fragment>
+                          {
+                            "\u0645\u0645\u06a9\u0646 \u0627\u0633\u062a \u0628\u0631\u062e\u06cc \u0627\u0632 \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627\u06cc \u0634\u0645\u0627 \u062f\u0631 \u0633\u06cc\u0633\u062a\u0645 \u0645\u0627\u0644\u06cc \u0642\u0628\u0644\u06cc \u062b\u0628\u062a \u0634\u062f\u0647 \u0628\u0627\u0634\u062f. \u062c\u0647\u062a \u0628\u0631\u0631\u0633\u06cc\u060c \u0644\u0637\u0641\u0627\u064b \u0628\u0647 "
+                          }
+                        </React.Fragment>
+                        {
+                          <PlasmicLink__
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.a,
+                              projectcss.__wab_text,
+                              projectcss.plasmic_default__inline,
+                              sty.link__up84V
+                            )}
+                            component={Link}
+                            href={""}
+                            platform={"nextjs"}
+                          >
+                            {hasVariant(globalVariants, "screen", "mobileOnly")
+                              ? "\u0627\u06cc\u0646 \u0635\u0641\u062d\u0647"
+                              : "\u0627\u06cc\u0646 \u0635\u0641\u062d\u0647"}
+                          </PlasmicLink__>
+                        }
+                        <React.Fragment>
+                          {
+                            " \u0645\u0631\u0627\u062c\u0639\u0647 \u06a9\u0646\u06cc\u062f."
+                          }
+                        </React.Fragment>
+                      </React.Fragment>
+                    )}
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__qFCng
+                    )}
+                  >
+                    {hasVariant(globalVariants, "screen", "mobileOnly") ? (
+                      <React.Fragment>
+                        <React.Fragment>
+                          {
+                            "\u062f\u0631\u0635\u0648\u0631\u062a \u0646\u06cc\u0627\u0632 \u0628\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc "
+                          }
+                        </React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {
+                            "\u067e\u06cc\u0631\u0627\u0645\u0648\u0646 \u0627\u06cc\u0646 \u0635\u0641\u062d\u0647"
+                          }
+                        </span>
+                        <React.Fragment>
+                          {
+                            "\u060c \u0628\u0647 \u0622\u06cc\u200c\u062f\u06cc "
+                          }
+                        </React.Fragment>
+                        {
+                          <PlasmicLink__
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.a,
+                              projectcss.__wab_text,
+                              projectcss.plasmic_default__inline,
+                              sty.link__czSy
+                            )}
+                            component={Link}
+                            href={""}
+                            platform={"nextjs"}
+                          >
+                            {hasVariant(globalVariants, "screen", "mobileOnly")
+                              ? "@hojatkhajavi"
+                              : "@hojatkhajavi"}
+                          </PlasmicLink__>
+                        }
+                        <React.Fragment>
+                          {
+                            " \u062f\u0631 \u062a\u0644\u06af\u0631\u0627\u0645 \u067e\u06cc\u0627\u0645 \u062f\u0647\u06cc\u062f."
+                          }
+                        </React.Fragment>
+                      </React.Fragment>
+                    ) : (
+                      <React.Fragment>
+                        <React.Fragment>
+                          {
+                            "\u067e\u0632\u0634\u06a9 \u06af\u0631\u0627\u0645\u06cc\u060c \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627\u06cc \u0645\u0648\u062c\u0648\u062f \u062f\u0631 "
+                          }
+                        </React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {
+                            "\u0632\u0645\u0627\u0646 \u0627\u062e\u0630 \u0646\u0648\u0628\u062a"
+                          }
+                        </span>
+                        <React.Fragment>
+                          {
+                            " \u062b\u0628\u062a \u0634\u062f\u0647\u200c \u0648 \u0628\u0647 \u0645\u0646\u0638\u0648\u0631 "
+                          }
+                        </React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {
+                            "\u062a\u0627\u0631\u06cc\u062e \u0646\u0648\u0628\u062a"
+                          }
+                        </span>
+                        <React.Fragment>
+                          {" \u0646\u0645\u06cc\u200c\u0628\u0627\u0634\u062f."}
+                        </React.Fragment>
+                      </React.Fragment>
+                    )}
+                  </div>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___7WdPo
+                    )}
+                  >
+                    {hasVariant(globalVariants, "screen", "mobileOnly") ? (
+                      <React.Fragment>
+                        <React.Fragment>
+                          {
+                            "\u062f\u0631\u0635\u0648\u0631\u062a \u0646\u06cc\u0627\u0632 \u0628\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u06cc\u0627 \u0627\u0631\u0627\u0626\u0647 \u0646\u0638\u0631\u0627\u062a \u0648 \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u0627\u062a "
+                          }
+                        </React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {
+                            "\u067e\u06cc\u0631\u0627\u0645\u0648\u0646 \u0627\u06cc\u0646 \u0635\u0641\u062d\u0647"
+                          }
+                        </span>
+                        <React.Fragment>
+                          {
+                            "\u060c \u0628\u0647 \u0622\u06cc\u200c\u062f\u06cc "
+                          }
+                        </React.Fragment>
+                        {
+                          <PlasmicLink__
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.a,
+                              projectcss.__wab_text,
+                              projectcss.plasmic_default__inline,
+                              sty.link__esMfV
+                            )}
+                            component={Link}
+                            href={""}
+                            platform={"nextjs"}
+                          >
+                            {hasVariant(globalVariants, "screen", "mobileOnly")
+                              ? "@hojatkhajavi"
+                              : "@hojatkhajavi"}
+                          </PlasmicLink__>
+                        }
+                        <React.Fragment>
+                          {
+                            " \u062f\u0631 \u062a\u0644\u06af\u0631\u0627\u0645 \u067e\u06cc\u0627\u0645 \u062f\u0647\u06cc\u062f."
+                          }
+                        </React.Fragment>
+                      </React.Fragment>
+                    ) : (
+                      <React.Fragment>
+                        <React.Fragment>
+                          {
+                            "\u062f\u0631\u0635\u0648\u0631\u062a \u0646\u06cc\u0627\u0632 \u0628\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u06cc\u0627 \u0627\u0631\u0627\u0626\u0647 \u0646\u0638\u0631\u0627\u062a \u0648 \u067e\u06cc\u0634\u0646\u0647\u0627\u062f\u0627\u062a "
+                          }
+                        </React.Fragment>
+                        <span
+                          className={
+                            "plasmic_default__all plasmic_default__span"
+                          }
+                          style={{ fontWeight: 700 }}
+                        >
+                          {
+                            "\u067e\u06cc\u0631\u0627\u0645\u0648\u0646 \u0627\u06cc\u0646 \u0635\u0641\u062d\u0647"
+                          }
+                        </span>
+                        <React.Fragment>
+                          {
+                            "\u060c \u0628\u0647 \u0622\u06cc\u200c\u062f\u06cc "
+                          }
+                        </React.Fragment>
+                        {
+                          <PlasmicLink__
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.a,
+                              projectcss.__wab_text,
+                              projectcss.plasmic_default__inline,
+                              sty.link__wcpez
+                            )}
+                            component={Link}
+                            href={""}
+                            platform={"nextjs"}
+                          >
+                            {hasVariant(globalVariants, "screen", "mobileOnly")
+                              ? "@hojatkhajavi"
+                              : "@hojatkhajavi"}
+                          </PlasmicLink__>
+                        }
+                        <React.Fragment>
+                          {
+                            " \u062f\u0631 \u062a\u0644\u06af\u0631\u0627\u0645 \u067e\u06cc\u0627\u0645 \u062f\u0647\u06cc\u062f."
+                          }
+                        </React.Fragment>
+                      </React.Fragment>
+                    )}
+                  </div>
                 </div>
               </div>
             ) : null}
