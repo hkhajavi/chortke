@@ -6896,7 +6896,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       )}
                                     >
                                       {
-                                        "\u0641\u0639\u0627\u0644 \u0633\u0627\u0632\u06cc \u062a\u0633\u0648\u06cc\u0647 \u062d\u0633\u0627\u0628 \u062e\u0648\u062f\u06a9\u0627\u0631"
+                                        "\u0641\u0639\u0627\u0644 \u0633\u0627\u0632\u06cc \u062a\u0633\u0648\u06cc\u0647 \u062e\u0648\u062f\u06a9\u0627\u0631"
                                       }
                                     </div>
                                   }
