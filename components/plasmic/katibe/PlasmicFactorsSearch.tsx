@@ -3074,62 +3074,83 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                               <div
                                 className={classNames(
                                   projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__lEv
+                                  sty.freeBox___5JIpI
                                 )}
                               >
-                                <React.Fragment>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__sssw1
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__lEv
+                                    )}
+                                  >
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return (() => {
+                                            return $state.txtPaymentText + ":";
+                                          })();
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc:";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  </div>
+                                </div>
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox___93Zy
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__ldZ7
+                                    )}
+                                  >
+                                    {
+                                      "\u0627\u0628\u062a\u062f\u0627 \u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f:"
+                                    }
+                                  </div>
                                   {(() => {
                                     try {
-                                      return (() => {
-                                        return $state.txtPaymentText + ":";
-                                      })();
+                                      return $state.waitingPayment;
                                     } catch (e) {
                                       if (
                                         e instanceof TypeError ||
                                         e?.plasmicType ===
                                           "PlasmicUndefinedDataError"
                                       ) {
-                                        return "\u0627\u0641\u0632\u0627\u06cc\u0634 \u0645\u0648\u062c\u0648\u062f\u06cc:";
+                                        return true;
                                       }
                                       throw e;
                                     }
-                                  })()}
-                                </React.Fragment>
+                                  })() ? (
+                                    <Icon2Icon
+                                      className={classNames(
+                                        projectcss.all,
+                                        sty.svg___869BU
+                                      )}
+                                      role={"img"}
+                                    />
+                                  ) : null}
+                                </div>
                               </div>
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__ldZ7
-                                )}
-                              >
-                                {
-                                  "\u0627\u0628\u062a\u062f\u0627 \u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f:"
-                                }
-                              </div>
-                              {(() => {
-                                try {
-                                  return $state.waitingPayment;
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return true;
-                                  }
-                                  throw e;
-                                }
-                              })() ? (
-                                <Icon2Icon
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.svg___869BU
-                                  )}
-                                  role={"img"}
-                                />
-                              ) : null}
                             </div>
                           }
                           trigger={
