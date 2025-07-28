@@ -119,6 +119,10 @@ export type PlasmicFactorsSearch__OverridesType = {
   btnSelectAmount?: Flex__<typeof Button>;
   gridMyAmount?: Flex__<"div">;
   txtNewPaymentAmount?: Flex__<typeof TextInput>;
+  btnPayWithWallet?: Flex__<typeof Button>;
+  txtpayWithWallet?: Flex__<"div">;
+  btnPayWithWallet2?: Flex__<typeof Button>;
+  txtpayWithWallet2?: Flex__<"div">;
   gridInvoice1?: Flex__<"div">;
   gridNoData?: Flex__<"div">;
   gridInvoice12?: Flex__<"div">;
@@ -615,6 +619,12 @@ function PlasmicFactorsSearch__RenderFunc(props: {
         type: "private",
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+      },
+      {
+        path: "p24Balance",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
@@ -1823,6 +1833,158 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                           ]) ?? ""
                                         }
                                       />
+
+                                      <div
+                                        className={classNames(
+                                          projectcss.all,
+                                          projectcss.__wab_text,
+                                          sty.text__vBkpO
+                                        )}
+                                      >
+                                        <React.Fragment>
+                                          {(() => {
+                                            try {
+                                              return (() => {
+                                                function numberToPersianWords(
+                                                  num
+                                                ) {
+                                                  if (
+                                                    num == "" ||
+                                                    num == 0 ||
+                                                    num == "0" ||
+                                                    num == "NaN"
+                                                  ) {
+                                                    return "صفر";
+                                                  }
+                                                  const yekan = [
+                                                    "",
+                                                    "یک",
+                                                    "دو",
+                                                    "سه",
+                                                    "چهار",
+                                                    "پنج",
+                                                    "شش",
+                                                    "هفت",
+                                                    "هشت",
+                                                    "نه"
+                                                  ];
+
+                                                  const dahgan = [
+                                                    "",
+                                                    "ده",
+                                                    "بیست",
+                                                    "سی",
+                                                    "چهل",
+                                                    "پنجاه",
+                                                    "شصت",
+                                                    "هفتاد",
+                                                    "هشتاد",
+                                                    "نود"
+                                                  ];
+
+                                                  const sadgan = [
+                                                    "",
+                                                    "صد",
+                                                    "دویست",
+                                                    "سیصد",
+                                                    "چهارصد",
+                                                    "پانصد",
+                                                    "ششصد",
+                                                    "هفتصد",
+                                                    "هشتصد",
+                                                    "نهصد"
+                                                  ];
+
+                                                  const dah = [
+                                                    "ده",
+                                                    "یازده",
+                                                    "دوازده",
+                                                    "سیزده",
+                                                    "چهارده",
+                                                    "پانزده",
+                                                    "شانزده",
+                                                    "هفده",
+                                                    "هجده",
+                                                    "نوزده"
+                                                  ];
+
+                                                  const parts = [
+                                                    "",
+                                                    "هزار",
+                                                    "میلیون",
+                                                    "میلیارد",
+                                                    "تریلیون"
+                                                  ];
+
+                                                  if (num === 0) return "صفر";
+                                                  num = Math.floor(num);
+                                                  const groups = [];
+                                                  while (num > 0) {
+                                                    groups.push(num % 1000);
+                                                    num = Math.floor(
+                                                      num / 1000
+                                                    );
+                                                  }
+                                                  const convertThreeDigits =
+                                                    n => {
+                                                      let words = [];
+                                                      let s = Math.floor(
+                                                        n / 100
+                                                      );
+                                                      let d = Math.floor(
+                                                        (n % 100) / 10
+                                                      );
+                                                      let y = n % 10;
+                                                      if (s > 0)
+                                                        words.push(sadgan[s]);
+                                                      if (d === 1 && y > 0) {
+                                                        words.push(dah[y]);
+                                                      } else {
+                                                        if (d > 0)
+                                                          words.push(dahgan[d]);
+                                                        if (y > 0)
+                                                          words.push(yekan[y]);
+                                                      }
+                                                      return words.join(" و ");
+                                                    };
+                                                  const result = [];
+                                                  for (
+                                                    let i = 0;
+                                                    i < groups.length;
+                                                    i++
+                                                  ) {
+                                                    if (groups[i] !== 0) {
+                                                      let words =
+                                                        convertThreeDigits(
+                                                          groups[i]
+                                                        );
+                                                      if (parts[i]) {
+                                                        words += " " + parts[i];
+                                                      }
+                                                      result.unshift(words);
+                                                    }
+                                                  }
+                                                  return result.join(" و ");
+                                                }
+                                                return (
+                                                  numberToPersianWords(
+                                                    $state.paymentAmount
+                                                  ) + " ریال"
+                                                );
+                                              })();
+                                            } catch (e) {
+                                              if (
+                                                e instanceof TypeError ||
+                                                e?.plasmicType ===
+                                                  "PlasmicUndefinedDataError"
+                                              ) {
+                                                return "";
+                                              }
+                                              throw e;
+                                            }
+                                          })()}
+                                        </React.Fragment>
+                                      </div>
                                     </div>
                                   ) : null}
                                   <div
@@ -1857,13 +2019,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                         <React.Fragment>
                                           {(() => {
                                             try {
-                                              return (
-                                                new Intl.NumberFormat(
-                                                  "fa-IR"
-                                                ).format($state.paymentAmount) +
-                                                " ریال" +
-                                                " - ارسال به درگاه پرداخت"
-                                              );
+                                              return "ارسال به درگاه پرداخت";
                                             } catch (e) {
                                               if (
                                                 e instanceof TypeError ||
@@ -1882,6 +2038,20 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       "__wab_instance",
                                       sty.button__eT7XK
                                     )}
+                                    isDisabled={(() => {
+                                      try {
+                                        return $state.waitingPayment;
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return [];
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
                                     onClick={async event => {
                                       const $steps = {};
 
@@ -2118,31 +2288,757 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                           await $steps["hideWaitingPayment"];
                                       }
                                     }}
+                                    size={"compact"}
                                   />
-
-                                  {(() => {
-                                    try {
-                                      return $state.waitingPayment;
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return true;
-                                      }
-                                      throw e;
-                                    }
-                                  })() ? (
-                                    <Icon2Icon
-                                      className={classNames(
-                                        projectcss.all,
-                                        sty.svg___869BU
-                                      )}
-                                      role={"img"}
-                                    />
-                                  ) : null}
                                 </div>
+                                {(() => {
+                                  try {
+                                    return (
+                                      $state.userData.isDoctor &&
+                                      $state.currentAccountType == "userid"
+                                    );
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return true;
+                                    }
+                                    throw e;
+                                  }
+                                })() ? (
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      sty.freeBox__eGuaD
+                                    )}
+                                  >
+                                    <Button
+                                      data-plasmic-name={"btnPayWithWallet"}
+                                      data-plasmic-override={
+                                        overrides.btnPayWithWallet
+                                      }
+                                      children2={
+                                        <div
+                                          data-plasmic-name={"txtpayWithWallet"}
+                                          data-plasmic-override={
+                                            overrides.txtpayWithWallet
+                                          }
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.txtpayWithWallet
+                                          )}
+                                        >
+                                          <React.Fragment>
+                                            {(() => {
+                                              try {
+                                                return (
+                                                  "پرداخت با کیف پول - موجودی: " +
+                                                  $state.p24Balance +
+                                                  " ریال"
+                                                );
+                                              } catch (e) {
+                                                if (
+                                                  e instanceof TypeError ||
+                                                  e?.plasmicType ===
+                                                    "PlasmicUndefinedDataError"
+                                                ) {
+                                                  return "";
+                                                }
+                                                throw e;
+                                              }
+                                            })()}
+                                          </React.Fragment>
+                                        </div>
+                                      }
+                                      className={classNames(
+                                        "__wab_instance",
+                                        sty.btnPayWithWallet
+                                      )}
+                                      color={"softBlue"}
+                                      isDisabled={(() => {
+                                        try {
+                                          return (
+                                            $state.waitingPayment ||
+                                            $state.p24Balance <
+                                              parseInt($state.paymentAmount)
+                                          );
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return [];
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                      onClick={async event => {
+                                        const $steps = {};
+
+                                        $steps["showWaitingPayment"] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                variable: {
+                                                  objRoot: $state,
+                                                  variablePath: [
+                                                    "waitingPayment"
+                                                  ]
+                                                },
+                                                operation: 0,
+                                                value: true
+                                              };
+                                              return (({
+                                                variable,
+                                                value,
+                                                startIndex,
+                                                deleteCount
+                                              }) => {
+                                                if (!variable) {
+                                                  return;
+                                                }
+                                                const {
+                                                  objRoot,
+                                                  variablePath
+                                                } = variable;
+
+                                                $stateSet(
+                                                  objRoot,
+                                                  variablePath,
+                                                  value
+                                                );
+                                                return value;
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["showWaitingPayment"] !=
+                                            null &&
+                                          typeof $steps[
+                                            "showWaitingPayment"
+                                          ] === "object" &&
+                                          typeof $steps["showWaitingPayment"]
+                                            .then === "function"
+                                        ) {
+                                          $steps["showWaitingPayment"] =
+                                            await $steps["showWaitingPayment"];
+                                        }
+
+                                        $steps["paymentRequest"] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                args: [
+                                                  "POST",
+                                                  "https://apigw.paziresh24.com/katibe/v1/factors/p24/pay",
+                                                  undefined,
+                                                  (() => {
+                                                    try {
+                                                      return {
+                                                        amount: parseInt(
+                                                          $state.paymentAmount
+                                                        )
+                                                      };
+                                                    } catch (e) {
+                                                      if (
+                                                        e instanceof
+                                                          TypeError ||
+                                                        e?.plasmicType ===
+                                                          "PlasmicUndefinedDataError"
+                                                      ) {
+                                                        return undefined;
+                                                      }
+                                                      throw e;
+                                                    }
+                                                  })()
+                                                ]
+                                              };
+                                              return $globalActions[
+                                                "Fragment.apiRequest"
+                                              ]?.apply(null, [
+                                                ...actionArgs.args
+                                              ]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["paymentRequest"] != null &&
+                                          typeof $steps["paymentRequest"] ===
+                                            "object" &&
+                                          typeof $steps["paymentRequest"]
+                                            .then === "function"
+                                        ) {
+                                          $steps["paymentRequest"] =
+                                            await $steps["paymentRequest"];
+                                        }
+
+                                        $steps["hideWaitingPayment"] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                variable: {
+                                                  objRoot: $state,
+                                                  variablePath: [
+                                                    "waitingPayment"
+                                                  ]
+                                                },
+                                                operation: 0,
+                                                value: false
+                                              };
+                                              return (({
+                                                variable,
+                                                value,
+                                                startIndex,
+                                                deleteCount
+                                              }) => {
+                                                if (!variable) {
+                                                  return;
+                                                }
+                                                const {
+                                                  objRoot,
+                                                  variablePath
+                                                } = variable;
+
+                                                $stateSet(
+                                                  objRoot,
+                                                  variablePath,
+                                                  value
+                                                );
+                                                return value;
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["hideWaitingPayment"] !=
+                                            null &&
+                                          typeof $steps[
+                                            "hideWaitingPayment"
+                                          ] === "object" &&
+                                          typeof $steps["hideWaitingPayment"]
+                                            .then === "function"
+                                        ) {
+                                          $steps["hideWaitingPayment"] =
+                                            await $steps["hideWaitingPayment"];
+                                        }
+
+                                        $steps[
+                                          "updateRequestSettlementMessage"
+                                        ] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                variable: {
+                                                  objRoot: $state,
+                                                  variablePath: [
+                                                    "requestSettlementMessage"
+                                                  ]
+                                                },
+                                                operation: 0,
+                                                value:
+                                                  $steps.paymentRequest.data
+                                                    .message
+                                              };
+                                              return (({
+                                                variable,
+                                                value,
+                                                startIndex,
+                                                deleteCount
+                                              }) => {
+                                                if (!variable) {
+                                                  return;
+                                                }
+                                                const {
+                                                  objRoot,
+                                                  variablePath
+                                                } = variable;
+
+                                                $stateSet(
+                                                  objRoot,
+                                                  variablePath,
+                                                  value
+                                                );
+                                                return value;
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps[
+                                            "updateRequestSettlementMessage"
+                                          ] != null &&
+                                          typeof $steps[
+                                            "updateRequestSettlementMessage"
+                                          ] === "object" &&
+                                          typeof $steps[
+                                            "updateRequestSettlementMessage"
+                                          ].then === "function"
+                                        ) {
+                                          $steps[
+                                            "updateRequestSettlementMessage"
+                                          ] = await $steps[
+                                            "updateRequestSettlementMessage"
+                                          ];
+                                        }
+
+                                        $steps["invokeGlobalAction"] =
+                                          $steps.paymentRequest.status == 200
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  args: [
+                                                    undefined,
+                                                    "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u0627\u0646\u062c\u0627\u0645 \u0634\u062f."
+                                                  ]
+                                                };
+                                                return $globalActions[
+                                                  "Fragment.showToast"
+                                                ]?.apply(null, [
+                                                  ...actionArgs.args
+                                                ]);
+                                              })()
+                                            : undefined;
+                                        if (
+                                          $steps["invokeGlobalAction"] !=
+                                            null &&
+                                          typeof $steps[
+                                            "invokeGlobalAction"
+                                          ] === "object" &&
+                                          typeof $steps["invokeGlobalAction"]
+                                            .then === "function"
+                                        ) {
+                                          $steps["invokeGlobalAction"] =
+                                            await $steps["invokeGlobalAction"];
+                                        }
+
+                                        $steps["invokeGlobalAction2"] =
+                                          $steps.paymentRequest.status != 200
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  args: [
+                                                    "error",
+                                                    (() => {
+                                                      try {
+                                                        return $state.requestSettlementMessage;
+                                                      } catch (e) {
+                                                        if (
+                                                          e instanceof
+                                                            TypeError ||
+                                                          e?.plasmicType ===
+                                                            "PlasmicUndefinedDataError"
+                                                        ) {
+                                                          return undefined;
+                                                        }
+                                                        throw e;
+                                                      }
+                                                    })()
+                                                  ]
+                                                };
+                                                return $globalActions[
+                                                  "Fragment.showToast"
+                                                ]?.apply(null, [
+                                                  ...actionArgs.args
+                                                ]);
+                                              })()
+                                            : undefined;
+                                        if (
+                                          $steps["invokeGlobalAction2"] !=
+                                            null &&
+                                          typeof $steps[
+                                            "invokeGlobalAction2"
+                                          ] === "object" &&
+                                          typeof $steps["invokeGlobalAction2"]
+                                            .then === "function"
+                                        ) {
+                                          $steps["invokeGlobalAction2"] =
+                                            await $steps["invokeGlobalAction2"];
+                                        }
+
+                                        $steps["runCode"] =
+                                          $steps.paymentRequest.status == 200
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  customFunction: async () => {
+                                                    return (() => {
+                                                      $state.firstRequestCount =
+                                                        $state.firstRequestCount +
+                                                        1;
+                                                      return ($state.dialogIncreaseRemaining.open =
+                                                        false);
+                                                    })();
+                                                  }
+                                                };
+                                                return (({
+                                                  customFunction
+                                                }) => {
+                                                  return customFunction();
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                        if (
+                                          $steps["runCode"] != null &&
+                                          typeof $steps["runCode"] ===
+                                            "object" &&
+                                          typeof $steps["runCode"].then ===
+                                            "function"
+                                        ) {
+                                          $steps["runCode"] = await $steps[
+                                            "runCode"
+                                          ];
+                                        }
+                                      }}
+                                      size={"compact"}
+                                    />
+
+                                    <Button
+                                      data-plasmic-name={"btnPayWithWallet2"}
+                                      data-plasmic-override={
+                                        overrides.btnPayWithWallet2
+                                      }
+                                      children2={
+                                        <div
+                                          data-plasmic-name={
+                                            "txtpayWithWallet2"
+                                          }
+                                          data-plasmic-override={
+                                            overrides.txtpayWithWallet2
+                                          }
+                                          className={classNames(
+                                            projectcss.all,
+                                            projectcss.__wab_text,
+                                            sty.txtpayWithWallet2
+                                          )}
+                                        >
+                                          {
+                                            "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0645\u0637\u0628"
+                                          }
+                                        </div>
+                                      }
+                                      className={classNames(
+                                        "__wab_instance",
+                                        sty.btnPayWithWallet2
+                                      )}
+                                      isDisabled={(() => {
+                                        try {
+                                          return $state.waitingPayment;
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return [];
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                      onClick={async event => {
+                                        const $steps = {};
+
+                                        $steps["showWaitingPayment"] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                variable: {
+                                                  objRoot: $state,
+                                                  variablePath: [
+                                                    "waitingPayment"
+                                                  ]
+                                                },
+                                                operation: 0,
+                                                value: true
+                                              };
+                                              return (({
+                                                variable,
+                                                value,
+                                                startIndex,
+                                                deleteCount
+                                              }) => {
+                                                if (!variable) {
+                                                  return;
+                                                }
+                                                const {
+                                                  objRoot,
+                                                  variablePath
+                                                } = variable;
+
+                                                $stateSet(
+                                                  objRoot,
+                                                  variablePath,
+                                                  value
+                                                );
+                                                return value;
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["showWaitingPayment"] !=
+                                            null &&
+                                          typeof $steps[
+                                            "showWaitingPayment"
+                                          ] === "object" &&
+                                          typeof $steps["showWaitingPayment"]
+                                            .then === "function"
+                                        ) {
+                                          $steps["showWaitingPayment"] =
+                                            await $steps["showWaitingPayment"];
+                                        }
+
+                                        $steps["paymentRequest"] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                args: [
+                                                  "POST",
+                                                  "https://apigw.paziresh24.com/katibe/v1/factors/p24/pay",
+                                                  undefined,
+                                                  (() => {
+                                                    try {
+                                                      return {
+                                                        amount: parseInt(
+                                                          $state.paymentAmount
+                                                        )
+                                                      };
+                                                    } catch (e) {
+                                                      if (
+                                                        e instanceof
+                                                          TypeError ||
+                                                        e?.plasmicType ===
+                                                          "PlasmicUndefinedDataError"
+                                                      ) {
+                                                        return undefined;
+                                                      }
+                                                      throw e;
+                                                    }
+                                                  })()
+                                                ]
+                                              };
+                                              return $globalActions[
+                                                "Fragment.apiRequest"
+                                              ]?.apply(null, [
+                                                ...actionArgs.args
+                                              ]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["paymentRequest"] != null &&
+                                          typeof $steps["paymentRequest"] ===
+                                            "object" &&
+                                          typeof $steps["paymentRequest"]
+                                            .then === "function"
+                                        ) {
+                                          $steps["paymentRequest"] =
+                                            await $steps["paymentRequest"];
+                                        }
+
+                                        $steps["hideWaitingPayment"] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                variable: {
+                                                  objRoot: $state,
+                                                  variablePath: [
+                                                    "waitingPayment"
+                                                  ]
+                                                },
+                                                operation: 0,
+                                                value: false
+                                              };
+                                              return (({
+                                                variable,
+                                                value,
+                                                startIndex,
+                                                deleteCount
+                                              }) => {
+                                                if (!variable) {
+                                                  return;
+                                                }
+                                                const {
+                                                  objRoot,
+                                                  variablePath
+                                                } = variable;
+
+                                                $stateSet(
+                                                  objRoot,
+                                                  variablePath,
+                                                  value
+                                                );
+                                                return value;
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["hideWaitingPayment"] !=
+                                            null &&
+                                          typeof $steps[
+                                            "hideWaitingPayment"
+                                          ] === "object" &&
+                                          typeof $steps["hideWaitingPayment"]
+                                            .then === "function"
+                                        ) {
+                                          $steps["hideWaitingPayment"] =
+                                            await $steps["hideWaitingPayment"];
+                                        }
+
+                                        $steps[
+                                          "updateRequestSettlementMessage"
+                                        ] = true
+                                          ? (() => {
+                                              const actionArgs = {
+                                                variable: {
+                                                  objRoot: $state,
+                                                  variablePath: [
+                                                    "requestSettlementMessage"
+                                                  ]
+                                                },
+                                                operation: 0,
+                                                value:
+                                                  $steps.paymentRequest.data
+                                                    .message
+                                              };
+                                              return (({
+                                                variable,
+                                                value,
+                                                startIndex,
+                                                deleteCount
+                                              }) => {
+                                                if (!variable) {
+                                                  return;
+                                                }
+                                                const {
+                                                  objRoot,
+                                                  variablePath
+                                                } = variable;
+
+                                                $stateSet(
+                                                  objRoot,
+                                                  variablePath,
+                                                  value
+                                                );
+                                                return value;
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps[
+                                            "updateRequestSettlementMessage"
+                                          ] != null &&
+                                          typeof $steps[
+                                            "updateRequestSettlementMessage"
+                                          ] === "object" &&
+                                          typeof $steps[
+                                            "updateRequestSettlementMessage"
+                                          ].then === "function"
+                                        ) {
+                                          $steps[
+                                            "updateRequestSettlementMessage"
+                                          ] = await $steps[
+                                            "updateRequestSettlementMessage"
+                                          ];
+                                        }
+
+                                        $steps["invokeGlobalAction"] =
+                                          $steps.paymentRequest.status == 200
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  args: [
+                                                    undefined,
+                                                    "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u0627\u0646\u062c\u0627\u0645 \u0634\u062f."
+                                                  ]
+                                                };
+                                                return $globalActions[
+                                                  "Fragment.showToast"
+                                                ]?.apply(null, [
+                                                  ...actionArgs.args
+                                                ]);
+                                              })()
+                                            : undefined;
+                                        if (
+                                          $steps["invokeGlobalAction"] !=
+                                            null &&
+                                          typeof $steps[
+                                            "invokeGlobalAction"
+                                          ] === "object" &&
+                                          typeof $steps["invokeGlobalAction"]
+                                            .then === "function"
+                                        ) {
+                                          $steps["invokeGlobalAction"] =
+                                            await $steps["invokeGlobalAction"];
+                                        }
+
+                                        $steps["invokeGlobalAction2"] =
+                                          $steps.paymentRequest.status != 200
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  args: [
+                                                    "error",
+                                                    (() => {
+                                                      try {
+                                                        return $state.requestSettlementMessage;
+                                                      } catch (e) {
+                                                        if (
+                                                          e instanceof
+                                                            TypeError ||
+                                                          e?.plasmicType ===
+                                                            "PlasmicUndefinedDataError"
+                                                        ) {
+                                                          return undefined;
+                                                        }
+                                                        throw e;
+                                                      }
+                                                    })()
+                                                  ]
+                                                };
+                                                return $globalActions[
+                                                  "Fragment.showToast"
+                                                ]?.apply(null, [
+                                                  ...actionArgs.args
+                                                ]);
+                                              })()
+                                            : undefined;
+                                        if (
+                                          $steps["invokeGlobalAction2"] !=
+                                            null &&
+                                          typeof $steps[
+                                            "invokeGlobalAction2"
+                                          ] === "object" &&
+                                          typeof $steps["invokeGlobalAction2"]
+                                            .then === "function"
+                                        ) {
+                                          $steps["invokeGlobalAction2"] =
+                                            await $steps["invokeGlobalAction2"];
+                                        }
+
+                                        $steps["runCode"] =
+                                          $steps.paymentRequest.status == 200
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  customFunction: async () => {
+                                                    return (() => {
+                                                      $state.firstRequestCount =
+                                                        $state.firstRequestCount +
+                                                        1;
+                                                      return ($state.dialogIncreaseRemaining.open =
+                                                        false);
+                                                    })();
+                                                  }
+                                                };
+                                                return (({
+                                                  customFunction
+                                                }) => {
+                                                  return customFunction();
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                        if (
+                                          $steps["runCode"] != null &&
+                                          typeof $steps["runCode"] ===
+                                            "object" &&
+                                          typeof $steps["runCode"].then ===
+                                            "function"
+                                        ) {
+                                          $steps["runCode"] = await $steps[
+                                            "runCode"
+                                          ];
+                                        }
+                                      }}
+                                      size={"compact"}
+                                    />
+                                  </div>
+                                ) : null}
                               </div>
                             </React.Fragment>
                           }
@@ -2201,39 +3097,38 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                   })()}
                                 </React.Fragment>
                               </div>
-                              {(
-                                hasVariant(
-                                  globalVariants,
-                                  "screen",
-                                  "mobileOnly"
-                                )
-                                  ? true
-                                  : (() => {
-                                      try {
-                                        return $state.showMyAmount;
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return true;
-                                        }
-                                        throw e;
-                                      }
-                                    })()
-                              ) ? (
-                                <div
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__ldZ7
+                                )}
+                              >
+                                {
+                                  "\u0627\u0628\u062a\u062f\u0627 \u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f:"
+                                }
+                              </div>
+                              {(() => {
+                                try {
+                                  return $state.waitingPayment;
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return true;
+                                  }
+                                  throw e;
+                                }
+                              })() ? (
+                                <Icon2Icon
                                   className={classNames(
                                     projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__ldZ7
+                                    sty.svg___869BU
                                   )}
-                                >
-                                  {
-                                    '\u0627\u0628\u062a\u062f\u0627 \u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0631\u0627 \u0648\u0627\u0631\u062f \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 "\u0627\u0631\u0633\u0627\u0644 \u0628\u0647 \u062f\u0631\u06af\u0627\u0647" \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f:'
-                                  }
-                                </div>
+                                  role={"img"}
+                                />
                               ) : null}
                             </div>
                           }
@@ -2422,6 +3317,76 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                     typeof $steps["runCode"].then === "function"
                                   ) {
                                     $steps["runCode"] = await $steps["runCode"];
+                                  }
+
+                                  $steps["balanceP24"] = $state.userData
+                                    .isDoctor
+                                    ? (() => {
+                                        const actionArgs = {
+                                          args: [
+                                            undefined,
+                                            "https://apigw.paziresh24.com/katibe/v1/transactions/balance/p24"
+                                          ]
+                                        };
+                                        return $globalActions[
+                                          "Fragment.apiRequest"
+                                        ]?.apply(null, [...actionArgs.args]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["balanceP24"] != null &&
+                                    typeof $steps["balanceP24"] === "object" &&
+                                    typeof $steps["balanceP24"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["balanceP24"] = await $steps[
+                                      "balanceP24"
+                                    ];
+                                  }
+
+                                  $steps["runCode2"] =
+                                    $steps.balanceP24.status == 200
+                                      ? (() => {
+                                          const actionArgs = {
+                                            variable: {
+                                              objRoot: $state,
+                                              variablePath: ["p24Balance"]
+                                            },
+                                            operation: 0,
+                                            value:
+                                              $steps.balanceP24.data.data
+                                                .balance
+                                          };
+                                          return (({
+                                            variable,
+                                            value,
+                                            startIndex,
+                                            deleteCount
+                                          }) => {
+                                            if (!variable) {
+                                              return;
+                                            }
+                                            const { objRoot, variablePath } =
+                                              variable;
+
+                                            $stateSet(
+                                              objRoot,
+                                              variablePath,
+                                              value
+                                            );
+                                            return value;
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                  if (
+                                    $steps["runCode2"] != null &&
+                                    typeof $steps["runCode2"] === "object" &&
+                                    typeof $steps["runCode2"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["runCode2"] = await $steps[
+                                      "runCode2"
+                                    ];
                                   }
                                 }}
                               />
@@ -5301,6 +6266,10 @@ const PlasmicDescendants = {
     "btnSelectAmount",
     "gridMyAmount",
     "txtNewPaymentAmount",
+    "btnPayWithWallet",
+    "txtpayWithWallet",
+    "btnPayWithWallet2",
+    "txtpayWithWallet2",
     "gridInvoice1",
     "gridNoData",
     "gridInvoice12",
@@ -5331,6 +6300,10 @@ const PlasmicDescendants = {
     "btnSelectAmount",
     "gridMyAmount",
     "txtNewPaymentAmount",
+    "btnPayWithWallet",
+    "txtpayWithWallet",
+    "btnPayWithWallet2",
+    "txtpayWithWallet2",
     "gridInvoice1",
     "gridNoData",
     "gridInvoice12",
@@ -5351,7 +6324,11 @@ const PlasmicDescendants = {
     "gridSelectprice",
     "btnSelectAmount",
     "gridMyAmount",
-    "txtNewPaymentAmount"
+    "txtNewPaymentAmount",
+    "btnPayWithWallet",
+    "txtpayWithWallet",
+    "btnPayWithWallet2",
+    "txtpayWithWallet2"
   ],
   txtRemainingText: ["txtRemainingText"],
   txtRemainingValue: ["txtRemainingValue"],
@@ -5361,13 +6338,21 @@ const PlasmicDescendants = {
     "gridSelectprice",
     "btnSelectAmount",
     "gridMyAmount",
-    "txtNewPaymentAmount"
+    "txtNewPaymentAmount",
+    "btnPayWithWallet",
+    "txtpayWithWallet",
+    "btnPayWithWallet2",
+    "txtpayWithWallet2"
   ],
   btnPay: ["btnPay"],
   gridSelectprice: ["gridSelectprice", "btnSelectAmount"],
   btnSelectAmount: ["btnSelectAmount"],
   gridMyAmount: ["gridMyAmount", "txtNewPaymentAmount"],
   txtNewPaymentAmount: ["txtNewPaymentAmount"],
+  btnPayWithWallet: ["btnPayWithWallet", "txtpayWithWallet"],
+  txtpayWithWallet: ["txtpayWithWallet"],
+  btnPayWithWallet2: ["btnPayWithWallet2", "txtpayWithWallet2"],
+  txtpayWithWallet2: ["txtpayWithWallet2"],
   gridInvoice1: ["gridInvoice1"],
   gridNoData: ["gridNoData"],
   gridInvoice12: [
@@ -5414,6 +6399,10 @@ type NodeDefaultElementType = {
   btnSelectAmount: typeof Button;
   gridMyAmount: "div";
   txtNewPaymentAmount: typeof TextInput;
+  btnPayWithWallet: typeof Button;
+  txtpayWithWallet: "div";
+  btnPayWithWallet2: typeof Button;
+  txtpayWithWallet2: "div";
   gridInvoice1: "div";
   gridNoData: "div";
   gridInvoice12: "div";
@@ -5504,6 +6493,10 @@ export const PlasmicFactorsSearch = Object.assign(
     btnSelectAmount: makeNodeComponent("btnSelectAmount"),
     gridMyAmount: makeNodeComponent("gridMyAmount"),
     txtNewPaymentAmount: makeNodeComponent("txtNewPaymentAmount"),
+    btnPayWithWallet: makeNodeComponent("btnPayWithWallet"),
+    txtpayWithWallet: makeNodeComponent("txtpayWithWallet"),
+    btnPayWithWallet2: makeNodeComponent("btnPayWithWallet2"),
+    txtpayWithWallet2: makeNodeComponent("txtpayWithWallet2"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     gridNoData: makeNodeComponent("gridNoData"),
     gridInvoice12: makeNodeComponent("gridInvoice12"),
