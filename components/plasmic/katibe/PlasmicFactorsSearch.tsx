@@ -2295,7 +2295,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                   try {
                                     return (
                                       $state.userData.isDoctor &&
-                                      $state.currentAccountType == "userid"
+                                      $state.currentAccountType == "userid" &&
+                                      false
                                     );
                                   } catch (e) {
                                     if (
