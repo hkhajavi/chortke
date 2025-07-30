@@ -2052,6 +2052,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       "__wab_instance",
                                       sty.button__eT7XK
                                     )}
+                                    color={"softBlue"}
                                     isDisabled={(() => {
                                       try {
                                         return $state.waitingPayment;
@@ -2302,6 +2303,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                           await $steps["hideWaitingPayment"];
                                       }
                                     }}
+                                    outline={true}
                                     size={"compact"}
                                   />
                                 </div>
@@ -2373,7 +2375,6 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                         "__wab_instance",
                                         sty.btnPayWithWallet
                                       )}
-                                      color={"softBlue"}
                                       isDisabled={(() => {
                                         try {
                                           return (
@@ -2699,6 +2700,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                           ];
                                         }
                                       }}
+                                      outline={true}
                                       size={"compact"}
                                     />
 
@@ -2779,7 +2781,6 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                           "__wab_instance",
                                           sty.btnPayWithWallet3
                                         )}
-                                        color={"softBlue"}
                                         isDisabled={(() => {
                                           try {
                                             return (
@@ -3124,6 +3125,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                             ];
                                           }
                                         }}
+                                        outline={true}
                                         size={"compact"}
                                       />
                                     ) : null}

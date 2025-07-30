@@ -1021,7 +1021,7 @@
   align-items: center;
   grid-column-end: span 2;
   min-width: 0;
-  padding: 8px 0px 0px;
+  padding: 8px 8px 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__aFKta {
@@ -1030,6 +1030,8 @@
 }
 .button__eT7XK:global(.__wab_instance) {
   max-width: 100%;
+  width: 100%;
+  min-width: 0;
 }
 .svg__xbjAy {
   position: relative;
