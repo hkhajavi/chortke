@@ -1050,7 +1050,7 @@
 }
 .freeBox__eGuaD {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   position: relative;
   width: 100%;
   height: auto;
@@ -1068,6 +1068,8 @@
 }
 .btnPayWithWallet:global(.__wab_instance) {
   max-width: 100%;
+  width: 100%;
+  min-width: 0;
 }
 .svg___7Rhix {
   position: relative;
@@ -1081,6 +1083,29 @@
   }
 }
 .svg__sEi9 {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.btnPayWithWallet3:global(.__wab_instance) {
+  max-width: 100%;
+  margin-top: 8px;
+  width: 100%;
+  min-width: 0;
+}
+.svg__eFpDo {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .txtpayWithWallet3 {
+    font-size: var(--token-A5TMwx8qQHfL);
+  }
+}
+.svg__hFm9M {
   position: relative;
   object-fit: cover;
   width: auto;

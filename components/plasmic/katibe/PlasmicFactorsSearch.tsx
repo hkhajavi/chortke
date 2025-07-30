@@ -121,6 +121,8 @@ export type PlasmicFactorsSearch__OverridesType = {
   txtNewPaymentAmount?: Flex__<typeof TextInput>;
   btnPayWithWallet?: Flex__<typeof Button>;
   txtpayWithWallet?: Flex__<"div">;
+  btnPayWithWallet3?: Flex__<typeof Button>;
+  txtpayWithWallet3?: Flex__<"div">;
   btnPayWithWallet2?: Flex__<typeof Button>;
   txtpayWithWallet2?: Flex__<"div">;
   gridInvoice1?: Flex__<"div">;
@@ -625,6 +627,18 @@ function PlasmicFactorsSearch__RenderFunc(props: {
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "centerbalance",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "drCenters",
+        type: "private",
+        variableType: "array",
+        initFunc: ({ $props, $state, $queries, $ctx }) => []
       }
     ],
     [$props, $ctx, $refs]
@@ -2295,8 +2309,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                   try {
                                     return (
                                       $state.userData.isDoctor &&
-                                      $state.currentAccountType == "userid" &&
-                                      false
+                                      $state.currentAccountType == "userid"
                                     );
                                   } catch (e) {
                                     if (
@@ -2336,8 +2349,10 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                             {(() => {
                                               try {
                                                 return (
-                                                  "پرداخت با کیف پول - موجودی: " +
-                                                  $state.p24Balance +
+                                                  "پرداخت با کیف پول ویزیت آنلاین - موجودی: " +
+                                                  new Intl.NumberFormat(
+                                                    "fa-IR"
+                                                  ).format($state.p24Balance) +
                                                   " ریال"
                                                 );
                                               } catch (e) {
@@ -2687,6 +2702,431 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       size={"compact"}
                                     />
 
+                                    {(() => {
+                                      try {
+                                        return (() => {
+                                          return $state.drCenters.find(
+                                            item => item.id !== "5532"
+                                          )
+                                            ? true
+                                            : false;
+                                        })();
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return true;
+                                        }
+                                        throw e;
+                                      }
+                                    })() ? (
+                                      <Button
+                                        data-plasmic-name={"btnPayWithWallet3"}
+                                        data-plasmic-override={
+                                          overrides.btnPayWithWallet3
+                                        }
+                                        children2={
+                                          <div
+                                            data-plasmic-name={
+                                              "txtpayWithWallet3"
+                                            }
+                                            data-plasmic-override={
+                                              overrides.txtpayWithWallet3
+                                            }
+                                            className={classNames(
+                                              projectcss.all,
+                                              projectcss.__wab_text,
+                                              sty.txtpayWithWallet3
+                                            )}
+                                          >
+                                            <React.Fragment>
+                                              {(() => {
+                                                try {
+                                                  return (() => {
+                                                    const firstNot5532 =
+                                                      $state.drCenters.find(
+                                                        item =>
+                                                          item.id !== "5532"
+                                                      );
+                                                    return (
+                                                      "پرداخت با کیف پول " +
+                                                      firstNot5532.name +
+                                                      " - موجودی: " +
+                                                      new Intl.NumberFormat(
+                                                        "fa-IR"
+                                                      ).format(
+                                                        $state.centerbalance
+                                                      )
+                                                    );
+                                                  })();
+                                                } catch (e) {
+                                                  if (
+                                                    e instanceof TypeError ||
+                                                    e?.plasmicType ===
+                                                      "PlasmicUndefinedDataError"
+                                                  ) {
+                                                    return "";
+                                                  }
+                                                  throw e;
+                                                }
+                                              })()}
+                                            </React.Fragment>
+                                          </div>
+                                        }
+                                        className={classNames(
+                                          "__wab_instance",
+                                          sty.btnPayWithWallet3
+                                        )}
+                                        color={"softBlue"}
+                                        isDisabled={(() => {
+                                          try {
+                                            return (
+                                              $state.waitingPayment ||
+                                              $state.centerbalance <
+                                                parseInt($state.paymentAmount)
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return [];
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                        onClick={async event => {
+                                          const $steps = {};
+
+                                          $steps["showWaitingPayment"] = true
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  variable: {
+                                                    objRoot: $state,
+                                                    variablePath: [
+                                                      "waitingPayment"
+                                                    ]
+                                                  },
+                                                  operation: 0,
+                                                  value: true
+                                                };
+                                                return (({
+                                                  variable,
+                                                  value,
+                                                  startIndex,
+                                                  deleteCount
+                                                }) => {
+                                                  if (!variable) {
+                                                    return;
+                                                  }
+                                                  const {
+                                                    objRoot,
+                                                    variablePath
+                                                  } = variable;
+
+                                                  $stateSet(
+                                                    objRoot,
+                                                    variablePath,
+                                                    value
+                                                  );
+                                                  return value;
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                          if (
+                                            $steps["showWaitingPayment"] !=
+                                              null &&
+                                            typeof $steps[
+                                              "showWaitingPayment"
+                                            ] === "object" &&
+                                            typeof $steps["showWaitingPayment"]
+                                              .then === "function"
+                                          ) {
+                                            $steps["showWaitingPayment"] =
+                                              await $steps[
+                                                "showWaitingPayment"
+                                              ];
+                                          }
+
+                                          $steps["paymentRequest"] = true
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  args: [
+                                                    "POST",
+                                                    "https://apigw.paziresh24.com/katibe/v1/factors/p24/pay",
+                                                    undefined,
+                                                    (() => {
+                                                      try {
+                                                        return (() => {
+                                                          const firstNot5532 =
+                                                            $state.drCenters.find(
+                                                              item =>
+                                                                item.id !==
+                                                                "5532"
+                                                            );
+                                                          return {
+                                                            amount: parseInt(
+                                                              $state.paymentAmount
+                                                            ),
+                                                            centerid:
+                                                              firstNot5532.id
+                                                          };
+                                                        })();
+                                                      } catch (e) {
+                                                        if (
+                                                          e instanceof
+                                                            TypeError ||
+                                                          e?.plasmicType ===
+                                                            "PlasmicUndefinedDataError"
+                                                        ) {
+                                                          return undefined;
+                                                        }
+                                                        throw e;
+                                                      }
+                                                    })()
+                                                  ]
+                                                };
+                                                return $globalActions[
+                                                  "Fragment.apiRequest"
+                                                ]?.apply(null, [
+                                                  ...actionArgs.args
+                                                ]);
+                                              })()
+                                            : undefined;
+                                          if (
+                                            $steps["paymentRequest"] != null &&
+                                            typeof $steps["paymentRequest"] ===
+                                              "object" &&
+                                            typeof $steps["paymentRequest"]
+                                              .then === "function"
+                                          ) {
+                                            $steps["paymentRequest"] =
+                                              await $steps["paymentRequest"];
+                                          }
+
+                                          $steps["hideWaitingPayment"] = true
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  variable: {
+                                                    objRoot: $state,
+                                                    variablePath: [
+                                                      "waitingPayment"
+                                                    ]
+                                                  },
+                                                  operation: 0,
+                                                  value: false
+                                                };
+                                                return (({
+                                                  variable,
+                                                  value,
+                                                  startIndex,
+                                                  deleteCount
+                                                }) => {
+                                                  if (!variable) {
+                                                    return;
+                                                  }
+                                                  const {
+                                                    objRoot,
+                                                    variablePath
+                                                  } = variable;
+
+                                                  $stateSet(
+                                                    objRoot,
+                                                    variablePath,
+                                                    value
+                                                  );
+                                                  return value;
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                          if (
+                                            $steps["hideWaitingPayment"] !=
+                                              null &&
+                                            typeof $steps[
+                                              "hideWaitingPayment"
+                                            ] === "object" &&
+                                            typeof $steps["hideWaitingPayment"]
+                                              .then === "function"
+                                          ) {
+                                            $steps["hideWaitingPayment"] =
+                                              await $steps[
+                                                "hideWaitingPayment"
+                                              ];
+                                          }
+
+                                          $steps[
+                                            "updateRequestSettlementMessage"
+                                          ] = true
+                                            ? (() => {
+                                                const actionArgs = {
+                                                  variable: {
+                                                    objRoot: $state,
+                                                    variablePath: [
+                                                      "requestSettlementMessage"
+                                                    ]
+                                                  },
+                                                  operation: 0,
+                                                  value:
+                                                    $steps.paymentRequest.data
+                                                      .message
+                                                };
+                                                return (({
+                                                  variable,
+                                                  value,
+                                                  startIndex,
+                                                  deleteCount
+                                                }) => {
+                                                  if (!variable) {
+                                                    return;
+                                                  }
+                                                  const {
+                                                    objRoot,
+                                                    variablePath
+                                                  } = variable;
+
+                                                  $stateSet(
+                                                    objRoot,
+                                                    variablePath,
+                                                    value
+                                                  );
+                                                  return value;
+                                                })?.apply(null, [actionArgs]);
+                                              })()
+                                            : undefined;
+                                          if (
+                                            $steps[
+                                              "updateRequestSettlementMessage"
+                                            ] != null &&
+                                            typeof $steps[
+                                              "updateRequestSettlementMessage"
+                                            ] === "object" &&
+                                            typeof $steps[
+                                              "updateRequestSettlementMessage"
+                                            ].then === "function"
+                                          ) {
+                                            $steps[
+                                              "updateRequestSettlementMessage"
+                                            ] = await $steps[
+                                              "updateRequestSettlementMessage"
+                                            ];
+                                          }
+
+                                          $steps["invokeGlobalAction"] =
+                                            $steps.paymentRequest.status == 200
+                                              ? (() => {
+                                                  const actionArgs = {
+                                                    args: [
+                                                      undefined,
+                                                      "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u0645\u0648\u0641\u0642\u06cc\u062a \u0627\u0646\u062c\u0627\u0645 \u0634\u062f."
+                                                    ]
+                                                  };
+                                                  return $globalActions[
+                                                    "Fragment.showToast"
+                                                  ]?.apply(null, [
+                                                    ...actionArgs.args
+                                                  ]);
+                                                })()
+                                              : undefined;
+                                          if (
+                                            $steps["invokeGlobalAction"] !=
+                                              null &&
+                                            typeof $steps[
+                                              "invokeGlobalAction"
+                                            ] === "object" &&
+                                            typeof $steps["invokeGlobalAction"]
+                                              .then === "function"
+                                          ) {
+                                            $steps["invokeGlobalAction"] =
+                                              await $steps[
+                                                "invokeGlobalAction"
+                                              ];
+                                          }
+
+                                          $steps["invokeGlobalAction2"] =
+                                            $steps.paymentRequest.status != 200
+                                              ? (() => {
+                                                  const actionArgs = {
+                                                    args: [
+                                                      "error",
+                                                      (() => {
+                                                        try {
+                                                          return $state.requestSettlementMessage;
+                                                        } catch (e) {
+                                                          if (
+                                                            e instanceof
+                                                              TypeError ||
+                                                            e?.plasmicType ===
+                                                              "PlasmicUndefinedDataError"
+                                                          ) {
+                                                            return undefined;
+                                                          }
+                                                          throw e;
+                                                        }
+                                                      })()
+                                                    ]
+                                                  };
+                                                  return $globalActions[
+                                                    "Fragment.showToast"
+                                                  ]?.apply(null, [
+                                                    ...actionArgs.args
+                                                  ]);
+                                                })()
+                                              : undefined;
+                                          if (
+                                            $steps["invokeGlobalAction2"] !=
+                                              null &&
+                                            typeof $steps[
+                                              "invokeGlobalAction2"
+                                            ] === "object" &&
+                                            typeof $steps["invokeGlobalAction2"]
+                                              .then === "function"
+                                          ) {
+                                            $steps["invokeGlobalAction2"] =
+                                              await $steps[
+                                                "invokeGlobalAction2"
+                                              ];
+                                          }
+
+                                          $steps["runCode"] =
+                                            $steps.paymentRequest.status == 200
+                                              ? (() => {
+                                                  const actionArgs = {
+                                                    customFunction:
+                                                      async () => {
+                                                        return (() => {
+                                                          $state.firstRequestCount =
+                                                            $state.firstRequestCount +
+                                                            1;
+                                                          return ($state.dialogIncreaseRemaining.open =
+                                                            false);
+                                                        })();
+                                                      }
+                                                  };
+                                                  return (({
+                                                    customFunction
+                                                  }) => {
+                                                    return customFunction();
+                                                  })?.apply(null, [actionArgs]);
+                                                })()
+                                              : undefined;
+                                          if (
+                                            $steps["runCode"] != null &&
+                                            typeof $steps["runCode"] ===
+                                              "object" &&
+                                            typeof $steps["runCode"].then ===
+                                              "function"
+                                          ) {
+                                            $steps["runCode"] = await $steps[
+                                              "runCode"
+                                            ];
+                                          }
+                                        }}
+                                        size={"compact"}
+                                      />
+                                    ) : null}
                                     <Button
                                       data-plasmic-name={"btnPayWithWallet2"}
                                       data-plasmic-override={
@@ -3366,8 +3806,9 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                     ];
                                   }
 
-                                  $steps["runCode2"] =
-                                    $steps.balanceP24.status == 200
+                                  $steps["updateBalance"] =
+                                    $steps.balanceP24.status == 200 &&
+                                    $state.userData.isDoctor
                                       ? (() => {
                                           const actionArgs = {
                                             variable: {
@@ -3401,14 +3842,89 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                         })()
                                       : undefined;
                                   if (
-                                    $steps["runCode2"] != null &&
-                                    typeof $steps["runCode2"] === "object" &&
-                                    typeof $steps["runCode2"].then ===
+                                    $steps["updateBalance"] != null &&
+                                    typeof $steps["updateBalance"] ===
+                                      "object" &&
+                                    typeof $steps["updateBalance"].then ===
                                       "function"
                                   ) {
-                                    $steps["runCode2"] = await $steps[
-                                      "runCode2"
+                                    $steps["updateBalance"] = await $steps[
+                                      "updateBalance"
                                     ];
+                                  }
+
+                                  $steps["balanceCenter"] = $state.userData
+                                    .isDoctor
+                                    ? (() => {
+                                        const actionArgs = {
+                                          args: [
+                                            undefined,
+                                            (() => {
+                                              try {
+                                                return (() => {
+                                                  const firstNot5532 =
+                                                    $state.drCenters.find(
+                                                      item => item.id !== "5532"
+                                                    );
+                                                  return (
+                                                    "https://apigw.paziresh24.com/katibe/v1/transactions/balance/p24?account=organization&centerid=" +
+                                                    firstNot5532.id
+                                                  );
+                                                })();
+                                              } catch (e) {
+                                                if (
+                                                  e instanceof TypeError ||
+                                                  e?.plasmicType ===
+                                                    "PlasmicUndefinedDataError"
+                                                ) {
+                                                  return undefined;
+                                                }
+                                                throw e;
+                                              }
+                                            })()
+                                          ]
+                                        };
+                                        return $globalActions[
+                                          "Fragment.apiRequest"
+                                        ]?.apply(null, [...actionArgs.args]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["balanceCenter"] != null &&
+                                    typeof $steps["balanceCenter"] ===
+                                      "object" &&
+                                    typeof $steps["balanceCenter"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["balanceCenter"] = await $steps[
+                                      "balanceCenter"
+                                    ];
+                                  }
+
+                                  $steps["updateCenterBalance"] =
+                                    $steps.balanceCenter.status == 200 &&
+                                    $state.userData.isDoctor
+                                      ? (() => {
+                                          const actionArgs = {
+                                            customFunction: async () => {
+                                              return ($state.centerbalance =
+                                                $steps.balanceCenter.data.data.balance);
+                                            }
+                                          };
+                                          return (({ customFunction }) => {
+                                            return customFunction();
+                                          })?.apply(null, [actionArgs]);
+                                        })()
+                                      : undefined;
+                                  if (
+                                    $steps["updateCenterBalance"] != null &&
+                                    typeof $steps["updateCenterBalance"] ===
+                                      "object" &&
+                                    typeof $steps["updateCenterBalance"]
+                                      .then === "function"
+                                  ) {
+                                    $steps["updateCenterBalance"] =
+                                      await $steps["updateCenterBalance"];
                                   }
                                 }}
                               />
@@ -5799,6 +6315,63 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                   $steps["runCode2"] = await $steps["runCode2"];
                 }
 
+                $steps["getDrCenters"] = $state.userData.isDoctor
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          undefined,
+                          "https://api.paziresh24.com/V1/doctor/centers"
+                        ]
+                      };
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
+                    })()
+                  : undefined;
+                if (
+                  $steps["getDrCenters"] != null &&
+                  typeof $steps["getDrCenters"] === "object" &&
+                  typeof $steps["getDrCenters"].then === "function"
+                ) {
+                  $steps["getDrCenters"] = await $steps["getDrCenters"];
+                }
+
+                $steps["updateDrCenters"] =
+                  $state.userData.isDoctor && $steps.getDrCenters.status == 200
+                    ? (() => {
+                        const actionArgs = {
+                          variable: {
+                            objRoot: $state,
+                            variablePath: ["drCenters"]
+                          },
+                          operation: 0,
+                          value: $steps.getDrCenters.data.data
+                        };
+                        return (({
+                          variable,
+                          value,
+                          startIndex,
+                          deleteCount
+                        }) => {
+                          if (!variable) {
+                            return;
+                          }
+                          const { objRoot, variablePath } = variable;
+
+                          $stateSet(objRoot, variablePath, value);
+                          return value;
+                        })?.apply(null, [actionArgs]);
+                      })()
+                    : undefined;
+                if (
+                  $steps["updateDrCenters"] != null &&
+                  typeof $steps["updateDrCenters"] === "object" &&
+                  typeof $steps["updateDrCenters"].then === "function"
+                ) {
+                  $steps["updateDrCenters"] = await $steps["updateDrCenters"];
+                }
+
                 $steps["isLoadAccountTrue"] = true
                   ? (() => {
                       const actionArgs = {
@@ -6290,6 +6863,8 @@ const PlasmicDescendants = {
     "txtNewPaymentAmount",
     "btnPayWithWallet",
     "txtpayWithWallet",
+    "btnPayWithWallet3",
+    "txtpayWithWallet3",
     "btnPayWithWallet2",
     "txtpayWithWallet2",
     "gridInvoice1",
@@ -6324,6 +6899,8 @@ const PlasmicDescendants = {
     "txtNewPaymentAmount",
     "btnPayWithWallet",
     "txtpayWithWallet",
+    "btnPayWithWallet3",
+    "txtpayWithWallet3",
     "btnPayWithWallet2",
     "txtpayWithWallet2",
     "gridInvoice1",
@@ -6349,6 +6926,8 @@ const PlasmicDescendants = {
     "txtNewPaymentAmount",
     "btnPayWithWallet",
     "txtpayWithWallet",
+    "btnPayWithWallet3",
+    "txtpayWithWallet3",
     "btnPayWithWallet2",
     "txtpayWithWallet2"
   ],
@@ -6363,6 +6942,8 @@ const PlasmicDescendants = {
     "txtNewPaymentAmount",
     "btnPayWithWallet",
     "txtpayWithWallet",
+    "btnPayWithWallet3",
+    "txtpayWithWallet3",
     "btnPayWithWallet2",
     "txtpayWithWallet2"
   ],
@@ -6373,6 +6954,8 @@ const PlasmicDescendants = {
   txtNewPaymentAmount: ["txtNewPaymentAmount"],
   btnPayWithWallet: ["btnPayWithWallet", "txtpayWithWallet"],
   txtpayWithWallet: ["txtpayWithWallet"],
+  btnPayWithWallet3: ["btnPayWithWallet3", "txtpayWithWallet3"],
+  txtpayWithWallet3: ["txtpayWithWallet3"],
   btnPayWithWallet2: ["btnPayWithWallet2", "txtpayWithWallet2"],
   txtpayWithWallet2: ["txtpayWithWallet2"],
   gridInvoice1: ["gridInvoice1"],
@@ -6423,6 +7006,8 @@ type NodeDefaultElementType = {
   txtNewPaymentAmount: typeof TextInput;
   btnPayWithWallet: typeof Button;
   txtpayWithWallet: "div";
+  btnPayWithWallet3: typeof Button;
+  txtpayWithWallet3: "div";
   btnPayWithWallet2: typeof Button;
   txtpayWithWallet2: "div";
   gridInvoice1: "div";
@@ -6517,6 +7102,8 @@ export const PlasmicFactorsSearch = Object.assign(
     txtNewPaymentAmount: makeNodeComponent("txtNewPaymentAmount"),
     btnPayWithWallet: makeNodeComponent("btnPayWithWallet"),
     txtpayWithWallet: makeNodeComponent("txtpayWithWallet"),
+    btnPayWithWallet3: makeNodeComponent("btnPayWithWallet3"),
+    txtpayWithWallet3: makeNodeComponent("txtpayWithWallet3"),
     btnPayWithWallet2: makeNodeComponent("btnPayWithWallet2"),
     txtpayWithWallet2: makeNodeComponent("txtpayWithWallet2"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
