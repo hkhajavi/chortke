@@ -735,11 +735,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
             )}
             dir={"rtl"}
           >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__hs2Ll)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__hs2Ll)}>
               <div className={classNames(projectcss.all, sty.freeBox__sTOlA)}>
                 <div className={classNames(projectcss.all, sty.freeBox__h4KSm)}>
                   <div
@@ -996,7 +992,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                   ) : null}
                 </div>
               </div>
-            </Stack__>
+            </div>
             <section
               data-plasmic-name={"section"}
               data-plasmic-override={overrides.section}
@@ -4385,9 +4381,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                   sty.freeBox__yoqU0
                                 )}
                               >
-                                <Stack__
-                                  as={"div"}
-                                  hasGap={true}
+                                <div
                                   className={classNames(
                                     projectcss.all,
                                     sty.freeBox___5GPiz
@@ -4419,7 +4413,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       })()}
                                     </React.Fragment>
                                   </div>
-                                </Stack__>
+                                </div>
                               </div>
                               <div
                                 className={classNames(
@@ -4449,9 +4443,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       : "\u06a9\u062f:"}
                                   </div>
                                 </div>
-                                <Stack__
-                                  as={"div"}
-                                  hasGap={true}
+                                <div
                                   className={classNames(
                                     projectcss.all,
                                     sty.freeBox__s62K5
@@ -4508,7 +4500,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       </React.Fragment>
                                     )}
                                   </div>
-                                </Stack__>
+                                </div>
                                 <div
                                   className={classNames(
                                     projectcss.all,
@@ -4722,9 +4714,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                         </React.Fragment>
                                       </div>
                                     </div>
-                                    <Stack__
-                                      as={"div"}
-                                      hasGap={true}
+                                    <div
                                       className={classNames(
                                         projectcss.all,
                                         sty.freeBox__nrB7
@@ -4739,7 +4729,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       >
                                         {"\u0645\u0628\u0644\u063a:"}
                                       </div>
-                                    </Stack__>
+                                    </div>
                                     <div
                                       className={classNames(
                                         projectcss.all,

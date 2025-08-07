@@ -250,28 +250,14 @@ function PlasmicHomePage__RenderFunc(props: {
             sty.root
           )}
         >
-          <Stack__
-            as={"div"}
+          <div
             data-plasmic-name={"headerHeroSection"}
             data-plasmic-override={overrides.headerHeroSection}
-            hasGap={true}
             className={classNames(projectcss.all, sty.headerHeroSection)}
           >
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox___9DxvJ)}
-            >
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__uSt)}
-              >
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__nJHt)}
-                >
+            <div className={classNames(projectcss.all, sty.freeBox___9DxvJ)}>
+              <div className={classNames(projectcss.all, sty.freeBox__uSt)}>
+                <div className={classNames(projectcss.all, sty.freeBox__nJHt)}>
                   <PlasmicLink__
                     className={classNames(
                       projectcss.all,
@@ -417,9 +403,7 @@ function PlasmicHomePage__RenderFunc(props: {
                           )}
                         />
 
-                        <Stack__
-                          as={"div"}
-                          hasGap={true}
+                        <div
                           className={classNames(
                             projectcss.all,
                             sty.freeBox__axC1E
@@ -462,7 +446,7 @@ function PlasmicHomePage__RenderFunc(props: {
                               role={"img"}
                             />
                           </div>
-                        </Stack__>
+                        </div>
                       </BaseButton>
                     </PlasmicLink__>
                   </PlasmicLink__>
@@ -492,9 +476,9 @@ function PlasmicHomePage__RenderFunc(props: {
                   >
                     {"FAQs"}
                   </PlasmicLink__>
-                </Stack__>
-              </Stack__>
-            </Stack__>
+                </div>
+              </div>
+            </div>
             <div className={classNames(projectcss.all, sty.freeBox__dktZb)}>
               <div className={classNames(projectcss.all, sty.freeBox__ntog8)}>
                 <h1
@@ -520,11 +504,7 @@ function PlasmicHomePage__RenderFunc(props: {
                     "\u0628\u062f\u0648\u0646 \u0646\u06cc\u0627\u0632 \u0628\u0647 \u062a\u0648\u0633\u0639\u0647\u060c \u0633\u06cc\u0633\u062a\u0645 \u0645\u0627\u0644\u06cc \u067e\u0644\u062a\u0641\u0631\u0645 \u062e\u0648\u062f \u0631\u0627 \u062f\u0631 \u06a9\u0645\u062a\u0631\u06cc\u0646 \u0632\u0645\u0627\u0646 \u0631\u0627\u0647\u200c\u0627\u0646\u062f\u0627\u0632\u06cc \u06a9\u0646\u06cc\u062f!"
                   }
                 </div>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__xunWi)}
-                >
+                <div className={classNames(projectcss.all, sty.freeBox__xunWi)}>
                   <BaseButton
                     className={classNames(
                       "__wab_instance",
@@ -591,9 +571,7 @@ function PlasmicHomePage__RenderFunc(props: {
                       target={"_blank"}
                     />
 
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__wIPg)}
                     >
                       <div
@@ -627,7 +605,7 @@ function PlasmicHomePage__RenderFunc(props: {
                       >
                         {"\u0645\u0633\u062a\u0646\u062f\u0627\u062a"}
                       </div>
-                    </Stack__>
+                    </div>
                   </BaseButton>
                   <BaseButton
                     className={classNames(
@@ -665,9 +643,7 @@ function PlasmicHomePage__RenderFunc(props: {
                       platform={"nextjs"}
                     />
 
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__r3Jiq)}
                     >
                       <div
@@ -701,12 +677,12 @@ function PlasmicHomePage__RenderFunc(props: {
                           role={"img"}
                         />
                       </div>
-                    </Stack__>
+                    </div>
                   </BaseButton>
-                </Stack__>
+                </div>
               </div>
             </div>
-          </Stack__>
+          </div>
           <div className={classNames(projectcss.all, sty.freeBox__ez8PI)}>
             <div className={classNames(projectcss.all, sty.freeBox__ma29N)}>
               <PlasmicImg__
@@ -823,9 +799,7 @@ function PlasmicHomePage__RenderFunc(props: {
                       "Our design partners include the world\u2019s leading product-led companies"
                     }
                   </div>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__fnn1U)}
                   >
                     <PlasmicImg__
@@ -899,7 +873,7 @@ function PlasmicHomePage__RenderFunc(props: {
                         aspectRatio: undefined
                       }}
                     />
-                  </Stack__>
+                  </div>
                 </div>
               </div>
             </div>
@@ -931,9 +905,7 @@ function PlasmicHomePage__RenderFunc(props: {
                   }
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__osPy3)}>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__krWvr)}
                   >
                     <div
@@ -1064,10 +1036,8 @@ function PlasmicHomePage__RenderFunc(props: {
                         {"Automations"}
                       </h5>
                     </div>
-                  </Stack__>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  </div>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__i2Lgo)}
                   >
                     <div
@@ -1166,10 +1136,8 @@ function PlasmicHomePage__RenderFunc(props: {
                         {"Security"}
                       </h5>
                     </div>
-                  </Stack__>
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  </div>
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__uYuiV)}
                   >
                     <div
@@ -1303,7 +1271,7 @@ function PlasmicHomePage__RenderFunc(props: {
                         {"Protection"}
                       </h5>
                     </div>
-                  </Stack__>
+                  </div>
                   <PlasmicLink__
                     className={classNames(
                       projectcss.all,
@@ -1490,9 +1458,7 @@ function PlasmicHomePage__RenderFunc(props: {
                           )}
                         />
 
-                        <Stack__
-                          as={"div"}
-                          hasGap={true}
+                        <div
                           className={classNames(
                             projectcss.all,
                             sty.freeBox__e2Z6F
@@ -1535,7 +1501,7 @@ function PlasmicHomePage__RenderFunc(props: {
                               role={"img"}
                             />
                           </div>
-                        </Stack__>
+                        </div>
                       </BaseButton>
                     </div>
                   </div>
@@ -1637,9 +1603,7 @@ function PlasmicHomePage__RenderFunc(props: {
                           )}
                         />
 
-                        <Stack__
-                          as={"div"}
-                          hasGap={true}
+                        <div
                           className={classNames(
                             projectcss.all,
                             sty.freeBox__qrJrD
@@ -1682,7 +1646,7 @@ function PlasmicHomePage__RenderFunc(props: {
                               role={"img"}
                             />
                           </div>
-                        </Stack__>
+                        </div>
                       </BaseButton>
                     </div>
                   </div>
@@ -1923,9 +1887,7 @@ function PlasmicHomePage__RenderFunc(props: {
                           )}
                         />
 
-                        <Stack__
-                          as={"div"}
-                          hasGap={true}
+                        <div
                           className={classNames(
                             projectcss.all,
                             sty.freeBox__cgOzv
@@ -1968,7 +1930,7 @@ function PlasmicHomePage__RenderFunc(props: {
                               role={"img"}
                             />
                           </div>
-                        </Stack__>
+                        </div>
                       </BaseButton>
                     </div>
                   </div>
@@ -2287,9 +2249,7 @@ function PlasmicHomePage__RenderFunc(props: {
                     )}
                   />
 
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__kdAex)}
                   >
                     <div
@@ -2317,13 +2277,9 @@ function PlasmicHomePage__RenderFunc(props: {
                         role={"img"}
                       />
                     </div>
-                  </Stack__>
+                  </div>
                 </BaseButton>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__z0SUm)}
-                >
+                <div className={classNames(projectcss.all, sty.freeBox__z0SUm)}>
                   <div
                     className={classNames(projectcss.all, sty.freeBox__w88Wt)}
                   >
@@ -2657,7 +2613,7 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                     </div>
                   </div>
-                </Stack__>
+                </div>
               </div>
             </div>
           </div>
@@ -2685,11 +2641,7 @@ function PlasmicHomePage__RenderFunc(props: {
                     ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex."
                     : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex."}
                 </div>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox___3LSi)}
-                >
+                <div className={classNames(projectcss.all, sty.freeBox___3LSi)}>
                   <div
                     className={classNames(projectcss.all, sty.freeBox__ev8Ov)}
                   >
@@ -2986,9 +2938,7 @@ function PlasmicHomePage__RenderFunc(props: {
                         )}
                       />
 
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__a1N6
@@ -3031,7 +2981,7 @@ function PlasmicHomePage__RenderFunc(props: {
                             role={"img"}
                           />
                         </div>
-                      </Stack__>
+                      </div>
                     </BaseButton>
                   </div>
                   <div
@@ -3348,9 +3298,7 @@ function PlasmicHomePage__RenderFunc(props: {
                           )}
                         />
 
-                        <Stack__
-                          as={"div"}
-                          hasGap={true}
+                        <div
                           className={classNames(
                             projectcss.all,
                             sty.freeBox__qtP
@@ -3393,7 +3341,7 @@ function PlasmicHomePage__RenderFunc(props: {
                               role={"img"}
                             />
                           </div>
-                        </Stack__>
+                        </div>
                       </BaseButton>
                     </div>
                   </div>
@@ -3673,9 +3621,7 @@ function PlasmicHomePage__RenderFunc(props: {
                         )}
                       />
 
-                      <Stack__
-                        as={"div"}
-                        hasGap={true}
+                      <div
                         className={classNames(
                           projectcss.all,
                           sty.freeBox__bInE5
@@ -3718,10 +3664,10 @@ function PlasmicHomePage__RenderFunc(props: {
                             role={"img"}
                           />
                         </div>
-                      </Stack__>
+                      </div>
                     </BaseButton>
                   </div>
-                </Stack__>
+                </div>
               </div>
             </div>
           </div>
@@ -4057,11 +4003,7 @@ function PlasmicHomePage__RenderFunc(props: {
                     </React.Fragment>
                   )}
                 </div>
-                <Stack__
-                  as={"div"}
-                  hasGap={true}
-                  className={classNames(projectcss.all, sty.freeBox__tgs5U)}
-                >
+                <div className={classNames(projectcss.all, sty.freeBox__tgs5U)}>
                   <TextInput
                     data-plasmic-name={"textInput2"}
                     data-plasmic-override={overrides.textInput2}
@@ -4133,9 +4075,7 @@ function PlasmicHomePage__RenderFunc(props: {
                       )}
                     />
 
-                    <Stack__
-                      as={"div"}
-                      hasGap={true}
+                    <div
                       className={classNames(projectcss.all, sty.freeBox__siNBm)}
                     >
                       <div
@@ -4172,9 +4112,9 @@ function PlasmicHomePage__RenderFunc(props: {
                           role={"img"}
                         />
                       </div>
-                    </Stack__>
+                    </div>
                   </BaseButton>
-                </Stack__>
+                </div>
               </div>
               <PlasmicImg__
                 alt={""}
@@ -4196,11 +4136,7 @@ function PlasmicHomePage__RenderFunc(props: {
             </div>
           </div>
           <div className={classNames(projectcss.all, sty.freeBox__ilyRg)}>
-            <Stack__
-              as={"div"}
-              hasGap={true}
-              className={classNames(projectcss.all, sty.freeBox__e0Jbj)}
-            >
+            <div className={classNames(projectcss.all, sty.freeBox__e0Jbj)}>
               <div className={classNames(projectcss.all, sty.freeBox__vclds)}>
                 <div
                   className={classNames(
@@ -4406,9 +4342,7 @@ function PlasmicHomePage__RenderFunc(props: {
                     )}
                   />
 
-                  <Stack__
-                    as={"div"}
-                    hasGap={true}
+                  <div
                     className={classNames(projectcss.all, sty.freeBox__egpwy)}
                   >
                     <div
@@ -4442,10 +4376,10 @@ function PlasmicHomePage__RenderFunc(props: {
                         role={"img"}
                       />
                     </div>
-                  </Stack__>
+                  </div>
                 </BaseButton>
               </div>
-            </Stack__>
+            </div>
             <div className={classNames(projectcss.all, sty.freeBox__p6LgI)}>
               <div
                 className={classNames(

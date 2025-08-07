@@ -369,6 +369,7 @@
     justify-content: flex-start;
     display: flex;
     flex-direction: row;
+    row-gap: 0px;
   }
 }
 .text___5Xrb {
@@ -421,6 +422,7 @@
     justify-content: flex-start;
     display: flex;
     flex-direction: row;
+    row-gap: 0px;
   }
 }
 .text__mEYy {

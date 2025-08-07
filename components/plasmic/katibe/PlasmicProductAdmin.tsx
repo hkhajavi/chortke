@@ -581,11 +581,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
             sty.root
           )}
         >
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox___3MEh4)}
-          >
+          <div className={classNames(projectcss.all, sty.freeBox___3MEh4)}>
             <div className={classNames(projectcss.all, sty.freeBox__qX32Y)}>
               <div className={classNames(projectcss.all, sty.freeBox__ttFn)}>
                 <div
@@ -690,7 +686,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                 />
               </div>
             </div>
-          </Stack__>
+          </div>
           <section
             data-plasmic-name={"section"}
             data-plasmic-override={overrides.section}
@@ -1884,9 +1880,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       }
                                     }}
                                     options={
-                                      <Stack__
-                                        as={"div"}
-                                        hasGap={true}
+                                      <div
                                         className={classNames(
                                           projectcss.all,
                                           sty.freeBox___5Qw7Y
@@ -1984,7 +1978,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                             );
                                           }
                                         )}
-                                      </Stack__>
+                                      </div>
                                     }
                                     showLabel={false}
                                   />
@@ -5516,9 +5510,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       )}
                                     </div>
                                   </div>
-                                  <Stack__
-                                    as={"div"}
-                                    hasGap={true}
+                                  <div
                                     className={classNames(
                                       projectcss.all,
                                       sty.freeBox___3Yz1Y
@@ -5577,7 +5569,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         </React.Fragment>
                                       )}
                                     </div>
-                                  </Stack__>
+                                  </div>
                                   <div
                                     className={classNames(
                                       projectcss.all,
@@ -5672,9 +5664,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       )}
                                     </div>
                                   </div>
-                                  <Stack__
-                                    as={"div"}
-                                    hasGap={true}
+                                  <div
                                     className={classNames(
                                       projectcss.all,
                                       sty.freeBox__uz1X
@@ -5733,7 +5723,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         </React.Fragment>
                                       )}
                                     </div>
-                                  </Stack__>
+                                  </div>
                                   <div
                                     className={classNames(
                                       projectcss.all,
@@ -5843,9 +5833,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         )}
                                       </div>
                                     </div>
-                                    <Stack__
-                                      as={"div"}
-                                      hasGap={true}
+                                    <div
                                       className={classNames(
                                         projectcss.all,
                                         sty.freeBox__uTamH
@@ -5878,7 +5866,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                           })()}
                                         </React.Fragment>
                                       </div>
-                                    </Stack__>
+                                    </div>
                                     <div
                                       className={classNames(
                                         projectcss.all,
@@ -6044,9 +6032,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                           </React.Fragment>
                                         </div>
                                       </div>
-                                      <Stack__
-                                        as={"div"}
-                                        hasGap={true}
+                                      <div
                                         className={classNames(
                                           projectcss.all,
                                           sty.freeBox__fYid
@@ -6061,7 +6047,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         >
                                           {"\u0645\u0628\u0644\u063a:"}
                                         </div>
-                                      </Stack__>
+                                      </div>
                                       <div
                                         className={classNames(
                                           projectcss.all,

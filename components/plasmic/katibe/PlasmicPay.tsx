@@ -762,11 +762,7 @@ function PlasmicPay__RenderFunc(props: {
               </div>
             </div>
             <div className={classNames(projectcss.all, sty.freeBox__lL7S)}>
-              <Stack__
-                as={"div"}
-                hasGap={true}
-                className={classNames(projectcss.all, sty.freeBox__rqDrs)}
-              >
+              <div className={classNames(projectcss.all, sty.freeBox__rqDrs)}>
                 <div
                   className={classNames(
                     projectcss.all,
@@ -807,7 +803,7 @@ function PlasmicPay__RenderFunc(props: {
                     })()}
                   </React.Fragment>
                 </div>
-              </Stack__>
+              </div>
             </div>
             {(() => {
               try {

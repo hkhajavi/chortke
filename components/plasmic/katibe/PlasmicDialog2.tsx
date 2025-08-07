@@ -275,9 +275,7 @@ function PlasmicDialog2__RenderFunc(props: {
           plasmic_fragment_design_system_css.plasmic_tokens
         )}
       >
-        <Stack__
-          as={"div"}
-          hasGap={true}
+        <div
           className={classNames(projectcss.all, sty.freeBox__iqt95)}
           dir={"rtl"}
         >
@@ -298,7 +296,7 @@ function PlasmicDialog2__RenderFunc(props: {
               })}
             </h5>
           </DialogTitle>
-        </Stack__>
+        </div>
         <div
           className={classNames(projectcss.all, sty.freeBox__zjtsb)}
           dir={"rtl"}

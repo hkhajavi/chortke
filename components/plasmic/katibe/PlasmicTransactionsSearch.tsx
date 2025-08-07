@@ -91,6 +91,7 @@ import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"
 import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
 import Icon54Icon from "./icons/PlasmicIcon__Icon54"; // plasmic-import: N3q4_1KLSfUU/icon
 import Icon52Icon from "./icons/PlasmicIcon__Icon52"; // plasmic-import: fl1ZOZIHaI_u/icon
+import Icon56Icon from "./icons/PlasmicIcon__Icon56"; // plasmic-import: yLnbozaRO0lR/icon
 import SearchSvgIcon from "../chortke/icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
 import CheckSvgIcon from "../chortke/icons/PlasmicIcon__CheckSvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
 import Icon2Icon from "../chortke/icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
@@ -937,11 +938,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
           )}
           dir={"rtl"}
         >
-          <Stack__
-            as={"div"}
-            hasGap={true}
-            className={classNames(projectcss.all, sty.freeBox___0BxGx)}
-          >
+          <div className={classNames(projectcss.all, sty.freeBox___0BxGx)}>
             <div className={classNames(projectcss.all, sty.freeBox__y5Grx)}>
               <div className={classNames(projectcss.all, sty.freeBox__jEgD)}>
                 <div
@@ -1191,7 +1188,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 ) : null}
               </div>
             </div>
-          </Stack__>
+          </div>
           <section
             className={classNames(projectcss.all, sty.section__eFgfC)}
             dir={"rtl"}
@@ -2433,9 +2430,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   }).apply(null, eventArgs);
                                 }}
                                 options={
-                                  <Stack__
-                                    as={"div"}
-                                    hasGap={true}
+                                  <div
                                     className={classNames(
                                       projectcss.all,
                                       sty.freeBox__qGr8R
@@ -2490,7 +2485,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       }
                                       value={"settlement"}
                                     />
-                                  </Stack__>
+                                  </div>
                                 }
                                 showLabel={false}
                               />
@@ -2548,6 +2543,40 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         />
                       }
                     />
+                  </div>
+                ) : null}
+                {(() => {
+                  try {
+                    return $ctx.GrowthBook.features["katibe:escrow_payment"];
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })() ? (
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox___0FHxp)}
+                  >
+                    <Icon56Icon
+                      className={classNames(projectcss.all, sty.svg__f1Za4)}
+                      role={"img"}
+                    />
+
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text___0Nae2
+                      )}
+                    >
+                      {
+                        "\u0645\u0628\u0644\u063a \u067e\u0631\u062f\u0627\u062e\u062a\u06cc \u0645\u0631\u0628\u0648\u0637 \u0628\u0647 \u0646\u0648\u0628\u062a\u200c\u0647\u0627\u06cc \u0627\u062e\u0630 \u0634\u062f\u0647\u060c \u062f\u0631 \u0632\u0645\u0627\u0646 \u0648\u06cc\u0632\u06cc\u062a \u0628\u06cc\u0645\u0627\u0631 \u062b\u0628\u062a \u0645\u06cc\u200c\u0634\u0648\u062f."
+                      }
+                    </div>
                   </div>
                 ) : null}
               </div>
@@ -8006,9 +8035,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                   </React.Fragment>
                                                 </div>
                                               </div>
-                                              <Stack__
-                                                as={"div"}
-                                                hasGap={true}
+                                              <div
                                                 className={classNames(
                                                   projectcss.all,
                                                   sty.freeBox__hklwu
@@ -8023,7 +8050,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                 >
                                                   {"\u0645\u0628\u0644\u063a:"}
                                                 </div>
-                                              </Stack__>
+                                              </div>
                                               <div
                                                 className={classNames(
                                                   projectcss.all,
@@ -10818,7 +10845,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
             className={classNames("__wab_instance", sty.growthBook)}
             deps={(() => {
               try {
-                return [$ctx.GrowthBook.isReady];
+                return [$ctx.GrowthBook.isReady, $state.firstRequestCount];
               } catch (e) {
                 if (
                   e instanceof TypeError ||
@@ -10859,7 +10886,14 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       args: [
                         (() => {
                           try {
-                            return { user_id: $steps.me.data.users[0].id };
+                            return {
+                              user_id: $steps.me.data.users[0].id,
+                              id: $state.currentAccountId,
+                              type:
+                                $state.currentAccountType == "centerid"
+                                  ? "organization"
+                                  : "p24"
+                            };
                           } catch (e) {
                             if (
                               e instanceof TypeError ||

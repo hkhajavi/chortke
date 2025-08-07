@@ -956,9 +956,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                             sty.freeBox__au6T8
                           )}
                         >
-                          <Stack__
-                            as={"div"}
-                            hasGap={true}
+                          <div
                             className={classNames(
                               projectcss.all,
                               sty.freeBox__sfTyP
@@ -1008,7 +1006,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                 })()}
                               </React.Fragment>
                             </div>
-                          </Stack__>
+                          </div>
                         </div>
                         {(() => {
                           try {
