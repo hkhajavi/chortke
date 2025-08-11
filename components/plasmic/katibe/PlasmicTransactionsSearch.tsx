@@ -8136,19 +8136,35 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                             <React.Fragment>
                                               {(() => {
                                                 try {
-                                                  return (
-                                                    $state.invoicelist[
-                                                      currentIndex
-                                                    ].register_time +
-                                                    " " +
-                                                    new Date(
-                                                      $state.invoicelist[
+                                                  return $state
+                                                    .detailsDataApiRequest[
+                                                    currentIndex
+                                                  ].data.transaction_type ==
+                                                    "settlement"
+                                                    ? $state
+                                                        .detailsDataApiRequest[
                                                         currentIndex
-                                                      ].register_date
-                                                    ).toLocaleDateString(
-                                                      "fa-IR"
-                                                    )
-                                                  );
+                                                      ].data.data.created_time +
+                                                        " " +
+                                                        new Date(
+                                                          $state.detailsDataApiRequest[
+                                                            currentIndex
+                                                          ].data.data.created_date
+                                                        ).toLocaleDateString(
+                                                          "fa-IR"
+                                                        )
+                                                    : $state
+                                                        .detailsDataApiRequest[
+                                                        currentIndex
+                                                      ].data.data.registertime +
+                                                        " " +
+                                                        new Date(
+                                                          $state.detailsDataApiRequest[
+                                                            currentIndex
+                                                          ].data.data.registerdate
+                                                        ).toLocaleDateString(
+                                                          "fa-IR"
+                                                        );
                                                 } catch (e) {
                                                   if (
                                                     e instanceof TypeError ||
