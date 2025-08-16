@@ -33,7 +33,6 @@ import {
   classNames,
   createPlasmicElementProxy,
   deriveRenderOpts,
-  ensureGlobalVariants,
   generateOnMutateForSpec,
   generateStateOnChangeProp,
   generateStateOnChangePropForCodeComponents,
@@ -60,6 +59,9 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import * as pp from "@plasmicapp/react-web";
+
+import { _useGlobalVariants } from "./plasmic"; // plasmic-import: gLnoj82AzKVVT7qXiqAbHD/projectModule
+import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: gLnoj82AzKVVT7qXiqAbHD/styleTokensProvider
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
@@ -266,6 +268,8 @@ function PlasmicButton__RenderFunc(props: {
     focusVisibleWithin_root: isRootFocusVisibleWithin
   };
 
+  const styleTokensClassNames = _useStyleTokens();
+
   return (
     <button
       data-plasmic-name={"root"}
@@ -278,7 +282,7 @@ function PlasmicButton__RenderFunc(props: {
         projectcss.root_reset,
         projectcss.plasmic_default_styles,
         projectcss.plasmic_mixins,
-        projectcss.plasmic_tokens,
+        styleTokensClassNames,
         sty.root,
         {
           [sty.root___focusVisibleWithin]: triggers.focusVisibleWithin_root,
