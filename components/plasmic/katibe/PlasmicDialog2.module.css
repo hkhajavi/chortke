@@ -1,0 +1,124 @@
+.dialog:global(.__wab_instance) {
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  max-width: 100%;
+  object-fit: cover;
+  position: relative;
+  -webkit-backdrop-filter: blur(10px);
+}
+.pcls_uqjuuk3ALXwn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--token-Le07ngBUPl2h);
+  outline: none;
+}
+.text__w71Km {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+}
+.svg__lj2L4 {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.svg__sKeDw {
+  position: relative;
+  object-fit: cover;
+  width: auto;
+  height: 1em;
+}
+.dialogContent:global(.__wab_instance) {
+  box-shadow: 0px 4px 16px 0px #00000033;
+  background: rgb(255, 255, 255);
+  max-width: 600px;
+  object-fit: cover;
+  position: relative;
+  left: auto;
+  top: auto;
+  min-width: 600px;
+  max-height: 100%;
+  overflow: auto;
+  border-radius: 8px;
+  padding: var(--token-Hl5_5JUiW18_);
+  border: 1px solid #e2e8f0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .dialogContent:global(.__wab_instance) {
+    width: 100%;
+    min-width: 100%;
+    border-radius: 15px 15px 0px 0px;
+  }
+}
+.freeBox__iqt95 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: stretch;
+  column-gap: 8px;
+  row-gap: var(--token-vKd5iqKCSV_B);
+  min-width: 0;
+}
+.dialogTitle:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+  margin: 0px;
+}
+.h5 {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  display: flex;
+  flex-direction: row;
+  min-width: 0;
+}
+.slotTargetTitle {
+  font-size: var(--token-TQJ-rnRNtYde);
+  font-weight: 700;
+}
+.freeBox__zjtsb {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  margin-top: var(--token-vKd5iqKCSV_B);
+  min-width: 0;
+}
+.text__nibIh {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: right;
+  min-width: 0;
+}
+.dialogClose:global(.__wab_instance) {
+  position: absolute;
+  top: 16px;
+  opacity: 0.7;
+  object-fit: cover;
+  width: auto;
+  left: 16px;
+  border-radius: 999px;
+}
+.svg {
+  object-fit: cover;
+  max-width: 100%;
+  cursor: pointer;
+  height: 1em;
+}
