@@ -10442,38 +10442,6 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
             onMount={async () => {
               const $steps = {};
 
-              $steps["updateFirstEscrowTransaction2"] = true
-                ? (() => {
-                    const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["firstEscrowTransaction"]
-                      },
-                      operation: 0,
-                      value: null
-                    };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
-                      }
-                      const { objRoot, variablePath } = variable;
-
-                      $stateSet(objRoot, variablePath, value);
-                      return value;
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["updateFirstEscrowTransaction2"] != null &&
-                typeof $steps["updateFirstEscrowTransaction2"] === "object" &&
-                typeof $steps["updateFirstEscrowTransaction2"].then ===
-                  "function"
-              ) {
-                $steps["updateFirstEscrowTransaction2"] = await $steps[
-                  "updateFirstEscrowTransaction2"
-                ];
-              }
-
               $steps["runCode"] = $state.isLoadAccount
                 ? (() => {
                     const actionArgs = {
@@ -10998,6 +10966,38 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 typeof $steps["updateCenterInfo"].then === "function"
               ) {
                 $steps["updateCenterInfo"] = await $steps["updateCenterInfo"];
+              }
+
+              $steps["updateFirstEscrowTransaction2"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["firstEscrowTransaction"]
+                      },
+                      operation: 0,
+                      value: null
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateFirstEscrowTransaction2"] != null &&
+                typeof $steps["updateFirstEscrowTransaction2"] === "object" &&
+                typeof $steps["updateFirstEscrowTransaction2"].then ===
+                  "function"
+              ) {
+                $steps["updateFirstEscrowTransaction2"] = await $steps[
+                  "updateFirstEscrowTransaction2"
+                ];
               }
 
               $steps["firstEscrow"] = true
