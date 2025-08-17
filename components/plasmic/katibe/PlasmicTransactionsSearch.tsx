@@ -853,6 +853,12 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
         type: "private",
         variableType: "array",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "firstEscrowTransaction",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
       }
     ],
     [$props, $ctx, $refs]
@@ -2586,30 +2592,32 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       className={classNames(
                         projectcss.all,
                         projectcss.__wab_text,
-                        sty.text___0Nae2
+                        sty.text__yuRto
                       )}
                     >
                       <React.Fragment>
-                        <React.Fragment>
-                          {
-                            "\u0645\u0628\u0644\u063a \u067e\u0631\u062f\u0627\u062e\u062a\u06cc \u0646\u0648\u0628\u062a\u200c\u0647\u0627\u06cc \u0627\u062e\u0630 \u0634\u062f\u0647\u060c \u062f\u0631 "
+                        {(() => {
+                          try {
+                            return (
+                              ($state.firstEscrowTransaction.transactionid
+                                ? "پزشک گرامی، از تاریخ " +
+                                  new Date(
+                                    $state.firstEscrowTransaction.register_date
+                                  ).toLocaleDateString("fa-IR") +
+                                  " "
+                                : "") +
+                              "مبلغ پرداختی نوبت‌های اخذ شده در زمان ویزیت بیمار ثبت می‌شود."
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return "";
+                            }
+                            throw e;
                           }
-                        </React.Fragment>
-                        <span
-                          className={
-                            "plasmic_default__all plasmic_default__span"
-                          }
-                          style={{ fontWeight: 700 }}
-                        >
-                          {
-                            "\u0632\u0645\u0627\u0646 \u0648\u06cc\u0632\u06cc\u062a \u0628\u06cc\u0645\u0627\u0631"
-                          }
-                        </span>
-                        <React.Fragment>
-                          {
-                            " \u062b\u0628\u062a \u0645\u06cc\u200c\u0634\u0648\u062f."
-                          }
-                        </React.Fragment>
+                        })()}
                       </React.Fragment>
                     </div>
                   </div>
@@ -10958,6 +10966,117 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 typeof $steps["updateCenterInfo"].then === "function"
               ) {
                 $steps["updateCenterInfo"] = await $steps["updateCenterInfo"];
+              }
+
+              $steps["updateFirstEscrowTransaction2"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["firstEscrowTransaction"]
+                      },
+                      operation: 0,
+                      value: null
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateFirstEscrowTransaction2"] != null &&
+                typeof $steps["updateFirstEscrowTransaction2"] === "object" &&
+                typeof $steps["updateFirstEscrowTransaction2"].then ===
+                  "function"
+              ) {
+                $steps["updateFirstEscrowTransaction2"] = await $steps[
+                  "updateFirstEscrowTransaction2"
+                ];
+              }
+
+              $steps["firstEscrow"] = true
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        undefined,
+                        (() => {
+                          try {
+                            return (
+                              "https://apigw.paziresh24.com/katibe/v1/transactions/search/p24/first-escrow" +
+                              ($state.currentAccountType == "centerid"
+                                ? "?centerid=" + $state.currentAccountId
+                                : "")
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
+              if (
+                $steps["firstEscrow"] != null &&
+                typeof $steps["firstEscrow"] === "object" &&
+                typeof $steps["firstEscrow"].then === "function"
+              ) {
+                $steps["firstEscrow"] = await $steps["firstEscrow"];
+              }
+
+              $steps["updateFirstEscrowTransaction"] =
+                $steps.firstEscrow.status == 200
+                  ? /**
+              &&
+              $ctx.GrowthBook.features["katibe:escrow_payment"]
+              **/ (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["firstEscrowTransaction"]
+                        },
+                        operation: 0,
+                        value: $steps.firstEscrow.data.data
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updateFirstEscrowTransaction"] != null &&
+                typeof $steps["updateFirstEscrowTransaction"] === "object" &&
+                typeof $steps["updateFirstEscrowTransaction"].then ===
+                  "function"
+              ) {
+                $steps["updateFirstEscrowTransaction"] = await $steps[
+                  "updateFirstEscrowTransaction"
+                ];
               }
             }}
           />

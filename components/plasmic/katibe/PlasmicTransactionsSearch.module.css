@@ -788,17 +788,15 @@
   height: 25px;
   flex-shrink: 0;
 }
-.text___0Nae2 {
+.text__yuRto {
   position: relative;
   width: auto;
   height: auto;
   max-width: 100%;
-  margin-right: 5px;
-  font-size: var(--token-5Ye_3XTSaP9X);
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .text___0Nae2 {
-    font-size: var(--token-VrIY9r5RDQZ_);
+  .text__yuRto {
+    font-size: var(--token-5Ye_3XTSaP9X);
   }
 }
 .section__jlUjK {
