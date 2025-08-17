@@ -10968,7 +10968,9 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 $steps["updateCenterInfo"] = await $steps["updateCenterInfo"];
               }
 
-              $steps["updateFirstEscrowTransaction2"] = true
+              $steps["updateFirstEscrowTransaction2"] = (
+                $state?.firstEscrowTransaction?.transactionid ? false : true
+              )
                 ? (() => {
                     const actionArgs = {
                       variable: {
@@ -11000,36 +11002,39 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 ];
               }
 
-              $steps["firstEscrow"] = true
-                ? (() => {
-                    const actionArgs = {
-                      args: [
-                        undefined,
-                        (() => {
-                          try {
-                            return (
-                              "https://apigw.paziresh24.com/katibe/v1/transactions/search/p24/first-escrow" +
-                              ($state.currentAccountType == "centerid"
-                                ? "?centerid=" + $state.currentAccountId
-                                : "")
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
+              $steps["firstEscrow"] =
+                /*$ctx.GrowthBook.features["katibe:escrow_payment"]*/
+                ($state?.firstEscrowTransaction?.transactionid ? false : true)
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          undefined,
+                          (() => {
+                            try {
+                              return (
+                                "https://apigw.paziresh24.com/katibe/v1/transactions/search/p24/first-escrow" +
+                                ($state.currentAccountType == "centerid"
+                                  ? "?centerid=" + $state.currentAccountId
+                                  : "")
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()
-                      ]
-                    };
-                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                      ...actionArgs.args
-                    ]);
-                  })()
-                : undefined;
+                          })()
+                        ]
+                      };
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
+                    })()
+                  : undefined;
               if (
                 $steps["firstEscrow"] != null &&
                 typeof $steps["firstEscrow"] === "object" &&
@@ -11038,36 +11043,31 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 $steps["firstEscrow"] = await $steps["firstEscrow"];
               }
 
-              $steps["updateFirstEscrowTransaction"] =
-                $steps.firstEscrow.status == 200
-                  ? /*
-              &&
-              $ctx.GrowthBook.features["katibe:escrow_payment"]
-              */ (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["firstEscrowTransaction"]
-                        },
-                        operation: 0,
-                        value: $steps.firstEscrow.data.data
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
+              $steps["updateFirstEscrowTransaction"] = (
+                $state?.firstEscrowTransaction?.transactionid
+                  ? false
+                  : true && $steps.firstEscrow.status == 200
+              )
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["firstEscrowTransaction"]
+                      },
+                      operation: 0,
+                      value: $steps.firstEscrow.data.data
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
 
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
               if (
                 $steps["updateFirstEscrowTransaction"] != null &&
                 typeof $steps["updateFirstEscrowTransaction"] === "object" &&
