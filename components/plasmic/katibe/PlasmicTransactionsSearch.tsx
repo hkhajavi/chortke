@@ -138,7 +138,7 @@ export type PlasmicTransactionsSearch__OverridesType = {
   txtNewPaymentAmount?: Flex__<typeof TextInput>;
   btnSettlement?: Flex__<typeof Button2>;
   dialogSettlement?: Flex__<typeof Dialog>;
-  tabContent?: Flex__<typeof TabContent>;
+  txtSettlemenAmount2?: Flex__<typeof TextInput>;
   txtSettlemenAmount?: Flex__<typeof TextInput>;
   dialogRegisterAccount?: Flex__<typeof Dialog>;
   txtCardId?: Flex__<typeof TextInput>;
@@ -860,6 +860,12 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
         type: "private",
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+      },
+      {
+        path: "txtSettlemenAmount2.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -2607,7 +2613,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   ).toLocaleDateString("fa-IR") +
                                   " "
                                 : "") +
-                              "مبلغ پرداختی نوبت‌ها در همان زمان ویزیت ثبت می‌شود."
+                              "مبلغ پرداختی نوبت‌ها در زمان ویزیت بیمار ثبت می‌شود."
                             );
                           } catch (e) {
                             if (
@@ -4413,6 +4419,150 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             <div
                               className={classNames(
                                 projectcss.all,
+                                sty.freeBox__jSfY0
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__uEnf
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__ulkvi
+                                  )}
+                                >
+                                  {"\u0645\u0628\u0644\u063a:"}
+                                </div>
+                              </div>
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox___3Lq9Z
+                                )}
+                              >
+                                <TabContent
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.tabContent___829NI
+                                  )}
+                                >
+                                  <TextInput
+                                    data-plasmic-name={"txtSettlemenAmount2"}
+                                    data-plasmic-override={
+                                      overrides.txtSettlemenAmount2
+                                    }
+                                    className={classNames(
+                                      "__wab_instance",
+                                      sty.txtSettlemenAmount2
+                                    )}
+                                    onChange={async (...eventArgs: any) => {
+                                      ((...eventArgs) => {
+                                        generateStateOnChangeProp($state, [
+                                          "txtSettlemenAmount2",
+                                          "value"
+                                        ])(
+                                          (e => e.target?.value).apply(
+                                            null,
+                                            eventArgs
+                                          )
+                                        );
+                                      }).apply(null, eventArgs);
+
+                                      if (
+                                        eventArgs.length > 1 &&
+                                        eventArgs[1] &&
+                                        eventArgs[1]._plasmic_state_init_
+                                      ) {
+                                        return;
+                                      }
+
+                                      (async event => {
+                                        const $steps = {};
+
+                                        $steps["runCode"] = false
+                                          ? (() => {
+                                              const actionArgs = {
+                                                customFunction: async () => {
+                                                  return (() => {
+                                                    if (
+                                                      parseInt(
+                                                        $state
+                                                          .txtSettlemenAmount2
+                                                          .value
+                                                      ) >
+                                                      $state.reminderWallet -
+                                                        $state.blockedamount
+                                                    ) {
+                                                      return ($state.txtSettlemenAmount2.value =
+                                                        (
+                                                          $state.reminderWallet -
+                                                          $state.blockedamount
+                                                        ).toString());
+                                                    }
+                                                  })();
+                                                }
+                                              };
+                                              return (({ customFunction }) => {
+                                                return customFunction();
+                                              })?.apply(null, [actionArgs]);
+                                            })()
+                                          : undefined;
+                                        if (
+                                          $steps["runCode"] != null &&
+                                          typeof $steps["runCode"] ===
+                                            "object" &&
+                                          typeof $steps["runCode"].then ===
+                                            "function"
+                                        ) {
+                                          $steps["runCode"] = await $steps[
+                                            "runCode"
+                                          ];
+                                        }
+                                      }).apply(null, eventArgs);
+                                    }}
+                                    placeholder={
+                                      "\u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0628\u0647 \u0631\u06cc\u0627\u0644"
+                                    }
+                                    type={
+                                      hasVariant(
+                                        globalVariants,
+                                        "screen",
+                                        "mobileOnly"
+                                      )
+                                        ? "number"
+                                        : undefined
+                                    }
+                                    value={
+                                      generateStateValueProp($state, [
+                                        "txtSettlemenAmount2",
+                                        "value"
+                                      ]) ?? ""
+                                    }
+                                  />
+                                </TabContent>
+                              </div>
+                            </div>
+                          ) : null}
+                          {(() => {
+                            try {
+                              return $state.btnRegisterSettlementShow;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
+                            }
+                          })() ? (
+                            <div
+                              className={classNames(
+                                projectcss.all,
                                 sty.freeBox__zdrI4
                               )}
                             >
@@ -4439,11 +4589,9 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 )}
                               >
                                 <TabContent
-                                  data-plasmic-name={"tabContent"}
-                                  data-plasmic-override={overrides.tabContent}
                                   className={classNames(
                                     "__wab_instance",
-                                    sty.tabContent
+                                    sty.tabContent__zSh0F
                                   )}
                                 >
                                   <TextInput
@@ -11209,7 +11357,7 @@ const PlasmicDescendants = {
     "txtNewPaymentAmount",
     "btnSettlement",
     "dialogSettlement",
-    "tabContent",
+    "txtSettlemenAmount2",
     "txtSettlemenAmount",
     "dialogRegisterAccount",
     "txtCardId",
@@ -11269,7 +11417,7 @@ const PlasmicDescendants = {
     "txtNewPaymentAmount",
     "btnSettlement",
     "dialogSettlement",
-    "tabContent",
+    "txtSettlemenAmount2",
     "txtSettlemenAmount",
     "dialogRegisterAccount",
     "txtCardId",
@@ -11299,7 +11447,7 @@ const PlasmicDescendants = {
   btnSettlement: ["btnSettlement"],
   dialogSettlement: [
     "dialogSettlement",
-    "tabContent",
+    "txtSettlemenAmount2",
     "txtSettlemenAmount",
     "dialogRegisterAccount",
     "txtCardId",
@@ -11309,7 +11457,7 @@ const PlasmicDescendants = {
     "txtCardNumber",
     "txtSettlementResult"
   ],
-  tabContent: ["tabContent", "txtSettlemenAmount"],
+  txtSettlemenAmount2: ["txtSettlemenAmount2"],
   txtSettlemenAmount: ["txtSettlemenAmount"],
   dialogRegisterAccount: [
     "dialogRegisterAccount",
@@ -11377,7 +11525,7 @@ type NodeDefaultElementType = {
   txtNewPaymentAmount: typeof TextInput;
   btnSettlement: typeof Button2;
   dialogSettlement: typeof Dialog;
-  tabContent: typeof TabContent;
+  txtSettlemenAmount2: typeof TextInput;
   txtSettlemenAmount: typeof TextInput;
   dialogRegisterAccount: typeof Dialog;
   txtCardId: typeof TextInput;
@@ -11486,7 +11634,7 @@ export const PlasmicTransactionsSearch = Object.assign(
     txtNewPaymentAmount: makeNodeComponent("txtNewPaymentAmount"),
     btnSettlement: makeNodeComponent("btnSettlement"),
     dialogSettlement: makeNodeComponent("dialogSettlement"),
-    tabContent: makeNodeComponent("tabContent"),
+    txtSettlemenAmount2: makeNodeComponent("txtSettlemenAmount2"),
     txtSettlemenAmount: makeNodeComponent("txtSettlemenAmount"),
     dialogRegisterAccount: makeNodeComponent("dialogRegisterAccount"),
     txtCardId: makeNodeComponent("txtCardId"),
