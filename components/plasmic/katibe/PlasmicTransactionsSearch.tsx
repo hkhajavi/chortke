@@ -33,6 +33,7 @@ import {
   classNames,
   createPlasmicElementProxy,
   deriveRenderOpts,
+  ensureGlobalVariants,
   generateOnMutateForSpec,
   generateStateOnChangeProp,
   generateStateOnChangePropForCodeComponents,
@@ -2606,7 +2607,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   ).toLocaleDateString("fa-IR") +
                                   " "
                                 : "") +
-                              "مبلغ پرداختی نوبت‌های اخذ شده در زمان ویزیت بیمار ثبت می‌شود."
+                              "مبلغ پرداختی نوبت‌ها در همان زمان ویزیت ثبت می‌شود."
                             );
                           } catch (e) {
                             if (
