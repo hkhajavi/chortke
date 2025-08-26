@@ -4979,9 +4979,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               return (
                                 $ctx.GrowthBook.features[
                                   "katibe:escrow_payment"
-                                ] &&
-                                $state.userData.isDoctor &&
-                                false
+                                ] && $state.userData.isDoctor
                               );
                             } catch (e) {
                               if (

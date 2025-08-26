@@ -1045,7 +1045,7 @@
   grid-column-end: span 2;
   min-width: 0;
   min-height: 0;
-  padding: 8px;
+  padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox___2BtoD {
@@ -1180,7 +1180,7 @@
   max-width: 100%;
   grid-column-end: span 2;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__udl9H {
