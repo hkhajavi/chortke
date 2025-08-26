@@ -11183,7 +11183,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 ];
               }
 
-              $steps["getTransactionsReport"] = $state.userData?.isDoctor
+              $steps["getTransactionsReport"] = true
                 ? (() => {
                     const actionArgs = {
                       args: [
@@ -11225,9 +11225,9 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
               }
 
               $steps["updateTransactionsReport"] =
-                $steps.getTransactionsReport.status == 200 &&
-                $state.userData?.isDoctor
-                  ? (() => {
+                $steps.getTransactionsReport.status == 200
+                  ? /*
+              && $state.userData?.isDoctor*/ (() => {
                       const actionArgs = {
                         variable: {
                           objRoot: $state,
