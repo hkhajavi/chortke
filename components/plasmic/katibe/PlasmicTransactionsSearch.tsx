@@ -11040,9 +11040,9 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         (() => {
                           try {
                             return (
-                              "https://apigw.paziresh24.com/katibe/v1/transactions/balance/p24" +
+                              "https://apigw.paziresh24.com/katibe/v1/transactions/balance/p24?q=1&" +
                               ($state.currentAccountType == "centerid"
-                                ? "?centerid=" + $state.currentAccountId
+                                ? "&centerid=" + $state.currentAccountId
                                 : "") +
                               "&account=escrow"
                             );
@@ -11445,7 +11445,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 ];
               }
 
-              $steps["getTransactionsReport"] = true
+              $steps["getTransactionsReport"] = $state.userData?.isDoctor
                 ? (() => {
                     const actionArgs = {
                       args: [
@@ -11487,8 +11487,9 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
               }
 
               $steps["updateTransactionsReport"] =
-                $steps.getTransactionsReport.status == 200
-                  ? /* && $state.userData?.isDoctor*/ (() => {
+                $steps.getTransactionsReport.status == 200 &&
+                $state.userData?.isDoctor
+                  ? (() => {
                       const actionArgs = {
                         variable: {
                           objRoot: $state,
