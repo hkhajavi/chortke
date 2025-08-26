@@ -2600,10 +2600,17 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       })()
                     : (() => {
                         try {
-                          return $ctx.GrowthBook.features[
-                            "katibe:escrow_payment"
-                          ];
-                          /*&& false*/
+                          return (
+                            $ctx.GrowthBook.features["katibe:escrow_payment"] &&
+                            new Date(
+                              $state.firstEscrowTransaction.register_date
+                            ) >
+                              new Date(
+                                new Date().setMonth(new Date().getMonth() - 1)
+                              )
+
+                            /*&& false*/
+                          );
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
