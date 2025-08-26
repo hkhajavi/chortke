@@ -11184,85 +11184,6 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 ];
               }
 
-              $steps["getTransactionsReport"] = $state.userData?.isDoctor
-                ? (() => {
-                    const actionArgs = {
-                      args: [
-                        undefined,
-                        (() => {
-                          try {
-                            return (
-                              "https://apigw.paziresh24.com/katibe/v1/transactions/report/p24?book_date=" +
-                              $state.bookDate +
-                              ($state.currentAccountType == "centerid"
-                                ? "&centerid=" + $state.currentAccountId
-                                : "")
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
-                            }
-                            throw e;
-                          }
-                        })()
-                      ]
-                    };
-                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                      ...actionArgs.args
-                    ]);
-                  })()
-                : undefined;
-              if (
-                $steps["getTransactionsReport"] != null &&
-                typeof $steps["getTransactionsReport"] === "object" &&
-                typeof $steps["getTransactionsReport"].then === "function"
-              ) {
-                $steps["getTransactionsReport"] = await $steps[
-                  "getTransactionsReport"
-                ];
-              }
-
-              $steps["updateTransactionsReport"] =
-                $steps.getTransactionsReport.status == 200 &&
-                $state.userData?.isDoctor
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["transactionsReport"]
-                        },
-                        operation: 0,
-                        value: $steps.getTransactionsReport.data
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-              if (
-                $steps["updateTransactionsReport"] != null &&
-                typeof $steps["updateTransactionsReport"] === "object" &&
-                typeof $steps["updateTransactionsReport"].then === "function"
-              ) {
-                $steps["updateTransactionsReport"] = await $steps[
-                  "updateTransactionsReport"
-                ];
-              }
-
               $steps["getInvoiceList"] = $state.isLoadAccount
                 ? (() => {
                     const actionArgs = {
@@ -11362,61 +11283,6 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 $steps["runCode2"] = await $steps["runCode2"];
               }
 
-              $steps["updateWaiting"] =
-                $state.updatewallet == false && $state.isLoadAccount
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["waiting"]
-                        },
-                        operation: 0,
-                        value: false
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-              if (
-                $steps["updateWaiting"] != null &&
-                typeof $steps["updateWaiting"] === "object" &&
-                typeof $steps["updateWaiting"].then === "function"
-              ) {
-                $steps["updateWaiting"] = await $steps["updateWaiting"];
-              }
-
-              $steps["runCode3"] = true
-                ? (() => {
-                    const actionArgs = {
-                      customFunction: async () => {
-                        return ($state.waiting = false && $state.isLoadAccount);
-                      }
-                    };
-                    return (({ customFunction }) => {
-                      return customFunction();
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["runCode3"] != null &&
-                typeof $steps["runCode3"] === "object" &&
-                typeof $steps["runCode3"].then === "function"
-              ) {
-                $steps["runCode3"] = await $steps["runCode3"];
-              }
-
               $steps["getCentersInfo"] =
                 $state.currentAccountType == "centerid"
                   ? (() => {
@@ -11490,6 +11356,61 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 $steps["updateCenterInfo"] = await $steps["updateCenterInfo"];
               }
 
+              $steps["updateWaiting"] =
+                $state.updatewallet == false && $state.isLoadAccount
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["waiting"]
+                        },
+                        operation: 0,
+                        value: false
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updateWaiting"] != null &&
+                typeof $steps["updateWaiting"] === "object" &&
+                typeof $steps["updateWaiting"].then === "function"
+              ) {
+                $steps["updateWaiting"] = await $steps["updateWaiting"];
+              }
+
+              $steps["runCode3"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return ($state.waiting = false && $state.isLoadAccount);
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["runCode3"] != null &&
+                typeof $steps["runCode3"] === "object" &&
+                typeof $steps["runCode3"].then === "function"
+              ) {
+                $steps["runCode3"] = await $steps["runCode3"];
+              }
+
               $steps["updateFirstEscrowTransaction2"] = (
                 $state?.firstEscrowTransaction?.transactionid ? false : true
               )
@@ -11521,6 +11442,84 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
               ) {
                 $steps["updateFirstEscrowTransaction2"] = await $steps[
                   "updateFirstEscrowTransaction2"
+                ];
+              }
+
+              $steps["getTransactionsReport"] = true
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        undefined,
+                        (() => {
+                          try {
+                            return (
+                              "https://apigw.paziresh24.com/katibe/v1/transactions/report/p24?book_date=" +
+                              $state.bookDate +
+                              ($state.currentAccountType == "centerid"
+                                ? "&centerid=" + $state.currentAccountId
+                                : "")
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
+              if (
+                $steps["getTransactionsReport"] != null &&
+                typeof $steps["getTransactionsReport"] === "object" &&
+                typeof $steps["getTransactionsReport"].then === "function"
+              ) {
+                $steps["getTransactionsReport"] = await $steps[
+                  "getTransactionsReport"
+                ];
+              }
+
+              $steps["updateTransactionsReport"] =
+                $steps.getTransactionsReport.status == 200
+                  ? /* && $state.userData?.isDoctor*/ (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["transactionsReport"]
+                        },
+                        operation: 0,
+                        value: $steps.getTransactionsReport.data
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updateTransactionsReport"] != null &&
+                typeof $steps["updateTransactionsReport"] === "object" &&
+                typeof $steps["updateTransactionsReport"].then === "function"
+              ) {
+                $steps["updateTransactionsReport"] = await $steps[
+                  "updateTransactionsReport"
                 ];
               }
             }}
