@@ -66,10 +66,10 @@ import Dialog from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
 import { DatePicker } from "@/fragment/components/date-picker"; // plasmic-import: BigXM4fJwC8U/codeComponent
 import RadioGroup from "../../RadioGroup"; // plasmic-import: tqHTZfyBziuN/component
 import Radio from "../../Radio"; // plasmic-import: Cbq_rTXOD16b/component
+import TransferToAnotherWallet from "../../TransferToAnotherWallet"; // plasmic-import: y7cY5QHMxpPK/component
 import Dialog2 from "../../Dialog"; // plasmic-import: nYtkLnbqtkXY/component
 import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
 import { TabContent } from "@plasmicpkgs/plasmic-tabs";
-import TransferToAnotherWallet from "../../TransferToAnotherWallet"; // plasmic-import: y7cY5QHMxpPK/component
 import { ApiRequest } from "@/fragment/components/api-request"; // plasmic-import: hVBOtSJvmbc4/codeComponent
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
@@ -92,10 +92,10 @@ import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; 
 import Icon54Icon from "./icons/PlasmicIcon__Icon54"; // plasmic-import: N3q4_1KLSfUU/icon
 import Icon52Icon from "./icons/PlasmicIcon__Icon52"; // plasmic-import: fl1ZOZIHaI_u/icon
 import Icon56Icon from "./icons/PlasmicIcon__Icon56"; // plasmic-import: yLnbozaRO0lR/icon
+import Icon47Icon from "./icons/PlasmicIcon__Icon47"; // plasmic-import: MwxnRV3Jbx5Y/icon
+import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
 import SearchSvgIcon from "./icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
-import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
-import Icon47Icon from "./icons/PlasmicIcon__Icon47"; // plasmic-import: MwxnRV3Jbx5Y/icon
 import Icon44Icon from "./icons/PlasmicIcon__Icon44"; // plasmic-import: BqWt4mC1I6f6/icon
 import Icon45Icon from "./icons/PlasmicIcon__Icon45"; // plasmic-import: ZLOL59vKkeZc/icon
 
@@ -129,16 +129,18 @@ export type PlasmicTransactionsSearch__OverridesType = {
   rdSettlementTransaction?: Flex__<typeof Radio>;
   gridInvoice1?: Flex__<"div">;
   txtRemainingText?: Flex__<"div">;
-  txtRemainingValue?: Flex__<"div">;
+  txtRemainingText2?: Flex__<"div">;
+  dialog?: Flex__<typeof Dialog>;
+  btnSettlement?: Flex__<typeof Button2>;
+  dialogTransfer?: Flex__<typeof Dialog>;
+  transferToAnotherWallet?: Flex__<typeof TransferToAnotherWallet>;
   dialogIncreaseRemaining?: Flex__<typeof Dialog2>;
   btnPay?: Flex__<typeof Button>;
   gridSelectprice?: Flex__<"div">;
   btnSelectAmount?: Flex__<typeof Button>;
   gridMyAmount?: Flex__<"div">;
   txtNewPaymentAmount?: Flex__<typeof TextInput>;
-  btnSettlement?: Flex__<typeof Button2>;
   dialogSettlement?: Flex__<typeof Dialog>;
-  txtSettlemenAmount2?: Flex__<typeof TextInput>;
   txtSettlemenAmount?: Flex__<typeof TextInput>;
   dialogRegisterAccount?: Flex__<typeof Dialog>;
   txtCardId?: Flex__<typeof TextInput>;
@@ -147,8 +149,6 @@ export type PlasmicTransactionsSearch__OverridesType = {
   txtCardBankName?: Flex__<typeof TextInput>;
   txtCardNumber?: Flex__<typeof TextInput>;
   txtSettlementResult?: Flex__<"div">;
-  dialogTransfer?: Flex__<typeof Dialog>;
-  transferToAnotherWallet?: Flex__<typeof TransferToAnotherWallet>;
   gridInvoice13?: Flex__<"div">;
   gridInvoice12?: Flex__<"div">;
   dialogNewInvoiceDetails?: Flex__<typeof Dialog2>;
@@ -862,10 +862,16 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
       },
       {
-        path: "txtSettlemenAmount2.value",
+        path: "escrowbalance",
         type: "private",
-        variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+      },
+      {
+        path: "dialog.open",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
       }
     ],
     [$props, $ctx, $refs]
@@ -2574,19 +2580,41 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     />
                   </div>
                 ) : null}
-                {(() => {
-                  try {
-                    return $ctx.GrowthBook.features["katibe:escrow_payment"];
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return true;
-                    }
-                    throw e;
-                  }
-                })() ? (
+                {(
+                  hasVariant(globalVariants, "screen", "mobileOnly")
+                    ? (() => {
+                        try {
+                          return (
+                            $ctx.GrowthBook.features["katibe:escrow_payment"] &&
+                            false
+                          );
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })()
+                    : (() => {
+                        try {
+                          return $ctx.GrowthBook.features[
+                            "katibe:escrow_payment"
+                          ];
+                          /*&& false*/
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })()
+                ) ? (
                   <div
                     className={classNames(projectcss.all, sty.freeBox___0FHxp)}
                   >
@@ -2639,7 +2667,19 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
               >
                 {(
                   hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? true
+                    ? (() => {
+                        try {
+                          return !$state.waiting;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })()
                     : (() => {
                         try {
                           return !$state.waiting;
@@ -2657,86 +2697,348 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                   <div
                     className={classNames(projectcss.all, sty.freeBox__nQf7B)}
                   >
-                    {(() => {
-                      try {
-                        return !$state.waiting;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return true;
-                        }
-                        throw e;
-                      }
-                    })() ? (
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__mEDh)}
+                    >
                       <div
-                        data-plasmic-name={"txtRemainingText"}
-                        data-plasmic-override={overrides.txtRemainingText}
                         className={classNames(
                           projectcss.all,
-                          projectcss.__wab_text,
-                          sty.txtRemainingText
+                          sty.freeBox__sthvV
                         )}
                       >
+                        {(() => {
+                          try {
+                            return !$state.waiting;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })() ? (
+                          <div
+                            data-plasmic-name={"txtRemainingText"}
+                            data-plasmic-override={overrides.txtRemainingText}
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.txtRemainingText
+                            )}
+                          >
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return (
+                                    /*(
+                                ($ctx.GrowthBook.features["katibe:escrow_payment"]
+                                &&
+                                $state.userData.isDoctor)?
+                                "قابل تسویه: ":*/
+
+                                    "موجودی: " +
+                                    /*
+                                )
+                                */ ($state.txtReminderValue == 0
+                                      ? ""
+                                      : $state.txtReminderValue
+                                          .toString()
+                                          .replace("−", "")
+                                          .replace(
+                                            /\B(?=(\d{3})+(?!\d))/g,
+                                            ","
+                                          ) + " ریال")
+                                  );
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "\u0645\u0627\u0646\u062f\u0647 \u0628\u062f\u0647\u06cc:";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          </div>
+                        ) : null}
+                      </div>
+                      {(() => {
+                        try {
+                          return (
+                            $ctx.GrowthBook.features["katibe:escrow_payment"] &&
+                            $state.userData.isDoctor &&
+                            false
+                          );
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            sty.freeBox___7QmHl
+                          )}
+                        >
+                          <div
+                            data-plasmic-name={"txtRemainingText2"}
+                            data-plasmic-override={overrides.txtRemainingText2}
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.txtRemainingText2
+                            )}
+                          >
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return (
+                                    "در انتظار ویزیت: " +
+                                    ($state.escrowbalance == 0
+                                      ? "0 ریال"
+                                      : $state.escrowbalance
+                                          .toString()
+                                          .replace("−", "")
+                                          .replace(
+                                            /\B(?=(\d{3})+(?!\d))/g,
+                                            ","
+                                          ) + " ریال")
+                                  );
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "\u0645\u0627\u0646\u062f\u0647 \u0628\u062f\u0647\u06cc:";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          </div>
+                          <Dialog
+                            data-plasmic-name={"dialog"}
+                            data-plasmic-override={overrides.dialog}
+                            body={
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__d4KUt
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    sty.freeBox__aLyvO
+                                  )}
+                                >
+                                  <div
+                                    className={classNames(
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__sl7Tt
+                                    )}
+                                  >
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return (
+                                            ($state?.firstEscrowTransaction
+                                              ?.transactionid
+                                              ? "پزشک گرامی، از تاریخ " +
+                                                new Date(
+                                                  $state.firstEscrowTransaction.register_date
+                                                ).toLocaleDateString("fa-IR") +
+                                                " "
+                                              : "") +
+                                            "مبلغ پرداختی نوبت‌ها در زمان ویزیت بیمار ثبت می‌شود."
+                                          );
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "";
+                                          }
+                                          throw e;
+                                        }
+                                      })()}
+                                    </React.Fragment>
+                                  </div>
+                                </div>
+                              </div>
+                            }
+                            className={classNames("__wab_instance", sty.dialog)}
+                            onOpenChange={async (...eventArgs: any) => {
+                              generateStateOnChangeProp($state, [
+                                "dialog",
+                                "open"
+                              ]).apply(null, eventArgs);
+
+                              if (
+                                eventArgs.length > 1 &&
+                                eventArgs[1] &&
+                                eventArgs[1]._plasmic_state_init_
+                              ) {
+                                return;
+                              }
+                            }}
+                            open={generateStateValueProp($state, [
+                              "dialog",
+                              "open"
+                            ])}
+                            title={null}
+                            trigger={
+                              <Icon47Icon
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.svg___84Boo
+                                )}
+                                role={"img"}
+                              />
+                            }
+                          />
+                        </div>
+                      ) : null}
+                    </div>
+                  </div>
+                ) : null}
+                {(() => {
+                  try {
+                    return $state.userData?.isDoctor && !$state.waiting;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })() ? (
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox___2BtoD)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__wQg70
+                      )}
+                    >
+                      {hasVariant(globalVariants, "screen", "mobileOnly") ? (
                         <React.Fragment>
                           {(() => {
                             try {
-                              return $state.txtReminderTextValue;
+                              return $state.transactionsReport?.data?.deposit
+                                ? ($state.bookDate == ""
+                                    ? "کل درآمد: "
+                                    : "درآمد " +
+                                      (
+                                        "" +
+                                        (() => {
+                                          const gregorianDate = new Date(
+                                            $state.bookDate
+                                          );
+                                          const persianDate =
+                                            new Intl.DateTimeFormat(
+                                              "fa-IR"
+                                            ).format(gregorianDate);
+                                          return persianDate;
+                                        })()
+                                      ).substring(5) +
+                                      ":") +
+                                    ($state.transactionsReport?.data?.deposit
+                                      ? $state.transactionsReport.data.deposit.toLocaleString(
+                                          "fa-IR"
+                                        ) + " ریال"
+                                      : "0 ریال")
+                                : "";
                             } catch (e) {
                               if (
                                 e instanceof TypeError ||
                                 e?.plasmicType === "PlasmicUndefinedDataError"
                               ) {
-                                return "\u0645\u0627\u0646\u062f\u0647 \u0628\u062f\u0647\u06cc:";
+                                return "\u06a9\u0644 \u062f\u0631\u0622\u0645\u062f: ";
                               }
                               throw e;
                             }
                           })()}
                         </React.Fragment>
-                      </div>
-                    ) : null}
-                    {(() => {
-                      try {
-                        return !$state.waiting;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return true;
-                        }
-                        throw e;
-                      }
-                    })() ? (
+                      ) : (
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return $state.transactionsReport?.data?.deposit
+                                ? "کل درآمد: " +
+                                    ($state.transactionsReport.data.deposit.toLocaleString(
+                                      "fa-IR"
+                                    ) +
+                                      " ریال")
+                                : "";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "\u06a9\u0644 \u062f\u0631\u0622\u0645\u062f:  000\u0631\u06cc\u0627\u0644";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
+                      )}
+                    </div>
+                    {(
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? true
+                        : (() => {
+                            try {
+                              return $state.transactionsReport.data.deposit > 0;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
+                            }
+                          })()
+                    ) ? (
                       <div
-                        data-plasmic-name={"txtRemainingValue"}
-                        data-plasmic-override={overrides.txtRemainingValue}
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.txtRemainingValue
+                          sty.text__aa1Jv
                         )}
                       >
                         {hasVariant(globalVariants, "screen", "mobileOnly") ? (
                           <React.Fragment>
                             {(() => {
                               try {
-                                return (() => {
-                                  return $state.txtReminderValue == 0
-                                    ? ""
-                                    : $state.txtReminderValue
-                                        .toString()
-                                        .replace("\u2212", "")
-                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
-                                        " ریال";
-                                })();
+                                return $state.transactionsReport?.data?.deposit
+                                  ? $state.transactionsReport.data.deposit.toLocaleString(
+                                      "fa-IR"
+                                    ) + " ریال"
+                                  : "0 ریال";
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||
                                   e?.plasmicType === "PlasmicUndefinedDataError"
                                 ) {
-                                  return "0";
+                                  return "\u06a9\u0644 \u062f\u0631\u0622\u0645\u062f:  000\u0631\u06cc\u0627\u0644";
                                 }
                                 throw e;
                               }
@@ -2746,21 +3048,35 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                           <React.Fragment>
                             {(() => {
                               try {
-                                return (() => {
-                                  return $state.txtReminderValue == 0
-                                    ? ""
-                                    : $state.txtReminderValue
-                                        .toString()
-                                        .replace("\u2212", "")
-                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
-                                        " ریال";
-                                })();
+                                return $state.transactionsReport?.data?.deposit
+                                  ? ($state.bookDate == ""
+                                      ? "کل درآمد: "
+                                      : "درآمد " +
+                                        (
+                                          "" +
+                                          (() => {
+                                            const gregorianDate = new Date(
+                                              $state.bookDate
+                                            );
+                                            const persianDate =
+                                              new Intl.DateTimeFormat(
+                                                "fa-IR"
+                                              ).format(gregorianDate);
+                                            return persianDate;
+                                          })()
+                                        ).substring(5) +
+                                        ": ") +
+                                      ($state.transactionsReport.data.deposit.toLocaleString(
+                                        "fa-IR"
+                                      ) +
+                                        " ریال")
+                                  : "";
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||
                                   e?.plasmicType === "PlasmicUndefinedDataError"
                                 ) {
-                                  return "0";
+                                  return "\u06a9\u0644 \u062f\u0631\u0622\u0645\u062f:  000\u0631\u06cc\u0627\u0644";
                                 }
                                 throw e;
                               }
@@ -2769,6 +3085,781 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         )}
                       </div>
                     ) : null}
+                  </div>
+                ) : null}
+                {(() => {
+                  try {
+                    return $state.waiting;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })() ? (
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__wkNii)}
+                  >
+                    <Icon2Icon
+                      className={classNames(projectcss.all, sty.svg__dWtdr)}
+                      role={"img"}
+                    />
+                  </div>
+                ) : null}
+                {(() => {
+                  try {
+                    return !$state.waiting;
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })() ? (
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__udl9H)}
+                  >
+                    {(() => {
+                      try {
+                        return (
+                          $state.reminderWallet > 0 &&
+                          !$state.waiting &&
+                          (($state.currentAccountAccount == "organization" &&
+                            $state.currentAccountType == "centerid") ||
+                            ($state.currentAccountAccount == "p24" &&
+                              $state.currentAccountType == "userid"))
+                        );
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
+                        }
+                        throw e;
+                      }
+                    })() ? (
+                      <Button2
+                        data-plasmic-name={"btnSettlement"}
+                        data-plasmic-override={overrides.btnSettlement}
+                        children2={
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__h471K
+                            )}
+                          >
+                            {
+                              "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062a\u0633\u0648\u06cc\u0647"
+                            }
+                          </div>
+                        }
+                        className={classNames(
+                          "__wab_instance",
+                          sty.btnSettlement
+                        )}
+                        onClick={async event => {
+                          const $steps = {};
+
+                          $steps["runCode"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  customFunction: async () => {
+                                    return (() => {
+                                      $state.txtSettlemenAmount.value =
+                                        $state.reminderWallet -
+                                        $state.blockedamount;
+                                      $state.settlementResultShow = false;
+                                      return ($state.btnRegisterSettlementShow =
+                                        true);
+                                    })();
+                                  }
+                                };
+                                return (({ customFunction }) => {
+                                  return customFunction();
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["runCode"] != null &&
+                            typeof $steps["runCode"] === "object" &&
+                            typeof $steps["runCode"].then === "function"
+                          ) {
+                            $steps["runCode"] = await $steps["runCode"];
+                          }
+
+                          $steps["getSettlementMessage"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  args: [
+                                    undefined,
+                                    (() => {
+                                      try {
+                                        return (
+                                          "https://apigw.paziresh24.com/ganjname/v1/message" +
+                                          ($state.currentAccountType ==
+                                          "centerid"
+                                            ? "?centerid=" +
+                                              $state.currentAccountId
+                                            : "")
+                                        );
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return undefined;
+                                        }
+                                        throw e;
+                                      }
+                                    })()
+                                  ]
+                                };
+                                return $globalActions[
+                                  "Fragment.apiRequest"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["getSettlementMessage"] != null &&
+                            typeof $steps["getSettlementMessage"] ===
+                              "object" &&
+                            typeof $steps["getSettlementMessage"].then ===
+                              "function"
+                          ) {
+                            $steps["getSettlementMessage"] = await $steps[
+                              "getSettlementMessage"
+                            ];
+                          }
+
+                          $steps["runCode3"] =
+                            $steps.getSettlementMessage.status == 200
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return (() => {
+                                        if (
+                                          $steps.getSettlementMessage.status ==
+                                          200
+                                        ) {
+                                          $state.settlementMessage =
+                                            $steps.getSettlementMessage.data.message;
+                                          $state.settlementActive =
+                                            $steps.getSettlementMessage.data.active;
+                                          return ($state.settlementService =
+                                            $steps.getSettlementMessage.data.service);
+                                        }
+                                      })();
+                                    }
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                          if (
+                            $steps["runCode3"] != null &&
+                            typeof $steps["runCode3"] === "object" &&
+                            typeof $steps["runCode3"].then === "function"
+                          ) {
+                            $steps["runCode3"] = await $steps["runCode3"];
+                          }
+
+                          $steps["openDialog"] =
+                            $state.bankAccountList.length > 0
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return ($state.dialogSettlement.open =
+                                        true);
+                                    }
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                          if (
+                            $steps["openDialog"] != null &&
+                            typeof $steps["openDialog"] === "object" &&
+                            typeof $steps["openDialog"].then === "function"
+                          ) {
+                            $steps["openDialog"] = await $steps["openDialog"];
+                          }
+
+                          $steps["updateWaiting2"] =
+                            $state.bankAccountList.length == 0
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["waiting"]
+                                    },
+                                    operation: 0,
+                                    value: true
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                          if (
+                            $steps["updateWaiting2"] != null &&
+                            typeof $steps["updateWaiting2"] === "object" &&
+                            typeof $steps["updateWaiting2"].then === "function"
+                          ) {
+                            $steps["updateWaiting2"] = await $steps[
+                              "updateWaiting2"
+                            ];
+                          }
+
+                          $steps["getUserAccounts"] =
+                            $state.bankAccountList.length == 0
+                              ? (() => {
+                                  const actionArgs = {
+                                    args: [
+                                      undefined,
+                                      (() => {
+                                        try {
+                                          return (() => {
+                                            if (
+                                              $state.currentAccountType ==
+                                              "centerid"
+                                            )
+                                              return (
+                                                "https://apigw.paziresh24.com/financialaccount/v1/useraccounts?centerid=" +
+                                                $state.currentAccountId
+                                              );
+                                            else
+                                              return "https://apigw.paziresh24.com/financialaccount/v1/useraccounts";
+                                          })();
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return undefined;
+                                          }
+                                          throw e;
+                                        }
+                                      })()
+                                    ]
+                                  };
+                                  return $globalActions[
+                                    "Fragment.apiRequest"
+                                  ]?.apply(null, [...actionArgs.args]);
+                                })()
+                              : undefined;
+                          if (
+                            $steps["getUserAccounts"] != null &&
+                            typeof $steps["getUserAccounts"] === "object" &&
+                            typeof $steps["getUserAccounts"].then === "function"
+                          ) {
+                            $steps["getUserAccounts"] = await $steps[
+                              "getUserAccounts"
+                            ];
+                          }
+
+                          $steps["updateBankAccountList"] =
+                            $steps.getUserAccounts.status == 200 &&
+                            $state.bankAccountList.length == 0
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["bankAccountList"]
+                                    },
+                                    operation: 0,
+                                    value: $steps.getUserAccounts.data.data
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                          if (
+                            $steps["updateBankAccountList"] != null &&
+                            typeof $steps["updateBankAccountList"] ===
+                              "object" &&
+                            typeof $steps["updateBankAccountList"].then ===
+                              "function"
+                          ) {
+                            $steps["updateBankAccountList"] = await $steps[
+                              "updateBankAccountList"
+                            ];
+                          }
+
+                          $steps["getRecurringSettlement"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  args: [
+                                    undefined,
+                                    (() => {
+                                      try {
+                                        return (
+                                          "https://apigw.paziresh24.com/ganjname/v1/recurring-settlement/" +
+                                          ($state.currentAccountType ==
+                                          "centerid"
+                                            ? "?centerid=" +
+                                              $state.currentAccountId
+                                            : "")
+                                        );
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return undefined;
+                                        }
+                                        throw e;
+                                      }
+                                    })()
+                                  ]
+                                };
+                                return $globalActions[
+                                  "Fragment.apiRequest"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["getRecurringSettlement"] != null &&
+                            typeof $steps["getRecurringSettlement"] ===
+                              "object" &&
+                            typeof $steps["getRecurringSettlement"].then ===
+                              "function"
+                          ) {
+                            $steps["getRecurringSettlement"] = await $steps[
+                              "getRecurringSettlement"
+                            ];
+                          }
+
+                          $steps["updateRecurringSettlement"] =
+                            $steps.getRecurringSettlement.status == 200
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["recurringSettlement"]
+                                    },
+                                    operation: 0,
+                                    value:
+                                      $steps.getRecurringSettlement.data.data
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                          if (
+                            $steps["updateRecurringSettlement"] != null &&
+                            typeof $steps["updateRecurringSettlement"] ===
+                              "object" &&
+                            typeof $steps["updateRecurringSettlement"].then ===
+                              "function"
+                          ) {
+                            $steps["updateRecurringSettlement"] = await $steps[
+                              "updateRecurringSettlement"
+                            ];
+                          }
+
+                          $steps["getEscrowAmount"] = false
+                            ? (() => {
+                                const actionArgs = {
+                                  args: [
+                                    undefined,
+                                    (() => {
+                                      try {
+                                        return (
+                                          "https://apigw.paziresh24.com/katibe/v1/transactions/balance/p24" +
+                                          ($state.currentAccountType ==
+                                          "centerid"
+                                            ? "?centerid=" +
+                                              $state.currentAccountId
+                                            : "") +
+                                          "&account=escrow"
+                                        );
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return undefined;
+                                        }
+                                        throw e;
+                                      }
+                                    })()
+                                  ]
+                                };
+                                return $globalActions[
+                                  "Fragment.apiRequest"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["getEscrowAmount"] != null &&
+                            typeof $steps["getEscrowAmount"] === "object" &&
+                            typeof $steps["getEscrowAmount"].then === "function"
+                          ) {
+                            $steps["getEscrowAmount"] = await $steps[
+                              "getEscrowAmount"
+                            ];
+                          }
+
+                          $steps["updateEscrowbalance"] = false
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["escrowbalance"]
+                                  },
+                                  operation: 0,
+                                  value:
+                                    $steps.getEscrowAmount.data.data.balance
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateEscrowbalance"] != null &&
+                            typeof $steps["updateEscrowbalance"] === "object" &&
+                            typeof $steps["updateEscrowbalance"].then ===
+                              "function"
+                          ) {
+                            $steps["updateEscrowbalance"] = await $steps[
+                              "updateEscrowbalance"
+                            ];
+                          }
+
+                          $steps["updateWaiting"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["waiting"]
+                                  },
+                                  operation: 0,
+                                  value: false
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["updateWaiting"] != null &&
+                            typeof $steps["updateWaiting"] === "object" &&
+                            typeof $steps["updateWaiting"].then === "function"
+                          ) {
+                            $steps["updateWaiting"] = await $steps[
+                              "updateWaiting"
+                            ];
+                          }
+
+                          $steps["runCode2"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  customFunction: async () => {
+                                    return (() => {
+                                      $state.dialogSettlement.open = true;
+                                      if ($state.bankAccountList.length > 0)
+                                        return ($state.requestSettlementState =
+                                          "request-settlement");
+                                      else
+                                        return ($state.requestSettlementState =
+                                          "register-bank-account");
+                                    })();
+                                  }
+                                };
+                                return (({ customFunction }) => {
+                                  return customFunction();
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["runCode2"] != null &&
+                            typeof $steps["runCode2"] === "object" &&
+                            typeof $steps["runCode2"].then === "function"
+                          ) {
+                            $steps["runCode2"] = await $steps["runCode2"];
+                          }
+                        }}
+                        size={"compact"}
+                      />
+                    ) : null}
+                    <Dialog
+                      data-plasmic-name={"dialogTransfer"}
+                      data-plasmic-override={overrides.dialogTransfer}
+                      body={
+                        <TransferToAnotherWallet
+                          data-plasmic-name={"transferToAnotherWallet"}
+                          data-plasmic-override={
+                            overrides.transferToAnotherWallet
+                          }
+                          className={classNames(
+                            "__wab_instance",
+                            sty.transferToAnotherWallet
+                          )}
+                          onTransferCenteridChange={async (
+                            ...eventArgs: any
+                          ) => {
+                            generateStateOnChangeProp($state, [
+                              "transferToAnotherWallet",
+                              "transferCenterid"
+                            ]).apply(null, eventArgs);
+
+                            if (
+                              eventArgs.length > 1 &&
+                              eventArgs[1] &&
+                              eventArgs[1]._plasmic_state_init_
+                            ) {
+                              return;
+                            }
+                          }}
+                          onTransferedCountChange={async (
+                            ...eventArgs: any
+                          ) => {
+                            generateStateOnChangeProp($state, [
+                              "transferToAnotherWallet",
+                              "transferedCount"
+                            ]).apply(null, eventArgs);
+
+                            if (
+                              eventArgs.length > 1 &&
+                              eventArgs[1] &&
+                              eventArgs[1]._plasmic_state_init_
+                            ) {
+                              return;
+                            }
+                          }}
+                          transferCenterid={generateStateValueProp($state, [
+                            "transferToAnotherWallet",
+                            "transferCenterid"
+                          ])}
+                          transferEvent={async () => {
+                            const $steps = {};
+
+                            $steps["closeDialog"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return ($state.dialogTransfer.open =
+                                        false);
+                                    }
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["closeDialog"] != null &&
+                              typeof $steps["closeDialog"] === "object" &&
+                              typeof $steps["closeDialog"].then === "function"
+                            ) {
+                              $steps["closeDialog"] = await $steps[
+                                "closeDialog"
+                              ];
+                            }
+
+                            $steps["updateFirstRequestCount"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["firstRequestCount"]
+                                    },
+                                    operation: 2
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    const oldValue = $stateGet(
+                                      objRoot,
+                                      variablePath
+                                    );
+                                    $stateSet(
+                                      objRoot,
+                                      variablePath,
+                                      oldValue + 1
+                                    );
+                                    return oldValue + 1;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateFirstRequestCount"] != null &&
+                              typeof $steps["updateFirstRequestCount"] ===
+                                "object" &&
+                              typeof $steps["updateFirstRequestCount"].then ===
+                                "function"
+                            ) {
+                              $steps["updateFirstRequestCount"] = await $steps[
+                                "updateFirstRequestCount"
+                              ];
+                            }
+                          }}
+                        />
+                      }
+                      className={classNames(
+                        "__wab_instance",
+                        sty.dialogTransfer
+                      )}
+                      onOpenChange={async (...eventArgs: any) => {
+                        generateStateOnChangeProp($state, [
+                          "dialogTransfer",
+                          "open"
+                        ]).apply(null, eventArgs);
+
+                        if (
+                          eventArgs.length > 1 &&
+                          eventArgs[1] &&
+                          eventArgs[1]._plasmic_state_init_
+                        ) {
+                          return;
+                        }
+                      }}
+                      open={generateStateValueProp($state, [
+                        "dialogTransfer",
+                        "open"
+                      ])}
+                      title={
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___690FN
+                          )}
+                        >
+                          {
+                            "\u0627\u0646\u062a\u0642\u0627\u0644 \u0648\u062c\u0647 \u0628\u0647 \u06a9\u0627\u0631\u0628\u0631 \u062f\u06cc\u06af\u0631"
+                          }
+                        </div>
+                      }
+                      trigger={
+                        (() => {
+                          try {
+                            return (
+                              !$ctx.GrowthBook.features[
+                                "transfer-to-another-wallet"
+                              ].hide &&
+                              $state.reminderWallet > 0 &&
+                              !$state.waiting &&
+                              (($state.currentAccountAccount ==
+                                "organization" &&
+                                $state.currentAccountType == "centerid") ||
+                                ($state.currentAccountAccount == "p24" &&
+                                  $state.currentAccountType == "userid"))
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return false;
+                            }
+                            throw e;
+                          }
+                        })() ? (
+                          <Button2
+                            children2={
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text___7Ujb5
+                                )}
+                              >
+                                {
+                                  "\u0627\u0646\u062a\u0642\u0627\u0644 \u0648\u062c\u0640\u0640\u0647"
+                                }
+                              </div>
+                            }
+                            className={classNames(
+                              "__wab_instance",
+                              sty.button__tt2JA
+                            )}
+                            size={"compact"}
+                          />
+                        ) : null
+                      }
+                    />
+
                     <Dialog2
                       data-plasmic-name={"dialogIncreaseRemaining"}
                       data-plasmic-override={overrides.dialogIncreaseRemaining}
@@ -3843,533 +4934,6 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       }
                     />
 
-                    {(() => {
-                      try {
-                        return (
-                          $state.reminderWallet > 0 &&
-                          !$state.waiting &&
-                          (($state.currentAccountAccount == "organization" &&
-                            $state.currentAccountType == "centerid") ||
-                            ($state.currentAccountAccount == "p24" &&
-                              $state.currentAccountType == "userid"))
-                        );
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return true;
-                        }
-                        throw e;
-                      }
-                    })() ? (
-                      <Button2
-                        data-plasmic-name={"btnSettlement"}
-                        data-plasmic-override={overrides.btnSettlement}
-                        children2={
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__h471K
-                            )}
-                          >
-                            {
-                              "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u062a\u0633\u0648\u06cc\u0647"
-                            }
-                          </div>
-                        }
-                        className={classNames(
-                          "__wab_instance",
-                          sty.btnSettlement
-                        )}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["runCode"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  customFunction: async () => {
-                                    return (() => {
-                                      $state.txtSettlemenAmount.value =
-                                        $state.reminderWallet -
-                                        $state.blockedamount;
-                                      $state.settlementResultShow = false;
-                                      return ($state.btnRegisterSettlementShow =
-                                        true);
-                                    })();
-                                  }
-                                };
-                                return (({ customFunction }) => {
-                                  return customFunction();
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["runCode"] != null &&
-                            typeof $steps["runCode"] === "object" &&
-                            typeof $steps["runCode"].then === "function"
-                          ) {
-                            $steps["runCode"] = await $steps["runCode"];
-                          }
-
-                          $steps["getSettlementMessage"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    undefined,
-                                    (() => {
-                                      try {
-                                        return (
-                                          "https://apigw.paziresh24.com/ganjname/v1/message" +
-                                          ($state.currentAccountType ==
-                                          "centerid"
-                                            ? "?centerid=" +
-                                              $state.currentAccountId
-                                            : "")
-                                        );
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
-                                      }
-                                    })()
-                                  ]
-                                };
-                                return $globalActions[
-                                  "Fragment.apiRequest"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["getSettlementMessage"] != null &&
-                            typeof $steps["getSettlementMessage"] ===
-                              "object" &&
-                            typeof $steps["getSettlementMessage"].then ===
-                              "function"
-                          ) {
-                            $steps["getSettlementMessage"] = await $steps[
-                              "getSettlementMessage"
-                            ];
-                          }
-
-                          $steps["runCode3"] =
-                            $steps.getSettlementMessage.status == 200
-                              ? (() => {
-                                  const actionArgs = {
-                                    customFunction: async () => {
-                                      return (() => {
-                                        if (
-                                          $steps.getSettlementMessage.status ==
-                                          200
-                                        ) {
-                                          $state.settlementMessage =
-                                            $steps.getSettlementMessage.data.message;
-                                          $state.settlementActive =
-                                            $steps.getSettlementMessage.data.active;
-                                          return ($state.settlementService =
-                                            $steps.getSettlementMessage.data.service);
-                                        }
-                                      })();
-                                    }
-                                  };
-                                  return (({ customFunction }) => {
-                                    return customFunction();
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                          if (
-                            $steps["runCode3"] != null &&
-                            typeof $steps["runCode3"] === "object" &&
-                            typeof $steps["runCode3"].then === "function"
-                          ) {
-                            $steps["runCode3"] = await $steps["runCode3"];
-                          }
-
-                          $steps["openDialog"] =
-                            $state.bankAccountList.length > 0
-                              ? (() => {
-                                  const actionArgs = {
-                                    customFunction: async () => {
-                                      return ($state.dialogSettlement.open =
-                                        true);
-                                    }
-                                  };
-                                  return (({ customFunction }) => {
-                                    return customFunction();
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                          if (
-                            $steps["openDialog"] != null &&
-                            typeof $steps["openDialog"] === "object" &&
-                            typeof $steps["openDialog"].then === "function"
-                          ) {
-                            $steps["openDialog"] = await $steps["openDialog"];
-                          }
-
-                          $steps["updateWaiting2"] =
-                            $state.bankAccountList.length == 0
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["waiting"]
-                                    },
-                                    operation: 0,
-                                    value: true
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                          if (
-                            $steps["updateWaiting2"] != null &&
-                            typeof $steps["updateWaiting2"] === "object" &&
-                            typeof $steps["updateWaiting2"].then === "function"
-                          ) {
-                            $steps["updateWaiting2"] = await $steps[
-                              "updateWaiting2"
-                            ];
-                          }
-
-                          $steps["getUserAccounts"] =
-                            $state.bankAccountList.length == 0
-                              ? (() => {
-                                  const actionArgs = {
-                                    args: [
-                                      undefined,
-                                      (() => {
-                                        try {
-                                          return (() => {
-                                            if (
-                                              $state.currentAccountType ==
-                                              "centerid"
-                                            )
-                                              return (
-                                                "https://apigw.paziresh24.com/financialaccount/v1/useraccounts?centerid=" +
-                                                $state.currentAccountId
-                                              );
-                                            else
-                                              return "https://apigw.paziresh24.com/financialaccount/v1/useraccounts";
-                                          })();
-                                        } catch (e) {
-                                          if (
-                                            e instanceof TypeError ||
-                                            e?.plasmicType ===
-                                              "PlasmicUndefinedDataError"
-                                          ) {
-                                            return undefined;
-                                          }
-                                          throw e;
-                                        }
-                                      })()
-                                    ]
-                                  };
-                                  return $globalActions[
-                                    "Fragment.apiRequest"
-                                  ]?.apply(null, [...actionArgs.args]);
-                                })()
-                              : undefined;
-                          if (
-                            $steps["getUserAccounts"] != null &&
-                            typeof $steps["getUserAccounts"] === "object" &&
-                            typeof $steps["getUserAccounts"].then === "function"
-                          ) {
-                            $steps["getUserAccounts"] = await $steps[
-                              "getUserAccounts"
-                            ];
-                          }
-
-                          $steps["updateBankAccountList"] =
-                            $steps.getUserAccounts.status == 200 &&
-                            $state.bankAccountList.length == 0
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["bankAccountList"]
-                                    },
-                                    operation: 0,
-                                    value: $steps.getUserAccounts.data.data
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                          if (
-                            $steps["updateBankAccountList"] != null &&
-                            typeof $steps["updateBankAccountList"] ===
-                              "object" &&
-                            typeof $steps["updateBankAccountList"].then ===
-                              "function"
-                          ) {
-                            $steps["updateBankAccountList"] = await $steps[
-                              "updateBankAccountList"
-                            ];
-                          }
-
-                          $steps["getRecurringSettlement"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    undefined,
-                                    (() => {
-                                      try {
-                                        return (
-                                          "https://apigw.paziresh24.com/ganjname/v1/recurring-settlement/" +
-                                          ($state.currentAccountType ==
-                                          "centerid"
-                                            ? "?centerid=" +
-                                              $state.currentAccountId
-                                            : "")
-                                        );
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
-                                      }
-                                    })()
-                                  ]
-                                };
-                                return $globalActions[
-                                  "Fragment.apiRequest"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["getRecurringSettlement"] != null &&
-                            typeof $steps["getRecurringSettlement"] ===
-                              "object" &&
-                            typeof $steps["getRecurringSettlement"].then ===
-                              "function"
-                          ) {
-                            $steps["getRecurringSettlement"] = await $steps[
-                              "getRecurringSettlement"
-                            ];
-                          }
-
-                          $steps["updateRecurringSettlement"] =
-                            $steps.getRecurringSettlement.status == 200
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["recurringSettlement"]
-                                    },
-                                    operation: 0,
-                                    value:
-                                      $steps.getRecurringSettlement.data.data
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                          if (
-                            $steps["updateRecurringSettlement"] != null &&
-                            typeof $steps["updateRecurringSettlement"] ===
-                              "object" &&
-                            typeof $steps["updateRecurringSettlement"].then ===
-                              "function"
-                          ) {
-                            $steps["updateRecurringSettlement"] = await $steps[
-                              "updateRecurringSettlement"
-                            ];
-                          }
-
-                          $steps["getBlockedAmount"] =
-                            $state.currentAccountType == "centerid" && false
-                              ? (() => {
-                                  const actionArgs = {
-                                    args: [
-                                      undefined,
-                                      (() => {
-                                        try {
-                                          return (
-                                            "https://apigw.paziresh24.com/katibe/v1/transactions/balance/p24/blocked?centerid=" +
-                                            $state.currentAccountId
-                                          );
-                                        } catch (e) {
-                                          if (
-                                            e instanceof TypeError ||
-                                            e?.plasmicType ===
-                                              "PlasmicUndefinedDataError"
-                                          ) {
-                                            return undefined;
-                                          }
-                                          throw e;
-                                        }
-                                      })()
-                                    ]
-                                  };
-                                  return $globalActions[
-                                    "Fragment.apiRequest"
-                                  ]?.apply(null, [...actionArgs.args]);
-                                })()
-                              : undefined;
-                          if (
-                            $steps["getBlockedAmount"] != null &&
-                            typeof $steps["getBlockedAmount"] === "object" &&
-                            typeof $steps["getBlockedAmount"].then ===
-                              "function"
-                          ) {
-                            $steps["getBlockedAmount"] = await $steps[
-                              "getBlockedAmount"
-                            ];
-                          }
-
-                          $steps["updateBlockedamount"] =
-                            $state.currentAccountType == "centerid" && false
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["blockedamount"]
-                                    },
-                                    operation: 0,
-                                    value:
-                                      $steps.getBlockedAmount.data.data.amount
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                          if (
-                            $steps["updateBlockedamount"] != null &&
-                            typeof $steps["updateBlockedamount"] === "object" &&
-                            typeof $steps["updateBlockedamount"].then ===
-                              "function"
-                          ) {
-                            $steps["updateBlockedamount"] = await $steps[
-                              "updateBlockedamount"
-                            ];
-                          }
-
-                          $steps["updateWaiting"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["waiting"]
-                                  },
-                                  operation: 0,
-                                  value: false
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
-
-                                  $stateSet(objRoot, variablePath, value);
-                                  return value;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["updateWaiting"] != null &&
-                            typeof $steps["updateWaiting"] === "object" &&
-                            typeof $steps["updateWaiting"].then === "function"
-                          ) {
-                            $steps["updateWaiting"] = await $steps[
-                              "updateWaiting"
-                            ];
-                          }
-
-                          $steps["runCode2"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  customFunction: async () => {
-                                    return (() => {
-                                      $state.dialogSettlement.open = true;
-                                      if ($state.bankAccountList.length > 0)
-                                        return ($state.requestSettlementState =
-                                          "request-settlement");
-                                      else
-                                        return ($state.requestSettlementState =
-                                          "register-bank-account");
-                                    })();
-                                  }
-                                };
-                                return (({ customFunction }) => {
-                                  return customFunction();
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["runCode2"] != null &&
-                            typeof $steps["runCode2"] === "object" &&
-                            typeof $steps["runCode2"].then === "function"
-                          ) {
-                            $steps["runCode2"] = await $steps["runCode2"];
-                          }
-                        }}
-                        size={"compact"}
-                      />
-                    ) : null}
                     <Dialog
                       data-plasmic-name={"dialogSettlement"}
                       data-plasmic-override={overrides.dialogSettlement}
@@ -4405,7 +4969,13 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                           </div>
                           {(() => {
                             try {
-                              return $state.btnRegisterSettlementShow;
+                              return (
+                                $ctx.GrowthBook.features[
+                                  "katibe:escrow_payment"
+                                ] &&
+                                $state.userData.isDoctor &&
+                                false
+                              );
                             } catch (e) {
                               if (
                                 e instanceof TypeError ||
@@ -4432,10 +5002,36 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   className={classNames(
                                     projectcss.all,
                                     projectcss.__wab_text,
-                                    sty.text__ulkvi
+                                    sty.text___2SH
                                   )}
                                 >
-                                  {"\u0645\u0628\u0644\u063a:"}
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return (
+                                          "قابل تسویه: " +
+                                          ($state.txtReminderValue == 0
+                                            ? ""
+                                            : $state.txtReminderValue
+                                                .toString()
+                                                .replace("−", "")
+                                                .replace(
+                                                  /\B(?=(\d{3})+(?!\d))/g,
+                                                  ","
+                                                ) + " ریال")
+                                        );
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
                                 </div>
                               </div>
                               <div
@@ -4450,103 +5046,118 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     sty.tabContent___829NI
                                   )}
                                 >
-                                  <TextInput
-                                    data-plasmic-name={"txtSettlemenAmount2"}
-                                    data-plasmic-override={
-                                      overrides.txtSettlemenAmount2
-                                    }
+                                  <div
                                     className={classNames(
-                                      "__wab_instance",
-                                      sty.txtSettlemenAmount2
+                                      projectcss.all,
+                                      projectcss.__wab_text,
+                                      sty.text__ulkvi
                                     )}
-                                    onChange={async (...eventArgs: any) => {
-                                      ((...eventArgs) => {
-                                        generateStateOnChangeProp($state, [
-                                          "txtSettlemenAmount2",
-                                          "value"
-                                        ])(
-                                          (e => e.target?.value).apply(
-                                            null,
-                                            eventArgs
-                                          )
-                                        );
-                                      }).apply(null, eventArgs);
-
-                                      if (
-                                        eventArgs.length > 1 &&
-                                        eventArgs[1] &&
-                                        eventArgs[1]._plasmic_state_init_
-                                      ) {
-                                        return;
-                                      }
-
-                                      (async event => {
-                                        const $steps = {};
-
-                                        $steps["runCode"] = false
-                                          ? (() => {
-                                              const actionArgs = {
-                                                customFunction: async () => {
-                                                  return (() => {
-                                                    if (
-                                                      parseInt(
-                                                        $state
-                                                          .txtSettlemenAmount2
-                                                          .value
-                                                      ) >
-                                                      $state.reminderWallet -
-                                                        $state.blockedamount
-                                                    ) {
-                                                      return ($state.txtSettlemenAmount2.value =
-                                                        (
-                                                          $state.reminderWallet -
-                                                          $state.blockedamount
-                                                        ).toString());
-                                                    }
-                                                  })();
-                                                }
-                                              };
-                                              return (({ customFunction }) => {
-                                                return customFunction();
-                                              })?.apply(null, [actionArgs]);
-                                            })()
-                                          : undefined;
-                                        if (
-                                          $steps["runCode"] != null &&
-                                          typeof $steps["runCode"] ===
-                                            "object" &&
-                                          typeof $steps["runCode"].then ===
-                                            "function"
-                                        ) {
-                                          $steps["runCode"] = await $steps[
-                                            "runCode"
-                                          ];
+                                  >
+                                    <React.Fragment>
+                                      {(() => {
+                                        try {
+                                          return (
+                                            "در انتظار ویزیت: " +
+                                            ($state.escrowbalance == 0
+                                              ? "0 ریال"
+                                              : $state.escrowbalance
+                                                  .toString()
+                                                  .replace("−", "")
+                                                  .replace(
+                                                    /\B(?=(\d{3})+(?!\d))/g,
+                                                    ","
+                                                  ) + " ریال")
+                                          );
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return "\u0642\u0627\u0628\u0644 \u062a\u0633\u0648\u06cc\u0647:";
+                                          }
+                                          throw e;
                                         }
-                                      }).apply(null, eventArgs);
-                                    }}
-                                    placeholder={
-                                      "\u0645\u0628\u0644\u063a \u0645\u0648\u0631\u062f \u0646\u0638\u0631 \u0628\u0647 \u0631\u06cc\u0627\u0644"
-                                    }
-                                    type={
-                                      hasVariant(
-                                        globalVariants,
-                                        "screen",
-                                        "mobileOnly"
-                                      )
-                                        ? "number"
-                                        : undefined
-                                    }
-                                    value={
-                                      generateStateValueProp($state, [
-                                        "txtSettlemenAmount2",
-                                        "value"
-                                      ]) ?? ""
-                                    }
-                                  />
+                                      })()}
+                                    </React.Fragment>
+                                  </div>
                                 </TabContent>
                               </div>
                             </div>
                           ) : null}
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              sty.freeBox__aqI40
+                            )}
+                          >
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox__xRlAx
+                              )}
+                            >
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.__wab_text,
+                                  sty.text__pwtOu
+                                )}
+                              >
+                                {
+                                  "\u062f\u0631 \u0627\u0646\u062a\u0638\u0627\u0631 \u0648\u06cc\u0632\u06cc\u062a:"
+                                }
+                              </div>
+                            </div>
+                            <div
+                              className={classNames(
+                                projectcss.all,
+                                sty.freeBox___6CzsP
+                              )}
+                            >
+                              <TabContent
+                                className={classNames(
+                                  "__wab_instance",
+                                  sty.tabContent__qNpyB
+                                )}
+                              >
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__rbd2K
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return (() => {
+                                          return $state.escrowbalance == 0
+                                            ? "0 ریال"
+                                            : $state.escrowbalance
+                                                .toString()
+                                                .replace("\u2212", "")
+                                                .replace(
+                                                  /\B(?=(\d{3})+(?!\d))/g,
+                                                  ","
+                                                ) + " ریال";
+                                        })();
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "0\u0631\u06cc\u0627\u0644";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                              </TabContent>
+                            </div>
+                          </div>
                           {(() => {
                             try {
                               return $state.btnRegisterSettlementShow;
@@ -7342,402 +7953,6 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         </React.Fragment>
                       }
                       trigger={null}
-                    />
-
-                    <Dialog
-                      data-plasmic-name={"dialogTransfer"}
-                      data-plasmic-override={overrides.dialogTransfer}
-                      body={
-                        <TransferToAnotherWallet
-                          data-plasmic-name={"transferToAnotherWallet"}
-                          data-plasmic-override={
-                            overrides.transferToAnotherWallet
-                          }
-                          className={classNames(
-                            "__wab_instance",
-                            sty.transferToAnotherWallet
-                          )}
-                          onTransferCenteridChange={async (
-                            ...eventArgs: any
-                          ) => {
-                            generateStateOnChangeProp($state, [
-                              "transferToAnotherWallet",
-                              "transferCenterid"
-                            ]).apply(null, eventArgs);
-
-                            if (
-                              eventArgs.length > 1 &&
-                              eventArgs[1] &&
-                              eventArgs[1]._plasmic_state_init_
-                            ) {
-                              return;
-                            }
-                          }}
-                          onTransferedCountChange={async (
-                            ...eventArgs: any
-                          ) => {
-                            generateStateOnChangeProp($state, [
-                              "transferToAnotherWallet",
-                              "transferedCount"
-                            ]).apply(null, eventArgs);
-
-                            if (
-                              eventArgs.length > 1 &&
-                              eventArgs[1] &&
-                              eventArgs[1]._plasmic_state_init_
-                            ) {
-                              return;
-                            }
-                          }}
-                          transferCenterid={generateStateValueProp($state, [
-                            "transferToAnotherWallet",
-                            "transferCenterid"
-                          ])}
-                          transferEvent={async () => {
-                            const $steps = {};
-
-                            $steps["closeDialog"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    customFunction: async () => {
-                                      return ($state.dialogTransfer.open =
-                                        false);
-                                    }
-                                  };
-                                  return (({ customFunction }) => {
-                                    return customFunction();
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["closeDialog"] != null &&
-                              typeof $steps["closeDialog"] === "object" &&
-                              typeof $steps["closeDialog"].then === "function"
-                            ) {
-                              $steps["closeDialog"] = await $steps[
-                                "closeDialog"
-                              ];
-                            }
-
-                            $steps["updateFirstRequestCount"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["firstRequestCount"]
-                                    },
-                                    operation: 2
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    const oldValue = $stateGet(
-                                      objRoot,
-                                      variablePath
-                                    );
-                                    $stateSet(
-                                      objRoot,
-                                      variablePath,
-                                      oldValue + 1
-                                    );
-                                    return oldValue + 1;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["updateFirstRequestCount"] != null &&
-                              typeof $steps["updateFirstRequestCount"] ===
-                                "object" &&
-                              typeof $steps["updateFirstRequestCount"].then ===
-                                "function"
-                            ) {
-                              $steps["updateFirstRequestCount"] = await $steps[
-                                "updateFirstRequestCount"
-                              ];
-                            }
-                          }}
-                        />
-                      }
-                      className={classNames(
-                        "__wab_instance",
-                        sty.dialogTransfer
-                      )}
-                      onOpenChange={async (...eventArgs: any) => {
-                        generateStateOnChangeProp($state, [
-                          "dialogTransfer",
-                          "open"
-                        ]).apply(null, eventArgs);
-
-                        if (
-                          eventArgs.length > 1 &&
-                          eventArgs[1] &&
-                          eventArgs[1]._plasmic_state_init_
-                        ) {
-                          return;
-                        }
-                      }}
-                      open={generateStateValueProp($state, [
-                        "dialogTransfer",
-                        "open"
-                      ])}
-                      title={
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___690FN
-                          )}
-                        >
-                          {
-                            "\u0627\u0646\u062a\u0642\u0627\u0644 \u0648\u062c\u0647 \u0628\u0647 \u06a9\u0627\u0631\u0628\u0631 \u062f\u06cc\u06af\u0631"
-                          }
-                        </div>
-                      }
-                      trigger={
-                        (() => {
-                          try {
-                            return (
-                              !$ctx.GrowthBook.features[
-                                "transfer-to-another-wallet"
-                              ].hide &&
-                              $state.reminderWallet > 0 &&
-                              !$state.waiting &&
-                              (($state.currentAccountAccount ==
-                                "organization" &&
-                                $state.currentAccountType == "centerid") ||
-                                ($state.currentAccountAccount == "p24" &&
-                                  $state.currentAccountType == "userid"))
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return false;
-                            }
-                            throw e;
-                          }
-                        })() ? (
-                          <Button2
-                            children2={
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text___7Ujb5
-                                )}
-                              >
-                                {
-                                  "\u0627\u0646\u062a\u0642\u0627\u0644 \u0648\u062c\u0640\u0640\u0647"
-                                }
-                              </div>
-                            }
-                            className={classNames(
-                              "__wab_instance",
-                              sty.button__tt2JA
-                            )}
-                            size={"compact"}
-                          />
-                        ) : null
-                      }
-                    />
-                  </div>
-                ) : null}
-                {(() => {
-                  try {
-                    return $state.userData?.isDoctor && !$state.waiting;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return true;
-                    }
-                    throw e;
-                  }
-                })() ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___2BtoD)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__wQg70
-                      )}
-                    >
-                      {hasVariant(globalVariants, "screen", "mobileOnly") ? (
-                        <React.Fragment>
-                          {(() => {
-                            try {
-                              return $state.transactionsReport?.data?.deposit
-                                ? $state.bookDate == ""
-                                  ? "کل درآمد: "
-                                  : "درآمد " +
-                                    (
-                                      "" +
-                                      (() => {
-                                        const gregorianDate = new Date(
-                                          $state.bookDate
-                                        );
-                                        const persianDate =
-                                          new Intl.DateTimeFormat(
-                                            "fa-IR"
-                                          ).format(gregorianDate);
-                                        return persianDate;
-                                      })()
-                                    ).substring(5) +
-                                    ":"
-                                : "";
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "\u06a9\u0644 \u062f\u0631\u0622\u0645\u062f: ";
-                              }
-                              throw e;
-                            }
-                          })()}
-                        </React.Fragment>
-                      ) : (
-                        <React.Fragment>
-                          {(() => {
-                            try {
-                              return $state.transactionsReport?.data?.deposit
-                                ? "کل درآمد: " +
-                                    ($state.transactionsReport.data.deposit.toLocaleString(
-                                      "fa-IR"
-                                    ) +
-                                      " ریال")
-                                : "";
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "\u06a9\u0644 \u062f\u0631\u0622\u0645\u062f:  000\u0631\u06cc\u0627\u0644";
-                              }
-                              throw e;
-                            }
-                          })()}
-                        </React.Fragment>
-                      )}
-                    </div>
-                    {(
-                      hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? true
-                        : (() => {
-                            try {
-                              return $state.transactionsReport.data.deposit > 0;
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return true;
-                              }
-                              throw e;
-                            }
-                          })()
-                    ) ? (
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__aa1Jv
-                        )}
-                      >
-                        {hasVariant(globalVariants, "screen", "mobileOnly") ? (
-                          <React.Fragment>
-                            {(() => {
-                              try {
-                                return $state.transactionsReport?.data?.deposit
-                                  ? $state.transactionsReport.data.deposit.toLocaleString(
-                                      "fa-IR"
-                                    ) + " ریال"
-                                  : "0 ریال";
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "\u06a9\u0644 \u062f\u0631\u0622\u0645\u062f:  000\u0631\u06cc\u0627\u0644";
-                                }
-                                throw e;
-                              }
-                            })()}
-                          </React.Fragment>
-                        ) : (
-                          <React.Fragment>
-                            {(() => {
-                              try {
-                                return $state.transactionsReport?.data?.deposit
-                                  ? ($state.bookDate == ""
-                                      ? "کل درآمد: "
-                                      : "درآمد " +
-                                        (
-                                          "" +
-                                          (() => {
-                                            const gregorianDate = new Date(
-                                              $state.bookDate
-                                            );
-                                            const persianDate =
-                                              new Intl.DateTimeFormat(
-                                                "fa-IR"
-                                              ).format(gregorianDate);
-                                            return persianDate;
-                                          })()
-                                        ).substring(5) +
-                                        ": ") +
-                                      ($state.transactionsReport.data.deposit.toLocaleString(
-                                        "fa-IR"
-                                      ) +
-                                        " ریال")
-                                  : "";
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return "\u06a9\u0644 \u062f\u0631\u0622\u0645\u062f:  000\u0631\u06cc\u0627\u0644";
-                                }
-                                throw e;
-                              }
-                            })()}
-                          </React.Fragment>
-                        )}
-                      </div>
-                    ) : null}
-                  </div>
-                ) : null}
-                {(() => {
-                  try {
-                    return $state.waiting;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return true;
-                    }
-                    throw e;
-                  }
-                })() ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__wkNii)}
-                  >
-                    <Icon2Icon
-                      className={classNames(projectcss.all, sty.svg__dWtdr)}
-                      role={"img"}
                     />
                   </div>
                 ) : null}
@@ -10596,6 +10811,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     const actionArgs = {
                       customFunction: async () => {
                         return (() => {
+                          $state.escrowbalance = 0;
                           $state.waiting = true;
                           $state.blockedamount = 0;
                           $state.centerInfo = {};
@@ -10811,6 +11027,237 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 ];
               }
 
+              $steps["getEscrow"] = true
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        undefined,
+                        (() => {
+                          try {
+                            return (
+                              "https://apigw.paziresh24.com/katibe/v1/transactions/balance/p24" +
+                              ($state.currentAccountType == "centerid"
+                                ? "?centerid=" + $state.currentAccountId
+                                : "") +
+                              "&account=escrow"
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
+              if (
+                $steps["getEscrow"] != null &&
+                typeof $steps["getEscrow"] === "object" &&
+                typeof $steps["getEscrow"].then === "function"
+              ) {
+                $steps["getEscrow"] = await $steps["getEscrow"];
+              }
+
+              $steps["updateEscrowbalance"] =
+                $steps.getEscrow.status == 200
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["escrowbalance"]
+                        },
+                        operation: 0,
+                        value: $steps.getEscrow.data.data.balance
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updateEscrowbalance"] != null &&
+                typeof $steps["updateEscrowbalance"] === "object" &&
+                typeof $steps["updateEscrowbalance"].then === "function"
+              ) {
+                $steps["updateEscrowbalance"] = await $steps[
+                  "updateEscrowbalance"
+                ];
+              }
+
+              $steps["firstEscrow"] = (
+                $state?.firstEscrowTransaction?.transactionid ? false : true
+              )
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        undefined,
+                        (() => {
+                          try {
+                            return (
+                              "https://apigw.paziresh24.com/katibe/v1/transactions/search/p24/first-escrow" +
+                              ($state.currentAccountType == "centerid"
+                                ? "?centerid=" + $state.currentAccountId
+                                : "")
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
+              if (
+                $steps["firstEscrow"] != null &&
+                typeof $steps["firstEscrow"] === "object" &&
+                typeof $steps["firstEscrow"].then === "function"
+              ) {
+                $steps["firstEscrow"] = await $steps["firstEscrow"];
+              }
+
+              $steps["updateFirstEscrowTransaction"] = (
+                $state?.firstEscrowTransaction?.transactionid
+                  ? false
+                  : true && $steps.firstEscrow.status == 200
+              )
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["firstEscrowTransaction"]
+                      },
+                      operation: 0,
+                      value: $steps.firstEscrow.data.data
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateFirstEscrowTransaction"] != null &&
+                typeof $steps["updateFirstEscrowTransaction"] === "object" &&
+                typeof $steps["updateFirstEscrowTransaction"].then ===
+                  "function"
+              ) {
+                $steps["updateFirstEscrowTransaction"] = await $steps[
+                  "updateFirstEscrowTransaction"
+                ];
+              }
+
+              $steps["getTransactionsReport"] = $state.userData?.isDoctor
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        undefined,
+                        (() => {
+                          try {
+                            return (
+                              "https://apigw.paziresh24.com/katibe/v1/transactions/report/p24?book_date=" +
+                              $state.bookDate +
+                              ($state.currentAccountType == "centerid"
+                                ? "&centerid=" + $state.currentAccountId
+                                : "")
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
+              if (
+                $steps["getTransactionsReport"] != null &&
+                typeof $steps["getTransactionsReport"] === "object" &&
+                typeof $steps["getTransactionsReport"].then === "function"
+              ) {
+                $steps["getTransactionsReport"] = await $steps[
+                  "getTransactionsReport"
+                ];
+              }
+
+              $steps["updateTransactionsReport"] =
+                $steps.getTransactionsReport.status == 200 &&
+                $state.userData?.isDoctor
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["transactionsReport"]
+                        },
+                        operation: 0,
+                        value: $steps.getTransactionsReport.data
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updateTransactionsReport"] != null &&
+                typeof $steps["updateTransactionsReport"] === "object" &&
+                typeof $steps["updateTransactionsReport"].then === "function"
+              ) {
+                $steps["updateTransactionsReport"] = await $steps[
+                  "updateTransactionsReport"
+                ];
+              }
+
               $steps["getInvoiceList"] = $state.isLoadAccount
                 ? (() => {
                     const actionArgs = {
@@ -10965,85 +11412,6 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 $steps["runCode3"] = await $steps["runCode3"];
               }
 
-              $steps["getTransactionsReport"] = $state.userData?.isDoctor
-                ? (() => {
-                    const actionArgs = {
-                      args: [
-                        undefined,
-                        (() => {
-                          try {
-                            return (
-                              "https://apigw.paziresh24.com/katibe/v1/transactions/report/p24?book_date=" +
-                              $state.bookDate +
-                              ($state.currentAccountType == "centerid"
-                                ? "&centerid=" + $state.currentAccountId
-                                : "")
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
-                            }
-                            throw e;
-                          }
-                        })()
-                      ]
-                    };
-                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                      ...actionArgs.args
-                    ]);
-                  })()
-                : undefined;
-              if (
-                $steps["getTransactionsReport"] != null &&
-                typeof $steps["getTransactionsReport"] === "object" &&
-                typeof $steps["getTransactionsReport"].then === "function"
-              ) {
-                $steps["getTransactionsReport"] = await $steps[
-                  "getTransactionsReport"
-                ];
-              }
-
-              $steps["updateTransactionsReport"] =
-                $steps.getTransactionsReport.status == 200 &&
-                $state.userData?.isDoctor
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["transactionsReport"]
-                        },
-                        operation: 0,
-                        value: $steps.getTransactionsReport.data
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-              if (
-                $steps["updateTransactionsReport"] != null &&
-                typeof $steps["updateTransactionsReport"] === "object" &&
-                typeof $steps["updateTransactionsReport"].then === "function"
-              ) {
-                $steps["updateTransactionsReport"] = await $steps[
-                  "updateTransactionsReport"
-                ];
-              }
-
               $steps["getCentersInfo"] =
                 $state.currentAccountType == "centerid"
                   ? (() => {
@@ -11148,83 +11516,6 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
               ) {
                 $steps["updateFirstEscrowTransaction2"] = await $steps[
                   "updateFirstEscrowTransaction2"
-                ];
-              }
-
-              $steps["firstEscrow"] =
-                /*$ctx.GrowthBook.features["katibe:escrow_payment"]*/
-                ($state?.firstEscrowTransaction?.transactionid ? false : true)
-                  ? (() => {
-                      const actionArgs = {
-                        args: [
-                          undefined,
-                          (() => {
-                            try {
-                              return (
-                                "https://apigw.paziresh24.com/katibe/v1/transactions/search/p24/first-escrow" +
-                                ($state.currentAccountType == "centerid"
-                                  ? "?centerid=" + $state.currentAccountId
-                                  : "")
-                              );
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
-                            }
-                          })()
-                        ]
-                      };
-                      return $globalActions["Fragment.apiRequest"]?.apply(
-                        null,
-                        [...actionArgs.args]
-                      );
-                    })()
-                  : undefined;
-              if (
-                $steps["firstEscrow"] != null &&
-                typeof $steps["firstEscrow"] === "object" &&
-                typeof $steps["firstEscrow"].then === "function"
-              ) {
-                $steps["firstEscrow"] = await $steps["firstEscrow"];
-              }
-
-              $steps["updateFirstEscrowTransaction"] = (
-                $state?.firstEscrowTransaction?.transactionid
-                  ? false
-                  : true && $steps.firstEscrow.status == 200
-              )
-                ? (() => {
-                    const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["firstEscrowTransaction"]
-                      },
-                      operation: 0,
-                      value: $steps.firstEscrow.data.data
-                    };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
-                      }
-                      const { objRoot, variablePath } = variable;
-
-                      $stateSet(objRoot, variablePath, value);
-                      return value;
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["updateFirstEscrowTransaction"] != null &&
-                typeof $steps["updateFirstEscrowTransaction"] === "object" &&
-                typeof $steps["updateFirstEscrowTransaction"].then ===
-                  "function"
-              ) {
-                $steps["updateFirstEscrowTransaction"] = await $steps[
-                  "updateFirstEscrowTransaction"
                 ];
               }
             }}
@@ -11348,16 +11639,18 @@ const PlasmicDescendants = {
     "rdSettlementTransaction",
     "gridInvoice1",
     "txtRemainingText",
-    "txtRemainingValue",
+    "txtRemainingText2",
+    "dialog",
+    "btnSettlement",
+    "dialogTransfer",
+    "transferToAnotherWallet",
     "dialogIncreaseRemaining",
     "btnPay",
     "gridSelectprice",
     "btnSelectAmount",
     "gridMyAmount",
     "txtNewPaymentAmount",
-    "btnSettlement",
     "dialogSettlement",
-    "txtSettlemenAmount2",
     "txtSettlemenAmount",
     "dialogRegisterAccount",
     "txtCardId",
@@ -11366,8 +11659,6 @@ const PlasmicDescendants = {
     "txtCardBankName",
     "txtCardNumber",
     "txtSettlementResult",
-    "dialogTransfer",
-    "transferToAnotherWallet",
     "gridInvoice13",
     "gridInvoice12",
     "dialogNewInvoiceDetails",
@@ -11408,16 +11699,18 @@ const PlasmicDescendants = {
   gridInvoice1: [
     "gridInvoice1",
     "txtRemainingText",
-    "txtRemainingValue",
+    "txtRemainingText2",
+    "dialog",
+    "btnSettlement",
+    "dialogTransfer",
+    "transferToAnotherWallet",
     "dialogIncreaseRemaining",
     "btnPay",
     "gridSelectprice",
     "btnSelectAmount",
     "gridMyAmount",
     "txtNewPaymentAmount",
-    "btnSettlement",
     "dialogSettlement",
-    "txtSettlemenAmount2",
     "txtSettlemenAmount",
     "dialogRegisterAccount",
     "txtCardId",
@@ -11425,12 +11718,14 @@ const PlasmicDescendants = {
     "txtCardIban",
     "txtCardBankName",
     "txtCardNumber",
-    "txtSettlementResult",
-    "dialogTransfer",
-    "transferToAnotherWallet"
+    "txtSettlementResult"
   ],
   txtRemainingText: ["txtRemainingText"],
-  txtRemainingValue: ["txtRemainingValue"],
+  txtRemainingText2: ["txtRemainingText2"],
+  dialog: ["dialog"],
+  btnSettlement: ["btnSettlement"],
+  dialogTransfer: ["dialogTransfer", "transferToAnotherWallet"],
+  transferToAnotherWallet: ["transferToAnotherWallet"],
   dialogIncreaseRemaining: [
     "dialogIncreaseRemaining",
     "btnPay",
@@ -11444,10 +11739,8 @@ const PlasmicDescendants = {
   btnSelectAmount: ["btnSelectAmount"],
   gridMyAmount: ["gridMyAmount", "txtNewPaymentAmount"],
   txtNewPaymentAmount: ["txtNewPaymentAmount"],
-  btnSettlement: ["btnSettlement"],
   dialogSettlement: [
     "dialogSettlement",
-    "txtSettlemenAmount2",
     "txtSettlemenAmount",
     "dialogRegisterAccount",
     "txtCardId",
@@ -11457,7 +11750,6 @@ const PlasmicDescendants = {
     "txtCardNumber",
     "txtSettlementResult"
   ],
-  txtSettlemenAmount2: ["txtSettlemenAmount2"],
   txtSettlemenAmount: ["txtSettlemenAmount"],
   dialogRegisterAccount: [
     "dialogRegisterAccount",
@@ -11472,8 +11764,6 @@ const PlasmicDescendants = {
   txtCardBankName: ["txtCardBankName"],
   txtCardNumber: ["txtCardNumber"],
   txtSettlementResult: ["txtSettlementResult"],
-  dialogTransfer: ["dialogTransfer", "transferToAnotherWallet"],
-  transferToAnotherWallet: ["transferToAnotherWallet"],
   gridInvoice13: ["gridInvoice13"],
   gridInvoice12: [
     "gridInvoice12",
@@ -11516,16 +11806,18 @@ type NodeDefaultElementType = {
   rdSettlementTransaction: typeof Radio;
   gridInvoice1: "div";
   txtRemainingText: "div";
-  txtRemainingValue: "div";
+  txtRemainingText2: "div";
+  dialog: typeof Dialog;
+  btnSettlement: typeof Button2;
+  dialogTransfer: typeof Dialog;
+  transferToAnotherWallet: typeof TransferToAnotherWallet;
   dialogIncreaseRemaining: typeof Dialog2;
   btnPay: typeof Button;
   gridSelectprice: "div";
   btnSelectAmount: typeof Button;
   gridMyAmount: "div";
   txtNewPaymentAmount: typeof TextInput;
-  btnSettlement: typeof Button2;
   dialogSettlement: typeof Dialog;
-  txtSettlemenAmount2: typeof TextInput;
   txtSettlemenAmount: typeof TextInput;
   dialogRegisterAccount: typeof Dialog;
   txtCardId: typeof TextInput;
@@ -11534,8 +11826,6 @@ type NodeDefaultElementType = {
   txtCardBankName: typeof TextInput;
   txtCardNumber: typeof TextInput;
   txtSettlementResult: "div";
-  dialogTransfer: typeof Dialog;
-  transferToAnotherWallet: typeof TransferToAnotherWallet;
   gridInvoice13: "div";
   gridInvoice12: "div";
   dialogNewInvoiceDetails: typeof Dialog2;
@@ -11625,16 +11915,18 @@ export const PlasmicTransactionsSearch = Object.assign(
     rdSettlementTransaction: makeNodeComponent("rdSettlementTransaction"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     txtRemainingText: makeNodeComponent("txtRemainingText"),
-    txtRemainingValue: makeNodeComponent("txtRemainingValue"),
+    txtRemainingText2: makeNodeComponent("txtRemainingText2"),
+    dialog: makeNodeComponent("dialog"),
+    btnSettlement: makeNodeComponent("btnSettlement"),
+    dialogTransfer: makeNodeComponent("dialogTransfer"),
+    transferToAnotherWallet: makeNodeComponent("transferToAnotherWallet"),
     dialogIncreaseRemaining: makeNodeComponent("dialogIncreaseRemaining"),
     btnPay: makeNodeComponent("btnPay"),
     gridSelectprice: makeNodeComponent("gridSelectprice"),
     btnSelectAmount: makeNodeComponent("btnSelectAmount"),
     gridMyAmount: makeNodeComponent("gridMyAmount"),
     txtNewPaymentAmount: makeNodeComponent("txtNewPaymentAmount"),
-    btnSettlement: makeNodeComponent("btnSettlement"),
     dialogSettlement: makeNodeComponent("dialogSettlement"),
-    txtSettlemenAmount2: makeNodeComponent("txtSettlemenAmount2"),
     txtSettlemenAmount: makeNodeComponent("txtSettlemenAmount"),
     dialogRegisterAccount: makeNodeComponent("dialogRegisterAccount"),
     txtCardId: makeNodeComponent("txtCardId"),
@@ -11643,8 +11935,6 @@ export const PlasmicTransactionsSearch = Object.assign(
     txtCardBankName: makeNodeComponent("txtCardBankName"),
     txtCardNumber: makeNodeComponent("txtCardNumber"),
     txtSettlementResult: makeNodeComponent("txtSettlementResult"),
-    dialogTransfer: makeNodeComponent("dialogTransfer"),
-    transferToAnotherWallet: makeNodeComponent("transferToAnotherWallet"),
     gridInvoice13: makeNodeComponent("gridInvoice13"),
     gridInvoice12: makeNodeComponent("gridInvoice12"),
     dialogNewInvoiceDetails: makeNodeComponent("dialogNewInvoiceDetails"),
