@@ -320,7 +320,7 @@
     },
     {
       "projectId": "gmeH6XgPaBtkt51HunAo4g",
-      "version": "18.26.0",
+      "version": "18.27.0",
       "dependencies": {},
       "lang": "ts",
       "fileLocks": [
@@ -636,7 +636,7 @@
         "h9Dbk9ygddw7UVEq1NNhKi": "8.2.0",
         "gLnoj82AzKVVT7qXiqAbHD": "2.20.0",
         "vqeFwpZFQ6buChy6T9PGwQ": "0.18.0",
-        "gmeH6XgPaBtkt51HunAo4g": "18.26.0",
+        "gmeH6XgPaBtkt51HunAo4g": "18.27.0",
         "aEHVN5v6mfM4eovDsL8Z7d": "0.7.0",
         "kS7YGZfVr6mU43XDQjXELc": "0.24.0",
         "9UibdRruyX43DxnB8Q1QXF": "0.7.0"
