@@ -134,8 +134,6 @@ function PlasmicPay__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
   const $globalActions = useGlobalActions?.();
 
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
@@ -274,7 +272,7 @@ function PlasmicPay__RenderFunc(props: {
             className={classNames("__wab_instance", sty.sideEffectPageLoad)}
             deps={(() => {
               try {
-                return [$ctx.params.id];
+                return [$ctx.query.amount];
               } catch (e) {
                 if (
                   e instanceof TypeError ||
@@ -317,7 +315,7 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["updateWaiting"] = await $steps["updateWaiting"];
               }
 
-              $steps["me"] = true
+              $steps["me"] = false
                 ? (() => {
                     const actionArgs = {
                       args: [
@@ -338,33 +336,27 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["me"] = await $steps["me"];
               }
 
-              $steps["updateMe"] =
-                $steps.me.status == 200
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["me"]
-                        },
-                        operation: 0,
-                        value: $steps.me.data
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
+              $steps["updateMe"] = false
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["me"]
+                      },
+                      operation: 0,
+                      value: $steps.me.data
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
 
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
               if (
                 $steps["updateMe"] != null &&
                 typeof $steps["updateMe"] === "object" &&
@@ -373,35 +365,34 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["updateMe"] = await $steps["updateMe"];
               }
 
-              $steps["redirectLogin"] =
-                $steps.me.status != 200
-                  ? (() => {
-                      const actionArgs = {
-                        args: [
-                          (() => {
-                            try {
-                              return (
-                                "https://www.paziresh24.com/login/?redirect_url=https://www.paziresh24.com/_/katibe/pay/" +
-                                $ctx.params.id +
-                                "/"
-                              );
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
+              $steps["redirectLogin"] = false
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        (() => {
+                          try {
+                            return (
+                              "https://www.paziresh24.com/login/?redirect_url=https://www.paziresh24.com/_/katibe/pay/" +
+                              $ctx.params.id +
+                              "/"
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
                             }
-                          })()
-                        ]
-                      };
-                      return $globalActions["Hamdast.openLink"]?.apply(null, [
-                        ...actionArgs.args
-                      ]);
-                    })()
-                  : undefined;
+                            throw e;
+                          }
+                        })()
+                      ]
+                    };
+                    return $globalActions["Hamdast.openLink"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
               if (
                 $steps["redirectLogin"] != null &&
                 typeof $steps["redirectLogin"] === "object" &&
@@ -410,37 +401,35 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["redirectLogin"] = await $steps["redirectLogin"];
               }
 
-              $steps["getSplits"] =
-                $ctx.params.id != undefined
-                  ? (() => {
-                      const actionArgs = {
-                        args: [
-                          undefined,
-                          (() => {
-                            try {
-                              return (
-                                "https://apigw.paziresh24.com/katibe/v1/splits/details/p24/" +
-                                ($ctx.params.id || $ctx.query.id)
-                              );
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
+              $steps["getSplits"] = false
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        undefined,
+                        (() => {
+                          try {
+                            return (
+                              "https://apigw.paziresh24.com/katibe/v1/splits/details/p24/" +
+                              ($ctx.params.id || $ctx.query.id)
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
                             }
-                          })(),
-                          undefined
-                        ]
-                      };
-                      return $globalActions["Fragment.apiRequest"]?.apply(
-                        null,
-                        [...actionArgs.args]
-                      );
-                    })()
-                  : undefined;
+                            throw e;
+                          }
+                        })(),
+                        undefined
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
               if (
                 $steps["getSplits"] != null &&
                 typeof $steps["getSplits"] === "object" &&
@@ -449,33 +438,27 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["getSplits"] = await $steps["getSplits"];
               }
 
-              $steps["updateSplits"] =
-                $steps.getSplits.status == 200 && $ctx.params.id != undefined
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["splits"]
-                        },
-                        operation: 0,
-                        value: $steps.getSplits.data.data
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
+              $steps["updateSplits"] = false
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["splits"]
+                      },
+                      operation: 0,
+                      value: $steps.getSplits.data.data
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
 
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
               if (
                 $steps["updateSplits"] != null &&
                 typeof $steps["updateSplits"] === "object" &&
@@ -484,33 +467,32 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["updateSplits"] = await $steps["updateSplits"];
               }
 
-              $steps["redirectFalse"] =
-                $state.splits.status == "canceled"
-                  ? (() => {
-                      const actionArgs = {
-                        args: [
-                          (() => {
-                            try {
-                              return $state.splits.return_link.includes("?")
-                                ? $state.splits.return_link + "&status=false"
-                                : $state.splits.return_link + "?status=false";
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
+              $steps["redirectFalse"] = false
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        (() => {
+                          try {
+                            return $state.splits.return_link.includes("?")
+                              ? $state.splits.return_link + "&status=false"
+                              : $state.splits.return_link + "?status=false";
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
                             }
-                          })()
-                        ]
-                      };
-                      return $globalActions["Hamdast.openLink"]?.apply(null, [
-                        ...actionArgs.args
-                      ]);
-                    })()
-                  : undefined;
+                            throw e;
+                          }
+                        })()
+                      ]
+                    };
+                    return $globalActions["Hamdast.openLink"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
               if (
                 $steps["redirectFalse"] != null &&
                 typeof $steps["redirectFalse"] === "object" &&
@@ -519,33 +501,32 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["redirectFalse"] = await $steps["redirectFalse"];
               }
 
-              $steps["redirectTrue"] =
-                $state.splits.transferid > 0
-                  ? (() => {
-                      const actionArgs = {
-                        args: [
-                          (() => {
-                            try {
-                              return $state.splits.return_link.includes("?")
-                                ? $state.splits.return_link + "&status=true"
-                                : $state.splits.return_link + "?status=true";
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
+              $steps["redirectTrue"] = false
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        (() => {
+                          try {
+                            return $state.splits.return_link.includes("?")
+                              ? $state.splits.return_link + "&status=true"
+                              : $state.splits.return_link + "?status=true";
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
                             }
-                          })()
-                        ]
-                      };
-                      return $globalActions["Hamdast.openLink"]?.apply(null, [
-                        ...actionArgs.args
-                      ]);
-                    })()
-                  : undefined;
+                            throw e;
+                          }
+                        })()
+                      ]
+                    };
+                    return $globalActions["Hamdast.openLink"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
               if (
                 $steps["redirectTrue"] != null &&
                 typeof $steps["redirectTrue"] === "object" &&
@@ -554,7 +535,7 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["redirectTrue"] = await $steps["redirectTrue"];
               }
 
-              $steps["getBalance"] = true
+              $steps["getBalance"] = false
                 ? (() => {
                     const actionArgs = {
                       args: [
@@ -575,33 +556,27 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["getBalance"] = await $steps["getBalance"];
               }
 
-              $steps["updateBalance"] =
-                $steps.getBalance.status == 200
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["balance"]
-                        },
-                        operation: 0,
-                        value: $steps.getBalance.data.data.balance
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
+              $steps["updateBalance"] = false
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["balance"]
+                      },
+                      operation: 0,
+                      value: $steps.getBalance.data.data.balance
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
 
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
               if (
                 $steps["updateBalance"] != null &&
                 typeof $steps["updateBalance"] === "object" &&
@@ -655,21 +630,9 @@ function PlasmicPay__RenderFunc(props: {
                     sty.text__ekJj
                   )}
                 >
-                  <React.Fragment>
-                    {(() => {
-                      try {
-                        return $state.splits.description;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return "";
-                        }
-                        throw e;
-                      }
-                    })()}
-                  </React.Fragment>
+                  {
+                    "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a"
+                  }
                 </div>
               </div>
             </div>
@@ -696,7 +659,7 @@ function PlasmicPay__RenderFunc(props: {
                       try {
                         return (
                           new Intl.NumberFormat("fa-IR").format(
-                            $state.splits.user_amount || 0
+                            $ctx.query.amount || 0
                           ) + " ریال"
                         );
                       } catch (e) {
@@ -713,481 +676,249 @@ function PlasmicPay__RenderFunc(props: {
                 </div>
               </div>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox___6Bmg3)}>
-              <div className={classNames(projectcss.all, sty.freeBox__y9Cba)}>
+            <div className={classNames(projectcss.all, sty.freeBox___30EL)}>
+              <div className={classNames(projectcss.all, sty.freeBox___9J65H)}>
+                <Icon50Icon
+                  className={classNames(projectcss.all, sty.svg__zPr4I)}
+                  role={"img"}
+                />
+
                 <div
                   className={classNames(
                     projectcss.all,
                     projectcss.__wab_text,
-                    sty.text__skBon
-                  )}
-                >
-                  {hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? "\u0645\u0648\u062c\u0648\u062f\u06cc \u06a9\u06cc\u0641 \u067e\u0648\u0644:"
-                    : "\u0645\u0648\u062c\u0648\u062f\u06cc \u06a9\u06cc\u0641 \u067e\u0648\u0644:"}
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__jnNv
-                  )}
-                >
-                  <React.Fragment>
-                    {(() => {
-                      try {
-                        return (
-                          new Intl.NumberFormat("fa-IR").format(
-                            $state.balance || 0
-                          ) + " ریال"
-                        );
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return "";
-                        }
-                        throw e;
-                      }
-                    })()}
-                  </React.Fragment>
-                </div>
-              </div>
-            </div>
-            <div className={classNames(projectcss.all, sty.freeBox__lL7S)}>
-              <div className={classNames(projectcss.all, sty.freeBox__rqDrs)}>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__uzo26
+                    sty.text__dioiY
                   )}
                 >
                   {
-                    "\u0642\u0627\u0628\u0644 \u067e\u0631\u062f\u0627\u062e\u062a:"
+                    "\u06a9\u0627\u0631\u0628\u0631 \u06af\u0631\u0627\u0645\u06cc\u060c \u0628\u0647\u200c\u0646\u0638\u0631 \u0645\u06cc\u200c\u0631\u0633\u062f \u0641\u06cc\u0644\u062a\u0631\u0634\u06a9\u0646 \u06cc\u0627 VPN \u0634\u0645\u0627 \u0641\u0639\u0627\u0644 \u0627\u0633\u062a. \u0644\u0637\u0641\u0627\u064b \u0622\u0646 \u0631\u0627 \u062e\u0627\u0645\u0648\u0634 \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u201c\u0627\u0631\u0633\u0627\u0644 \u0628\u0647 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a\u201d \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f."
                   }
-                </div>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__rAwxn
-                  )}
-                >
-                  <React.Fragment>
-                    {(() => {
-                      try {
-                        return (() => {
-                          return $state.splits.user_amount - $state.balance > 0
-                            ? new Intl.NumberFormat("fa-IR").format(
-                                $state.splits.user_amount - $state.balance || 0
-                              ) + " ریال"
-                            : "0 ریال";
-                        })();
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return "";
-                        }
-                        throw e;
-                      }
-                    })()}
-                  </React.Fragment>
                 </div>
               </div>
             </div>
-            {(() => {
-              try {
-                return (
-                  $state.iplocation.length > 0 &&
-                  $state.iplocation.toLowerCase().trim() != "iran"
-                );
-              } catch (e) {
-                if (
-                  e instanceof TypeError ||
-                  e?.plasmicType === "PlasmicUndefinedDataError"
-                ) {
-                  return true;
-                }
-                throw e;
-              }
-            })() ? (
-              <div className={classNames(projectcss.all, sty.freeBox___30EL)}>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___9J65H)}
-                >
-                  <Icon50Icon
-                    className={classNames(projectcss.all, sty.svg__zPr4I)}
-                    role={"img"}
-                  />
-
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__dioiY
-                    )}
-                  >
-                    {
-                      "\u06a9\u0627\u0631\u0628\u0631 \u06af\u0631\u0627\u0645\u06cc\u060c \u0628\u0647\u200c\u0646\u0638\u0631 \u0645\u06cc\u200c\u0631\u0633\u062f \u0641\u06cc\u0644\u062a\u0631\u0634\u06a9\u0646 \u06cc\u0627 VPN \u0634\u0645\u0627 \u0641\u0639\u0627\u0644 \u0627\u0633\u062a. \u0644\u0637\u0641\u0627\u064b \u0622\u0646 \u0631\u0627 \u062e\u0627\u0645\u0648\u0634 \u06a9\u0631\u062f\u0647 \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u201c\u0627\u0631\u0633\u0627\u0644 \u0628\u0647 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a\u201d \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f."
-                    }
-                  </div>
-                </div>
-              </div>
-            ) : null}
             <div className={classNames(projectcss.all, sty.freeBox__mGnIw)}>
               <div className={classNames(projectcss.all, sty.freeBox__fzrje)}>
-                {(() => {
-                  try {
-                    return (
-                      !$state.waiting &&
-                      $state.splits.user_amount > $state.balance
-                    );
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return true;
-                    }
-                    throw e;
+                <Button
+                  children2={
+                    "\u0627\u0631\u0633\u0627\u0644 \u0628\u0647 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a"
                   }
-                })() ? (
-                  <Button
-                    children2={
-                      "\u0627\u0631\u0633\u0627\u0644 \u0628\u0647 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a"
+                  className={classNames("__wab_instance", sty.button__vghbE)}
+                  isDisabled={(() => {
+                    try {
+                      return $state.waiting;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return [];
+                      }
+                      throw e;
                     }
-                    className={classNames("__wab_instance", sty.button__vghbE)}
-                    isDisabled={(() => {
-                      try {
-                        return $state.waiting;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return [];
-                        }
-                        throw e;
-                      }
-                    })()}
-                    onClick={async event => {
-                      const $steps = {};
+                  })()}
+                  onClick={async event => {
+                    const $steps = {};
 
-                      $steps["updateWaiting"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["waiting"]
-                              },
-                              operation: 0,
-                              value: true
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
+                    $steps["updateWaiting"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["waiting"]
+                            },
+                            operation: 0,
+                            value: true
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
 
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateWaiting"] != null &&
+                      typeof $steps["updateWaiting"] === "object" &&
+                      typeof $steps["updateWaiting"].then === "function"
+                    ) {
+                      $steps["updateWaiting"] = await $steps["updateWaiting"];
+                    }
+
+                    $steps["redirectUser"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              `${$state.paymentLink}${
+                                "https://apigw.paziresh24.com/katibe/v1/check-balance-or-pay?amount=" +
+                                $ctx.query.amount +
+                                "&returnlink=" +
+                                $ctx.query.returnlink +
+                                "&cancel_returnlink=" +
+                                $ctx.query.cancel_returnlink +
+                                "&receipt_id=" +
+                                $ctx.query.receipt_id +
+                                "&center_id=" +
+                                $ctx.query.center_id +
+                                "&uuid=" +
+                                Date.now()
+                              }`
+                            ]
+                          };
+                          return $globalActions["Hamdast.openLink"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
+                    if (
+                      $steps["redirectUser"] != null &&
+                      typeof $steps["redirectUser"] === "object" &&
+                      typeof $steps["redirectUser"].then === "function"
+                    ) {
+                      $steps["redirectUser"] = await $steps["redirectUser"];
+                    }
+
+                    $steps["updateWaiting2"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["waiting"]
+                            },
+                            operation: 0,
+                            value: false
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateWaiting2"] != null &&
+                      typeof $steps["updateWaiting2"] === "object" &&
+                      typeof $steps["updateWaiting2"].then === "function"
+                    ) {
+                      $steps["updateWaiting2"] = await $steps["updateWaiting2"];
+                    }
+                  }}
+                  size={"compact"}
+                />
+
+                <Button
+                  children2={
+                    "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644"
+                  }
+                  className={classNames("__wab_instance", sty.button___6Apy5)}
+                  isDisabled={(() => {
+                    try {
+                      return $state.waiting;
+                    } catch (e) {
                       if (
-                        $steps["updateWaiting"] != null &&
-                        typeof $steps["updateWaiting"] === "object" &&
-                        typeof $steps["updateWaiting"].then === "function"
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
                       ) {
-                        $steps["updateWaiting"] = await $steps["updateWaiting"];
+                        return [];
                       }
+                      throw e;
+                    }
+                  })()}
+                  onClick={async event => {
+                    const $steps = {};
 
-                      $steps["paymentRequest"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              args: [
-                                "POST",
-                                "https://apigw.paziresh24.com/katibe/v1/paymentlink/p24",
-                                (() => {
-                                  try {
-                                    return {
-                                      productid: 1,
-                                      returnlink: globalThis.btoa(
-                                        "https://apigw.paziresh24.com/katibe/v1/splits/pay/p24/" +
-                                          $ctx.params.id
-                                      ),
-                                      cancel_returnlink: globalThis.btoa(
-                                        "https://www.paziresh24.com/_/katibe/pay/" +
-                                          $ctx.params.id
-                                      ),
-                                      title: "افزایش موجودی",
-                                      amount:
-                                        $state.splits.user_amount -
-                                        $state.balance,
-                                      receipt_id: $state.splits.receipt_id
-                                    };
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
-                                    }
-                                    throw e;
+                    $steps["updateWaiting"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            variable: {
+                              objRoot: $state,
+                              variablePath: ["waiting"]
+                            },
+                            operation: 0,
+                            value: true
+                          };
+                          return (({
+                            variable,
+                            value,
+                            startIndex,
+                            deleteCount
+                          }) => {
+                            if (!variable) {
+                              return;
+                            }
+                            const { objRoot, variablePath } = variable;
+
+                            $stateSet(objRoot, variablePath, value);
+                            return value;
+                          })?.apply(null, [actionArgs]);
+                        })()
+                      : undefined;
+                    if (
+                      $steps["updateWaiting"] != null &&
+                      typeof $steps["updateWaiting"] === "object" &&
+                      typeof $steps["updateWaiting"].then === "function"
+                    ) {
+                      $steps["updateWaiting"] = await $steps["updateWaiting"];
+                    }
+
+                    $steps["redirectUser"] = true
+                      ? (() => {
+                          const actionArgs = {
+                            args: [
+                              (() => {
+                                try {
+                                  return (
+                                    "https://apigw.paziresh24.com/katibe/v1/splits/pay/p24/" +
+                                    $state.splits.id
+                                  );
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return undefined;
                                   }
-                                })()
-                              ]
-                            };
-                            return $globalActions["Fragment.apiRequest"]?.apply(
-                              null,
-                              [...actionArgs.args]
-                            );
-                          })()
-                        : undefined;
-                      if (
-                        $steps["paymentRequest"] != null &&
-                        typeof $steps["paymentRequest"] === "object" &&
-                        typeof $steps["paymentRequest"].then === "function"
-                      ) {
-                        $steps["paymentRequest"] = await $steps[
-                          "paymentRequest"
-                        ];
-                      }
-
-                      $steps["updatePaymentLink"] =
-                        $steps.paymentRequest.status == 200 &&
-                        $steps.paymentRequest.data.status == true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["paymentLink"]
-                                },
-                                operation: 0,
-                                value: $steps.paymentRequest.data.data.link
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
+                                  throw e;
                                 }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                      if (
-                        $steps["updatePaymentLink"] != null &&
-                        typeof $steps["updatePaymentLink"] === "object" &&
-                        typeof $steps["updatePaymentLink"].then === "function"
-                      ) {
-                        $steps["updatePaymentLink"] = await $steps[
-                          "updatePaymentLink"
-                        ];
-                      }
-
-                      $steps["redirectUser"] =
-                        $steps.paymentRequest.status == 200 &&
-                        $steps.paymentRequest.data.status == true
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  (() => {
-                                    try {
-                                      return $state.paymentLink;
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
-                                    }
-                                  })()
-                                ]
-                              };
-                              return $globalActions["Hamdast.openLink"]?.apply(
-                                null,
-                                [...actionArgs.args]
-                              );
-                            })()
-                          : undefined;
-                      if (
-                        $steps["redirectUser"] != null &&
-                        typeof $steps["redirectUser"] === "object" &&
-                        typeof $steps["redirectUser"].then === "function"
-                      ) {
-                        $steps["redirectUser"] = await $steps["redirectUser"];
-                      }
-
-                      $steps["updateWaiting2"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["waiting"]
-                              },
-                              operation: 0,
-                              value: false
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updateWaiting2"] != null &&
-                        typeof $steps["updateWaiting2"] === "object" &&
-                        typeof $steps["updateWaiting2"].then === "function"
-                      ) {
-                        $steps["updateWaiting2"] = await $steps[
-                          "updateWaiting2"
-                        ];
-                      }
-                    }}
-                    size={"compact"}
-                  />
-                ) : null}
-                {(() => {
-                  try {
-                    return (
-                      !$state.waiting &&
-                      $state.splits.user_amount <= $state.balance
-                    );
-                  } catch (e) {
+                              })()
+                            ]
+                          };
+                          return $globalActions["Hamdast.openLink"]?.apply(
+                            null,
+                            [...actionArgs.args]
+                          );
+                        })()
+                      : undefined;
                     if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
+                      $steps["redirectUser"] != null &&
+                      typeof $steps["redirectUser"] === "object" &&
+                      typeof $steps["redirectUser"].then === "function"
                     ) {
-                      return true;
+                      $steps["redirectUser"] = await $steps["redirectUser"];
                     }
-                    throw e;
-                  }
-                })() ? (
-                  <Button
-                    children2={
-                      "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644"
-                    }
-                    className={classNames("__wab_instance", sty.button___6Apy5)}
-                    isDisabled={(() => {
-                      try {
-                        return $state.waiting;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return [];
-                        }
-                        throw e;
-                      }
-                    })()}
-                    onClick={async event => {
-                      const $steps = {};
+                  }}
+                  size={"compact"}
+                />
 
-                      $steps["updateWaiting"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["waiting"]
-                              },
-                              operation: 0,
-                              value: true
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updateWaiting"] != null &&
-                        typeof $steps["updateWaiting"] === "object" &&
-                        typeof $steps["updateWaiting"].then === "function"
-                      ) {
-                        $steps["updateWaiting"] = await $steps["updateWaiting"];
-                      }
-
-                      $steps["redirectUser"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              args: [
-                                (() => {
-                                  try {
-                                    return (
-                                      "https://apigw.paziresh24.com/katibe/v1/splits/pay/p24/" +
-                                      $state.splits.id
-                                    );
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
-                                    }
-                                    throw e;
-                                  }
-                                })()
-                              ]
-                            };
-                            return $globalActions["Hamdast.openLink"]?.apply(
-                              null,
-                              [...actionArgs.args]
-                            );
-                          })()
-                        : undefined;
-                      if (
-                        $steps["redirectUser"] != null &&
-                        typeof $steps["redirectUser"] === "object" &&
-                        typeof $steps["redirectUser"].then === "function"
-                      ) {
-                        $steps["redirectUser"] = await $steps["redirectUser"];
-                      }
-                    }}
-                    size={"compact"}
-                  />
-                ) : null}
                 {(() => {
                   try {
                     return $state.waiting;
@@ -1250,7 +981,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicPay__VariantsArgs;
     args?: PlasmicPay__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicPay__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicPay__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicPay__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

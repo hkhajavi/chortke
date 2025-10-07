@@ -536,9 +536,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                 typeof $steps["redirectToReturnLink"] === "object" &&
                 typeof $steps["redirectToReturnLink"].then === "function"
               ) {
-                $steps["redirectToReturnLink"] = await $steps[
-                  "redirectToReturnLink"
-                ];
+                $steps["redirectToReturnLink"] =
+                  await $steps["redirectToReturnLink"];
               }
 
               $steps["me"] = false
@@ -1122,9 +1121,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                   typeof $steps["updateWaiting"].then ===
                                     "function"
                                 ) {
-                                  $steps["updateWaiting"] = await $steps[
-                                    "updateWaiting"
-                                  ];
+                                  $steps["updateWaiting"] =
+                                    await $steps["updateWaiting"];
                                 }
 
                                 $steps["paymentRequest"] = true
@@ -1183,9 +1181,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                   typeof $steps["paymentRequest"].then ===
                                     "function"
                                 ) {
-                                  $steps["paymentRequest"] = await $steps[
-                                    "paymentRequest"
-                                  ];
+                                  $steps["paymentRequest"] =
+                                    await $steps["paymentRequest"];
                                 }
 
                                 $steps["updatePaymentLink"] =
@@ -1229,9 +1226,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                   typeof $steps["updatePaymentLink"].then ===
                                     "function"
                                 ) {
-                                  $steps["updatePaymentLink"] = await $steps[
-                                    "updatePaymentLink"
-                                  ];
+                                  $steps["updatePaymentLink"] =
+                                    await $steps["updatePaymentLink"];
                                 }
 
                                 $steps["redirectUser"] =
@@ -1267,9 +1263,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                   typeof $steps["redirectUser"].then ===
                                     "function"
                                 ) {
-                                  $steps["redirectUser"] = await $steps[
-                                    "redirectUser"
-                                  ];
+                                  $steps["redirectUser"] =
+                                    await $steps["redirectUser"];
                                 }
 
                                 $steps["updateWaiting2"] = true
@@ -1306,9 +1301,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                   typeof $steps["updateWaiting2"].then ===
                                     "function"
                                 ) {
-                                  $steps["updateWaiting2"] = await $steps[
-                                    "updateWaiting2"
-                                  ];
+                                  $steps["updateWaiting2"] =
+                                    await $steps["updateWaiting2"];
                                 }
                               }}
                               size={"compact"}
@@ -1787,9 +1781,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                         typeof $steps["runCode"].then ===
                                           "function"
                                       ) {
-                                        $steps["runCode"] = await $steps[
-                                          "runCode"
-                                        ];
+                                        $steps["runCode"] =
+                                          await $steps["runCode"];
                                       }
 
                                       $steps["invokeGlobalAction"] = true
@@ -1907,9 +1900,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                         typeof $steps["runCode"].then ===
                                           "function"
                                       ) {
-                                        $steps["runCode"] = await $steps[
-                                          "runCode"
-                                        ];
+                                        $steps["runCode"] =
+                                          await $steps["runCode"];
                                       }
 
                                       $steps["invokeGlobalAction"] = true
@@ -2399,9 +2391,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                     typeof $steps["redirect"].then ===
                                       "function"
                                   ) {
-                                    $steps["redirect"] = await $steps[
-                                      "redirect"
-                                    ];
+                                    $steps["redirect"] =
+                                      await $steps["redirect"];
                                   }
                                 }}
                                 size={"compact"}
@@ -2580,9 +2571,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                   typeof $steps["invokeGlobalAction"].then ===
                                     "function"
                                 ) {
-                                  $steps["invokeGlobalAction"] = await $steps[
-                                    "invokeGlobalAction"
-                                  ];
+                                  $steps["invokeGlobalAction"] =
+                                    await $steps["invokeGlobalAction"];
                                 }
                               }}
                               role={"img"}
@@ -2693,9 +2683,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                   typeof $steps["invokeGlobalAction"].then ===
                                     "function"
                                 ) {
-                                  $steps["invokeGlobalAction"] = await $steps[
-                                    "invokeGlobalAction"
-                                  ];
+                                  $steps["invokeGlobalAction"] =
+                                    await $steps["invokeGlobalAction"];
                                 }
                               }}
                               role={"img"}
@@ -2843,9 +2832,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                   typeof $steps["invokeGlobalAction"].then ===
                                     "function"
                                 ) {
-                                  $steps["invokeGlobalAction"] = await $steps[
-                                    "invokeGlobalAction"
-                                  ];
+                                  $steps["invokeGlobalAction"] =
+                                    await $steps["invokeGlobalAction"];
                                 }
                               }}
                               role={"img"}
@@ -3180,9 +3168,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                           typeof $steps["alertSuccess"].then ===
                                             "function"
                                         ) {
-                                          $steps["alertSuccess"] = await $steps[
-                                            "alertSuccess"
-                                          ];
+                                          $steps["alertSuccess"] =
+                                            await $steps["alertSuccess"];
                                         }
 
                                         $steps["alertError"] =
@@ -3226,9 +3213,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                           typeof $steps["alertError"].then ===
                                             "function"
                                         ) {
-                                          $steps["alertError"] = await $steps[
-                                            "alertError"
-                                          ];
+                                          $steps["alertError"] =
+                                            await $steps["alertError"];
                                         }
 
                                         $steps["updateWaiting3"] = true
@@ -3238,8 +3224,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                                   return (() => {
                                                     $state.txtPayaRpey.value =
                                                       "";
-                                                    return ($state.dialog.open =
-                                                      false);
+                                                    return ($state.dialog.open = false);
                                                   })();
                                                 }
                                               };
@@ -3391,9 +3376,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                         typeof $steps["updateWaitingcardtocard"].then ===
                           "function"
                       ) {
-                        $steps["updateWaitingcardtocard"] = await $steps[
-                          "updateWaitingcardtocard"
-                        ];
+                        $steps["updateWaitingcardtocard"] =
+                          await $steps["updateWaitingcardtocard"];
                       }
 
                       $steps["requestCardToCard"] =
@@ -3433,9 +3417,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                         typeof $steps["requestCardToCard"] === "object" &&
                         typeof $steps["requestCardToCard"].then === "function"
                       ) {
-                        $steps["requestCardToCard"] = await $steps[
-                          "requestCardToCard"
-                        ];
+                        $steps["requestCardToCard"] =
+                          await $steps["requestCardToCard"];
                       }
 
                       $steps["runCode"] =
@@ -3497,9 +3480,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                         typeof $steps["updateWaitingcardtocard2"].then ===
                           "function"
                       ) {
-                        $steps["updateWaitingcardtocard2"] = await $steps[
-                          "updateWaitingcardtocard2"
-                        ];
+                        $steps["updateWaitingcardtocard2"] =
+                          await $steps["updateWaitingcardtocard2"];
                       }
                     }).apply(null, eventArgs);
                   },
@@ -3618,9 +3600,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                         typeof $steps["invokeGlobalAction"] === "object" &&
                         typeof $steps["invokeGlobalAction"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction"] = await $steps[
-                          "invokeGlobalAction"
-                        ];
+                        $steps["invokeGlobalAction"] =
+                          await $steps["invokeGlobalAction"];
                       }
                     }}
                     size={
@@ -3720,9 +3701,8 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                 typeof $steps["paymentP24CardtocardVerify"] === "object" &&
                 typeof $steps["paymentP24CardtocardVerify"].then === "function"
               ) {
-                $steps["paymentP24CardtocardVerify"] = await $steps[
-                  "paymentP24CardtocardVerify"
-                ];
+                $steps["paymentP24CardtocardVerify"] =
+                  await $steps["paymentP24CardtocardVerify"];
               }
 
               $steps["updateWaiting2"] =
@@ -3946,7 +3926,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicPaymentMethods__VariantsArgs;
     args?: PlasmicPaymentMethods__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicPaymentMethods__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicPaymentMethods__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicPaymentMethods__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props
