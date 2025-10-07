@@ -1738,6 +1738,19 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/report"
+        },
+        {
+          "id": "T-TncP4LAmu0",
+          "name": "FinancialReports",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/katibe/PlasmicFinancialReports.tsx",
+          "importSpec": {
+            "modulePath": "FinancialReports.tsx"
+          },
+          "cssFilePath": "plasmic/katibe/PlasmicFinancialReports.module.css",
+          "scheme": "blackbox",
+          "componentType": "component"
         }
       ],
       "icons": [
@@ -2412,9 +2425,10 @@
     ]
   },
   "wrapPagesWithGlobalContexts": true,
+  "preserveJsImportExtensions": false,
   "nextjsConfig": {
     "pagesDir": "../src/pages"
   },
-  "cliVersion": "0.1.343",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.343/dist/plasmic.schema.json"
+  "cliVersion": "0.1.347",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.347/dist/plasmic.schema.json"
 }

@@ -66,6 +66,7 @@ import Dialog from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
 import { DatePicker } from "@/fragment/components/date-picker"; // plasmic-import: BigXM4fJwC8U/codeComponent
 import RadioGroup from "../../RadioGroup"; // plasmic-import: tqHTZfyBziuN/component
 import Radio from "../../Radio"; // plasmic-import: Cbq_rTXOD16b/component
+import FinancialReports from "../../FinancialReports"; // plasmic-import: T-TncP4LAmu0/component
 import TransferToAnotherWallet from "../../TransferToAnotherWallet"; // plasmic-import: y7cY5QHMxpPK/component
 import Dialog2 from "../../Dialog"; // plasmic-import: nYtkLnbqtkXY/component
 import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
@@ -124,6 +125,7 @@ export type PlasmicTransactionsSearch__OverridesType = {
   radioTransactionType?: Flex__<typeof RadioGroup>;
   rdAllTransaction?: Flex__<typeof Radio>;
   rdSettlementTransaction?: Flex__<typeof Radio>;
+  financialReports?: Flex__<typeof FinancialReports>;
   gridInvoice1?: Flex__<"div">;
   txtRemainingText?: Flex__<"div">;
   txtRemainingText2?: Flex__<"div">;
@@ -989,9 +991,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         typeof $steps["goToHttpsPaziresh24Com"].then ===
                           "function"
                       ) {
-                        $steps["goToHttpsPaziresh24Com"] = await $steps[
-                          "goToHttpsPaziresh24Com"
-                        ];
+                        $steps["goToHttpsPaziresh24Com"] =
+                          await $steps["goToHttpsPaziresh24Com"];
                       }
                     }}
                     role={"img"}
@@ -1154,9 +1155,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       ) {
                         $steps[
                           "goToHttpsPaziresh24ComLogoutUrlHttpsChortkePaziresh24Com"
-                        ] = await $steps[
-                          "goToHttpsPaziresh24ComLogoutUrlHttpsChortkePaziresh24Com"
-                        ];
+                        ] =
+                          await $steps[
+                            "goToHttpsPaziresh24ComLogoutUrlHttpsChortkePaziresh24Com"
+                          ];
                       }
                     }}
                     platform={"nextjs"}
@@ -1329,9 +1331,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                           typeof $steps["updateUpdatewallet"].then ===
                             "function"
                         ) {
-                          $steps["updateUpdatewallet"] = await $steps[
-                            "updateUpdatewallet"
-                          ];
+                          $steps["updateUpdatewallet"] =
+                            await $steps["updateUpdatewallet"];
                         }
 
                         $steps["runCode"] = true
@@ -1394,9 +1395,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                           typeof $steps["updateFirstRequestCount"].then ===
                             "function"
                         ) {
-                          $steps["updateFirstRequestCount"] = await $steps[
-                            "updateFirstRequestCount"
-                          ];
+                          $steps["updateFirstRequestCount"] =
+                            await $steps["updateFirstRequestCount"];
                         }
                       }).apply(null, eventArgs);
                     }}
@@ -1562,9 +1562,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             typeof $steps["updateFirstRequestCount"].then ===
                               "function"
                           ) {
-                            $steps["updateFirstRequestCount"] = await $steps[
-                              "updateFirstRequestCount"
-                            ];
+                            $steps["updateFirstRequestCount"] =
+                              await $steps["updateFirstRequestCount"];
                           }
                         }}
                         size={"compact"}
@@ -1668,9 +1667,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             typeof $steps["updateFirstRequestCount"].then ===
                               "function"
                           ) {
-                            $steps["updateFirstRequestCount"] = await $steps[
-                              "updateFirstRequestCount"
-                            ];
+                            $steps["updateFirstRequestCount"] =
+                              await $steps["updateFirstRequestCount"];
                           }
                         }}
                         size={"compact"}
@@ -1866,10 +1864,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                           return (() => {
                                                             $state.filterTransactionType =
                                                               "";
-                                                            $state.dialogFilterDate.open =
-                                                              false;
-                                                            return ($state.dialogFilter.open =
-                                                              false);
+                                                            $state.dialogFilterDate.open = false;
+                                                            return ($state.dialogFilter.open = false);
                                                           })();
                                                         }
                                                     };
@@ -1949,9 +1945,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                               ) {
                                                 $steps[
                                                   "updateFirstRequestCount"
-                                                ] = await $steps[
-                                                  "updateFirstRequestCount"
-                                                ];
+                                                ] =
+                                                  await $steps[
+                                                    "updateFirstRequestCount"
+                                                  ];
                                               }
                                             }).apply(null, eventArgs);
                                           }}
@@ -2068,10 +2065,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                       customFunction:
                                                         async () => {
                                                           return (() => {
-                                                            $state.dialogFilterDate.open =
-                                                              false;
-                                                            return ($state.dialogFilter.open =
-                                                              false);
+                                                            $state.dialogFilterDate.open = false;
+                                                            return ($state.dialogFilter.open = false);
                                                           })();
                                                         }
                                                     };
@@ -2151,9 +2146,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                               ) {
                                                 $steps[
                                                   "updateFirstRequestCount"
-                                                ] = await $steps[
-                                                  "updateFirstRequestCount"
-                                                ];
+                                                ] =
+                                                  await $steps[
+                                                    "updateFirstRequestCount"
+                                                  ];
                                               }
                                             }}
                                             size={"compact"}
@@ -2382,8 +2378,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                             customFunction: async () => {
                                               return (() => {
                                                 $state.bookDate = "";
-                                                return ($state.dialogFilter.open =
-                                                  false);
+                                                return ($state.dialogFilter.open = false);
                                               })();
                                             }
                                           };
@@ -2398,9 +2393,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       typeof $steps["runCode"].then ===
                                         "function"
                                     ) {
-                                      $steps["runCode"] = await $steps[
-                                        "runCode"
-                                      ];
+                                      $steps["runCode"] =
+                                        await $steps["runCode"];
                                     }
 
                                     $steps["updateFirstRequestCount"] = true
@@ -2656,6 +2650,57 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
               </div>
             ) : null}
             <section className={classNames(projectcss.all, sty.section__jlUjK)}>
+              {(() => {
+                try {
+                  return (
+                    $ctx.GrowthBook.features["financial-report"] &&
+                    $state.userData?.isDoctor &&
+                    !$state.waiting
+                  );
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return false;
+                  }
+                  throw e;
+                }
+              })() ? (
+                <FinancialReports
+                  data-plasmic-name={"financialReports"}
+                  data-plasmic-override={overrides.financialReports}
+                  centerId={(() => {
+                    try {
+                      return $state.currentAccountType === "centerid"
+                        ? $state.currentCenterid.replace("organization-", "")
+                        : "5532";
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()}
+                  className={classNames("__wab_instance", sty.financialReports)}
+                  date={(() => {
+                    try {
+                      return new Date().toISOString().split("T")[0];
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return undefined;
+                      }
+                      throw e;
+                    }
+                  })()}
+                />
+              ) : null}
               <div
                 data-plasmic-name={"gridInvoice1"}
                 data-plasmic-override={overrides.gridInvoice1}
@@ -2678,7 +2723,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       })()
                     : (() => {
                         try {
-                          return !$state.waiting;
+                          return (
+                            !$state.waiting &&
+                            !$ctx.GrowthBook.features["financial-report"]
+                          );
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
@@ -2912,7 +2960,11 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 ) : null}
                 {(() => {
                   try {
-                    return $state.userData?.isDoctor && !$state.waiting;
+                    return (
+                      $state.userData?.isDoctor &&
+                      !$state.waiting &&
+                      !$ctx.GrowthBook.features["financial-report"]
+                    );
                   } catch (e) {
                     if (
                       e instanceof TypeError ||
@@ -3173,8 +3225,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         $state.reminderWallet -
                                         $state.blockedamount;
                                       $state.settlementResultShow = false;
-                                      return ($state.btnRegisterSettlementShow =
-                                        true);
+                                      return ($state.btnRegisterSettlementShow = true);
                                     })();
                                   }
                                 };
@@ -3231,9 +3282,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             typeof $steps["getSettlementMessage"].then ===
                               "function"
                           ) {
-                            $steps["getSettlementMessage"] = await $steps[
-                              "getSettlementMessage"
-                            ];
+                            $steps["getSettlementMessage"] =
+                              await $steps["getSettlementMessage"];
                           }
 
                           $steps["runCode3"] =
@@ -3274,8 +3324,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               ? (() => {
                                   const actionArgs = {
                                     customFunction: async () => {
-                                      return ($state.dialogSettlement.open =
-                                        true);
+                                      return ($state.dialogSettlement.open = true);
                                     }
                                   };
                                   return (({ customFunction }) => {
@@ -3323,9 +3372,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             typeof $steps["updateWaiting2"] === "object" &&
                             typeof $steps["updateWaiting2"].then === "function"
                           ) {
-                            $steps["updateWaiting2"] = await $steps[
-                              "updateWaiting2"
-                            ];
+                            $steps["updateWaiting2"] =
+                              await $steps["updateWaiting2"];
                           }
 
                           $steps["getUserAccounts"] =
@@ -3371,9 +3419,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             typeof $steps["getUserAccounts"] === "object" &&
                             typeof $steps["getUserAccounts"].then === "function"
                           ) {
-                            $steps["getUserAccounts"] = await $steps[
-                              "getUserAccounts"
-                            ];
+                            $steps["getUserAccounts"] =
+                              await $steps["getUserAccounts"];
                           }
 
                           $steps["updateBankAccountList"] =
@@ -3411,9 +3458,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             typeof $steps["updateBankAccountList"].then ===
                               "function"
                           ) {
-                            $steps["updateBankAccountList"] = await $steps[
-                              "updateBankAccountList"
-                            ];
+                            $steps["updateBankAccountList"] =
+                              await $steps["updateBankAccountList"];
                           }
 
                           $steps["getRecurringSettlement"] = true
@@ -3456,9 +3502,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             typeof $steps["getRecurringSettlement"].then ===
                               "function"
                           ) {
-                            $steps["getRecurringSettlement"] = await $steps[
-                              "getRecurringSettlement"
-                            ];
+                            $steps["getRecurringSettlement"] =
+                              await $steps["getRecurringSettlement"];
                           }
 
                           $steps["updateRecurringSettlement"] =
@@ -3496,9 +3541,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             typeof $steps["updateRecurringSettlement"].then ===
                               "function"
                           ) {
-                            $steps["updateRecurringSettlement"] = await $steps[
-                              "updateRecurringSettlement"
-                            ];
+                            $steps["updateRecurringSettlement"] =
+                              await $steps["updateRecurringSettlement"];
                           }
 
                           $steps["getEscrowAmount"] = false
@@ -3540,9 +3584,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             typeof $steps["getEscrowAmount"] === "object" &&
                             typeof $steps["getEscrowAmount"].then === "function"
                           ) {
-                            $steps["getEscrowAmount"] = await $steps[
-                              "getEscrowAmount"
-                            ];
+                            $steps["getEscrowAmount"] =
+                              await $steps["getEscrowAmount"];
                           }
 
                           $steps["updateEscrowbalance"] = false
@@ -3578,9 +3621,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             typeof $steps["updateEscrowbalance"].then ===
                               "function"
                           ) {
-                            $steps["updateEscrowbalance"] = await $steps[
-                              "updateEscrowbalance"
-                            ];
+                            $steps["updateEscrowbalance"] =
+                              await $steps["updateEscrowbalance"];
                           }
 
                           $steps["updateWaiting"] = true
@@ -3614,9 +3656,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             typeof $steps["updateWaiting"] === "object" &&
                             typeof $steps["updateWaiting"].then === "function"
                           ) {
-                            $steps["updateWaiting"] = await $steps[
-                              "updateWaiting"
-                            ];
+                            $steps["updateWaiting"] =
+                              await $steps["updateWaiting"];
                           }
 
                           $steps["runCode2"] = true
@@ -3706,8 +3747,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               ? (() => {
                                   const actionArgs = {
                                     customFunction: async () => {
-                                      return ($state.dialogTransfer.open =
-                                        false);
+                                      return ($state.dialogTransfer.open = false);
                                     }
                                   };
                                   return (({ customFunction }) => {
@@ -3720,9 +3760,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               typeof $steps["closeDialog"] === "object" &&
                               typeof $steps["closeDialog"].then === "function"
                             ) {
-                              $steps["closeDialog"] = await $steps[
-                                "closeDialog"
-                              ];
+                              $steps["closeDialog"] =
+                                await $steps["closeDialog"];
                             }
 
                             $steps["updateFirstRequestCount"] = true
@@ -3765,9 +3804,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               typeof $steps["updateFirstRequestCount"].then ===
                                 "function"
                             ) {
-                              $steps["updateFirstRequestCount"] = await $steps[
-                                "updateFirstRequestCount"
-                              ];
+                              $steps["updateFirstRequestCount"] =
+                                await $steps["updateFirstRequestCount"];
                             }
                           }}
                         />
@@ -3899,8 +3937,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   !_par
                                     ? []
                                     : Array.isArray(_par)
-                                    ? _par
-                                    : [_par])(
+                                      ? _par
+                                      : [_par])(
                                   (() => {
                                     try {
                                       return $state.increaseButtonList;
@@ -4078,9 +4116,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                           typeof $steps["runCode"].then ===
                                             "function"
                                         ) {
-                                          $steps["runCode"] = await $steps[
-                                            "runCode"
-                                          ];
+                                          $steps["runCode"] =
+                                            await $steps["runCode"];
                                         }
                                       }}
                                       startIcon={
@@ -4133,9 +4170,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       typeof $steps["runCode"].then ===
                                         "function"
                                     ) {
-                                      $steps["runCode"] = await $steps[
-                                        "runCode"
-                                      ];
+                                      $steps["runCode"] =
+                                        await $steps["runCode"];
                                     }
                                   }}
                                   startIcon={
@@ -4432,9 +4468,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     typeof $steps["showWaitingPayment"].then ===
                                       "function"
                                   ) {
-                                    $steps["showWaitingPayment"] = await $steps[
-                                      "showWaitingPayment"
-                                    ];
+                                    $steps["showWaitingPayment"] =
+                                      await $steps["showWaitingPayment"];
                                   }
 
                                   $steps["paymentRequest"] = true
@@ -4452,9 +4487,9 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                     1
                                                       ? "1"
                                                       : $state.currentAccountType ==
-                                                        "centerid"
-                                                      ? "7"
-                                                      : "1",
+                                                          "centerid"
+                                                        ? "7"
+                                                        : "1",
                                                   returnlink:
                                                     "aHR0cHM6Ly93d3cucGF6aXJlc2gyNC5jb20vZGFzaGJvYXJkL2FwcHMva2F0aWJlL2JpbGxzLw==",
                                                   title: "افزایش موجودی",
@@ -4492,9 +4527,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     typeof $steps["paymentRequest"].then ===
                                       "function"
                                   ) {
-                                    $steps["paymentRequest"] = await $steps[
-                                      "paymentRequest"
-                                    ];
+                                    $steps["paymentRequest"] =
+                                      await $steps["paymentRequest"];
                                   }
 
                                   $steps["updatePaymentLink"] =
@@ -4539,9 +4573,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     typeof $steps["updatePaymentLink"].then ===
                                       "function"
                                   ) {
-                                    $steps["updatePaymentLink"] = await $steps[
-                                      "updatePaymentLink"
-                                    ];
+                                    $steps["updatePaymentLink"] =
+                                      await $steps["updatePaymentLink"];
                                   }
 
                                   $steps["redirectUser"] =
@@ -4578,9 +4611,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     typeof $steps["redirectUser"].then ===
                                       "function"
                                   ) {
-                                    $steps["redirectUser"] = await $steps[
-                                      "redirectUser"
-                                    ];
+                                    $steps["redirectUser"] =
+                                      await $steps["redirectUser"];
                                   }
 
                                   $steps["hideWaitingPayment"] = true
@@ -4621,9 +4653,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     typeof $steps["hideWaitingPayment"].then ===
                                       "function"
                                   ) {
-                                    $steps["hideWaitingPayment"] = await $steps[
-                                      "hideWaitingPayment"
-                                    ];
+                                    $steps["hideWaitingPayment"] =
+                                      await $steps["hideWaitingPayment"];
                                   }
                                 }}
                                 startIcon={
@@ -4841,9 +4872,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 typeof $steps["updateShowMyAmount"].then ===
                                   "function"
                               ) {
-                                $steps["updateShowMyAmount"] = await $steps[
-                                  "updateShowMyAmount"
-                                ];
+                                $steps["updateShowMyAmount"] =
+                                  await $steps["updateShowMyAmount"];
                               }
 
                               $steps["buttonList"] = true
@@ -4881,9 +4911,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 typeof $steps["buttonList"] === "object" &&
                                 typeof $steps["buttonList"].then === "function"
                               ) {
-                                $steps["buttonList"] = await $steps[
-                                  "buttonList"
-                                ];
+                                $steps["buttonList"] =
+                                  await $steps["buttonList"];
                               }
 
                               $steps["runCode"] = true
@@ -4896,8 +4925,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                               ? Math.abs($state.reminderWallet)
                                               : $state.reminderWallet;
                                           if ($state.reminderWallet >= 0)
-                                            return ($state.showMyAmount =
-                                              false);
+                                            return ($state.showMyAmount = false);
                                           else
                                             return ($state.showMyAmount = true);
                                         })();
@@ -5269,9 +5297,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                           typeof $steps["runCode"].then ===
                                             "function"
                                         ) {
-                                          $steps["runCode"] = await $steps[
-                                            "runCode"
-                                          ];
+                                          $steps["runCode"] =
+                                            await $steps["runCode"];
                                         }
                                       }).apply(null, eventArgs);
                                     }}
@@ -5507,8 +5534,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                           customFunction:
                                                             async () => {
                                                               return (() => {
-                                                                $state.waitingAccount =
-                                                                  true;
+                                                                $state.waitingAccount = true;
                                                                 return ($state.cardInquiry =
                                                                   {});
                                                               })();
@@ -5640,9 +5666,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                   ) {
                                                     $steps[
                                                       "updateCardInquiry"
-                                                    ] = await $steps[
-                                                      "updateCardInquiry"
-                                                    ];
+                                                    ] =
+                                                      await $steps[
+                                                        "updateCardInquiry"
+                                                      ];
                                                   }
 
                                                   $steps["invokeGlobalAction"] =
@@ -5689,9 +5716,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                   ) {
                                                     $steps[
                                                       "invokeGlobalAction"
-                                                    ] = await $steps[
-                                                      "invokeGlobalAction"
-                                                    ];
+                                                    ] =
+                                                      await $steps[
+                                                        "invokeGlobalAction"
+                                                      ];
                                                   }
 
                                                   $steps["runCode2"] = true
@@ -5699,8 +5727,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                         const actionArgs = {
                                                           customFunction:
                                                             async () => {
-                                                              return ($state.waitingAccount =
-                                                                false);
+                                                              return ($state.waitingAccount = false);
                                                             }
                                                         };
                                                         return (({
@@ -6065,8 +6092,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                         const actionArgs = {
                                                           customFunction:
                                                             async () => {
-                                                              return ($state.waitingAccount =
-                                                                true);
+                                                              return ($state.waitingAccount = true);
                                                             }
                                                         };
                                                         return (({
@@ -6213,9 +6239,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                   ) {
                                                     $steps[
                                                       "updateInsertAccountErrorText"
-                                                    ] = await $steps[
-                                                      "updateInsertAccountErrorText"
-                                                    ];
+                                                    ] =
+                                                      await $steps[
+                                                        "updateInsertAccountErrorText"
+                                                      ];
                                                   }
 
                                                   $steps["errorAlert"] =
@@ -6407,9 +6434,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                   ) {
                                                     $steps[
                                                       "updateBankAccountList"
-                                                    ] = await $steps[
-                                                      "updateBankAccountList"
-                                                    ];
+                                                    ] =
+                                                      await $steps[
+                                                        "updateBankAccountList"
+                                                      ];
                                                   }
 
                                                   $steps["hideWaitingAccount"] =
@@ -6463,9 +6491,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                   ) {
                                                     $steps[
                                                       "hideWaitingAccount"
-                                                    ] = await $steps[
-                                                      "hideWaitingAccount"
-                                                    ];
+                                                    ] =
+                                                      await $steps[
+                                                        "hideWaitingAccount"
+                                                      ];
                                                   }
 
                                                   $steps["runCode2"] =
@@ -6476,8 +6505,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                             customFunction:
                                                               async () => {
                                                                 return (() => {
-                                                                  $state.dialogRegisterAccount.open =
-                                                                    false;
+                                                                  $state.dialogRegisterAccount.open = false;
                                                                   return ($state.cardInquiry =
                                                                     {});
                                                                 })();
@@ -7139,9 +7167,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       typeof $steps["toastSalam"].then ===
                                         "function"
                                     ) {
-                                      $steps["toastSalam"] = await $steps[
-                                        "toastSalam"
-                                      ];
+                                      $steps["toastSalam"] =
+                                        await $steps["toastSalam"];
                                     }
 
                                     $steps["toastError"] =
@@ -7182,9 +7209,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       typeof $steps["toastError"].then ===
                                         "function"
                                     ) {
-                                      $steps["toastError"] = await $steps[
-                                        "toastError"
-                                      ];
+                                      $steps["toastError"] =
+                                        await $steps["toastError"];
                                     }
 
                                     $steps["getUserAccounts"] =
@@ -7235,9 +7261,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       typeof $steps["getUserAccounts"].then ===
                                         "function"
                                     ) {
-                                      $steps["getUserAccounts"] = await $steps[
-                                        "getUserAccounts"
-                                      ];
+                                      $steps["getUserAccounts"] =
+                                        await $steps["getUserAccounts"];
                                     }
 
                                     $steps["updateBankAccountList"] =
@@ -7563,9 +7588,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       typeof $steps["alertError"].then ===
                                         "function"
                                     ) {
-                                      $steps["alertError"] = await $steps[
-                                        "alertError"
-                                      ];
+                                      $steps["alertError"] =
+                                        await $steps["alertError"];
                                     }
 
                                     $steps["updateWaitingSettlement2"] = true
@@ -7622,10 +7646,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                             const actionArgs = {
                                               customFunction: async () => {
                                                 return (() => {
-                                                  $state.settlementResultShow =
-                                                    true;
-                                                  return ($state.btnRegisterSettlementShow =
-                                                    false);
+                                                  $state.settlementResultShow = true;
+                                                  return ($state.btnRegisterSettlementShow = false);
                                                 })();
                                               }
                                             };
@@ -7640,9 +7662,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       typeof $steps["runCode"].then ===
                                         "function"
                                     ) {
-                                      $steps["runCode"] = await $steps[
-                                        "runCode"
-                                      ];
+                                      $steps["runCode"] =
+                                        await $steps["runCode"];
                                     }
 
                                     $steps["refresh"] =
@@ -7688,9 +7709,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       typeof $steps["refresh"].then ===
                                         "function"
                                     ) {
-                                      $steps["refresh"] = await $steps[
-                                        "refresh"
-                                      ];
+                                      $steps["refresh"] =
+                                        await $steps["refresh"];
                                     }
                                   }}
                                   size={
@@ -8402,8 +8422,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         !_par
                                           ? []
                                           : Array.isArray(_par)
-                                          ? _par
-                                          : [_par])(
+                                            ? _par
+                                            : [_par])(
                                         (() => {
                                           try {
                                             return $state.detailsDataApiRequest[
@@ -9824,9 +9844,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             typeof $steps["updateWaitingLoading"].then ===
                               "function"
                           ) {
-                            $steps["updateWaitingLoading"] = await $steps[
-                              "updateWaitingLoading"
-                            ];
+                            $steps["updateWaitingLoading"] =
+                              await $steps["updateWaitingLoading"];
                           }
 
                           $steps["runCode"] = true
@@ -9904,9 +9923,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             typeof $steps["getInvoiceList"] === "object" &&
                             typeof $steps["getInvoiceList"].then === "function"
                           ) {
-                            $steps["getInvoiceList"] = await $steps[
-                              "getInvoiceList"
-                            ];
+                            $steps["getInvoiceList"] =
+                              await $steps["getInvoiceList"];
                           }
 
                           $steps["runCode2"] =
@@ -9969,9 +9987,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             typeof $steps["updateWaitingLoading2"].then ===
                               "function"
                           ) {
-                            $steps["updateWaitingLoading2"] = await $steps[
-                              "updateWaitingLoading2"
-                            ];
+                            $steps["updateWaitingLoading2"] =
+                              await $steps["updateWaitingLoading2"];
                           }
 
                           $steps["showMoreBtn"] = true
@@ -10132,9 +10149,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 typeof $steps["invokeGlobalAction"].then ===
                                   "function"
                               ) {
-                                $steps["invokeGlobalAction"] = await $steps[
-                                  "invokeGlobalAction"
-                                ];
+                                $steps["invokeGlobalAction"] =
+                                  await $steps["invokeGlobalAction"];
                               }
                             }}
                             platform={"nextjs"}
@@ -10190,9 +10206,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 typeof $steps["invokeGlobalAction"].then ===
                                   "function"
                               ) {
-                                $steps["invokeGlobalAction"] = await $steps[
-                                  "invokeGlobalAction"
-                                ];
+                                $steps["invokeGlobalAction"] =
+                                  await $steps["invokeGlobalAction"];
                               }
                             }}
                             platform={"nextjs"}
@@ -10759,9 +10774,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 typeof $steps["updateFirstRequestCount"] === "object" &&
                 typeof $steps["updateFirstRequestCount"].then === "function"
               ) {
-                $steps["updateFirstRequestCount"] = await $steps[
-                  "updateFirstRequestCount"
-                ];
+                $steps["updateFirstRequestCount"] =
+                  await $steps["updateFirstRequestCount"];
               }
             }}
           />
@@ -11018,9 +11032,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 typeof $steps["updateReminderWallet"] === "object" &&
                 typeof $steps["updateReminderWallet"].then === "function"
               ) {
-                $steps["updateReminderWallet"] = await $steps[
-                  "updateReminderWallet"
-                ];
+                $steps["updateReminderWallet"] =
+                  await $steps["updateReminderWallet"];
               }
 
               $steps["getEscrow"] = true
@@ -11093,9 +11106,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 typeof $steps["updateEscrowbalance"] === "object" &&
                 typeof $steps["updateEscrowbalance"].then === "function"
               ) {
-                $steps["updateEscrowbalance"] = await $steps[
-                  "updateEscrowbalance"
-                ];
+                $steps["updateEscrowbalance"] =
+                  await $steps["updateEscrowbalance"];
               }
 
               $steps["firstEscrow"] = (
@@ -11169,9 +11181,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 typeof $steps["updateFirstEscrowTransaction"].then ===
                   "function"
               ) {
-                $steps["updateFirstEscrowTransaction"] = await $steps[
-                  "updateFirstEscrowTransaction"
-                ];
+                $steps["updateFirstEscrowTransaction"] =
+                  await $steps["updateFirstEscrowTransaction"];
               }
 
               $steps["getTransactionsReport"] = true
@@ -11210,9 +11221,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 typeof $steps["getTransactionsReport"] === "object" &&
                 typeof $steps["getTransactionsReport"].then === "function"
               ) {
-                $steps["getTransactionsReport"] = await $steps[
-                  "getTransactionsReport"
-                ];
+                $steps["getTransactionsReport"] =
+                  await $steps["getTransactionsReport"];
               }
 
               $steps["updateTransactionsReport"] =
@@ -11248,9 +11258,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 typeof $steps["updateTransactionsReport"] === "object" &&
                 typeof $steps["updateTransactionsReport"].then === "function"
               ) {
-                $steps["updateTransactionsReport"] = await $steps[
-                  "updateTransactionsReport"
-                ];
+                $steps["updateTransactionsReport"] =
+                  await $steps["updateTransactionsReport"];
               }
 
               $steps["getInvoiceList"] = $state.isLoadAccount
@@ -11509,9 +11518,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 typeof $steps["updateFirstEscrowTransaction2"].then ===
                   "function"
               ) {
-                $steps["updateFirstEscrowTransaction2"] = await $steps[
-                  "updateFirstEscrowTransaction2"
-                ];
+                $steps["updateFirstEscrowTransaction2"] =
+                  await $steps["updateFirstEscrowTransaction2"];
               }
             }}
           />
@@ -11594,9 +11602,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 typeof $steps["invokeGlobalAction"] === "object" &&
                 typeof $steps["invokeGlobalAction"].then === "function"
               ) {
-                $steps["invokeGlobalAction"] = await $steps[
-                  "invokeGlobalAction"
-                ];
+                $steps["invokeGlobalAction"] =
+                  await $steps["invokeGlobalAction"];
               }
             }}
           />
@@ -11632,6 +11639,7 @@ const PlasmicDescendants = {
     "radioTransactionType",
     "rdAllTransaction",
     "rdSettlementTransaction",
+    "financialReports",
     "gridInvoice1",
     "txtRemainingText",
     "txtRemainingText2",
@@ -11691,6 +11699,7 @@ const PlasmicDescendants = {
   ],
   rdAllTransaction: ["rdAllTransaction"],
   rdSettlementTransaction: ["rdSettlementTransaction"],
+  financialReports: ["financialReports"],
   gridInvoice1: [
     "gridInvoice1",
     "txtRemainingText",
@@ -11799,6 +11808,7 @@ type NodeDefaultElementType = {
   radioTransactionType: typeof RadioGroup;
   rdAllTransaction: typeof Radio;
   rdSettlementTransaction: typeof Radio;
+  financialReports: typeof FinancialReports;
   gridInvoice1: "div";
   txtRemainingText: "div";
   txtRemainingText2: "div";
@@ -11845,7 +11855,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicTransactionsSearch__VariantsArgs;
     args?: PlasmicTransactionsSearch__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicTransactionsSearch__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicTransactionsSearch__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicTransactionsSearch__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props
@@ -11908,6 +11920,7 @@ export const PlasmicTransactionsSearch = Object.assign(
     radioTransactionType: makeNodeComponent("radioTransactionType"),
     rdAllTransaction: makeNodeComponent("rdAllTransaction"),
     rdSettlementTransaction: makeNodeComponent("rdSettlementTransaction"),
+    financialReports: makeNodeComponent("financialReports"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     txtRemainingText: makeNodeComponent("txtRemainingText"),
     txtRemainingText2: makeNodeComponent("txtRemainingText2"),
