@@ -787,7 +787,7 @@ function PlasmicPay__RenderFunc(props: {
                       $steps["redirectUser"] = await $steps["redirectUser"];
                     }
 
-                    $steps["updateWaiting2"] = true
+                    $steps["updateWaiting2"] = false
                       ? (() => {
                           const actionArgs = {
                             variable: {
