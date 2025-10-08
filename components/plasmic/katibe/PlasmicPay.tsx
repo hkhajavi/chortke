@@ -764,15 +764,15 @@ function PlasmicPay__RenderFunc(props: {
                             args: [
                               `${$state.paymentLink}${
                                 "https://apigw.paziresh24.com/katibe/v1/check-balance-or-pay?amount=" +
-                                $ctx.query.amount +
+                                ($ctx.query.amount || 0) +
                                 "&returnlink=" +
-                                $ctx.query.returnlink +
+                                ($ctx.query.returnlink || "") +
                                 "&cancel_returnlink=" +
-                                $ctx.query.cancel_returnlink +
+                                ($ctx.query.cancel_returnlink || "") +
                                 "&receipt_id=" +
-                                $ctx.query.receipt_id +
+                                ($ctx.query.receipt_id || "") +
                                 "&center_id=" +
-                                $ctx.query.center_id +
+                                ($ctx.query.center_id || "") +
                                 "&uuid=" +
                                 Date.now()
                               }`
