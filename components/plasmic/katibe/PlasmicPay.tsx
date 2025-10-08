@@ -73,7 +73,6 @@ import sty from "./PlasmicPay.module.css"; // plasmic-import: fXYKZYfose53/css
 import Icon50Icon from "./icons/PlasmicIcon__Icon50"; // plasmic-import: xtxGD9pXGJw4/icon
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
 import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
-import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
 
 createPlasmicElementProxy;
 
@@ -90,6 +89,8 @@ export type PlasmicPay__OverridesType = {
   pay?: Flex__<"div">;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
   section?: Flex__<"section">;
+  svg?: Flex__<"svg">;
+  button?: Flex__<typeof Button>;
   embedHtml?: Flex__<typeof Embed>;
 };
 
@@ -679,7 +680,9 @@ function PlasmicPay__RenderFunc(props: {
             <div className={classNames(projectcss.all, sty.freeBox___30EL)}>
               <div className={classNames(projectcss.all, sty.freeBox___9J65H)}>
                 <Icon50Icon
-                  className={classNames(projectcss.all, sty.svg__zPr4I)}
+                  data-plasmic-name={"svg"}
+                  data-plasmic-override={overrides.svg}
+                  className={classNames(projectcss.all, sty.svg)}
                   role={"img"}
                 />
 
@@ -699,10 +702,12 @@ function PlasmicPay__RenderFunc(props: {
             <div className={classNames(projectcss.all, sty.freeBox__mGnIw)}>
               <div className={classNames(projectcss.all, sty.freeBox__fzrje)}>
                 <Button
+                  data-plasmic-name={"button"}
+                  data-plasmic-override={overrides.button}
                   children2={
                     "\u0627\u0631\u0633\u0627\u0644 \u0628\u0647 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a"
                   }
-                  className={classNames("__wab_instance", sty.button__vghbE)}
+                  className={classNames("__wab_instance", sty.button)}
                   isDisabled={(() => {
                     try {
                       return $state.waiting;
@@ -823,120 +828,6 @@ function PlasmicPay__RenderFunc(props: {
                   }}
                   size={"compact"}
                 />
-
-                <Button
-                  children2={
-                    "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u06a9\u06cc\u0641 \u067e\u0648\u0644"
-                  }
-                  className={classNames("__wab_instance", sty.button___6Apy5)}
-                  isDisabled={(() => {
-                    try {
-                      return $state.waiting;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return [];
-                      }
-                      throw e;
-                    }
-                  })()}
-                  onClick={async event => {
-                    const $steps = {};
-
-                    $steps["updateWaiting"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            variable: {
-                              objRoot: $state,
-                              variablePath: ["waiting"]
-                            },
-                            operation: 0,
-                            value: true
-                          };
-                          return (({
-                            variable,
-                            value,
-                            startIndex,
-                            deleteCount
-                          }) => {
-                            if (!variable) {
-                              return;
-                            }
-                            const { objRoot, variablePath } = variable;
-
-                            $stateSet(objRoot, variablePath, value);
-                            return value;
-                          })?.apply(null, [actionArgs]);
-                        })()
-                      : undefined;
-                    if (
-                      $steps["updateWaiting"] != null &&
-                      typeof $steps["updateWaiting"] === "object" &&
-                      typeof $steps["updateWaiting"].then === "function"
-                    ) {
-                      $steps["updateWaiting"] = await $steps["updateWaiting"];
-                    }
-
-                    $steps["redirectUser"] = true
-                      ? (() => {
-                          const actionArgs = {
-                            args: [
-                              (() => {
-                                try {
-                                  return (
-                                    "https://apigw.paziresh24.com/katibe/v1/splits/pay/p24/" +
-                                    $state.splits.id
-                                  );
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return undefined;
-                                  }
-                                  throw e;
-                                }
-                              })()
-                            ]
-                          };
-                          return $globalActions["Hamdast.openLink"]?.apply(
-                            null,
-                            [...actionArgs.args]
-                          );
-                        })()
-                      : undefined;
-                    if (
-                      $steps["redirectUser"] != null &&
-                      typeof $steps["redirectUser"] === "object" &&
-                      typeof $steps["redirectUser"].then === "function"
-                    ) {
-                      $steps["redirectUser"] = await $steps["redirectUser"];
-                    }
-                  }}
-                  size={"compact"}
-                />
-
-                {(() => {
-                  try {
-                    return $state.waiting;
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return true;
-                    }
-                    throw e;
-                  }
-                })() ? (
-                  <Icon2Icon
-                    className={classNames(projectcss.all, sty.svg__qi1Yn)}
-                    role={"img"}
-                  />
-                ) : null}
               </div>
             </div>
           </section>
@@ -955,9 +846,11 @@ function PlasmicPay__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  pay: ["pay", "sideEffectPageLoad", "section", "embedHtml"],
+  pay: ["pay", "sideEffectPageLoad", "section", "svg", "button", "embedHtml"],
   sideEffectPageLoad: ["sideEffectPageLoad"],
-  section: ["section"],
+  section: ["section", "svg", "button"],
+  svg: ["svg"],
+  button: ["button"],
   embedHtml: ["embedHtml"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -967,6 +860,8 @@ type NodeDefaultElementType = {
   pay: "div";
   sideEffectPageLoad: typeof SideEffect;
   section: "section";
+  svg: "svg";
+  button: typeof Button;
   embedHtml: typeof Embed;
 };
 
@@ -1034,6 +929,8 @@ export const PlasmicPay = Object.assign(
     // Helper components rendering sub-elements
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
     section: makeNodeComponent("section"),
+    svg: makeNodeComponent("svg"),
+    button: makeNodeComponent("button"),
     embedHtml: makeNodeComponent("embedHtml"),
 
     // Metadata about props expected for PlasmicPay

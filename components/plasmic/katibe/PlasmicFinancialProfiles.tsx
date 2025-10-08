@@ -1337,9 +1337,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                             typeof $steps["updateWaitingProfile"].then ===
                               "function"
                           ) {
-                            $steps["updateWaitingProfile"] = await $steps[
-                              "updateWaitingProfile"
-                            ];
+                            $steps["updateWaitingProfile"] =
+                              await $steps["updateWaitingProfile"];
                           }
 
                           $steps["updateProfiles"] = true
@@ -1392,9 +1391,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                             typeof $steps["updateProfiles"] === "object" &&
                             typeof $steps["updateProfiles"].then === "function"
                           ) {
-                            $steps["updateProfiles"] = await $steps[
-                              "updateProfiles"
-                            ];
+                            $steps["updateProfiles"] =
+                              await $steps["updateProfiles"];
                           }
 
                           $steps["updateMessage"] = true
@@ -1428,9 +1426,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                             typeof $steps["updateMessage"] === "object" &&
                             typeof $steps["updateMessage"].then === "function"
                           ) {
-                            $steps["updateMessage"] = await $steps[
-                              "updateMessage"
-                            ];
+                            $steps["updateMessage"] =
+                              await $steps["updateMessage"];
                           }
 
                           $steps["updateWaiting2"] = true
@@ -1464,9 +1461,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                             typeof $steps["updateWaiting2"] === "object" &&
                             typeof $steps["updateWaiting2"].then === "function"
                           ) {
-                            $steps["updateWaiting2"] = await $steps[
-                              "updateWaiting2"
-                            ];
+                            $steps["updateWaiting2"] =
+                              await $steps["updateWaiting2"];
                           }
 
                           $steps["alertSuccess"] =
@@ -1501,9 +1497,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                             typeof $steps["alertSuccess"] === "object" &&
                             typeof $steps["alertSuccess"].then === "function"
                           ) {
-                            $steps["alertSuccess"] = await $steps[
-                              "alertSuccess"
-                            ];
+                            $steps["alertSuccess"] =
+                              await $steps["alertSuccess"];
                           }
 
                           $steps["alertError"] =
@@ -2124,9 +2119,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                               ) {
                                                 $steps[
                                                   "updateWaitingUserAccount"
-                                                ] = await $steps[
-                                                  "updateWaitingUserAccount"
-                                                ];
+                                                ] =
+                                                  await $steps[
+                                                    "updateWaitingUserAccount"
+                                                  ];
                                               }
 
                                               $steps["deleteRequest"] = true
@@ -2226,9 +2222,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                               ) {
                                                 $steps[
                                                   "updateWaitingUserAccount2"
-                                                ] = await $steps[
-                                                  "updateWaitingUserAccount2"
-                                                ];
+                                                ] =
+                                                  await $steps[
+                                                    "updateWaitingUserAccount2"
+                                                  ];
                                               }
 
                                               $steps["updateMessage"] = true
@@ -2542,9 +2539,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                               ) {
                                                 $steps[
                                                   "refreshRecuringSettlement"
-                                                ] = await $steps[
-                                                  "refreshRecuringSettlement"
-                                                ];
+                                                ] =
+                                                  await $steps[
+                                                    "refreshRecuringSettlement"
+                                                  ];
                                               }
                                             }}
                                             size={"compact"}
@@ -3641,9 +3639,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "updateInsertAccountMessage"
-                                                      ] = await $steps[
-                                                        "updateInsertAccountMessage"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "updateInsertAccountMessage"
+                                                        ];
                                                     }
 
                                                     $steps[
@@ -3698,9 +3697,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "updateWaitingRegister"
-                                                      ] = await $steps[
-                                                        "updateWaitingRegister"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "updateWaitingRegister"
+                                                        ];
                                                     }
 
                                                     $steps["registerAccount"] =
@@ -3789,9 +3789,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "registerAccount"
-                                                      ] = await $steps[
-                                                        "registerAccount"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "registerAccount"
+                                                        ];
                                                     }
 
                                                     $steps[
@@ -3846,9 +3847,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "updateCbAccountsValue2"
-                                                      ] = await $steps[
-                                                        "updateCbAccountsValue2"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "updateCbAccountsValue2"
+                                                        ];
                                                     }
 
                                                     $steps[
@@ -3908,9 +3910,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "updateInsertAccountMessage2"
-                                                      ] = await $steps[
-                                                        "updateInsertAccountMessage2"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "updateInsertAccountMessage2"
+                                                        ];
                                                     }
 
                                                     $steps[
@@ -3965,9 +3968,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "updateCbAccountsValue"
-                                                      ] = await $steps[
-                                                        "updateCbAccountsValue"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "updateCbAccountsValue"
+                                                        ];
                                                     }
 
                                                     $steps[
@@ -4026,9 +4030,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "updateCbAccountsValue3"
-                                                      ] = await $steps[
-                                                        "updateCbAccountsValue3"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "updateCbAccountsValue3"
+                                                        ];
                                                     }
 
                                                     $steps[
@@ -4063,9 +4068,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "updateCbAccountsValue4"
-                                                      ] = await $steps[
-                                                        "updateCbAccountsValue4"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "updateCbAccountsValue4"
+                                                        ];
                                                     }
 
                                                     $steps[
@@ -4117,9 +4123,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "updateCbAccountsValue5"
-                                                      ] = await $steps[
-                                                        "updateCbAccountsValue5"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "updateCbAccountsValue5"
+                                                        ];
                                                     }
 
                                                     $steps[
@@ -4129,8 +4136,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                           const actionArgs = {
                                                             customFunction:
                                                               async () => {
-                                                                return ($state.dialog2.open =
-                                                                  false);
+                                                                return ($state.dialog2.open = false);
                                                               }
                                                           };
                                                           return (({
@@ -4155,9 +4161,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "updateCbAccountsValue6"
-                                                      ] = await $steps[
-                                                        "updateCbAccountsValue6"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "updateCbAccountsValue6"
+                                                        ];
                                                     }
 
                                                     $steps["editprofileShow"] =
@@ -4212,9 +4219,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "editprofileShow"
-                                                      ] = await $steps[
-                                                        "editprofileShow"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "editprofileShow"
+                                                        ];
                                                     }
                                                   }}
                                                   size={
@@ -4354,9 +4362,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "updateIbanInquiry"
-                                                      ] = await $steps[
-                                                        "updateIbanInquiry"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "updateIbanInquiry"
+                                                        ];
                                                     }
                                                   }).apply(null, eventArgs);
                                                 }}
@@ -4454,9 +4463,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                   ) {
                                                     $steps[
                                                       "updateIbanInquiryCount"
-                                                    ] = await $steps[
-                                                      "updateIbanInquiryCount"
-                                                    ];
+                                                    ] =
+                                                      await $steps[
+                                                        "updateIbanInquiryCount"
+                                                      ];
                                                   }
 
                                                   $steps["updateIbanInquiry"] =
@@ -4510,9 +4520,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                   ) {
                                                     $steps[
                                                       "updateIbanInquiry"
-                                                    ] = await $steps[
-                                                      "updateIbanInquiry"
-                                                    ];
+                                                    ] =
+                                                      await $steps[
+                                                        "updateIbanInquiry"
+                                                      ];
                                                   }
                                                 }}
                                               />
@@ -5038,9 +5049,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "updateInsertAccountMessage"
-                                                      ] = await $steps[
-                                                        "updateInsertAccountMessage"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "updateInsertAccountMessage"
+                                                        ];
                                                     }
 
                                                     $steps[
@@ -5095,9 +5107,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "updateWaitingRegister"
-                                                      ] = await $steps[
-                                                        "updateWaitingRegister"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "updateWaitingRegister"
+                                                        ];
                                                     }
 
                                                     $steps["registerAccount"] =
@@ -5186,9 +5199,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "registerAccount"
-                                                      ] = await $steps[
-                                                        "registerAccount"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "registerAccount"
+                                                        ];
                                                     }
 
                                                     $steps[
@@ -5248,9 +5262,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "updateInsertAccountMessage2"
-                                                      ] = await $steps[
-                                                        "updateInsertAccountMessage2"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "updateInsertAccountMessage2"
+                                                        ];
                                                     }
 
                                                     $steps[
@@ -5305,9 +5320,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "updateCbAccountsValue2"
-                                                      ] = await $steps[
-                                                        "updateCbAccountsValue2"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "updateCbAccountsValue2"
+                                                        ];
                                                     }
 
                                                     $steps[
@@ -5366,9 +5382,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "updateCbAccountsValue3"
-                                                      ] = await $steps[
-                                                        "updateCbAccountsValue3"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "updateCbAccountsValue3"
+                                                        ];
                                                     }
 
                                                     $steps[
@@ -5403,9 +5420,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "updateCbAccountsValue4"
-                                                      ] = await $steps[
-                                                        "updateCbAccountsValue4"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "updateCbAccountsValue4"
+                                                        ];
                                                     }
 
                                                     $steps[
@@ -5457,9 +5475,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "updateCbAccountsValue5"
-                                                      ] = await $steps[
-                                                        "updateCbAccountsValue5"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "updateCbAccountsValue5"
+                                                        ];
                                                     }
 
                                                     $steps[
@@ -5469,8 +5488,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                           const actionArgs = {
                                                             customFunction:
                                                               async () => {
-                                                                return ($state.dialog2.open =
-                                                                  false);
+                                                                return ($state.dialog2.open = false);
                                                               }
                                                           };
                                                           return (({
@@ -5495,9 +5513,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "updateCbAccountsValue6"
-                                                      ] = await $steps[
-                                                        "updateCbAccountsValue6"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "updateCbAccountsValue6"
+                                                        ];
                                                     }
                                                   }}
                                                   size={
@@ -5743,9 +5762,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               typeof $steps["invokeGlobalAction"].then ===
                                 "function"
                             ) {
-                              $steps["invokeGlobalAction"] = await $steps[
-                                "invokeGlobalAction"
-                              ];
+                              $steps["invokeGlobalAction"] =
+                                await $steps["invokeGlobalAction"];
                             }
                           }}
                           size={"compact"}
@@ -5811,9 +5829,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           typeof $steps["updateWaitingRegister3"].then ===
                             "function"
                         ) {
-                          $steps["updateWaitingRegister3"] = await $steps[
-                            "updateWaitingRegister3"
-                          ];
+                          $steps["updateWaitingRegister3"] =
+                            await $steps["updateWaitingRegister3"];
                         }
 
                         $steps["updateWaitingRegister"] =
@@ -5849,9 +5866,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           typeof $steps["updateWaitingRegister"].then ===
                             "function"
                         ) {
-                          $steps["updateWaitingRegister"] = await $steps[
-                            "updateWaitingRegister"
-                          ];
+                          $steps["updateWaitingRegister"] =
+                            await $steps["updateWaitingRegister"];
                         }
 
                         $steps["runCode"] = false
@@ -5922,9 +5938,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           typeof $steps["getCardInquiry"] === "object" &&
                           typeof $steps["getCardInquiry"].then === "function"
                         ) {
-                          $steps["getCardInquiry"] = await $steps[
-                            "getCardInquiry"
-                          ];
+                          $steps["getCardInquiry"] =
+                            await $steps["getCardInquiry"];
                         }
 
                         $steps["updateCardInquiry"] =
@@ -5959,9 +5974,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           typeof $steps["updateCardInquiry"] === "object" &&
                           typeof $steps["updateCardInquiry"].then === "function"
                         ) {
-                          $steps["updateCardInquiry"] = await $steps[
-                            "updateCardInquiry"
-                          ];
+                          $steps["updateCardInquiry"] =
+                            await $steps["updateCardInquiry"];
                         }
 
                         $steps["invokeGlobalAction2"] =
@@ -5984,9 +5998,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           typeof $steps["invokeGlobalAction2"].then ===
                             "function"
                         ) {
-                          $steps["invokeGlobalAction2"] = await $steps[
-                            "invokeGlobalAction2"
-                          ];
+                          $steps["invokeGlobalAction2"] =
+                            await $steps["invokeGlobalAction2"];
                         }
 
                         $steps["updateWaitingRegister2"] = true
@@ -6022,9 +6035,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           typeof $steps["updateWaitingRegister2"].then ===
                             "function"
                         ) {
-                          $steps["updateWaitingRegister2"] = await $steps[
-                            "updateWaitingRegister2"
-                          ];
+                          $steps["updateWaitingRegister2"] =
+                            await $steps["updateWaitingRegister2"];
                         }
                       }}
                     />
@@ -6088,9 +6100,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           typeof $steps["updateWaitingRegister"].then ===
                             "function"
                         ) {
-                          $steps["updateWaitingRegister"] = await $steps[
-                            "updateWaitingRegister"
-                          ];
+                          $steps["updateWaitingRegister"] =
+                            await $steps["updateWaitingRegister"];
                         }
 
                         $steps["runCode"] = true
@@ -6162,9 +6173,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           typeof $steps["getIBanInquiry"] === "object" &&
                           typeof $steps["getIBanInquiry"].then === "function"
                         ) {
-                          $steps["getIBanInquiry"] = await $steps[
-                            "getIBanInquiry"
-                          ];
+                          $steps["getIBanInquiry"] =
+                            await $steps["getIBanInquiry"];
                         }
 
                         $steps["updateIbanInquiry"] =
@@ -6200,9 +6210,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           typeof $steps["updateIbanInquiry"] === "object" &&
                           typeof $steps["updateIbanInquiry"].then === "function"
                         ) {
-                          $steps["updateIbanInquiry"] = await $steps[
-                            "updateIbanInquiry"
-                          ];
+                          $steps["updateIbanInquiry"] =
+                            await $steps["updateIbanInquiry"];
                         }
 
                         $steps["invokeGlobalAction2"] =
@@ -6225,9 +6234,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           typeof $steps["invokeGlobalAction2"].then ===
                             "function"
                         ) {
-                          $steps["invokeGlobalAction2"] = await $steps[
-                            "invokeGlobalAction2"
-                          ];
+                          $steps["invokeGlobalAction2"] =
+                            await $steps["invokeGlobalAction2"];
                         }
 
                         $steps["updateWaitingRegister2"] = true
@@ -6263,9 +6271,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           typeof $steps["updateWaitingRegister2"].then ===
                             "function"
                         ) {
-                          $steps["updateWaitingRegister2"] = await $steps[
-                            "updateWaitingRegister2"
-                          ];
+                          $steps["updateWaitingRegister2"] =
+                            await $steps["updateWaitingRegister2"];
                         }
                       }}
                     />
@@ -6629,9 +6636,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               typeof $steps["errorAccount"] === "object" &&
                               typeof $steps["errorAccount"].then === "function"
                             ) {
-                              $steps["errorAccount"] = await $steps[
-                                "errorAccount"
-                              ];
+                              $steps["errorAccount"] =
+                                await $steps["errorAccount"];
                             }
 
                             $steps["updateWaitingSettlement"] =
@@ -6669,9 +6675,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               typeof $steps["updateWaitingSettlement"].then ===
                                 "function"
                             ) {
-                              $steps["updateWaitingSettlement"] = await $steps[
-                                "updateWaitingSettlement"
-                              ];
+                              $steps["updateWaitingSettlement"] =
+                                await $steps["updateWaitingSettlement"];
                             }
 
                             $steps["recurringSettlement"] =
@@ -6726,9 +6731,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               typeof $steps["recurringSettlement"].then ===
                                 "function"
                             ) {
-                              $steps["recurringSettlement"] = await $steps[
-                                "recurringSettlement"
-                              ];
+                              $steps["recurringSettlement"] =
+                                await $steps["recurringSettlement"];
                             }
 
                             $steps["waitingFalse2"] = true
@@ -6762,9 +6766,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               typeof $steps["waitingFalse2"] === "object" &&
                               typeof $steps["waitingFalse2"].then === "function"
                             ) {
-                              $steps["waitingFalse2"] = await $steps[
-                                "waitingFalse2"
-                              ];
+                              $steps["waitingFalse2"] =
+                                await $steps["waitingFalse2"];
                             }
 
                             $steps["getMessage"] =
@@ -6841,9 +6844,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               typeof $steps["alertSuccessRecurring"].then ===
                                 "function"
                             ) {
-                              $steps["alertSuccessRecurring"] = await $steps[
-                                "alertSuccessRecurring"
-                              ];
+                              $steps["alertSuccessRecurring"] =
+                                await $steps["alertSuccessRecurring"];
                             }
 
                             $steps["alertError"] =
@@ -6995,9 +6997,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               typeof $steps["updateWaitingSettlement"].then ===
                                 "function"
                             ) {
-                              $steps["updateWaitingSettlement"] = await $steps[
-                                "updateWaitingSettlement"
-                              ];
+                              $steps["updateWaitingSettlement"] =
+                                await $steps["updateWaitingSettlement"];
                             }
 
                             $steps["deleteSettlementStatus"] = true
@@ -7052,9 +7053,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               typeof $steps["deleteSettlementStatus"].then ===
                                 "function"
                             ) {
-                              $steps["deleteSettlementStatus"] = await $steps[
-                                "deleteSettlementStatus"
-                              ];
+                              $steps["deleteSettlementStatus"] =
+                                await $steps["deleteSettlementStatus"];
                             }
 
                             $steps["setDeleteMessage"] =
@@ -7096,9 +7096,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               typeof $steps["setDeleteMessage"].then ===
                                 "function"
                             ) {
-                              $steps["setDeleteMessage"] = await $steps[
-                                "setDeleteMessage"
-                              ];
+                              $steps["setDeleteMessage"] =
+                                await $steps["setDeleteMessage"];
                             }
 
                             $steps["alertDeleteError"] =
@@ -7134,9 +7133,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               typeof $steps["alertDeleteError"].then ===
                                 "function"
                             ) {
-                              $steps["alertDeleteError"] = await $steps[
-                                "alertDeleteError"
-                              ];
+                              $steps["alertDeleteError"] =
+                                await $steps["alertDeleteError"];
                             }
 
                             $steps["alertDeleteSuccess"] =
@@ -7173,9 +7171,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               typeof $steps["alertDeleteSuccess"].then ===
                                 "function"
                             ) {
-                              $steps["alertDeleteSuccess"] = await $steps[
-                                "alertDeleteSuccess"
-                              ];
+                              $steps["alertDeleteSuccess"] =
+                                await $steps["alertDeleteSuccess"];
                             }
 
                             $steps["waitingFalse"] = true
@@ -7209,9 +7206,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               typeof $steps["waitingFalse"] === "object" &&
                               typeof $steps["waitingFalse"].then === "function"
                             ) {
-                              $steps["waitingFalse"] = await $steps[
-                                "waitingFalse"
-                              ];
+                              $steps["waitingFalse"] =
+                                await $steps["waitingFalse"];
                             }
 
                             $steps["refreshRecuringSettlement"] =
@@ -7268,150 +7264,78 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 </div>
               </div>
             ) : null}
-            {(() => {
-              try {
-                return !$state.waiting && $state.userData?.isDoctor;
-              } catch (e) {
-                if (
-                  e instanceof TypeError ||
-                  e?.plasmicType === "PlasmicUndefinedDataError"
-                ) {
-                  return true;
-                }
-                throw e;
-              }
-            })() ? (
-              <div className={classNames(projectcss.all, sty.freeBox__kIGjG)}>
-                <div className={classNames(projectcss.all, sty.freeBox__gKL5)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__jn61K
-                    )}
-                  >
+            <div className={classNames(projectcss.all, sty.freeBox__kIGjG)}>
+              <div className={classNames(projectcss.all, sty.freeBox__frGpM)}>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__k9Y
+                  )}
+                >
+                  <React.Fragment>
                     <React.Fragment>
-                      <React.Fragment>{""}</React.Fragment>
                       {
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.__wab_text,
-                            projectcss.plasmic_default__inline,
-                            sty.link__cgDo7
-                          )}
-                          component={Link}
-                          onClick={async event => {
-                            const $steps = {};
+                        "\u062f\u0631\u0635\u0648\u0631\u062a \u0646\u06cc\u0627\u0632 \u0628\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc "
+                      }
+                    </React.Fragment>
+                    <span
+                      className={"plasmic_default__all plasmic_default__span"}
+                      style={{ fontWeight: 700 }}
+                    >
+                      {
+                        "\u067e\u06cc\u0631\u0627\u0645\u0648\u0646 \u0627\u06cc\u0646 \u0635\u0641\u062d\u0647"
+                      }
+                    </span>
+                    <React.Fragment>
+                      {"\u060c \u0628\u0647 \u0622\u06cc\u200c\u062f\u06cc "}
+                    </React.Fragment>
+                    {
+                      <PlasmicLink__
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.a,
+                          projectcss.__wab_text,
+                          projectcss.plasmic_default__inline,
+                          sty.link__ej7Dt
+                        )}
+                        component={Link}
+                        href={""}
+                        onClick={async event => {
+                          const $steps = {};
 
-                            $steps["invokeGlobalAction"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    args: [
-                                      "https://www.paziresh24.com/dashboard/apps/drapp/service/"
-                                    ]
-                                  };
-                                  return $globalActions[
-                                    "Hamdast.openLink"
-                                  ]?.apply(null, [...actionArgs.args]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["invokeGlobalAction"] != null &&
-                              typeof $steps["invokeGlobalAction"] ===
-                                "object" &&
-                              typeof $steps["invokeGlobalAction"].then ===
-                                "function"
-                            ) {
-                              $steps["invokeGlobalAction"] = await $steps[
-                                "invokeGlobalAction"
-                              ];
-                            }
-                          }}
-                          platform={"nextjs"}
-                        >
-                          {
-                            "\u062a\u063a\u06cc\u06cc\u0631 \u0645\u0628\u0644\u063a \u0648\u06cc\u0632\u06cc\u062a"
+                          $steps["openLink"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  args: ["https://t.me/hojatkhajavi"]
+                                };
+                                return $globalActions[
+                                  "Hamdast.openLink"
+                                ]?.apply(null, [...actionArgs.args]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["openLink"] != null &&
+                            typeof $steps["openLink"] === "object" &&
+                            typeof $steps["openLink"].then === "function"
+                          ) {
+                            $steps["openLink"] = await $steps["openLink"];
                           }
-                        </PlasmicLink__>
-                      }
-                      <React.Fragment>{""}</React.Fragment>
-                    </React.Fragment>
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__frGpM)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__k9Y
-                    )}
-                  >
-                    <React.Fragment>
-                      <React.Fragment>
-                        {
-                          "\u062f\u0631\u0635\u0648\u0631\u062a \u0646\u06cc\u0627\u0632 \u0628\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc "
-                        }
-                      </React.Fragment>
-                      <span
-                        className={"plasmic_default__all plasmic_default__span"}
-                        style={{ fontWeight: 700 }}
+                        }}
+                        platform={"nextjs"}
                       >
-                        {
-                          "\u067e\u06cc\u0631\u0627\u0645\u0648\u0646 \u0627\u06cc\u0646 \u0635\u0641\u062d\u0647"
-                        }
-                      </span>
-                      <React.Fragment>
-                        {"\u060c \u0628\u0647 \u0622\u06cc\u200c\u062f\u06cc "}
-                      </React.Fragment>
+                        {"@hojatkhajavi"}
+                      </PlasmicLink__>
+                    }
+                    <React.Fragment>
                       {
-                        <PlasmicLink__
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.__wab_text,
-                            projectcss.plasmic_default__inline,
-                            sty.link__ej7Dt
-                          )}
-                          component={Link}
-                          href={""}
-                          onClick={async event => {
-                            const $steps = {};
-
-                            $steps["openLink"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    args: ["https://t.me/hojatkhajavi"]
-                                  };
-                                  return $globalActions[
-                                    "Hamdast.openLink"
-                                  ]?.apply(null, [...actionArgs.args]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["openLink"] != null &&
-                              typeof $steps["openLink"] === "object" &&
-                              typeof $steps["openLink"].then === "function"
-                            ) {
-                              $steps["openLink"] = await $steps["openLink"];
-                            }
-                          }}
-                          platform={"nextjs"}
-                        >
-                          {"@hojatkhajavi"}
-                        </PlasmicLink__>
+                        " \u062f\u0631 \u062a\u0644\u06af\u0631\u0627\u0645 \u067e\u06cc\u0627\u0645 \u062f\u0647\u06cc\u062f."
                       }
-                      <React.Fragment>
-                        {
-                          " \u062f\u0631 \u062a\u0644\u06af\u0631\u0627\u0645 \u067e\u06cc\u0627\u0645 \u062f\u0647\u06cc\u062f."
-                        }
-                      </React.Fragment>
                     </React.Fragment>
-                  </div>
+                  </React.Fragment>
                 </div>
               </div>
-            ) : null}
+            </div>
           </section>
           <SideEffect
             data-plasmic-name={"sideEffectPageLoad"}
@@ -7475,9 +7399,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 typeof $steps["updateWaitingUserAccount"] === "object" &&
                 typeof $steps["updateWaitingUserAccount"].then === "function"
               ) {
-                $steps["updateWaitingUserAccount"] = await $steps[
-                  "updateWaitingUserAccount"
-                ];
+                $steps["updateWaitingUserAccount"] =
+                  await $steps["updateWaitingUserAccount"];
               }
 
               $steps["getUsers"] = true
@@ -7683,9 +7606,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 typeof $steps["updateCompleteLoad"] === "object" &&
                 typeof $steps["updateCompleteLoad"].then === "function"
               ) {
-                $steps["updateCompleteLoad"] = await $steps[
-                  "updateCompleteLoad"
-                ];
+                $steps["updateCompleteLoad"] =
+                  await $steps["updateCompleteLoad"];
               }
 
               $steps["updateWaiting2"] = true
@@ -7743,9 +7665,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 typeof $steps["updateLoadProfileCount"] === "object" &&
                 typeof $steps["updateLoadProfileCount"].then === "function"
               ) {
-                $steps["updateLoadProfileCount"] = await $steps[
-                  "updateLoadProfileCount"
-                ];
+                $steps["updateLoadProfileCount"] =
+                  await $steps["updateLoadProfileCount"];
               }
 
               $steps["updateRecuringSetlementCount"] = true
@@ -7775,9 +7696,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 typeof $steps["updateRecuringSetlementCount"].then ===
                   "function"
               ) {
-                $steps["updateRecuringSetlementCount"] = await $steps[
-                  "updateRecuringSetlementCount"
-                ];
+                $steps["updateRecuringSetlementCount"] =
+                  await $steps["updateRecuringSetlementCount"];
               }
 
               $steps["profile"] =
@@ -7923,9 +7843,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 typeof $steps["showWaitingProfile"] === "object" &&
                 typeof $steps["showWaitingProfile"].then === "function"
               ) {
-                $steps["showWaitingProfile"] = await $steps[
-                  "showWaitingProfile"
-                ];
+                $steps["showWaitingProfile"] =
+                  await $steps["showWaitingProfile"];
               }
 
               $steps["clearCenterInfo"] = true
@@ -8056,9 +7975,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 typeof $steps["updateWaitingUserAccount"] === "object" &&
                 typeof $steps["updateWaitingUserAccount"].then === "function"
               ) {
-                $steps["updateWaitingUserAccount"] = await $steps[
-                  "updateWaitingUserAccount"
-                ];
+                $steps["updateWaitingUserAccount"] =
+                  await $steps["updateWaitingUserAccount"];
               }
 
               $steps["updateWaitingSettlement"] = false
@@ -8087,9 +8005,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 typeof $steps["updateWaitingSettlement"] === "object" &&
                 typeof $steps["updateWaitingSettlement"].then === "function"
               ) {
-                $steps["updateWaitingSettlement"] = await $steps[
-                  "updateWaitingSettlement"
-                ];
+                $steps["updateWaitingSettlement"] =
+                  await $steps["updateWaitingSettlement"];
               }
 
               $steps["getProfile"] = $state.completeLoad
@@ -8191,9 +8108,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 typeof $steps["updateWaitingProfile"] === "object" &&
                 typeof $steps["updateWaitingProfile"].then === "function"
               ) {
-                $steps["updateWaitingProfile"] = await $steps[
-                  "updateWaitingProfile"
-                ];
+                $steps["updateWaitingProfile"] =
+                  await $steps["updateWaitingProfile"];
               }
 
               $steps["getUserAccounts"] = $state.completeLoad
@@ -8266,9 +8182,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 typeof $steps["updateUsersAccounts"] === "object" &&
                 typeof $steps["updateUsersAccounts"].then === "function"
               ) {
-                $steps["updateUsersAccounts"] = await $steps[
-                  "updateUsersAccounts"
-                ];
+                $steps["updateUsersAccounts"] =
+                  await $steps["updateUsersAccounts"];
               }
 
               $steps["updateWaitingUserAccount2"] = true
@@ -8297,9 +8212,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 typeof $steps["updateWaitingUserAccount2"] === "object" &&
                 typeof $steps["updateWaitingUserAccount2"].then === "function"
               ) {
-                $steps["updateWaitingUserAccount2"] = await $steps[
-                  "updateWaitingUserAccount2"
-                ];
+                $steps["updateWaitingUserAccount2"] =
+                  await $steps["updateWaitingUserAccount2"];
               }
             }}
           />
@@ -8382,9 +8296,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 typeof $steps["updateWaitingSettlement"] === "object" &&
                 typeof $steps["updateWaitingSettlement"].then === "function"
               ) {
-                $steps["updateWaitingSettlement"] = await $steps[
-                  "updateWaitingSettlement"
-                ];
+                $steps["updateWaitingSettlement"] =
+                  await $steps["updateWaitingSettlement"];
               }
 
               $steps["getRecurringSettlement"] = $state.completeLoad
@@ -8422,9 +8335,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 typeof $steps["getRecurringSettlement"] === "object" &&
                 typeof $steps["getRecurringSettlement"].then === "function"
               ) {
-                $steps["getRecurringSettlement"] = await $steps[
-                  "getRecurringSettlement"
-                ];
+                $steps["getRecurringSettlement"] =
+                  await $steps["getRecurringSettlement"];
               }
 
               $steps["updateWaiting2"] = true
@@ -8489,9 +8401,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 typeof $steps["updateRecurringSettlementList"].then ===
                   "function"
               ) {
-                $steps["updateRecurringSettlementList"] = await $steps[
-                  "updateRecurringSettlementList"
-                ];
+                $steps["updateRecurringSettlementList"] =
+                  await $steps["updateRecurringSettlementList"];
               }
             }}
           />
@@ -8683,7 +8594,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicFinancialProfiles__VariantsArgs;
     args?: PlasmicFinancialProfiles__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicFinancialProfiles__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicFinancialProfiles__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicFinancialProfiles__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

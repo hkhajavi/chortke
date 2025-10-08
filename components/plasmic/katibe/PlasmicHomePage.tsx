@@ -294,9 +294,8 @@ function PlasmicHomePage__RenderFunc(props: {
                           typeof $steps["invokeGlobalAction"].then ===
                             "function"
                         ) {
-                          $steps["invokeGlobalAction"] = await $steps[
-                            "invokeGlobalAction"
-                          ];
+                          $steps["invokeGlobalAction"] =
+                            await $steps["invokeGlobalAction"];
                         }
                       }}
                       src={{
@@ -364,9 +363,8 @@ function PlasmicHomePage__RenderFunc(props: {
                             typeof $steps["invokeGlobalAction"].then ===
                               "function"
                           ) {
-                            $steps["invokeGlobalAction"] = await $steps[
-                              "invokeGlobalAction"
-                            ];
+                            $steps["invokeGlobalAction"] =
+                              await $steps["invokeGlobalAction"];
                           }
                         }}
                         target={$props.openLinkInNewTab ? "_blank" : "_self"}
@@ -525,9 +523,8 @@ function PlasmicHomePage__RenderFunc(props: {
                         typeof $steps["invokeGlobalAction"] === "object" &&
                         typeof $steps["invokeGlobalAction"].then === "function"
                       ) {
-                        $steps["invokeGlobalAction"] = await $steps[
-                          "invokeGlobalAction"
-                        ];
+                        $steps["invokeGlobalAction"] =
+                          await $steps["invokeGlobalAction"];
                       }
                     }}
                     target={$props.openLinkInNewTab ? "_blank" : "_self"}
@@ -4581,7 +4578,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicHomePage__VariantsArgs;
     args?: PlasmicHomePage__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicHomePage__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicHomePage__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicHomePage__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

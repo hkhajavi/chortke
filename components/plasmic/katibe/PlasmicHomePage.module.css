@@ -18,7 +18,9 @@
   left: auto;
   right: auto;
   z-index: auto;
-  background: url("/plasmic/katibe/images/image2.svg") top 50% left 50% / cover repeat, #e5eeff;
+  background:
+    url("/plasmic/katibe/images/image2.svg") top 50% left 50% / cover repeat,
+    #e5eeff;
   height: 100%;
   row-gap: 64px;
   min-height: 0;
@@ -27,7 +29,8 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .headerHeroSection {
     padding-bottom: 0px;
-    background: url("/plasmic/katibe/images/image2.svg") top 129% left 0% / cover repeat,
+    background:
+      url("/plasmic/katibe/images/image2.svg") top 129% left 0% / cover repeat,
       #e5eeff;
     padding-top: 5px;
   }
@@ -3235,7 +3238,7 @@
   height: auto;
   max-width: 100%;
   overflow: hidden;
-  background: url("/plasmic/katibe/images/image25.svg") top 50% left 50% / cover repeat;
+  background: url("/plasmic/katibe/images/image25.svg");
   min-width: 0;
   padding: 8px 0px;
 }
@@ -4633,7 +4636,7 @@
   height: auto;
   max-width: 100%;
   margin-top: 0px;
-  background: url("/plasmic/katibe/images/image29.svg") top 50% left 50% / cover repeat;
+  background: url("/plasmic/katibe/images/image29.svg");
   min-width: 0;
   padding: 100px 0px 0px;
 }

@@ -10089,7 +10089,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
             </section>
             {(() => {
               try {
-                return $state.userData?.isDoctor;
+                return $state.userData?.isDoctor && false;
               } catch (e) {
                 if (
                   e instanceof TypeError ||

@@ -183,7 +183,7 @@
   min-width: 0;
   padding: 0px;
 }
-.svg__zPr4I {
+.svg {
   object-fit: cover;
   max-width: 100%;
   width: 25px;
@@ -229,7 +229,7 @@
   min-width: 0;
   padding: 0px;
 }
-.button__vghbE:global(.__wab_instance) {
+.button:global(.__wab_instance) {
   max-width: 100%;
 }
 .svg__nf16C {
@@ -243,30 +243,6 @@
   object-fit: cover;
   width: auto;
   height: 1em;
-}
-.button___6Apy5:global(.__wab_instance) {
-  max-width: 100%;
-  display: none;
-}
-.svg___4INlE {
-  position: relative;
-  object-fit: cover;
-  width: auto;
-  height: 1em;
-}
-.svg__swEjg {
-  position: relative;
-  object-fit: cover;
-  width: auto;
-  height: 1em;
-}
-.svg__qi1Yn {
-  object-fit: cover;
-  max-width: 100%;
-  margin-right: 10px;
-  width: 20px;
-  height: 20px;
-  flex-shrink: 0;
 }
 .embedHtml:global(.__wab_instance) {
   max-width: 100%;
