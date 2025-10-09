@@ -774,7 +774,8 @@ function PlasmicPay__RenderFunc(props: {
                                 "&center_id=" +
                                 ($ctx.query.center_id || "") +
                                 "&uuid=" +
-                                Date.now()
+                                Date.now() +
+                                "&check-vpn=true"
                               }`
                             ]
                           };
