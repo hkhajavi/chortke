@@ -135,6 +135,8 @@ function PlasmicPay__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
+  const globalVariants = _useGlobalVariants();
+
   const $globalActions = useGlobalActions?.();
 
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
@@ -693,32 +695,61 @@ function PlasmicPay__RenderFunc(props: {
                     sty.text__dioiY
                   )}
                 >
-                  <React.Fragment>
-                    <span
-                      className={"plasmic_default__all plasmic_default__span"}
-                      style={{ color: "#5B2525" }}
-                    >
-                      {
-                        "\u0644\u0637\u0641\u0627\u064b \u0645\u0637\u0645\u0626\u0646 \u0634\u0648\u06cc\u062f \u06a9\u0647"
-                      }
-                    </span>
-                    <React.Fragment> </React.Fragment>
-                    <span
-                      className={"plasmic_default__all plasmic_default__span"}
-                      style={{ fontWeight: 700 }}
-                    >
-                      {"VPN/\u0641\u06cc\u0644\u062a\u0631\u0634\u06a9\u0646"}
-                    </span>
-                    <React.Fragment>{""}</React.Fragment>
-                    <span
-                      className={"plasmic_default__all plasmic_default__span"}
-                      style={{ color: "#000000" }}
-                    >
-                      {
-                        " \u0634\u0645\u0627 \u062e\u0627\u0645\u0648\u0634 \u0627\u0633\u062a \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u0632\u06cc\u0631 \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f:"
-                      }
-                    </span>
-                  </React.Fragment>
+                  {hasVariant(globalVariants, "screen", "mobileOnly") ? (
+                    <React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ color: "#5B2525" }}
+                      >
+                        {
+                          "\u0644\u0637\u0641\u0627\u064b \u0645\u0637\u0645\u0626\u0646 \u0634\u0648\u06cc\u062f \u06a9\u0647 "
+                        }
+                      </span>
+                      <React.Fragment>{""}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"\u0641\u06cc\u0644\u062a\u0631\u0634\u06a9\u0646"}
+                      </span>
+                      <React.Fragment>{""}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ color: "#000000" }}
+                      >
+                        {
+                          " \u0634\u0645\u0627 \u062e\u0627\u0645\u0648\u0634 \u0627\u0633\u062a\u060c \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u0632\u06cc\u0631 \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f:"
+                        }
+                      </span>
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ color: "#5B2525" }}
+                      >
+                        {
+                          "\u0644\u0637\u0641\u0627\u064b \u0645\u0637\u0645\u0626\u0646 \u0634\u0648\u06cc\u062f \u06a9\u0647"
+                        }
+                      </span>
+                      <React.Fragment> </React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {"VPN/\u0641\u06cc\u0644\u062a\u0631\u0634\u06a9\u0646"}
+                      </span>
+                      <React.Fragment>{""}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ color: "#000000" }}
+                      >
+                        {
+                          " \u0634\u0645\u0627 \u062e\u0627\u0645\u0648\u0634 \u0627\u0633\u062a \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u0632\u06cc\u0631 \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f:"
+                        }
+                      </span>
+                    </React.Fragment>
+                  )}
                 </div>
               </div>
             </div>

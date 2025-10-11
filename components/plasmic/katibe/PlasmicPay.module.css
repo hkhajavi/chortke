@@ -205,6 +205,9 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text__dioiY {
     font-size: var(--token-VrIY9r5RDQZ_);
+    padding-right: 8px;
+    margin-right: 0px;
+    padding-left: 8px;
   }
 }
 .freeBox__mGnIw {
