@@ -320,7 +320,7 @@
     },
     {
       "projectId": "gmeH6XgPaBtkt51HunAo4g",
-      "version": "18.27.0",
+      "version": "18.28.0",
       "dependencies": {},
       "lang": "ts",
       "fileLocks": [
@@ -331,7 +331,7 @@
         },
         {
           "assetId": "gmeH6XgPaBtkt51HunAo4g",
-          "checksum": "ff8060c058b656c8fef5cee8014227a1",
+          "checksum": "4b5f09b218e05c2944d99d725c0d2de2",
           "type": "styleTokensProvider"
         },
         {
@@ -636,7 +636,7 @@
         "h9Dbk9ygddw7UVEq1NNhKi": "8.2.0",
         "gLnoj82AzKVVT7qXiqAbHD": "2.20.0",
         "vqeFwpZFQ6buChy6T9PGwQ": "0.18.0",
-        "gmeH6XgPaBtkt51HunAo4g": "18.27.0",
+        "gmeH6XgPaBtkt51HunAo4g": "18.28.0",
         "aEHVN5v6mfM4eovDsL8Z7d": "0.7.0",
         "kS7YGZfVr6mU43XDQjXELc": "0.24.0",
         "9UibdRruyX43DxnB8Q1QXF": "0.7.0"
@@ -906,12 +906,12 @@
         {
           "type": "renderModule",
           "assetId": "fXYKZYfose53",
-          "checksum": "ee8fb8f15e6913b43a273e82626eb743"
+          "checksum": "b32160e412d353958280be11a067a375"
         },
         {
           "type": "cssRules",
           "assetId": "fXYKZYfose53",
-          "checksum": "ee8fb8f15e6913b43a273e82626eb743"
+          "checksum": "b32160e412d353958280be11a067a375"
         },
         {
           "type": "renderModule",
