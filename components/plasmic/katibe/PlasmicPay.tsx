@@ -988,6 +988,7 @@ function PlasmicPay__RenderFunc(props: {
                           "__wab_instance",
                           sty.paymentsMethod
                         )}
+                        defaultValue={"saman"}
                         label={null}
                         onChange={async (...eventArgs: any) => {
                           generateStateOnChangeProp($state, [
@@ -1069,6 +1070,27 @@ function PlasmicPay__RenderFunc(props: {
                                   )}
                                 >
                                   {
+                                    "\u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a"
+                                  }
+                                </div>
+                              }
+                              value={"saman"}
+                            />
+
+                            <Radio
+                              className={classNames(
+                                "__wab_instance",
+                                sty.radio___0AuDz
+                              )}
+                              label={
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__xIf3E
+                                  )}
+                                >
+                                  {
                                     "\u06a9\u0627\u0631\u062a \u0628\u0647 \u06a9\u0627\u0631\u062a"
                                   }
                                 </div>
@@ -1111,7 +1133,7 @@ function PlasmicPay__RenderFunc(props: {
                                   )}
                                 >
                                   {
-                                    "\u0628\u0631\u062f\u0627\u0634\u062a \u062e\u0648\u062f\u06a9\u0627\u0631 \u0627\u0632 \u062d\u0633\u0627\u0628"
+                                    "\u067e\u0631\u062f\u0627\u062e\u062a \u062e\u0648\u062f\u06a9\u0627\u0631"
                                   }
                                 </div>
                               }
@@ -1165,9 +1187,7 @@ function PlasmicPay__RenderFunc(props: {
               <div className={classNames(projectcss.all, sty.freeBox__j1DeF)}>
                 <div className={classNames(projectcss.all, sty.freeBox__x9B2M)}>
                   <Button
-                    children2={
-                      "\u0627\u0631\u0633\u0627\u0644 \u0645\u062c\u062f\u062f \u0628\u0647 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a"
-                    }
+                    children2={"   \u067e\u0631\u062f\u0627\u062e\u062a  "}
                     className={classNames("__wab_instance", sty.button__wuyor)}
                     isDisabled={(() => {
                       try {
@@ -1217,6 +1237,44 @@ function PlasmicPay__RenderFunc(props: {
                         typeof $steps["updateWaiting"].then === "function"
                       ) {
                         $steps["updateWaiting"] = await $steps["updateWaiting"];
+                      }
+
+                      $steps["suggest"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                "POST",
+                                "https://apigw.paziresh24.com/katibe/v1/payments/method/suggest",
+                                (() => {
+                                  try {
+                                    return {
+                                      method: $state.paymentsMethod.value
+                                    };
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()
+                              ]
+                            };
+                            return $globalActions["Fragment.apiRequest"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
+                      if (
+                        $steps["suggest"] != null &&
+                        typeof $steps["suggest"] === "object" &&
+                        typeof $steps["suggest"].then === "function"
+                      ) {
+                        $steps["suggest"] = await $steps["suggest"];
                       }
 
                       $steps["redirectUser"] = true

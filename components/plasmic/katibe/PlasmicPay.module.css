@@ -402,10 +402,24 @@
 }
 .text__fd1Xz {
   width: 100%;
+  white-space: pre;
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__fd1Xz {
+    white-space: pre;
+  }
+}
+.radio___0AuDz:global(.__wab_instance):global(.__wab_instance) {
+  position: relative;
+}
+.text__xIf3E {
+  width: 100%;
+  white-space: pre;
+  min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__xIf3E {
     white-space: pre;
   }
 }
