@@ -1007,7 +1007,7 @@ function PlasmicPay__RenderFunc(props: {
                           (async val => {
                             const $steps = {};
 
-                            $steps["invokeGlobalAction"] = true
+                            $steps["invokeGlobalAction"] = false
                               ? (() => {
                                   const actionArgs = {
                                     args: [
@@ -1189,19 +1189,6 @@ function PlasmicPay__RenderFunc(props: {
                   <Button
                     children2={"   \u067e\u0631\u062f\u0627\u062e\u062a  "}
                     className={classNames("__wab_instance", sty.button__wuyor)}
-                    isDisabled={(() => {
-                      try {
-                        return $state.waiting;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return [];
-                        }
-                        throw e;
-                      }
-                    })()}
                     onClick={async event => {
                       const $steps = {};
 
@@ -1245,6 +1232,7 @@ function PlasmicPay__RenderFunc(props: {
                               args: [
                                 "POST",
                                 "https://apigw.paziresh24.com/katibe/v1/payments/method/suggest",
+                                undefined,
                                 (() => {
                                   try {
                                     return {
