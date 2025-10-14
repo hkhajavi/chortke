@@ -434,6 +434,7 @@
 }
 .text__wCfBy {
   width: 100%;
+  white-space: pre;
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
