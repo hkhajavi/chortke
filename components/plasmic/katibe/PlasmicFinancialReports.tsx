@@ -91,6 +91,8 @@ export type PlasmicFinancialReports__OverridesType = {
   apiGetBookCount?: Flex__<typeof ApiRequest>;
   apiGetIncome?: Flex__<typeof ApiRequest>;
   apiGetbalance?: Flex__<typeof ApiRequest>;
+  apiGetBalanceOnlineVisit?: Flex__<typeof ApiRequest>;
+  apiGetTotalOnlineVisit?: Flex__<typeof ApiRequest>;
   apiGetTotal?: Flex__<typeof ApiRequest>;
   freeBox?: Flex__<"div">;
   bookcount?: Flex__<"div">;
@@ -241,6 +243,54 @@ function PlasmicFinancialReports__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
 
         refName: "apiGetTotal"
+      },
+      {
+        path: "apiGetBalanceOnlineVisit.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "apiGetBalanceOnlineVisit"
+      },
+      {
+        path: "apiGetBalanceOnlineVisit.error",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "apiGetBalanceOnlineVisit"
+      },
+      {
+        path: "apiGetBalanceOnlineVisit.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "apiGetBalanceOnlineVisit"
+      },
+      {
+        path: "apiGetTotalOnlineVisit.data",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "apiGetTotalOnlineVisit"
+      },
+      {
+        path: "apiGetTotalOnlineVisit.error",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "apiGetTotalOnlineVisit"
+      },
+      {
+        path: "apiGetTotalOnlineVisit.loading",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+
+        refName: "apiGetTotalOnlineVisit"
       }
     ],
     [$props, $ctx, $refs]
@@ -457,6 +507,136 @@ function PlasmicFinancialReports__RenderFunc(props: {
       />
 
       <ApiRequest
+        data-plasmic-name={"apiGetBalanceOnlineVisit"}
+        data-plasmic-override={overrides.apiGetBalanceOnlineVisit}
+        className={classNames("__wab_instance", sty.apiGetBalanceOnlineVisit)}
+        errorDisplay={
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__kEb08
+            )}
+          >
+            {"Error fetching data"}
+          </div>
+        }
+        loadingDisplay={
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__eu4V
+            )}
+          >
+            {"Loading..."}
+          </div>
+        }
+        method={"GET"}
+        onError={async (...eventArgs: any) => {
+          generateStateOnChangeProp($state, [
+            "apiGetBalanceOnlineVisit",
+            "error"
+          ]).apply(null, eventArgs);
+        }}
+        onLoading={async (...eventArgs: any) => {
+          generateStateOnChangeProp($state, [
+            "apiGetBalanceOnlineVisit",
+            "loading"
+          ]).apply(null, eventArgs);
+        }}
+        onSuccess={async (...eventArgs: any) => {
+          generateStateOnChangeProp($state, [
+            "apiGetBalanceOnlineVisit",
+            "data"
+          ]).apply(null, eventArgs);
+        }}
+        ref={ref => {
+          $refs["apiGetBalanceOnlineVisit"] = ref;
+        }}
+        url={(() => {
+          try {
+            return $props.centerId === "5532"
+              ? `https://apigw.paziresh24.com/katibe/v1/transactions/balance/p24`
+              : "";
+          } catch (e) {
+            if (
+              e instanceof TypeError ||
+              e?.plasmicType === "PlasmicUndefinedDataError"
+            ) {
+              return undefined;
+            }
+            throw e;
+          }
+        })()}
+      />
+
+      <ApiRequest
+        data-plasmic-name={"apiGetTotalOnlineVisit"}
+        data-plasmic-override={overrides.apiGetTotalOnlineVisit}
+        className={classNames("__wab_instance", sty.apiGetTotalOnlineVisit)}
+        errorDisplay={
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__n9Auy
+            )}
+          >
+            {"Error fetching data"}
+          </div>
+        }
+        loadingDisplay={
+          <div
+            className={classNames(
+              projectcss.all,
+              projectcss.__wab_text,
+              sty.text__mvrIb
+            )}
+          >
+            {"Loading..."}
+          </div>
+        }
+        method={"GET"}
+        onError={async (...eventArgs: any) => {
+          generateStateOnChangeProp($state, [
+            "apiGetTotalOnlineVisit",
+            "error"
+          ]).apply(null, eventArgs);
+        }}
+        onLoading={async (...eventArgs: any) => {
+          generateStateOnChangeProp($state, [
+            "apiGetTotalOnlineVisit",
+            "loading"
+          ]).apply(null, eventArgs);
+        }}
+        onSuccess={async (...eventArgs: any) => {
+          generateStateOnChangeProp($state, [
+            "apiGetTotalOnlineVisit",
+            "data"
+          ]).apply(null, eventArgs);
+        }}
+        ref={ref => {
+          $refs["apiGetTotalOnlineVisit"] = ref;
+        }}
+        url={(() => {
+          try {
+            return $props.centerId === "5532"
+              ? `https://apigw.paziresh24.com/katibe/v1/transactions/report/p24`
+              : "";
+          } catch (e) {
+            if (
+              e instanceof TypeError ||
+              e?.plasmicType === "PlasmicUndefinedDataError"
+            ) {
+              return undefined;
+            }
+            throw e;
+          }
+        })()}
+      />
+
+      <ApiRequest
         data-plasmic-name={"apiGetTotal"}
         data-plasmic-override={overrides.apiGetTotal}
         className={classNames("__wab_instance", sty.apiGetTotal)}
@@ -652,7 +832,10 @@ function PlasmicFinancialReports__RenderFunc(props: {
           </div>
           {(() => {
             try {
-              return $state.apiGetbalance.data.data.balance !== undefined;
+              return (
+                $state.apiGetbalance.data.data.balance !== undefined &&
+                $props.centerId != 5532
+              );
             } catch (e) {
               if (
                 e instanceof TypeError ||
@@ -691,6 +874,50 @@ function PlasmicFinancialReports__RenderFunc(props: {
               </React.Fragment>
             </div>
           ) : null}
+          {(() => {
+            try {
+              return (
+                $state.apiGetbalance.data.data.balance !== undefined &&
+                $props.centerId == 5532
+              );
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return false;
+              }
+              throw e;
+            }
+          })() ? (
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__v2UJf
+              )}
+            >
+              <React.Fragment>
+                {(() => {
+                  try {
+                    return (
+                      new Intl.NumberFormat("fa-IR").format(
+                        $state.apiGetBalanceOnlineVisit.data.data.balance / 10
+                      ) + " تومان"
+                    );
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "\u0645\u0648\u062c\u0648\u062f\u06cc";
+                    }
+                    throw e;
+                  }
+                })()}
+              </React.Fragment>
+            </div>
+          ) : null}
         </div>
         <div
           data-plasmic-name={"totalincome"}
@@ -708,33 +935,88 @@ function PlasmicFinancialReports__RenderFunc(props: {
               "\u06a9\u0644 \u062f\u0631\u0627\u0645\u062f \u0627\u0632 \u0634\u0631\u0648\u0639 \u0647\u0645\u06a9\u0627\u0631\u06cc"
             }
           </div>
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__xv0Oz
-            )}
-          >
-            <React.Fragment>
-              {(() => {
-                try {
-                  return $state.apiGetTotal.error === null
-                    ? new Intl.NumberFormat("fa-IR").format(
-                        $state.apiGetTotal.data.data.deposit / 10
-                      ) + " تومان"
-                    : 0 + " تومان";
-                } catch (e) {
-                  if (
-                    e instanceof TypeError ||
-                    e?.plasmicType === "PlasmicUndefinedDataError"
-                  ) {
-                    return "\u06a9\u0644 \u062f\u0631\u0627\u0645\u062f \u0627\u0632 \u0634\u0631\u0648\u0639 \u0647\u0645\u06a9\u0627\u0631\u06cc";
+          {(() => {
+            try {
+              return $props.centerId != 5532;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return false;
+              }
+              throw e;
+            }
+          })() ? (
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text__xv0Oz
+              )}
+            >
+              <React.Fragment>
+                {(() => {
+                  try {
+                    return $state.apiGetTotal.error === null
+                      ? new Intl.NumberFormat("fa-IR").format(
+                          $state.apiGetTotal.data.data.deposit / 10
+                        ) + " تومان"
+                      : 0 + " تومان";
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "\u06a9\u0644 \u062f\u0631\u0627\u0645\u062f \u0627\u0632 \u0634\u0631\u0648\u0639 \u0647\u0645\u06a9\u0627\u0631\u06cc";
+                    }
+                    throw e;
                   }
-                  throw e;
-                }
-              })()}
-            </React.Fragment>
-          </div>
+                })()}
+              </React.Fragment>
+            </div>
+          ) : null}
+          {(() => {
+            try {
+              return $props.centerId == 5532;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return false;
+              }
+              throw e;
+            }
+          })() ? (
+            <div
+              className={classNames(
+                projectcss.all,
+                projectcss.__wab_text,
+                sty.text___6MFma
+              )}
+            >
+              <React.Fragment>
+                {(() => {
+                  try {
+                    return $state.apiGetTotalOnlineVisit.error === null
+                      ? new Intl.NumberFormat("fa-IR").format(
+                          $state.apiGetTotalOnlineVisit.data.data.deposit / 10
+                        ) + " تومان"
+                      : 0 + " تومان";
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return "\u06a9\u0644 \u062f\u0631\u0627\u0645\u062f \u0627\u0632 \u0634\u0631\u0648\u0639 \u0647\u0645\u06a9\u0627\u0631\u06cc";
+                    }
+                    throw e;
+                  }
+                })()}
+              </React.Fragment>
+            </div>
+          ) : null}
         </div>
       </div>
     </div>
@@ -747,6 +1029,8 @@ const PlasmicDescendants = {
     "apiGetBookCount",
     "apiGetIncome",
     "apiGetbalance",
+    "apiGetBalanceOnlineVisit",
+    "apiGetTotalOnlineVisit",
     "apiGetTotal",
     "freeBox",
     "bookcount",
@@ -757,6 +1041,8 @@ const PlasmicDescendants = {
   apiGetBookCount: ["apiGetBookCount"],
   apiGetIncome: ["apiGetIncome"],
   apiGetbalance: ["apiGetbalance"],
+  apiGetBalanceOnlineVisit: ["apiGetBalanceOnlineVisit"],
+  apiGetTotalOnlineVisit: ["apiGetTotalOnlineVisit"],
   apiGetTotal: ["apiGetTotal"],
   freeBox: ["freeBox", "bookcount", "income", "balance", "totalincome"],
   bookcount: ["bookcount"],
@@ -772,6 +1058,8 @@ type NodeDefaultElementType = {
   apiGetBookCount: typeof ApiRequest;
   apiGetIncome: typeof ApiRequest;
   apiGetbalance: typeof ApiRequest;
+  apiGetBalanceOnlineVisit: typeof ApiRequest;
+  apiGetTotalOnlineVisit: typeof ApiRequest;
   apiGetTotal: typeof ApiRequest;
   freeBox: "div";
   bookcount: "div";
@@ -845,6 +1133,8 @@ export const PlasmicFinancialReports = Object.assign(
     apiGetBookCount: makeNodeComponent("apiGetBookCount"),
     apiGetIncome: makeNodeComponent("apiGetIncome"),
     apiGetbalance: makeNodeComponent("apiGetbalance"),
+    apiGetBalanceOnlineVisit: makeNodeComponent("apiGetBalanceOnlineVisit"),
+    apiGetTotalOnlineVisit: makeNodeComponent("apiGetTotalOnlineVisit"),
     apiGetTotal: makeNodeComponent("apiGetTotal"),
     freeBox: makeNodeComponent("freeBox"),
     bookcount: makeNodeComponent("bookcount"),

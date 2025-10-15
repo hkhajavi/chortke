@@ -60,6 +60,46 @@
   min-width: 0;
   display: none;
 }
+.apiGetBalanceOnlineVisit:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.text__eu4V {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  display: none;
+}
+.text__kEb08 {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  display: none;
+}
+.apiGetTotalOnlineVisit:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.text__mvrIb {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  display: none;
+}
+.text__n9Auy {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  display: none;
+}
 .apiGetTotal:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
@@ -221,6 +261,15 @@
   font-weight: 600;
   min-width: 0;
 }
+.text__v2UJf {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: 0;
+}
 .totalincome {
   display: flex;
   flex-direction: column;
@@ -253,6 +302,15 @@
   min-width: 0;
 }
 .text__xv0Oz {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  min-width: 0;
+}
+.text___6MFma {
   position: relative;
   width: 100%;
   height: auto;
