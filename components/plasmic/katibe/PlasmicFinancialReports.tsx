@@ -590,7 +590,9 @@ function PlasmicFinancialReports__RenderFunc(props: {
               sty.text___0DqjS
             )}
           >
-            {"\u062f\u0631\u0622\u0645\u062f \u0627\u0645\u0631\u0648\u0632"}
+            {
+              "\u062f\u0631\u0622\u0645\u062f \u0627\u0645\u0631\u0648\u0632 \u062a\u0627 \u0627\u06cc\u0646 \u0644\u062d\u0638\u0647"
+            }
           </div>
           {(() => {
             try {

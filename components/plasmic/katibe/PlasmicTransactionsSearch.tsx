@@ -2710,13 +2710,16 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                   hasVariant(globalVariants, "screen", "mobileOnly")
                     ? (() => {
                         try {
-                          return !$state.waiting;
+                          return (
+                            !$state.waiting &&
+                            !$ctx.GrowthBook.features["financial-report"]
+                          );
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
                             e?.plasmicType === "PlasmicUndefinedDataError"
                           ) {
-                            return true;
+                            return false;
                           }
                           throw e;
                         }
