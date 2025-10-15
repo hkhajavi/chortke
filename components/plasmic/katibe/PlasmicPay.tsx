@@ -1236,7 +1236,8 @@ function PlasmicPay__RenderFunc(props: {
                                 (() => {
                                   try {
                                     return {
-                                      method: $state.paymentsMethod.value
+                                      method: $state.paymentsMethod.value,
+                                      center_id: $ctx.query.center_id || ""
                                     };
                                   } catch (e) {
                                     if (
