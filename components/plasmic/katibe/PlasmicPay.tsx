@@ -92,6 +92,7 @@ export type PlasmicPay__OverridesType = {
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
   svg?: Flex__<"svg">;
   paymentsMethod?: Flex__<typeof RadioGroup>;
+  btnPayMethod?: Flex__<typeof Button>;
   embedHtml?: Flex__<typeof Embed>;
 };
 
@@ -1186,8 +1187,23 @@ function PlasmicPay__RenderFunc(props: {
               <div className={classNames(projectcss.all, sty.freeBox__j1DeF)}>
                 <div className={classNames(projectcss.all, sty.freeBox__x9B2M)}>
                   <Button
+                    data-plasmic-name={"btnPayMethod"}
+                    data-plasmic-override={overrides.btnPayMethod}
                     children2={"   \u067e\u0631\u062f\u0627\u062e\u062a  "}
-                    className={classNames("__wab_instance", sty.button__wuyor)}
+                    className={classNames("__wab_instance", sty.btnPayMethod)}
+                    isDisabled={(() => {
+                      try {
+                        return $state.waiting;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return [];
+                        }
+                        throw e;
+                      }
+                    })()}
                     onClick={async event => {
                       const $steps = {};
 
@@ -1212,6 +1228,41 @@ function PlasmicPay__RenderFunc(props: {
                       ) {
                         $steps["alertPaymentMethod"] =
                           await $steps["alertPaymentMethod"];
+                      }
+
+                      $steps["updateWaiting"] =
+                        $state.paymentsMethod.value != undefined
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["waiting"]
+                                },
+                                operation: 0,
+                                value: true
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                      if (
+                        $steps["updateWaiting"] != null &&
+                        typeof $steps["updateWaiting"] === "object" &&
+                        typeof $steps["updateWaiting"].then === "function"
+                      ) {
+                        $steps["updateWaiting"] = await $steps["updateWaiting"];
                       }
 
                       $steps["suggest"] =
@@ -1301,6 +1352,26 @@ function PlasmicPay__RenderFunc(props: {
                         typeof $steps["redirectUser"].then === "function"
                       ) {
                         $steps["redirectUser"] = await $steps["redirectUser"];
+                      }
+
+                      $steps["runCode"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              customFunction: async () => {
+                                return undefined;
+                              }
+                            };
+                            return (({ customFunction }) => {
+                              return customFunction();
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
+                      if (
+                        $steps["runCode"] != null &&
+                        typeof $steps["runCode"] === "object" &&
+                        typeof $steps["runCode"].then === "function"
+                      ) {
+                        $steps["runCode"] = await $steps["runCode"];
                       }
                     }}
                     size={"compact"}
@@ -1455,10 +1526,18 @@ function PlasmicPay__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  pay: ["pay", "sideEffectPageLoad", "svg", "paymentsMethod", "embedHtml"],
+  pay: [
+    "pay",
+    "sideEffectPageLoad",
+    "svg",
+    "paymentsMethod",
+    "btnPayMethod",
+    "embedHtml"
+  ],
   sideEffectPageLoad: ["sideEffectPageLoad"],
   svg: ["svg"],
   paymentsMethod: ["paymentsMethod"],
+  btnPayMethod: ["btnPayMethod"],
   embedHtml: ["embedHtml"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -1469,6 +1548,7 @@ type NodeDefaultElementType = {
   sideEffectPageLoad: typeof SideEffect;
   svg: "svg";
   paymentsMethod: typeof RadioGroup;
+  btnPayMethod: typeof Button;
   embedHtml: typeof Embed;
 };
 
@@ -1537,6 +1617,7 @@ export const PlasmicPay = Object.assign(
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
     svg: makeNodeComponent("svg"),
     paymentsMethod: makeNodeComponent("paymentsMethod"),
+    btnPayMethod: makeNodeComponent("btnPayMethod"),
     embedHtml: makeNodeComponent("embedHtml"),
 
     // Metadata about props expected for PlasmicPay

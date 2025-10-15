@@ -530,7 +530,7 @@
   min-width: 0;
   padding: 0px;
 }
-.button__wuyor:global(.__wab_instance) {
+.btnPayMethod:global(.__wab_instance) {
   max-width: 100%;
 }
 .svg__ofySl {
