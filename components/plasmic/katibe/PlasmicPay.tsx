@@ -988,7 +988,6 @@ function PlasmicPay__RenderFunc(props: {
                           "__wab_instance",
                           sty.paymentsMethod
                         )}
-                        defaultValue={"saman"}
                         label={null}
                         onChange={async (...eventArgs: any) => {
                           generateStateOnChangeProp($state, [
@@ -1192,72 +1191,61 @@ function PlasmicPay__RenderFunc(props: {
                     onClick={async event => {
                       const $steps = {};
 
-                      $steps["updateWaiting"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["waiting"]
-                              },
-                              operation: 0,
-                              value: true
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
+                      $steps["alertPaymentMethod"] =
+                        $state.paymentsMethod.value == undefined
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  "error",
+                                  "\u0644\u0637\u0641\u0627 \u06cc\u06a9 \u0631\u0648\u0634 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f."
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.showToast"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
                       if (
-                        $steps["updateWaiting"] != null &&
-                        typeof $steps["updateWaiting"] === "object" &&
-                        typeof $steps["updateWaiting"].then === "function"
+                        $steps["alertPaymentMethod"] != null &&
+                        typeof $steps["alertPaymentMethod"] === "object" &&
+                        typeof $steps["alertPaymentMethod"].then === "function"
                       ) {
-                        $steps["updateWaiting"] = await $steps["updateWaiting"];
+                        $steps["alertPaymentMethod"] =
+                          await $steps["alertPaymentMethod"];
                       }
 
-                      $steps["suggest"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              args: [
-                                "POST",
-                                "https://apigw.paziresh24.com/katibe/v1/payments/method/suggest",
-                                undefined,
-                                (() => {
-                                  try {
-                                    return {
-                                      method: $state.paymentsMethod.value,
-                                      center_id: $ctx.query.center_id || ""
-                                    };
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
+                      $steps["suggest"] =
+                        $state.paymentsMethod.value != undefined
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  "POST",
+                                  "https://apigw.paziresh24.com/katibe/v1/payments/method/suggest",
+                                  undefined,
+                                  (() => {
+                                    try {
+                                      return {
+                                        method: $state.paymentsMethod.value,
+                                        center_id: $ctx.query.center_id || ""
+                                      };
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
                                     }
-                                    throw e;
-                                  }
-                                })()
-                              ]
-                            };
-                            return $globalActions["Fragment.apiRequest"]?.apply(
-                              null,
-                              [...actionArgs.args]
-                            );
-                          })()
-                        : undefined;
+                                  })()
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.apiRequest"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
                       if (
                         $steps["suggest"] != null &&
                         typeof $steps["suggest"] === "object" &&
@@ -1266,87 +1254,53 @@ function PlasmicPay__RenderFunc(props: {
                         $steps["suggest"] = await $steps["suggest"];
                       }
 
-                      $steps["redirectUser"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              args: [
-                                (() => {
-                                  try {
-                                    return (
-                                      "https://apigw.paziresh24.com/katibe/v1/check-balance-or-pay?amount=" +
-                                      ($ctx.query.amount || 0) +
-                                      "&returnlink=" +
-                                      ($ctx.query.returnlink || "") +
-                                      "&cancel_returnlink=" +
-                                      ($ctx.query.cancel_returnlink || "") +
-                                      "&receipt_id=" +
-                                      ($ctx.query.receipt_id || "") +
-                                      "&center_id=" +
-                                      ($ctx.query.center_id || "") +
-                                      "&uuid=" +
-                                      Date.now() +
-                                      "&check-vpn=true"
-                                    );
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
+                      $steps["redirectUser"] =
+                        $state.paymentsMethod.value != undefined
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  (() => {
+                                    try {
+                                      return (
+                                        "https://apigw.paziresh24.com/katibe/v1/check-balance-or-pay?amount=" +
+                                        ($ctx.query.amount || 0) +
+                                        "&returnlink=" +
+                                        ($ctx.query.returnlink || "") +
+                                        "&cancel_returnlink=" +
+                                        ($ctx.query.cancel_returnlink || "") +
+                                        "&receipt_id=" +
+                                        ($ctx.query.receipt_id || "") +
+                                        "&center_id=" +
+                                        ($ctx.query.center_id || "") +
+                                        "&uuid=" +
+                                        Date.now() +
+                                        "&check-vpn=true"
+                                      );
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
                                     }
-                                    throw e;
-                                  }
-                                })()
-                              ]
-                            };
-                            return $globalActions["Hamdast.openLink"]?.apply(
-                              null,
-                              [...actionArgs.args]
-                            );
-                          })()
-                        : undefined;
+                                  })()
+                                ]
+                              };
+                              return $globalActions["Hamdast.openLink"]?.apply(
+                                null,
+                                [...actionArgs.args]
+                              );
+                            })()
+                          : undefined;
                       if (
                         $steps["redirectUser"] != null &&
                         typeof $steps["redirectUser"] === "object" &&
                         typeof $steps["redirectUser"].then === "function"
                       ) {
                         $steps["redirectUser"] = await $steps["redirectUser"];
-                      }
-
-                      $steps["updateWaiting2"] = false
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["waiting"]
-                              },
-                              operation: 0,
-                              value: false
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updateWaiting2"] != null &&
-                        typeof $steps["updateWaiting2"] === "object" &&
-                        typeof $steps["updateWaiting2"].then === "function"
-                      ) {
-                        $steps["updateWaiting2"] =
-                          await $steps["updateWaiting2"];
                       }
                     }}
                     size={"compact"}
