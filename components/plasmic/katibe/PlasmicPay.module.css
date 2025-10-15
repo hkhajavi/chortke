@@ -400,6 +400,11 @@
 .radio__jX9Ds:global(.__wab_instance):global(.__wab_instance) {
   position: relative;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .radio__jX9Ds:global(.__wab_instance):global(.__wab_instance) {
+    margin-top: 8px;
+  }
+}
 .text__fd1Xz {
   width: 100%;
   white-space: pre;
@@ -413,6 +418,11 @@
 .radio___0AuDz:global(.__wab_instance):global(.__wab_instance) {
   position: relative;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .radio___0AuDz:global(.__wab_instance):global(.__wab_instance) {
+    margin-top: 8px;
+  }
+}
 .text__xIf3E {
   width: 100%;
   white-space: pre;
@@ -425,6 +435,11 @@
 }
 .radio__fh8Uu:global(.__wab_instance):global(.__wab_instance) {
   position: relative;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .radio__fh8Uu:global(.__wab_instance):global(.__wab_instance) {
+    margin-top: 8px;
+  }
 }
 .text__dzhSk {
   width: 100%;
@@ -443,12 +458,13 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .radio__bKkAp:global(.__wab_instance):global(.__wab_instance) {
     width: 100%;
+    margin-top: 8px;
     min-width: 0;
   }
 }
 .text__wCfBy {
   width: 100%;
-  white-space: pre;
+  white-space: pre-wrap;
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
@@ -461,6 +477,11 @@
 .radio___6Q1W7:global(.__wab_instance):global(.__wab_instance) {
   position: relative;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .radio___6Q1W7:global(.__wab_instance):global(.__wab_instance) {
+    margin-top: 8px;
+  }
+}
 .text__n3LPy {
   width: 100%;
   min-width: 0;
@@ -472,6 +493,11 @@
 }
 .radio__mpWa8:global(.__wab_instance):global(.__wab_instance) {
   position: relative;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .radio__mpWa8:global(.__wab_instance):global(.__wab_instance) {
+    margin-top: 8px;
+  }
 }
 .text__qhL0P {
   width: 100%;

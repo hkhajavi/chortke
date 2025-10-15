@@ -1133,7 +1133,7 @@ function PlasmicPay__RenderFunc(props: {
                                   )}
                                 >
                                   {
-                                    "\u067e\u0631\u062f\u0627\u062e\u062a \u062e\u0648\u062f\u06a9\u0627\u0631"
+                                    "\u0628\u0631\u062f\u0627\u0634\u062a \u0645\u0633\u062a\u0642\u06cc\u0645 \u0627\u0632 \u062d\u0633\u0627\u0628"
                                   }
                                 </div>
                               }
