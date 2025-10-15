@@ -417,6 +417,23 @@
     white-space: pre;
   }
 }
+.radio__mpWa8:global(.__wab_instance):global(.__wab_instance) {
+  position: relative;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .radio__mpWa8:global(.__wab_instance):global(.__wab_instance) {
+    margin-top: 8px;
+  }
+}
+.text__qhL0P {
+  width: 100%;
+  min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__qhL0P {
+    white-space: pre;
+  }
+}
 .radio___0AuDz:global(.__wab_instance):global(.__wab_instance) {
   position: relative;
 }
@@ -452,30 +469,6 @@
     white-space: pre;
   }
 }
-.radio__bKkAp:global(.__wab_instance):global(.__wab_instance) {
-  position: relative;
-  width: 100%;
-  min-width: 0;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .radio__bKkAp:global(.__wab_instance):global(.__wab_instance) {
-    width: 100%;
-    margin-top: 8px;
-    min-width: 0;
-  }
-}
-.text__wCfBy {
-  width: 100%;
-  white-space: pre-wrap;
-  min-width: 0;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .text__wCfBy {
-    width: 100%;
-    white-space: pre;
-    min-width: 0;
-  }
-}
 .radio___6Q1W7:global(.__wab_instance):global(.__wab_instance) {
   position: relative;
 }
@@ -493,21 +486,29 @@
     white-space: pre;
   }
 }
-.radio__mpWa8:global(.__wab_instance):global(.__wab_instance) {
+.radio__bKkAp:global(.__wab_instance):global(.__wab_instance) {
   position: relative;
-}
-@media (min-width: 0px) and (max-width: 768px) {
-  .radio__mpWa8:global(.__wab_instance):global(.__wab_instance) {
-    margin-top: 8px;
-  }
-}
-.text__qhL0P {
   width: 100%;
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .text__qhL0P {
+  .radio__bKkAp:global(.__wab_instance):global(.__wab_instance) {
+    width: 100%;
+    margin-top: 8px;
+    min-width: 0;
+  }
+}
+.text__wCfBy {
+  width: 100%;
+  white-space: pre;
+  user-select: none;
+  min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__wCfBy {
+    width: 100%;
     white-space: pre;
+    min-width: 0;
   }
 }
 .freeBox__j1DeF {

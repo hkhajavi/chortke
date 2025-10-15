@@ -1081,6 +1081,25 @@ function PlasmicPay__RenderFunc(props: {
                             <Radio
                               className={classNames(
                                 "__wab_instance",
+                                sty.radio__mpWa8
+                              )}
+                              label={
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__qhL0P
+                                  )}
+                                >
+                                  {"\u067e\u064f\u0644"}
+                                </div>
+                              }
+                              value={"pol"}
+                            />
+
+                            <Radio
+                              className={classNames(
+                                "__wab_instance",
                                 sty.radio___0AuDz
                               )}
                               label={
@@ -1123,27 +1142,6 @@ function PlasmicPay__RenderFunc(props: {
                             <Radio
                               className={classNames(
                                 "__wab_instance",
-                                sty.radio__bKkAp
-                              )}
-                              label={
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__wCfBy
-                                  )}
-                                >
-                                  {
-                                    "\u0628\u0631\u062f\u0627\u0634\u062a \u0645\u0633\u062a\u0642\u06cc\u0645 \u0627\u0632 \u062d\u0633\u0627\u0628"
-                                  }
-                                </div>
-                              }
-                              value={"directDebit"}
-                            />
-
-                            <Radio
-                              className={classNames(
-                                "__wab_instance",
                                 sty.radio___6Q1W7
                               )}
                               label={
@@ -1163,20 +1161,22 @@ function PlasmicPay__RenderFunc(props: {
                             <Radio
                               className={classNames(
                                 "__wab_instance",
-                                sty.radio__mpWa8
+                                sty.radio__bKkAp
                               )}
                               label={
                                 <div
                                   className={classNames(
                                     projectcss.all,
                                     projectcss.__wab_text,
-                                    sty.text__qhL0P
+                                    sty.text__wCfBy
                                   )}
                                 >
-                                  {"\u067e\u064f\u0644"}
+                                  {
+                                    "\u0628\u0631\u062f\u0627\u0634\u062a \u0645\u0633\u062a\u0642\u06cc\u0645 \u0627\u0632 \u062d\u0633\u0627\u0628"
+                                  }
                                 </div>
                               }
-                              value={"pol"}
+                              value={"directDebit"}
                             />
                           </div>
                         }
