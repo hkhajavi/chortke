@@ -1305,28 +1305,143 @@ function PlasmicPay__RenderFunc(props: {
                         $steps["suggest"] = await $steps["suggest"];
                       }
 
-                      $steps["redirectUser"] =
-                        $state.paymentsMethod.value != undefined
+                      $steps["redirectUser"] = false
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                (() => {
+                                  try {
+                                    return (
+                                      "https://apigw.paziresh24.com/katibe/v1/check-balance-or-pay?amount=" +
+                                      ($ctx.query.amount || 0) +
+                                      "&returnlink=" +
+                                      ($ctx.query.returnlink || "") +
+                                      "&cancel_returnlink=" +
+                                      ($ctx.query.cancel_returnlink || "") +
+                                      "&receipt_id=" +
+                                      ($ctx.query.receipt_id || "") +
+                                      "&center_id=" +
+                                      ($ctx.query.center_id || "") +
+                                      "&uuid=" +
+                                      Date.now() +
+                                      "&check-vpn=true"
+                                    );
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()
+                              ]
+                            };
+                            return $globalActions["Hamdast.openLink"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
+                      if (
+                        $steps["redirectUser"] != null &&
+                        typeof $steps["redirectUser"] === "object" &&
+                        typeof $steps["redirectUser"].then === "function"
+                      ) {
+                        $steps["redirectUser"] = await $steps["redirectUser"];
+                      }
+
+                      $steps["getPaymentLink"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                "POST",
+                                "https://apigw.paziresh24.com/katibe/v1/paymentlink/p24",
+                                undefined,
+                                (() => {
+                                  try {
+                                    return {
+                                      amount: $ctx.query.amount,
+                                      returnlink: $ctx.query.returnlink || "",
+                                      cancel_returnlink:
+                                        $ctx.query.cancel_returnlink || "",
+                                      receipt_id: $ctx.query.receipt_id || "",
+                                      center_id: $ctx.query.center_id || ""
+                                    };
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()
+                              ]
+                            };
+                            return $globalActions["Fragment.apiRequest"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
+                      if (
+                        $steps["getPaymentLink"] != null &&
+                        typeof $steps["getPaymentLink"] === "object" &&
+                        typeof $steps["getPaymentLink"].then === "function"
+                      ) {
+                        $steps["getPaymentLink"] =
+                          await $steps["getPaymentLink"];
+                      }
+
+                      $steps["updatePaymentLink"] =
+                        $steps.getPaymentLink.status == 200
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["paymentLink"]
+                                },
+                                operation: 0,
+                                value: $steps.getPaymentLink.data.data.link
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                      if (
+                        $steps["updatePaymentLink"] != null &&
+                        typeof $steps["updatePaymentLink"] === "object" &&
+                        typeof $steps["updatePaymentLink"].then === "function"
+                      ) {
+                        $steps["updatePaymentLink"] =
+                          await $steps["updatePaymentLink"];
+                      }
+
+                      $steps["redirectToIpg"] =
+                        $steps.getPaymentLink.status == 200
                           ? (() => {
                               const actionArgs = {
                                 args: [
                                   (() => {
                                     try {
-                                      return (
-                                        "https://apigw.paziresh24.com/katibe/v1/check-balance-or-pay?amount=" +
-                                        ($ctx.query.amount || 0) +
-                                        "&returnlink=" +
-                                        ($ctx.query.returnlink || "") +
-                                        "&cancel_returnlink=" +
-                                        ($ctx.query.cancel_returnlink || "") +
-                                        "&receipt_id=" +
-                                        ($ctx.query.receipt_id || "") +
-                                        "&center_id=" +
-                                        ($ctx.query.center_id || "") +
-                                        "&uuid=" +
-                                        Date.now() +
-                                        "&check-vpn=true"
-                                      );
+                                      return $state.paymentLink;
                                     } catch (e) {
                                       if (
                                         e instanceof TypeError ||
@@ -1347,31 +1462,11 @@ function PlasmicPay__RenderFunc(props: {
                             })()
                           : undefined;
                       if (
-                        $steps["redirectUser"] != null &&
-                        typeof $steps["redirectUser"] === "object" &&
-                        typeof $steps["redirectUser"].then === "function"
+                        $steps["redirectToIpg"] != null &&
+                        typeof $steps["redirectToIpg"] === "object" &&
+                        typeof $steps["redirectToIpg"].then === "function"
                       ) {
-                        $steps["redirectUser"] = await $steps["redirectUser"];
-                      }
-
-                      $steps["runCode"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              customFunction: async () => {
-                                return undefined;
-                              }
-                            };
-                            return (({ customFunction }) => {
-                              return customFunction();
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["runCode"] != null &&
-                        typeof $steps["runCode"] === "object" &&
-                        typeof $steps["runCode"].then === "function"
-                      ) {
-                        $steps["runCode"] = await $steps["runCode"];
+                        $steps["redirectToIpg"] = await $steps["redirectToIpg"];
                       }
                     }}
                     size={"compact"}
