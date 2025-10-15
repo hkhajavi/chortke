@@ -308,6 +308,7 @@
   padding-right: 0px;
   text-align: center;
   font-size: 20px;
+  padding-bottom: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text___71Hat {
@@ -349,6 +350,7 @@
   padding-right: 0px;
   text-align: right;
   font-size: var(--token-5Ye_3XTSaP9X);
+  display: none;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__xy6SS {

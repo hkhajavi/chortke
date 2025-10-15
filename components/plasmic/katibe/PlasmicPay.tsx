@@ -956,7 +956,7 @@ function PlasmicPay__RenderFunc(props: {
                     )}
                   >
                     {
-                      "\u067e\u0631\u062f\u0627\u062e\u062a \u0634\u0645\u0627 \u0646\u0627\u0645\u0648\u0641\u0642 \u0628\u0648\u062f"
+                      "\u0627\u0646\u062a\u062e\u0627\u0628 \u0631\u0648\u0634 \u067e\u0631\u062f\u0627\u062e\u062a:"
                     }
                   </div>
                 </div>
@@ -989,6 +989,7 @@ function PlasmicPay__RenderFunc(props: {
                           "__wab_instance",
                           sty.paymentsMethod
                         )}
+                        defaultValue={"saman"}
                         label={null}
                         onChange={async (...eventArgs: any) => {
                           generateStateOnChangeProp($state, [
