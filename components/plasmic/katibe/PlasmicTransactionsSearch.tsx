@@ -10379,7 +10379,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               sty.link__kvcEd
                             )}
                             component={Link}
-                            href={""}
+                            href={"https://t.me/Aidaardani"}
                             onClick={async event => {
                               const $steps = {};
 
@@ -10402,6 +10402,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               }
                             }}
                             platform={"nextjs"}
+                            target={"_blank"}
                           >
                             {hasVariant(globalVariants, "screen", "mobileOnly")
                               ? "@hojatkhajavi"
@@ -10446,7 +10447,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               sty.link__kvcEd
                             )}
                             component={Link}
-                            href={""}
+                            href={"https://t.me/Aidaardani"}
                             onClick={async event => {
                               const $steps = {};
 
@@ -10469,6 +10470,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               }
                             }}
                             platform={"nextjs"}
+                            target={"_blank"}
                           >
                             {hasVariant(globalVariants, "screen", "mobileOnly")
                               ? "@hojatkhajavi"
