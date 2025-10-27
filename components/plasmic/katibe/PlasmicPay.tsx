@@ -956,7 +956,7 @@ function PlasmicPay__RenderFunc(props: {
                     )}
                   >
                     {
-                      "\u0627\u0646\u062a\u062e\u0627\u0628 \u0631\u0648\u0634 \u067e\u0631\u062f\u0627\u062e\u062a:"
+                      "\u067e\u0631\u062f\u0627\u062e\u062a \u0646\u0627\u0645\u0648\u0641\u0642"
                     }
                   </div>
                 </div>
@@ -973,7 +973,7 @@ function PlasmicPay__RenderFunc(props: {
                     )}
                   >
                     {
-                      " \u0644\u0637\u0641\u0627 \u0631\u0648\u0634 \u062f\u06cc\u06af\u0631\u06cc \u062c\u0647\u062a \u067e\u0631\u062f\u0627\u062e\u062a \u0627\u0646\u062a\u062e\u0627\u0628 \u06a9\u0646\u06cc\u062f:"
+                      "\u06a9\u0627\u0631\u0628\u0631 \u06af\u0631\u0627\u0645\u06cc\u060c \u067e\u0631\u062f\u0627\u062e\u062a \u0634\u0645\u0627 \u0646\u0627\u0645\u0648\u0641\u0642 \u0628\u0648\u062f. \u0644\u0637\u0641\u0627 \u0628\u0627 \u06cc\u06a9\u06cc \u0627\u0632 \u0631\u0648\u0634\u200c\u0647\u0627\u06cc \u0632\u06cc\u0631 \u067e\u0631\u062f\u0627\u062e\u062a \u0646\u0645\u0627\u06cc\u06cc\u062f:"
                     }
                   </div>
                   <div
@@ -1071,7 +1071,7 @@ function PlasmicPay__RenderFunc(props: {
                                   )}
                                 >
                                   {
-                                    "\u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a"
+                                    "\u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0633\u0627\u0645\u0627\u0646"
                                   }
                                 </div>
                               }
@@ -1266,67 +1266,19 @@ function PlasmicPay__RenderFunc(props: {
                         $steps["updateWaiting"] = await $steps["updateWaiting"];
                       }
 
-                      $steps["suggest"] =
-                        $state.paymentsMethod.value != undefined
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "POST",
-                                  "https://apigw.paziresh24.com/katibe/v1/payments/method/suggest",
-                                  undefined,
-                                  (() => {
-                                    try {
-                                      return {
-                                        method: $state.paymentsMethod.value,
-                                        center_id: $ctx.query.center_id || ""
-                                      };
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
-                                    }
-                                  })()
-                                ]
-                              };
-                              return $globalActions[
-                                "Fragment.apiRequest"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
-                      if (
-                        $steps["suggest"] != null &&
-                        typeof $steps["suggest"] === "object" &&
-                        typeof $steps["suggest"].then === "function"
-                      ) {
-                        $steps["suggest"] = await $steps["suggest"];
-                      }
-
-                      $steps["redirectUser"] = false
+                      $steps["suggest"] = false
                         ? (() => {
                             const actionArgs = {
                               args: [
+                                "POST",
+                                "https://apigw.paziresh24.com/katibe/v1/payments/method/suggest",
+                                undefined,
                                 (() => {
                                   try {
-                                    return (
-                                      "https://apigw.paziresh24.com/katibe/v1/check-balance-or-pay?amount=" +
-                                      ($ctx.query.amount || 0) +
-                                      "&returnlink=" +
-                                      ($ctx.query.returnlink || "") +
-                                      "&cancel_returnlink=" +
-                                      ($ctx.query.cancel_returnlink || "") +
-                                      "&receipt_id=" +
-                                      ($ctx.query.receipt_id || "") +
-                                      "&center_id=" +
-                                      ($ctx.query.center_id || "") +
-                                      "&uuid=" +
-                                      Date.now() +
-                                      "&check-vpn=true"
-                                    );
+                                    return {
+                                      method: $state.paymentsMethod.value,
+                                      center_id: $ctx.query.center_id || ""
+                                    };
                                   } catch (e) {
                                     if (
                                       e instanceof TypeError ||
@@ -1340,12 +1292,64 @@ function PlasmicPay__RenderFunc(props: {
                                 })()
                               ]
                             };
-                            return $globalActions["Hamdast.openLink"]?.apply(
+                            return $globalActions["Fragment.apiRequest"]?.apply(
                               null,
                               [...actionArgs.args]
                             );
                           })()
                         : undefined;
+                      if (
+                        $steps["suggest"] != null &&
+                        typeof $steps["suggest"] === "object" &&
+                        typeof $steps["suggest"].then === "function"
+                      ) {
+                        $steps["suggest"] = await $steps["suggest"];
+                      }
+
+                      $steps["redirectUser"] =
+                        $state.paymentsMethod.value != undefined
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  (() => {
+                                    try {
+                                      return (
+                                        "https://apigw.paziresh24.com/katibe/v1/check-balance-or-pay?amount=" +
+                                        ($ctx.query.amount || 0) +
+                                        "&returnlink=" +
+                                        ($ctx.query.returnlink || "") +
+                                        "&cancel_returnlink=" +
+                                        ($ctx.query.cancel_returnlink || "") +
+                                        "&receipt_id=" +
+                                        ($ctx.query.receipt_id || "") +
+                                        "&center_id=" +
+                                        ($ctx.query.center_id || "") +
+                                        "&uuid=" +
+                                        Date.now() +
+                                        "&check-vpn=true" +
+                                        ($state.paymentsMethod.value == "blue"
+                                          ? "&bluepay=true"
+                                          : "")
+                                      );
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()
+                                ]
+                              };
+                              return $globalActions["Hamdast.openLink"]?.apply(
+                                null,
+                                [...actionArgs.args]
+                              );
+                            })()
+                          : undefined;
                       if (
                         $steps["redirectUser"] != null &&
                         typeof $steps["redirectUser"] === "object" &&
@@ -1354,7 +1358,7 @@ function PlasmicPay__RenderFunc(props: {
                         $steps["redirectUser"] = await $steps["redirectUser"];
                       }
 
-                      $steps["getPaymentLink"] = true
+                      $steps["getPaymentLink"] = false
                         ? (() => {
                             const actionArgs = {
                               args: [
@@ -1399,33 +1403,32 @@ function PlasmicPay__RenderFunc(props: {
                           await $steps["getPaymentLink"];
                       }
 
-                      $steps["updatePaymentLink"] =
-                        $steps.getPaymentLink.status == 200
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["paymentLink"]
-                                },
-                                operation: 0,
-                                value: $steps.getPaymentLink.data.data.link
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
+                      $steps["updatePaymentLink"] = false
+                        ? (() => {
+                            const actionArgs = {
+                              variable: {
+                                objRoot: $state,
+                                variablePath: ["paymentLink"]
+                              },
+                              operation: 0,
+                              value: $steps.getPaymentLink.data.data.link
+                            };
+                            return (({
+                              variable,
+                              value,
+                              startIndex,
+                              deleteCount
+                            }) => {
+                              if (!variable) {
+                                return;
+                              }
+                              const { objRoot, variablePath } = variable;
 
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
+                              $stateSet(objRoot, variablePath, value);
+                              return value;
+                            })?.apply(null, [actionArgs]);
+                          })()
+                        : undefined;
                       if (
                         $steps["updatePaymentLink"] != null &&
                         typeof $steps["updatePaymentLink"] === "object" &&
@@ -1435,33 +1438,32 @@ function PlasmicPay__RenderFunc(props: {
                           await $steps["updatePaymentLink"];
                       }
 
-                      $steps["redirectToIpg"] =
-                        $steps.getPaymentLink.status == 200
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  (() => {
-                                    try {
-                                      return $state.paymentLink;
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
+                      $steps["redirectToIpg"] = false
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                (() => {
+                                  try {
+                                    return $state.paymentLink;
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
                                     }
-                                  })()
-                                ]
-                              };
-                              return $globalActions["Hamdast.openLink"]?.apply(
-                                null,
-                                [...actionArgs.args]
-                              );
-                            })()
-                          : undefined;
+                                    throw e;
+                                  }
+                                })()
+                              ]
+                            };
+                            return $globalActions["Hamdast.openLink"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
                       if (
                         $steps["redirectToIpg"] != null &&
                         typeof $steps["redirectToIpg"] === "object" &&
