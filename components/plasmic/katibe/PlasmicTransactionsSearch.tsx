@@ -10386,7 +10386,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               $steps["openLink"] = true
                                 ? (() => {
                                     const actionArgs = {
-                                      args: ["https://t.me/hojatkhajavi"]
+                                      args: ["https://t.me/Aidaardani"]
                                     };
                                     return $globalActions[
                                       "Hamdast.openLink"
@@ -10453,7 +10453,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               $steps["openLink"] = true
                                 ? (() => {
                                     const actionArgs = {
-                                      args: ["https://t.me/hojatkhajavi"]
+                                      args: ["https://t.me/Aidaardani"]
                                     };
                                     return $globalActions[
                                       "Hamdast.openLink"
