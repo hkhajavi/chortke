@@ -10092,7 +10092,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
             </section>
             {(() => {
               try {
-                return $state.userData?.isDoctor && false;
+                return $state.userData?.isDoctor;
               } catch (e) {
                 if (
                   e instanceof TypeError ||
@@ -10405,7 +10405,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                           >
                             {hasVariant(globalVariants, "screen", "mobileOnly")
                               ? "@hojatkhajavi"
-                              : "@hojatkhajavi"}
+                              : "@Aidaardani"}
                           </PlasmicLink__>
                         }
                         <React.Fragment>
@@ -10472,7 +10472,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                           >
                             {hasVariant(globalVariants, "screen", "mobileOnly")
                               ? "@hojatkhajavi"
-                              : "@hojatkhajavi"}
+                              : "@Aidaardani"}
                           </PlasmicLink__>
                         }
                         <React.Fragment>

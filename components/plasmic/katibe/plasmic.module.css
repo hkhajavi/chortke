@@ -56,16 +56,13 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .plasmic_tokens {
     --token-A5TMwx8qQHfL: 12px;
-    --plasmic-token-10-px: var(--token-A5TMwx8qQHfL);
     --token-8bH1BcrDPs2U: 8px;
-    --plasmic-token-8-px: var(--token-8bH1BcrDPs2U);
   }
 }
 
 @media (min-width: 0px) and (max-width: 768px) {
   .plasmic_tokens {
     --token-A5TMwx8qQHfL: 12px;
-    --plasmic-token-10-px: var(--token-A5TMwx8qQHfL);
   }
 }
 
