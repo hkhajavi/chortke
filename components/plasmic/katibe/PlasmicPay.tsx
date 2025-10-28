@@ -1324,7 +1324,7 @@ function PlasmicPay__RenderFunc(props: {
                                         "&center_id=" +
                                         ($ctx.query.center_id || "") +
                                         "&check-vpn=true" +
-                                        "&payment-type=" +
+                                        "&type=" +
                                         $state.paymentsMethod.value +
                                         "&uuid=" +
                                         Date.now()
