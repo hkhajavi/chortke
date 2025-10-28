@@ -10405,7 +10405,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             target={"_blank"}
                           >
                             {hasVariant(globalVariants, "screen", "mobileOnly")
-                              ? "@hojatkhajavi"
+                              ? "@Aidaardani"
                               : "@Aidaardani"}
                           </PlasmicLink__>
                         }
@@ -10473,7 +10473,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             target={"_blank"}
                           >
                             {hasVariant(globalVariants, "screen", "mobileOnly")
-                              ? "@hojatkhajavi"
+                              ? "@Aidaardani"
                               : "@Aidaardani"}
                           </PlasmicLink__>
                         }
