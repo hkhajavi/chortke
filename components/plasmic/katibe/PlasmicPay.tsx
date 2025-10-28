@@ -1323,12 +1323,11 @@ function PlasmicPay__RenderFunc(props: {
                                         ($ctx.query.receipt_id || "") +
                                         "&center_id=" +
                                         ($ctx.query.center_id || "") +
-                                        "&uuid=" +
-                                        Date.now() +
                                         "&check-vpn=true" +
-                                        ($state.paymentsMethod.value == "blue"
-                                          ? "&bluepay=true"
-                                          : "")
+                                        "&payment-type=" +
+                                        $state.paymentsMethod.value +
+                                        "&uuid=" +
+                                        Date.now()
                                       );
                                     } catch (e) {
                                       if (
