@@ -1537,13 +1537,16 @@ function PlasmicPay__RenderFunc(props: {
                                       //"https://www.paziresh24.com/dashboard/appointments/"
                                       //+
 
-                                      globalThis
-                                        .atob($ctx.query.cancel_returnlink)
-                                        .includes("panel.paziresh24.com/factor")
-                                        ? "https://www.paziresh24.com/dashboard/appointments/"
-                                        : globalThis.atob(
+                                      //(globalThis.atob($ctx.query.cancel_returnlink).includes("panel.paziresh24.com/factor"))?
+                                      //"https://www.paziresh24.com/dashboard/appointments/"
+                                      //:
+                                      globalThis.atob(
+                                        $ctx.query.cancel_returnlink
+                                      )
+                                        ? globalThis.atob(
                                             $ctx.query.cancel_returnlink
                                           )
+                                        : "https://www.paziresh24.com"
 
                                       /*
                               ($ctx.query.cancel_returnlink)?
