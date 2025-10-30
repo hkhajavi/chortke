@@ -296,7 +296,7 @@ function PlasmicHomePage__RenderFunc(props: {
                       sty.link__puCeb
                     )}
                     component={Link}
-                    href={"https://t.me/hojatkhajavi"}
+                    href={"tel:+989157405770"}
                     onClick={async event => {
                       const $steps = {};
 
@@ -332,7 +332,7 @@ function PlasmicHomePage__RenderFunc(props: {
                       }
                     }}
                     platform={"nextjs"}
-                    target={"_blank"}
+                    target={undefined}
                   >
                     {"\u062a\u0645\u0627\u0633 \u0628\u0627 \u0645\u0627"}
                   </PlasmicLink__>
