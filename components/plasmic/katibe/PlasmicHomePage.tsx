@@ -1821,7 +1821,7 @@ function PlasmicHomePage__RenderFunc(props: {
                         displayHeight={
                           hasVariant(globalVariants, "screen", "mobileOnly")
                             ? "16px"
-                            : "auto"
+                            : "25px"
                         }
                         displayMaxHeight={"none"}
                         displayMaxWidth={
@@ -1834,7 +1834,7 @@ function PlasmicHomePage__RenderFunc(props: {
                         displayWidth={
                           hasVariant(globalVariants, "screen", "mobileOnly")
                             ? "16px"
-                            : "auto"
+                            : "25px"
                         }
                         loading={"lazy"}
                         src={{
@@ -1943,7 +1943,7 @@ function PlasmicHomePage__RenderFunc(props: {
                         displayHeight={
                           hasVariant(globalVariants, "screen", "mobileOnly")
                             ? "16px"
-                            : "auto"
+                            : "25px"
                         }
                         displayMaxHeight={"none"}
                         displayMaxWidth={
@@ -1956,7 +1956,7 @@ function PlasmicHomePage__RenderFunc(props: {
                         displayWidth={
                           hasVariant(globalVariants, "screen", "mobileOnly")
                             ? "auto"
-                            : "auto"
+                            : "25px"
                         }
                         loading={"lazy"}
                         src={{
@@ -1995,7 +1995,7 @@ function PlasmicHomePage__RenderFunc(props: {
                         displayHeight={
                           hasVariant(globalVariants, "screen", "mobileOnly")
                             ? "16px"
-                            : "auto"
+                            : "25px"
                         }
                         displayMaxHeight={"none"}
                         displayMaxWidth={
@@ -2008,7 +2008,7 @@ function PlasmicHomePage__RenderFunc(props: {
                         displayWidth={
                           hasVariant(globalVariants, "screen", "mobileOnly")
                             ? "16px"
-                            : "auto"
+                            : "25px"
                         }
                         loading={"lazy"}
                         src={{
