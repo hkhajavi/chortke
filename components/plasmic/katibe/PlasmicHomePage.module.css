@@ -91,7 +91,11 @@
     width: 100%;
     max-width: none;
     max-height: 50px;
-    margin-top: 26px;
+    margin-top: 15px;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 10px;
+    row-gap: 0px;
     min-width: 0;
   }
 }
@@ -3188,7 +3192,7 @@
     max-width: 24px;
     width: 16px;
     height: 16px;
-    margin-top: 4px;
+    margin-top: 3px;
     flex-shrink: 0;
   }
 }
