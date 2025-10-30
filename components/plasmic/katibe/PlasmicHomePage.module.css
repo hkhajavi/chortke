@@ -721,7 +721,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .h2__oPWvP {
-    font-size: 20px;
+    font-size: 14px;
     line-height: 200%;
   }
 }
@@ -749,9 +749,10 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__l97Dm {
-    margin-top: 0px;
+    margin-top: 8px;
     width: 100%;
     font-size: var(--token-5Ye_3XTSaP9X);
+    text-align: justify;
     min-width: 0;
   }
 }
@@ -6539,6 +6540,8 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text___7J81L {
     max-width: 600px;
+    font-size: var(--token-5Ye_3XTSaP9X);
+    font-weight: 700;
   }
 }
 .link__y7Z6G {
@@ -6550,8 +6553,14 @@
   height: auto;
   max-width: 100%;
   padding-right: 40px;
-  text-align: right;
+  text-align: justify;
   min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__vw6Id {
+    font-size: var(--token-5Ye_3XTSaP9X);
+    text-align: justify;
+  }
 }
 .freeBox___4BDCr {
   display: flex;
@@ -6594,6 +6603,8 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text__gNeXi {
     max-width: 600px;
+    font-size: var(--token-5Ye_3XTSaP9X);
+    font-weight: 700;
   }
 }
 .link__w1ANc {
@@ -6605,8 +6616,14 @@
   height: auto;
   max-width: 100%;
   padding-right: 40px;
-  text-align: right;
+  text-align: justify;
   min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__fl6R7 {
+    font-size: var(--token-5Ye_3XTSaP9X);
+    text-align: justify;
+  }
 }
 .freeBox__r4Gzk {
   display: flex;
@@ -6649,6 +6666,8 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text__ayJr9 {
     max-width: 600px;
+    font-size: var(--token-5Ye_3XTSaP9X);
+    font-weight: 700;
   }
 }
 .link___5KIu {
@@ -6660,8 +6679,14 @@
   height: auto;
   max-width: 100%;
   padding-right: 40px;
-  text-align: right;
+  text-align: justify;
   min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__nyKLk {
+    font-size: var(--token-5Ye_3XTSaP9X);
+    text-align: justify;
+  }
 }
 .freeBox__ncl3 {
   display: flex;
@@ -6704,6 +6729,8 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text__xnsf {
     max-width: 600px;
+    font-size: var(--token-5Ye_3XTSaP9X);
+    font-weight: 700;
   }
 }
 .link__naQ2E {
@@ -6716,8 +6743,14 @@
   height: auto;
   max-width: 100%;
   padding-right: 40px;
-  text-align: right;
+  text-align: justify;
   min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__ttYtQ {
+    font-size: var(--token-5Ye_3XTSaP9X);
+    text-align: justify;
+  }
 }
 .freeBox___4MQcH {
   display: flex;
@@ -6760,6 +6793,8 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text__uaqzq {
     max-width: 600px;
+    font-size: var(--token-5Ye_3XTSaP9X);
+    font-weight: 700;
   }
 }
 .link__yjJyk {
@@ -6771,8 +6806,14 @@
   height: auto;
   max-width: 100%;
   padding-right: 40px;
-  text-align: right;
+  text-align: justify;
   min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__sTq1Q {
+    font-size: var(--token-5Ye_3XTSaP9X);
+    text-align: justify;
+  }
 }
 .freeBox__peSor {
   display: flex;
@@ -6815,6 +6856,8 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text__vt4HD {
     max-width: 600px;
+    font-weight: 700;
+    font-size: var(--token-5Ye_3XTSaP9X);
   }
 }
 .link__nw1ID {
@@ -6827,8 +6870,14 @@
   height: auto;
   max-width: 100%;
   padding-right: 40px;
-  text-align: right;
+  text-align: justify;
   min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__pOyw {
+    font-size: var(--token-5Ye_3XTSaP9X);
+    text-align: justify;
+  }
 }
 .freeBox__ez8PI {
   position: relative;
@@ -6980,6 +7029,7 @@
     user-select: text;
     text-decoration-line: none;
     text-overflow: clip;
+    font-family: "Montserrat", sans-serif;
     min-width: 0;
   }
 }
@@ -6989,7 +7039,7 @@
   height: auto;
   max-width: 100%;
   padding-right: 40px;
-  text-align: right;
+  text-align: justify;
   padding-bottom: 0px;
   min-width: 0;
 }
@@ -7005,7 +7055,7 @@
     font-weight: 400;
     font-style: normal;
     color: var(--token-u3OudfMChOo3);
-    text-align: right;
+    text-align: justify;
     text-transform: none;
     line-height: 170%;
     letter-spacing: normal;
@@ -7336,6 +7386,7 @@
   width: 100%;
   height: auto;
   max-width: 100%;
+  text-align: center;
   min-width: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
