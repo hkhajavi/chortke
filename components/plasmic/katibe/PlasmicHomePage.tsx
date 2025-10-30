@@ -128,6 +128,10 @@ export type PlasmicHomePage__OverridesType = {
   softBackground12?: Flex__<"div">;
   border12?: Flex__<"div">;
   interactionEffect12?: Flex__<"div">;
+  textInput3?: Flex__<typeof TextInput>;
+  softBackground13?: Flex__<"div">;
+  border13?: Flex__<"div">;
+  interactionEffect13?: Flex__<"div">;
   textInput?: Flex__<typeof TextInput>;
   softBackground?: Flex__<"div">;
   border?: Flex__<"div">;
@@ -190,6 +194,12 @@ function PlasmicHomePage__RenderFunc(props: {
       },
       {
         path: "textInput.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "textInput3.value",
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
@@ -272,7 +282,7 @@ function PlasmicHomePage__RenderFunc(props: {
                       displayWidth={
                         hasVariant(globalVariants, "screen", "mobileOnly")
                           ? "55px"
-                          : "75px"
+                          : "65px"
                       }
                       onClick={async event => {
                         const $steps = {};
@@ -342,32 +352,10 @@ function PlasmicHomePage__RenderFunc(props: {
                           "__wab_instance",
                           sty.ariaButton___6Begg
                         )}
-                        onPress={async event => {
-                          const $steps = {};
-
-                          $steps["invokeGlobalAction"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    "https://www.apidog.com/apidoc/shared-6f3a7605-05e6-4d8c-9c9a-72ab01518afb"
-                                  ]
-                                };
-                                return $globalActions[
-                                  "Hamdast.openLink"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["invokeGlobalAction"] != null &&
-                            typeof $steps["invokeGlobalAction"] === "object" &&
-                            typeof $steps["invokeGlobalAction"].then ===
-                              "function"
-                          ) {
-                            $steps["invokeGlobalAction"] =
-                              await $steps["invokeGlobalAction"];
-                          }
-                        }}
-                        target={$props.openLinkInNewTab ? "_blank" : "_self"}
+                        href={
+                          "https://www.apidog.com/apidoc/shared/6f3a7605-05e6-4d8c-9c9a-72ab01518afb"
+                        }
+                        target={"_blank"}
                       >
                         {false ? (
                           <div
@@ -422,7 +410,7 @@ function PlasmicHomePage__RenderFunc(props: {
                               sty.text__qW8Lb
                             )}
                           >
-                            {"Watch Demo"}
+                            {"\u0645\u0633\u062a\u0646\u062f\u0627\u062a"}
                           </div>
                           <div
                             className={classNames(
@@ -453,7 +441,7 @@ function PlasmicHomePage__RenderFunc(props: {
                     href={"#"}
                     platform={"nextjs"}
                   >
-                    {"Pricing"}
+                    {"\u062a\u0639\u0631\u0641\u0647\u200c\u0647\u0627"}
                   </PlasmicLink__>
                   <PlasmicLink__
                     className={classNames(
@@ -482,7 +470,7 @@ function PlasmicHomePage__RenderFunc(props: {
                   )}
                 >
                   {
-                    "\u06a9\u062a\u06cc\u0628\u0647 \u2013 \u067e\u0644\u062a\u0641\u0631\u0645 SaaS \u0645\u062f\u06cc\u0631\u06cc\u062a \u0645\u0627\u0644\u06cc"
+                    "\u06a9\u062a\u06cc\u0628\u0647: \u0632\u06cc\u0631\u0633\u0627\u062e\u062a SaaS \u067e\u0631\u062f\u0627\u062e\u062a\u060c \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0648 \u062a\u0633\u0647\u06cc\u0645"
                   }
                 </h1>
                 <div
@@ -674,201 +662,6 @@ function PlasmicHomePage__RenderFunc(props: {
               </div>
             </div>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__ez8PI)}>
-            <div className={classNames(projectcss.all, sty.freeBox__ma29N)}>
-              <PlasmicImg__
-                alt={""}
-                className={classNames(sty.img__qAcuk)}
-                displayHeight={"auto"}
-                displayMaxHeight={"none"}
-                displayMaxWidth={"1140px"}
-                displayMinHeight={"0"}
-                displayMinWidth={"0"}
-                displayWidth={"auto"}
-                loading={"lazy"}
-                src={{
-                  src: "/plasmic/katibe/images/image4.png",
-                  fullWidth: 2280,
-                  fullHeight: 1400,
-                  aspectRatio: undefined
-                }}
-              />
-
-              <div className={classNames(projectcss.all, sty.freeBox__xNrNf)}>
-                <div className={classNames(projectcss.all, sty.freeBox__cWNz5)}>
-                  <div
-                    className={classNames(projectcss.all, sty.columns__gPrcn)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.column__bHKhd)}
-                    >
-                      <h3
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.h3,
-                          projectcss.__wab_text,
-                          sty.h3___0MKxN
-                        )}
-                      >
-                        {"99.99%"}
-                      </h3>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__bGn47
-                        )}
-                      >
-                        {
-                          "\u067e\u0627\u06cc\u062f\u0627\u0631\u06cc \u0633\u0631\u0648\u06cc\u0633\u200c\u0647\u0627"
-                        }
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.column__fSmrf)}
-                    >
-                      <h3
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.h3,
-                          projectcss.__wab_text,
-                          sty.h3___5PLj5
-                        )}
-                      >
-                        {hasVariant(globalVariants, "screen", "mobileOnly")
-                          ? "3+"
-                          : "3+"}
-                      </h3>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___70Zru
-                        )}
-                      >
-                        {hasVariant(globalVariants, "screen", "mobileOnly")
-                          ? "\u0631\u0648\u0634\u200c\u0647\u0627\u06cc \u067e\u0631\u062f\u0627\u062e\u062a"
-                          : "\u0631\u0648\u0634\u200c\u0647\u0627\u06cc \u067e\u0631\u062f\u0627\u062e\u062a"}
-                      </div>
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.column__sMUy)}
-                    >
-                      <h3
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.h3,
-                          projectcss.__wab_text,
-                          sty.h3__ywAe6
-                        )}
-                      >
-                        {"50.000+"}
-                      </h3>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__bLsWa
-                        )}
-                      >
-                        {
-                          "\u062a\u0631\u0627\u06a9\u0646\u0634 \u0631\u0648\u0632\u0627\u0646\u0647"
-                        }
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__oyTn)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___02J74
-                    )}
-                  >
-                    {
-                      "Our design partners include the world\u2019s leading product-led companies"
-                    }
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__fnn1U)}
-                  >
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__o0R8F)}
-                      displayHeight={"50px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"233px"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/katibe/images/image5.png",
-                        fullWidth: 466,
-                        fullHeight: 100,
-                        aspectRatio: undefined
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img___8TGkq)}
-                      displayHeight={"50px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"189px"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/katibe/images/image6.png",
-                        fullWidth: 378,
-                        fullHeight: 100,
-                        aspectRatio: undefined
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__sv4WE)}
-                      displayHeight={"50px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"194px"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/katibe/images/image7.png",
-                        fullWidth: 388,
-                        fullHeight: 100,
-                        aspectRatio: undefined
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__mAsZu)}
-                      displayHeight={"50px"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"189px"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/katibe/images/image8.png",
-                        fullWidth: 378,
-                        fullHeight: 100,
-                        aspectRatio: undefined
-                      }}
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
           <div className={classNames(projectcss.all, sty.freeBox__aMIir)}>
             <div className={classNames(projectcss.all, sty.freeBox__krxVf)}>
               <div className={classNames(projectcss.all, sty.freeBox__luFh9)}>
@@ -882,7 +675,7 @@ function PlasmicHomePage__RenderFunc(props: {
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly")
                     ? "\u062a\u062d\u0648\u0644 \u062f\u0631 \u0645\u062f\u06cc\u0631\u06cc\u062a \u0645\u0627\u0644\u06cc \u062f\u06cc\u062c\u06cc\u062a\u0627\u0644\r"
-                    : "\u062a\u062d\u0648\u0644 \u062f\u0631 \u0645\u062f\u06cc\u0631\u06cc\u062a \u0645\u0627\u0644\u06cc \u062f\u06cc\u062c\u06cc\u062a\u0627\u0644"}
+                    : "\u0628\u062f\u0648\u0646 \u0646\u06cc\u0627\u0632 \u0628\u0647 \u062a\u0648\u0633\u0639\u0647\u060c \u0632\u06cc\u0631\u0633\u0627\u062e\u062a \u0645\u0627\u0644\u06cc \u067e\u0644\u062a\u0641\u0631\u0645 \u062e\u0648\u062f \u0631\u0627 \u0628\u0647\u200c\u0631\u0627\u062d\u062a\u06cc \u0631\u0627\u0647\u200c\u0627\u0646\u062f\u0627\u0632\u06cc \u06a9\u0646\u06cc\u062f!"}
                 </h2>
                 <div
                   className={classNames(
@@ -892,7 +685,7 @@ function PlasmicHomePage__RenderFunc(props: {
                   )}
                 >
                   {
-                    "\u06a9\u062a\u06cc\u0628\u0647 \u06cc\u06a9 \u0632\u06cc\u0631\u0633\u0627\u062e\u062a \u0645\u0627\u0644\u06cc \u0628\u0647\u200c\u0639\u0646\u0648\u0627\u0646\u200c\u062e\u062f\u0645\u062a (Financial SaaS) \u0627\u0633\u062a \u06a9\u0647 \u0628\u0647 \u0634\u0645\u0627 \u0627\u0645\u06a9\u0627\u0646 \u0645\u06cc\u200c\u062f\u0647\u062f \u062a\u0645\u0627\u0645\u06cc \u0641\u0631\u0622\u06cc\u0646\u062f\u0647\u0627\u06cc \u0645\u0627\u0644\u06cc \u0627\u0632 \u062c\u0645\u0644\u0647 \u0635\u062f\u0648\u0631 \u0641\u0627\u06a9\u062a\u0648\u0631\u060c \u067e\u0631\u062f\u0627\u062e\u062a\u060c \u0645\u062f\u06cc\u0631\u06cc\u062a \u062d\u0633\u0627\u0628\u200c\u0647\u0627 \u0648 \u062a\u0633\u0647\u06cc\u0645 \u0631\u0627 \u0628\u062f\u0648\u0646 \u0646\u06cc\u0627\u0632 \u0628\u0647 \u062a\u0648\u0633\u0639\u0647 \u062f\u0627\u062e\u0644\u06cc \u067e\u06cc\u0627\u062f\u0647\u200c\u0633\u0627\u0632\u06cc \u06a9\u0646\u06cc\u062f."
+                    "\u2705\u0628\u062f\u0648\u0646 \u0646\u06cc\u0627\u0632 \u0628\u0647 \u067e\u06cc\u0627\u062f\u0647\u200c\u0633\u0627\u0632\u06cc \u0648 \u0648\u0631\u06cc\u0641\u0627\u06cc\u060c \u0627\u0632 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u06a9\u0646\u06cc\u062f.\n\u2705\u0628\u0627 \u0641\u0631\u0627\u062e\u0648\u0627\u0646\u06cc \u06cc\u06a9 api\u060c \u067e\u0631\u062f\u0627\u062e\u062a \u0627\u0645\u0627\u0646\u06cc \u0648 \u062a\u0633\u0647\u06cc\u0645 \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u06cc\u062f \u0648 \u062f\u0647\u200c\u0647\u0627 \u062a\u0631\u0627\u06a9\u0646\u0634 \u0631\u0627 \u0628\u0647\u200c\u0635\u0648\u0631\u062a \u062e\u0648\u062f\u06a9\u0627\u0631 \u0645\u062f\u06cc\u0631\u06cc\u062a \u06a9\u0646\u06cc\u062f.\n\r\n\u2705\u0628\u062f\u0648\u0646 \u062a\u0639\u0631\u06cc\u0641 \u0645\u0634\u062e\u0635\u0627\u062a \u06a9\u0627\u0631\u0628\u0631\u0627\u0646\u060c \u062a\u0646\u0647\u0627 \u0628\u0627 \u0634\u0646\u0627\u0633\u0647\u200c\u06cc \u0645\u0648\u062c\u0648\u062f \u062f\u0631 \u0633\u06cc\u0633\u062a\u0645 \u062e\u0648\u062f\u060c \u0627\u0632 \u0633\u0631\u0648\u06cc\u0633\u200c\u0647\u0627 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u06a9\u0646\u06cc\u062f.\n\u2705\u0628\u0647 \u0633\u0627\u062f\u06af\u06cc \u0627\u0632 \u0645\u0632\u0627\u06cc\u0627\u06cc \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0628\u0631\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u0628\u0647\u0631\u0647 \u0628\u0628\u0631\u06cc\u062f.\n\r"
                   }
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__osPy3)}>
@@ -1945,7 +1738,7 @@ function PlasmicHomePage__RenderFunc(props: {
                   >
                     {hasVariant(globalVariants, "screen", "mobileOnly")
                       ? "Lorem Ipsum"
-                      : "Lorem Ipsum"}
+                      : "\u0645\u0631\u0627\u062d\u0644 \u0627\u0633\u062a\u0641\u0627\u062f\u0647:\r"}
                   </h2>
                   <div
                     className={classNames(
@@ -1993,10 +1786,38 @@ function PlasmicHomePage__RenderFunc(props: {
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__gnOnn
+                          sty.text__lBpR
                         )}
                       >
-                        {"Lorem ipsum dolor sit amet"}
+                        <React.Fragment>
+                          <React.Fragment>
+                            {
+                              "\u0627\u0628\u062a\u062f\u0627 \u0628\u0647 \u0622\u06cc\u200c\u062f\u06cc "
+                            }
+                          </React.Fragment>
+                          {
+                            <PlasmicLink__
+                              className={classNames(
+                                projectcss.all,
+                                projectcss.a,
+                                projectcss.__wab_text,
+                                projectcss.plasmic_default__inline,
+                                sty.link__m5Jbr
+                              )}
+                              component={Link}
+                              href={"https://t.me/hojatkhajavi"}
+                              platform={"nextjs"}
+                              target={"_blank"}
+                            >
+                              {"@hojatkhajavi"}
+                            </PlasmicLink__>
+                          }
+                          <React.Fragment>
+                            {
+                              " \u062f\u0631 \u062a\u0644\u06af\u0631\u0627\u0645 \u067e\u06cc\u0627\u0645 \u062f\u0647\u06cc\u062f \u0648 \u062a\u0648\u06a9\u0646 \u062f\u0631\u06cc\u0627\u0641\u062a \u06a9\u0646\u06cc\u062f.\r"
+                            }
+                          </React.Fragment>
+                        </React.Fragment>
                       </div>
                     </div>
                   </div>
@@ -2038,7 +1859,9 @@ function PlasmicHomePage__RenderFunc(props: {
                           sty.text__aqYo
                         )}
                       >
-                        {"Lorem ipsum dolor sit amet"}
+                        {
+                          "\u0633\u067e\u0633 \u0628\u0627 \u06a9\u0645\u06a9 \u0645\u0627\u060c \u0648\u0628\u200c\u0633\u0631\u0648\u06cc\u0633\u200c\u0647\u0627 \u0631\u0627 \u0628\u0631\u0631\u0633\u06cc \u0648 \u067e\u06cc\u0627\u062f\u0647 \u0633\u0627\u0632\u06cc \u0646\u0645\u0627\u06cc\u06cc\u062f.\r"
+                        }
                       </div>
                     </div>
                   </div>
@@ -2080,105 +1903,12 @@ function PlasmicHomePage__RenderFunc(props: {
                           sty.text__bmOav
                         )}
                       >
-                        {"Lorem ipsum dolor sit amet"}
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__mgLp6)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__xkkvi)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__gWzme)}
-                        displayHeight={"auto"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={
-                          hasVariant(globalVariants, "screen", "mobileOnly")
-                            ? "24px"
-                            : "100%"
+                        {
+                          "\u0645\u0627 \u0627\u06cc\u0646\u062c\u0627 \u0647\u0633\u062a\u06cc\u0645 \u062a\u0627 \u0647\u0631 \u0646\u0648\u0639 \u0646\u06af\u0631\u0627\u0646\u06cc \u0634\u0645\u0627 \u0628\u0631\u0627\u06cc \u0645\u0648\u0636\u0648\u0639\u0627\u062a \u0645\u0627\u0644\u06cc \u067e\u0644\u062a\u0641\u0631\u0645 \u0648 \u06a9\u0633\u0628 \u0648 \u06a9\u0627\u0631\u062a\u0627\u0646 \u0631\u0627 \u0631\u0641\u0639 \u06a9\u0646\u06cc\u0645."
                         }
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"auto"}
-                        loading={"lazy"}
-                        src={{
-                          src: "/plasmic/katibe/images/image26.svg",
-                          fullWidth: 150,
-                          fullHeight: 150,
-                          aspectRatio: 1
-                        }}
-                      />
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__jivtp)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text___8ZxGn
-                        )}
-                      >
-                        {"Lorem ipsum dolor sit amet"}
                       </div>
                     </div>
                   </div>
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox__ps2Eo)}>
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__yeKe0)}
-                    displayHeight={
-                      hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? "100%"
-                        : "700px"
-                    }
-                    displayMaxHeight={
-                      hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? "174px"
-                        : "none"
-                    }
-                    displayMaxWidth={
-                      hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? "284px"
-                        : "100%"
-                    }
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={
-                      hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? "100%"
-                        : "1440px"
-                    }
-                    loading={"lazy"}
-                    src={{
-                      src: "/plasmic/katibe/images/image27.png",
-                      fullWidth: 1070,
-                      fullHeight: 1402,
-                      aspectRatio: undefined
-                    }}
-                  />
-
-                  <PlasmicImg__
-                    alt={""}
-                    className={classNames(sty.img__n7Weg)}
-                    displayHeight={"auto"}
-                    displayMaxHeight={"none"}
-                    displayMaxWidth={"100%"}
-                    displayMinHeight={"0"}
-                    displayMinWidth={"0"}
-                    displayWidth={"auto"}
-                    loading={"lazy"}
-                    src={{
-                      src: "/plasmic/katibe/images/image4.png",
-                      fullWidth: 2280,
-                      fullHeight: 1400,
-                      aspectRatio: undefined
-                    }}
-                  />
                 </div>
               </div>
             </div>
@@ -3665,38 +3395,6 @@ function PlasmicHomePage__RenderFunc(props: {
           <div className={classNames(projectcss.all, sty.freeBox__tfqBl)}>
             <div className={classNames(projectcss.all, sty.freeBox__tv8PD)}>
               <div className={classNames(projectcss.all, sty.freeBox__x7G30)}>
-                <div className={classNames(projectcss.all, sty.freeBox__vhL8S)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__oYoKj
-                    )}
-                  >
-                    {"Lorem Ipsum"}
-                  </div>
-                  <h2
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.h2,
-                      projectcss.__wab_text,
-                      sty.h2__iqBEa
-                    )}
-                  >
-                    {"Lorem Ipsum"}
-                  </h2>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__h1KOg
-                    )}
-                  >
-                    {
-                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
-                    }
-                  </div>
-                </div>
                 <div className={classNames(projectcss.all, sty.freeBox__lZJkP)}>
                   <div
                     className={classNames(projectcss.all, sty.freeBox__hij5Z)}
@@ -3704,16 +3402,6 @@ function PlasmicHomePage__RenderFunc(props: {
                     <div
                       className={classNames(projectcss.all, sty.freeBox__ePoJe)}
                     >
-                      <h6
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.h6,
-                          projectcss.__wab_text,
-                          sty.h6__npR5V
-                        )}
-                      >
-                        {"Lorem ipsum dolor sit amet, consectetur"}
-                      </h6>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img__bjPRb)}
@@ -3731,6 +3419,17 @@ function PlasmicHomePage__RenderFunc(props: {
                           aspectRatio: 1
                         }}
                       />
+
+                      <h6
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.h6,
+                          projectcss.__wab_text,
+                          sty.h6__npR5V
+                        )}
+                      >
+                        {"Lorem ipsum dolor sit amet, consectetur"}
+                      </h6>
                     </div>
                     <div
                       className={classNames(
@@ -3883,6 +3582,40 @@ function PlasmicHomePage__RenderFunc(props: {
                         }}
                       />
                     </div>
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__vhL8S)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__oYoKj
+                    )}
+                  >
+                    {"Lorem Ipsum"}
+                  </div>
+                  <h2
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.h2,
+                      projectcss.__wab_text,
+                      sty.h2__iqBEa
+                    )}
+                  >
+                    {
+                      "\u0648\u0628\u200c\u0633\u0631\u0648\u06cc\u0633\u200c\u0647\u0627"
+                    }
+                  </h2>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__h1KOg
+                    )}
+                  >
+                    {
+                      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+                    }
                   </div>
                 </div>
               </div>
@@ -4124,6 +3857,455 @@ function PlasmicHomePage__RenderFunc(props: {
                   aspectRatio: undefined
                 }}
               />
+            </div>
+          </div>
+          <div className={classNames(projectcss.all, sty.freeBox__uzsrg)}>
+            <div className={classNames(projectcss.all, sty.freeBox__aqmOw)}>
+              <div className={classNames(projectcss.all, sty.freeBox__zScvn)}>
+                <h1
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.h1,
+                    projectcss.__wab_text,
+                    sty.h1__hevIn
+                  )}
+                >
+                  {"Lorem Ipsum"}
+                </h1>
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__zV93V
+                  )}
+                >
+                  {hasVariant(globalVariants, "screen", "mobileOnly") ? (
+                    <React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {
+                          "\u0686\u0631\u0627 \u06a9\u062a\u06cc\u0628\u0647\u061f"
+                        }
+                      </span>
+                      <React.Fragment>
+                        {
+                          "\n\u2705 \u06cc\u06a9\u067e\u0627\u0631\u0686\u06af\u06cc \u06a9\u0627\u0645\u0644 \u0628\u0627 \u067e\u0644\u062a\u0641\u0631\u0645\u200c\u0647\u0627\u06cc \u0645\u062e\u062a\u0644\u0641 \u0627\u0632 \u0637\u0631\u06cc\u0642 API\u0647\u0627\u06cc \u0645\u0633\u062a\u0646\u062f \u0648 \u0642\u062f\u0631\u062a\u0645\u0646\u062f\n\u2705 \u0627\u0645\u0646\u06cc\u062a \u0628\u0627\u0644\u0627 \u0648 \u0633\u0627\u0632\u06af\u0627\u0631\u06cc \u0628\u0627 \u0627\u0633\u062a\u0627\u0646\u062f\u0627\u0631\u062f\u0647\u0627\u06cc \u0645\u0627\u0644\u06cc\n\u2705 \u06a9\u0627\u0647\u0634 \u0632\u0645\u0627\u0646 \u0648 \u0647\u0632\u06cc\u0646\u0647 \u062a\u0648\u0633\u0639\u0647 \u2013 \u0631\u0627\u0647\u200c\u0627\u0646\u062f\u0627\u0632\u06cc \u0633\u0631\u06cc\u0639 \u0628\u062f\u0648\u0646 \u0646\u06cc\u0627\u0632 \u0628\u0647 \u062a\u06cc\u0645 \u0641\u0646\u06cc \u06af\u0633\u062a\u0631\u062f\u0647\n\u2705 \u0645\u062f\u06cc\u0631\u06cc\u062a \u0628\u0647\u06cc\u0646\u0647 \u0645\u0627\u0644\u06cc \u2013 \u062a\u0633\u0647\u06cc\u0645 \u062e\u0648\u062f\u06a9\u0627\u0631 \u062f\u0631\u0622\u0645\u062f\u060c \u0645\u062f\u06cc\u0631\u06cc\u062a \u062d\u0633\u0627\u0628\u200c\u0647\u0627 \u0648 \u06af\u0632\u0627\u0631\u0634\u200c\u06af\u06cc\u0631\u06cc \u067e\u06cc\u0634\u0631\u0641\u062a\u0647\n\n\n"
+                        }
+                      </React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {
+                          "\u0648\u06cc\u0698\u06af\u06cc\u200c\u0647\u0627\u06cc \u06a9\u0644\u06cc\u062f\u06cc"
+                        }
+                      </span>
+                      <React.Fragment>
+                        {
+                          "\n\ud83d\udd39 \u0633\u06cc\u0633\u062a\u0645 \u0641\u0627\u06a9\u062a\u0648\u0631 \u0648 \u0635\u0648\u0631\u062a\u200c\u062d\u0633\u0627\u0628\u200c\u0647\u0627 \u2013 \u0627\u06cc\u062c\u0627\u062f\u060c \u0648\u06cc\u0631\u0627\u06cc\u0634 \u0648 \u0645\u062f\u06cc\u0631\u06cc\u062a \u0641\u0627\u06a9\u062a\u0648\u0631\u0647\u0627\u06cc \u0645\u0627\u0644\u06cc \u0628\u0627 \u0645\u062d\u0627\u0633\u0628\u0647 \u0645\u0627\u0644\u06cc\u0627\u062a \u0648 \u062a\u062e\u0641\u06cc\u0641\n\ud83d\udd39 \u067e\u0631\u062f\u0627\u0632\u0634 \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627 \u2013 \u0627\u0645\u06a9\u0627\u0646 \u062b\u0628\u062a\u060c \u067e\u06cc\u06af\u06cc\u0631\u06cc \u0648 \u0628\u0627\u0632\u06af\u0634\u062a \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627 \u0628\u0631\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646\n\ud83d\udd39 \u062f\u0631\u06cc\u0627\u0641\u062a \u0644\u06cc\u0646\u06a9 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u2013 \u0627\u062a\u0635\u0627\u0644 \u0633\u0631\u06cc\u0639 \u0628\u0647 \u0633\u06cc\u0633\u062a\u0645\u200c\u0647\u0627\u06cc \u067e\u0631\u062f\u0627\u062e\u062a \u0622\u0646\u0644\u0627\u06cc\u0646\n\ud83d\udd39 \u0645\u062f\u06cc\u0631\u06cc\u062a \u062a\u0633\u0647\u06cc\u0645 \u062f\u0631\u0622\u0645\u062f \u2013 \u062a\u0642\u0633\u06cc\u0645 \u062e\u0648\u062f\u06a9\u0627\u0631 \u062f\u0631\u0622\u0645\u062f \u0628\u06cc\u0646 \u0686\u0646\u062f \u06a9\u0627\u0631\u0628\u0631 \u0628\u0627 \u0627\u0645\u06a9\u0627\u0646 \u0644\u063a\u0648 \u0648 \u0628\u0627\u0632\u06af\u0634\u062a \u0648\u062c\u0647\n\ud83d\udd39 \u0628\u0631\u0631\u0633\u06cc \u0645\u0648\u062c\u0648\u062f\u06cc \u0648 \u06af\u0632\u0627\u0631\u0634 \u0645\u0627\u0644\u06cc \u2013 \u0646\u0638\u0627\u0631\u062a \u0644\u062d\u0638\u0647\u200c\u0627\u06cc \u0628\u0631 \u0648\u0636\u0639\u06cc\u062a \u062d\u0633\u0627\u0628\u200c\u0647\u0627 \u0648 \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627\n\n\n"
+                        }
+                      </React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {
+                          "\u0645\u0646\u0627\u0633\u0628 \u0628\u0631\u0627\u06cc \u0686\u0647 \u06a9\u0633\u0628\u200c\u0648\u06a9\u0627\u0631\u0647\u0627\u06cc\u06cc\u061f"
+                        }
+                      </span>
+                      <React.Fragment>
+                        {
+                          "\n\u2714 \u0645\u0627\u0631\u06a9\u062a\u200c\u067e\u0644\u06cc\u0633\u200c\u0647\u0627 \u2013 \u0645\u062f\u06cc\u0631\u06cc\u062a \u067e\u0631\u062f\u0627\u062e\u062a\u200c\u0647\u0627\u06cc \u0686\u0646\u062f\u062c\u0627\u0646\u0628\u0647 \u0648 \u062a\u0633\u0647\u06cc\u0645 \u062f\u0631\u0622\u0645\u062f\n\u2714 \u067e\u0644\u062a\u0641\u0631\u0645\u200c\u0647\u0627\u06cc SaaS \u2013 \u0631\u0627\u0647\u06a9\u0627\u0631 \u0645\u0627\u0644\u06cc \u0628\u062f\u0648\u0646 \u0646\u06cc\u0627\u0632 \u0628\u0647 \u062a\u0648\u0633\u0639\u0647 \u062f\u0627\u062e\u0644\u06cc\n\u2714 \u0627\u0633\u062a\u0627\u0631\u062a\u0627\u067e\u200c\u0647\u0627\u06cc \u0641\u06cc\u0646\u200c\u062a\u06a9 \u2013 \u0645\u0642\u06cc\u0627\u0633\u200c\u067e\u0630\u06cc\u0631\u06cc \u0633\u0631\u06cc\u0639 \u0648 \u0627\u0633\u062a\u0627\u0646\u062f\u0627\u0631\u062f\u0647\u0627\u06cc \u0627\u0645\u0646\u06cc\u062a\u06cc \u0628\u0627\u0644\u0627\n\u2714 \u0633\u0631\u0648\u06cc\u0633\u200c\u0647\u0627\u06cc \u0627\u0634\u062a\u0631\u0627\u06a9\u06cc \u0648 \u067e\u0631\u062f\u0627\u062e\u062a\u200c\u0647\u0627\u06cc \u062f\u0648\u0631\u0647\u200c\u0627\u06cc \u2013 \u0635\u062f\u0648\u0631 \u062e\u0648\u062f\u06a9\u0627\u0631 \u0641\u0627\u06a9\u062a\u0648\u0631 \u0648 \u0645\u062f\u06cc\u0631\u06cc\u062a \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627"
+                        }
+                      </React.Fragment>
+                    </React.Fragment>
+                  ) : (
+                    <React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {
+                          "\u0633\u0631\u0648\u06cc\u0633\u200c\u0647\u0627\u06cc \u0645\u0648\u062c\u0648\u062f:"
+                        }
+                      </span>
+                      <React.Fragment>{"\n"}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {
+                          "\ud83d\udd39 \u0633\u06cc\u0633\u062a\u0645 \u0641\u0627\u06a9\u062a\u0648\u0631 \u0648 \u0635\u0648\u0631\u062a\u200c\u062d\u0633\u0627\u0628\u200c\u0647\u0627 \u2013 \u0627\u06cc\u062c\u0627\u062f\u060c \u0648\u06cc\u0631\u0627\u06cc\u0634 \u0648 \u0645\u062f\u06cc\u0631\u06cc\u062a \u0641\u0627\u06a9\u062a\u0648\u0631\u0647\u0627\u06cc \u0645\u0627\u0644\u06cc \u0628\u0627 \u0645\u062d\u0627\u0633\u0628\u0647 \u0645\u0627\u0644\u06cc\u0627\u062a \u0648 \u062a\u062e\u0641\u06cc\u0641\n\ud83d\udd39 \u067e\u0631\u062f\u0627\u0632\u0634 \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627 \u2013 \u0627\u0645\u06a9\u0627\u0646 \u062b\u0628\u062a\u060c \u067e\u06cc\u06af\u06cc\u0631\u06cc \u0648 \u0628\u0627\u0632\u06af\u0634\u062a \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646\n\ud83d\udd39 \u0627\u06cc\u062c\u0627\u062f \u0644\u06cc\u0646\u06a9 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u2013  \u0627\u062a\u0635\u0627\u0644 \u0628\u0647 \u0633\u06cc\u0633\u062a\u0645\u200c\u0647\u0627\u06cc \u067e\u0631\u062f\u0627\u062e\u062a \u0622\u0646\u0644\u0627\u06cc\u0646\n\ud83d\udd39 \u0645\u062f\u06cc\u0631\u06cc\u062a \u062a\u0633\u0647\u06cc\u0645 \u2013 \u062a\u0642\u0633\u06cc\u0645 \u062e\u0648\u062f\u06a9\u0627\u0631 \u0628\u06cc\u0646 \u0686\u0646\u062f \u06a9\u0627\u0631\u0628\u0631 \u0628\u0627 \u0627\u0645\u06a9\u0627\u0646 \u0644\u063a\u0648 \u0648 \u0628\u0627\u0632\u06af\u0634\u062a \u0648\u062c\u0647\n\ud83d\udd39 \u0628\u0631\u0631\u0633\u06cc \u0645\u0648\u062c\u0648\u062f\u06cc \u0648 \u06af\u0632\u0627\u0631\u0634 \u0645\u0627\u0644\u06cc \u2013 \u0646\u0638\u0627\u0631\u062a \u0644\u062d\u0638\u0647\u200c\u0627\u06cc \u0628\u0631 \u0648\u0636\u0639\u06cc\u062a \u062d\u0633\u0627\u0628\u200c\u0647\u0627 \u0648 \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627"
+                        }
+                      </span>
+                      <React.Fragment>{"\n"}</React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {""}
+                      </span>
+                      <React.Fragment>
+                        {
+                          "\n\u2705 \u06cc\u06a9\u067e\u0627\u0631\u0686\u06af\u06cc \u06a9\u0627\u0645\u0644 \u0628\u0627 \u067e\u0644\u062a\u0641\u0631\u0645\u200c\u0647\u0627\u06cc \u0645\u062e\u062a\u0644\u0641 \u0627\u0632 \u0637\u0631\u06cc\u0642 API\n\u2705 \u0627\u0645\u0646\u06cc\u062a \u0628\u0627\u0644\u0627 \u0648 \u0633\u0627\u0632\u06af\u0627\u0631\u06cc \u0628\u0627 \u0627\u0633\u062a\u0627\u0646\u062f\u0627\u0631\u062f\u0647\u0627\u06cc \u0645\u0627\u0644\u06cc\n\u2705 \u06a9\u0627\u0647\u0634 \u0632\u0645\u0627\u0646 \u0648 \u0647\u0632\u06cc\u0646\u0647 \u062a\u0648\u0633\u0639\u0647 \u2013 \u0631\u0627\u0647\u200c\u0627\u0646\u062f\u0627\u0632\u06cc \u0633\u0631\u06cc\u0639 \u0628\u062f\u0648\u0646 \u0646\u06cc\u0627\u0632 \u0628\u0647 \u062a\u06cc\u0645 \u0641\u0646\u06cc \u06af\u0633\u062a\u0631\u062f\u0647\n\u2705 \u0645\u062f\u06cc\u0631\u06cc\u062a \u0628\u0647\u06cc\u0646\u0647 \u0645\u0627\u0644\u06cc \u2013 \u062a\u0633\u0647\u06cc\u0645 \u062e\u0648\u062f\u06a9\u0627\u0631\u060c \u0645\u062f\u06cc\u0631\u06cc\u062a \u062d\u0633\u0627\u0628\u200c\u0647\u0627 \u0648 \u06af\u0632\u0627\u0631\u0634\u200c\u06af\u06cc\u0631\u06cc \u067e\u06cc\u0634\u0631\u0641\u062a\u0647\n\n"
+                        }
+                      </React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {
+                          "\u0648\u06cc\u0698\u06af\u06cc\u200c\u0647\u0627\u06cc \u06a9\u0644\u06cc\u062f\u06cc"
+                        }
+                      </span>
+                      <React.Fragment>
+                        {
+                          "\n\ud83d\udd39 \u0633\u06cc\u0633\u062a\u0645 \u0641\u0627\u06a9\u062a\u0648\u0631 \u0648 \u0635\u0648\u0631\u062a\u200c\u062d\u0633\u0627\u0628\u200c\u0647\u0627 \u2013 \u0627\u06cc\u062c\u0627\u062f\u060c \u0648\u06cc\u0631\u0627\u06cc\u0634 \u0648 \u0645\u062f\u06cc\u0631\u06cc\u062a \u0641\u0627\u06a9\u062a\u0648\u0631\u0647\u0627\u06cc \u0645\u0627\u0644\u06cc \u0628\u0627 \u0645\u062d\u0627\u0633\u0628\u0647 \u0645\u0627\u0644\u06cc\u0627\u062a \u0648 \u062a\u062e\u0641\u06cc\u0641\n\ud83d\udd39 \u067e\u0631\u062f\u0627\u0632\u0634 \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627 \u2013 \u0627\u0645\u06a9\u0627\u0646 \u062b\u0628\u062a\u060c \u067e\u06cc\u06af\u06cc\u0631\u06cc \u0648 \u0628\u0627\u0632\u06af\u0634\u062a \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646\n\ud83d\udd39 \u0627\u06cc\u062c\u0627\u062f \u0644\u06cc\u0646\u06a9 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u2013  \u0627\u062a\u0635\u0627\u0644 \u0628\u0647 \u0633\u06cc\u0633\u062a\u0645\u200c\u0647\u0627\u06cc \u067e\u0631\u062f\u0627\u062e\u062a \u0622\u0646\u0644\u0627\u06cc\u0646\n\ud83d\udd39 \u0645\u062f\u06cc\u0631\u06cc\u062a \u062a\u0633\u0647\u06cc\u0645 \u2013 \u062a\u0642\u0633\u06cc\u0645 \u062e\u0648\u062f\u06a9\u0627\u0631 \u0628\u06cc\u0646 \u0686\u0646\u062f \u06a9\u0627\u0631\u0628\u0631 \u0628\u0627 \u0627\u0645\u06a9\u0627\u0646 \u0644\u063a\u0648 \u0648 \u0628\u0627\u0632\u06af\u0634\u062a \u0648\u062c\u0647\n\ud83d\udd39 \u0628\u0631\u0631\u0633\u06cc \u0645\u0648\u062c\u0648\u062f\u06cc \u0648 \u06af\u0632\u0627\u0631\u0634 \u0645\u0627\u0644\u06cc \u2013 \u0646\u0638\u0627\u0631\u062a \u0644\u062d\u0638\u0647\u200c\u0627\u06cc \u0628\u0631 \u0648\u0636\u0639\u06cc\u062a \u062d\u0633\u0627\u0628\u200c\u0647\u0627 \u0648 \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627\n\n"
+                        }
+                      </React.Fragment>
+                      <span
+                        className={"plasmic_default__all plasmic_default__span"}
+                        style={{ fontWeight: 700 }}
+                      >
+                        {
+                          "\u0645\u0646\u0627\u0633\u0628 \u0628\u0631\u0627\u06cc \u0686\u0647 \u06a9\u0633\u0628\u200c\u0648\u06a9\u0627\u0631\u0647\u0627\u06cc\u06cc\u061f"
+                        }
+                      </span>
+                      <React.Fragment>
+                        {
+                          "\n\u2714 \u0645\u0627\u0631\u06a9\u062a\u200c\u067e\u0644\u06cc\u0633\u200c\u0647\u0627 \u2013 \u0645\u062f\u06cc\u0631\u06cc\u062a \u067e\u0631\u062f\u0627\u062e\u062a\u200c\u0647\u0627\u06cc \u0686\u0646\u062f\u062c\u0627\u0646\u0628\u0647 \u0648 \u062a\u0633\u0647\u06cc\u0645 \u062f\u0631\u0622\u0645\u062f\n\u2714 \u067e\u0644\u062a\u0641\u0631\u0645\u200c\u0647\u0627\u06cc SaaS \u2013 \u0631\u0627\u0647\u06a9\u0627\u0631 \u0645\u0627\u0644\u06cc \u0628\u062f\u0648\u0646 \u0646\u06cc\u0627\u0632 \u0628\u0647 \u062a\u0648\u0633\u0639\u0647 \u062f\u0627\u062e\u0644\u06cc\n\u2714 \u0627\u0633\u062a\u0627\u0631\u062a\u0627\u067e\u200c\u0647\u0627\u06cc \u0641\u06cc\u0646\u200c\u062a\u06a9 \u2013 \u0645\u0642\u06cc\u0627\u0633\u200c\u067e\u0630\u06cc\u0631\u06cc \u0633\u0631\u06cc\u0639 \u0648 \u0627\u0633\u062a\u0627\u0646\u062f\u0627\u0631\u062f\u0647\u0627\u06cc \u0627\u0645\u0646\u06cc\u062a\u06cc \u0628\u0627\u0644\u0627\n\u2714 \u0633\u0631\u0648\u06cc\u0633\u200c\u0647\u0627\u06cc \u0627\u0634\u062a\u0631\u0627\u06a9\u06cc \u0648 \u067e\u0631\u062f\u0627\u062e\u062a\u200c\u0647\u0627\u06cc \u062f\u0648\u0631\u0647\u200c\u0627\u06cc \u2013 \u0635\u062f\u0648\u0631 \u062e\u0648\u062f\u06a9\u0627\u0631 \u0641\u0627\u06a9\u062a\u0648\u0631 \u0648 \u0645\u062f\u06cc\u0631\u06cc\u062a \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627"
+                        }
+                      </React.Fragment>
+                    </React.Fragment>
+                  )}
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__rCw8N)}>
+                  <TextInput
+                    data-plasmic-name={"textInput3"}
+                    data-plasmic-override={overrides.textInput3}
+                    className={classNames("__wab_instance", sty.textInput3)}
+                    endIcon={
+                      <CheckSvgIcon
+                        className={classNames(projectcss.all, sty.svg__ptlLa)}
+                        role={"img"}
+                      />
+                    }
+                    onChange={async (...eventArgs: any) => {
+                      ((...eventArgs) => {
+                        generateStateOnChangeProp($state, [
+                          "textInput3",
+                          "value"
+                        ])((e => e.target?.value).apply(null, eventArgs));
+                      }).apply(null, eventArgs);
+
+                      if (
+                        eventArgs.length > 1 &&
+                        eventArgs[1] &&
+                        eventArgs[1]._plasmic_state_init_
+                      ) {
+                        return;
+                      }
+                    }}
+                    startIcon={
+                      <SearchSvgIcon
+                        className={classNames(projectcss.all, sty.svg___2FhIf)}
+                        role={"img"}
+                      />
+                    }
+                    value={
+                      generateStateValueProp($state, ["textInput3", "value"]) ??
+                      ""
+                    }
+                  />
+
+                  <BaseButton
+                    className={classNames(
+                      "__wab_instance",
+                      sty.ariaButton__zfER
+                    )}
+                    target={$props.openLinkInNewTab ? "_blank" : "_self"}
+                  >
+                    {false ? (
+                      <div
+                        data-plasmic-name={"softBackground13"}
+                        data-plasmic-override={overrides.softBackground13}
+                        className={classNames(
+                          projectcss.all,
+                          sty.softBackground13
+                        )}
+                      />
+                    ) : null}
+                    {false ? (
+                      <div
+                        data-plasmic-name={"border13"}
+                        data-plasmic-override={overrides.border13}
+                        className={classNames(projectcss.all, sty.border13)}
+                      />
+                    ) : null}
+                    <div
+                      data-plasmic-name={"interactionEffect13"}
+                      data-plasmic-override={overrides.interactionEffect13}
+                      className={classNames(
+                        projectcss.all,
+                        sty.interactionEffect13
+                      )}
+                    />
+
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__shMi)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___1KMhD
+                        )}
+                      >
+                        <CircleIcon
+                          className={classNames(projectcss.all, sty.svg__gpe0Q)}
+                          role={"img"}
+                        />
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__xjhFi
+                        )}
+                      >
+                        {"Subscribe"}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__qjj6O
+                        )}
+                      >
+                        <ChevronDownIcon
+                          className={classNames(
+                            projectcss.all,
+                            sty.svg___7Z3Kx
+                          )}
+                          role={"img"}
+                        />
+                      </div>
+                    </div>
+                  </BaseButton>
+                </div>
+              </div>
+              <PlasmicImg__
+                alt={""}
+                className={classNames(sty.img___0FkUw)}
+                displayHeight={"auto"}
+                displayMaxHeight={"700px"}
+                displayMaxWidth={"1140px"}
+                displayMinHeight={"0"}
+                displayMinWidth={"0"}
+                displayWidth={"auto"}
+                loading={"lazy"}
+                src={{
+                  src: "/plasmic/katibe/images/image36.png",
+                  fullWidth: 2880,
+                  fullHeight: 900,
+                  aspectRatio: undefined
+                }}
+              />
+            </div>
+          </div>
+          <div className={classNames(projectcss.all, sty.freeBox__ez8PI)}>
+            <div className={classNames(projectcss.all, sty.freeBox__ma29N)}>
+              <PlasmicImg__
+                alt={""}
+                className={classNames(sty.img__qAcuk)}
+                displayHeight={"auto"}
+                displayMaxHeight={"none"}
+                displayMaxWidth={"1140px"}
+                displayMinHeight={"0"}
+                displayMinWidth={"0"}
+                displayWidth={"auto"}
+                loading={"lazy"}
+                src={{
+                  src: "/plasmic/katibe/images/image4.png",
+                  fullWidth: 2280,
+                  fullHeight: 1400,
+                  aspectRatio: undefined
+                }}
+              />
+
+              <div className={classNames(projectcss.all, sty.freeBox__xNrNf)}>
+                <div className={classNames(projectcss.all, sty.freeBox__cWNz5)}>
+                  <div
+                    className={classNames(projectcss.all, sty.columns__gPrcn)}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.column__bHKhd)}
+                    >
+                      <h3
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.h3,
+                          projectcss.__wab_text,
+                          sty.h3___0MKxN
+                        )}
+                      >
+                        {"99.9%"}
+                      </h3>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__bGn47
+                        )}
+                      >
+                        {
+                          "\u067e\u0627\u06cc\u062f\u0627\u0631\u06cc \u0633\u0631\u0648\u06cc\u0633\u200c\u0647\u0627"
+                        }
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.column__fSmrf)}
+                    >
+                      <h3
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.h3,
+                          projectcss.__wab_text,
+                          sty.h3___5PLj5
+                        )}
+                      >
+                        {hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "3+"
+                          : "3+"}
+                      </h3>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___70Zru
+                        )}
+                      >
+                        {hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "\u0631\u0648\u0634\u200c\u0647\u0627\u06cc \u067e\u0631\u062f\u0627\u062e\u062a"
+                          : "\u0631\u0648\u0634\u200c\u0647\u0627\u06cc \u067e\u0631\u062f\u0627\u062e\u062a"}
+                      </div>
+                    </div>
+                    <div
+                      className={classNames(projectcss.all, sty.column__sMUy)}
+                    >
+                      <h3
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.h3,
+                          projectcss.__wab_text,
+                          sty.h3__ywAe6
+                        )}
+                      >
+                        {"10+"}
+                      </h3>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__bLsWa
+                        )}
+                      >
+                        {
+                          "\u062a\u0631\u0627\u06a9\u0646\u0634 \u062f\u0631 \u062b\u0627\u0646\u06cc\u0647!"
+                        }
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div className={classNames(projectcss.all, sty.freeBox__oyTn)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___02J74
+                    )}
+                  >
+                    {
+                      "Our design partners include the world\u2019s leading product-led companies"
+                    }
+                  </div>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__fnn1U)}
+                  >
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__o0R8F)}
+                      displayHeight={"50px"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"233px"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/katibe/images/image5.png",
+                        fullWidth: 466,
+                        fullHeight: 100,
+                        aspectRatio: undefined
+                      }}
+                    />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img___8TGkq)}
+                      displayHeight={"50px"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"189px"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/katibe/images/image6.png",
+                        fullWidth: 378,
+                        fullHeight: 100,
+                        aspectRatio: undefined
+                      }}
+                    />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__sv4WE)}
+                      displayHeight={"50px"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"194px"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/katibe/images/image7.png",
+                        fullWidth: 388,
+                        fullHeight: 100,
+                        aspectRatio: undefined
+                      }}
+                    />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__mAsZu)}
+                      displayHeight={"50px"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"189px"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/katibe/images/image8.png",
+                        fullWidth: 378,
+                        fullHeight: 100,
+                        aspectRatio: undefined
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div className={classNames(projectcss.all, sty.freeBox__ilyRg)}>
@@ -4379,34 +4561,9 @@ function PlasmicHomePage__RenderFunc(props: {
                   sty.text__iuQ6N
                 )}
               >
-                <React.Fragment>
-                  <React.Fragment>
-                    {
-                      "\u062c\u0647\u062a \u06a9\u0633\u0628 \u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0628\u06cc\u0634\u062a\u0631\u060c \u0628\u0627 \u0622\u06cc\u200c\u062f\u06cc "
-                    }
-                  </React.Fragment>
-                  {
-                    <PlasmicLink__
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.a,
-                        projectcss.__wab_text,
-                        projectcss.plasmic_default__inline,
-                        sty.link___8Nb2
-                      )}
-                      component={Link}
-                      href={"https://t.me/hojatkhajavi"}
-                      platform={"nextjs"}
-                    >
-                      {"@hojatkhajavi"}
-                    </PlasmicLink__>
-                  }
-                  <React.Fragment>
-                    {
-                      " \u062f\u0631 \u062a\u0644\u06af\u0631\u0627\u0645 \u0627\u0631\u062a\u0628\u0627\u0637 \u0628\u06af\u06cc\u0631\u06cc\u062f."
-                    }
-                  </React.Fragment>
-                </React.Fragment>
+                {
+                  "\u0637\u0631\u0627\u062d\u06cc \u0634\u062f\u0647 \u0628\u0627 \u2661 \u062c\u0647\u062a \u0631\u0641\u0639 \u0646\u06af\u0631\u0627\u0646\u06cc \u0634\u0645\u0627 \u0628\u0627\u0628\u062a \u0632\u06cc\u0631\u0633\u0627\u062e\u062a \u0645\u0627\u0644\u06cc \u06a9\u0633\u0628 \u0648 \u06a9\u0627\u0631\u062a\u0627\u0646"
+                }
               </div>
             </div>
           </div>
@@ -4462,6 +4619,10 @@ const PlasmicDescendants = {
     "softBackground12",
     "border12",
     "interactionEffect12",
+    "textInput3",
+    "softBackground13",
+    "border13",
+    "interactionEffect13",
     "textInput",
     "softBackground",
     "border",
@@ -4514,6 +4675,10 @@ const PlasmicDescendants = {
   softBackground12: ["softBackground12"],
   border12: ["border12"],
   interactionEffect12: ["interactionEffect12"],
+  textInput3: ["textInput3"],
+  softBackground13: ["softBackground13"],
+  border13: ["border13"],
+  interactionEffect13: ["interactionEffect13"],
   textInput: ["textInput"],
   softBackground: ["softBackground"],
   border: ["border"],
@@ -4560,6 +4725,10 @@ type NodeDefaultElementType = {
   softBackground12: "div";
   border12: "div";
   interactionEffect12: "div";
+  textInput3: typeof TextInput;
+  softBackground13: "div";
+  border13: "div";
+  interactionEffect13: "div";
   textInput: typeof TextInput;
   softBackground: "div";
   border: "div";
@@ -4664,6 +4833,10 @@ export const PlasmicHomePage = Object.assign(
     softBackground12: makeNodeComponent("softBackground12"),
     border12: makeNodeComponent("border12"),
     interactionEffect12: makeNodeComponent("interactionEffect12"),
+    textInput3: makeNodeComponent("textInput3"),
+    softBackground13: makeNodeComponent("softBackground13"),
+    border13: makeNodeComponent("border13"),
+    interactionEffect13: makeNodeComponent("interactionEffect13"),
     textInput: makeNodeComponent("textInput"),
     softBackground: makeNodeComponent("softBackground"),
     border: makeNodeComponent("border"),
@@ -4676,7 +4849,7 @@ export const PlasmicHomePage = Object.assign(
 
     // Page metadata
     pageMetadata: {
-      title: "کتیبه – سیستم مدیریت مالی بر پایه api",
+      title: "api پرداخت، کیف پول و تسهیم",
       description: "",
       ogImageSrc: "",
       canonical: ""
