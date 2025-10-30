@@ -3088,6 +3088,7 @@
     max-width: 24px;
     width: auto;
     height: 16px;
+    margin-top: 10px;
   }
 }
 .freeBox__f5GqA {
@@ -3187,7 +3188,7 @@
     max-width: 24px;
     width: 16px;
     height: 16px;
-    margin-top: 7px;
+    margin-top: 4px;
     flex-shrink: 0;
   }
 }
