@@ -257,14 +257,18 @@ function PlasmicHomePage__RenderFunc(props: {
                     <PlasmicImg__
                       alt={""}
                       className={classNames(sty.img__xoepJ)}
-                      displayHeight={"50px"}
+                      displayHeight={
+                        hasVariant(globalVariants, "screen", "mobileOnly")
+                          ? "30px"
+                          : "50px"
+                      }
                       displayMaxHeight={"none"}
                       displayMaxWidth={"none"}
                       displayMinHeight={"0"}
                       displayMinWidth={"0"}
                       displayWidth={
                         hasVariant(globalVariants, "screen", "mobileOnly")
-                          ? "55px"
+                          ? "30px"
                           : "50px"
                       }
                       src={{
