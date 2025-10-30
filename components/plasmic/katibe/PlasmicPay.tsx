@@ -862,6 +862,8 @@ function PlasmicPay__RenderFunc(props: {
                                       ($ctx.query.center_id || "") +
                                       "&uuid=" +
                                       Date.now() +
+                                      "&refund_timeout=" +
+                                      ($ctx.query.refund_timeout || 60) +
                                       "&check-vpn=true"
                                     );
                                   } catch (e) {
@@ -1324,6 +1326,8 @@ function PlasmicPay__RenderFunc(props: {
                                         "&center_id=" +
                                         ($ctx.query.center_id || "") +
                                         "&check-vpn=true" +
+                                        "&refund_timeout=" +
+                                        ($ctx.query.refund_timeout || 60) +
                                         "&type=" +
                                         $state.paymentsMethod.value +
                                         "&uuid=" +
