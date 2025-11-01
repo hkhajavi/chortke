@@ -301,40 +301,6 @@ function PlasmicHomePage__RenderFunc(props: {
                     )}
                     component={Link}
                     href={"tel:+989157405770"}
-                    onClick={async event => {
-                      const $steps = {};
-
-                      $steps["runCode"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              customFunction: async () => {
-                                return (() => {
-                                  var node = document.querySelector(".pricing");
-                                  var yourHeight = 0;
-                                  node.scrollIntoView(true);
-                                  var scrolledY = window.scrollY;
-                                  if (scrolledY) {
-                                    return window.scrollTo({
-                                      top: scrolledY - yourHeight,
-                                      behavior: "smooth"
-                                    });
-                                  }
-                                })();
-                              }
-                            };
-                            return (({ customFunction }) => {
-                              return customFunction();
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["runCode"] != null &&
-                        typeof $steps["runCode"] === "object" &&
-                        typeof $steps["runCode"].then === "function"
-                      ) {
-                        $steps["runCode"] = await $steps["runCode"];
-                      }
-                    }}
                     platform={"nextjs"}
                     target={undefined}
                   >
@@ -351,40 +317,6 @@ function PlasmicHomePage__RenderFunc(props: {
                     href={
                       "https://www.apidog.com/apidoc/shared/6f3a7605-05e6-4d8c-9c9a-72ab01518afb"
                     }
-                    onClick={async event => {
-                      const $steps = {};
-
-                      $steps["runCode"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              customFunction: async () => {
-                                return (() => {
-                                  var node = document.querySelector(".pricing");
-                                  var yourHeight = 0;
-                                  node.scrollIntoView(true);
-                                  var scrolledY = window.scrollY;
-                                  if (scrolledY) {
-                                    return window.scrollTo({
-                                      top: scrolledY - yourHeight,
-                                      behavior: "smooth"
-                                    });
-                                  }
-                                })();
-                              }
-                            };
-                            return (({ customFunction }) => {
-                              return customFunction();
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["runCode"] != null &&
-                        typeof $steps["runCode"] === "object" &&
-                        typeof $steps["runCode"].then === "function"
-                      ) {
-                        $steps["runCode"] = await $steps["runCode"];
-                      }
-                    }}
                     platform={"nextjs"}
                     target={"_blank"}
                   >
