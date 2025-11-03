@@ -6487,7 +6487,7 @@
   width: 100%;
   height: auto;
   max-width: 800px;
-  font-family: "Montserrat", sans-serif;
+  font-family: var(--iran-sans-x);
   font-size: 30px;
   font-weight: 700;
   font-style: normal;
@@ -6519,6 +6519,7 @@
     user-select: text;
     text-decoration-line: none;
     text-overflow: clip;
+    font-family: var(--iran-sans-x);
     min-width: 0;
   }
 }
