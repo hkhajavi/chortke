@@ -116,15 +116,6 @@ export type PlasmicHomePage__OverridesType = {
   softBackground8?: Flex__<"div">;
   border8?: Flex__<"div">;
   interactionEffect8?: Flex__<"div">;
-  softBackground9?: Flex__<"div">;
-  border9?: Flex__<"div">;
-  interactionEffect9?: Flex__<"div">;
-  softBackground10?: Flex__<"div">;
-  border10?: Flex__<"div">;
-  interactionEffect10?: Flex__<"div">;
-  softBackground11?: Flex__<"div">;
-  border11?: Flex__<"div">;
-  interactionEffect11?: Flex__<"div">;
   textInput?: Flex__<typeof TextInput>;
   softBackground?: Flex__<"div">;
   border?: Flex__<"div">;
@@ -269,7 +260,7 @@ function PlasmicHomePage__RenderFunc(props: {
                       displayWidth={
                         hasVariant(globalVariants, "screen", "mobileOnly")
                           ? "30px"
-                          : "50px"
+                          : "55px"
                       }
                       src={{
                         src: "/plasmic/katibe/images/logo5E03Fe79Svg.svg",
@@ -398,8 +389,8 @@ function PlasmicHomePage__RenderFunc(props: {
                   )}
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? "\u06a9\u062a\u06cc\u0628\u0647: api \u067e\u0631\u062f\u0627\u062e\u062a\u060c \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0648 \u062a\u0633\u0647\u06cc\u0645"
-                    : "\u06a9\u062a\u06cc\u0628\u0647: api \u067e\u0631\u062f\u0627\u062e\u062a\u060c \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0648 \u062a\u0633\u0647\u06cc\u0645"}
+                    ? "\u06a9\u062a\u06cc\u0628\u0647: \u0633\u0631\u0648\u06cc\u0633 \u067e\u0631\u062f\u0627\u062e\u062a \u0648 \u06a9\u06cc\u0641 \u067e\u0648\u0644"
+                    : "\u06a9\u062a\u06cc\u0628\u0647: \u0633\u0631\u0648\u06cc\u0633 \u067e\u0631\u062f\u0627\u062e\u062a \u0648 \u06a9\u06cc\u0641 \u067e\u0648\u0644"}
                 </h1>
                 <div
                   className={classNames(
@@ -653,10 +644,31 @@ function PlasmicHomePage__RenderFunc(props: {
                     </div>
                   </div>
                 </BaseButton>
+                <div
+                  className={classNames(projectcss.all, sty.freeBox___1Rm0Y)}
+                >
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__pwhuw)}
+                  >
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__fEwzJ)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__nuglj
+                        )}
+                      >
+                        {
+                          "\u0628\u0627 \u06a9\u062a\u06cc\u0628\u0647: \u0641\u0631\u0648\u0634\u06af\u0627\u0647 \u0627\u06cc\u0646\u062a\u0631\u0646\u062a\u06cc \u0648 \u067e\u0644\u062a\u0641\u0631\u0645 \u062e\u0648\u062f\u062a \u0631\u0648 \u0628\u0647 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0645\u062a\u0635\u0644 \u06a9\u0646 \u0648 \u0628\u0647\u200c\u0635\u0648\u0631\u062a \u062e\u0648\u062f\u06a9\u0627\u0631 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0648 \u062f\u0631\u0622\u0645\u062f \u0641\u0631\u0648\u0634\u0646\u062f\u06af\u0627\u0646 \u0631\u0648 \u0645\u062f\u06cc\u0631\u06cc\u062a \u06a9\u0646!"
+                        }
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-          <div className={classNames(projectcss.all, sty.freeBox__aMIir)}>
             <div className={classNames(projectcss.all, sty.freeBox__krxVf)}>
               <div className={classNames(projectcss.all, sty.freeBox__luFh9)}>
                 <h2
@@ -669,7 +681,7 @@ function PlasmicHomePage__RenderFunc(props: {
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly")
                     ? "\u0627\u06af\u0647 \u0641\u0631\u0648\u0634\u06af\u0627\u0647 \u0627\u06cc\u0646\u062a\u0631\u0646\u062a\u06cc \u06cc\u0627 \u067e\u0644\u062a\u0641\u0631\u0645\u06cc \u062f\u0627\u0631\u06cc \u06a9\u0647 \u0645\u06cc\u200c\u062e\u0648\u0627\u06cc \u0628\u0647 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0648\u0635\u0644 \u0628\u0634\u0647 \u0648 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u06cc:"
-                    : "\u0627\u06af\u0647 \u0641\u0631\u0648\u0634\u06af\u0627\u0647 \u0627\u06cc\u0646\u062a\u0631\u0646\u062a\u06cc \u06cc\u0627 \u067e\u0644\u062a\u0641\u0631\u0645\u06cc \u062f\u0627\u0631\u06cc \u06a9\u0647 \u0645\u06cc\u200c\u062e\u0648\u0627\u06cc \u0628\u0647 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0648\u0635\u0644 \u0628\u0634\u0647 \u0648 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u06cc:"}
+                    : "\u0628\u0627 \u06a9\u062a\u06cc\u0628\u0647: \u0641\u0631\u0648\u0634\u06af\u0627\u0647 \u0627\u06cc\u0646\u062a\u0631\u0646\u062a\u06cc \u0648 \u067e\u0644\u062a\u0641\u0631\u0645 \u062e\u0648\u062f\u062a \u0631\u0648 \u0628\u0647 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0645\u062a\u0635\u0644 \u06a9\u0646 \u0648 \u0628\u0647\u200c\u0635\u0648\u0631\u062a \u062e\u0648\u062f\u06a9\u0627\u0631 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0648 \u062f\u0631\u0622\u0645\u062f \u0641\u0631\u0648\u0634\u0646\u062f\u06af\u0627\u0646 \u0631\u0648 \u0645\u062f\u06cc\u0631\u06cc\u062a \u06a9\u0646!"}
                 </h2>
                 <div
                   className={classNames(
@@ -1069,6 +1081,25 @@ function PlasmicHomePage__RenderFunc(props: {
               </div>
             </div>
           </div>
+          <div className={classNames(projectcss.all, sty.freeBox__x1YlM)}>
+            <div className={classNames(projectcss.all, sty.freeBox__npZ6Z)}>
+              <div className={classNames(projectcss.all, sty.freeBox__kxbe7)}>
+                <div className={classNames(projectcss.all, sty.freeBox__zWuV9)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__d4Qfj
+                    )}
+                  >
+                    {
+                      "\u0641\u0631\u0648\u0634\u06af\u0627\u0647 \u0627\u06cc\u0646\u062a\u0631\u0646\u062a\u06cc \u0648 \u067e\u0644\u062a\u0641\u0631\u0645 \u062e\u0648\u062f\u062a \u0631\u0648 \u0628\u0647 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0645\u062a\u0635\u0644 \u06a9\u0646 \u0648 \u0628\u0647\u200c\u0635\u0648\u0631\u062a \u062e\u0648\u062f\u06a9\u0627\u0631 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0648 \u062f\u0631\u0622\u0645\u062f \u0641\u0631\u0648\u0634\u0646\u062f\u06af\u0627\u0646 \u0631\u0648 \u0645\u062f\u06cc\u0631\u06cc\u062a \u06a9\u0646!"
+                    }
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className={classNames(projectcss.all, sty.freeBox__b3AVb)}>
             <div className={classNames(projectcss.all, sty.freeBox__caCcW)}>
               <div className={classNames(projectcss.all, sty.freeBox__dlVjj)}>
@@ -1079,7 +1110,7 @@ function PlasmicHomePage__RenderFunc(props: {
                     <PlasmicImg__
                       alt={""}
                       className={classNames(sty.img__e1H7)}
-                      displayHeight={"auto"}
+                      displayHeight={"300px"}
                       displayMaxHeight={"none"}
                       displayMaxWidth={"500px"}
                       displayMinHeight={"0"}
@@ -1091,9 +1122,9 @@ function PlasmicHomePage__RenderFunc(props: {
                       }
                       loading={"lazy"}
                       src={{
-                        src: "/plasmic/katibe/images/image20.png",
-                        fullWidth: 1040,
-                        fullHeight: 1040,
+                        src: "/plasmic/katibe/images/financialSecurityConceptSafeAndHandshakeEscrowAccountOrSecureJointAccountForSafeTransactionsTrustAgreementPartnershipOnlinePaymentOrBusinessFlatIllustrationVectorJpg.jpg",
+                        fullWidth: 980,
+                        fullHeight: 980,
                         aspectRatio: undefined
                       }}
                     />
@@ -1136,7 +1167,7 @@ function PlasmicHomePage__RenderFunc(props: {
                           )}
                         >
                           {
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                            "\u067e\u0631\u062f\u0627\u062e\u062a \u0627\u0645\u0646"
                           }
                         </div>
                       </div>
@@ -1171,16 +1202,6 @@ function PlasmicHomePage__RenderFunc(props: {
                             aspectRatio: 13
                           }}
                         />
-
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__wZx2O
-                          )}
-                        >
-                          {"Lorem Ipsum"}
-                        </div>
                       </div>
                       <h3
                         className={classNames(
@@ -1190,7 +1211,9 @@ function PlasmicHomePage__RenderFunc(props: {
                           sty.h3__vivqC
                         )}
                       >
-                        {"Lorem Ipsum"}
+                        {
+                          "\u067e\u0631\u062f\u0627\u062e\u062a \u0627\u0645\u0646"
+                        }
                       </h3>
                       <div
                         className={classNames(
@@ -1200,7 +1223,7 @@ function PlasmicHomePage__RenderFunc(props: {
                         )}
                       >
                         {
-                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "
+                          "\u0627\u06af\u0647 \u0642\u0631\u0627\u0631\u0647 \u0628\u0639\u062f \u0627\u0632 \u062a\u0627\u06cc\u06cc\u062f \u062e\u0631\u06cc\u062f\u0627\u0631 \u067e\u0648\u0644 \u0641\u0631\u0648\u0634\u0646\u062f\u0647 \u0631\u0648 \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0646\u06cc \u0648 \u067e\u0631\u062f\u0627\u062e\u062a \u0627\u0645\u0646 \u0628\u0631\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u06cc\u060c \u06a9\u062a\u06cc\u0628\u0647 \u0628\u0647\u062a\u0631\u06cc\u0646 \u0627\u0646\u062a\u062e\u0627\u0628\u0647!\n\u0628\u0627 \u0633\u0631\u0648\u06cc\u0633 \u067e\u0631\u062f\u0627\u062e\u062a \u0627\u0645\u0646 \u06a9\u062a\u06cc\u0628\u0647 \u0645\u06cc\u062a\u0648\u0646\u06cc \u062f\u0631\u0622\u0645\u062f \u0641\u0631\u0648\u0634\u0646\u062f\u0647 \u0631\u0648 \u062f\u0631 \u0632\u0645\u0627\u0646 \u062f\u0631\u0633\u062a\u0634 \u0648\u0627\u0631\u06cc\u0632 \u06a9\u0646\u06cc"
                         }
                       </div>
                       <BaseButton
@@ -1263,7 +1286,9 @@ function PlasmicHomePage__RenderFunc(props: {
                               sty.text___4KQnw
                             )}
                           >
-                            {"lorem Ipsum"}
+                            {
+                              "\u0628\u0631\u0631\u0633\u06cc \u0633\u0631\u0648\u06cc\u0633"
+                            }
                           </div>
                           <div
                             className={classNames(
@@ -1316,16 +1341,6 @@ function PlasmicHomePage__RenderFunc(props: {
                             aspectRatio: 13
                           }}
                         />
-
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__fkPkS
-                          )}
-                        >
-                          {"Lorem Ipsum"}
-                        </div>
                       </div>
                       <h3
                         className={classNames(
@@ -1335,7 +1350,7 @@ function PlasmicHomePage__RenderFunc(props: {
                           sty.h3__vmxRp
                         )}
                       >
-                        {"Lorem Ipsum"}
+                        {"\u06a9\u06cc\u0641 \u067e\u0648\u0644"}
                       </h3>
                       <div
                         className={classNames(
@@ -1345,7 +1360,7 @@ function PlasmicHomePage__RenderFunc(props: {
                         )}
                       >
                         {
-                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "
+                          "\u0627\u06af\u0647 \u0645\u0634\u062a\u0631\u06cc \u0644\u0627\u0632\u0645\u0647 \u06a9\u0647 \u062d\u0633\u0627\u0628 \u06a9\u0627\u0631\u0628\u0631\u06cc\u200c\u0634\u0648 \u0634\u0627\u0631\u0698 \u06a9\u0646\u0647 \u06cc\u0627 \u067e\u0631\u062f\u0627\u062e\u062a\u200c\u0647\u0627\u06cc \u062e\u0648\u062f\u06a9\u0627\u0631 \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u0647\u060c \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0646\u06cc\u0627\u0632 100\u062f\u0631\u0635\u062f\u06cc \u06a9\u0633\u0628 \u0648 \u06a9\u0627\u0631\u062a\u0647!\n\u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627\u06cc \u0648\u0627\u0631\u06cc\u0632 \u0648 \u0628\u0631\u062f\u0627\u0634\u062a \u0627\u0632 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0631\u0648 \u062e\u0648\u062f\u06a9\u0627\u0631 \u06a9\u0646 \u0648 \u0628\u0627 \u062b\u0628\u062a \u0633\u0641\u0627\u0631\u0634\u060c \n\u0647\u0645\u0647 \u0627\u0645\u0648\u0631 \u0645\u0627\u0644\u06cc \u0631\u0648 \u06cc\u06a9\u200c\u067e\u0627\u0631\u0686\u0647 \u0645\u062f\u06cc\u0631\u06cc\u062a \u06a9\u0646"
                         }
                       </div>
                       <BaseButton
@@ -1408,7 +1423,9 @@ function PlasmicHomePage__RenderFunc(props: {
                               sty.text__fE9Kb
                             )}
                           >
-                            {"lorem Ipsum"}
+                            {
+                              "\u0627\u0637\u0644\u0627\u0639\u0627\u062a \u0628\u06cc\u0634\u062a\u0631"
+                            }
                           </div>
                           <div
                             className={classNames(
@@ -1434,7 +1451,7 @@ function PlasmicHomePage__RenderFunc(props: {
                     <PlasmicImg__
                       alt={""}
                       className={classNames(sty.img__jLngZ)}
-                      displayHeight={"auto"}
+                      displayHeight={"300px"}
                       displayMaxHeight={"none"}
                       displayMaxWidth={
                         hasVariant(globalVariants, "screen", "mobileOnly")
@@ -1450,9 +1467,9 @@ function PlasmicHomePage__RenderFunc(props: {
                       }
                       loading={"lazy"}
                       src={{
-                        src: "/plasmic/katibe/images/image23.png",
-                        fullWidth: 1040,
-                        fullHeight: 1040,
+                        src: "/plasmic/katibe/images/manTransferringMoneyWomanViaSmartphoneOnlineTransactionBankingFlatVectorIllustrationFinanceDigitalTechnologyConcept7485510107Avif.avif",
+                        fullWidth: 740,
+                        fullHeight: 493,
                         aspectRatio: undefined
                       }}
                     />
@@ -1492,7 +1509,7 @@ function PlasmicHomePage__RenderFunc(props: {
                           )}
                         >
                           {
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                            "\u0645\u062f\u06cc\u0631\u06cc\u062a \u062e\u0648\u062f\u06a9\u0627\u0631 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a"
                           }
                         </div>
                       </div>
@@ -1508,7 +1525,7 @@ function PlasmicHomePage__RenderFunc(props: {
                     <PlasmicImg__
                       alt={""}
                       className={classNames(sty.img__qqcOa)}
-                      displayHeight={"auto"}
+                      displayHeight={"300px"}
                       displayMaxHeight={"none"}
                       displayMaxWidth={
                         hasVariant(globalVariants, "screen", "mobileOnly")
@@ -1520,9 +1537,9 @@ function PlasmicHomePage__RenderFunc(props: {
                       displayWidth={"auto"}
                       loading={"lazy"}
                       src={{
-                        src: "/plasmic/katibe/images/image24.png",
-                        fullWidth: 1040,
-                        fullHeight: 1040,
+                        src: "/plasmic/katibe/images/conceptOfOpenBankingPlatformCorporateAccountingElectronicInvoiceWithTinyPeopleCollectionOfAbstractIllustrationsOfItAccountingSystemsBusinessFinanceSoftwareVectorJpg.jpg",
+                        fullWidth: 1470,
+                        fullHeight: 980,
                         aspectRatio: undefined
                       }}
                     />
@@ -1565,7 +1582,7 @@ function PlasmicHomePage__RenderFunc(props: {
                           )}
                         >
                           {
-                            "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+                            "\u0645\u062f\u06cc\u0631\u06cc\u062a \u062a\u0631\u0627\u06a9\u0646\u0634\u200c\u0647\u0627 \u0648 \u06a9\u06cc\u0641 \u067e\u0648\u0644"
                           }
                         </div>
                       </div>
@@ -1600,16 +1617,6 @@ function PlasmicHomePage__RenderFunc(props: {
                             aspectRatio: 13
                           }}
                         />
-
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__vkNyt
-                          )}
-                        >
-                          {"Lorem Ipsum"}
-                        </div>
                       </div>
                       <h3
                         className={classNames(
@@ -1619,7 +1626,9 @@ function PlasmicHomePage__RenderFunc(props: {
                           sty.h3__an51
                         )}
                       >
-                        {"Lorem Ipsum"}
+                        {
+                          "\u06af\u0632\u0627\u0631\u0634\u200c\u0647\u0627\u06cc \u0645\u0627\u0644\u06cc \u0648 \u062d\u0633\u0627\u0628\u062f\u0627\u0631\u06cc"
+                        }
                       </h3>
                       <div
                         className={classNames(
@@ -1629,7 +1638,7 @@ function PlasmicHomePage__RenderFunc(props: {
                         )}
                       >
                         {
-                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. "
+                          "\u0647\u0645\u0647 \u062d\u0633\u0627\u0628 \u0648 \u06a9\u062a\u0627\u0628\u200c\u0647\u0627\u0631\u0648 \u0628\u0633\u067e\u0631 \u0628\u0647 \u06a9\u062a\u06cc\u0628\u0647: \u0633\u0647\u0645 \u067e\u0644\u062a\u0641\u0631\u0645\u060c \u062f\u0631\u0622\u0645\u062f \u0641\u0631\u0648\u0634\u0646\u062f\u0647\u060c \u0645\u0627\u0644\u06cc\u0627\u062a \u0648 \u062a\u062e\u0641\u06cc\u0641 \u0631\u0648 \u0645\u062f\u06cc\u0631\u06cc\u062a \u06a9\u0646 \u0648 \u0646\u06af\u0631\u0627\u0646 \u0627\u0631\u0627\u0626\u0647 \u06af\u0632\u0627\u0631\u0634\u200c\u0647\u0627\u06cc \u0645\u0627\u0644\u06cc\u0627\u062a\u06cc \u0648 \u062f\u0631\u0622\u0645\u062f \u06a9\u0633\u0628 \u0648 \u06a9\u0627\u0631\u062a \u0646\u0628\u0627\u0634"
                         }
                       </div>
                       <BaseButton
@@ -1716,18 +1725,16 @@ function PlasmicHomePage__RenderFunc(props: {
               </div>
             </div>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__lx4Ad)}>
-            <div className={classNames(projectcss.all, sty.freeBox__ilbkM)}>
-              <div className={classNames(projectcss.all, sty.freeBox__mj1Fi)}>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___1Rm0Y)}
-                >
+          <div className={classNames(projectcss.all, sty.freeBox__wo91)}>
+            <div className={classNames(projectcss.all, sty.freeBox__vlPE)}>
+              <div className={classNames(projectcss.all, sty.freeBox__sSzdY)}>
+                <div className={classNames(projectcss.all, sty.freeBox___8P54)}>
                   <h2
                     className={classNames(
                       projectcss.all,
                       projectcss.h2,
                       projectcss.__wab_text,
-                      sty.h2___9I27
+                      sty.h2__d5Qk
                     )}
                   >
                     {hasVariant(globalVariants, "screen", "mobileOnly")
@@ -1738,7 +1745,7 @@ function PlasmicHomePage__RenderFunc(props: {
                     className={classNames(
                       projectcss.all,
                       projectcss.__wab_text,
-                      sty.text__ppfp2
+                      sty.text__pFtEh
                     )}
                   >
                     {hasVariant(globalVariants, "screen", "mobileOnly")
@@ -1746,14 +1753,14 @@ function PlasmicHomePage__RenderFunc(props: {
                       : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex."}
                   </div>
                   <div
-                    className={classNames(projectcss.all, sty.freeBox___55K1T)}
+                    className={classNames(projectcss.all, sty.freeBox__roi1)}
                   >
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__oO2JW)}
+                      className={classNames(projectcss.all, sty.freeBox__wp3Wn)}
                     >
                       <PlasmicImg__
                         alt={""}
-                        className={classNames(sty.img___6Pdcr)}
+                        className={classNames(sty.img__eKK8)}
                         displayHeight={
                           hasVariant(globalVariants, "screen", "mobileOnly")
                             ? "16px"
@@ -1782,17 +1789,60 @@ function PlasmicHomePage__RenderFunc(props: {
                       />
                     </div>
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__aT02B)}
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___9PPvx
+                      )}
                     >
                       <div
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__lBpR
+                          sty.text___5XbS
                         )}
                       >
                         {hasVariant(globalVariants, "screen", "mobileOnly") ? (
-                          "\u0628\u0647 \u0622\u06cc\u200c\u062f\u06cc \u00a0@hojatkhajavi\u00a0 \u062f\u0631 \u062a\u0644\u06af\u0631\u0627\u0645 \u067e\u06cc\u0627\u0645 \u0628\u062f\u0647 \u062a\u0627 \u06cc\u062e\u0631\u062f\u0647 \u06af\u067e \u0628\u0632\u0646\u06cc\u0645: \u0622\u0634\u0646\u0627 \u0628\u0634\u06cc\u0645 \u0648 \u0628\u0628\u06cc\u0646\u06cc\u0645 \u062f\u0631\u06af\u0627\u0647 \u06af\u0631\u0641\u062a\u06cc \u06cc\u0627 \u0628\u0631\u0627\u062a \u0631\u062f\u06cc\u0641 \u06a9\u0646\u06cc\u0645!\r"
+                          <React.Fragment>
+                            <React.Fragment>
+                              {"\u0628\u0647 \u0622\u06cc\u200c\u062f\u06cc "}
+                            </React.Fragment>
+                            {
+                              <PlasmicLink__
+                                className={classNames(
+                                  projectcss.all,
+                                  projectcss.a,
+                                  projectcss.__wab_text,
+                                  projectcss.plasmic_default__inline,
+                                  sty.link__iqmSz
+                                )}
+                                component={Link}
+                                href={"https://t.me/hojatkhajavi"}
+                                platform={"nextjs"}
+                                target={
+                                  hasVariant(
+                                    globalVariants,
+                                    "screen",
+                                    "mobileOnly"
+                                  )
+                                    ? "_blank"
+                                    : undefined
+                                }
+                              >
+                                {hasVariant(
+                                  globalVariants,
+                                  "screen",
+                                  "mobileOnly"
+                                )
+                                  ? "\u00a0@hojatkhajavi"
+                                  : "\u00a0@hojatkhajavi"}
+                              </PlasmicLink__>
+                            }
+                            <React.Fragment>
+                              {
+                                "\u00a0 \u062f\u0631 \u062a\u0644\u06af\u0631\u0627\u0645 \u067e\u06cc\u0627\u0645 \u0628\u062f\u0647\r"
+                              }
+                            </React.Fragment>
+                          </React.Fragment>
                         ) : (
                           <React.Fragment>
                             <React.Fragment>
@@ -1805,7 +1855,7 @@ function PlasmicHomePage__RenderFunc(props: {
                                   projectcss.a,
                                   projectcss.__wab_text,
                                   projectcss.plasmic_default__inline,
-                                  sty.link__m5Jbr
+                                  sty.link__k4LPb
                                 )}
                                 component={Link}
                                 href={"https://t.me/hojatkhajavi"}
@@ -1823,7 +1873,7 @@ function PlasmicHomePage__RenderFunc(props: {
                             }
                             <React.Fragment>
                               {
-                                " \u062f\u0631 \u062a\u0644\u06af\u0631\u0627\u0645 \u067e\u06cc\u0627\u0645 \u0628\u062f\u0647 \u062a\u0627 \u06cc\u062e\u0631\u062f\u0647 \u06af\u067e \u0628\u0632\u0646\u06cc\u0645: \u0622\u0634\u0646\u0627 \u0628\u0634\u06cc\u0645 \u0648 \u0628\u0628\u06cc\u0646\u06cc\u0645 \u062f\u0631\u06af\u0627\u0647 \u06af\u0631\u0641\u062a\u06cc \u06cc\u0627 \u0628\u0631\u0627\u062a \u0631\u062f\u06cc\u0641 \u06a9\u0646\u06cc\u0645!\r"
+                                " \u062f\u0631 \u062a\u0644\u06af\u0631\u0627\u0645 \u067e\u06cc\u0627\u0645 \u0628\u062f\u0647\r"
                               }
                             </React.Fragment>
                           </React.Fragment>
@@ -1832,14 +1882,14 @@ function PlasmicHomePage__RenderFunc(props: {
                     </div>
                   </div>
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__wAvVj)}
+                    className={classNames(projectcss.all, sty.freeBox__gjnIe)}
                   >
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__nsV)}
+                      className={classNames(projectcss.all, sty.freeBox__lxBil)}
                     >
                       <PlasmicImg__
                         alt={""}
-                        className={classNames(sty.img__lHudl)}
+                        className={classNames(sty.img__yiG9Y)}
                         displayHeight={
                           hasVariant(globalVariants, "screen", "mobileOnly")
                             ? "16px"
@@ -1868,30 +1918,33 @@ function PlasmicHomePage__RenderFunc(props: {
                       />
                     </div>
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__f5GqA)}
+                      className={classNames(
+                        projectcss.all,
+                        sty.freeBox___2Mb4I
+                      )}
                     >
                       <div
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__aqYo
+                          sty.text___4Gz23
                         )}
                       >
                         {
-                          "\u06a9\u0645\u06a9\u062a \u0645\u06cc\u200c\u06a9\u0646\u06cc\u0645 \u0633\u0631\u0648\u06cc\u0633\u200c\u0647\u0627\u0631\u0648 \u067e\u06cc\u0627\u062f\u0647 \u0633\u0627\u0632\u06cc \u06a9\u0646\u06cc. \u0627\u06af\u0647 \u0646\u06cc\u0631\u0648\u06cc \u0641\u0646\u06cc \u0646\u062f\u0627\u0631\u06cc \u0646\u06af\u0631\u0627\u0646 \u0646\u0628\u0627\u0634\u060c \u06a9\u0627\u0631\u062a \u0631\u0648 \u0631\u0627\u0647 \u0645\u06cc\u200c\u0646\u062f\u0627\u0632\u06cc\u0645"
+                          "\u0627\u06af\u0647 \u0646\u06cc\u0631\u0648\u06cc \u0641\u0646\u06cc \u0646\u062f\u0627\u0631\u06cc \u0646\u06af\u0631\u0627\u0646 \u0646\u0628\u0627\u0634\u060c \u06a9\u0645\u06a9\u062a \u0645\u06cc\u200c\u06a9\u0646\u06cc\u0645 \u0633\u0631\u0648\u06cc\u0633\u200c\u0647\u0627\u0631\u0648 \u067e\u06cc\u0627\u062f\u0647 \u0633\u0627\u0632\u06cc \u06a9\u0646\u06cc"
                         }
                       </div>
                     </div>
                   </div>
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__hficz)}
+                    className={classNames(projectcss.all, sty.freeBox__ch8Yp)}
                   >
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__jKvZy)}
+                      className={classNames(projectcss.all, sty.freeBox__dfzym)}
                     >
                       <PlasmicImg__
                         alt={""}
-                        className={classNames(sty.img__n5X3J)}
+                        className={classNames(sty.img__woSM)}
                         displayHeight={
                           hasVariant(globalVariants, "screen", "mobileOnly")
                             ? "16px"
@@ -1920,17 +1973,17 @@ function PlasmicHomePage__RenderFunc(props: {
                       />
                     </div>
                     <div
-                      className={classNames(projectcss.all, sty.freeBox__vzuqz)}
+                      className={classNames(projectcss.all, sty.freeBox__prToj)}
                     >
                       <div
                         className={classNames(
                           projectcss.all,
                           projectcss.__wab_text,
-                          sty.text__bmOav
+                          sty.text__qQsKx
                         )}
                       >
                         {
-                          "\u06a9\u0646\u0627\u0631\u062a \u0647\u0633\u062a\u06cc\u0645 \u062a\u0627 \u0645\u0633\u0627\u0626\u0644 \u0645\u0627\u0644\u06cc\u200c (\u0627\u0632 \u0645\u0627\u0644\u06cc\u0627\u062a \u06af\u0631\u0641\u062a\u0647 \u062a\u0627 \u062a\u0633\u0648\u06cc\u0647) \u062c\u0645\u0639 \u0648 \u062c\u0648\u0631 \u0628\u0634\u0647"
+                          "\u0642\u062f\u0645 \u0628\u0647 \u0642\u062f\u0645 \u0628\u0627\u0647\u0627\u062a \u0645\u06cc\u0627\u06cc\u0645 \u0648 \u06a9\u0646\u0627\u0631\u062a \u0647\u0633\u062a\u06cc\u0645 \u062a\u0627 \u0645\u0633\u0627\u0626\u0644 \u0645\u0627\u0644\u06cc\u200c (\u0627\u0632 \u0645\u0627\u0644\u06cc\u0627\u062a \u06af\u0631\u0641\u062a\u0647 \u062a\u0627 \u062a\u0633\u0648\u06cc\u0647) \u062c\u0645\u0639 \u0648 \u062c\u0648\u0631 \u0628\u0634\u0647"
                         }
                       </div>
                     </div>
@@ -2359,1060 +2412,6 @@ function PlasmicHomePage__RenderFunc(props: {
                         }
                       </div>
                     </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className={classNames(projectcss.all, sty.freeBox__n8Svo)}>
-            <div className={classNames(projectcss.all, sty.freeBox___0ObK0)}>
-              <div className={classNames(projectcss.all, sty.freeBox___0Q4Re)}>
-                <h2
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.h2,
-                    projectcss.__wab_text,
-                    sty.h2__gk7Jv
-                  )}
-                >
-                  {"Lorem Ipsum"}
-                </h2>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___9TjZ
-                  )}
-                >
-                  {hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex."
-                    : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex."}
-                </div>
-                <div className={classNames(projectcss.all, sty.freeBox___3LSi)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__ev8Ov)}
-                  >
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__huHqj)}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={
-                        hasVariant(globalVariants, "screen", "mobileOnly")
-                          ? "114px"
-                          : "141px"
-                      }
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"auto"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/katibe/images/image30.svg",
-                        fullWidth: 148,
-                        fullHeight: 150,
-                        aspectRatio: 0.986014
-                      }}
-                    />
-
-                    <h4
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.h4,
-                        projectcss.__wab_text,
-                        sty.h4__xeIw
-                      )}
-                    >
-                      {hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? "Starter"
-                        : "Starter"}
-                    </h4>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___0QPsO
-                      )}
-                    >
-                      {
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-                      }
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__ptfbB)}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"238px"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"auto"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/katibe/images/image31.svg",
-                        fullWidth: 300,
-                        fullHeight: 3,
-                        aspectRatio: 119
-                      }}
-                    />
-
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__cgf3Y)}
-                    >
-                      <h3
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.h3,
-                          projectcss.__wab_text,
-                          sty.h3__r6VEm
-                        )}
-                      >
-                        {"$0"}
-                      </h3>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__t20U
-                        )}
-                      >
-                        {"/ Month"}
-                      </div>
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__hF4Fr)}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"238px"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"auto"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/katibe/images/image31.svg",
-                        fullWidth: 300,
-                        fullHeight: 3,
-                        aspectRatio: 119
-                      }}
-                    />
-
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__vaDux
-                      )}
-                    >
-                      {hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? "Feature"
-                        : "Feature"}
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__oWnoO)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__z2Yhe
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox___1P9Ks
-                          )}
-                        >
-                          <PlasmicImg__
-                            alt={""}
-                            className={classNames(sty.img__sOE8)}
-                            displayHeight={"20px"}
-                            displayMaxHeight={"none"}
-                            displayMaxWidth={"100%"}
-                            displayMinHeight={"0"}
-                            displayMinWidth={"0"}
-                            displayWidth={"20px"}
-                            loading={"lazy"}
-                            src={{
-                              src: "/plasmic/katibe/images/image32.svg",
-                              fullWidth: 150,
-                              fullHeight: 150,
-                              aspectRatio: 1
-                            }}
-                          />
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__vAVfA
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__nwfpn
-                            )}
-                          >
-                            {"Unlimited issue"}
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__vxwEd
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__oU4U
-                          )}
-                        >
-                          <PlasmicImg__
-                            alt={""}
-                            className={classNames(sty.img___12PU7)}
-                            displayHeight={"20px"}
-                            displayMaxHeight={"none"}
-                            displayMaxWidth={"100%"}
-                            displayMinHeight={"0"}
-                            displayMinWidth={"0"}
-                            displayWidth={"20px"}
-                            loading={"lazy"}
-                            src={{
-                              src: "/plasmic/katibe/images/image32.svg",
-                              fullWidth: 150,
-                              fullHeight: 150,
-                              aspectRatio: 1
-                            }}
-                          />
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__jJfsb
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__kijHr
-                            )}
-                          >
-                            {"Free domain"}
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__u2ZZo
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox___11PEv
-                          )}
-                        >
-                          <PlasmicImg__
-                            alt={""}
-                            className={classNames(sty.img__l9Wuy)}
-                            displayHeight={"20px"}
-                            displayMaxHeight={"none"}
-                            displayMaxWidth={"100%"}
-                            displayMinHeight={"0"}
-                            displayMinWidth={"0"}
-                            displayWidth={"20px"}
-                            loading={"lazy"}
-                            src={{
-                              src: "/plasmic/katibe/images/image32.svg",
-                              fullWidth: 150,
-                              fullHeight: 150,
-                              aspectRatio: 1
-                            }}
-                          />
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__dEuI8
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__pEeWy
-                            )}
-                          >
-                            {"3 team accounts"}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <BaseButton
-                      className={classNames(
-                        "__wab_instance",
-                        sty.ariaButton___5PsE
-                      )}
-                      target={$props.openLinkInNewTab ? "_blank" : "_self"}
-                    >
-                      {false ? (
-                        <div
-                          data-plasmic-name={"softBackground9"}
-                          data-plasmic-override={overrides.softBackground9}
-                          className={classNames(
-                            projectcss.all,
-                            sty.softBackground9
-                          )}
-                        />
-                      ) : null}
-                      {false ? (
-                        <div
-                          data-plasmic-name={"border9"}
-                          data-plasmic-override={overrides.border9}
-                          className={classNames(projectcss.all, sty.border9)}
-                        />
-                      ) : null}
-                      <div
-                        data-plasmic-name={"interactionEffect9"}
-                        data-plasmic-override={overrides.interactionEffect9}
-                        className={classNames(
-                          projectcss.all,
-                          sty.interactionEffect9
-                        )}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__a1N6
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__ewS5B
-                          )}
-                        >
-                          <CircleIcon
-                            className={classNames(
-                              projectcss.all,
-                              sty.svg__hch6D
-                            )}
-                            role={"img"}
-                          />
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__zArm2
-                          )}
-                        >
-                          {"Get Started"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__xAzUq
-                          )}
-                        >
-                          <ChevronDownIcon
-                            className={classNames(
-                              projectcss.all,
-                              sty.svg__cnjrk
-                            )}
-                            role={"img"}
-                          />
-                        </div>
-                      </div>
-                    </BaseButton>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__fKn1L)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text___5UgKj
-                      )}
-                    >
-                      {hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? "Our Recommendation"
-                        : "Our Recommendation"}
-                    </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__soYIu)}
-                    >
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__hJ6S1)}
-                        displayHeight={"auto"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"100%"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={
-                          hasVariant(globalVariants, "screen", "mobileOnly")
-                            ? "115px"
-                            : "144.97px"
-                        }
-                        loading={"lazy"}
-                        src={{
-                          src: "/plasmic/katibe/images/image33.svg",
-                          fullWidth: 147,
-                          fullHeight: 150,
-                          aspectRatio: 0.97973
-                        }}
-                      />
-
-                      <h4
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.h4,
-                          projectcss.__wab_text,
-                          sty.h4__a8SYx
-                        )}
-                      >
-                        {hasVariant(globalVariants, "screen", "mobileOnly")
-                          ? "Pro"
-                          : "Pro"}
-                      </h4>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__vqInp
-                        )}
-                      >
-                        {
-                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-                        }
-                      </div>
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__mGrbU)}
-                        displayHeight={"auto"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"238px"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"auto"}
-                        loading={"lazy"}
-                        src={{
-                          src: "/plasmic/katibe/images/image31.svg",
-                          fullWidth: 300,
-                          fullHeight: 3,
-                          aspectRatio: 119
-                        }}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__tMyVl
-                        )}
-                      >
-                        <h3
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.h3,
-                            projectcss.__wab_text,
-                            sty.h3__uhj1
-                          )}
-                        >
-                          {"$50"}
-                        </h3>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__bhwuL
-                          )}
-                        >
-                          {"/ Month"}
-                        </div>
-                      </div>
-                      <PlasmicImg__
-                        alt={""}
-                        className={classNames(sty.img__azajA)}
-                        displayHeight={"auto"}
-                        displayMaxHeight={"none"}
-                        displayMaxWidth={"238px"}
-                        displayMinHeight={"0"}
-                        displayMinWidth={"0"}
-                        displayWidth={"auto"}
-                        loading={"lazy"}
-                        src={{
-                          src: "/plasmic/katibe/images/image31.svg",
-                          fullWidth: 300,
-                          fullHeight: 3,
-                          aspectRatio: 119
-                        }}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__hn33G
-                        )}
-                      >
-                        {"Feature"}
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__rryIz
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__ygLyt
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__jJx0J
-                            )}
-                          >
-                            <PlasmicImg__
-                              alt={""}
-                              className={classNames(sty.img__bY83)}
-                              displayHeight={"20px"}
-                              displayMaxHeight={"none"}
-                              displayMaxWidth={"100%"}
-                              displayMinHeight={"0"}
-                              displayMinWidth={"0"}
-                              displayWidth={"20px"}
-                              loading={"lazy"}
-                              src={{
-                                src: "/plasmic/katibe/images/image32.svg",
-                                fullWidth: 150,
-                                fullHeight: 150,
-                                aspectRatio: 1
-                              }}
-                            />
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__pg9EC
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__noEpl
-                              )}
-                            >
-                              {"Unlimited issue"}
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__yZb0A
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox___2HgOt
-                            )}
-                          >
-                            <PlasmicImg__
-                              alt={""}
-                              className={classNames(sty.img__oxOyd)}
-                              displayHeight={"20px"}
-                              displayMaxHeight={"none"}
-                              displayMaxWidth={"100%"}
-                              displayMinHeight={"0"}
-                              displayMinWidth={"0"}
-                              displayWidth={"20px"}
-                              loading={"lazy"}
-                              src={{
-                                src: "/plasmic/katibe/images/image32.svg",
-                                fullWidth: 150,
-                                fullHeight: 150,
-                                aspectRatio: 1
-                              }}
-                            />
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__rD5K
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__uvuMt
-                              )}
-                            >
-                              {"Free domains & hosting"}
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__kbCzq
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox___2XqL
-                            )}
-                          >
-                            <PlasmicImg__
-                              alt={""}
-                              className={classNames(sty.img__s9U16)}
-                              displayHeight={"20px"}
-                              displayMaxHeight={"none"}
-                              displayMaxWidth={"100%"}
-                              displayMinHeight={"0"}
-                              displayMinWidth={"0"}
-                              displayWidth={"20px"}
-                              loading={"lazy"}
-                              src={{
-                                src: "/plasmic/katibe/images/image32.svg",
-                                fullWidth: 150,
-                                fullHeight: 150,
-                                aspectRatio: 1
-                              }}
-                            />
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__rv7Eo
-                            )}
-                          >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
-                                sty.text__lVTj6
-                              )}
-                            >
-                              {"10 team accounts"}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <BaseButton
-                        className={classNames(
-                          "__wab_instance",
-                          sty.ariaButton__isGyx
-                        )}
-                        target={$props.openLinkInNewTab ? "_blank" : "_self"}
-                      >
-                        {false ? (
-                          <div
-                            data-plasmic-name={"softBackground10"}
-                            data-plasmic-override={overrides.softBackground10}
-                            className={classNames(
-                              projectcss.all,
-                              sty.softBackground10
-                            )}
-                          />
-                        ) : null}
-                        {false ? (
-                          <div
-                            data-plasmic-name={"border10"}
-                            data-plasmic-override={overrides.border10}
-                            className={classNames(projectcss.all, sty.border10)}
-                          />
-                        ) : null}
-                        <div
-                          data-plasmic-name={"interactionEffect10"}
-                          data-plasmic-override={overrides.interactionEffect10}
-                          className={classNames(
-                            projectcss.all,
-                            sty.interactionEffect10
-                          )}
-                        />
-
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__qtP
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__c9Rm3
-                            )}
-                          >
-                            <CircleIcon
-                              className={classNames(
-                                projectcss.all,
-                                sty.svg___4MTo6
-                              )}
-                              role={"img"}
-                            />
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___0IHqS
-                            )}
-                          >
-                            {"Get Started"}
-                          </div>
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__q6Eq3
-                            )}
-                          >
-                            <ChevronDownIcon
-                              className={classNames(
-                                projectcss.all,
-                                sty.svg__rynmK
-                              )}
-                              role={"img"}
-                            />
-                          </div>
-                        </div>
-                      </BaseButton>
-                    </div>
-                  </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__e6Vj)}
-                  >
-                    <h4
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.h4,
-                        projectcss.__wab_text,
-                        sty.h4__fluvM
-                      )}
-                    >
-                      {"Enterprise"}
-                    </h4>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__qw2Yw
-                      )}
-                    >
-                      {hasVariant(globalVariants, "screen", "mobileOnly")
-                        ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
-                        : "Lorem ipsum dolor sit amet, consectetur adipiscing elit"}
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img__iLql1)}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"238px"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"auto"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/katibe/images/image31.svg",
-                        fullWidth: 300,
-                        fullHeight: 3,
-                        aspectRatio: 119
-                      }}
-                    />
-
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___5Vmd6
-                      )}
-                    >
-                      <h3
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.h3,
-                          projectcss.__wab_text,
-                          sty.h3__eJn37
-                        )}
-                      >
-                        {"$300"}
-                      </h3>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
-                          sty.text__xFxa
-                        )}
-                      >
-                        {"/ Month"}
-                      </div>
-                    </div>
-                    <PlasmicImg__
-                      alt={""}
-                      className={classNames(sty.img___7thU4)}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"238px"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"auto"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/katibe/images/image31.svg",
-                        fullWidth: 300,
-                        fullHeight: 3,
-                        aspectRatio: 119
-                      }}
-                    />
-
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__phEkO
-                      )}
-                    >
-                      {"Feature"}
-                    </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___0KfPe
-                      )}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__pwVk
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__z1Y96
-                          )}
-                        >
-                          <PlasmicImg__
-                            alt={""}
-                            className={classNames(sty.img__gvbLp)}
-                            displayHeight={"20px"}
-                            displayMaxHeight={"none"}
-                            displayMaxWidth={"100%"}
-                            displayMinHeight={"0"}
-                            displayMinWidth={"0"}
-                            displayWidth={"20px"}
-                            loading={"lazy"}
-                            src={{
-                              src: "/plasmic/katibe/images/image32.svg",
-                              fullWidth: 150,
-                              fullHeight: 150,
-                              aspectRatio: 1
-                            }}
-                          />
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox___0UiZm
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__i6OoP
-                            )}
-                          >
-                            {"Unlimited issue"}
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__jJqKq
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__ypLsO
-                          )}
-                        >
-                          <PlasmicImg__
-                            alt={""}
-                            className={classNames(sty.img__zSu5P)}
-                            displayHeight={"20px"}
-                            displayMaxHeight={"none"}
-                            displayMaxWidth={"100%"}
-                            displayMinHeight={"0"}
-                            displayMinWidth={"0"}
-                            displayWidth={"20px"}
-                            loading={"lazy"}
-                            src={{
-                              src: "/plasmic/katibe/images/image32.svg",
-                              fullWidth: 150,
-                              fullHeight: 150,
-                              aspectRatio: 1
-                            }}
-                          />
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__xDhu7
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text__iYXjJ
-                            )}
-                          >
-                            {"Free domains & hosting"}
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__plJxt
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__xvfAa
-                          )}
-                        >
-                          <PlasmicImg__
-                            alt={""}
-                            className={classNames(sty.img__cpTdo)}
-                            displayHeight={"20px"}
-                            displayMaxHeight={"none"}
-                            displayMaxWidth={"100%"}
-                            displayMinHeight={"0"}
-                            displayMinWidth={"0"}
-                            displayWidth={"20px"}
-                            loading={"lazy"}
-                            src={{
-                              src: "/plasmic/katibe/images/image32.svg",
-                              fullWidth: 150,
-                              fullHeight: 150,
-                              aspectRatio: 1
-                            }}
-                          />
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__u40BQ
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___5Rihn
-                            )}
-                          >
-                            {"Unlimited team accounts"}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <BaseButton
-                      className={classNames(
-                        "__wab_instance",
-                        sty.ariaButton__kvGku
-                      )}
-                      target={$props.openLinkInNewTab ? "_blank" : "_self"}
-                    >
-                      {false ? (
-                        <div
-                          data-plasmic-name={"softBackground11"}
-                          data-plasmic-override={overrides.softBackground11}
-                          className={classNames(
-                            projectcss.all,
-                            sty.softBackground11
-                          )}
-                        />
-                      ) : null}
-                      {false ? (
-                        <div
-                          data-plasmic-name={"border11"}
-                          data-plasmic-override={overrides.border11}
-                          className={classNames(projectcss.all, sty.border11)}
-                        />
-                      ) : null}
-                      <div
-                        data-plasmic-name={"interactionEffect11"}
-                        data-plasmic-override={overrides.interactionEffect11}
-                        className={classNames(
-                          projectcss.all,
-                          sty.interactionEffect11
-                        )}
-                      />
-
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__bInE5
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__f9Ec
-                          )}
-                        >
-                          <CircleIcon
-                            className={classNames(
-                              projectcss.all,
-                              sty.svg__nDoK
-                            )}
-                            role={"img"}
-                          />
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text__xWFhA
-                          )}
-                        >
-                          {"Get Started"}
-                        </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__l9Xo
-                          )}
-                        >
-                          <ChevronDownIcon
-                            className={classNames(
-                              projectcss.all,
-                              sty.svg___8X1Uy
-                            )}
-                            role={"img"}
-                          />
-                        </div>
-                      </div>
-                    </BaseButton>
                   </div>
                 </div>
               </div>
@@ -4178,7 +3177,9 @@ function PlasmicHomePage__RenderFunc(props: {
                           sty.text__elJYz
                         )}
                       >
-                        {"500 \u062a\u0648\u0645\u0627\u0646"}
+                        {
+                          "\u0647\u0631 \u067e\u0631\u062f\u0627\u062e\u062a\u060c 500 \u062a\u0648\u0645\u0627\u0646"
+                        }
                       </div>
                     </div>
                   </div>
@@ -4208,7 +3209,9 @@ function PlasmicHomePage__RenderFunc(props: {
                           sty.text___60AG
                         )}
                       >
-                        {"400 \u062a\u0648\u0645\u0627\u0646"}
+                        {
+                          "\u0647\u0631 \u0633\u0646\u062f \u062a\u0633\u0647\u06cc\u0645 400 \u062a\u0648\u0645\u0627\u0646"
+                        }
                       </div>
                     </div>
                   </div>
@@ -4241,7 +3244,9 @@ function PlasmicHomePage__RenderFunc(props: {
                           sty.text__sNqhh
                         )}
                       >
-                        {"400 \u062a\u0648\u0645\u0627\u0646"}
+                        {
+                          "\u0647\u0631 \u0641\u0627\u06a9\u062a\u0648\u0631 400 \u062a\u0648\u0645\u0627\u0646"
+                        }
                       </div>
                     </div>
                   </div>
@@ -4825,15 +3830,6 @@ const PlasmicDescendants = {
     "softBackground8",
     "border8",
     "interactionEffect8",
-    "softBackground9",
-    "border9",
-    "interactionEffect9",
-    "softBackground10",
-    "border10",
-    "interactionEffect10",
-    "softBackground11",
-    "border11",
-    "interactionEffect11",
     "textInput",
     "softBackground",
     "border",
@@ -4875,15 +3871,6 @@ const PlasmicDescendants = {
   softBackground8: ["softBackground8"],
   border8: ["border8"],
   interactionEffect8: ["interactionEffect8"],
-  softBackground9: ["softBackground9"],
-  border9: ["border9"],
-  interactionEffect9: ["interactionEffect9"],
-  softBackground10: ["softBackground10"],
-  border10: ["border10"],
-  interactionEffect10: ["interactionEffect10"],
-  softBackground11: ["softBackground11"],
-  border11: ["border11"],
-  interactionEffect11: ["interactionEffect11"],
   textInput: ["textInput"],
   softBackground: ["softBackground"],
   border: ["border"],
@@ -4918,15 +3905,6 @@ type NodeDefaultElementType = {
   softBackground8: "div";
   border8: "div";
   interactionEffect8: "div";
-  softBackground9: "div";
-  border9: "div";
-  interactionEffect9: "div";
-  softBackground10: "div";
-  border10: "div";
-  interactionEffect10: "div";
-  softBackground11: "div";
-  border11: "div";
-  interactionEffect11: "div";
   textInput: typeof TextInput;
   softBackground: "div";
   border: "div";
@@ -5019,15 +3997,6 @@ export const PlasmicHomePage = Object.assign(
     softBackground8: makeNodeComponent("softBackground8"),
     border8: makeNodeComponent("border8"),
     interactionEffect8: makeNodeComponent("interactionEffect8"),
-    softBackground9: makeNodeComponent("softBackground9"),
-    border9: makeNodeComponent("border9"),
-    interactionEffect9: makeNodeComponent("interactionEffect9"),
-    softBackground10: makeNodeComponent("softBackground10"),
-    border10: makeNodeComponent("border10"),
-    interactionEffect10: makeNodeComponent("interactionEffect10"),
-    softBackground11: makeNodeComponent("softBackground11"),
-    border11: makeNodeComponent("border11"),
-    interactionEffect11: makeNodeComponent("interactionEffect11"),
     textInput: makeNodeComponent("textInput"),
     softBackground: makeNodeComponent("softBackground"),
     border: makeNodeComponent("border"),
