@@ -93,6 +93,7 @@ export type PlasmicPay__OverridesType = {
   svg?: Flex__<"svg">;
   paymentsMethod?: Flex__<typeof RadioGroup>;
   btnPayMethod?: Flex__<typeof Button>;
+  link?: Flex__<"a"> & Partial<LinkProps>;
   embedHtml?: Flex__<typeof Embed>;
 };
 
@@ -651,7 +652,7 @@ function PlasmicPay__RenderFunc(props: {
                     )}
                   >
                     {
-                      "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a"
+                      "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u062f\u0631\u06af\u0627\u0647 \u0633\u0627\u0645\u0627\u0646"
                     }
                   </div>
                 </div>
@@ -723,7 +724,7 @@ function PlasmicPay__RenderFunc(props: {
                           style={{ color: "#5B2525" }}
                         >
                           {
-                            "\u0644\u0637\u0641\u0627\u064b \u0645\u0637\u0645\u0626\u0646 \u0634\u0648\u06cc\u062f \u06a9\u0647 "
+                            "\u06a9\u0627\u0631\u0628\u0631 \u06af\u0631\u0627\u0645\u06cc\u060c \u0644\u0637\u0641\u0627\u064b \u0645\u0637\u0645\u0626\u0646 \u0634\u0648\u06cc\u062f \u06a9\u0647 "
                           }
                         </span>
                         <React.Fragment>{""}</React.Fragment>
@@ -756,7 +757,7 @@ function PlasmicPay__RenderFunc(props: {
                           style={{ color: "#5B2525" }}
                         >
                           {
-                            "\u0644\u0637\u0641\u0627\u064b \u0645\u0637\u0645\u0626\u0646 \u0634\u0648\u06cc\u062f \u06a9\u0647"
+                            "\u06a9\u0627\u0631\u0628\u0631 \u06af\u0631\u0627\u0645\u06cc\u060c \u0644\u0637\u0641\u0627\u064b \u0645\u0637\u0645\u0626\u0646 \u0634\u0648\u06cc\u062f \u06a9\u0647"
                           }
                         </span>
                         <React.Fragment> </React.Fragment>
@@ -1654,6 +1655,61 @@ function PlasmicPay__RenderFunc(props: {
                     size={"compact"}
                   />
                 </div>
+                {(() => {
+                  try {
+                    return (
+                      new Date().toISOString().split("T")[0] === "2025-11-10"
+                    );
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })() ? (
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__dWXnV)}
+                  >
+                    <div
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.__wab_text,
+                        sty.text__gdxeS
+                      )}
+                    >
+                      <React.Fragment>
+                        <React.Fragment>
+                          {
+                            "\u062a\u0645\u0627\u0633 \u0628\u0627 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u067e\u0631\u062f\u0627\u062e\u062a: "
+                          }
+                        </React.Fragment>
+                        {
+                          <PlasmicLink__
+                            data-plasmic-name={"link"}
+                            data-plasmic-override={overrides.link}
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.a,
+                              projectcss.__wab_text,
+                              projectcss.plasmic_default__inline,
+                              sty.link
+                            )}
+                            component={Link}
+                            href={"tel:09384487404"}
+                            platform={"nextjs"}
+                            target={"_blank"}
+                          >
+                            {"09384487404"}
+                          </PlasmicLink__>
+                        }
+                        <React.Fragment>{""}</React.Fragment>
+                      </React.Fragment>
+                    </div>
+                  </div>
+                ) : null}
               </div>
             </section>
           ) : null}
@@ -1678,12 +1734,14 @@ const PlasmicDescendants = {
     "svg",
     "paymentsMethod",
     "btnPayMethod",
+    "link",
     "embedHtml"
   ],
   sideEffectPageLoad: ["sideEffectPageLoad"],
   svg: ["svg"],
   paymentsMethod: ["paymentsMethod"],
   btnPayMethod: ["btnPayMethod"],
+  link: ["link"],
   embedHtml: ["embedHtml"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -1695,6 +1753,7 @@ type NodeDefaultElementType = {
   svg: "svg";
   paymentsMethod: typeof RadioGroup;
   btnPayMethod: typeof Button;
+  link: "a";
   embedHtml: typeof Embed;
 };
 
@@ -1764,6 +1823,7 @@ export const PlasmicPay = Object.assign(
     svg: makeNodeComponent("svg"),
     paymentsMethod: makeNodeComponent("paymentsMethod"),
     btnPayMethod: makeNodeComponent("btnPayMethod"),
+    link: makeNodeComponent("link"),
     embedHtml: makeNodeComponent("embedHtml"),
 
     // Metadata about props expected for PlasmicPay
