@@ -1658,7 +1658,8 @@ function PlasmicPay__RenderFunc(props: {
                 {(() => {
                   try {
                     return (
-                      new Date().toISOString().split("T")[0] === "2025-11-10"
+                      new Date().toISOString().split("T")[0] === "2025-11-10" &&
+                      $ctx.query.referrer != "saman"
                     );
                   } catch (e) {
                     if (
