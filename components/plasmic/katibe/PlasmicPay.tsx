@@ -1655,62 +1655,43 @@ function PlasmicPay__RenderFunc(props: {
                     size={"compact"}
                   />
                 </div>
-                {(() => {
-                  try {
-                    return (
-                      new Date().toISOString().split("T")[0] === "2025-11-10" &&
-                      $ctx.query.referrer != "saman"
-                    );
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return true;
-                    }
-                    throw e;
-                  }
-                })() ? (
+                <div className={classNames(projectcss.all, sty.freeBox__dWXnV)}>
                   <div
-                    className={classNames(projectcss.all, sty.freeBox__dWXnV)}
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text__gdxeS
+                    )}
                   >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__gdxeS
-                      )}
-                    >
+                    <React.Fragment>
                       <React.Fragment>
-                        <React.Fragment>
-                          {
-                            "\u062a\u0645\u0627\u0633 \u0628\u0627 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u067e\u0631\u062f\u0627\u062e\u062a: "
-                          }
-                        </React.Fragment>
                         {
-                          <PlasmicLink__
-                            data-plasmic-name={"link"}
-                            data-plasmic-override={overrides.link}
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.a,
-                              projectcss.__wab_text,
-                              projectcss.plasmic_default__inline,
-                              sty.link
-                            )}
-                            component={Link}
-                            href={"tel:09384487404"}
-                            platform={"nextjs"}
-                            target={"_blank"}
-                          >
-                            {"09384487404"}
-                          </PlasmicLink__>
+                          "\u062a\u0645\u0627\u0633 \u0628\u0627 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u067e\u0631\u062f\u0627\u062e\u062a: "
                         }
-                        <React.Fragment>{""}</React.Fragment>
                       </React.Fragment>
-                    </div>
+                      {
+                        <PlasmicLink__
+                          data-plasmic-name={"link"}
+                          data-plasmic-override={overrides.link}
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.a,
+                            projectcss.__wab_text,
+                            projectcss.plasmic_default__inline,
+                            sty.link
+                          )}
+                          component={Link}
+                          href={"tel:09384487404"}
+                          platform={"nextjs"}
+                          target={"_blank"}
+                        >
+                          {"09384487404"}
+                        </PlasmicLink__>
+                      }
+                      <React.Fragment>{""}</React.Fragment>
+                    </React.Fragment>
                   </div>
-                ) : null}
+                </div>
               </div>
             </section>
           ) : null}
