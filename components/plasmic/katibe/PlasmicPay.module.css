@@ -257,6 +257,11 @@
   bottom: 0;
   margin-bottom: 20px;
   margin-left: 20px;
+  transform: translate3d(0px, 0px, 0px);
+  transition-property: all;
+  transition-duration: 1s;
+  -webkit-transition-property: all;
+  -webkit-transition-duration: 1s;
 }
 .svg___70Lf0 {
   position: relative;
