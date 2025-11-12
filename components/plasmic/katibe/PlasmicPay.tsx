@@ -978,7 +978,7 @@ function PlasmicPay__RenderFunc(props: {
                           ? (() => {
                               try {
                                 return (
-                                  "https://wa.me/989133747410?text=" +
+                                  "https://wa.me/989934800704?text=" +
                                   "سلام. " +
                                   ($state.me.users[0].family &&
                                   $state.me.users[0].family.length > 0
@@ -1016,7 +1016,7 @@ function PlasmicPay__RenderFunc(props: {
                           : (() => {
                               try {
                                 return (
-                                  "https://wa.me/989133747410?text=" +
+                                  "https://wa.me/989934800704?text=" +
                                   "سلام. " +
                                   ($state.me.users[0].family &&
                                   $state.me.users[0].family.length > 0
