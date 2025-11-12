@@ -973,42 +973,6 @@ function PlasmicPay__RenderFunc(props: {
                         sty.button__wQfb9
                       )}
                       color={"softBlue"}
-                      link={(() => {
-                        try {
-                          return (
-                            "https://wa.me/989934800704?text=" +
-                            "سلام. " +
-                            ($state.me.users[0].family &&
-                            $state.me.users[0].family.length > 0
-                              ? "من " +
-                                $state.me.users[0].name +
-                                " " +
-                                $state.me.users[0].family +
-                                " "
-                              : "با ایمیل " + $state.me.users[0].email + " ") +
-                            "و شناسه کاربری " +
-                            $state.me.users[0].id +
-                            " از پذیرش24 و از " +
-                            Intl.DateTimeFormat()
-                              .resolvedOptions()
-                              .timeZone.toLowerCase() +
-                            "پیام میدم " +
-                            "لطفا در خصوص پرداخت " +
-                            " " +
-                            $ctx.query.amount +
-                            "ریال " +
-                            " برای ویزیت آنلاین راهنمایی کنید."
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return "https://wa.me/989934800704?text=\u0633\u0644\u0627\u0645. \u0644\u0637\u0641\u0627 \u0628\u0631\u0627\u06cc \u067e\u0631\u062f\u0627\u062e\u062a \u062e\u0627\u0631\u062c \u0627\u0632 \u0627\u06cc\u0631\u0627\u0646 \u0631\u0627\u0647\u0646\u0645\u0627\u06cc\u06cc \u06a9\u0646\u06cc\u062f.";
-                          }
-                          throw e;
-                        }
-                      })()}
                       onClick={async event => {
                         const $steps = {};
 
@@ -1053,6 +1017,67 @@ function PlasmicPay__RenderFunc(props: {
                         ) {
                           $steps["invokeGlobalAction"] =
                             await $steps["invokeGlobalAction"];
+                        }
+
+                        $steps["invokeGlobalAction2"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  (() => {
+                                    try {
+                                      return (
+                                        "https://wa.me/989934800704?text=" +
+                                        "سلام. " +
+                                        ($state.me.users[0].family &&
+                                        $state.me.users[0].family.length > 0
+                                          ? "من " +
+                                            $state.me.users[0].name +
+                                            " " +
+                                            $state.me.users[0].family +
+                                            " "
+                                          : "با ایمیل " +
+                                            $state.me.users[0].email +
+                                            " ") +
+                                        "و شناسه کاربری " +
+                                        $state.me.users[0].id +
+                                        " از پذیرش24 و از " +
+                                        Intl.DateTimeFormat()
+                                          .resolvedOptions()
+                                          .timeZone.toLowerCase() +
+                                        "پیام میدم " +
+                                        "لطفا در خصوص پرداخت " +
+                                        " " +
+                                        $ctx.query.amount +
+                                        "ریال " +
+                                        " برای ویزیت آنلاین راهنمایی کنید."
+                                      );
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()
+                                ]
+                              };
+                              return $globalActions["Hamdast.openLink"]?.apply(
+                                null,
+                                [...actionArgs.args]
+                              );
+                            })()
+                          : undefined;
+                        if (
+                          $steps["invokeGlobalAction2"] != null &&
+                          typeof $steps["invokeGlobalAction2"] === "object" &&
+                          typeof $steps["invokeGlobalAction2"].then ===
+                            "function"
+                        ) {
+                          $steps["invokeGlobalAction2"] =
+                            await $steps["invokeGlobalAction2"];
                         }
                       }}
                       outline={true}
