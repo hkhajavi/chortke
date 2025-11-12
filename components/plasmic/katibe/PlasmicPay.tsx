@@ -977,34 +977,32 @@ function PlasmicPay__RenderFunc(props: {
                         hasVariant(globalVariants, "screen", "mobileOnly")
                           ? (() => {
                               try {
-                                return (() => {
+                                return (
                                   "https://wa.me/989133747410?text=" +
-                                    "سلام. " +
-                                    ($state.me.users[0].family &&
-                                    $state.me.users[0].family.length > 0
-                                      ? "من " +
-                                        $state.me.users[0].name +
-                                        " " +
-                                        $state.me.users[0].family +
-                                        " "
-                                      : "با ایمیل " +
-                                        $state.me.users[0].email +
-                                        " ");
-                                  return (
-                                    "و شناسه کاربری " +
-                                    $state.me.users[0].id +
-                                    " از پذیرش24 و از " +
-                                    Intl.DateTimeFormat()
-                                      .resolvedOptions()
-                                      .timeZone.toLowerCase() +
-                                    "پیام میدم " +
-                                    "لطفا در خصوص پرداخت " +
-                                    " " +
-                                    $ctx.query.amount +
-                                    "ریال " +
-                                    " برای ویزیت آنلاین راهنمایی کنید."
-                                  );
-                                })();
+                                  "سلام. " +
+                                  ($state.me.users[0].family &&
+                                  $state.me.users[0].family.length > 0
+                                    ? "من " +
+                                      $state.me.users[0].name +
+                                      " " +
+                                      $state.me.users[0].family +
+                                      " "
+                                    : "با ایمیل " +
+                                      $state.me.users[0].email +
+                                      " ") +
+                                  "و شناسه کاربری " +
+                                  $state.me.users[0].id +
+                                  " از پذیرش24 و از " +
+                                  Intl.DateTimeFormat()
+                                    .resolvedOptions()
+                                    .timeZone.toLowerCase() +
+                                  "پیام میدم " +
+                                  "لطفا در خصوص پرداخت " +
+                                  " " +
+                                  $ctx.query.amount +
+                                  "ریال " +
+                                  " برای ویزیت آنلاین راهنمایی کنید."
+                                );
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||
