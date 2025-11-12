@@ -298,7 +298,7 @@ function PlasmicPay__RenderFunc(props: {
             onMount={async () => {
               const $steps = {};
 
-              $steps["updateWaiting"] = true
+              $steps["updateWaiting"] = false
                 ? (() => {
                     const actionArgs = {
                       variable: {
@@ -327,7 +327,7 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["updateWaiting"] = await $steps["updateWaiting"];
               }
 
-              $steps["me"] = false
+              $steps["me"] = true
                 ? (() => {
                     const actionArgs = {
                       args: [
@@ -348,27 +348,33 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["me"] = await $steps["me"];
               }
 
-              $steps["updateMe"] = false
-                ? (() => {
-                    const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["me"]
-                      },
-                      operation: 0,
-                      value: $steps.me.data
-                    };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
-                      }
-                      const { objRoot, variablePath } = variable;
+              $steps["updateMe"] =
+                $steps.me.status == 200
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["me"]
+                        },
+                        operation: 0,
+                        value: $steps.me.data
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
 
-                      $stateSet(objRoot, variablePath, value);
-                      return value;
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
               if (
                 $steps["updateMe"] != null &&
                 typeof $steps["updateMe"] === "object" &&
@@ -932,19 +938,116 @@ function PlasmicPay__RenderFunc(props: {
                     size={"compact"}
                   />
 
-                  <Button
-                    children2={
-                      "\u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u062e\u0627\u0631\u062c \u0627\u0632 \u0627\u06cc\u0631\u0627\u0646"
+                  {(() => {
+                    try {
+                      return (
+                        (Intl.DateTimeFormat().resolvedOptions().timeZone
+                          .length > 0 &&
+                          !Intl.DateTimeFormat()
+                            .resolvedOptions()
+                            .timeZone.toLowerCase()
+                            .includes("tehran")) ||
+                        ($ctx.query.timezone.length > 0 &&
+                          !$ctx.query.timezone.includes("tehran"))
+                      );
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
                     }
-                    className={classNames("__wab_instance", sty.button__wQfb9)}
-                    color={"softBlue"}
-                    link={
-                      "https://wa.me/989157405770?text=\u0633\u0644\u0627\u0645. \u0627\u0632 \u06a9\u0634\u0648\u0631 ...... \u067e\u06cc\u0627\u0645 \u0645\u06cc\u200c\u062f\u0645 \u0648 \u0627\u0645\u06a9\u0627\u0646 \u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0631\u0627\u06cc \u0627\u062e\u0630 \u0646\u0648\u0628\u062a \u0631\u0648 \u0646\u062f\u0627\u0631\u0645. \u0627\u0645\u0627 \u0645\u06cc\u200c\u062a\u0648\u0646\u0645 \u0628\u0647 \u0635\u0648\u0631\u062a ......... \u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0646\u0645."
-                    }
-                    outline={true}
-                    size={"compact"}
-                    target={true}
-                  />
+                  })() ? (
+                    <Button
+                      children2={
+                        "\u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u062e\u0627\u0631\u062c \u0627\u0632 \u0627\u06cc\u0631\u0627\u0646"
+                      }
+                      className={classNames(
+                        "__wab_instance",
+                        sty.button__wQfb9
+                      )}
+                      color={"softBlue"}
+                      link={(() => {
+                        try {
+                          return (
+                            "https://wa.me/989157405770?text=" +
+                            "سلام. من " +
+                            $state.me.users[0].name +
+                            " " +
+                            $state.me.users[0].family +
+                            " هستم " +
+                            "با شناسه کاربری " +
+                            $state.me.users[0].id +
+                            " از سایت پذیرش24 و در " +
+                            Intl.DateTimeFormat()
+                              .resolvedOptions()
+                              .timeZone.toLowerCase() +
+                            "پیام میدم " +
+                            "لطفا در خصوص پرداخت برای ویزیت آنلاین راهنمایی کنید."
+                          );
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "https://wa.me/989157405770?text=\u0633\u0644\u0627\u0645. \u0627\u0632 \u06a9\u0634\u0648\u0631 ...... \u067e\u06cc\u0627\u0645 \u0645\u06cc\u200c\u062f\u0645 \u0648 \u0627\u0645\u06a9\u0627\u0646 \u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0631\u0627\u06cc \u0627\u062e\u0630 \u0646\u0648\u0628\u062a \u0631\u0648 \u0646\u062f\u0627\u0631\u0645. \u0627\u0645\u0627 \u0645\u06cc\u200c\u062a\u0648\u0646\u0645 \u0628\u0647 \u0635\u0648\u0631\u062a ......... \u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0646\u0645.";
+                          }
+                          throw e;
+                        }
+                      })()}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["invokeGlobalAction"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  "POST",
+                                  "https://apigw.paziresh24.com/katibe/v1/p24/logs",
+                                  undefined,
+                                  (() => {
+                                    try {
+                                      return {
+                                        timezone:
+                                          Intl.DateTimeFormat().resolvedOptions()
+                                            .timeZone || $ctx.query.timezone,
+                                        request: "overseas-payment"
+                                      };
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.apiRequest"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["invokeGlobalAction"] != null &&
+                          typeof $steps["invokeGlobalAction"] === "object" &&
+                          typeof $steps["invokeGlobalAction"].then ===
+                            "function"
+                        ) {
+                          $steps["invokeGlobalAction"] =
+                            await $steps["invokeGlobalAction"];
+                        }
+                      }}
+                      outline={true}
+                      size={"compact"}
+                      target={true}
+                    />
+                  ) : null}
                 </div>
               </div>
             </section>
