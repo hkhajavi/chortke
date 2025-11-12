@@ -941,14 +941,18 @@ function PlasmicPay__RenderFunc(props: {
                   {(() => {
                     try {
                       return (
-                        (Intl.DateTimeFormat().resolvedOptions().timeZone
-                          .length > 0 &&
-                          !Intl.DateTimeFormat()
-                            .resolvedOptions()
-                            .timeZone.toLowerCase()
-                            .includes("tehran")) ||
-                        ($ctx.query.timezone.length > 0 &&
-                          !$ctx.query.timezone.includes("tehran"))
+                        new Date().getTimezoneOffset() / 60 != "-3.5"
+                        /*
+                        Intl.DateTimeFormat().resolvedOptions().timeZone.length>0 &&
+                      !Intl.DateTimeFormat().resolvedOptions().timeZone.toLowerCase().includes("tehran")
+                      
+                      )
+                      || 
+                      (
+                      $ctx.query.timezone.length>0
+                      &&  
+                      !$ctx.query.timezone.includes("tehran")
+                      )*/
                       );
                     } catch (e) {
                       if (
