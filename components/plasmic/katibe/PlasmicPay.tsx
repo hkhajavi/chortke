@@ -979,48 +979,55 @@ function PlasmicPay__RenderFunc(props: {
                         sty.button__wQfb9
                       )}
                       color={"softBlue"}
+                      isDisabled={(() => {
+                        try {
+                          return $state.waiting;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return [];
+                          }
+                          throw e;
+                        }
+                      })()}
                       onClick={async event => {
                         const $steps = {};
 
-                        $steps["log"] = true
+                        $steps["updateWaiting"] = true
                           ? (() => {
                               const actionArgs = {
-                                args: [
-                                  "POST",
-                                  "https://apigw.paziresh24.com/katibe/v1/p24/logs",
-                                  undefined,
-                                  (() => {
-                                    try {
-                                      return {
-                                        timezone:
-                                          Intl.DateTimeFormat().resolvedOptions()
-                                            .timeZone || $ctx.query.timezone,
-                                        request: "overseas-payment"
-                                      };
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
-                                    }
-                                  })()
-                                ]
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["waiting"]
+                                },
+                                operation: 0,
+                                value: true
                               };
-                              return $globalActions[
-                                "Fragment.apiRequest"
-                              ]?.apply(null, [...actionArgs.args]);
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
                             })()
                           : undefined;
                         if (
-                          $steps["log"] != null &&
-                          typeof $steps["log"] === "object" &&
-                          typeof $steps["log"].then === "function"
+                          $steps["updateWaiting"] != null &&
+                          typeof $steps["updateWaiting"] === "object" &&
+                          typeof $steps["updateWaiting"].then === "function"
                         ) {
-                          $steps["log"] = await $steps["log"];
+                          $steps["updateWaiting"] =
+                            await $steps["updateWaiting"];
                         }
 
                         $steps["getByReceipt"] = true
@@ -1096,6 +1103,49 @@ function PlasmicPay__RenderFunc(props: {
                             await $steps["updateBookDetails"];
                         }
 
+                        $steps["log"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  "POST",
+                                  "https://apigw.paziresh24.com/katibe/v1/p24/logs",
+                                  undefined,
+                                  (() => {
+                                    try {
+                                      return {
+                                        timezone:
+                                          Intl.DateTimeFormat().resolvedOptions()
+                                            .timeZone || $ctx.query.timezone,
+                                        request: "overseas-payment",
+                                        receipt_id: $ctx.query.receipt_id,
+                                        amount: $ctx.query.amount
+                                      };
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.apiRequest"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["log"] != null &&
+                          typeof $steps["log"] === "object" &&
+                          typeof $steps["log"].then === "function"
+                        ) {
+                          $steps["log"] = await $steps["log"];
+                        }
+
                         $steps["redirect"] = true
                           ? (() => {
                               const actionArgs = {
@@ -1155,6 +1205,41 @@ function PlasmicPay__RenderFunc(props: {
                           typeof $steps["redirect"].then === "function"
                         ) {
                           $steps["redirect"] = await $steps["redirect"];
+                        }
+
+                        $steps["updateWaiting2"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["waiting"]
+                                },
+                                operation: 0,
+                                value: false
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateWaiting2"] != null &&
+                          typeof $steps["updateWaiting2"] === "object" &&
+                          typeof $steps["updateWaiting2"].then === "function"
+                        ) {
+                          $steps["updateWaiting2"] =
+                            await $steps["updateWaiting2"];
                         }
                       }}
                       outline={true}
