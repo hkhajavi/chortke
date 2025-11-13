@@ -227,6 +227,12 @@ function PlasmicPay__RenderFunc(props: {
         type: "private",
         variableType: "array",
         initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+      },
+      {
+        path: "bookDetails",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
       }
     ],
     [$props, $ctx, $refs]
@@ -976,7 +982,7 @@ function PlasmicPay__RenderFunc(props: {
                       onClick={async event => {
                         const $steps = {};
 
-                        $steps["invokeGlobalAction"] = true
+                        $steps["log"] = true
                           ? (() => {
                               const actionArgs = {
                                 args: [
@@ -1010,16 +1016,87 @@ function PlasmicPay__RenderFunc(props: {
                             })()
                           : undefined;
                         if (
-                          $steps["invokeGlobalAction"] != null &&
-                          typeof $steps["invokeGlobalAction"] === "object" &&
-                          typeof $steps["invokeGlobalAction"].then ===
-                            "function"
+                          $steps["log"] != null &&
+                          typeof $steps["log"] === "object" &&
+                          typeof $steps["log"].then === "function"
                         ) {
-                          $steps["invokeGlobalAction"] =
-                            await $steps["invokeGlobalAction"];
+                          $steps["log"] = await $steps["log"];
                         }
 
-                        $steps["invokeGlobalAction2"] = true
+                        $steps["getByReceipt"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                args: [
+                                  undefined,
+                                  (() => {
+                                    try {
+                                      return (
+                                        "https://apigw.paziresh24.com/katibe/v1/p24/receipt/details?receipt_id=" +
+                                        $ctx.query.receipt_id
+                                      );
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return undefined;
+                                      }
+                                      throw e;
+                                    }
+                                  })()
+                                ]
+                              };
+                              return $globalActions[
+                                "Fragment.apiRequest"
+                              ]?.apply(null, [...actionArgs.args]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["getByReceipt"] != null &&
+                          typeof $steps["getByReceipt"] === "object" &&
+                          typeof $steps["getByReceipt"].then === "function"
+                        ) {
+                          $steps["getByReceipt"] = await $steps["getByReceipt"];
+                        }
+
+                        $steps["updateBookDetails"] =
+                          $steps.getByReceipt.status == 200
+                            ? (() => {
+                                const actionArgs = {
+                                  variable: {
+                                    objRoot: $state,
+                                    variablePath: ["bookDetails"]
+                                  },
+                                  operation: 0,
+                                  value: $steps.getByReceipt.data.data
+                                };
+                                return (({
+                                  variable,
+                                  value,
+                                  startIndex,
+                                  deleteCount
+                                }) => {
+                                  if (!variable) {
+                                    return;
+                                  }
+                                  const { objRoot, variablePath } = variable;
+
+                                  $stateSet(objRoot, variablePath, value);
+                                  return value;
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                        if (
+                          $steps["updateBookDetails"] != null &&
+                          typeof $steps["updateBookDetails"] === "object" &&
+                          typeof $steps["updateBookDetails"].then === "function"
+                        ) {
+                          $steps["updateBookDetails"] =
+                            await $steps["updateBookDetails"];
+                        }
+
+                        $steps["redirect"] = true
                           ? (() => {
                               const actionArgs = {
                                 args: [
@@ -1049,7 +1126,9 @@ function PlasmicPay__RenderFunc(props: {
                                         " " +
                                         $ctx.query.amount +
                                         "ریال " +
-                                        " برای ویزیت آنلاین راهنمایی کنید."
+                                        " برای ویزیت آنلاین راهنمایی کنید." +
+                                        " - پزشک: " +
+                                        $state.bookDetails.doctor_name
                                       );
                                     } catch (e) {
                                       if (
@@ -1071,13 +1150,11 @@ function PlasmicPay__RenderFunc(props: {
                             })()
                           : undefined;
                         if (
-                          $steps["invokeGlobalAction2"] != null &&
-                          typeof $steps["invokeGlobalAction2"] === "object" &&
-                          typeof $steps["invokeGlobalAction2"].then ===
-                            "function"
+                          $steps["redirect"] != null &&
+                          typeof $steps["redirect"] === "object" &&
+                          typeof $steps["redirect"].then === "function"
                         ) {
-                          $steps["invokeGlobalAction2"] =
-                            await $steps["invokeGlobalAction2"];
+                          $steps["redirect"] = await $steps["redirect"];
                         }
                       }}
                       outline={true}
