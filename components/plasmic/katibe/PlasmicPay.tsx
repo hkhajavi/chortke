@@ -1128,7 +1128,7 @@ function PlasmicPay__RenderFunc(props: {
                                         "ریال " +
                                         " برای ویزیت آنلاین راهنمایی کنید." +
                                         " - پزشک: " +
-                                        $state.bookDetails.doctor_name
+                                        ($state.bookDetails.doctor_name || "")
                                       );
                                     } catch (e) {
                                       if (
