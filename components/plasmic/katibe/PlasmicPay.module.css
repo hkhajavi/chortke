@@ -425,6 +425,11 @@
   margin: 8px;
   border: 2px dashed var(--token-K7dwex6Q3HrV);
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__yd9Hy {
+    margin: 0px;
+  }
+}
 .radio__jX9Ds:global(.__wab_instance):global(.__wab_instance) {
   position: relative;
 }
@@ -506,7 +511,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__mpUom {
-    margin-top: 8px;
+    margin: 0px;
   }
 }
 .radio__fh8Uu:global(.__wab_instance):global(.__wab_instance) {
@@ -567,6 +572,11 @@
   padding: 8px;
   margin: 8px;
   border: 2px dashed var(--token-K7dwex6Q3HrV);
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox___0OfLn {
+    margin: 0px;
+  }
 }
 .radio__bKkAp:global(.__wab_instance):global(.__wab_instance) {
   position: relative;
