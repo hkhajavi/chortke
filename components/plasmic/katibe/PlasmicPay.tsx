@@ -1251,7 +1251,8 @@ function PlasmicPay__RenderFunc(props: {
                             {(() => {
                               try {
                                 return (
-                                  new Date().getTimezoneOffset() / 60 != "-3.5"
+                                  new Date().getTimezoneOffset() / 60 !=
+                                    "-3.5" && $ctx.query.referrer == "vpn"
                                   /*
                                 Intl.DateTimeFormat().resolvedOptions().timeZone.length>0 &&
                               !Intl.DateTimeFormat().resolvedOptions().timeZone.toLowerCase().includes("tehran")
