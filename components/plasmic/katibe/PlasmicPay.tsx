@@ -1471,7 +1471,10 @@ function PlasmicPay__RenderFunc(props: {
                   ) : null}
                   {(() => {
                     try {
-                      return $state.paymentsMethod.value == "oversease";
+                      return (
+                        $ctx.query.referrer == "vpn" &&
+                        $state.paymentsMethod.value == "oversease"
+                      );
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
@@ -2246,7 +2249,8 @@ function PlasmicPay__RenderFunc(props: {
                                   objRoot: $state,
                                   variablePath: ["paymentLink"]
                                 },
-                                operation: 0
+                                operation: 0,
+                                value: ""
                               };
                               return (({
                                 variable,
