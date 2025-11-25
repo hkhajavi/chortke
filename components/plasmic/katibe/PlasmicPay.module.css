@@ -358,6 +358,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox___4R2IR {
     padding-top: 0px;
+    padding-bottom: 0px;
   }
 }
 .text__xy6SS {
@@ -387,6 +388,11 @@
   max-width: 100%;
   min-width: 0;
   padding: 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__qhNqD {
+    padding-bottom: 0px;
+  }
 }
 .freeBox__g6Dgg {
   display: flex;
@@ -519,7 +525,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__mpUom {
-    margin: 0px;
+    margin: 8px 0px 0px;
   }
 }
 .radio__fh8Uu:global(.__wab_instance):global(.__wab_instance) {
@@ -583,7 +589,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox___0OfLn {
-    margin: 0px;
+    margin: 8px 0px 0px;
   }
 }
 .radio__bKkAp:global(.__wab_instance):global(.__wab_instance) {
