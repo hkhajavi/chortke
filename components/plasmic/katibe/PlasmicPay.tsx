@@ -75,6 +75,7 @@ import sty from "./PlasmicPay.module.css"; // plasmic-import: fXYKZYfose53/css
 import Icon50Icon from "./icons/PlasmicIcon__Icon50"; // plasmic-import: xtxGD9pXGJw4/icon
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
 import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
+import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
 
 createPlasmicElementProxy;
 
@@ -90,7 +91,6 @@ export const PlasmicPay__ArgProps = new Array<ArgPropType>();
 export type PlasmicPay__OverridesType = {
   pay?: Flex__<"div">;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
-  svg?: Flex__<"svg">;
   paymentsMethod?: Flex__<typeof RadioGroup>;
   link?: Flex__<"a"> & Partial<LinkProps>;
   btnPayMethod?: Flex__<typeof Button>;
@@ -720,9 +720,7 @@ function PlasmicPay__RenderFunc(props: {
                   className={classNames(projectcss.all, sty.freeBox___9J65H)}
                 >
                   <Icon50Icon
-                    data-plasmic-name={"svg"}
-                    data-plasmic-override={overrides.svg}
-                    className={classNames(projectcss.all, sty.svg)}
+                    className={classNames(projectcss.all, sty.svg__zPr4I)}
                     role={"img"}
                   />
 
@@ -984,6 +982,24 @@ function PlasmicPay__RenderFunc(props: {
                       "\u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u062d\u0648\u0647\u200c\u06cc \u067e\u0631\u062f\u0627\u062e\u062a:"
                     }
                   </div>
+                  {(() => {
+                    try {
+                      return $state.waiting;
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <Icon2Icon
+                      className={classNames(projectcss.all, sty.svg__d88H0)}
+                      role={"img"}
+                    />
+                  ) : null}
                 </div>
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__jXecp)}>
@@ -2618,7 +2634,6 @@ const PlasmicDescendants = {
   pay: [
     "pay",
     "sideEffectPageLoad",
-    "svg",
     "paymentsMethod",
     "link",
     "btnPayMethod",
@@ -2627,7 +2642,6 @@ const PlasmicDescendants = {
     "embedHtml"
   ],
   sideEffectPageLoad: ["sideEffectPageLoad"],
-  svg: ["svg"],
   paymentsMethod: ["paymentsMethod"],
   link: ["link"],
   btnPayMethod: ["btnPayMethod"],
@@ -2641,7 +2655,6 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   pay: "div";
   sideEffectPageLoad: typeof SideEffect;
-  svg: "svg";
   paymentsMethod: typeof RadioGroup;
   link: "a";
   btnPayMethod: typeof Button;
@@ -2713,7 +2726,6 @@ export const PlasmicPay = Object.assign(
   {
     // Helper components rendering sub-elements
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
-    svg: makeNodeComponent("svg"),
     paymentsMethod: makeNodeComponent("paymentsMethod"),
     link: makeNodeComponent("link"),
     btnPayMethod: makeNodeComponent("btnPayMethod"),
