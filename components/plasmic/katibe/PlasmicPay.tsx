@@ -1512,93 +1512,6 @@ function PlasmicPay__RenderFunc(props: {
                       )}
                     </div>
                   ) : null}
-                  {(() => {
-                    try {
-                      return (
-                        $ctx.query.referrer == "vpn" &&
-                        $state.paymentsMethod.value == "oversease"
-                      );
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })() ? (
-                    <PlasmicLink__
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.a,
-                        projectcss.__wab_text,
-                        sty.link__vtAoy
-                      )}
-                      component={Link}
-                      href={(() => {
-                        try {
-                          return (
-                            "https://wa.me/989384487404?text=" +
-                            "سلام. با شناسه کاربری " +
-                            $state.me.users[0].id +
-                            " در پذیرش24 نیاز به پشتیبانی در خصوص پرداخت خارج از ایران دارم، لطفا راهنمایی کنید."
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return "";
-                          }
-                          throw e;
-                        }
-                      })()}
-                      onClick={async event => {
-                        const $steps = {};
-
-                        $steps["updateWaiting"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["waiting"]
-                                },
-                                operation: 0
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateWaiting"] != null &&
-                          typeof $steps["updateWaiting"] === "object" &&
-                          typeof $steps["updateWaiting"].then === "function"
-                        ) {
-                          $steps["updateWaiting"] =
-                            await $steps["updateWaiting"];
-                        }
-                      }}
-                      platform={"nextjs"}
-                      target={"_blank"}
-                    >
-                      {
-                        "\u062a\u0645\u0627\u0633 \u0628\u0627 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc"
-                      }
-                    </PlasmicLink__>
-                  ) : null}
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__x9B2M)}>
                   {(() => {
@@ -2609,6 +2522,97 @@ function PlasmicPay__RenderFunc(props: {
                     size={"compact"}
                   />
                 </div>
+                {(() => {
+                  try {
+                    return (
+                      $ctx.query.referrer == "vpn" &&
+                      $state.paymentsMethod.value == "oversease"
+                    );
+                  } catch (e) {
+                    if (
+                      e instanceof TypeError ||
+                      e?.plasmicType === "PlasmicUndefinedDataError"
+                    ) {
+                      return true;
+                    }
+                    throw e;
+                  }
+                })() ? (
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__hixcx)}
+                  >
+                    <PlasmicLink__
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.a,
+                        projectcss.__wab_text,
+                        sty.link__vtAoy
+                      )}
+                      component={Link}
+                      href={(() => {
+                        try {
+                          return (
+                            "https://wa.me/989384487404?text=" +
+                            "سلام. با شناسه کاربری " +
+                            $state.me.users[0].id +
+                            " در پذیرش24 نیاز به پشتیبانی در خصوص پرداخت خارج از ایران دارم، لطفا راهنمایی کنید."
+                          );
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "";
+                          }
+                          throw e;
+                        }
+                      })()}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["updateWaiting"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["waiting"]
+                                },
+                                operation: 0
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateWaiting"] != null &&
+                          typeof $steps["updateWaiting"] === "object" &&
+                          typeof $steps["updateWaiting"].then === "function"
+                        ) {
+                          $steps["updateWaiting"] =
+                            await $steps["updateWaiting"];
+                        }
+                      }}
+                      platform={"nextjs"}
+                      target={"_blank"}
+                    >
+                      {
+                        "\u062a\u0645\u0627\u0633 \u0628\u0627 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc"
+                      }
+                    </PlasmicLink__>
+                  </div>
+                ) : null}
               </div>
             </section>
           ) : null}
