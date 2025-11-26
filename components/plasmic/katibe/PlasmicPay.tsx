@@ -334,7 +334,7 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["updateWaiting"] = await $steps["updateWaiting"];
               }
 
-              $steps["me"] = true
+              $steps["me"] = false
                 ? (() => {
                     const actionArgs = {
                       args: [
@@ -355,33 +355,27 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["me"] = await $steps["me"];
               }
 
-              $steps["updateMe"] =
-                $steps.me.status == 200
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["me"]
-                        },
-                        operation: 0,
-                        value: $steps.me.data
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
+              $steps["updateMe"] = false
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["me"]
+                      },
+                      operation: 0,
+                      value: $steps.me.data
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
 
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
               if (
                 $steps["updateMe"] != null &&
                 typeof $steps["updateMe"] === "object" &&
@@ -560,7 +554,7 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["redirectTrue"] = await $steps["redirectTrue"];
               }
 
-              $steps["getBalance"] = false
+              $steps["getBalance"] = true
                 ? (() => {
                     const actionArgs = {
                       args: [
@@ -581,27 +575,33 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["getBalance"] = await $steps["getBalance"];
               }
 
-              $steps["updateBalance"] = false
-                ? (() => {
-                    const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["balance"]
-                      },
-                      operation: 0,
-                      value: $steps.getBalance.data.data.balance
-                    };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
-                      }
-                      const { objRoot, variablePath } = variable;
+              $steps["updateBalance"] =
+                $steps.getBalance.status == 200
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["balance"]
+                        },
+                        operation: 0,
+                        value: $steps.getBalance.data.data.balance
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
 
-                      $stateSet(objRoot, variablePath, value);
-                      return value;
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
               if (
                 $steps["updateBalance"] != null &&
                 typeof $steps["updateBalance"] === "object" &&
@@ -2225,7 +2225,9 @@ function PlasmicPay__RenderFunc(props: {
                                   (() => {
                                     try {
                                       return {
-                                        amount: parseInt($ctx.query.amount),
+                                        amount:
+                                          parseInt($ctx.query.amount) -
+                                          $state.balance,
                                         returnlink: globalThis.atob(
                                           $ctx.query.returnlink ||
                                             "aHR0cHM6Ly93d3cucGF6aXJlc2gyNC5jb20="
