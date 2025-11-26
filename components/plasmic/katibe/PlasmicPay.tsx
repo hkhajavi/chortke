@@ -92,7 +92,6 @@ export type PlasmicPay__OverridesType = {
   pay?: Flex__<"div">;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
   paymentsMethod?: Flex__<typeof RadioGroup>;
-  link?: Flex__<"a"> & Partial<LinkProps>;
   btnPayMethod?: Flex__<typeof Button>;
   btnOverseasePayWhatsapp?: Flex__<typeof Button>;
   btnOverseasePayRemitation?: Flex__<typeof Button>;
@@ -1349,14 +1348,12 @@ function PlasmicPay__RenderFunc(props: {
                       </React.Fragment>
                       {
                         <PlasmicLink__
-                          data-plasmic-name={"link"}
-                          data-plasmic-override={overrides.link}
                           className={classNames(
                             projectcss.all,
                             projectcss.a,
                             projectcss.__wab_text,
                             projectcss.plasmic_default__inline,
-                            sty.link
+                            sty.link__oZdl
                           )}
                           component={Link}
                           href={"tel:09384487404"}
@@ -1514,6 +1511,93 @@ function PlasmicPay__RenderFunc(props: {
                         </React.Fragment>
                       )}
                     </div>
+                  ) : null}
+                  {(() => {
+                    try {
+                      return (
+                        $ctx.query.referrer == "vpn" &&
+                        $state.paymentsMethod.value == "oversease"
+                      );
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <PlasmicLink__
+                      className={classNames(
+                        projectcss.all,
+                        projectcss.a,
+                        projectcss.__wab_text,
+                        sty.link__vtAoy
+                      )}
+                      component={Link}
+                      href={(() => {
+                        try {
+                          return (
+                            "https://wa.me/989384487404?text=" +
+                            "سلام. با شناسه کاربری " +
+                            $state.me.users[0].id +
+                            " در پذیرش24 نیاز به پشتیبانی در خصوص پرداخت خارج از ایران دارم، لطفا راهنمایی کنید."
+                          );
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return "";
+                          }
+                          throw e;
+                        }
+                      })()}
+                      onClick={async event => {
+                        const $steps = {};
+
+                        $steps["updateWaiting"] = true
+                          ? (() => {
+                              const actionArgs = {
+                                variable: {
+                                  objRoot: $state,
+                                  variablePath: ["waiting"]
+                                },
+                                operation: 0
+                              };
+                              return (({
+                                variable,
+                                value,
+                                startIndex,
+                                deleteCount
+                              }) => {
+                                if (!variable) {
+                                  return;
+                                }
+                                const { objRoot, variablePath } = variable;
+
+                                $stateSet(objRoot, variablePath, value);
+                                return value;
+                              })?.apply(null, [actionArgs]);
+                            })()
+                          : undefined;
+                        if (
+                          $steps["updateWaiting"] != null &&
+                          typeof $steps["updateWaiting"] === "object" &&
+                          typeof $steps["updateWaiting"].then === "function"
+                        ) {
+                          $steps["updateWaiting"] =
+                            await $steps["updateWaiting"];
+                        }
+                      }}
+                      platform={"nextjs"}
+                      target={"_blank"}
+                    >
+                      {
+                        "\u062a\u0645\u0627\u0633 \u0628\u0627 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc"
+                      }
+                    </PlasmicLink__>
                   ) : null}
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__x9B2M)}>
@@ -2547,7 +2631,6 @@ const PlasmicDescendants = {
     "pay",
     "sideEffectPageLoad",
     "paymentsMethod",
-    "link",
     "btnPayMethod",
     "btnOverseasePayWhatsapp",
     "btnOverseasePayRemitation",
@@ -2555,7 +2638,6 @@ const PlasmicDescendants = {
   ],
   sideEffectPageLoad: ["sideEffectPageLoad"],
   paymentsMethod: ["paymentsMethod"],
-  link: ["link"],
   btnPayMethod: ["btnPayMethod"],
   btnOverseasePayWhatsapp: ["btnOverseasePayWhatsapp"],
   btnOverseasePayRemitation: ["btnOverseasePayRemitation"],
@@ -2568,7 +2650,6 @@ type NodeDefaultElementType = {
   pay: "div";
   sideEffectPageLoad: typeof SideEffect;
   paymentsMethod: typeof RadioGroup;
-  link: "a";
   btnPayMethod: typeof Button;
   btnOverseasePayWhatsapp: typeof Button;
   btnOverseasePayRemitation: typeof Button;
@@ -2639,7 +2720,6 @@ export const PlasmicPay = Object.assign(
     // Helper components rendering sub-elements
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
     paymentsMethod: makeNodeComponent("paymentsMethod"),
-    link: makeNodeComponent("link"),
     btnPayMethod: makeNodeComponent("btnPayMethod"),
     btnOverseasePayWhatsapp: makeNodeComponent("btnOverseasePayWhatsapp"),
     btnOverseasePayRemitation: makeNodeComponent("btnOverseasePayRemitation"),

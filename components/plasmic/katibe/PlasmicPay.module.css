@@ -639,7 +639,7 @@
 }
 .freeBox__dWXnV {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   position: relative;
   align-items: center;
   justify-content: center;
@@ -647,7 +647,7 @@
   height: auto;
   max-width: 100%;
   min-width: 0;
-  padding: 8px;
+  padding: 0px;
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__dWXnV {
@@ -707,6 +707,18 @@
     text-align: justify;
   }
 }
+.link__vtAoy {
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  padding-bottom: 0px;
+  font-size: var(--token-5Ye_3XTSaP9X);
+  color: var(--token-ct9q_Fh0pmQL);
+  text-align: right;
+  cursor: pointer;
+  margin: 0px;
+}
 .freeBox__x9B2M {
   display: flex;
   flex-direction: row;
@@ -717,7 +729,7 @@
   justify-content: center;
   align-items: center;
   min-width: 0;
-  padding: 0px;
+  padding: 8px 0px 0px;
 }
 .btnPayMethod:global(.__wab_instance) {
   max-width: 100%;
