@@ -1078,45 +1078,39 @@ function PlasmicPay__RenderFunc(props: {
                           (async val => {
                             const $steps = {};
 
-                            $steps["invokeGlobalAction"] = false
+                            $steps["updateWaiting"] = true
                               ? (() => {
                                   const actionArgs = {
-                                    args: [
-                                      "POST",
-                                      "https://apigw.paziresh24.com/katibe/v1/payments/method/suggest",
-                                      undefined,
-                                      (() => {
-                                        try {
-                                          return {
-                                            method: $state.paymentsMethod.value
-                                          };
-                                        } catch (e) {
-                                          if (
-                                            e instanceof TypeError ||
-                                            e?.plasmicType ===
-                                              "PlasmicUndefinedDataError"
-                                          ) {
-                                            return { method: "" };
-                                          }
-                                          throw e;
-                                        }
-                                      })()
-                                    ]
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["waiting"]
+                                    },
+                                    operation: 0,
+                                    value: false
                                   };
-                                  return $globalActions[
-                                    "Fragment.apiRequest"
-                                  ]?.apply(null, [...actionArgs.args]);
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
                                 })()
                               : undefined;
                             if (
-                              $steps["invokeGlobalAction"] != null &&
-                              typeof $steps["invokeGlobalAction"] ===
-                                "object" &&
-                              typeof $steps["invokeGlobalAction"].then ===
-                                "function"
+                              $steps["updateWaiting"] != null &&
+                              typeof $steps["updateWaiting"] === "object" &&
+                              typeof $steps["updateWaiting"].then === "function"
                             ) {
-                              $steps["invokeGlobalAction"] =
-                                await $steps["invokeGlobalAction"];
+                              $steps["updateWaiting"] =
+                                await $steps["updateWaiting"];
                             }
                           }).apply(null, eventArgs);
                         }}
@@ -1501,51 +1495,7 @@ function PlasmicPay__RenderFunc(props: {
                             style={{ color: "#000000" }}
                           >
                             {
-                              "\u06a9\u0627\u0631\u0628\u0631 \u06af\u0631\u0627\u0645\u06cc\u060c \u0644\u0637\u0641\u0627\u064b \u062a\u0648\u062c\u0647 \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u06cc\u062f \u06a9\u0647 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0634\u0645\u0627 \u0634\u0627\u0645\u0644 "
-                            }
-                          </span>
-                          <React.Fragment>{""}</React.Fragment>
-                          <span
-                            className={
-                              "plasmic_default__all plasmic_default__span"
-                            }
-                            style={{ color: "#000000", fontWeight: 700 }}
-                          >
-                            {
-                              "\u06f1\u06f5\u066a \u06a9\u0627\u0631\u0645\u0632\u062f"
-                            }
-                          </span>
-                          <React.Fragment>{""}</React.Fragment>
-                          <span
-                            className={
-                              "plasmic_default__all plasmic_default__span"
-                            }
-                            style={{ color: "#000000" }}
-                          >
-                            {
-                              " \u062e\u0648\u0627\u0647\u062f \u0628\u0648\u062f. \u0647\u0645\u0686\u0646\u06cc\u0646\u060c "
-                            }
-                          </span>
-                          <React.Fragment>{""}</React.Fragment>
-                          <span
-                            className={
-                              "plasmic_default__all plasmic_default__span"
-                            }
-                            style={{ color: "#000000", fontWeight: 700 }}
-                          >
-                            {
-                              "\u062f\u0631 \u0635\u0648\u0631\u062a \u0644\u063a\u0648 \u0646\u0648\u0628\u062a"
-                            }
-                          </span>
-                          <React.Fragment>{""}</React.Fragment>
-                          <span
-                            className={
-                              "plasmic_default__all plasmic_default__span"
-                            }
-                            style={{ color: "#000000" }}
-                          >
-                            {
-                              "\u060c \u0645\u0628\u0644\u063a \u067e\u0631\u062f\u0627\u062e\u062a\u06cc \u0634\u0645\u0627 \u0642\u0627\u0628\u0644 \u0627\u0633\u062a\u0631\u062f\u0627\u062f \u0646\u06cc\u0633\u062a \u0648 \u0628\u0647 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0628\u0627\u0632\u06af\u0631\u062f\u0627\u0646\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f. \u0634\u0645\u0627 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0628\u0627 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 \u0627\u06cc\u0646 \u0645\u0628\u0644\u063a\u060c \u0646\u0648\u0628\u062a \u062c\u062f\u06cc\u062f\u06cc \u0631\u0632\u0631\u0648 \u06a9\u0646\u06cc\u062f."
+                              "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0634\u0645\u0627 \u0634\u0627\u0645\u0644 \u06f1\u06f5\u066a \u06a9\u0627\u0631\u0645\u0632\u062f \u0627\u0633\u062a. \u062f\u0631 \u0635\u0648\u0631\u062a \u0644\u063a\u0648 \u0646\u0648\u0628\u062a\u060c \u0645\u0628\u0644\u063a \u0628\u0647 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0628\u0627\u0632\u06af\u0631\u062f\u0627\u0646\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f \u0648 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0646\u0648\u0628\u062a \u062c\u062f\u06cc\u062f\u06cc \u0631\u0632\u0631\u0648 \u06a9\u0646\u06cc\u062f."
                             }
                           </span>
                         </React.Fragment>
@@ -1558,51 +1508,7 @@ function PlasmicPay__RenderFunc(props: {
                             style={{ color: "#5B2525" }}
                           >
                             {
-                              "\u06a9\u0627\u0631\u0628\u0631 \u06af\u0631\u0627\u0645\u06cc\u060c \u0644\u0637\u0641\u0627\u064b \u062a\u0648\u062c\u0647 \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\u06cc\u062f \u06a9\u0647 \u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0634\u0645\u0627 \u0634\u0627\u0645\u0644 "
-                            }
-                          </span>
-                          <React.Fragment>{""}</React.Fragment>
-                          <span
-                            className={
-                              "plasmic_default__all plasmic_default__span"
-                            }
-                            style={{ color: "#5B2525", fontWeight: 700 }}
-                          >
-                            {
-                              "\u06f1\u06f5\u066a \u06a9\u0627\u0631\u0645\u0632\u062f"
-                            }
-                          </span>
-                          <React.Fragment>{""}</React.Fragment>
-                          <span
-                            className={
-                              "plasmic_default__all plasmic_default__span"
-                            }
-                            style={{ color: "#5B2525" }}
-                          >
-                            {
-                              " \u062e\u0648\u0627\u0647\u062f \u0628\u0648\u062f. \u0647\u0645\u0686\u0646\u06cc\u0646\u060c "
-                            }
-                          </span>
-                          <React.Fragment>{""}</React.Fragment>
-                          <span
-                            className={
-                              "plasmic_default__all plasmic_default__span"
-                            }
-                            style={{ color: "#5B2525", fontWeight: 700 }}
-                          >
-                            {
-                              "\u062f\u0631 \u0635\u0648\u0631\u062a \u0644\u063a\u0648 \u0646\u0648\u0628\u062a\u060c"
-                            }
-                          </span>
-                          <React.Fragment>{""}</React.Fragment>
-                          <span
-                            className={
-                              "plasmic_default__all plasmic_default__span"
-                            }
-                            style={{ color: "#5B2525" }}
-                          >
-                            {
-                              " \u0645\u0628\u0644\u063a \u067e\u0631\u062f\u0627\u062e\u062a\u06cc \u0634\u0645\u0627 \u0642\u0627\u0628\u0644 \u0627\u0633\u062a\u0631\u062f\u0627\u062f \u0646\u06cc\u0633\u062a \u0648 \u0628\u0647 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0628\u0627\u0632\u06af\u0631\u062f\u0627\u0646\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f. \u0634\u0645\u0627 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0628\u0627 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 \u0627\u06cc\u0646 \u0645\u0628\u0644\u063a\u060c \u0646\u0648\u0628\u062a \u062c\u062f\u06cc\u062f\u06cc \u0631\u0632\u0631\u0648 \u06a9\u0646\u06cc\u062f."
+                              "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0634\u0645\u0627 \u0634\u0627\u0645\u0644 \u06f1\u06f5\u066a \u06a9\u0627\u0631\u0645\u0632\u062f \u0627\u0633\u062a. \u062f\u0631 \u0635\u0648\u0631\u062a \u0644\u063a\u0648 \u0646\u0648\u0628\u062a\u060c \u0645\u0628\u0644\u063a \u0628\u0647 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0628\u0627\u0632\u06af\u0631\u062f\u0627\u0646\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f \u0648 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0646\u0648\u0628\u062a \u062c\u062f\u06cc\u062f\u06cc \u0631\u0632\u0631\u0648 \u06a9\u0646\u06cc\u062f."
                             }
                           </span>
                         </React.Fragment>
@@ -1669,7 +1575,7 @@ function PlasmicPay__RenderFunc(props: {
                             await $steps["alertPaymentMethod"];
                         }
 
-                        $steps["updateWaiting"] = false
+                        $steps["updateWaiting"] = true
                           ? (() => {
                               const actionArgs = {
                                 variable: {
