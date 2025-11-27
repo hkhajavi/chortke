@@ -234,6 +234,12 @@ function PlasmicPay__RenderFunc(props: {
         type: "private",
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+      },
+      {
+        path: "irr",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
@@ -305,7 +311,7 @@ function PlasmicPay__RenderFunc(props: {
             onMount={async () => {
               const $steps = {};
 
-              $steps["updateWaiting"] = false
+              $steps["updateWaiting"] = true
                 ? (() => {
                     const actionArgs = {
                       variable: {
@@ -384,140 +390,6 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["updateMe"] = await $steps["updateMe"];
               }
 
-              $steps["getSplits"] = false
-                ? (() => {
-                    const actionArgs = {
-                      args: [
-                        undefined,
-                        (() => {
-                          try {
-                            return (
-                              "https://apigw.paziresh24.com/katibe/v1/splits/details/p24/" +
-                              ($ctx.params.id || $ctx.query.id)
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
-                            }
-                            throw e;
-                          }
-                        })(),
-                        undefined
-                      ]
-                    };
-                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                      ...actionArgs.args
-                    ]);
-                  })()
-                : undefined;
-              if (
-                $steps["getSplits"] != null &&
-                typeof $steps["getSplits"] === "object" &&
-                typeof $steps["getSplits"].then === "function"
-              ) {
-                $steps["getSplits"] = await $steps["getSplits"];
-              }
-
-              $steps["updateSplits"] = false
-                ? (() => {
-                    const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["splits"]
-                      },
-                      operation: 0,
-                      value: $steps.getSplits.data.data
-                    };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
-                      }
-                      const { objRoot, variablePath } = variable;
-
-                      $stateSet(objRoot, variablePath, value);
-                      return value;
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["updateSplits"] != null &&
-                typeof $steps["updateSplits"] === "object" &&
-                typeof $steps["updateSplits"].then === "function"
-              ) {
-                $steps["updateSplits"] = await $steps["updateSplits"];
-              }
-
-              $steps["redirectFalse"] = false
-                ? (() => {
-                    const actionArgs = {
-                      args: [
-                        (() => {
-                          try {
-                            return $state.splits.return_link.includes("?")
-                              ? $state.splits.return_link + "&status=false"
-                              : $state.splits.return_link + "?status=false";
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
-                            }
-                            throw e;
-                          }
-                        })()
-                      ]
-                    };
-                    return $globalActions["Hamdast.openLink"]?.apply(null, [
-                      ...actionArgs.args
-                    ]);
-                  })()
-                : undefined;
-              if (
-                $steps["redirectFalse"] != null &&
-                typeof $steps["redirectFalse"] === "object" &&
-                typeof $steps["redirectFalse"].then === "function"
-              ) {
-                $steps["redirectFalse"] = await $steps["redirectFalse"];
-              }
-
-              $steps["redirectTrue"] = false
-                ? (() => {
-                    const actionArgs = {
-                      args: [
-                        (() => {
-                          try {
-                            return $state.splits.return_link.includes("?")
-                              ? $state.splits.return_link + "&status=true"
-                              : $state.splits.return_link + "?status=true";
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
-                            }
-                            throw e;
-                          }
-                        })()
-                      ]
-                    };
-                    return $globalActions["Hamdast.openLink"]?.apply(null, [
-                      ...actionArgs.args
-                    ]);
-                  })()
-                : undefined;
-              if (
-                $steps["redirectTrue"] != null &&
-                typeof $steps["redirectTrue"] === "object" &&
-                typeof $steps["redirectTrue"].then === "function"
-              ) {
-                $steps["redirectTrue"] = await $steps["redirectTrue"];
-              }
-
               $steps["getBalance"] = true
                 ? (() => {
                     const actionArgs = {
@@ -572,6 +444,67 @@ function PlasmicPay__RenderFunc(props: {
                 typeof $steps["updateBalance"].then === "function"
               ) {
                 $steps["updateBalance"] = await $steps["updateBalance"];
+              }
+
+              $steps["usdIrr"] =
+                new Date().getTimezoneOffset() / 60 != "-3.5" &&
+                $ctx.query.referrer == "vpn"
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          undefined,
+                          "https://apigw.paziresh24.com/katibe/v1/remitation/exchange/rate/usd"
+                        ]
+                      };
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
+                    })()
+                  : undefined;
+              if (
+                $steps["usdIrr"] != null &&
+                typeof $steps["usdIrr"] === "object" &&
+                typeof $steps["usdIrr"].then === "function"
+              ) {
+                $steps["usdIrr"] = await $steps["usdIrr"];
+              }
+
+              $steps["updateIrr"] =
+                new Date().getTimezoneOffset() / 60 != "-3.5" &&
+                $ctx.query.referrer == "vpn" &&
+                $steps.usdIrr.status == 200
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["irr"]
+                        },
+                        operation: 0,
+                        value: $steps.usdIrr.data.data.USD
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updateIrr"] != null &&
+                typeof $steps["updateIrr"] === "object" &&
+                typeof $steps["updateIrr"].then === "function"
+              ) {
+                $steps["updateIrr"] = await $steps["updateIrr"];
               }
 
               $steps["updateWaiting2"] = true
@@ -1163,9 +1096,35 @@ function PlasmicPay__RenderFunc(props: {
                                   sty.text__ggPlb
                                 )}
                               >
-                                {
-                                  "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u062a\u0645\u0627\u0645\u06cc \u06a9\u0627\u0631\u062a\u200c\u0647\u0627\u06cc \u0628\u0627\u0646\u06a9\u06cc"
-                                }
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return (
+                                        "پرداخت " +
+                                        (
+                                          ($ctx.query.amount - $state.balance) /
+                                          10
+                                        )
+                                          .toString()
+                                          .replace(
+                                            /\B(?=(\d{3})+(?!\d))/g,
+                                            ","
+                                          ) +
+                                        " تومان " +
+                                        "با تمامی کارت‌های بانکی"
+                                      );
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u062a\u0645\u0627\u0645\u06cc \u06a9\u0627\u0631\u062a\u200c\u0647\u0627\u06cc \u0628\u0627\u0646\u06a9\u06cc";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
                               </div>
                             </div>
                             <Radio
@@ -1242,9 +1201,35 @@ function PlasmicPay__RenderFunc(props: {
                                   sty.text__j0Sd1
                                 )}
                               >
-                                {
-                                  "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646 \u0628\u0644\u0648"
-                                }
+                                <React.Fragment>
+                                  {(() => {
+                                    try {
+                                      return (
+                                        "پرداخت " +
+                                        (
+                                          ($ctx.query.amount - $state.balance) /
+                                          10
+                                        )
+                                          .toString()
+                                          .replace(
+                                            /\B(?=(\d{3})+(?!\d))/g,
+                                            ","
+                                          ) +
+                                        " تومان " +
+                                        "با اپلیکیشن بلو"
+                                      );
+                                    } catch (e) {
+                                      if (
+                                        e instanceof TypeError ||
+                                        e?.plasmicType ===
+                                          "PlasmicUndefinedDataError"
+                                      ) {
+                                        return "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646 \u0628\u0644\u0648";
+                                      }
+                                      throw e;
+                                    }
+                                  })()}
+                                </React.Fragment>
                               </div>
                             </div>
                             <Radio
@@ -1312,9 +1297,38 @@ function PlasmicPay__RenderFunc(props: {
                                         sty.text__wCfBy
                                       )}
                                     >
-                                      {
-                                        "\u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u062e\u0627\u0631\u062c \u0627\u0632 \u0627\u06cc\u0631\u0627\u0646"
-                                      }
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return (
+                                              "پرداخت " +
+                                              Math.ceil(
+                                                (($ctx.query.amount -
+                                                  $state.balance) /
+                                                  $state.irr) *
+                                                  100 +
+                                                  ((($ctx.query.amount -
+                                                    $state.balance) /
+                                                    $state.irr) *
+                                                    100 *
+                                                    15) /
+                                                    100
+                                              ) /
+                                                100 +
+                                              "$"
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "\u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u062e\u0627\u0631\u062c \u0627\u0632 \u0627\u06cc\u0631\u0627\u0646";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
                                     </div>
                                   }
                                   value={"oversease"}
@@ -1327,9 +1341,38 @@ function PlasmicPay__RenderFunc(props: {
                                     sty.text__gykjM
                                   )}
                                 >
-                                  {
-                                    "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0631\u0627\u06cc \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u062e\u0627\u0631\u062c \u0627\u0632 \u0627\u06cc\u0631\u0627\u0646"
-                                  }
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return (
+                                          "پرداخت " +
+                                          Math.ceil(
+                                            (($ctx.query.amount -
+                                              $state.balance) /
+                                              $state.irr) *
+                                              100 +
+                                              ((($ctx.query.amount -
+                                                $state.balance) /
+                                                $state.irr) *
+                                                100 *
+                                                15) /
+                                                100
+                                          ) /
+                                            100 +
+                                          "$ با درگاه ارزی"
+                                        );
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u062f\u0631\u06af\u0627\u0647 \u0627\u0631\u0632\u06cc";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
                                 </div>
                               </div>
                             ) : null}
@@ -1501,7 +1544,7 @@ function PlasmicPay__RenderFunc(props: {
                             style={{ color: "#000000" }}
                           >
                             {
-                              "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0634\u0645\u0627 \u0634\u0627\u0645\u0644 \u06f1\u06f5\u066a \u06a9\u0627\u0631\u0645\u0632\u062f \u0627\u0633\u062a. \u062f\u0631 \u0635\u0648\u0631\u062a \u0644\u063a\u0648 \u0646\u0648\u0628\u062a\u060c \u0645\u0628\u0644\u063a \u0628\u0647 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0628\u0627\u0632\u06af\u0631\u062f\u0627\u0646\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f \u0648 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0646\u0648\u0628\u062a \u062c\u062f\u06cc\u062f\u06cc \u0631\u0632\u0631\u0648 \u06a9\u0646\u06cc\u062f."
+                              "\u062f\u0631 \u0635\u0648\u0631\u062a \u0644\u063a\u0648 \u0646\u0648\u0628\u062a\u060c \u0645\u0628\u0644\u063a \u0628\u0647 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0628\u0627\u0632\u06af\u0631\u062f\u0627\u0646\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f \u0648 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0646\u0648\u0628\u062a \u062c\u062f\u06cc\u062f\u06cc \u0631\u0632\u0631\u0648 \u06a9\u0646\u06cc\u062f."
                             }
                           </span>
                         </React.Fragment>
@@ -1514,7 +1557,7 @@ function PlasmicPay__RenderFunc(props: {
                             style={{ color: "#5B2525" }}
                           >
                             {
-                              "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u0634\u0645\u0627 \u0634\u0627\u0645\u0644 \u06f1\u06f5\u066a \u06a9\u0627\u0631\u0645\u0632\u062f \u0627\u0633\u062a. \u062f\u0631 \u0635\u0648\u0631\u062a \u0644\u063a\u0648 \u0646\u0648\u0628\u062a\u060c \u0645\u0628\u0644\u063a \u0628\u0647 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0628\u0627\u0632\u06af\u0631\u062f\u0627\u0646\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f \u0648 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0646\u0648\u0628\u062a \u062c\u062f\u06cc\u062f\u06cc \u0631\u0632\u0631\u0648 \u06a9\u0646\u06cc\u062f."
+                              "\u062f\u0631 \u0635\u0648\u0631\u062a \u0644\u063a\u0648 \u0646\u0648\u0628\u062a\u060c \u0645\u0628\u0644\u063a \u0628\u0647 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0628\u0627\u0632\u06af\u0631\u062f\u0627\u0646\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f \u0648 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0646\u0648\u0628\u062a \u062c\u062f\u06cc\u062f\u06cc \u0631\u0632\u0631\u0648 \u06a9\u0646\u06cc\u062f."
                             }
                           </span>
                         </React.Fragment>
