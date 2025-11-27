@@ -236,10 +236,10 @@ function PlasmicPay__RenderFunc(props: {
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
       },
       {
-        path: "irr",
+        path: "exchangeRate",
         type: "private",
-        variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
       }
     ],
     [$props, $ctx, $refs]
@@ -453,7 +453,7 @@ function PlasmicPay__RenderFunc(props: {
                       const actionArgs = {
                         args: [
                           undefined,
-                          "https://apigw.paziresh24.com/katibe/v1/remitation/exchange/rate/usd"
+                          "https://apigw.paziresh24.com/katibe/v1/remitation/exchange/rate"
                         ]
                       };
                       return $globalActions["Fragment.apiRequest"]?.apply(
@@ -478,10 +478,10 @@ function PlasmicPay__RenderFunc(props: {
                       const actionArgs = {
                         variable: {
                           objRoot: $state,
-                          variablePath: ["irr"]
+                          variablePath: ["exchangeRate"]
                         },
                         operation: 0,
-                        value: $steps.usdIrr.data.data.USD
+                        value: $steps.usdIrr.data.data
                       };
                       return (({
                         variable,
@@ -1305,11 +1305,11 @@ function PlasmicPay__RenderFunc(props: {
                                               Math.ceil(
                                                 (($ctx.query.amount -
                                                   $state.balance) /
-                                                  $state.irr) *
+                                                  1121000) *
                                                   100 +
                                                   ((($ctx.query.amount -
                                                     $state.balance) /
-                                                    $state.irr) *
+                                                    1121000) *
                                                     100 *
                                                     15) /
                                                     100
@@ -1349,11 +1349,11 @@ function PlasmicPay__RenderFunc(props: {
                                           Math.ceil(
                                             (($ctx.query.amount -
                                               $state.balance) /
-                                              $state.irr) *
+                                              112100) *
                                               100 +
                                               ((($ctx.query.amount -
                                                 $state.balance) /
-                                                $state.irr) *
+                                                112100) *
                                                 100 *
                                                 15) /
                                                 100
