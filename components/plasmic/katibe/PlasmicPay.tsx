@@ -446,7 +446,7 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["updateBalance"] = await $steps["updateBalance"];
               }
 
-              $steps["usdIrr"] =
+              $steps["getExchangeRate"] =
                 new Date().getTimezoneOffset() / 60 != "-3.5" &&
                 $ctx.query.referrer == "vpn"
                   ? (() => {
@@ -463,17 +463,17 @@ function PlasmicPay__RenderFunc(props: {
                     })()
                   : undefined;
               if (
-                $steps["usdIrr"] != null &&
-                typeof $steps["usdIrr"] === "object" &&
-                typeof $steps["usdIrr"].then === "function"
+                $steps["getExchangeRate"] != null &&
+                typeof $steps["getExchangeRate"] === "object" &&
+                typeof $steps["getExchangeRate"].then === "function"
               ) {
-                $steps["usdIrr"] = await $steps["usdIrr"];
+                $steps["getExchangeRate"] = await $steps["getExchangeRate"];
               }
 
-              $steps["updateIrr"] =
+              $steps["updateExchangeRate"] =
                 new Date().getTimezoneOffset() / 60 != "-3.5" &&
                 $ctx.query.referrer == "vpn" &&
-                $steps.usdIrr.status == 200
+                $steps.getExchangeRate.status == 200
                   ? (() => {
                       const actionArgs = {
                         variable: {
@@ -481,7 +481,7 @@ function PlasmicPay__RenderFunc(props: {
                           variablePath: ["exchangeRate"]
                         },
                         operation: 0,
-                        value: $steps.usdIrr.data.data
+                        value: $steps.getExchangeRate.data.data
                       };
                       return (({
                         variable,
@@ -500,11 +500,12 @@ function PlasmicPay__RenderFunc(props: {
                     })()
                   : undefined;
               if (
-                $steps["updateIrr"] != null &&
-                typeof $steps["updateIrr"] === "object" &&
-                typeof $steps["updateIrr"].then === "function"
+                $steps["updateExchangeRate"] != null &&
+                typeof $steps["updateExchangeRate"] === "object" &&
+                typeof $steps["updateExchangeRate"].then === "function"
               ) {
-                $steps["updateIrr"] = await $steps["updateIrr"];
+                $steps["updateExchangeRate"] =
+                  await $steps["updateExchangeRate"];
               }
 
               $steps["updateWaiting2"] = true
@@ -1305,11 +1306,11 @@ function PlasmicPay__RenderFunc(props: {
                                               Math.ceil(
                                                 (($ctx.query.amount -
                                                   $state.balance) /
-                                                  1121000) *
+                                                  $state.exchangeRate.USD) *
                                                   100 +
                                                   ((($ctx.query.amount -
                                                     $state.balance) /
-                                                    1121000) *
+                                                    $state.exchangeRate.USD) *
                                                     100 *
                                                     15) /
                                                     100
@@ -1349,11 +1350,11 @@ function PlasmicPay__RenderFunc(props: {
                                           Math.ceil(
                                             (($ctx.query.amount -
                                               $state.balance) /
-                                              112100) *
+                                              $state.exchangeRate.USD) *
                                               100 +
                                               ((($ctx.query.amount -
                                                 $state.balance) /
-                                                112100) *
+                                                $state.exchangeRate.USD) *
                                                 100 *
                                                 15) /
                                                 100
