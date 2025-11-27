@@ -1102,9 +1102,9 @@ function PlasmicPay__RenderFunc(props: {
                                     try {
                                       return (
                                         "پرداخت " +
-                                        (
+                                        Math.floor(
                                           ($ctx.query.amount - $state.balance) /
-                                          10
+                                            10
                                         )
                                           .toString()
                                           .replace(
@@ -1207,9 +1207,9 @@ function PlasmicPay__RenderFunc(props: {
                                     try {
                                       return (
                                         "پرداخت " +
-                                        (
+                                        Math.floor(
                                           ($ctx.query.amount - $state.balance) /
-                                          10
+                                            10
                                         )
                                           .toString()
                                           .replace(
