@@ -384,42 +384,6 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["updateMe"] = await $steps["updateMe"];
               }
 
-              $steps["redirectLogin"] = false
-                ? (() => {
-                    const actionArgs = {
-                      args: [
-                        (() => {
-                          try {
-                            return (
-                              "https://www.paziresh24.com/login/?redirect_url=https://www.paziresh24.com/_/katibe/pay/" +
-                              $ctx.params.id +
-                              "/"
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
-                            }
-                            throw e;
-                          }
-                        })()
-                      ]
-                    };
-                    return $globalActions["Hamdast.openLink"]?.apply(null, [
-                      ...actionArgs.args
-                    ]);
-                  })()
-                : undefined;
-              if (
-                $steps["redirectLogin"] != null &&
-                typeof $steps["redirectLogin"] === "object" &&
-                typeof $steps["redirectLogin"].then === "function"
-              ) {
-                $steps["redirectLogin"] = await $steps["redirectLogin"];
-              }
-
               $steps["getSplits"] = false
                 ? (() => {
                     const actionArgs = {
@@ -637,6 +601,51 @@ function PlasmicPay__RenderFunc(props: {
                 typeof $steps["updateWaiting2"].then === "function"
               ) {
                 $steps["updateWaiting2"] = await $steps["updateWaiting2"];
+              }
+
+              $steps["overseaseLog"] =
+                new Date().getTimezoneOffset() / 60 != "-3.5" &&
+                $ctx.query.referrer == "vpn"
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          "POST",
+                          "https://apigw.paziresh24.com/katibe/v1/p24/logs",
+                          undefined,
+                          (() => {
+                            try {
+                              return {
+                                timezone:
+                                  Intl.DateTimeFormat().resolvedOptions()
+                                    .timeZone || $ctx.query.timezone,
+                                request: "overseas-show-payment-page",
+                                receipt_id: $ctx.query.receipt_id,
+                                amount: $ctx.query.amount
+                              };
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        ]
+                      };
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
+                    })()
+                  : undefined;
+              if (
+                $steps["overseaseLog"] != null &&
+                typeof $steps["overseaseLog"] === "object" &&
+                typeof $steps["overseaseLog"].then === "function"
+              ) {
+                $steps["overseaseLog"] = await $steps["overseaseLog"];
               }
             }}
           />
