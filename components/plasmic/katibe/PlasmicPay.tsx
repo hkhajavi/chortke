@@ -990,7 +990,7 @@ function PlasmicPay__RenderFunc(props: {
                           try {
                             return new Date().getTimezoneOffset() / 60 !=
                               "-3.5" && $ctx.query.referrer == "vpn"
-                              ? "oversease"
+                              ? "oversease_usd"
                               : "saman";
                           } catch (e) {
                             if (
@@ -1112,7 +1112,7 @@ function PlasmicPay__RenderFunc(props: {
                                             ","
                                           ) +
                                         " تومان " +
-                                        "با تمامی کارت‌های بانکی"
+                                        "با کارت‌های بانکی"
                                       );
                                     } catch (e) {
                                       if (
@@ -1332,7 +1332,7 @@ function PlasmicPay__RenderFunc(props: {
                                       </React.Fragment>
                                     </div>
                                   }
-                                  value={"oversease"}
+                                  value={"oversease_usd"}
                                 />
 
                                 <div
@@ -1361,6 +1361,131 @@ function PlasmicPay__RenderFunc(props: {
                                           ) /
                                             100 +
                                           "$ با درگاه ارزی"
+                                        );
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u062f\u0631\u06af\u0627\u0647 \u0627\u0631\u0632\u06cc";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                              </div>
+                            ) : null}
+                            {(() => {
+                              try {
+                                return (
+                                  new Date().getTimezoneOffset() / 60 !=
+                                    "-3.5" && $ctx.query.referrer == "vpn"
+                                  /*
+                                Intl.DateTimeFormat().resolvedOptions().timeZone.length>0 &&
+                              !Intl.DateTimeFormat().resolvedOptions().timeZone.toLowerCase().includes("tehran")
+                              
+                              )
+                              || 
+                              (
+                              $ctx.query.timezone.length>0
+                              &&  
+                              !$ctx.query.timezone.includes("tehran")
+                              )*/
+                                );
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })() ? (
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__ikZki
+                                )}
+                              >
+                                <Radio
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.radio__hELc5
+                                  )}
+                                  label={
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__wtpR
+                                      )}
+                                    >
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return (
+                                              "پرداخت " +
+                                              Math.ceil(
+                                                (($ctx.query.amount -
+                                                  $state.balance) /
+                                                  $state.exchangeRate.EUR) *
+                                                  100 +
+                                                  ((($ctx.query.amount -
+                                                    $state.balance) /
+                                                    $state.exchangeRate.EUR) *
+                                                    100 *
+                                                    15) /
+                                                    100
+                                              ) /
+                                                100 +
+                                              "€"
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "\u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u062e\u0627\u0631\u062c \u0627\u0632 \u0627\u06cc\u0631\u0627\u0646";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
+                                    </div>
+                                  }
+                                  value={"oversease_eur"}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__riWr
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return (
+                                          "پرداخت " +
+                                          Math.ceil(
+                                            (($ctx.query.amount -
+                                              $state.balance) /
+                                              $state.exchangeRate.EUR) *
+                                              100 +
+                                              ((($ctx.query.amount -
+                                                $state.balance) /
+                                                $state.exchangeRate.EUR) *
+                                                100 *
+                                                15) /
+                                                100
+                                          ) /
+                                            100 +
+                                          "€ با درگاه ارزی"
                                         );
                                       } catch (e) {
                                         if (
@@ -1517,7 +1642,8 @@ function PlasmicPay__RenderFunc(props: {
                     try {
                       return (
                         $ctx.query.referrer == "vpn" &&
-                        $state.paymentsMethod.value == "oversease"
+                        ($state.paymentsMethod.value == "oversease_usd" ||
+                          $state.paymentsMethod.value == "oversease_eur")
                       );
                     } catch (e) {
                       if (
@@ -1545,7 +1671,27 @@ function PlasmicPay__RenderFunc(props: {
                             style={{ color: "#000000" }}
                           >
                             {
-                              "\u062f\u0631 \u0635\u0648\u0631\u062a \u0644\u063a\u0648 \u0646\u0648\u0628\u062a\u060c \u0645\u0628\u0644\u063a \u0628\u0647 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0628\u0627\u0632\u06af\u0631\u062f\u0627\u0646\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f \u0648 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0646\u0648\u0628\u062a \u062c\u062f\u06cc\u062f\u06cc \u0631\u0632\u0631\u0648 \u06a9\u0646\u06cc\u062f."
+                              "\u062f\u0631 \u0635\u0648\u0631\u062a \u0644\u063a\u0648 \u0646\u0648\u0628\u062a\u060c \u0645\u0628\u0644\u063a \u0628\u0647 "
+                            }
+                          </span>
+                          <React.Fragment>{""}</React.Fragment>
+                          <span
+                            className={
+                              "plasmic_default__all plasmic_default__span"
+                            }
+                            style={{ color: "#000000", fontWeight: 700 }}
+                          >
+                            {"\u06a9\u06cc\u0641 \u067e\u0648\u0644"}
+                          </span>
+                          <React.Fragment>{""}</React.Fragment>
+                          <span
+                            className={
+                              "plasmic_default__all plasmic_default__span"
+                            }
+                            style={{ color: "#000000" }}
+                          >
+                            {
+                              " \u0634\u0645\u0627 \u0628\u0627\u0632\u06af\u0631\u062f\u0627\u0646\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f \u0648 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0646\u0648\u0628\u062a \u062c\u062f\u06cc\u062f\u06cc \u0631\u0632\u0631\u0648 \u06a9\u0646\u06cc\u062f."
                             }
                           </span>
                         </React.Fragment>
@@ -1558,7 +1704,27 @@ function PlasmicPay__RenderFunc(props: {
                             style={{ color: "#5B2525" }}
                           >
                             {
-                              "\u062f\u0631 \u0635\u0648\u0631\u062a \u0644\u063a\u0648 \u0646\u0648\u0628\u062a\u060c \u0645\u0628\u0644\u063a \u0628\u0647 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0628\u0627\u0632\u06af\u0631\u062f\u0627\u0646\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f \u0648 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0646\u0648\u0628\u062a \u062c\u062f\u06cc\u062f\u06cc \u0631\u0632\u0631\u0648 \u06a9\u0646\u06cc\u062f."
+                              "\u062f\u0631 \u0635\u0648\u0631\u062a \u0644\u063a\u0648 \u0646\u0648\u0628\u062a\u060c \u0645\u0628\u0644\u063a \u0628\u0647 "
+                            }
+                          </span>
+                          <React.Fragment>{""}</React.Fragment>
+                          <span
+                            className={
+                              "plasmic_default__all plasmic_default__span"
+                            }
+                            style={{ color: "#5B2525", fontWeight: 700 }}
+                          >
+                            {"\u06a9\u06cc\u0641 \u067e\u0648\u0644"}
+                          </span>
+                          <React.Fragment>{""}</React.Fragment>
+                          <span
+                            className={
+                              "plasmic_default__all plasmic_default__span"
+                            }
+                            style={{ color: "#5B2525" }}
+                          >
+                            {
+                              " \u0634\u0645\u0627 \u0628\u0627\u0632\u06af\u0631\u062f\u0627\u0646\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f \u0648 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0646\u0648\u0628\u062a \u062c\u062f\u06cc\u062f\u06cc \u0631\u0632\u0631\u0648 \u06a9\u0646\u06cc\u062f."
                             }
                           </span>
                         </React.Fragment>
@@ -1569,7 +1735,10 @@ function PlasmicPay__RenderFunc(props: {
                 <div className={classNames(projectcss.all, sty.freeBox__x9B2M)}>
                   {(() => {
                     try {
-                      return $state.paymentsMethod.value != "oversease";
+                      return (
+                        $state.paymentsMethod.value != "oversease_usd" &&
+                        $state.paymentsMethod.value != "oversease_eur"
+                      );
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
@@ -2161,7 +2330,10 @@ function PlasmicPay__RenderFunc(props: {
                   ) : null}
                   {(() => {
                     try {
-                      return $state.paymentsMethod.value == "oversease";
+                      return (
+                        $state.paymentsMethod.value == "oversease_usd" ||
+                        $state.paymentsMethod.value == "oversease_eur"
+                      );
                     } catch (e) {
                       if (
                         e instanceof TypeError ||
@@ -2289,7 +2461,11 @@ function PlasmicPay__RenderFunc(props: {
                                           $ctx.query.cancel_returnlink ||
                                             "aHR0cHM6Ly93d3cucGF6aXJlc2gyNC5jb20="
                                         ),
-                                        currency: "USD",
+                                        currency:
+                                          $state.paymentsMethod.value ==
+                                          "oversease_eur"
+                                            ? "EUR"
+                                            : "USD",
                                         receipt_id: $ctx.query.receipt_id,
                                         timezone:
                                           Intl.DateTimeFormat().resolvedOptions()
