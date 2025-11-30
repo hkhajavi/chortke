@@ -363,56 +363,6 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["updateWaiting"] = await $steps["updateWaiting"];
               }
 
-              $steps["me"] = false
-                ? (() => {
-                    const actionArgs = {
-                      args: [
-                        undefined,
-                        "https://apigw.paziresh24.com/v1/auth/me"
-                      ]
-                    };
-                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                      ...actionArgs.args
-                    ]);
-                  })()
-                : undefined;
-              if (
-                $steps["me"] != null &&
-                typeof $steps["me"] === "object" &&
-                typeof $steps["me"].then === "function"
-              ) {
-                $steps["me"] = await $steps["me"];
-              }
-
-              $steps["updateMe"] = false
-                ? (() => {
-                    const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["me"]
-                      },
-                      operation: 0,
-                      value: $steps.me.data
-                    };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
-                      }
-                      const { objRoot, variablePath } = variable;
-
-                      $stateSet(objRoot, variablePath, value);
-                      return value;
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["updateMe"] != null &&
-                typeof $steps["updateMe"] === "object" &&
-                typeof $steps["updateMe"].then === "function"
-              ) {
-                $steps["updateMe"] = await $steps["updateMe"];
-              }
-
               $steps["getBalance"] = true
                 ? (() => {
                     const actionArgs = {
@@ -560,43 +510,40 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["updateWaiting2"] = await $steps["updateWaiting2"];
               }
 
-              $steps["overseaseLog"] =
-                new Date().getTimezoneOffset() / 60 != "-3.5" &&
-                $ctx.query.referrer == "vpn"
-                  ? (() => {
-                      const actionArgs = {
-                        args: [
-                          "POST",
-                          "https://apigw.paziresh24.com/katibe/v1/p24/logs",
-                          undefined,
-                          (() => {
-                            try {
-                              return {
-                                timezone:
-                                  Intl.DateTimeFormat().resolvedOptions()
-                                    .timeZone || $ctx.query.timezone,
-                                request: "overseas-show-payment-page",
-                                receipt_id: $ctx.query.receipt_id,
-                                amount: $ctx.query.amount
-                              };
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
+              $steps["overseaseLog"] = false
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        "POST",
+                        "https://apigw.paziresh24.com/katibe/v1/p24/logs",
+                        undefined,
+                        (() => {
+                          try {
+                            return {
+                              timezone:
+                                Intl.DateTimeFormat().resolvedOptions()
+                                  .timeZone || $ctx.query.timezone,
+                              request: "overseas-show-payment-page",
+                              receipt_id: $ctx.query.receipt_id,
+                              amount: $ctx.query.amount
+                            };
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
                             }
-                          })()
-                        ]
-                      };
-                      return $globalActions["Fragment.apiRequest"]?.apply(
-                        null,
-                        [...actionArgs.args]
-                      );
-                    })()
-                  : undefined;
+                            throw e;
+                          }
+                        })()
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
               if (
                 $steps["overseaseLog"] != null &&
                 typeof $steps["overseaseLog"] === "object" &&
