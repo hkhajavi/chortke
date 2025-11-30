@@ -92,6 +92,7 @@ export type PlasmicPay__OverridesType = {
   pay?: Flex__<"div">;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
   paymentsMethod?: Flex__<typeof RadioGroup>;
+  rbBlue?: Flex__<typeof Radio>;
   btnPayMethod?: Flex__<typeof Button>;
   btnOverseasePayWhatsapp?: Flex__<typeof Button>;
   btnOverseasePayRemitation?: Flex__<typeof Button>;
@@ -240,6 +241,28 @@ function PlasmicPay__RenderFunc(props: {
         type: "private",
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+      },
+      {
+        path: "dafaultPaymentMethod",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return new Date().getTimezoneOffset() / 60 != "-3.5" &&
+                $ctx.query.referrer == "vpn"
+                ? "oversease_usd"
+                : "saman";
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -988,10 +1011,7 @@ function PlasmicPay__RenderFunc(props: {
                         )}
                         defaultValue={(() => {
                           try {
-                            return new Date().getTimezoneOffset() / 60 !=
-                              "-3.5" && $ctx.query.referrer == "vpn"
-                              ? "oversease_usd"
-                              : "saman";
+                            return $state.dafaultPaymentMethod;
                           } catch (e) {
                             if (
                               e instanceof TypeError ||
@@ -1068,6 +1088,49 @@ function PlasmicPay__RenderFunc(props: {
                                 projectcss.all,
                                 sty.freeBox__yd9Hy
                               )}
+                              onClick={async event => {
+                                const $steps = {};
+
+                                $steps["updateDafaultPaymentMethod"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: ["dafaultPaymentMethod"]
+                                        },
+                                        operation: 0,
+                                        value: "saman"
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        $stateSet(objRoot, variablePath, value);
+                                        return value;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["updateDafaultPaymentMethod"] !=
+                                    null &&
+                                  typeof $steps[
+                                    "updateDafaultPaymentMethod"
+                                  ] === "object" &&
+                                  typeof $steps["updateDafaultPaymentMethod"]
+                                    .then === "function"
+                                ) {
+                                  $steps["updateDafaultPaymentMethod"] =
+                                    await $steps["updateDafaultPaymentMethod"];
+                                }
+                              }}
                             >
                               <Radio
                                 className={classNames(
@@ -1173,11 +1236,56 @@ function PlasmicPay__RenderFunc(props: {
                                 projectcss.all,
                                 sty.freeBox__mpUom
                               )}
+                              onClick={async event => {
+                                const $steps = {};
+
+                                $steps["updateDafaultPaymentMethod"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: ["dafaultPaymentMethod"]
+                                        },
+                                        operation: 0,
+                                        value: "blue"
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        $stateSet(objRoot, variablePath, value);
+                                        return value;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["updateDafaultPaymentMethod"] !=
+                                    null &&
+                                  typeof $steps[
+                                    "updateDafaultPaymentMethod"
+                                  ] === "object" &&
+                                  typeof $steps["updateDafaultPaymentMethod"]
+                                    .then === "function"
+                                ) {
+                                  $steps["updateDafaultPaymentMethod"] =
+                                    await $steps["updateDafaultPaymentMethod"];
+                                }
+                              }}
                             >
                               <Radio
+                                data-plasmic-name={"rbBlue"}
+                                data-plasmic-override={overrides.rbBlue}
                                 className={classNames(
                                   "__wab_instance",
-                                  sty.radio__fh8Uu
+                                  sty.rbBlue
                                 )}
                                 label={
                                   <div
@@ -1284,6 +1392,57 @@ function PlasmicPay__RenderFunc(props: {
                                   projectcss.all,
                                   sty.freeBox___0OfLn
                                 )}
+                                onClick={async event => {
+                                  const $steps = {};
+
+                                  $steps["updateDafaultPaymentMethod"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: [
+                                              "dafaultPaymentMethod"
+                                            ]
+                                          },
+                                          operation: 0,
+                                          value: "oversease_usd"
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["updateDafaultPaymentMethod"] !=
+                                      null &&
+                                    typeof $steps[
+                                      "updateDafaultPaymentMethod"
+                                    ] === "object" &&
+                                    typeof $steps["updateDafaultPaymentMethod"]
+                                      .then === "function"
+                                  ) {
+                                    $steps["updateDafaultPaymentMethod"] =
+                                      await $steps[
+                                        "updateDafaultPaymentMethod"
+                                      ];
+                                  }
+                                }}
                               >
                                 <Radio
                                   className={classNames(
@@ -1409,6 +1568,57 @@ function PlasmicPay__RenderFunc(props: {
                                   projectcss.all,
                                   sty.freeBox__ikZki
                                 )}
+                                onClick={async event => {
+                                  const $steps = {};
+
+                                  $steps["updateDafaultPaymentMethod"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: [
+                                              "dafaultPaymentMethod"
+                                            ]
+                                          },
+                                          operation: 0,
+                                          value: "oversease_eur"
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["updateDafaultPaymentMethod"] !=
+                                      null &&
+                                    typeof $steps[
+                                      "updateDafaultPaymentMethod"
+                                    ] === "object" &&
+                                    typeof $steps["updateDafaultPaymentMethod"]
+                                      .then === "function"
+                                  ) {
+                                    $steps["updateDafaultPaymentMethod"] =
+                                      await $steps[
+                                        "updateDafaultPaymentMethod"
+                                      ];
+                                  }
+                                }}
                               >
                                 <Radio
                                   className={classNames(
@@ -2866,13 +3076,15 @@ const PlasmicDescendants = {
     "pay",
     "sideEffectPageLoad",
     "paymentsMethod",
+    "rbBlue",
     "btnPayMethod",
     "btnOverseasePayWhatsapp",
     "btnOverseasePayRemitation",
     "embedHtml"
   ],
   sideEffectPageLoad: ["sideEffectPageLoad"],
-  paymentsMethod: ["paymentsMethod"],
+  paymentsMethod: ["paymentsMethod", "rbBlue"],
+  rbBlue: ["rbBlue"],
   btnPayMethod: ["btnPayMethod"],
   btnOverseasePayWhatsapp: ["btnOverseasePayWhatsapp"],
   btnOverseasePayRemitation: ["btnOverseasePayRemitation"],
@@ -2885,6 +3097,7 @@ type NodeDefaultElementType = {
   pay: "div";
   sideEffectPageLoad: typeof SideEffect;
   paymentsMethod: typeof RadioGroup;
+  rbBlue: typeof Radio;
   btnPayMethod: typeof Button;
   btnOverseasePayWhatsapp: typeof Button;
   btnOverseasePayRemitation: typeof Button;
@@ -2955,6 +3168,7 @@ export const PlasmicPay = Object.assign(
     // Helper components rendering sub-elements
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
     paymentsMethod: makeNodeComponent("paymentsMethod"),
+    rbBlue: makeNodeComponent("rbBlue"),
     btnPayMethod: makeNodeComponent("btnPayMethod"),
     btnOverseasePayWhatsapp: makeNodeComponent("btnOverseasePayWhatsapp"),
     btnOverseasePayRemitation: makeNodeComponent("btnOverseasePayRemitation"),

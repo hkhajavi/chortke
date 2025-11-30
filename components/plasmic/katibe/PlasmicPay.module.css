@@ -528,11 +528,11 @@
     margin: 8px 0px 0px;
   }
 }
-.radio__fh8Uu:global(.__wab_instance):global(.__wab_instance) {
+.rbBlue:global(.__wab_instance):global(.__wab_instance) {
   position: relative;
 }
 @media (min-width: 0px) and (max-width: 768px) {
-  .radio__fh8Uu:global(.__wab_instance):global(.__wab_instance) {
+  .rbBlue:global(.__wab_instance):global(.__wab_instance) {
     margin: 0px;
   }
 }
