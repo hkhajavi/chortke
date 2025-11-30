@@ -1519,7 +1519,7 @@ function PlasmicPay__RenderFunc(props: {
                                                 100
                                           ) /
                                             100 +
-                                          " دلار با درگاه ارزی"
+                                          " دلار با درگاه پرداخت"
                                         );
                                       } catch (e) {
                                         if (
@@ -1695,7 +1695,7 @@ function PlasmicPay__RenderFunc(props: {
                                                 100
                                           ) /
                                             100 +
-                                          " یورو با درگاه ارزی"
+                                          " یورو با درگاه پرداخت"
                                         );
                                       } catch (e) {
                                         if (
