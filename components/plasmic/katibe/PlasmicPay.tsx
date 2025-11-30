@@ -481,7 +481,44 @@ function PlasmicPay__RenderFunc(props: {
                   await $steps["updateExchangeRate"];
               }
 
-              $steps["updateWaiting2"] = true
+              $steps["updateWaiting2"] =
+                new Date().getTimezoneOffset() / 60 != "-3.5" &&
+                $ctx.query.referrer == "vpn" &&
+                $steps.getExchangeRate.status == 200
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["waiting"]
+                        },
+                        operation: 0,
+                        value: false
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updateWaiting2"] != null &&
+                typeof $steps["updateWaiting2"] === "object" &&
+                typeof $steps["updateWaiting2"].then === "function"
+              ) {
+                $steps["updateWaiting2"] = await $steps["updateWaiting2"];
+              }
+
+              $steps["updateWaiting3"] = true
                 ? (() => {
                     const actionArgs = {
                       variable: {
@@ -503,11 +540,11 @@ function PlasmicPay__RenderFunc(props: {
                   })()
                 : undefined;
               if (
-                $steps["updateWaiting2"] != null &&
-                typeof $steps["updateWaiting2"] === "object" &&
-                typeof $steps["updateWaiting2"].then === "function"
+                $steps["updateWaiting3"] != null &&
+                typeof $steps["updateWaiting3"] === "object" &&
+                typeof $steps["updateWaiting3"].then === "function"
               ) {
-                $steps["updateWaiting2"] = await $steps["updateWaiting2"];
+                $steps["updateWaiting3"] = await $steps["updateWaiting3"];
               }
 
               $steps["overseaseLog"] = false
