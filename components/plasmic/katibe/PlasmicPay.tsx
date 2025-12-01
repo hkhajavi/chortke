@@ -481,43 +481,6 @@ function PlasmicPay__RenderFunc(props: {
                   await $steps["updateExchangeRate"];
               }
 
-              $steps["updateWaiting2"] =
-                new Date().getTimezoneOffset() / 60 != "-3.5" &&
-                $ctx.query.referrer == "vpn" &&
-                $steps.getExchangeRate.status == 200
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["waiting"]
-                        },
-                        operation: 0,
-                        value: false
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-              if (
-                $steps["updateWaiting2"] != null &&
-                typeof $steps["updateWaiting2"] === "object" &&
-                typeof $steps["updateWaiting2"].then === "function"
-              ) {
-                $steps["updateWaiting2"] = await $steps["updateWaiting2"];
-              }
-
               $steps["updateWaiting3"] = true
                 ? (() => {
                     const actionArgs = {
@@ -1767,11 +1730,20 @@ function PlasmicPay__RenderFunc(props: {
                             className={
                               "plasmic_default__all plasmic_default__span"
                             }
-                            style={{ color: "#5B2525" }}
+                            style={{ color: "#535353" }}
                           >
                             {
-                              "\u06a9\u0627\u0631\u0628\u0631 \u06af\u0631\u0627\u0645\u06cc\u060c \u0644\u0637\u0641\u0627\u064b \u0645\u0637\u0645\u0626\u0646 \u0634\u0648\u06cc\u062f \u06a9\u0647 "
+                              "\u06a9\u0627\u0631\u0628\u0631 \u06af\u0631\u0627\u0645\u06cc\u060c \u0644\u0637\u0641\u0627\u064b \u0645\u0637\u0645\u0626\u0646 \u0634\u0648\u06cc\u062f \u06a9\u0647"
                             }
+                          </span>
+                          <React.Fragment>{""}</React.Fragment>
+                          <span
+                            className={
+                              "plasmic_default__all plasmic_default__span"
+                            }
+                            style={{ color: "#5B2525" }}
+                          >
+                            {" "}
                           </span>
                           <React.Fragment>{""}</React.Fragment>
                           <span
@@ -1789,8 +1761,17 @@ function PlasmicPay__RenderFunc(props: {
                             }
                             style={{ color: "#000000" }}
                           >
+                            {" "}
+                          </span>
+                          <React.Fragment>{""}</React.Fragment>
+                          <span
+                            className={
+                              "plasmic_default__all plasmic_default__span"
+                            }
+                            style={{ color: "#535353" }}
+                          >
                             {
-                              " \u0634\u0645\u0627 \u062e\u0627\u0645\u0648\u0634 \u0627\u0633\u062a\u060c \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f."
+                              "\u0634\u0645\u0627 \u062e\u0627\u0645\u0648\u0634 \u0627\u0633\u062a\u060c \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f."
                             }
                           </span>
                         </React.Fragment>
@@ -1800,13 +1781,13 @@ function PlasmicPay__RenderFunc(props: {
                             className={
                               "plasmic_default__all plasmic_default__span"
                             }
-                            style={{ color: "#5B2525" }}
+                            style={{ color: "#535353" }}
                           >
                             {
-                              "\u06a9\u0627\u0631\u0628\u0631 \u06af\u0631\u0627\u0645\u06cc\u060c \u0644\u0637\u0641\u0627\u064b \u0645\u0637\u0645\u0626\u0646 \u0634\u0648\u06cc\u062f \u06a9\u0647"
+                              "\u06a9\u0627\u0631\u0628\u0631 \u06af\u0631\u0627\u0645\u06cc\u060c \u0644\u0637\u0641\u0627\u064b \u0645\u0637\u0645\u0626\u0646 \u0634\u0648\u06cc\u062f \u06a9\u0647 "
                             }
                           </span>
-                          <React.Fragment> </React.Fragment>
+                          <React.Fragment>{""}</React.Fragment>
                           <span
                             className={
                               "plasmic_default__all plasmic_default__span"
@@ -1824,8 +1805,17 @@ function PlasmicPay__RenderFunc(props: {
                             }
                             style={{ color: "#000000" }}
                           >
+                            {" "}
+                          </span>
+                          <React.Fragment>{""}</React.Fragment>
+                          <span
+                            className={
+                              "plasmic_default__all plasmic_default__span"
+                            }
+                            style={{ color: "#535353" }}
+                          >
                             {
-                              " \u0634\u0645\u0627 \u062e\u0627\u0645\u0648\u0634 \u0627\u0633\u062a \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f."
+                              "\u0634\u0645\u0627 \u062e\u0627\u0645\u0648\u0634 \u0627\u0633\u062a \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f."
                             }
                           </span>
                         </React.Fragment>
@@ -1895,7 +1885,7 @@ function PlasmicPay__RenderFunc(props: {
                             className={
                               "plasmic_default__all plasmic_default__span"
                             }
-                            style={{ color: "#5B2525" }}
+                            style={{ color: "#535353" }}
                           >
                             {
                               "\u062f\u0631 \u0635\u0648\u0631\u062a \u0644\u063a\u0648 \u0646\u0648\u0628\u062a\u060c \u0645\u0628\u0644\u063a \u0628\u0647 "
@@ -1906,7 +1896,7 @@ function PlasmicPay__RenderFunc(props: {
                             className={
                               "plasmic_default__all plasmic_default__span"
                             }
-                            style={{ color: "#5B2525", fontWeight: 700 }}
+                            style={{ color: "#535353", fontWeight: 700 }}
                           >
                             {"\u06a9\u06cc\u0641 \u067e\u0648\u0644"}
                           </span>
@@ -1915,7 +1905,7 @@ function PlasmicPay__RenderFunc(props: {
                             className={
                               "plasmic_default__all plasmic_default__span"
                             }
-                            style={{ color: "#5B2525" }}
+                            style={{ color: "#535353" }}
                           >
                             {
                               " \u0634\u0645\u0627 \u0628\u0627\u0632\u06af\u0631\u062f\u0627\u0646\u062f\u0647 \u0645\u06cc\u200c\u0634\u0648\u062f \u0648 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0646\u0648\u0628\u062a \u062c\u062f\u06cc\u062f\u06cc \u0631\u0632\u0631\u0648 \u06a9\u0646\u06cc\u062f."
