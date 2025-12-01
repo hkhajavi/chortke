@@ -986,41 +986,6 @@ function PlasmicPay__RenderFunc(props: {
 
                           (async val => {
                             const $steps = {};
-
-                            $steps["updateWaiting"] = true
-                              ? (() => {
-                                  const actionArgs = {
-                                    variable: {
-                                      objRoot: $state,
-                                      variablePath: ["waiting"]
-                                    },
-                                    operation: 0,
-                                    value: false
-                                  };
-                                  return (({
-                                    variable,
-                                    value,
-                                    startIndex,
-                                    deleteCount
-                                  }) => {
-                                    if (!variable) {
-                                      return;
-                                    }
-                                    const { objRoot, variablePath } = variable;
-
-                                    $stateSet(objRoot, variablePath, value);
-                                    return value;
-                                  })?.apply(null, [actionArgs]);
-                                })()
-                              : undefined;
-                            if (
-                              $steps["updateWaiting"] != null &&
-                              typeof $steps["updateWaiting"] === "object" &&
-                              typeof $steps["updateWaiting"].then === "function"
-                            ) {
-                              $steps["updateWaiting"] =
-                                await $steps["updateWaiting"];
-                            }
                           }).apply(null, eventArgs);
                         }}
                         options={
@@ -1076,6 +1041,43 @@ function PlasmicPay__RenderFunc(props: {
                                 ) {
                                   $steps["updateDafaultPaymentMethod"] =
                                     await $steps["updateDafaultPaymentMethod"];
+                                }
+
+                                $steps["updateWaiting"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: ["waiting"]
+                                        },
+                                        operation: 0,
+                                        value: false
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        $stateSet(objRoot, variablePath, value);
+                                        return value;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["updateWaiting"] != null &&
+                                  typeof $steps["updateWaiting"] === "object" &&
+                                  typeof $steps["updateWaiting"].then ===
+                                    "function"
+                                ) {
+                                  $steps["updateWaiting"] =
+                                    await $steps["updateWaiting"];
                                 }
                               }}
                             >
@@ -1224,6 +1226,43 @@ function PlasmicPay__RenderFunc(props: {
                                 ) {
                                   $steps["updateDafaultPaymentMethod"] =
                                     await $steps["updateDafaultPaymentMethod"];
+                                }
+
+                                $steps["updateWaiting"] = true
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: ["waiting"]
+                                        },
+                                        operation: 0,
+                                        value: false
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        $stateSet(objRoot, variablePath, value);
+                                        return value;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                                if (
+                                  $steps["updateWaiting"] != null &&
+                                  typeof $steps["updateWaiting"] === "object" &&
+                                  typeof $steps["updateWaiting"].then ===
+                                    "function"
+                                ) {
+                                  $steps["updateWaiting"] =
+                                    await $steps["updateWaiting"];
                                 }
                               }}
                             >
@@ -1388,6 +1427,48 @@ function PlasmicPay__RenderFunc(props: {
                                       await $steps[
                                         "updateDafaultPaymentMethod"
                                       ];
+                                  }
+
+                                  $steps["updateWaiting"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: ["waiting"]
+                                          },
+                                          operation: 0,
+                                          value: false
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["updateWaiting"] != null &&
+                                    typeof $steps["updateWaiting"] ===
+                                      "object" &&
+                                    typeof $steps["updateWaiting"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["updateWaiting"] =
+                                      await $steps["updateWaiting"];
                                   }
                                 }}
                               >
@@ -1564,6 +1645,48 @@ function PlasmicPay__RenderFunc(props: {
                                       await $steps[
                                         "updateDafaultPaymentMethod"
                                       ];
+                                  }
+
+                                  $steps["updateWaiting"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: ["waiting"]
+                                          },
+                                          operation: 0,
+                                          value: false
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["updateWaiting"] != null &&
+                                    typeof $steps["updateWaiting"] ===
+                                      "object" &&
+                                    typeof $steps["updateWaiting"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["updateWaiting"] =
+                                      await $steps["updateWaiting"];
                                   }
                                 }}
                               >
