@@ -3114,66 +3114,17 @@ function PlasmicPay__RenderFunc(props: {
                         sty.link__vtAoy
                       )}
                       component={Link}
-                      href={(() => {
-                        try {
-                          return (
-                            "https://wa.me/989384487404?text=" +
-                            "سلام. با شناسه کاربری " +
-                            $state.me.users[0].id +
-                            " در پذیرش24 نیاز به پشتیبانی در خصوص پرداخت خارج از ایران دارم، لطفا راهنمایی کنید."
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return "";
-                          }
-                          throw e;
-                        }
-                      })()}
+                      href={
+                        "https://wa.me/989384487404?text=\u0633\u0644\u0627\u0645. \u062f\u0631 \u067e\u0630\u06cc\u0631\u063424 \u0646\u06cc\u0627\u0632 \u0628\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u062f\u0631 \u062e\u0635\u0648\u0635 \u067e\u0631\u062f\u0627\u062e\u062a \u062e\u0627\u0631\u062c \u0627\u0632 \u0627\u06cc\u0631\u0627\u0646 \u062f\u0627\u0631\u0645\u060c \u0644\u0637\u0641\u0627 \u0631\u0627\u0647\u0646\u0645\u0627\u06cc\u06cc \u06a9\u0646\u06cc\u062f."
+                      }
                       onClick={async event => {
                         const $steps = {};
-
-                        $steps["updateWaiting"] = true
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["waiting"]
-                                },
-                                operation: 0
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updateWaiting"] != null &&
-                          typeof $steps["updateWaiting"] === "object" &&
-                          typeof $steps["updateWaiting"].then === "function"
-                        ) {
-                          $steps["updateWaiting"] =
-                            await $steps["updateWaiting"];
-                        }
                       }}
                       platform={"nextjs"}
                       target={"_blank"}
                     >
                       {
-                        "\u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u067e\u0631\u062f\u0627\u062e\u062a"
+                        "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc"
                       }
                     </PlasmicLink__>
                   </div>
