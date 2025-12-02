@@ -2803,7 +2803,8 @@ function PlasmicPay__RenderFunc(props: {
                                         receipt_id: $ctx.query.receipt_id,
                                         timezone:
                                           Intl.DateTimeFormat().resolvedOptions()
-                                            .timeZone || $ctx.query.timezone
+                                            .timeZone || $ctx.query.timezone,
+                                        center_id: $ctx.query.center_id || ""
                                       };
                                     } catch (e) {
                                       if (
