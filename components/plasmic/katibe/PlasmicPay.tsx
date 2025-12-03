@@ -63,6 +63,7 @@ import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
 import Button from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
 import RadioGroup from "../../RadioGroup"; // plasmic-import: tqHTZfyBziuN/component
 import Radio from "../../Radio"; // plasmic-import: Cbq_rTXOD16b/component
+import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/styleTokensProvider
@@ -76,6 +77,11 @@ import Icon50Icon from "./icons/PlasmicIcon__Icon50"; // plasmic-import: xtxGD9p
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
 import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
+import SearchSvgIcon from "./icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
+import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
+import Icon48Icon from "./icons/PlasmicIcon__Icon48"; // plasmic-import: ApzBD_j9CWGg/icon
+
+import __lib_copyToClipboard from "copy-to-clipboard";
 
 createPlasmicElementProxy;
 
@@ -93,6 +99,9 @@ export type PlasmicPay__OverridesType = {
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
   paymentsMethod?: Flex__<typeof RadioGroup>;
   rbBlue?: Flex__<typeof Radio>;
+  rbLink?: Flex__<typeof Radio>;
+  link?: Flex__<"a"> & Partial<LinkProps>;
+  txtPaymentLink?: Flex__<typeof TextInput>;
   btnPayMethod?: Flex__<typeof Button>;
   btnOverseasePayWhatsapp?: Flex__<typeof Button>;
   btnOverseasePayRemitation?: Flex__<typeof Button>;
@@ -101,7 +110,9 @@ export type PlasmicPay__OverridesType = {
 
 export interface DefaultPayProps {}
 
-const $$ = {};
+const $$ = {
+  copyToClipboard: __lib_copyToClipboard
+};
 
 function useNextRouter() {
   try {
@@ -263,6 +274,31 @@ function PlasmicPay__RenderFunc(props: {
               throw e;
             }
           })()
+      },
+      {
+        path: "txtPaymentLink.value",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return $state.mylink;
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return undefined;
+              }
+              throw e;
+            }
+          })()
+      },
+      {
+        path: "mylink",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -986,6 +1022,138 @@ function PlasmicPay__RenderFunc(props: {
 
                           (async val => {
                             const $steps = {};
+
+                            $steps["updateWaiting"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["waiting"]
+                                    },
+                                    operation: 0,
+                                    value: true
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateWaiting"] != null &&
+                              typeof $steps["updateWaiting"] === "object" &&
+                              typeof $steps["updateWaiting"].then === "function"
+                            ) {
+                              $steps["updateWaiting"] =
+                                await $steps["updateWaiting"];
+                            }
+
+                            $steps["getLink"] =
+                              $state.mylink == "" &&
+                              $state.paymentsMethod.value == "link"
+                                ? (() => {
+                                    const actionArgs = {
+                                      args: [
+                                        undefined,
+                                        "https://apigw.paziresh24.com/katibe/v1/payment/link/p24"
+                                      ]
+                                    };
+                                    return $globalActions[
+                                      "Fragment.apiRequest"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["getLink"] != null &&
+                              typeof $steps["getLink"] === "object" &&
+                              typeof $steps["getLink"].then === "function"
+                            ) {
+                              $steps["getLink"] = await $steps["getLink"];
+                            }
+
+                            $steps["updateMylink"] =
+                              $state.paymentsMethod.value == "link" &&
+                              $steps.getLink.status == 200
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["mylink"]
+                                      },
+                                      operation: 0,
+                                      value: $steps.getLink.data.data.link
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                            if (
+                              $steps["updateMylink"] != null &&
+                              typeof $steps["updateMylink"] === "object" &&
+                              typeof $steps["updateMylink"].then === "function"
+                            ) {
+                              $steps["updateMylink"] =
+                                await $steps["updateMylink"];
+                            }
+
+                            $steps["updateWaiting2"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    variable: {
+                                      objRoot: $state,
+                                      variablePath: ["waiting"]
+                                    },
+                                    operation: 0,
+                                    value: false
+                                  };
+                                  return (({
+                                    variable,
+                                    value,
+                                    startIndex,
+                                    deleteCount
+                                  }) => {
+                                    if (!variable) {
+                                      return;
+                                    }
+                                    const { objRoot, variablePath } = variable;
+
+                                    $stateSet(objRoot, variablePath, value);
+                                    return value;
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["updateWaiting2"] != null &&
+                              typeof $steps["updateWaiting2"] === "object" &&
+                              typeof $steps["updateWaiting2"].then ===
+                                "function"
+                            ) {
+                              $steps["updateWaiting2"] =
+                                await $steps["updateWaiting2"];
+                            }
                           }).apply(null, eventArgs);
                         }}
                         options={
@@ -1327,6 +1495,125 @@ function PlasmicPay__RenderFunc(props: {
                                 </React.Fragment>
                               </div>
                             </div>
+                            {(() => {
+                              try {
+                                return $ctx.query.referrer == "link";
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })() ? (
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__wgbWc
+                                )}
+                                onClick={async event => {
+                                  const $steps = {};
+
+                                  $steps["updateDafaultPaymentMethod"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: [
+                                              "dafaultPaymentMethod"
+                                            ]
+                                          },
+                                          operation: 0,
+                                          value: "link"
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["updateDafaultPaymentMethod"] !=
+                                      null &&
+                                    typeof $steps[
+                                      "updateDafaultPaymentMethod"
+                                    ] === "object" &&
+                                    typeof $steps["updateDafaultPaymentMethod"]
+                                      .then === "function"
+                                  ) {
+                                    $steps["updateDafaultPaymentMethod"] =
+                                      await $steps[
+                                        "updateDafaultPaymentMethod"
+                                      ];
+                                  }
+                                }}
+                              >
+                                <Radio
+                                  data-plasmic-name={"rbLink"}
+                                  data-plasmic-override={overrides.rbLink}
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.rbLink
+                                  )}
+                                  label={
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__gpOAn
+                                      )}
+                                    >
+                                      {
+                                        "\u0644\u06cc\u0646\u06a9 \u067e\u0631\u062f\u0627\u062e\u062a"
+                                      }
+                                    </div>
+                                  }
+                                  value={"link"}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__sQtw6
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return "ارسال لینک پرداخت برای دیگران";
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646 \u0628\u0644\u0648";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                              </div>
+                            ) : null}
                             <Radio
                               className={classNames(
                                 "__wab_instance",
@@ -1806,12 +2093,14 @@ function PlasmicPay__RenderFunc(props: {
                       </React.Fragment>
                       {
                         <PlasmicLink__
+                          data-plasmic-name={"link"}
+                          data-plasmic-override={overrides.link}
                           className={classNames(
                             projectcss.all,
                             projectcss.a,
                             projectcss.__wab_text,
                             projectcss.plasmic_default__inline,
-                            sty.link__oZdl
+                            sty.link
                           )}
                           component={Link}
                           href={"tel:09384487404"}
@@ -2063,6 +2352,132 @@ function PlasmicPay__RenderFunc(props: {
                           </span>
                         </React.Fragment>
                       )}
+                    </div>
+                  ) : null}
+                  {(() => {
+                    try {
+                      return $state.paymentsMethod.value == "link";
+                    } catch (e) {
+                      if (
+                        e instanceof TypeError ||
+                        e?.plasmicType === "PlasmicUndefinedDataError"
+                      ) {
+                        return true;
+                      }
+                      throw e;
+                    }
+                  })() ? (
+                    <div
+                      className={classNames(projectcss.all, sty.freeBox__wtKIy)}
+                    >
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__ax2KL
+                        )}
+                      >
+                        {hasVariant(globalVariants, "screen", "mobileOnly") ? (
+                          <React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{ color: "var(--token-HEGGDBNcnkKS)" }}
+                            >
+                              {
+                                "\u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u062f \u0644\u06cc\u0646\u06a9 \u0632\u06cc\u0631 \u0631\u0627 \u0628\u0631\u0627\u06cc \u062f\u06cc\u06af\u0631\u0627\u0646 \u0627\u0631\u0633\u0627\u0644 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u0628\u0631\u0627\u06cc \u0634\u0645\u0627 \u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0646\u0646\u062f. \u067e\u0633 \u0627\u0632 \u067e\u0631\u062f\u0627\u062e\u062a\u060c \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0634\u0627\u0631\u0698 \u0634\u062f\u0647 \u0648 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0646\u0648\u0628\u062a \u0628\u06af\u06cc\u0631\u06cc\u062f:"
+                              }
+                            </span>
+                          </React.Fragment>
+                        ) : (
+                          <React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{ color: "var(--token-HEGGDBNcnkKS)" }}
+                            >
+                              {
+                                "\u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u062f \u0644\u06cc\u0646\u06a9 \u0632\u06cc\u0631 \u0631\u0627 \u0628\u0631\u0627\u06cc \u062f\u06cc\u06af\u0631\u0627\u0646 \u0627\u0631\u0633\u0627\u0644 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u0628\u0631\u0627\u06cc \u0634\u0645\u0627 \u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0646\u0646\u062f. \u067e\u0633 \u0627\u0632 \u067e\u0631\u062f\u0627\u062e\u062a\u060c \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0634\u0627\u0631\u0698 \u0634\u062f\u0647 \u0648 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0646\u0648\u0628\u062a \u0628\u06af\u06cc\u0631\u06cc\u062f."
+                              }
+                            </span>
+                          </React.Fragment>
+                        )}
+                      </div>
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__lsZ4P
+                        )}
+                      >
+                        <TextInput
+                          data-plasmic-name={"txtPaymentLink"}
+                          data-plasmic-override={overrides.txtPaymentLink}
+                          className={classNames(
+                            "__wab_instance",
+                            sty.txtPaymentLink
+                          )}
+                          isDisabled={true}
+                          onChange={async (...eventArgs: any) => {
+                            ((...eventArgs) => {
+                              generateStateOnChangeProp($state, [
+                                "txtPaymentLink",
+                                "value"
+                              ])((e => e.target?.value).apply(null, eventArgs));
+                            }).apply(null, eventArgs);
+
+                            if (
+                              eventArgs.length > 1 &&
+                              eventArgs[1] &&
+                              eventArgs[1]._plasmic_state_init_
+                            ) {
+                              return;
+                            }
+                          }}
+                          placeholder={``}
+                          type={"text"}
+                          value={
+                            generateStateValueProp($state, [
+                              "txtPaymentLink",
+                              "value"
+                            ]) ?? ""
+                          }
+                        />
+
+                        <Icon48Icon
+                          className={classNames(
+                            projectcss.all,
+                            sty.svg___5PzpN
+                          )}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["runCode"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return $$.copyToClipboard(
+                                        $state.txtPaymentLink.value
+                                      );
+                                    }
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["runCode"] != null &&
+                              typeof $steps["runCode"] === "object" &&
+                              typeof $steps["runCode"].then === "function"
+                            ) {
+                              $steps["runCode"] = await $steps["runCode"];
+                            }
+                          }}
+                          role={"img"}
+                        />
+                      </div>
                     </div>
                   ) : null}
                 </div>
@@ -3088,48 +3503,6 @@ function PlasmicPay__RenderFunc(props: {
                     size={"compact"}
                   />
                 </div>
-                {(() => {
-                  try {
-                    return (
-                      new Date().getTimezoneOffset() / 60 != "-3.5" &&
-                      $ctx.query.referrer == "vpn"
-                    );
-                  } catch (e) {
-                    if (
-                      e instanceof TypeError ||
-                      e?.plasmicType === "PlasmicUndefinedDataError"
-                    ) {
-                      return true;
-                    }
-                    throw e;
-                  }
-                })() ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__hixcx)}
-                  >
-                    <PlasmicLink__
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.a,
-                        projectcss.__wab_text,
-                        sty.link__vtAoy
-                      )}
-                      component={Link}
-                      href={
-                        "https://wa.me/989384487404?text=\u0633\u0644\u0627\u0645. \u062f\u0631 \u067e\u0630\u06cc\u0631\u063424 \u0646\u06cc\u0627\u0632 \u0628\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u062f\u0631 \u062e\u0635\u0648\u0635 \u067e\u0631\u062f\u0627\u062e\u062a \u062e\u0627\u0631\u062c \u0627\u0632 \u0627\u06cc\u0631\u0627\u0646 \u062f\u0627\u0631\u0645\u060c \u0644\u0637\u0641\u0627 \u0631\u0627\u0647\u0646\u0645\u0627\u06cc\u06cc \u06a9\u0646\u06cc\u062f."
-                      }
-                      onClick={async event => {
-                        const $steps = {};
-                      }}
-                      platform={"nextjs"}
-                      target={"_blank"}
-                    >
-                      {
-                        "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc"
-                      }
-                    </PlasmicLink__>
-                  </div>
-                ) : null}
               </div>
             </section>
           ) : null}
@@ -3141,6 +3514,84 @@ function PlasmicPay__RenderFunc(props: {
               '<script type="text/javascript">\r\n    (function(c,l,a,r,i,t,y){\r\n        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\r\n        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;\r\n        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);\r\n    })(window, document, "clarity", "script", "rr61es0fkb");\r\n</script>'
             }
           />
+
+          {(() => {
+            try {
+              return (
+                new Date().getTimezoneOffset() / 60 != "-3.5" &&
+                $ctx.query.referrer == "vpn"
+              );
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return true;
+              }
+              throw e;
+            }
+          })() ? (
+            <section className={classNames(projectcss.all, sty.section__rASm2)}>
+              <div className={classNames(projectcss.all, sty.freeBox__iQOx)}>
+                <div className={classNames(projectcss.all, sty.freeBox__hixcx)}>
+                  <div
+                    className={classNames(
+                      projectcss.all,
+                      projectcss.__wab_text,
+                      sty.text___0I38Y
+                    )}
+                  >
+                    {
+                      "\u06a9\u0627\u0631\u0628\u0631 \u06af\u0631\u0627\u0645\u06cc\u060c \u0686\u0646\u0627\u0646\u0686\u0647 \u0647\u0631 \u0645\u0633\u0626\u0644\u0647\u200c\u0627\u06cc \u0628\u0627\u0628\u062a \u067e\u0631\u062f\u0627\u062e\u062a \u062f\u0627\u0631\u06cc\u062f\u060c \u0627\u0632 \u0637\u0631\u06cc\u0642 \u0648\u0627\u062a\u0633\u0627\u067e \u0628\u0627 \u0645\u0627 \u062f\u0631 \u0645\u06cc\u0627\u0646 \u0628\u06af\u0630\u0627\u0631\u06cc\u062f: "
+                    }
+                  </div>
+                  <Button
+                    children2={
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__xczzb
+                        )}
+                      >
+                        {
+                          "\u062f\u0631\u062e\u0648\u0627\u0633\u062a \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc"
+                        }
+                      </div>
+                    }
+                    className={classNames("__wab_instance", sty.button__z4T8X)}
+                    color={"softBlue"}
+                    onClick={async event => {
+                      const $steps = {};
+
+                      $steps["invokeGlobalAction"] = true
+                        ? (() => {
+                            const actionArgs = {
+                              args: [
+                                "https://wa.me/989384487404?text=\u0633\u0644\u0627\u0645. \u062f\u0631 \u067e\u0630\u06cc\u0631\u063424 \u0646\u06cc\u0627\u0632 \u0628\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u062f\u0631 \u062e\u0635\u0648\u0635 \u067e\u0631\u062f\u0627\u062e\u062a \u062e\u0627\u0631\u062c \u0627\u0632 \u0627\u06cc\u0631\u0627\u0646 \u062f\u0627\u0631\u0645\u060c \u0644\u0637\u0641\u0627 \u0631\u0627\u0647\u0646\u0645\u0627\u06cc\u06cc \u06a9\u0646\u06cc\u062f."
+                              ]
+                            };
+                            return $globalActions["Hamdast.openLink"]?.apply(
+                              null,
+                              [...actionArgs.args]
+                            );
+                          })()
+                        : undefined;
+                      if (
+                        $steps["invokeGlobalAction"] != null &&
+                        typeof $steps["invokeGlobalAction"] === "object" &&
+                        typeof $steps["invokeGlobalAction"].then === "function"
+                      ) {
+                        $steps["invokeGlobalAction"] =
+                          await $steps["invokeGlobalAction"];
+                      }
+                    }}
+                    size={"minimal"}
+                  />
+                </div>
+              </div>
+            </section>
+          ) : null}
         </div>
       </div>
     </React.Fragment>
@@ -3153,14 +3604,20 @@ const PlasmicDescendants = {
     "sideEffectPageLoad",
     "paymentsMethod",
     "rbBlue",
+    "rbLink",
+    "link",
+    "txtPaymentLink",
     "btnPayMethod",
     "btnOverseasePayWhatsapp",
     "btnOverseasePayRemitation",
     "embedHtml"
   ],
   sideEffectPageLoad: ["sideEffectPageLoad"],
-  paymentsMethod: ["paymentsMethod", "rbBlue"],
+  paymentsMethod: ["paymentsMethod", "rbBlue", "rbLink"],
   rbBlue: ["rbBlue"],
+  rbLink: ["rbLink"],
+  link: ["link"],
+  txtPaymentLink: ["txtPaymentLink"],
   btnPayMethod: ["btnPayMethod"],
   btnOverseasePayWhatsapp: ["btnOverseasePayWhatsapp"],
   btnOverseasePayRemitation: ["btnOverseasePayRemitation"],
@@ -3174,6 +3631,9 @@ type NodeDefaultElementType = {
   sideEffectPageLoad: typeof SideEffect;
   paymentsMethod: typeof RadioGroup;
   rbBlue: typeof Radio;
+  rbLink: typeof Radio;
+  link: "a";
+  txtPaymentLink: typeof TextInput;
   btnPayMethod: typeof Button;
   btnOverseasePayWhatsapp: typeof Button;
   btnOverseasePayRemitation: typeof Button;
@@ -3245,6 +3705,9 @@ export const PlasmicPay = Object.assign(
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
     paymentsMethod: makeNodeComponent("paymentsMethod"),
     rbBlue: makeNodeComponent("rbBlue"),
+    rbLink: makeNodeComponent("rbLink"),
+    link: makeNodeComponent("link"),
+    txtPaymentLink: makeNodeComponent("txtPaymentLink"),
     btnPayMethod: makeNodeComponent("btnPayMethod"),
     btnOverseasePayWhatsapp: makeNodeComponent("btnOverseasePayWhatsapp"),
     btnOverseasePayRemitation: makeNodeComponent("btnOverseasePayRemitation"),
