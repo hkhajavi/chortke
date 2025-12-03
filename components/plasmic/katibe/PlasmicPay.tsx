@@ -1074,7 +1074,8 @@ function PlasmicPay__RenderFunc(props: {
                                           try {
                                             return (
                                               "https://apigw.paziresh24.com/katibe/v1/payment/link/p24?amount=" +
-                                              $ctx.query.amount
+                                              ($ctx.query.amount -
+                                                $state.balance)
                                             );
                                           } catch (e) {
                                             if (
