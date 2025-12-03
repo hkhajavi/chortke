@@ -262,7 +262,12 @@ function PlasmicPay__RenderFunc(props: {
             try {
               return new Date().getTimezoneOffset() / 60 != "-3.5" &&
                 $ctx.query.referrer == "vpn"
-                ? "oversease_usd"
+                ? Intl.DateTimeFormat()
+                    .resolvedOptions()
+                    .timeZone.toLowerCase()
+                    .includes("europe")
+                  ? "oversease_eur"
+                  : "oversease_usd"
                 : "saman";
             } catch (e) {
               if (
@@ -1065,7 +1070,23 @@ function PlasmicPay__RenderFunc(props: {
                                     const actionArgs = {
                                       args: [
                                         undefined,
-                                        "https://apigw.paziresh24.com/katibe/v1/payment/link/p24"
+                                        (() => {
+                                          try {
+                                            return (
+                                              "https://apigw.paziresh24.com/katibe/v1/payment/link/p24?amount=" +
+                                              $ctx.query.amount
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return undefined;
+                                            }
+                                            throw e;
+                                          }
+                                        })()
                                       ]
                                     };
                                     return $globalActions[
@@ -1082,6 +1103,7 @@ function PlasmicPay__RenderFunc(props: {
                             }
 
                             $steps["updateMylink"] =
+                              $state.mylink == "" &&
                               $state.paymentsMethod.value == "link" &&
                               $steps.getLink.status == 200
                                 ? (() => {
