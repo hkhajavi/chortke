@@ -1751,6 +1751,20 @@
           "cssFilePath": "plasmic/katibe/PlasmicFinancialReports.module.css",
           "scheme": "blackbox",
           "componentType": "component"
+        },
+        {
+          "id": "JQeoqLZhfAOP",
+          "name": "Charge",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/katibe/PlasmicCharge.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/charge.tsx"
+          },
+          "cssFilePath": "plasmic/katibe/PlasmicCharge.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/charge"
         }
       ],
       "icons": [
