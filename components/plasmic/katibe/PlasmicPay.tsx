@@ -2497,6 +2497,30 @@ function PlasmicPay__RenderFunc(props: {
                             ) {
                               $steps["runCode"] = await $steps["runCode"];
                             }
+
+                            $steps["invokeGlobalAction"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    args: [
+                                      undefined,
+                                      "\u0644\u06cc\u0646\u06a9 \u06a9\u067e\u06cc \u0634\u062f."
+                                    ]
+                                  };
+                                  return $globalActions[
+                                    "Fragment.showToast"
+                                  ]?.apply(null, [...actionArgs.args]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["invokeGlobalAction"] != null &&
+                              typeof $steps["invokeGlobalAction"] ===
+                                "object" &&
+                              typeof $steps["invokeGlobalAction"].then ===
+                                "function"
+                            ) {
+                              $steps["invokeGlobalAction"] =
+                                await $steps["invokeGlobalAction"];
+                            }
                           }}
                           role={"img"}
                         />
