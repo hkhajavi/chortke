@@ -375,6 +375,48 @@ function PlasmicPay__RenderFunc(props: {
             onMount={async () => {
               const $steps = {};
 
+              $steps["overseaseLog"] = false
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        "POST",
+                        "https://apigw.paziresh24.com/katibe/v1/p24/logs",
+                        undefined,
+                        (() => {
+                          try {
+                            return {
+                              timezone:
+                                Intl.DateTimeFormat().resolvedOptions()
+                                  .timeZone || $ctx.query.timezone,
+                              request: "overseas-show-payment-page",
+                              receipt_id: $ctx.query.receipt_id,
+                              amount: $ctx.query.amount
+                            };
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
+                            }
+                            throw e;
+                          }
+                        })()
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
+              if (
+                $steps["overseaseLog"] != null &&
+                typeof $steps["overseaseLog"] === "object" &&
+                typeof $steps["overseaseLog"].then === "function"
+              ) {
+                $steps["overseaseLog"] = await $steps["overseaseLog"];
+              }
+
               $steps["updateWaiting"] = true
                 ? (() => {
                     const actionArgs = {
@@ -461,9 +503,10 @@ function PlasmicPay__RenderFunc(props: {
               }
 
               $steps["getExchangeRate"] =
-                new Date().getTimezoneOffset() / 60 != "-3.5" &&
-                $ctx.query.referrer == "vpn"
-                  ? (() => {
+                new Date().getTimezoneOffset() / 60 != "-3.5"
+                  ? /*
+               && $ctx.query.referrer == "vpn"
+               */ (() => {
                       const actionArgs = {
                         args: [
                           undefined,
@@ -486,8 +529,9 @@ function PlasmicPay__RenderFunc(props: {
 
               $steps["updateExchangeRate"] =
                 new Date().getTimezoneOffset() / 60 != "-3.5" &&
-                $ctx.query.referrer == "vpn" &&
-                $steps.getExchangeRate.status == 200
+                /*
+              && $ctx.query.referrer == "vpn" 
+              */ $steps.getExchangeRate.status == 200
                   ? (() => {
                       const actionArgs = {
                         variable: {
@@ -549,48 +593,6 @@ function PlasmicPay__RenderFunc(props: {
                 typeof $steps["updateWaiting3"].then === "function"
               ) {
                 $steps["updateWaiting3"] = await $steps["updateWaiting3"];
-              }
-
-              $steps["overseaseLog"] = false
-                ? (() => {
-                    const actionArgs = {
-                      args: [
-                        "POST",
-                        "https://apigw.paziresh24.com/katibe/v1/p24/logs",
-                        undefined,
-                        (() => {
-                          try {
-                            return {
-                              timezone:
-                                Intl.DateTimeFormat().resolvedOptions()
-                                  .timeZone || $ctx.query.timezone,
-                              request: "overseas-show-payment-page",
-                              receipt_id: $ctx.query.receipt_id,
-                              amount: $ctx.query.amount
-                            };
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
-                            }
-                            throw e;
-                          }
-                        })()
-                      ]
-                    };
-                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                      ...actionArgs.args
-                    ]);
-                  })()
-                : undefined;
-              if (
-                $steps["overseaseLog"] != null &&
-                typeof $steps["overseaseLog"] === "object" &&
-                typeof $steps["overseaseLog"].then === "function"
-              ) {
-                $steps["overseaseLog"] = await $steps["overseaseLog"];
               }
             }}
           />
@@ -1660,7 +1662,10 @@ function PlasmicPay__RenderFunc(props: {
                               try {
                                 return (
                                   new Date().getTimezoneOffset() / 60 !=
-                                    "-3.5" && $ctx.query.referrer == "vpn"
+                                    "-3.5" &&
+                                  $ctx.query.referrer == "vpn" &&
+                                  !$state.waiting
+
                                   /*
                                 Intl.DateTimeFormat().resolvedOptions().timeZone.length>0 &&
                               !Intl.DateTimeFormat().resolvedOptions().timeZone.toLowerCase().includes("tehran")
@@ -1878,7 +1883,9 @@ function PlasmicPay__RenderFunc(props: {
                               try {
                                 return (
                                   new Date().getTimezoneOffset() / 60 !=
-                                    "-3.5" && $ctx.query.referrer == "vpn"
+                                    "-3.5" &&
+                                  $ctx.query.referrer == "vpn" &&
+                                  !$state.waiting
                                   /*
                                 Intl.DateTimeFormat().resolvedOptions().timeZone.length>0 &&
                               !Intl.DateTimeFormat().resolvedOptions().timeZone.toLowerCase().includes("tehran")
