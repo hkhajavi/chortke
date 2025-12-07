@@ -2763,7 +2763,8 @@ function PlasmicPay__RenderFunc(props: {
                     try {
                       return (
                         $state.paymentsMethod.value != "oversease_usd" &&
-                        $state.paymentsMethod.value != "oversease_eur"
+                        $state.paymentsMethod.value != "oversease_eur" &&
+                        $state.paymentsMethod.value != "oversease_usd_stripe"
                       );
                     } catch (e) {
                       if (
@@ -3358,7 +3359,8 @@ function PlasmicPay__RenderFunc(props: {
                     try {
                       return (
                         $state.paymentsMethod.value == "oversease_usd" ||
-                        $state.paymentsMethod.value == "oversease_eur"
+                        $state.paymentsMethod.value == "oversease_eur" ||
+                        $state.paymentsMethod.value == "oversease_usd_stripe"
                       );
                     } catch (e) {
                       if (
