@@ -446,62 +446,6 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["updateWaiting"] = await $steps["updateWaiting"];
               }
 
-              $steps["getBalance"] = true
-                ? (() => {
-                    const actionArgs = {
-                      args: [
-                        undefined,
-                        "https://apigw.paziresh24.com/katibe/v1/transactions/balance/p24"
-                      ]
-                    };
-                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                      ...actionArgs.args
-                    ]);
-                  })()
-                : undefined;
-              if (
-                $steps["getBalance"] != null &&
-                typeof $steps["getBalance"] === "object" &&
-                typeof $steps["getBalance"].then === "function"
-              ) {
-                $steps["getBalance"] = await $steps["getBalance"];
-              }
-
-              $steps["updateBalance"] =
-                $steps.getBalance.status == 200
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["balance"]
-                        },
-                        operation: 0,
-                        value: $steps.getBalance.data.data.balance
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-              if (
-                $steps["updateBalance"] != null &&
-                typeof $steps["updateBalance"] === "object" &&
-                typeof $steps["updateBalance"].then === "function"
-              ) {
-                $steps["updateBalance"] = await $steps["updateBalance"];
-              }
-
               $steps["getExchangeRate"] =
                 new Date().getTimezoneOffset() / 60 != "-3.5"
                   ? /*
@@ -564,6 +508,62 @@ function PlasmicPay__RenderFunc(props: {
               ) {
                 $steps["updateExchangeRate"] =
                   await $steps["updateExchangeRate"];
+              }
+
+              $steps["getBalance"] = true
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        undefined,
+                        "https://apigw.paziresh24.com/katibe/v1/transactions/balance/p24"
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
+              if (
+                $steps["getBalance"] != null &&
+                typeof $steps["getBalance"] === "object" &&
+                typeof $steps["getBalance"].then === "function"
+              ) {
+                $steps["getBalance"] = await $steps["getBalance"];
+              }
+
+              $steps["updateBalance"] =
+                $steps.getBalance.status == 200
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["balance"]
+                        },
+                        operation: 0,
+                        value: $steps.getBalance.data.data.balance
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updateBalance"] != null &&
+                typeof $steps["updateBalance"] === "object" &&
+                typeof $steps["updateBalance"].then === "function"
+              ) {
+                $steps["updateBalance"] = await $steps["updateBalance"];
               }
 
               $steps["updateWaiting3"] = true
@@ -1662,9 +1662,9 @@ function PlasmicPay__RenderFunc(props: {
                               try {
                                 return (
                                   new Date().getTimezoneOffset() / 60 !=
-                                    "-3.5" &&
-                                  $ctx.query.referrer == "vpn" &&
-                                  !$state.waiting
+                                    "-3.5" && $ctx.query.referrer == "vpn"
+
+                                  //&& !$state.waiting
 
                                   /*
                                 Intl.DateTimeFormat().resolvedOptions().timeZone.length>0 &&
@@ -1883,9 +1883,8 @@ function PlasmicPay__RenderFunc(props: {
                               try {
                                 return (
                                   new Date().getTimezoneOffset() / 60 !=
-                                    "-3.5" &&
-                                  $ctx.query.referrer == "vpn" &&
-                                  !$state.waiting
+                                    "-3.5" && $ctx.query.referrer == "vpn"
+                                  //&& !$state.waiting
                                   /*
                                 Intl.DateTimeFormat().resolvedOptions().timeZone.length>0 &&
                               !Intl.DateTimeFormat().resolvedOptions().timeZone.toLowerCase().includes("tehran")
