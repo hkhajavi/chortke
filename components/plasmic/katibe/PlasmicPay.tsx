@@ -249,7 +249,7 @@ function PlasmicPay__RenderFunc(props: {
         path: "exchangeRate",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({ USD: 1, EUR: 1 })
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({ USD: 0, EUR: 0 })
       },
       {
         path: "dafaultPaymentMethod",
@@ -944,7 +944,7 @@ function PlasmicPay__RenderFunc(props: {
                         e instanceof TypeError ||
                         e?.plasmicType === "PlasmicUndefinedDataError"
                       ) {
-                        return true;
+                        return false;
                       }
                       throw e;
                     }
@@ -1789,24 +1789,23 @@ function PlasmicPay__RenderFunc(props: {
                                       <React.Fragment>
                                         {(() => {
                                           try {
-                                            return $state.waiting
-                                              ? "-"
-                                              : "پرداخت " +
-                                                  Math.ceil(
-                                                    (($ctx.query.amount -
-                                                      $state.balance) /
-                                                      $state.exchangeRate.USD) *
-                                                      100 +
-                                                      ((($ctx.query.amount -
-                                                        $state.balance) /
-                                                        $state.exchangeRate
-                                                          .USD) *
-                                                        100 *
-                                                        15) /
-                                                        100
-                                                  ) /
-                                                    100 +
-                                                  "$";
+                                            return (
+                                              "پرداخت " +
+                                              Math.ceil(
+                                                (($ctx.query.amount -
+                                                  $state.balance) /
+                                                  $state.exchangeRate.USD) *
+                                                  100 +
+                                                  ((($ctx.query.amount -
+                                                    $state.balance) /
+                                                    $state.exchangeRate.USD) *
+                                                    100 *
+                                                    15) /
+                                                    100
+                                              ) /
+                                                100 +
+                                              "$"
+                                            );
                                           } catch (e) {
                                             if (
                                               e instanceof TypeError ||
@@ -1998,24 +1997,23 @@ function PlasmicPay__RenderFunc(props: {
                                       <React.Fragment>
                                         {(() => {
                                           try {
-                                            return $state.waiting
-                                              ? "-"
-                                              : "پرداخت " +
-                                                  Math.ceil(
-                                                    (($ctx.query.amount -
-                                                      $state.balance) /
-                                                      $state.exchangeRate.USD) *
-                                                      100 +
-                                                      ((($ctx.query.amount -
-                                                        $state.balance) /
-                                                        $state.exchangeRate
-                                                          .USD) *
-                                                        100 *
-                                                        15) /
-                                                        100
-                                                  ) /
-                                                    100 +
-                                                  "$";
+                                            return (
+                                              "پرداخت " +
+                                              Math.ceil(
+                                                (($ctx.query.amount -
+                                                  $state.balance) /
+                                                  $state.exchangeRate.USD) *
+                                                  100 +
+                                                  ((($ctx.query.amount -
+                                                    $state.balance) /
+                                                    $state.exchangeRate.USD) *
+                                                    100 *
+                                                    15) /
+                                                    100
+                                              ) /
+                                                100 +
+                                              "$"
+                                            );
                                           } catch (e) {
                                             if (
                                               e instanceof TypeError ||
@@ -2207,24 +2205,23 @@ function PlasmicPay__RenderFunc(props: {
                                       <React.Fragment>
                                         {(() => {
                                           try {
-                                            return $state.waiting
-                                              ? "-"
-                                              : "پرداخت " +
-                                                  Math.ceil(
-                                                    (($ctx.query.amount -
-                                                      $state.balance) /
-                                                      $state.exchangeRate.EUR) *
-                                                      100 +
-                                                      ((($ctx.query.amount -
-                                                        $state.balance) /
-                                                        $state.exchangeRate
-                                                          .EUR) *
-                                                        100 *
-                                                        15) /
-                                                        100
-                                                  ) /
-                                                    100 +
-                                                  "€";
+                                            return (
+                                              "پرداخت " +
+                                              Math.ceil(
+                                                (($ctx.query.amount -
+                                                  $state.balance) /
+                                                  $state.exchangeRate.EUR) *
+                                                  100 +
+                                                  ((($ctx.query.amount -
+                                                    $state.balance) /
+                                                    $state.exchangeRate.EUR) *
+                                                    100 *
+                                                    15) /
+                                                    100
+                                              ) /
+                                                100 +
+                                              "€"
+                                            );
                                           } catch (e) {
                                             if (
                                               e instanceof TypeError ||
