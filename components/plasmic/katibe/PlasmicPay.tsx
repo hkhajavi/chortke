@@ -2529,7 +2529,8 @@ function PlasmicPay__RenderFunc(props: {
                       return (
                         $ctx.query.referrer == "vpn" &&
                         ($state.paymentsMethod.value == "oversease_usd" ||
-                          $state.paymentsMethod.value == "oversease_eur")
+                          $state.paymentsMethod.value == "oversease_eur" ||
+                          $state.paymentsMethod.value == "oversease_usd_stripe")
                       );
                     } catch (e) {
                       if (
