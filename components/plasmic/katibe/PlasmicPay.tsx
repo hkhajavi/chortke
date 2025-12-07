@@ -96,6 +96,7 @@ export const PlasmicPay__ArgProps = new Array<ArgPropType>();
 export type PlasmicPay__OverridesType = {
   pay?: Flex__<"div">;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
+  sideEffectExchangeRate?: Flex__<typeof SideEffect>;
   paymentsMethod?: Flex__<typeof RadioGroup>;
   rbBlue?: Flex__<typeof Radio>;
   rbLink?: Flex__<typeof Radio>;
@@ -500,6 +501,74 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["updateBalance"] = await $steps["updateBalance"];
               }
 
+              $steps["updateWaiting3"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["waiting"]
+                      },
+                      operation: 0,
+                      value: false
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateWaiting3"] != null &&
+                typeof $steps["updateWaiting3"] === "object" &&
+                typeof $steps["updateWaiting3"].then === "function"
+              ) {
+                $steps["updateWaiting3"] = await $steps["updateWaiting3"];
+              }
+            }}
+          />
+
+          <SideEffect
+            data-plasmic-name={"sideEffectExchangeRate"}
+            data-plasmic-override={overrides.sideEffectExchangeRate}
+            className={classNames("__wab_instance", sty.sideEffectExchangeRate)}
+            deps={undefined}
+            onMount={async () => {
+              const $steps = {};
+
+              $steps["updateWaiting"] = false
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["waiting"]
+                      },
+                      operation: 0,
+                      value: true
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateWaiting"] != null &&
+                typeof $steps["updateWaiting"] === "object" &&
+                typeof $steps["updateWaiting"].then === "function"
+              ) {
+                $steps["updateWaiting"] = await $steps["updateWaiting"];
+              }
+
               $steps["getExchangeRate"] =
                 new Date().getTimezoneOffset() / 60 != "-3.5" &&
                 !!$ctx.query.amount
@@ -565,7 +634,7 @@ function PlasmicPay__RenderFunc(props: {
                   await $steps["updateExchangeRate"];
               }
 
-              $steps["updateWaiting3"] = true
+              $steps["updateWaiting3"] = false
                 ? (() => {
                     const actionArgs = {
                       variable: {
@@ -3836,6 +3905,7 @@ const PlasmicDescendants = {
   pay: [
     "pay",
     "sideEffectPageLoad",
+    "sideEffectExchangeRate",
     "paymentsMethod",
     "rbBlue",
     "rbLink",
@@ -3846,6 +3916,7 @@ const PlasmicDescendants = {
     "btnOverseasePayRemitation"
   ],
   sideEffectPageLoad: ["sideEffectPageLoad"],
+  sideEffectExchangeRate: ["sideEffectExchangeRate"],
   paymentsMethod: ["paymentsMethod", "rbBlue", "rbLink"],
   rbBlue: ["rbBlue"],
   rbLink: ["rbLink"],
@@ -3861,6 +3932,7 @@ type DescendantsType<T extends NodeNameType> =
 type NodeDefaultElementType = {
   pay: "div";
   sideEffectPageLoad: typeof SideEffect;
+  sideEffectExchangeRate: typeof SideEffect;
   paymentsMethod: typeof RadioGroup;
   rbBlue: typeof Radio;
   rbLink: typeof Radio;
@@ -3934,6 +4006,7 @@ export const PlasmicPay = Object.assign(
   {
     // Helper components rendering sub-elements
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
+    sideEffectExchangeRate: makeNodeComponent("sideEffectExchangeRate"),
     paymentsMethod: makeNodeComponent("paymentsMethod"),
     rbBlue: makeNodeComponent("rbBlue"),
     rbLink: makeNodeComponent("rbLink"),

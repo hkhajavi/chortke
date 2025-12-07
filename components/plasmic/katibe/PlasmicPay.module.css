@@ -31,6 +31,10 @@
   max-width: 100%;
   object-fit: cover;
 }
+.sideEffectExchangeRate:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
 .section__pxswz {
   display: grid;
   position: relative;
