@@ -570,9 +570,9 @@ function PlasmicPay__RenderFunc(props: {
               }
 
               $steps["getExchangeRate"] =
-                new Date().getTimezoneOffset() / 60 != "-3.5" &&
-                !!$ctx.query.amount
-                  ? /*
+                new Date().getTimezoneOffset() / 60 != "-3.5"
+                  ? //&& !!$ctx.query.amount
+                    /*
                && $ctx.query.referrer == "vpn"
                */ (() => {
                       const actionArgs = {
