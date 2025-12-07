@@ -64,7 +64,6 @@ import Button from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
 import RadioGroup from "../../RadioGroup"; // plasmic-import: tqHTZfyBziuN/component
 import Radio from "../../Radio"; // plasmic-import: Cbq_rTXOD16b/component
 import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
-import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/styleTokensProvider
 
@@ -105,7 +104,6 @@ export type PlasmicPay__OverridesType = {
   btnPayMethod?: Flex__<typeof Button>;
   btnOverseasePayWhatsapp?: Flex__<typeof Button>;
   btnOverseasePayRemitation?: Flex__<typeof Button>;
-  embedHtml?: Flex__<typeof Embed>;
 };
 
 export interface DefaultPayProps {}
@@ -251,10 +249,7 @@ function PlasmicPay__RenderFunc(props: {
         path: "exchangeRate",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({
-          USD: 1226550,
-          EUR: 1432330
-        })
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({ USD: 0, EUR: 0 })
       },
       {
         path: "dafaultPaymentMethod",
@@ -449,7 +444,7 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["updateWaiting"] = await $steps["updateWaiting"];
               }
 
-              $steps["getBalance"] = true
+              $steps["getBalance"] = !!$ctx.query.amount
                 ? (() => {
                     const actionArgs = {
                       args: [
@@ -506,14 +501,15 @@ function PlasmicPay__RenderFunc(props: {
               }
 
               $steps["getExchangeRate"] =
-                new Date().getTimezoneOffset() / 60 != "-3.5"
+                new Date().getTimezoneOffset() / 60 != "-3.5" &&
+                !!$ctx.query.amount
                   ? /*
                && $ctx.query.referrer == "vpn"
                */ (() => {
                       const actionArgs = {
                         args: [
                           undefined,
-                          "https://apigw.paziresh24.com/katibe/v1/remitation/exchange/rate"
+                          "https://apigw.paziresh24.com/katibe/v1/remitation/exchange/rate/"
                         ]
                       };
                       return $globalActions["Fragment.apiRequest"]?.apply(
@@ -1665,21 +1661,9 @@ function PlasmicPay__RenderFunc(props: {
                               try {
                                 return (
                                   new Date().getTimezoneOffset() / 60 !=
-                                    "-3.5" && $ctx.query.referrer == "vpn"
-
-                                  //&& !$state.waiting
-
-                                  /*
-                                Intl.DateTimeFormat().resolvedOptions().timeZone.length>0 &&
-                              !Intl.DateTimeFormat().resolvedOptions().timeZone.toLowerCase().includes("tehran")
-                              
-                              )
-                              || 
-                              (
-                              $ctx.query.timezone.length>0
-                              &&  
-                              !$ctx.query.timezone.includes("tehran")
-                              )*/
+                                    "-3.5" &&
+                                  $ctx.query.referrer == "vpn" &&
+                                  !$state.waiting
                                 );
                               } catch (e) {
                                 if (
@@ -1886,21 +1870,9 @@ function PlasmicPay__RenderFunc(props: {
                               try {
                                 return (
                                   new Date().getTimezoneOffset() / 60 !=
-                                    "-3.5" && $ctx.query.referrer == "vpn"
-
-                                  //&& !$state.waiting
-
-                                  /*
-                                Intl.DateTimeFormat().resolvedOptions().timeZone.length>0 &&
-                              !Intl.DateTimeFormat().resolvedOptions().timeZone.toLowerCase().includes("tehran")
-                              
-                              )
-                              || 
-                              (
-                              $ctx.query.timezone.length>0
-                              &&  
-                              !$ctx.query.timezone.includes("tehran")
-                              )*/
+                                    "-3.5" &&
+                                  $ctx.query.referrer == "vpn" &&
+                                  !$state.waiting
                                 );
                               } catch (e) {
                                 if (
@@ -2107,19 +2079,9 @@ function PlasmicPay__RenderFunc(props: {
                               try {
                                 return (
                                   new Date().getTimezoneOffset() / 60 !=
-                                    "-3.5" && $ctx.query.referrer == "vpn"
-                                  //&& !$state.waiting
-                                  /*
-                                Intl.DateTimeFormat().resolvedOptions().timeZone.length>0 &&
-                              !Intl.DateTimeFormat().resolvedOptions().timeZone.toLowerCase().includes("tehran")
-                              
-                              )
-                              || 
-                              (
-                              $ctx.query.timezone.length>0
-                              &&  
-                              !$ctx.query.timezone.includes("tehran")
-                              )*/
+                                    "-3.5" &&
+                                  $ctx.query.referrer == "vpn" &&
+                                  !$state.waiting
                                 );
                               } catch (e) {
                                 if (
@@ -3790,15 +3752,6 @@ function PlasmicPay__RenderFunc(props: {
               </div>
             </section>
           ) : null}
-          <Embed
-            data-plasmic-name={"embedHtml"}
-            data-plasmic-override={overrides.embedHtml}
-            className={classNames("__wab_instance", sty.embedHtml)}
-            code={
-              '<script type="text/javascript">\r\n    (function(c,l,a,r,i,t,y){\r\n        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\r\n        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;\r\n        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);\r\n    })(window, document, "clarity", "script", "rr61es0fkb");\r\n</script>'
-            }
-          />
-
           {(() => {
             try {
               return (
@@ -3893,8 +3846,7 @@ const PlasmicDescendants = {
     "txtPaymentLink",
     "btnPayMethod",
     "btnOverseasePayWhatsapp",
-    "btnOverseasePayRemitation",
-    "embedHtml"
+    "btnOverseasePayRemitation"
   ],
   sideEffectPageLoad: ["sideEffectPageLoad"],
   paymentsMethod: ["paymentsMethod", "rbBlue", "rbLink"],
@@ -3904,8 +3856,7 @@ const PlasmicDescendants = {
   txtPaymentLink: ["txtPaymentLink"],
   btnPayMethod: ["btnPayMethod"],
   btnOverseasePayWhatsapp: ["btnOverseasePayWhatsapp"],
-  btnOverseasePayRemitation: ["btnOverseasePayRemitation"],
-  embedHtml: ["embedHtml"]
+  btnOverseasePayRemitation: ["btnOverseasePayRemitation"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -3921,7 +3872,6 @@ type NodeDefaultElementType = {
   btnPayMethod: typeof Button;
   btnOverseasePayWhatsapp: typeof Button;
   btnOverseasePayRemitation: typeof Button;
-  embedHtml: typeof Embed;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -3995,7 +3945,6 @@ export const PlasmicPay = Object.assign(
     btnPayMethod: makeNodeComponent("btnPayMethod"),
     btnOverseasePayWhatsapp: makeNodeComponent("btnOverseasePayWhatsapp"),
     btnOverseasePayRemitation: makeNodeComponent("btnOverseasePayRemitation"),
-    embedHtml: makeNodeComponent("embedHtml"),
 
     // Metadata about props expected for PlasmicPay
     internalVariantProps: PlasmicPay__VariantProps,
