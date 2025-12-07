@@ -251,7 +251,10 @@ function PlasmicPay__RenderFunc(props: {
         path: "exchangeRate",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({
+          USD: 1226550,
+          EUR: 1432330
+        })
       },
       {
         path: "dafaultPaymentMethod",
@@ -446,70 +449,6 @@ function PlasmicPay__RenderFunc(props: {
                 $steps["updateWaiting"] = await $steps["updateWaiting"];
               }
 
-              $steps["getExchangeRate"] =
-                new Date().getTimezoneOffset() / 60 != "-3.5"
-                  ? /*
-               && $ctx.query.referrer == "vpn"
-               */ (() => {
-                      const actionArgs = {
-                        args: [
-                          undefined,
-                          "https://apigw.paziresh24.com/katibe/v1/remitation/exchange/rate"
-                        ]
-                      };
-                      return $globalActions["Fragment.apiRequest"]?.apply(
-                        null,
-                        [...actionArgs.args]
-                      );
-                    })()
-                  : undefined;
-              if (
-                $steps["getExchangeRate"] != null &&
-                typeof $steps["getExchangeRate"] === "object" &&
-                typeof $steps["getExchangeRate"].then === "function"
-              ) {
-                $steps["getExchangeRate"] = await $steps["getExchangeRate"];
-              }
-
-              $steps["updateExchangeRate"] =
-                new Date().getTimezoneOffset() / 60 != "-3.5" &&
-                /*
-              && $ctx.query.referrer == "vpn" 
-              */ $steps.getExchangeRate.status == 200
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["exchangeRate"]
-                        },
-                        operation: 0,
-                        value: $steps.getExchangeRate.data.data
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-              if (
-                $steps["updateExchangeRate"] != null &&
-                typeof $steps["updateExchangeRate"] === "object" &&
-                typeof $steps["updateExchangeRate"].then === "function"
-              ) {
-                $steps["updateExchangeRate"] =
-                  await $steps["updateExchangeRate"];
-              }
-
               $steps["getBalance"] = true
                 ? (() => {
                     const actionArgs = {
@@ -564,6 +503,70 @@ function PlasmicPay__RenderFunc(props: {
                 typeof $steps["updateBalance"].then === "function"
               ) {
                 $steps["updateBalance"] = await $steps["updateBalance"];
+              }
+
+              $steps["getExchangeRate"] =
+                new Date().getTimezoneOffset() / 60 != "-3.5"
+                  ? /*
+               && $ctx.query.referrer == "vpn"
+               */ (() => {
+                      const actionArgs = {
+                        args: [
+                          undefined,
+                          "https://apigw.paziresh24.com/katibe/v1/remitation/exchange/rate"
+                        ]
+                      };
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
+                    })()
+                  : undefined;
+              if (
+                $steps["getExchangeRate"] != null &&
+                typeof $steps["getExchangeRate"] === "object" &&
+                typeof $steps["getExchangeRate"].then === "function"
+              ) {
+                $steps["getExchangeRate"] = await $steps["getExchangeRate"];
+              }
+
+              $steps["updateExchangeRate"] =
+                new Date().getTimezoneOffset() / 60 != "-3.5" &&
+                $steps.getExchangeRate.status == 200
+                  ? /*
+              && $ctx.query.referrer == "vpn" 
+              */ (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["exchangeRate"]
+                        },
+                        operation: 0,
+                        value: $steps.getExchangeRate.data.data
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updateExchangeRate"] != null &&
+                typeof $steps["updateExchangeRate"] === "object" &&
+                typeof $steps["updateExchangeRate"].then === "function"
+              ) {
+                $steps["updateExchangeRate"] =
+                  await $steps["updateExchangeRate"];
               }
 
               $steps["updateWaiting3"] = true
@@ -1862,7 +1865,228 @@ function PlasmicPay__RenderFunc(props: {
                                                 100
                                           ) /
                                             100 +
-                                          " دلار با درگاه پرداخت"
+                                          " دلار با درگاه mollie"
+                                        );
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u062f\u0631\u06af\u0627\u0647 \u0627\u0631\u0632\u06cc";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                              </div>
+                            ) : null}
+                            {(() => {
+                              try {
+                                return (
+                                  new Date().getTimezoneOffset() / 60 !=
+                                    "-3.5" && $ctx.query.referrer == "vpn"
+
+                                  //&& !$state.waiting
+
+                                  /*
+                                Intl.DateTimeFormat().resolvedOptions().timeZone.length>0 &&
+                              !Intl.DateTimeFormat().resolvedOptions().timeZone.toLowerCase().includes("tehran")
+                              
+                              )
+                              || 
+                              (
+                              $ctx.query.timezone.length>0
+                              &&  
+                              !$ctx.query.timezone.includes("tehran")
+                              )*/
+                                );
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })() ? (
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox___5Ktal
+                                )}
+                                onClick={async event => {
+                                  const $steps = {};
+
+                                  $steps["updateDafaultPaymentMethod"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: [
+                                              "dafaultPaymentMethod"
+                                            ]
+                                          },
+                                          operation: 0,
+                                          value: "oversease_usd_stripe"
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["updateDafaultPaymentMethod"] !=
+                                      null &&
+                                    typeof $steps[
+                                      "updateDafaultPaymentMethod"
+                                    ] === "object" &&
+                                    typeof $steps["updateDafaultPaymentMethod"]
+                                      .then === "function"
+                                  ) {
+                                    $steps["updateDafaultPaymentMethod"] =
+                                      await $steps[
+                                        "updateDafaultPaymentMethod"
+                                      ];
+                                  }
+
+                                  $steps["updateWaiting"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: ["waiting"]
+                                          },
+                                          operation: 0,
+                                          value: false
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["updateWaiting"] != null &&
+                                    typeof $steps["updateWaiting"] ===
+                                      "object" &&
+                                    typeof $steps["updateWaiting"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["updateWaiting"] =
+                                      await $steps["updateWaiting"];
+                                  }
+                                }}
+                              >
+                                <Radio
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.radio__iccsc
+                                  )}
+                                  label={
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__iKYsP
+                                      )}
+                                    >
+                                      <React.Fragment>
+                                        {(() => {
+                                          try {
+                                            return (
+                                              "پرداخت " +
+                                              Math.ceil(
+                                                (($ctx.query.amount -
+                                                  $state.balance) /
+                                                  $state.exchangeRate.USD) *
+                                                  100 +
+                                                  ((($ctx.query.amount -
+                                                    $state.balance) /
+                                                    $state.exchangeRate.USD) *
+                                                    100 *
+                                                    15) /
+                                                    100
+                                              ) /
+                                                100 +
+                                              "$"
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return "\u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0627\u0631\u0628\u0631\u0627\u0646 \u062e\u0627\u0631\u062c \u0627\u0632 \u0627\u06cc\u0631\u0627\u0646";
+                                            }
+                                            throw e;
+                                          }
+                                        })()}
+                                      </React.Fragment>
+                                    </div>
+                                  }
+                                  value={"oversease_usd_stripe"}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text___5PrJn
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return (
+                                          "پرداخت " +
+                                          Math.ceil(
+                                            (($ctx.query.amount -
+                                              $state.balance) /
+                                              $state.exchangeRate.USD) *
+                                              100 +
+                                              ((($ctx.query.amount -
+                                                $state.balance) /
+                                                $state.exchangeRate.USD) *
+                                                100 *
+                                                15) /
+                                                100
+                                          ) /
+                                            100 +
+                                          " دلار با درگاه stripe"
                                         );
                                       } catch (e) {
                                         if (
@@ -2081,7 +2305,7 @@ function PlasmicPay__RenderFunc(props: {
                                                 100
                                           ) /
                                             100 +
-                                          " یورو با درگاه پرداخت"
+                                          " یورو با درگاه mollie"
                                         );
                                       } catch (e) {
                                         if (
@@ -3272,7 +3496,12 @@ function PlasmicPay__RenderFunc(props: {
                                         timezone:
                                           Intl.DateTimeFormat().resolvedOptions()
                                             .timeZone || $ctx.query.timezone,
-                                        center_id: $ctx.query.center_id || ""
+                                        center_id: $ctx.query.center_id || "",
+                                        gateway:
+                                          $state.dafaultPaymentMethod ==
+                                          "oversease_usd_stripe"
+                                            ? "stripe"
+                                            : "mollie"
                                       };
                                     } catch (e) {
                                       if (
