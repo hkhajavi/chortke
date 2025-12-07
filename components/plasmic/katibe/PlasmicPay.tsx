@@ -249,7 +249,7 @@ function PlasmicPay__RenderFunc(props: {
         path: "exchangeRate",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({ USD: 0, EUR: 0 })
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({ USD: 1, EUR: 1 })
       },
       {
         path: "dafaultPaymentMethod",
@@ -1661,9 +1661,8 @@ function PlasmicPay__RenderFunc(props: {
                               try {
                                 return (
                                   new Date().getTimezoneOffset() / 60 !=
-                                    "-3.5" &&
-                                  $ctx.query.referrer == "vpn" &&
-                                  !$state.waiting
+                                    "-3.5" && $ctx.query.referrer == "vpn"
+                                  // && !$state.waiting
                                 );
                               } catch (e) {
                                 if (
@@ -1790,23 +1789,24 @@ function PlasmicPay__RenderFunc(props: {
                                       <React.Fragment>
                                         {(() => {
                                           try {
-                                            return (
-                                              "پرداخت " +
-                                              Math.ceil(
-                                                (($ctx.query.amount -
-                                                  $state.balance) /
-                                                  $state.exchangeRate.USD) *
-                                                  100 +
-                                                  ((($ctx.query.amount -
-                                                    $state.balance) /
-                                                    $state.exchangeRate.USD) *
-                                                    100 *
-                                                    15) /
-                                                    100
-                                              ) /
-                                                100 +
-                                              "$"
-                                            );
+                                            return $state.waiting
+                                              ? "-"
+                                              : "پرداخت " +
+                                                  Math.ceil(
+                                                    (($ctx.query.amount -
+                                                      $state.balance) /
+                                                      $state.exchangeRate.USD) *
+                                                      100 +
+                                                      ((($ctx.query.amount -
+                                                        $state.balance) /
+                                                        $state.exchangeRate
+                                                          .USD) *
+                                                        100 *
+                                                        15) /
+                                                        100
+                                                  ) /
+                                                    100 +
+                                                  "$";
                                           } catch (e) {
                                             if (
                                               e instanceof TypeError ||
@@ -1870,9 +1870,8 @@ function PlasmicPay__RenderFunc(props: {
                               try {
                                 return (
                                   new Date().getTimezoneOffset() / 60 !=
-                                    "-3.5" &&
-                                  $ctx.query.referrer == "vpn" &&
-                                  !$state.waiting
+                                    "-3.5" && $ctx.query.referrer == "vpn"
+                                  // && !$state.waiting
                                 );
                               } catch (e) {
                                 if (
@@ -1999,23 +1998,24 @@ function PlasmicPay__RenderFunc(props: {
                                       <React.Fragment>
                                         {(() => {
                                           try {
-                                            return (
-                                              "پرداخت " +
-                                              Math.ceil(
-                                                (($ctx.query.amount -
-                                                  $state.balance) /
-                                                  $state.exchangeRate.USD) *
-                                                  100 +
-                                                  ((($ctx.query.amount -
-                                                    $state.balance) /
-                                                    $state.exchangeRate.USD) *
-                                                    100 *
-                                                    15) /
-                                                    100
-                                              ) /
-                                                100 +
-                                              "$"
-                                            );
+                                            return $state.waiting
+                                              ? "-"
+                                              : "پرداخت " +
+                                                  Math.ceil(
+                                                    (($ctx.query.amount -
+                                                      $state.balance) /
+                                                      $state.exchangeRate.USD) *
+                                                      100 +
+                                                      ((($ctx.query.amount -
+                                                        $state.balance) /
+                                                        $state.exchangeRate
+                                                          .USD) *
+                                                        100 *
+                                                        15) /
+                                                        100
+                                                  ) /
+                                                    100 +
+                                                  "$";
                                           } catch (e) {
                                             if (
                                               e instanceof TypeError ||
@@ -2079,9 +2079,8 @@ function PlasmicPay__RenderFunc(props: {
                               try {
                                 return (
                                   new Date().getTimezoneOffset() / 60 !=
-                                    "-3.5" &&
-                                  $ctx.query.referrer == "vpn" &&
-                                  !$state.waiting
+                                    "-3.5" && $ctx.query.referrer == "vpn"
+                                  // && !$state.waiting
                                 );
                               } catch (e) {
                                 if (
@@ -2208,23 +2207,24 @@ function PlasmicPay__RenderFunc(props: {
                                       <React.Fragment>
                                         {(() => {
                                           try {
-                                            return (
-                                              "پرداخت " +
-                                              Math.ceil(
-                                                (($ctx.query.amount -
-                                                  $state.balance) /
-                                                  $state.exchangeRate.EUR) *
-                                                  100 +
-                                                  ((($ctx.query.amount -
-                                                    $state.balance) /
-                                                    $state.exchangeRate.EUR) *
-                                                    100 *
-                                                    15) /
-                                                    100
-                                              ) /
-                                                100 +
-                                              "€"
-                                            );
+                                            return $state.waiting
+                                              ? "-"
+                                              : "پرداخت " +
+                                                  Math.ceil(
+                                                    (($ctx.query.amount -
+                                                      $state.balance) /
+                                                      $state.exchangeRate.EUR) *
+                                                      100 +
+                                                      ((($ctx.query.amount -
+                                                        $state.balance) /
+                                                        $state.exchangeRate
+                                                          .EUR) *
+                                                        100 *
+                                                        15) /
+                                                        100
+                                                  ) /
+                                                    100 +
+                                                  "€";
                                           } catch (e) {
                                             if (
                                               e instanceof TypeError ||
