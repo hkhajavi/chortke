@@ -3529,7 +3529,7 @@ function PlasmicPay__RenderFunc(props: {
                                             .timeZone || $ctx.query.timezone,
                                         center_id: $ctx.query.center_id || "",
                                         gateway:
-                                          $state.dafaultPaymentMethod ==
+                                          $state.paymentsMethod.value ==
                                           "oversease_usd_stripe"
                                             ? "stripe"
                                             : "mollie"
