@@ -75,7 +75,6 @@ import sty from "./PlasmicPay.module.css"; // plasmic-import: fXYKZYfose53/css
 import Icon50Icon from "./icons/PlasmicIcon__Icon50"; // plasmic-import: xtxGD9pXGJw4/icon
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
 import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
-import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
 import SearchSvgIcon from "./icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
 import Icon48Icon from "./icons/PlasmicIcon__Icon48"; // plasmic-import: ApzBD_j9CWGg/icon
@@ -97,6 +96,7 @@ export type PlasmicPay__OverridesType = {
   pay?: Flex__<"div">;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
   sideEffectExchangeRate?: Flex__<typeof SideEffect>;
+  sideEffectCheckBalanceEvent?: Flex__<typeof SideEffect>;
   paymentsMethod?: Flex__<typeof RadioGroup>;
   rbBlue?: Flex__<typeof Radio>;
   rbLink?: Flex__<typeof Radio>;
@@ -303,6 +303,12 @@ function PlasmicPay__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "checkBalanceEvent",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
@@ -540,41 +546,33 @@ function PlasmicPay__RenderFunc(props: {
             onMount={async () => {
               const $steps = {};
 
-              $steps["updateWaiting"] = false
+              $steps["runEvent"] = true
                 ? (() => {
                     const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["waiting"]
-                      },
-                      operation: 0,
-                      value: true
-                    };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
+                      customFunction: async () => {
+                        return setInterval(() => {
+                          if ($state.paymentsMethod.value == "link") {
+                            $state.checkBalanceEvent += 1;
+                          }
+                        }, 7000);
                       }
-                      const { objRoot, variablePath } = variable;
-
-                      $stateSet(objRoot, variablePath, value);
-                      return value;
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
                     })?.apply(null, [actionArgs]);
                   })()
                 : undefined;
               if (
-                $steps["updateWaiting"] != null &&
-                typeof $steps["updateWaiting"] === "object" &&
-                typeof $steps["updateWaiting"].then === "function"
+                $steps["runEvent"] != null &&
+                typeof $steps["runEvent"] === "object" &&
+                typeof $steps["runEvent"].then === "function"
               ) {
-                $steps["updateWaiting"] = await $steps["updateWaiting"];
+                $steps["runEvent"] = await $steps["runEvent"];
               }
 
               $steps["getExchangeRate"] =
                 new Date().getTimezoneOffset() / 60 != "-3.5"
-                  ? //&& !!$ctx.query.amount
-                    /*
-               && $ctx.query.referrer == "vpn"
-               */ (() => {
+                  ? (() => {
                       const actionArgs = {
                         args: [
                           undefined,
@@ -598,9 +596,7 @@ function PlasmicPay__RenderFunc(props: {
               $steps["updateExchangeRate"] =
                 new Date().getTimezoneOffset() / 60 != "-3.5" &&
                 $steps.getExchangeRate.status == 200
-                  ? /*
-              && $ctx.query.referrer == "vpn" 
-              */ (() => {
+                  ? (() => {
                       const actionArgs = {
                         variable: {
                           objRoot: $state,
@@ -634,33 +630,181 @@ function PlasmicPay__RenderFunc(props: {
                   await $steps["updateExchangeRate"];
               }
 
-              $steps["updateWaiting3"] = false
+              $steps["getMe"] = true
                 ? (() => {
                     const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["waiting"]
-                      },
-                      operation: 0,
-                      value: false
+                      args: [undefined, "https://api.paziresh24.com/V1/auth/me"]
                     };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
-                      }
-                      const { objRoot, variablePath } = variable;
-
-                      $stateSet(objRoot, variablePath, value);
-                      return value;
-                    })?.apply(null, [actionArgs]);
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
                   })()
                 : undefined;
               if (
-                $steps["updateWaiting3"] != null &&
-                typeof $steps["updateWaiting3"] === "object" &&
-                typeof $steps["updateWaiting3"].then === "function"
+                $steps["getMe"] != null &&
+                typeof $steps["getMe"] === "object" &&
+                typeof $steps["getMe"].then === "function"
               ) {
-                $steps["updateWaiting3"] = await $steps["updateWaiting3"];
+                $steps["getMe"] = await $steps["getMe"];
+              }
+
+              $steps["updateMe"] =
+                $steps.getMe.status == 200
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["me"]
+                        },
+                        operation: 0,
+                        value: $steps.getMe.data
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updateMe"] != null &&
+                typeof $steps["updateMe"] === "object" &&
+                typeof $steps["updateMe"].then === "function"
+              ) {
+                $steps["updateMe"] = await $steps["updateMe"];
+              }
+            }}
+          />
+
+          <SideEffect
+            data-plasmic-name={"sideEffectCheckBalanceEvent"}
+            data-plasmic-override={overrides.sideEffectCheckBalanceEvent}
+            className={classNames(
+              "__wab_instance",
+              sty.sideEffectCheckBalanceEvent
+            )}
+            deps={(() => {
+              try {
+                return [$state.checkBalanceEvent];
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return undefined;
+                }
+                throw e;
+              }
+            })()}
+            onMount={async () => {
+              const $steps = {};
+
+              $steps["getBalance"] = true
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        undefined,
+                        "https://apigw.paziresh24.com/katibe/v1/transactions/balance/p24"
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
+              if (
+                $steps["getBalance"] != null &&
+                typeof $steps["getBalance"] === "object" &&
+                typeof $steps["getBalance"].then === "function"
+              ) {
+                $steps["getBalance"] = await $steps["getBalance"];
+              }
+
+              $steps["updateBalance"] =
+                $steps.getBalance.status == 200
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["balance"]
+                        },
+                        operation: 0,
+                        value: $steps.getBalance.data.data.balance
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updateBalance"] != null &&
+                typeof $steps["updateBalance"] === "object" &&
+                typeof $steps["updateBalance"].then === "function"
+              ) {
+                $steps["updateBalance"] = await $steps["updateBalance"];
+              }
+
+              $steps["redirectIfHasBalance"] =
+                $steps.getBalance.status == 200 &&
+                $state.balance >= $ctx.query.amount
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          (() => {
+                            try {
+                              return $ctx.query.returnlink
+                                ? globalThis
+                                    .atob($ctx.query.returnlink)
+                                    .includes("?")
+                                  ? globalThis.atob($ctx.query.returnlink) +
+                                    "&status=true"
+                                  : globalThis.atob($ctx.query.returnlink) +
+                                    "?status=true"
+                                : "https://www.paziresh24.com/dashboard/appointments/";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        ]
+                      };
+                      return $globalActions["Hamdast.openLink"]?.apply(null, [
+                        ...actionArgs.args
+                      ]);
+                    })()
+                  : undefined;
+              if (
+                $steps["redirectIfHasBalance"] != null &&
+                typeof $steps["redirectIfHasBalance"] === "object" &&
+                typeof $steps["redirectIfHasBalance"].then === "function"
+              ) {
+                $steps["redirectIfHasBalance"] =
+                  await $steps["redirectIfHasBalance"];
               }
             }}
           />
@@ -992,39 +1136,6 @@ function PlasmicPay__RenderFunc(props: {
             }
           })() ? (
             <section className={classNames(projectcss.all, sty.section__oAyiu)}>
-              <div className={classNames(projectcss.all, sty.freeBox__tWorq)}>
-                <div className={classNames(projectcss.all, sty.freeBox__d90NV)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___71Hat
-                    )}
-                  >
-                    {
-                      "\u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u062d\u0648\u0647\u200c\u06cc \u067e\u0631\u062f\u0627\u062e\u062a:"
-                    }
-                  </div>
-                  {(() => {
-                    try {
-                      return $state.waiting;
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return false;
-                      }
-                      throw e;
-                    }
-                  })() ? (
-                    <Icon2Icon
-                      className={classNames(projectcss.all, sty.svg__d88H0)}
-                      role={"img"}
-                    />
-                  ) : null}
-                </div>
-              </div>
               <div className={classNames(projectcss.all, sty.freeBox__jXecp)}>
                 <div
                   className={classNames(projectcss.all, sty.freeBox___4R2IR)}
@@ -1256,151 +1367,182 @@ function PlasmicPay__RenderFunc(props: {
                               sty.freeBox__xZoDo
                             )}
                           >
-                            <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__yd9Hy
-                              )}
-                              onClick={async event => {
-                                const $steps = {};
-
-                                $steps["updateDafaultPaymentMethod"] = true
-                                  ? (() => {
-                                      const actionArgs = {
-                                        variable: {
-                                          objRoot: $state,
-                                          variablePath: ["dafaultPaymentMethod"]
-                                        },
-                                        operation: 0,
-                                        value: "saman"
-                                      };
-                                      return (({
-                                        variable,
-                                        value,
-                                        startIndex,
-                                        deleteCount
-                                      }) => {
-                                        if (!variable) {
-                                          return;
-                                        }
-                                        const { objRoot, variablePath } =
-                                          variable;
-
-                                        $stateSet(objRoot, variablePath, value);
-                                        return value;
-                                      })?.apply(null, [actionArgs]);
-                                    })()
-                                  : undefined;
+                            {(() => {
+                              try {
+                                return !(
+                                  new Date().getTimezoneOffset() / 60 !=
+                                    "-3.5" && $ctx.query.referrer == "vpn"
+                                );
+                              } catch (e) {
                                 if (
-                                  $steps["updateDafaultPaymentMethod"] !=
-                                    null &&
-                                  typeof $steps[
-                                    "updateDafaultPaymentMethod"
-                                  ] === "object" &&
-                                  typeof $steps["updateDafaultPaymentMethod"]
-                                    .then === "function"
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
                                 ) {
-                                  $steps["updateDafaultPaymentMethod"] =
-                                    await $steps["updateDafaultPaymentMethod"];
+                                  return true;
                                 }
-
-                                $steps["updateWaiting"] = true
-                                  ? (() => {
-                                      const actionArgs = {
-                                        variable: {
-                                          objRoot: $state,
-                                          variablePath: ["waiting"]
-                                        },
-                                        operation: 0,
-                                        value: false
-                                      };
-                                      return (({
-                                        variable,
-                                        value,
-                                        startIndex,
-                                        deleteCount
-                                      }) => {
-                                        if (!variable) {
-                                          return;
-                                        }
-                                        const { objRoot, variablePath } =
-                                          variable;
-
-                                        $stateSet(objRoot, variablePath, value);
-                                        return value;
-                                      })?.apply(null, [actionArgs]);
-                                    })()
-                                  : undefined;
-                                if (
-                                  $steps["updateWaiting"] != null &&
-                                  typeof $steps["updateWaiting"] === "object" &&
-                                  typeof $steps["updateWaiting"].then ===
-                                    "function"
-                                ) {
-                                  $steps["updateWaiting"] =
-                                    await $steps["updateWaiting"];
-                                }
-                              }}
-                            >
-                              <Radio
-                                className={classNames(
-                                  "__wab_instance",
-                                  sty.radio__jX9Ds
-                                )}
-                                label={
-                                  <div
-                                    className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
-                                      sty.text__fd1Xz
-                                    )}
-                                  >
-                                    {
-                                      "\u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0633\u0627\u0645\u0627\u0646"
-                                    }
-                                  </div>
-                                }
-                                value={"saman"}
-                              />
-
+                                throw e;
+                              }
+                            })() ? (
                               <div
                                 className={classNames(
                                   projectcss.all,
-                                  projectcss.__wab_text,
-                                  sty.text__ggPlb
+                                  sty.freeBox__yd9Hy
                                 )}
+                                onClick={async event => {
+                                  const $steps = {};
+
+                                  $steps["updateDafaultPaymentMethod"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: [
+                                              "dafaultPaymentMethod"
+                                            ]
+                                          },
+                                          operation: 0,
+                                          value: "saman"
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["updateDafaultPaymentMethod"] !=
+                                      null &&
+                                    typeof $steps[
+                                      "updateDafaultPaymentMethod"
+                                    ] === "object" &&
+                                    typeof $steps["updateDafaultPaymentMethod"]
+                                      .then === "function"
+                                  ) {
+                                    $steps["updateDafaultPaymentMethod"] =
+                                      await $steps[
+                                        "updateDafaultPaymentMethod"
+                                      ];
+                                  }
+
+                                  $steps["updateWaiting"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: ["waiting"]
+                                          },
+                                          operation: 0,
+                                          value: false
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["updateWaiting"] != null &&
+                                    typeof $steps["updateWaiting"] ===
+                                      "object" &&
+                                    typeof $steps["updateWaiting"].then ===
+                                      "function"
+                                  ) {
+                                    $steps["updateWaiting"] =
+                                      await $steps["updateWaiting"];
+                                  }
+                                }}
                               >
-                                <React.Fragment>
-                                  {(() => {
-                                    try {
-                                      return (
-                                        "پرداخت " +
-                                        Math.floor(
-                                          ($ctx.query.amount - $state.balance) /
-                                            10
-                                        )
-                                          .toString()
-                                          .replace(
-                                            /\B(?=(\d{3})+(?!\d))/g,
-                                            ","
-                                          ) +
-                                        " تومان " +
-                                        "با کارت‌های بانکی"
-                                      );
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u062a\u0645\u0627\u0645\u06cc \u06a9\u0627\u0631\u062a\u200c\u0647\u0627\u06cc \u0628\u0627\u0646\u06a9\u06cc";
+                                <Radio
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.radio__jX9Ds
+                                  )}
+                                  label={
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__fd1Xz
+                                      )}
+                                    >
+                                      {
+                                        "\u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0633\u0627\u0645\u0627\u0646"
                                       }
-                                      throw e;
-                                    }
-                                  })()}
-                                </React.Fragment>
+                                    </div>
+                                  }
+                                  value={"saman"}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__ggPlb
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return (
+                                          "پرداخت " +
+                                          Math.floor(
+                                            ($ctx.query.amount -
+                                              $state.balance) /
+                                              10
+                                          )
+                                            .toString()
+                                            .replace(
+                                              /\B(?=(\d{3})+(?!\d))/g,
+                                              ","
+                                            ) +
+                                          " تومان " +
+                                          "با کارت‌های بانکی"
+                                        );
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u062a\u0645\u0627\u0645\u06cc \u06a9\u0627\u0631\u062a\u200c\u0647\u0627\u06cc \u0628\u0627\u0646\u06a9\u06cc";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
                               </div>
-                            </div>
+                            ) : null}
                             <Radio
                               className={classNames(
                                 "__wab_instance",
@@ -1588,144 +1730,6 @@ function PlasmicPay__RenderFunc(props: {
                                 </React.Fragment>
                               </div>
                             </div>
-                            {(() => {
-                              try {
-                                return $ctx.query.referrer == "link";
-                              } catch (e) {
-                                if (
-                                  e instanceof TypeError ||
-                                  e?.plasmicType === "PlasmicUndefinedDataError"
-                                ) {
-                                  return true;
-                                }
-                                throw e;
-                              }
-                            })() ? (
-                              <div
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.freeBox__wgbWc
-                                )}
-                                onClick={async event => {
-                                  const $steps = {};
-
-                                  $steps["updateDafaultPaymentMethod"] = true
-                                    ? (() => {
-                                        const actionArgs = {
-                                          variable: {
-                                            objRoot: $state,
-                                            variablePath: [
-                                              "dafaultPaymentMethod"
-                                            ]
-                                          },
-                                          operation: 0,
-                                          value: "link"
-                                        };
-                                        return (({
-                                          variable,
-                                          value,
-                                          startIndex,
-                                          deleteCount
-                                        }) => {
-                                          if (!variable) {
-                                            return;
-                                          }
-                                          const { objRoot, variablePath } =
-                                            variable;
-
-                                          $stateSet(
-                                            objRoot,
-                                            variablePath,
-                                            value
-                                          );
-                                          return value;
-                                        })?.apply(null, [actionArgs]);
-                                      })()
-                                    : undefined;
-                                  if (
-                                    $steps["updateDafaultPaymentMethod"] !=
-                                      null &&
-                                    typeof $steps[
-                                      "updateDafaultPaymentMethod"
-                                    ] === "object" &&
-                                    typeof $steps["updateDafaultPaymentMethod"]
-                                      .then === "function"
-                                  ) {
-                                    $steps["updateDafaultPaymentMethod"] =
-                                      await $steps[
-                                        "updateDafaultPaymentMethod"
-                                      ];
-                                  }
-                                }}
-                              >
-                                <Radio
-                                  data-plasmic-name={"rbLink"}
-                                  data-plasmic-override={overrides.rbLink}
-                                  className={classNames(
-                                    "__wab_instance",
-                                    sty.rbLink
-                                  )}
-                                  label={
-                                    <div
-                                      className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
-                                        sty.text__gpOAn
-                                      )}
-                                    >
-                                      {
-                                        "\u0644\u06cc\u0646\u06a9 \u067e\u0631\u062f\u0627\u062e\u062a"
-                                      }
-                                    </div>
-                                  }
-                                  value={"link"}
-                                />
-
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__sQtw6
-                                  )}
-                                >
-                                  <React.Fragment>
-                                    {(() => {
-                                      try {
-                                        return "ارسال لینک پرداخت برای دیگران";
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646 \u0628\u0644\u0648";
-                                        }
-                                        throw e;
-                                      }
-                                    })()}
-                                  </React.Fragment>
-                                </div>
-                              </div>
-                            ) : null}
-                            <Radio
-                              className={classNames(
-                                "__wab_instance",
-                                sty.radio___6Q1W7
-                              )}
-                              label={
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__n3LPy
-                                  )}
-                                >
-                                  {"\u067e\u0627\u06cc\u0627"}
-                                </div>
-                              }
-                              value={"paya"}
-                            />
-
                             {(() => {
                               try {
                                 return (
@@ -2350,6 +2354,128 @@ function PlasmicPay__RenderFunc(props: {
                                 </div>
                               </div>
                             ) : null}
+                            {(() => {
+                              try {
+                                return (
+                                  new Date().getTimezoneOffset() / 60 !=
+                                    "-3.5" && $ctx.query.referrer == "vpn"
+                                );
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return true;
+                                }
+                                throw e;
+                              }
+                            })() ? (
+                              <div
+                                className={classNames(
+                                  projectcss.all,
+                                  sty.freeBox__wgbWc
+                                )}
+                                onClick={async event => {
+                                  const $steps = {};
+
+                                  $steps["updateDafaultPaymentMethod"] = true
+                                    ? (() => {
+                                        const actionArgs = {
+                                          variable: {
+                                            objRoot: $state,
+                                            variablePath: [
+                                              "dafaultPaymentMethod"
+                                            ]
+                                          },
+                                          operation: 0,
+                                          value: "link"
+                                        };
+                                        return (({
+                                          variable,
+                                          value,
+                                          startIndex,
+                                          deleteCount
+                                        }) => {
+                                          if (!variable) {
+                                            return;
+                                          }
+                                          const { objRoot, variablePath } =
+                                            variable;
+
+                                          $stateSet(
+                                            objRoot,
+                                            variablePath,
+                                            value
+                                          );
+                                          return value;
+                                        })?.apply(null, [actionArgs]);
+                                      })()
+                                    : undefined;
+                                  if (
+                                    $steps["updateDafaultPaymentMethod"] !=
+                                      null &&
+                                    typeof $steps[
+                                      "updateDafaultPaymentMethod"
+                                    ] === "object" &&
+                                    typeof $steps["updateDafaultPaymentMethod"]
+                                      .then === "function"
+                                  ) {
+                                    $steps["updateDafaultPaymentMethod"] =
+                                      await $steps[
+                                        "updateDafaultPaymentMethod"
+                                      ];
+                                  }
+                                }}
+                              >
+                                <Radio
+                                  data-plasmic-name={"rbLink"}
+                                  data-plasmic-override={overrides.rbLink}
+                                  className={classNames(
+                                    "__wab_instance",
+                                    sty.rbLink
+                                  )}
+                                  label={
+                                    <div
+                                      className={classNames(
+                                        projectcss.all,
+                                        projectcss.__wab_text,
+                                        sty.text__gpOAn
+                                      )}
+                                    >
+                                      {
+                                        "\u0644\u06cc\u0646\u06a9 \u067e\u0631\u062f\u0627\u062e\u062a"
+                                      }
+                                    </div>
+                                  }
+                                  value={"link"}
+                                />
+
+                                <div
+                                  className={classNames(
+                                    projectcss.all,
+                                    projectcss.__wab_text,
+                                    sty.text__sQtw6
+                                  )}
+                                >
+                                  <React.Fragment>
+                                    {(() => {
+                                      try {
+                                        return "ارسال لینک پرداخت برای دیگران";
+                                      } catch (e) {
+                                        if (
+                                          e instanceof TypeError ||
+                                          e?.plasmicType ===
+                                            "PlasmicUndefinedDataError"
+                                        ) {
+                                          return "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u0627\u067e\u0644\u06cc\u06a9\u06cc\u0634\u0646 \u0628\u0644\u0648";
+                                        }
+                                        throw e;
+                                      }
+                                    })()}
+                                  </React.Fragment>
+                                </div>
+                              </div>
+                            ) : null}
                           </div>
                         }
                       />
@@ -2668,7 +2794,7 @@ function PlasmicPay__RenderFunc(props: {
                               style={{ color: "var(--token-HEGGDBNcnkKS)" }}
                             >
                               {
-                                "\u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u062f \u0644\u06cc\u0646\u06a9 \u0632\u06cc\u0631 \u0631\u0627 \u0628\u0631\u0627\u06cc \u062f\u06cc\u06af\u0631\u0627\u0646 \u0627\u0631\u0633\u0627\u0644 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u0628\u0631\u0627\u06cc \u0634\u0645\u0627 \u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0646\u0646\u062f. \u067e\u0633 \u0627\u0632 \u067e\u0631\u062f\u0627\u062e\u062a\u060c \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0634\u0627\u0631\u0698 \u0634\u062f\u0647 \u0648 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0646\u0648\u0628\u062a \u0628\u06af\u06cc\u0631\u06cc\u062f:"
+                                "\u0644\u06cc\u0646\u06a9 \u0632\u06cc\u0631 \u0631\u0627 \u0628\u0631\u0627\u06cc \u062f\u06cc\u06af\u0631\u0627\u0646 \u0627\u0631\u0633\u0627\u0644 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u0628\u0631\u0627\u06cc \u0634\u0645\u0627 \u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0646\u0646\u062f. \u067e\u0633 \u0627\u0632 \u067e\u0631\u062f\u0627\u062e\u062a\u060c \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0634\u0627\u0631\u0698 \u0634\u062f\u0647 \u0648 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0646\u0648\u0628\u062a \u0628\u06af\u06cc\u0631\u06cc\u062f:"
                               }
                             </span>
                           </React.Fragment>
@@ -2681,7 +2807,7 @@ function PlasmicPay__RenderFunc(props: {
                               style={{ color: "var(--token-HEGGDBNcnkKS)" }}
                             >
                               {
-                                "\u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u062f \u0644\u06cc\u0646\u06a9 \u0632\u06cc\u0631 \u0631\u0627 \u0628\u0631\u0627\u06cc \u062f\u06cc\u06af\u0631\u0627\u0646 \u0627\u0631\u0633\u0627\u0644 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u0628\u0631\u0627\u06cc \u0634\u0645\u0627 \u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0646\u0646\u062f. \u067e\u0633 \u0627\u0632 \u067e\u0631\u062f\u0627\u062e\u062a\u060c \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0634\u0627\u0631\u0698 \u0634\u062f\u0647 \u0648 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0646\u0648\u0628\u062a \u0628\u06af\u06cc\u0631\u06cc\u062f."
+                                "\u0644\u06cc\u0646\u06a9 \u0632\u06cc\u0631 \u0631\u0627 \u0628\u0631\u0627\u06cc \u062f\u06cc\u06af\u0631\u0627\u0646 \u0627\u0631\u0633\u0627\u0644 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u0628\u0631\u0627\u06cc \u0634\u0645\u0627 \u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0646\u0646\u062f. \u067e\u0633 \u0627\u0632 \u067e\u0631\u062f\u0627\u062e\u062a\u060c \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0634\u0627\u0631\u0698 \u0634\u062f\u0647 \u0648 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0646\u0648\u0628\u062a \u0628\u06af\u06cc\u0631\u06cc\u062f."
                               }
                             </span>
                           </React.Fragment>
@@ -2780,6 +2906,25 @@ function PlasmicPay__RenderFunc(props: {
                               $steps["invokeGlobalAction"] =
                                 await $steps["invokeGlobalAction"];
                             }
+
+                            $steps["invokeGlobalAction2"] = true
+                              ? (() => {
+                                  const actionArgs = { args: ["POST"] };
+                                  return $globalActions[
+                                    "Fragment.apiRequest"
+                                  ]?.apply(null, [...actionArgs.args]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["invokeGlobalAction2"] != null &&
+                              typeof $steps["invokeGlobalAction2"] ===
+                                "object" &&
+                              typeof $steps["invokeGlobalAction2"].then ===
+                                "function"
+                            ) {
+                              $steps["invokeGlobalAction2"] =
+                                await $steps["invokeGlobalAction2"];
+                            }
                           }}
                           role={"img"}
                         />
@@ -2826,30 +2971,6 @@ function PlasmicPay__RenderFunc(props: {
                       onClick={async event => {
                         const $steps = {};
 
-                        $steps["alertPaymentMethod"] =
-                          $state.paymentsMethod.value == undefined
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    "error",
-                                    "\u0644\u0637\u0641\u0627 \u06cc\u06a9 \u0631\u0648\u0634 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f."
-                                  ]
-                                };
-                                return $globalActions[
-                                  "Fragment.showToast"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
-                        if (
-                          $steps["alertPaymentMethod"] != null &&
-                          typeof $steps["alertPaymentMethod"] === "object" &&
-                          typeof $steps["alertPaymentMethod"].then ===
-                            "function"
-                        ) {
-                          $steps["alertPaymentMethod"] =
-                            await $steps["alertPaymentMethod"];
-                        }
-
                         $steps["updateWaiting"] = true
                           ? (() => {
                               const actionArgs = {
@@ -2885,184 +3006,31 @@ function PlasmicPay__RenderFunc(props: {
                             await $steps["updateWaiting"];
                         }
 
-                        $steps["suggest"] = false
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "POST",
-                                  "https://apigw.paziresh24.com/katibe/v1/payments/method/suggest",
-                                  undefined,
-                                  (() => {
-                                    try {
-                                      return {
-                                        method: $state.paymentsMethod.value,
-                                        center_id: $ctx.query.center_id || ""
-                                      };
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
-                                    }
-                                  })()
-                                ]
-                              };
-                              return $globalActions[
-                                "Fragment.apiRequest"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["suggest"] != null &&
-                          typeof $steps["suggest"] === "object" &&
-                          typeof $steps["suggest"].then === "function"
-                        ) {
-                          $steps["suggest"] = await $steps["suggest"];
-                        }
-
-                        $steps["redirectUser"] =
-                          $state.paymentsMethod.value != undefined &&
-                          $state.paymentsMethod.value != "oversease"
-                            ? (() => {
-                                const actionArgs = {
-                                  args: [
-                                    (() => {
-                                      try {
-                                        return (
-                                          "https://apigw.paziresh24.com/katibe/v1/check-balance-or-pay?amount=" +
-                                          ($ctx.query.amount || 0) +
-                                          "&returnlink=" +
-                                          ($ctx.query.returnlink || "") +
-                                          "&cancel_returnlink=" +
-                                          ($ctx.query.cancel_returnlink || "") +
-                                          "&receipt_id=" +
-                                          ($ctx.query.receipt_id || "") +
-                                          "&center_id=" +
-                                          ($ctx.query.center_id || "") +
-                                          "&check=true" +
-                                          "&refund_timeout=" +
-                                          ($ctx.query.refund_timeout || 60) +
-                                          "&type=" +
-                                          $state.paymentsMethod.value +
-                                          "&uuid=" +
-                                          Date.now()
-                                        );
-                                      } catch (e) {
-                                        if (
-                                          e instanceof TypeError ||
-                                          e?.plasmicType ===
-                                            "PlasmicUndefinedDataError"
-                                        ) {
-                                          return undefined;
-                                        }
-                                        throw e;
-                                      }
-                                    })()
-                                  ]
-                                };
-                                return $globalActions[
-                                  "Hamdast.openLink"
-                                ]?.apply(null, [...actionArgs.args]);
-                              })()
-                            : undefined;
-                        if (
-                          $steps["redirectUser"] != null &&
-                          typeof $steps["redirectUser"] === "object" &&
-                          typeof $steps["redirectUser"].then === "function"
-                        ) {
-                          $steps["redirectUser"] = await $steps["redirectUser"];
-                        }
-
-                        $steps["getPaymentLink"] = false
-                          ? (() => {
-                              const actionArgs = {
-                                args: [
-                                  "POST",
-                                  "https://apigw.paziresh24.com/katibe/v1/paymentlink/p24",
-                                  undefined,
-                                  (() => {
-                                    try {
-                                      return {
-                                        amount: $ctx.query.amount,
-                                        returnlink: $ctx.query.returnlink || "",
-                                        cancel_returnlink:
-                                          $ctx.query.cancel_returnlink || "",
-                                        receipt_id: $ctx.query.receipt_id || "",
-                                        center_id: $ctx.query.center_id || ""
-                                      };
-                                    } catch (e) {
-                                      if (
-                                        e instanceof TypeError ||
-                                        e?.plasmicType ===
-                                          "PlasmicUndefinedDataError"
-                                      ) {
-                                        return undefined;
-                                      }
-                                      throw e;
-                                    }
-                                  })()
-                                ]
-                              };
-                              return $globalActions[
-                                "Fragment.apiRequest"
-                              ]?.apply(null, [...actionArgs.args]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["getPaymentLink"] != null &&
-                          typeof $steps["getPaymentLink"] === "object" &&
-                          typeof $steps["getPaymentLink"].then === "function"
-                        ) {
-                          $steps["getPaymentLink"] =
-                            await $steps["getPaymentLink"];
-                        }
-
-                        $steps["updatePaymentLink"] = false
-                          ? (() => {
-                              const actionArgs = {
-                                variable: {
-                                  objRoot: $state,
-                                  variablePath: ["paymentLink"]
-                                },
-                                operation: 0,
-                                value: $steps.getPaymentLink.data.data.link
-                              };
-                              return (({
-                                variable,
-                                value,
-                                startIndex,
-                                deleteCount
-                              }) => {
-                                if (!variable) {
-                                  return;
-                                }
-                                const { objRoot, variablePath } = variable;
-
-                                $stateSet(objRoot, variablePath, value);
-                                return value;
-                              })?.apply(null, [actionArgs]);
-                            })()
-                          : undefined;
-                        if (
-                          $steps["updatePaymentLink"] != null &&
-                          typeof $steps["updatePaymentLink"] === "object" &&
-                          typeof $steps["updatePaymentLink"].then === "function"
-                        ) {
-                          $steps["updatePaymentLink"] =
-                            await $steps["updatePaymentLink"];
-                        }
-
-                        $steps["redirectToIpg"] = false
+                        $steps["redirectUser"] = true
                           ? (() => {
                               const actionArgs = {
                                 args: [
                                   (() => {
                                     try {
-                                      return $state.paymentLink;
+                                      return (
+                                        "https://apigw.paziresh24.com/katibe/v1/check-balance-or-pay?amount=" +
+                                        ($ctx.query.amount || 0) +
+                                        "&returnlink=" +
+                                        ($ctx.query.returnlink || "") +
+                                        "&cancel_returnlink=" +
+                                        ($ctx.query.cancel_returnlink || "") +
+                                        "&receipt_id=" +
+                                        ($ctx.query.receipt_id || "") +
+                                        "&center_id=" +
+                                        ($ctx.query.center_id || "") +
+                                        "&check=true" +
+                                        "&refund_timeout=" +
+                                        ($ctx.query.refund_timeout || 60) +
+                                        "&type=" +
+                                        $state.paymentsMethod.value +
+                                        "&uuid=" +
+                                        Date.now()
+                                      );
                                     } catch (e) {
                                       if (
                                         e instanceof TypeError ||
@@ -3083,12 +3051,11 @@ function PlasmicPay__RenderFunc(props: {
                             })()
                           : undefined;
                         if (
-                          $steps["redirectToIpg"] != null &&
-                          typeof $steps["redirectToIpg"] === "object" &&
-                          typeof $steps["redirectToIpg"].then === "function"
+                          $steps["redirectUser"] != null &&
+                          typeof $steps["redirectUser"] === "object" &&
+                          typeof $steps["redirectUser"].then === "function"
                         ) {
-                          $steps["redirectToIpg"] =
-                            await $steps["redirectToIpg"];
+                          $steps["redirectUser"] = await $steps["redirectUser"];
                         }
                       }}
                       size={"compact"}
@@ -3907,6 +3874,7 @@ const PlasmicDescendants = {
     "pay",
     "sideEffectPageLoad",
     "sideEffectExchangeRate",
+    "sideEffectCheckBalanceEvent",
     "paymentsMethod",
     "rbBlue",
     "rbLink",
@@ -3918,6 +3886,7 @@ const PlasmicDescendants = {
   ],
   sideEffectPageLoad: ["sideEffectPageLoad"],
   sideEffectExchangeRate: ["sideEffectExchangeRate"],
+  sideEffectCheckBalanceEvent: ["sideEffectCheckBalanceEvent"],
   paymentsMethod: ["paymentsMethod", "rbBlue", "rbLink"],
   rbBlue: ["rbBlue"],
   rbLink: ["rbLink"],
@@ -3934,6 +3903,7 @@ type NodeDefaultElementType = {
   pay: "div";
   sideEffectPageLoad: typeof SideEffect;
   sideEffectExchangeRate: typeof SideEffect;
+  sideEffectCheckBalanceEvent: typeof SideEffect;
   paymentsMethod: typeof RadioGroup;
   rbBlue: typeof Radio;
   rbLink: typeof Radio;
@@ -4008,6 +3978,9 @@ export const PlasmicPay = Object.assign(
     // Helper components rendering sub-elements
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
     sideEffectExchangeRate: makeNodeComponent("sideEffectExchangeRate"),
+    sideEffectCheckBalanceEvent: makeNodeComponent(
+      "sideEffectCheckBalanceEvent"
+    ),
     paymentsMethod: makeNodeComponent("paymentsMethod"),
     rbBlue: makeNodeComponent("rbBlue"),
     rbLink: makeNodeComponent("rbLink"),
