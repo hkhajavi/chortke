@@ -1653,7 +1653,9 @@ function PlasmicPay__RenderFunc(props: {
                               try {
                                 return (
                                   new Date().getTimezoneOffset() / 60 !=
-                                    "-3.5" && $ctx.query.referrer == "vpn"
+                                    "-3.5" &&
+                                  $ctx.query.referrer == "vpn" &&
+                                  false
                                   // && !$state.waiting
                                 );
                               } catch (e) {
