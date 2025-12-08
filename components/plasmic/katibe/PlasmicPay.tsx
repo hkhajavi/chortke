@@ -60,10 +60,10 @@ import {
 } from "@plasmicapp/react-web/lib/host";
 
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
-import Button from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
 import RadioGroup from "../../RadioGroup"; // plasmic-import: tqHTZfyBziuN/component
 import Radio from "../../Radio"; // plasmic-import: Cbq_rTXOD16b/component
 import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
+import Button from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/styleTokensProvider
 
@@ -72,12 +72,12 @@ import "@plasmicapp/react-web/lib/plasmic.css";
 import projectcss from "./plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicPay.module.css"; // plasmic-import: fXYKZYfose53/css
 
-import Icon50Icon from "./icons/PlasmicIcon__Icon50"; // plasmic-import: xtxGD9pXGJw4/icon
-import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
-import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
+import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
 import SearchSvgIcon from "./icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
 import Icon48Icon from "./icons/PlasmicIcon__Icon48"; // plasmic-import: ApzBD_j9CWGg/icon
+import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
+import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
 
 import __lib_copyToClipboard from "copy-to-clipboard";
 
@@ -812,315 +812,6 @@ function PlasmicPay__RenderFunc(props: {
           {(() => {
             try {
               return (
-                /*$ctx.query.referrer=="vpn"
-                && */
-                false
-              );
-            } catch (e) {
-              if (
-                e instanceof TypeError ||
-                e?.plasmicType === "PlasmicUndefinedDataError"
-              ) {
-                return true;
-              }
-              throw e;
-            }
-          })() ? (
-            <section className={classNames(projectcss.all, sty.section__pxswz)}>
-              <div className={classNames(projectcss.all, sty.freeBox__pTExT)}>
-                <div className={classNames(projectcss.all, sty.freeBox__szLnC)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__ekJj
-                    )}
-                  >
-                    {
-                      "\u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0627 \u062f\u0631\u06af\u0627\u0647 \u0633\u0627\u0645\u0627\u0646"
-                    }
-                  </div>
-                </div>
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__wlFOn)}>
-                <div className={classNames(projectcss.all, sty.freeBox__sw5Wo)}>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__yfhDc
-                    )}
-                  >
-                    {"\u0645\u0628\u0644\u063a:"}
-                  </div>
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__srmzt
-                    )}
-                  >
-                    <React.Fragment>
-                      {(() => {
-                        try {
-                          return (
-                            new Intl.NumberFormat("fa-IR").format(
-                              $ctx.query.amount || 0
-                            ) + " ریال"
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return "";
-                          }
-                          throw e;
-                        }
-                      })()}
-                    </React.Fragment>
-                  </div>
-                </div>
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox___30EL)}>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___9J65H)}
-                >
-                  <Icon50Icon
-                    className={classNames(projectcss.all, sty.svg__zPr4I)}
-                    role={"img"}
-                  />
-
-                  <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__dioiY
-                    )}
-                  >
-                    {hasVariant(globalVariants, "screen", "mobileOnly") ? (
-                      <React.Fragment>
-                        <span
-                          className={
-                            "plasmic_default__all plasmic_default__span"
-                          }
-                          style={{ color: "#5B2525" }}
-                        >
-                          {
-                            "\u06a9\u0627\u0631\u0628\u0631 \u06af\u0631\u0627\u0645\u06cc\u060c \u0644\u0637\u0641\u0627\u064b \u0645\u0637\u0645\u0626\u0646 \u0634\u0648\u06cc\u062f \u06a9\u0647 "
-                          }
-                        </span>
-                        <React.Fragment>{""}</React.Fragment>
-                        <span
-                          className={
-                            "plasmic_default__all plasmic_default__span"
-                          }
-                          style={{ fontWeight: 700 }}
-                        >
-                          {"\u0641\u06cc\u0644\u062a\u0631\u0634\u06a9\u0646"}
-                        </span>
-                        <React.Fragment>{""}</React.Fragment>
-                        <span
-                          className={
-                            "plasmic_default__all plasmic_default__span"
-                          }
-                          style={{ color: "#000000" }}
-                        >
-                          {
-                            " \u0634\u0645\u0627 \u062e\u0627\u0645\u0648\u0634 \u0627\u0633\u062a\u060c \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u0632\u06cc\u0631 \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f:"
-                          }
-                        </span>
-                      </React.Fragment>
-                    ) : (
-                      <React.Fragment>
-                        <span
-                          className={
-                            "plasmic_default__all plasmic_default__span"
-                          }
-                          style={{ color: "#5B2525" }}
-                        >
-                          {
-                            "\u06a9\u0627\u0631\u0628\u0631 \u06af\u0631\u0627\u0645\u06cc\u060c \u0644\u0637\u0641\u0627\u064b \u0645\u0637\u0645\u0626\u0646 \u0634\u0648\u06cc\u062f \u06a9\u0647"
-                          }
-                        </span>
-                        <React.Fragment> </React.Fragment>
-                        <span
-                          className={
-                            "plasmic_default__all plasmic_default__span"
-                          }
-                          style={{ fontWeight: 700 }}
-                        >
-                          {
-                            "VPN/\u0641\u06cc\u0644\u062a\u0631\u0634\u06a9\u0646"
-                          }
-                        </span>
-                        <React.Fragment>{""}</React.Fragment>
-                        <span
-                          className={
-                            "plasmic_default__all plasmic_default__span"
-                          }
-                          style={{ color: "#000000" }}
-                        >
-                          {
-                            " \u0634\u0645\u0627 \u062e\u0627\u0645\u0648\u0634 \u0627\u0633\u062a \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u0632\u06cc\u0631 \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f:"
-                          }
-                        </span>
-                      </React.Fragment>
-                    )}
-                  </div>
-                </div>
-              </div>
-              <div className={classNames(projectcss.all, sty.freeBox__mGnIw)}>
-                <div className={classNames(projectcss.all, sty.freeBox__fzrje)}>
-                  <Button
-                    children2={
-                      "\u0627\u0631\u0633\u0627\u0644 \u0628\u0647 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a"
-                    }
-                    className={classNames("__wab_instance", sty.button__vghbE)}
-                    isDisabled={(() => {
-                      try {
-                        return $state.waiting;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return [];
-                        }
-                        throw e;
-                      }
-                    })()}
-                    onClick={async event => {
-                      const $steps = {};
-
-                      $steps["updateWaiting"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["waiting"]
-                              },
-                              operation: 0,
-                              value: true
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updateWaiting"] != null &&
-                        typeof $steps["updateWaiting"] === "object" &&
-                        typeof $steps["updateWaiting"].then === "function"
-                      ) {
-                        $steps["updateWaiting"] = await $steps["updateWaiting"];
-                      }
-
-                      $steps["redirectUser"] = true
-                        ? (() => {
-                            const actionArgs = {
-                              args: [
-                                (() => {
-                                  try {
-                                    return (
-                                      "https://apigw.paziresh24.com/katibe/v1/check-balance-or-pay?amount=" +
-                                      ($ctx.query.amount || 0) +
-                                      "&returnlink=" +
-                                      ($ctx.query.returnlink || "") +
-                                      "&cancel_returnlink=" +
-                                      ($ctx.query.cancel_returnlink || "") +
-                                      "&receipt_id=" +
-                                      ($ctx.query.receipt_id || "") +
-                                      "&center_id=" +
-                                      ($ctx.query.center_id || "") +
-                                      "&uuid=" +
-                                      Date.now() +
-                                      "&refund_timeout=" +
-                                      ($ctx.query.refund_timeout || 60) +
-                                      "&check=true"
-                                    );
-                                  } catch (e) {
-                                    if (
-                                      e instanceof TypeError ||
-                                      e?.plasmicType ===
-                                        "PlasmicUndefinedDataError"
-                                    ) {
-                                      return undefined;
-                                    }
-                                    throw e;
-                                  }
-                                })()
-                              ]
-                            };
-                            return $globalActions["Hamdast.openLink"]?.apply(
-                              null,
-                              [...actionArgs.args]
-                            );
-                          })()
-                        : undefined;
-                      if (
-                        $steps["redirectUser"] != null &&
-                        typeof $steps["redirectUser"] === "object" &&
-                        typeof $steps["redirectUser"].then === "function"
-                      ) {
-                        $steps["redirectUser"] = await $steps["redirectUser"];
-                      }
-
-                      $steps["updateWaiting2"] = false
-                        ? (() => {
-                            const actionArgs = {
-                              variable: {
-                                objRoot: $state,
-                                variablePath: ["waiting"]
-                              },
-                              operation: 0,
-                              value: false
-                            };
-                            return (({
-                              variable,
-                              value,
-                              startIndex,
-                              deleteCount
-                            }) => {
-                              if (!variable) {
-                                return;
-                              }
-                              const { objRoot, variablePath } = variable;
-
-                              $stateSet(objRoot, variablePath, value);
-                              return value;
-                            })?.apply(null, [actionArgs]);
-                          })()
-                        : undefined;
-                      if (
-                        $steps["updateWaiting2"] != null &&
-                        typeof $steps["updateWaiting2"] === "object" &&
-                        typeof $steps["updateWaiting2"].then === "function"
-                      ) {
-                        $steps["updateWaiting2"] =
-                          await $steps["updateWaiting2"];
-                      }
-                    }}
-                    size={"compact"}
-                  />
-                </div>
-              </div>
-            </section>
-          ) : null}
-          {(() => {
-            try {
-              return (
                 $ctx.query.referrer == "saman" ||
                 $ctx.query.referrer.length == 0 ||
                 true
@@ -1140,31 +831,91 @@ function PlasmicPay__RenderFunc(props: {
                 <div
                   className={classNames(projectcss.all, sty.freeBox___4R2IR)}
                 >
-                  {(() => {
-                    try {
-                      return $ctx.query.referrer == "saman";
-                    } catch (e) {
-                      if (
-                        e instanceof TypeError ||
-                        e?.plasmicType === "PlasmicUndefinedDataError"
-                      ) {
-                        return true;
-                      }
-                      throw e;
-                    }
-                  })() ? (
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__oYsmD)}
+                  >
                     <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__xy6SS
-                      )}
+                      className={classNames(projectcss.all, sty.freeBox__yksnC)}
                     >
-                      {
-                        "\u06a9\u0627\u0631\u0628\u0631 \u06af\u0631\u0627\u0645\u06cc\u060c \u067e\u0631\u062f\u0627\u062e\u062a \u0634\u0645\u0627 \u0646\u0627\u0645\u0648\u0641\u0642 \u0628\u0648\u062f. \u0644\u0637\u0641\u0627 \u0628\u0627 \u06cc\u06a9\u06cc \u0627\u0632 \u0631\u0648\u0634\u200c\u0647\u0627\u06cc \u0632\u06cc\u0631 \u067e\u0631\u062f\u0627\u062e\u062a \u0646\u0645\u0627\u06cc\u06cc\u062f:"
-                      }
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___7Zz0
+                        )}
+                      >
+                        {
+                          "\u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u062d\u0648\u0647\u200c\u06cc \u067e\u0631\u062f\u0627\u062e\u062a:"
+                        }
+                      </div>
+                      {(() => {
+                        try {
+                          return $state.waiting;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <Icon2Icon
+                          className={classNames(projectcss.all, sty.svg__atjJf)}
+                          role={"img"}
+                        />
+                      ) : null}
                     </div>
-                  ) : null}
+                    {(
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? (() => {
+                            try {
+                              return $ctx.query.referrer == "saman";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
+                            }
+                          })()
+                        : (() => {
+                            try {
+                              return $ctx.query.referrer == "saman";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
+                            }
+                          })()
+                    ) ? (
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox___7R92Y
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__xy6SS
+                          )}
+                        >
+                          {
+                            "\u06a9\u0627\u0631\u0628\u0631 \u06af\u0631\u0627\u0645\u06cc\u060c \u067e\u0631\u062f\u0627\u062e\u062a \u0634\u0645\u0627 \u0646\u0627\u0645\u0648\u0641\u0642 \u0628\u0648\u062f. \u0644\u0637\u0641\u0627 \u0628\u0627 \u06cc\u06a9\u06cc \u0627\u0632 \u0631\u0648\u0634\u200c\u0647\u0627\u06cc \u0632\u06cc\u0631 \u067e\u0631\u062f\u0627\u062e\u062a \u0646\u0645\u0627\u06cc\u06cc\u062f:"
+                          }
+                        </div>
+                      </div>
+                    ) : null}
+                  </div>
                   <div
                     className={classNames(projectcss.all, sty.freeBox__qhNqD)}
                   >
@@ -1543,46 +1294,6 @@ function PlasmicPay__RenderFunc(props: {
                                 </div>
                               </div>
                             ) : null}
-                            <Radio
-                              className={classNames(
-                                "__wab_instance",
-                                sty.radio__mpWa8
-                              )}
-                              label={
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__qhL0P
-                                  )}
-                                >
-                                  {"\u067e\u064f\u0644"}
-                                </div>
-                              }
-                              value={"pol"}
-                            />
-
-                            <Radio
-                              className={classNames(
-                                "__wab_instance",
-                                sty.radio___0AuDz
-                              )}
-                              label={
-                                <div
-                                  className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
-                                    sty.text__xIf3E
-                                  )}
-                                >
-                                  {
-                                    "\u06a9\u0627\u0631\u062a \u0628\u0647 \u06a9\u0627\u0631\u062a"
-                                  }
-                                </div>
-                              }
-                              value={"cardToCard"}
-                            />
-
                             <div
                               className={classNames(
                                 projectcss.all,
