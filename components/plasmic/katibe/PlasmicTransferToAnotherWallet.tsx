@@ -966,15 +966,18 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                             parseInt($state.txtTransferPrice.value) <= 5000000)
                           ? "*درخواست انتقال وجه شما شامل 10.000 ریال کارمزد می‌باشد."
                           : parseInt($state.txtTransferPrice.value) > 5000000 &&
-                            parseInt($state.txtTransferPrice.value) <= 100000000
-                          ? "*درخواست انتقال وجه شما شامل 100.000 ریال کارمزد می‌باشد."
-                          : parseInt($state.txtTransferPrice.value) >
-                              100000000 &&
-                            parseInt($state.txtTransferPrice.value) <= 300000000
-                          ? "*درخواست انتقال وجه شما شامل 500.000 ریال کارمزد می‌باشد."
-                          : parseInt($state.txtTransferPrice.value) > 300000000
-                          ? "*درخواست انتقال وجه شما شامل 1000.000 ریال کارمزد می‌باشد."
-                          : "";
+                              parseInt($state.txtTransferPrice.value) <=
+                                100000000
+                            ? "*درخواست انتقال وجه شما شامل 100.000 ریال کارمزد می‌باشد."
+                            : parseInt($state.txtTransferPrice.value) >
+                                  100000000 &&
+                                parseInt($state.txtTransferPrice.value) <=
+                                  300000000
+                              ? "*درخواست انتقال وجه شما شامل 500.000 ریال کارمزد می‌باشد."
+                              : parseInt($state.txtTransferPrice.value) >
+                                  300000000
+                                ? "*درخواست انتقال وجه شما شامل 1000.000 ریال کارمزد می‌باشد."
+                                : "";
                       } catch (e) {
                         if (
                           e instanceof TypeError ||
@@ -1157,9 +1160,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                       typeof $steps["updateWaitingTransfer"] === "object" &&
                       typeof $steps["updateWaitingTransfer"].then === "function"
                     ) {
-                      $steps["updateWaitingTransfer"] = await $steps[
-                        "updateWaitingTransfer"
-                      ];
+                      $steps["updateWaitingTransfer"] =
+                        await $steps["updateWaitingTransfer"];
                     }
 
                     $steps["transferConfirm"] = true
@@ -1199,9 +1201,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                       typeof $steps["transferConfirm"] === "object" &&
                       typeof $steps["transferConfirm"].then === "function"
                     ) {
-                      $steps["transferConfirm"] = await $steps[
-                        "transferConfirm"
-                      ];
+                      $steps["transferConfirm"] =
+                        await $steps["transferConfirm"];
                     }
 
                     $steps["updateRequestMessage"] = true
@@ -1235,9 +1236,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                       typeof $steps["updateRequestMessage"] === "object" &&
                       typeof $steps["updateRequestMessage"].then === "function"
                     ) {
-                      $steps["updateRequestMessage"] = await $steps[
-                        "updateRequestMessage"
-                      ];
+                      $steps["updateRequestMessage"] =
+                        await $steps["updateRequestMessage"];
                     }
 
                     $steps["alertOk"] =
@@ -1376,9 +1376,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                       typeof $steps["updateWaitingTransfer2"].then ===
                         "function"
                     ) {
-                      $steps["updateWaitingTransfer2"] = await $steps[
-                        "updateWaitingTransfer2"
-                      ];
+                      $steps["updateWaitingTransfer2"] =
+                        await $steps["updateWaitingTransfer2"];
                     }
 
                     $steps["runTransferEvent"] =
@@ -1397,9 +1396,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                       typeof $steps["runTransferEvent"] === "object" &&
                       typeof $steps["runTransferEvent"].then === "function"
                     ) {
-                      $steps["runTransferEvent"] = await $steps[
-                        "runTransferEvent"
-                      ];
+                      $steps["runTransferEvent"] =
+                        await $steps["runTransferEvent"];
                     }
                   }}
                   size={"compact"}
@@ -1523,9 +1521,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                   typeof $steps["invokeGlobalAction"] === "object" &&
                   typeof $steps["invokeGlobalAction"].then === "function"
                 ) {
-                  $steps["invokeGlobalAction"] = await $steps[
-                    "invokeGlobalAction"
-                  ];
+                  $steps["invokeGlobalAction"] =
+                    await $steps["invokeGlobalAction"];
                 }
 
                 $steps["invokeGlobalAction2"] = false
@@ -1546,9 +1543,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                   typeof $steps["invokeGlobalAction2"] === "object" &&
                   typeof $steps["invokeGlobalAction2"].then === "function"
                 ) {
-                  $steps["invokeGlobalAction2"] = await $steps[
-                    "invokeGlobalAction2"
-                  ];
+                  $steps["invokeGlobalAction2"] =
+                    await $steps["invokeGlobalAction2"];
                 }
 
                 $steps["updateTxtTransferMobileValue2"] = false
@@ -1570,9 +1566,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                   typeof $steps["updateTxtTransferMobileValue2"].then ===
                     "function"
                 ) {
-                  $steps["updateTxtTransferMobileValue2"] = await $steps[
-                    "updateTxtTransferMobileValue2"
-                  ];
+                  $steps["updateTxtTransferMobileValue2"] =
+                    await $steps["updateTxtTransferMobileValue2"];
                 }
 
                 $steps["updateWaitingTransfer"] = true
@@ -1606,9 +1601,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                   typeof $steps["updateWaitingTransfer"] === "object" &&
                   typeof $steps["updateWaitingTransfer"].then === "function"
                 ) {
-                  $steps["updateWaitingTransfer"] = await $steps[
-                    "updateWaitingTransfer"
-                  ];
+                  $steps["updateWaitingTransfer"] =
+                    await $steps["updateWaitingTransfer"];
                 }
 
                 $steps["request"] = true
@@ -1683,9 +1677,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                   typeof $steps["updateWaitingTransfer2"] === "object" &&
                   typeof $steps["updateWaitingTransfer2"].then === "function"
                 ) {
-                  $steps["updateWaitingTransfer2"] = await $steps[
-                    "updateWaitingTransfer2"
-                  ];
+                  $steps["updateWaitingTransfer2"] =
+                    await $steps["updateWaitingTransfer2"];
                 }
 
                 $steps["updateTransferMessage"] =
@@ -1720,9 +1713,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                   typeof $steps["updateTransferMessage"] === "object" &&
                   typeof $steps["updateTransferMessage"].then === "function"
                 ) {
-                  $steps["updateTransferMessage"] = await $steps[
-                    "updateTransferMessage"
-                  ];
+                  $steps["updateTransferMessage"] =
+                    await $steps["updateTransferMessage"];
                 }
 
                 $steps["updateRequestTransferid"] =
@@ -1757,9 +1749,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                   typeof $steps["updateRequestTransferid"] === "object" &&
                   typeof $steps["updateRequestTransferid"].then === "function"
                 ) {
-                  $steps["updateRequestTransferid"] = await $steps[
-                    "updateRequestTransferid"
-                  ];
+                  $steps["updateRequestTransferid"] =
+                    await $steps["updateRequestTransferid"];
                 }
 
                 $steps["message"] = $steps.request.data.message
@@ -1900,9 +1891,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
             typeof $steps["updateWaitingTransfer"] === "object" &&
             typeof $steps["updateWaitingTransfer"].then === "function"
           ) {
-            $steps["updateWaitingTransfer"] = await $steps[
-              "updateWaitingTransfer"
-            ];
+            $steps["updateWaitingTransfer"] =
+              await $steps["updateWaitingTransfer"];
           }
         }}
       />
@@ -1951,7 +1941,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicTransferToAnotherWallet__VariantsArgs;
     args?: PlasmicTransferToAnotherWallet__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicTransferToAnotherWallet__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicTransferToAnotherWallet__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicTransferToAnotherWallet__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

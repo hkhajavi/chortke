@@ -2071,14 +2071,16 @@ function PlasmicPay__RenderFunc(props: {
                               try {
                                 return (
                                   new Date().getTimezoneOffset() / 60 !=
-                                    "-3.5" && $ctx.query.referrer == "vpn"
+                                    "-3.5" &&
+                                  $ctx.query.referrer == "vpn" &&
+                                  $state.me.data.id == 15594550
                                 );
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||
                                   e?.plasmicType === "PlasmicUndefinedDataError"
                                 ) {
-                                  return true;
+                                  return false;
                                 }
                                 throw e;
                               }

@@ -237,6 +237,7 @@
   width: 100%;
   height: auto;
   max-width: 100%;
+  font-size: var(--token-5Ye_3XTSaP9X);
   background: var(--token-DbGdjBpQ6R_X);
   flex-direction: column;
   justify-content: center;
@@ -255,6 +256,7 @@
   max-width: 100%;
   justify-content: center;
   align-items: flex-start;
+  font-size: var(--token-5Ye_3XTSaP9X);
   background: none;
   min-width: 0;
   padding: 0px;
@@ -289,6 +291,7 @@
   max-width: 100%;
   justify-content: flex-start;
   align-items: center;
+  font-size: var(--token-5Ye_3XTSaP9X);
   background: none;
   min-width: 0;
   padding: 0px;
