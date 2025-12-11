@@ -148,6 +148,7 @@
     font-size: 18px;
     text-align: right;
     width: auto;
+    color: #535353;
   }
 }
 .svg__atjJf {
@@ -157,6 +158,7 @@
   margin-right: 10px;
   width: 20px;
   height: 20px;
+  color: var(--token-RvPI6LyeIPmd);
   flex-shrink: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
