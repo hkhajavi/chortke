@@ -576,7 +576,22 @@ function PlasmicPay__RenderFunc(props: {
                       const actionArgs = {
                         args: [
                           undefined,
-                          "https://apigw.paziresh24.com/katibe/v1/remitation/exchange/rate/"
+                          (() => {
+                            try {
+                              return (
+                                "https://apigw.paziresh24.com/katibe/v1/remitation/exchange/rate/?timezone=" +
+                                Intl.DateTimeFormat().resolvedOptions().timeZone
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
                         ]
                       };
                       return $globalActions["Fragment.apiRequest"]?.apply(
@@ -628,6 +643,78 @@ function PlasmicPay__RenderFunc(props: {
               ) {
                 $steps["updateExchangeRate"] =
                   await $steps["updateExchangeRate"];
+              }
+
+              $steps["paymentMethod"] =
+                new Date().getTimezoneOffset() / 60 != "-3.5" &&
+                $steps.getExchangeRate.status == 200
+                  ? (() => {
+                      const actionArgs = {
+                        customFunction: async () => {
+                          return (() => {
+                            if (
+                              ($state.exchangeRate.EUR == 0 ||
+                                $state.exchangeRate.EUR == undefined) &&
+                              $state.dafaultPaymentMethod == "oversease_eur"
+                            )
+                              $state.dafaultPaymentMethod = "oversease_usd";
+                            if (
+                              ($state.exchangeRate.USD == 0 ||
+                                $state.exchangeRate.USD == undefined) &&
+                              $state.dafaultPaymentMethod == "oversease_usd"
+                            )
+                              $state.dafaultPaymentMethod = "oversease_eur";
+                            if (
+                              ($state.exchangeRate.EUR == 0 ||
+                                $state.exchangeRate.EUR == undefined) &&
+                              ($state.exchangeRate.USD == 0 ||
+                                $state.exchangeRate.USD == undefined) &&
+                              ($state.dafaultPaymentMethod == "oversease_eur" ||
+                                $state.dafaultPaymentMethod == "oversease_usd")
+                            )
+                              return ($state.dafaultPaymentMethod = "blue");
+                          })();
+                        }
+                      };
+                      return (({ customFunction }) => {
+                        return customFunction();
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["paymentMethod"] != null &&
+                typeof $steps["paymentMethod"] === "object" &&
+                typeof $steps["paymentMethod"].then === "function"
+              ) {
+                $steps["paymentMethod"] = await $steps["paymentMethod"];
+              }
+
+              $steps["updateWaiting"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["waiting"]
+                      },
+                      operation: 0
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateWaiting"] != null &&
+                typeof $steps["updateWaiting"] === "object" &&
+                typeof $steps["updateWaiting"].then === "function"
+              ) {
+                $steps["updateWaiting"] = await $steps["updateWaiting"];
               }
 
               $steps["getMe"] = true
@@ -1445,7 +1532,10 @@ function PlasmicPay__RenderFunc(props: {
                               try {
                                 return (
                                   new Date().getTimezoneOffset() / 60 !=
-                                    "-3.5" && $ctx.query.referrer == "vpn"
+                                    "-3.5" &&
+                                  $ctx.query.referrer == "vpn" &&
+                                  $state.exchangeRate.USD != undefined &&
+                                  $state.exchangeRate.USD > 0
                                   // && !$state.waiting
                                 );
                               } catch (e) {
@@ -1863,7 +1953,10 @@ function PlasmicPay__RenderFunc(props: {
                               try {
                                 return (
                                   new Date().getTimezoneOffset() / 60 !=
-                                    "-3.5" && $ctx.query.referrer == "vpn"
+                                    "-3.5" &&
+                                  $ctx.query.referrer == "vpn" &&
+                                  $state.exchangeRate.EUR != undefined &&
+                                  $state.exchangeRate.EUR > 0
                                   // && !$state.waiting
                                 );
                               } catch (e) {
