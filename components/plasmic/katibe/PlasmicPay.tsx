@@ -3647,7 +3647,24 @@ function PlasmicPay__RenderFunc(props: {
                         ? (() => {
                             const actionArgs = {
                               args: [
-                                "https://wa.me/989384487404?text=\u0633\u0644\u0627\u0645. \u062f\u0631 \u067e\u0630\u06cc\u0631\u063424 \u0646\u06cc\u0627\u0632 \u0628\u0647 \u067e\u0634\u062a\u06cc\u0628\u0627\u0646\u06cc \u062f\u0631 \u062e\u0635\u0648\u0635 \u067e\u0631\u062f\u0627\u062e\u062a \u062e\u0627\u0631\u062c \u0627\u0632 \u0627\u06cc\u0631\u0627\u0646 \u062f\u0627\u0631\u0645\u060c \u0644\u0637\u0641\u0627 \u0631\u0627\u0647\u0646\u0645\u0627\u06cc\u06cc \u06a9\u0646\u06cc\u062f."
+                                (() => {
+                                  try {
+                                    return (
+                                      "https://wa.me/989384487404?text=سلام. در پذیرش24 نیاز به پشتیبانی در خصوص پرداخت خارج از ایران دارم، لطفا راهنمایی کنید." +
+                                      " شناسه کاربری:" +
+                                      $state.me.data.id
+                                    );
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return undefined;
+                                    }
+                                    throw e;
+                                  }
+                                })()
                               ]
                             };
                             return $globalActions["Hamdast.openLink"]?.apply(
