@@ -85,8 +85,6 @@ export const PlasmicCharge__ArgProps = new Array<ArgPropType>();
 
 export type PlasmicCharge__OverridesType = {
   root?: Flex__<"div">;
-  section?: Flex__<"section">;
-  svg?: Flex__<"svg">;
   textInput?: Flex__<typeof TextInput>;
 };
 
@@ -195,22 +193,9 @@ function PlasmicCharge__RenderFunc(props: {
             sty.root
           )}
         >
-          <section
-            data-plasmic-name={"section"}
-            data-plasmic-override={overrides.section}
-            className={classNames(projectcss.all, sty.section)}
-          >
+          <section className={classNames(projectcss.all, sty.section__el71G)}>
             <div className={classNames(projectcss.all, sty.freeBox___4W513)}>
               <div className={classNames(projectcss.all, sty.freeBox__zpczd)}>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__oMrUo
-                  )}
-                >
-                  {"\u067e\u0631\u062f\u0627\u062e\u062a:"}
-                </div>
                 {(() => {
                   try {
                     return $state.waiting;
@@ -225,12 +210,37 @@ function PlasmicCharge__RenderFunc(props: {
                   }
                 })() ? (
                   <Icon2Icon
-                    data-plasmic-name={"svg"}
-                    data-plasmic-override={overrides.svg}
-                    className={classNames(projectcss.all, sty.svg)}
+                    className={classNames(projectcss.all, sty.svg__ywAn8)}
                     role={"img"}
                   />
                 ) : null}
+                <PlasmicImg__
+                  alt={""}
+                  className={classNames(sty.img__s7A3I)}
+                  displayHeight={"auto"}
+                  displayMaxHeight={"none"}
+                  displayMaxWidth={"100%"}
+                  displayMinHeight={"0"}
+                  displayMinWidth={"0"}
+                  displayWidth={"50px"}
+                  loading={"lazy"}
+                  src={{
+                    src: "/plasmic/katibe/images/image42.svg",
+                    fullWidth: 102.473,
+                    fullHeight: 108.85,
+                    aspectRatio: 0.941415
+                  }}
+                />
+
+                <div
+                  className={classNames(
+                    projectcss.all,
+                    projectcss.__wab_text,
+                    sty.text__tt10U
+                  )}
+                >
+                  {"\u067e\u0630\u06cc\u0631\u063424"}
+                </div>
               </div>
               <div className={classNames(projectcss.all, sty.freeBox__e545Y)}>
                 <div className={classNames(projectcss.all, sty.freeBox__mgza5)}>
@@ -284,6 +294,131 @@ function PlasmicCharge__RenderFunc(props: {
               </div>
             </div>
           </section>
+          {(() => {
+            try {
+              return $ctx.query.type == "logo";
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return true;
+              }
+              throw e;
+            }
+          })() ? (
+            <section className={classNames(projectcss.all, sty.section__zwP9V)}>
+              {(() => {
+                try {
+                  return true;
+                } catch (e) {
+                  if (
+                    e instanceof TypeError ||
+                    e?.plasmicType === "PlasmicUndefinedDataError"
+                  ) {
+                    return true;
+                  }
+                  throw e;
+                }
+              })() ? (
+                <div className={classNames(projectcss.all, sty.freeBox__csEvg)}>
+                  <div
+                    className={classNames(projectcss.all, sty.freeBox__imbei)}
+                  >
+                    {(() => {
+                      try {
+                        return $state.waiting;
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
+                        }
+                        throw e;
+                      }
+                    })() ? (
+                      <Icon2Icon
+                        className={classNames(projectcss.all, sty.svg__clk1D)}
+                        role={"img"}
+                      />
+                    ) : null}
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__uR2F)}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"50px"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/katibe/images/image42.svg",
+                        fullWidth: 102.473,
+                        fullHeight: 108.85,
+                        aspectRatio: 0.941415
+                      }}
+                    />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__yYZjY)}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/katibe/images/bluPaySvg.svg",
+                        fullWidth: 48,
+                        fullHeight: 48,
+                        aspectRatio: undefined
+                      }}
+                    />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__rqyfX)}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/katibe/images/mollieAvif.avif",
+                        fullWidth: 740,
+                        fullHeight: 240,
+                        aspectRatio: undefined
+                      }}
+                    />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__t9QVd)}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/katibe/images/sepSvg.svg",
+                        fullWidth: 32,
+                        fullHeight: 32,
+                        aspectRatio: undefined
+                      }}
+                    />
+                  </div>
+                </div>
+              ) : null}
+            </section>
+          ) : null}
         </div>
       </div>
     </React.Fragment>
@@ -291,9 +426,7 @@ function PlasmicCharge__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "section", "svg", "textInput"],
-  section: ["section", "svg", "textInput"],
-  svg: ["svg"],
+  root: ["root", "textInput"],
   textInput: ["textInput"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
@@ -301,8 +434,6 @@ type DescendantsType<T extends NodeNameType> =
   (typeof PlasmicDescendants)[T][number];
 type NodeDefaultElementType = {
   root: "div";
-  section: "section";
-  svg: "svg";
   textInput: typeof TextInput;
 };
 
@@ -368,8 +499,6 @@ export const PlasmicCharge = Object.assign(
   makeNodeComponent("root"),
   {
     // Helper components rendering sub-elements
-    section: makeNodeComponent("section"),
-    svg: makeNodeComponent("svg"),
     textInput: makeNodeComponent("textInput"),
 
     // Metadata about props expected for PlasmicCharge
