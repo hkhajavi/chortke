@@ -712,6 +712,7 @@
   height: 25px;
   margin-right: 10px;
   cursor: pointer;
+  color: var(--token-WxvvgatuPYoJ);
   flex-shrink: 0;
 }
 @media (min-width: 0px) and (max-width: 768px) {
