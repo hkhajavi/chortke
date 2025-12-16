@@ -703,7 +703,9 @@ function PlasmicCharge__RenderFunc(props: {
                                           "http://apigw.paziresh24.com/katibe/v1/payment/p24/" +
                                           $state.txtAmount.value +
                                           "/" +
-                                          $ctx.query.amount
+                                          $ctx.query.amount +
+                                          "/?time=" +
+                                          new Date().toISOString()
                                         );
                                       } catch (e) {
                                         if (
