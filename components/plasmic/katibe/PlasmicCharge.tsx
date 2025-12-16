@@ -853,6 +853,76 @@ function PlasmicCharge__RenderFunc(props: {
                         }
                       </div>
                     </div>
+                    {(
+                      hasVariant(globalVariants, "screen", "mobileOnly")
+                        ? (() => {
+                            try {
+                              return $state.user.users[0].name ||
+                                $state.user.users[0].family
+                                ? true
+                                : false;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return false;
+                              }
+                              throw e;
+                            }
+                          })()
+                        : (() => {
+                            try {
+                              return true;
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return true;
+                              }
+                              throw e;
+                            }
+                          })()
+                    ) ? (
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          sty.freeBox__ticJa
+                        )}
+                      >
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__dYzuo
+                          )}
+                        >
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return $state.user.users[0].name ||
+                                  $state.user.users[0].family
+                                  ? "لطفا به " +
+                                      $state.user.users[0].name +
+                                      " " +
+                                      $state.user.users[0].family +
+                                      " اطلاع دهید تا نوبت‌ش را نهایی کند."
+                                  : "";
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return " ";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        </div>
+                      </div>
+                    ) : null}
                   </div>
                 </div>
                 <div className={classNames(projectcss.all, sty.freeBox__kR2Ra)}>

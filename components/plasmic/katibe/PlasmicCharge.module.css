@@ -671,6 +671,54 @@
     width: auto;
   }
 }
+.freeBox__ticJa {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: center;
+  align-items: center;
+  min-width: 0;
+  padding: 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__ticJa {
+    display: flex;
+  }
+}
+.text__dYzuo {
+  animation: none;
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  font-weight: 700;
+  margin-right: 5px;
+  padding-right: 0px;
+  text-align: center;
+  font-size: var(--token-5Ye_3XTSaP9X);
+  padding-bottom: 0px;
+  font-family: var(--iran-sans-x);
+  font-style: normal;
+  color: var(--token-HEGGDBNcnkKS);
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__dYzuo {
+    animation: none;
+    font-size: var(--token-5Ye_3XTSaP9X);
+    text-align: right;
+    width: auto;
+  }
+}
 .freeBox__kR2Ra {
   animation: none;
   display: flex;
