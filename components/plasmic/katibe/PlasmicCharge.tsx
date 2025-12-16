@@ -433,6 +433,7 @@ function PlasmicCharge__RenderFunc(props: {
                             "__wab_instance",
                             sty.txtAmount
                           ),
+                          isDisabled: true,
                           onChange: async (...eventArgs: any) => {
                             ((...eventArgs) => {
                               generateStateOnChangeProp($state, [
@@ -701,9 +702,9 @@ function PlasmicCharge__RenderFunc(props: {
                                       try {
                                         return (
                                           "http://apigw.paziresh24.com/katibe/v1/payment/p24/" +
-                                          $state.txtAmount.value +
+                                          $ctx.query.userid +
                                           "/" +
-                                          $ctx.query.amount +
+                                          $state.txtAmount.value +
                                           "/?time=" +
                                           new Date().toISOString()
                                         );
