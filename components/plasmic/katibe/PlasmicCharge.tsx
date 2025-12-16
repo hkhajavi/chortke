@@ -1076,35 +1076,6 @@ function PlasmicCharge__RenderFunc(props: {
             onMount={async () => {
               const $steps = {};
 
-              $steps["updateWaiting"] = false
-                ? (() => {
-                    const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["waiting"]
-                      },
-                      operation: 0,
-                      value: true
-                    };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
-                      }
-                      const { objRoot, variablePath } = variable;
-
-                      $stateSet(objRoot, variablePath, value);
-                      return value;
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["updateWaiting"] != null &&
-                typeof $steps["updateWaiting"] === "object" &&
-                typeof $steps["updateWaiting"].then === "function"
-              ) {
-                $steps["updateWaiting"] = await $steps["updateWaiting"];
-              }
-
               $steps["getUsers"] = true
                 ? (() => {
                     const actionArgs = {
@@ -1114,7 +1085,7 @@ function PlasmicCharge__RenderFunc(props: {
                           try {
                             return (
                               "https://apigw.paziresh24.com/v1/users/" +
-                              $ctx.query.userid
+                              ($ctx.query.userid || 0)
                             );
                           } catch (e) {
                             if (
@@ -1174,6 +1145,35 @@ function PlasmicCharge__RenderFunc(props: {
                 typeof $steps["updateWaiting3"].then === "function"
               ) {
                 $steps["updateWaiting3"] = await $steps["updateWaiting3"];
+              }
+
+              $steps["updateWaiting"] = false
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["waiting"]
+                      },
+                      operation: 0,
+                      value: true
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateWaiting"] != null &&
+                typeof $steps["updateWaiting"] === "object" &&
+                typeof $steps["updateWaiting"].then === "function"
+              ) {
+                $steps["updateWaiting"] = await $steps["updateWaiting"];
               }
 
               $steps["updateWaiting2"] = false
