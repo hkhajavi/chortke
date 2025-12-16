@@ -2605,7 +2605,21 @@ function PlasmicPay__RenderFunc(props: {
                               style={{ color: "var(--token-HEGGDBNcnkKS)" }}
                             >
                               {
-                                "\u0644\u06cc\u0646\u06a9 \u0632\u06cc\u0631 \u0631\u0627 \u0628\u0631\u0627\u06cc \u062f\u06cc\u06af\u0631\u0627\u0646 \u0627\u0631\u0633\u0627\u0644 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u0628\u0631\u0627\u06cc \u0634\u0645\u0627 \u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0646\u0646\u062f. \u067e\u0633 \u0627\u0632 \u067e\u0631\u062f\u0627\u062e\u062a\u060c \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0634\u0627\u0631\u0698 \u0634\u062f\u0647 \u0648 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0646\u0648\u0628\u062a \u0628\u06af\u06cc\u0631\u06cc\u062f:"
+                                "\u0644\u06cc\u0646\u06a9 \u0632\u06cc\u0631 \u0631\u0627 \u0628\u0631\u0627\u06cc \u062f\u06cc\u06af\u0631\u0627\u0646 \u0627\u0631\u0633\u0627\u0644 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u0628\u0631\u0627\u06cc \u0634\u0645\u0627 \u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0646\u0646\u062f. \u0633\u067e\u0633\u060c \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0634\u0627\u0631\u0698 \u0634\u062f\u0647 \u0648 "
+                              }
+                            </span>
+                            <React.Fragment>{""}</React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{
+                                color: "var(--token-HEGGDBNcnkKS)",
+                                fontWeight: 700
+                              }}
+                            >
+                              {
+                                "\u0644\u0627\u0632\u0645 \u0627\u0633\u062a \u062f\u06a9\u0645\u0647 \u062a\u0627\u06cc\u06cc\u062f \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f."
                               }
                             </span>
                           </React.Fragment>
@@ -2618,8 +2632,31 @@ function PlasmicPay__RenderFunc(props: {
                               style={{ color: "var(--token-HEGGDBNcnkKS)" }}
                             >
                               {
-                                "\u0644\u06cc\u0646\u06a9 \u0632\u06cc\u0631 \u0631\u0627 \u0628\u0631\u0627\u06cc \u062f\u06cc\u06af\u0631\u0627\u0646 \u0627\u0631\u0633\u0627\u0644 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u0628\u0631\u0627\u06cc \u0634\u0645\u0627 \u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0646\u0646\u062f. \u067e\u0633 \u0627\u0632 \u067e\u0631\u062f\u0627\u062e\u062a\u060c \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0634\u0627\u0631\u0698 \u0634\u062f\u0647 \u0648 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u0646\u0648\u0628\u062a \u0628\u06af\u06cc\u0631\u06cc\u062f."
+                                "\u0644\u06cc\u0646\u06a9 \u0632\u06cc\u0631 \u0631\u0627 \u0628\u0631\u0627\u06cc \u062f\u06cc\u06af\u0631\u0627\u0646 \u0627\u0631\u0633\u0627\u0644 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u0628\u0631\u0627\u06cc \u0634\u0645\u0627 \u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0646\u0646\u062f. \u0633\u067e\u0633\u060c \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0634\u0627\u0631\u0698 \u0634\u062f\u0647 \u0648 "
                               }
+                            </span>
+                            <React.Fragment>{""}</React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{
+                                color: "var(--token-HEGGDBNcnkKS)",
+                                fontWeight: 700
+                              }}
+                            >
+                              {
+                                "\u0644\u0627\u0632\u0645 \u0627\u0633\u062a \u062f\u06a9\u0645\u0647 \u062a\u0627\u06cc\u06cc\u062f \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f"
+                              }
+                            </span>
+                            <React.Fragment>{""}</React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{ color: "var(--token-HEGGDBNcnkKS)" }}
+                            >
+                              {":"}
                             </span>
                           </React.Fragment>
                         )}
@@ -2764,7 +2801,25 @@ function PlasmicPay__RenderFunc(props: {
                     <Button
                       data-plasmic-name={"btnPayMethod"}
                       data-plasmic-override={overrides.btnPayMethod}
-                      children2={"  \u067e\u0631\u062f\u0627\u062e\u062a  "}
+                      children2={
+                        <React.Fragment>
+                          {(() => {
+                            try {
+                              return $state.paymentsMethod.value == "link"
+                                ? "تایید پرداخت"
+                                : "پرداخت";
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return "  \u067e\u0631\u062f\u0627\u062e\u062a  ";
+                              }
+                              throw e;
+                            }
+                          })()}
+                        </React.Fragment>
+                      }
                       className={classNames("__wab_instance", sty.btnPayMethod)}
                       isDisabled={(() => {
                         try {
