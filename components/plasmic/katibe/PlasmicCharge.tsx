@@ -965,7 +965,7 @@ function PlasmicCharge__RenderFunc(props: {
                                       " " +
                                       $state.user.users[0].family +
                                       " اطلاع دهید تا نوبت‌ش را نهایی کند."
-                                  : "";
+                                  : "لطفا به کاربر مورد نظر اطلاع دهید تا نوبت‌ش را نهایی کند.";
                               } catch (e) {
                                 if (
                                   e instanceof TypeError ||
