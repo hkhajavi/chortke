@@ -260,7 +260,8 @@ function PlasmicCharge__RenderFunc(props: {
                     return (
                       $ctx.query.type == "charge" ||
                       $ctx.query.type == "payment-error" ||
-                      $ctx.query.type == ""
+                      $ctx.query.type == "" ||
+                      $ctx.query.type.length == 0
                     );
                   } catch (e) {
                     if (
