@@ -1062,7 +1062,7 @@ function PlasmicCharge__RenderFunc(props: {
             className={classNames("__wab_instance", sty.sideeffectPageload)}
             deps={(() => {
               try {
-                return $ctx.query.userid;
+                return [$ctx.query.userid];
               } catch (e) {
                 if (
                   e instanceof TypeError ||
