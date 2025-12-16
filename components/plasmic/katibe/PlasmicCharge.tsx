@@ -1076,34 +1076,36 @@ function PlasmicCharge__RenderFunc(props: {
             onMount={async () => {
               const $steps = {};
 
-              $steps["getUsers"] = true
-                ? (() => {
-                    const actionArgs = {
-                      args: [
-                        undefined,
-                        (() => {
-                          try {
-                            return (
-                              "https://apigw.paziresh24.com/v1/users/" +
-                              ($ctx.query.userid || 0)
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
+              $steps["getUsers"] =
+                $ctx.query.userid != undefined && $ctx.query.userid > 0
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          undefined,
+                          (() => {
+                            try {
+                              return (
+                                "https://apigw.paziresh24.com/v1/users/" +
+                                $ctx.query.userid
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
                             }
-                            throw e;
-                          }
-                        })()
-                      ]
-                    };
-                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                      ...actionArgs.args
-                    ]);
-                  })()
-                : undefined;
+                          })()
+                        ]
+                      };
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
+                    })()
+                  : undefined;
               if (
                 $steps["getUsers"] != null &&
                 typeof $steps["getUsers"] === "object" &&
@@ -1112,7 +1114,9 @@ function PlasmicCharge__RenderFunc(props: {
                 $steps["getUsers"] = await $steps["getUsers"];
               }
 
-              $steps["updateWaiting3"] =
+              $steps["updateUser"] =
+                $ctx.query.userid != undefined &&
+                $ctx.query.userid > 0 &&
                 $steps.getUsers.status == 200
                   ? (() => {
                       const actionArgs = {
@@ -1140,11 +1144,11 @@ function PlasmicCharge__RenderFunc(props: {
                     })()
                   : undefined;
               if (
-                $steps["updateWaiting3"] != null &&
-                typeof $steps["updateWaiting3"] === "object" &&
-                typeof $steps["updateWaiting3"].then === "function"
+                $steps["updateUser"] != null &&
+                typeof $steps["updateUser"] === "object" &&
+                typeof $steps["updateUser"].then === "function"
               ) {
-                $steps["updateWaiting3"] = await $steps["updateWaiting3"];
+                $steps["updateUser"] = await $steps["updateUser"];
               }
 
               $steps["updateWaiting"] = false
