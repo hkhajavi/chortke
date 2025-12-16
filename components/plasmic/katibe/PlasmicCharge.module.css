@@ -433,6 +433,16 @@
   min-width: 0;
   padding: 8px;
 }
+.text__b13Ug {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  color: var(--token-HEGGDBNcnkKS);
+  text-align: center;
+  font-size: var(--token-5Ye_3XTSaP9X);
+  min-width: 0;
+}
 .button__gCvRa:global(.__wab_instance) {
   max-width: 100%;
 }
@@ -881,6 +891,10 @@
   object-fit: cover;
 }
 .sideeffectPageload:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
+}
+.onLoad:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;
 }

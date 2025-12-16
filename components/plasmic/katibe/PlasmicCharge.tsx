@@ -92,6 +92,7 @@ export type PlasmicCharge__OverridesType = {
   root?: Flex__<"div">;
   txtAmount?: Flex__<typeof TextInput>;
   sideeffectPageload?: Flex__<typeof SideEffect>;
+  onLoad?: Flex__<typeof SideEffect>;
 };
 
 export interface DefaultChargeProps {}
@@ -185,6 +186,12 @@ function PlasmicCharge__RenderFunc(props: {
         type: "private",
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+      },
+      {
+        path: "iplocation",
+        type: "private",
+        variableType: "text",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -353,9 +360,11 @@ function PlasmicCharge__RenderFunc(props: {
                             try {
                               return (
                                 "شارژ کیف پول " +
-                                $state.user.users[0].name +
-                                " " +
-                                $state.user.users[0].family
+                                (
+                                  $state.user.users[0].name +
+                                  " " +
+                                  $state.user.users[0].family
+                                ).replaceAll("null", "")
                               );
                             } catch (e) {
                               if (
@@ -433,7 +442,6 @@ function PlasmicCharge__RenderFunc(props: {
                             "__wab_instance",
                             sty.txtAmount
                           ),
-                          isDisabled: true,
                           onChange: async (...eventArgs: any) => {
                             ((...eventArgs) => {
                               generateStateOnChangeProp($state, [
@@ -650,6 +658,54 @@ function PlasmicCharge__RenderFunc(props: {
                     <div
                       className={classNames(projectcss.all, sty.freeBox__eTbjJ)}
                     >
+                      {(() => {
+                        try {
+                          return (
+                            $state.iplocation &&
+                            $state.iplocation != "" &&
+                            $state.iplocation.toLowerCase().trim() !== "iran"
+                          );
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text__b13Ug
+                          )}
+                        >
+                          <React.Fragment>
+                            <React.Fragment>
+                              {
+                                "\u06a9\u0627\u0631\u0628\u0631 \u06af\u0631\u0627\u0645\u06cc\u060c \u0644\u0637\u0641\u0627 \u0645\u0637\u0645\u0626\u0646 \u0634\u0648\u06cc\u062f \u06a9\u0647 "
+                              }
+                            </React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{ color: "#FF0000" }}
+                            >
+                              {
+                                "VPN/\u0641\u06cc\u0644\u062a\u0631\u0634\u06a9\u0646"
+                              }
+                            </span>
+                            <React.Fragment>
+                              {
+                                " \u0634\u0645\u0627 \u062e\u0627\u0645\u0648\u0634 \u0627\u0633\u062a \u0648 \u0633\u067e\u0633 \u062f\u06a9\u0645\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f."
+                              }
+                            </React.Fragment>
+                          </React.Fragment>
+                        </div>
+                      ) : null}
                       <Button
                         children2={"\u067e\u0631\u062f\u0627\u062e\u062a"}
                         className={classNames(
@@ -1284,6 +1340,72 @@ function PlasmicCharge__RenderFunc(props: {
               }
             }}
           />
+
+          <SideEffect
+            data-plasmic-name={"onLoad"}
+            data-plasmic-override={overrides.onLoad}
+            className={classNames("__wab_instance", sty.onLoad)}
+            onMount={async () => {
+              const $steps = {};
+
+              $steps["invokeGlobalAction"] = true
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        undefined,
+                        "https://apigw.paziresh24.com/katibe/v1/ip-location"
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
+              if (
+                $steps["invokeGlobalAction"] != null &&
+                typeof $steps["invokeGlobalAction"] === "object" &&
+                typeof $steps["invokeGlobalAction"].then === "function"
+              ) {
+                $steps["invokeGlobalAction"] =
+                  await $steps["invokeGlobalAction"];
+              }
+
+              $steps["updateIplocation"] =
+                $steps.invokeGlobalAction.status == 200
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["iplocation"]
+                        },
+                        operation: 0,
+                        value: $steps.invokeGlobalAction.data
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updateIplocation"] != null &&
+                typeof $steps["updateIplocation"] === "object" &&
+                typeof $steps["updateIplocation"].then === "function"
+              ) {
+                $steps["updateIplocation"] = await $steps["updateIplocation"];
+              }
+            }}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -1291,9 +1413,10 @@ function PlasmicCharge__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "txtAmount", "sideeffectPageload"],
+  root: ["root", "txtAmount", "sideeffectPageload", "onLoad"],
   txtAmount: ["txtAmount"],
-  sideeffectPageload: ["sideeffectPageload"]
+  sideeffectPageload: ["sideeffectPageload"],
+  onLoad: ["onLoad"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1302,6 +1425,7 @@ type NodeDefaultElementType = {
   root: "div";
   txtAmount: typeof TextInput;
   sideeffectPageload: typeof SideEffect;
+  onLoad: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1368,6 +1492,7 @@ export const PlasmicCharge = Object.assign(
     // Helper components rendering sub-elements
     txtAmount: makeNodeComponent("txtAmount"),
     sideeffectPageload: makeNodeComponent("sideeffectPageload"),
+    onLoad: makeNodeComponent("onLoad"),
 
     // Metadata about props expected for PlasmicCharge
     internalVariantProps: PlasmicCharge__VariantProps,
