@@ -2429,6 +2429,26 @@
           "id": "XxCsgtxm11V7",
           "name": "share.webp",
           "filePath": "../public/plasmic/katibe/images/shareWebp.webp"
+        },
+        {
+          "id": "JWKvKfRCJNHd",
+          "name": "share5.svg",
+          "filePath": "../public/plasmic/katibe/images/share5Svg.svg"
+        },
+        {
+          "id": "TxLd3S1gZHnr",
+          "name": "link.svg",
+          "filePath": "../public/plasmic/katibe/images/linkSvg.svg"
+        },
+        {
+          "id": "6rU9dE9_AMEC",
+          "name": "link.ico",
+          "filePath": "../public/plasmic/katibe/images/linkIco.ico"
+        },
+        {
+          "id": "0BZ6bWElJjdr",
+          "name": "link2.svg",
+          "filePath": "../public/plasmic/katibe/images/link2Svg.svg"
         }
       ],
       "indirect": false,

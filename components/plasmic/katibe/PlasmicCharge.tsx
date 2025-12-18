@@ -1281,7 +1281,7 @@ function PlasmicCharge__RenderFunc(props: {
 
                     <PlasmicImg__
                       alt={""}
-                      className={classNames(sty.img__ab6Ew)}
+                      className={classNames(sty.img__mqh8Q)}
                       displayHeight={"auto"}
                       displayMaxHeight={"none"}
                       displayMaxWidth={"100%"}
@@ -1290,16 +1290,16 @@ function PlasmicCharge__RenderFunc(props: {
                       displayWidth={"auto"}
                       loading={"lazy"}
                       src={{
-                        src: "/plasmic/katibe/images/_8103876Png.png",
-                        fullWidth: 512,
-                        fullHeight: 512,
+                        src: "/plasmic/katibe/images/linkSvg.svg",
+                        fullWidth: 225,
+                        fullHeight: 225,
                         aspectRatio: undefined
                       }}
                     />
 
                     <PlasmicImg__
                       alt={""}
-                      className={classNames(sty.img__xLg5L)}
+                      className={classNames(sty.img__hb9Yc)}
                       displayHeight={"auto"}
                       displayMaxHeight={"none"}
                       displayMaxWidth={"100%"}
@@ -1308,9 +1308,27 @@ function PlasmicCharge__RenderFunc(props: {
                       displayWidth={"auto"}
                       loading={"lazy"}
                       src={{
-                        src: "/plasmic/katibe/images/shareWebp.webp",
-                        fullWidth: 240,
-                        fullHeight: 240,
+                        src: "/plasmic/katibe/images/linkIco.ico",
+                        fullWidth: 256,
+                        fullHeight: 256,
+                        aspectRatio: undefined
+                      }}
+                    />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__wqU3W)}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/katibe/images/link2Svg.svg",
+                        fullWidth: 24,
+                        fullHeight: 24,
                         aspectRatio: undefined
                       }}
                     />
