@@ -192,6 +192,12 @@ function PlasmicCharge__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "paymentFactor",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
       }
     ],
     [$props, $ctx, $refs]
@@ -1149,24 +1155,6 @@ function PlasmicCharge__RenderFunc(props: {
 
                     <PlasmicImg__
                       alt={""}
-                      className={classNames(sty.img__rqyfX)}
-                      displayHeight={"auto"}
-                      displayMaxHeight={"none"}
-                      displayMaxWidth={"100%"}
-                      displayMinHeight={"0"}
-                      displayMinWidth={"0"}
-                      displayWidth={"auto"}
-                      loading={"lazy"}
-                      src={{
-                        src: "/plasmic/katibe/images/mollieAvif.avif",
-                        fullWidth: 740,
-                        fullHeight: 240,
-                        aspectRatio: undefined
-                      }}
-                    />
-
-                    <PlasmicImg__
-                      alt={""}
                       className={classNames(sty.img__t9QVd)}
                       displayHeight={"auto"}
                       displayMaxHeight={"none"}
@@ -1179,6 +1167,114 @@ function PlasmicCharge__RenderFunc(props: {
                         src: "/plasmic/katibe/images/sepSvg.svg",
                         fullWidth: 32,
                         fullHeight: 32,
+                        aspectRatio: undefined
+                      }}
+                    />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__aOO8)}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/katibe/images/visaSvg.svg",
+                        fullWidth: 24,
+                        fullHeight: 18,
+                        aspectRatio: undefined
+                      }}
+                    />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__kWcMs)}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/katibe/images/mastercardSvg.svg",
+                        fullWidth: 24,
+                        fullHeight: 18,
+                        aspectRatio: undefined
+                      }}
+                    />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__icBr3)}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/katibe/images/creditcardSvg.svg",
+                        fullWidth: 30,
+                        fullHeight: 30,
+                        aspectRatio: undefined
+                      }}
+                    />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__zhx4C)}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/katibe/images/amexSvg.svg",
+                        fullWidth: 24,
+                        fullHeight: 18,
+                        aspectRatio: undefined
+                      }}
+                    />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__kgVd)}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/katibe/images/paybybankSvg.svg",
+                        fullWidth: 30,
+                        fullHeight: 30,
+                        aspectRatio: undefined
+                      }}
+                    />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__tnt9L)}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/katibe/images/banktransferSvg.svg",
+                        fullWidth: 30,
+                        fullHeight: 30,
                         aspectRatio: undefined
                       }}
                     />

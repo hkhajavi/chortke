@@ -2374,6 +2374,51 @@
           "id": "Q3Ep4qZJMVoe",
           "name": "blu-pay.svg",
           "filePath": "../public/plasmic/katibe/images/bluPaySvg.svg"
+        },
+        {
+          "id": "I_IOP6PuY6DA",
+          "name": "pay1.webp",
+          "filePath": "../public/plasmic/katibe/images/pay1Webp.webp"
+        },
+        {
+          "id": "v67ECps-Z4Re",
+          "name": "visa.svg",
+          "filePath": "../public/plasmic/katibe/images/visaSvg.svg"
+        },
+        {
+          "id": "o38idgeh63A1",
+          "name": "mastercard.svg",
+          "filePath": "../public/plasmic/katibe/images/mastercardSvg.svg"
+        },
+        {
+          "id": "RygCKgVvj5PH",
+          "name": "creditcard.svg",
+          "filePath": "../public/plasmic/katibe/images/creditcardSvg.svg"
+        },
+        {
+          "id": "L2cKwqi3AEK5",
+          "name": "amex.svg",
+          "filePath": "../public/plasmic/katibe/images/amexSvg.svg"
+        },
+        {
+          "id": "S2AoAC6e8mQ9",
+          "name": "paybybank.svg",
+          "filePath": "../public/plasmic/katibe/images/paybybankSvg.svg"
+        },
+        {
+          "id": "u9J2cAs0nfo9",
+          "name": "banktransfer.svg",
+          "filePath": "../public/plasmic/katibe/images/banktransferSvg.svg"
+        },
+        {
+          "id": "4HCewUo4BLzN",
+          "name": "visa-master.png",
+          "filePath": "../public/plasmic/katibe/images/visaMasterPng.png"
+        },
+        {
+          "id": "AAr1crmiKl6Y",
+          "name": "ap.png",
+          "filePath": "../public/plasmic/katibe/images/apPng.png"
         }
       ],
       "indirect": false,
