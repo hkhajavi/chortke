@@ -925,6 +925,20 @@
 .img__tnt9L > picture > img {
   object-fit: cover;
 }
+.img__ab6Ew {
+  object-fit: cover;
+  max-width: 100%;
+}
+.img__ab6Ew > picture > img {
+  object-fit: cover;
+}
+.img__xLg5L {
+  object-fit: cover;
+  max-width: 100%;
+}
+.img__xLg5L > picture > img {
+  object-fit: cover;
+}
 .sideeffectPageload:global(.__wab_instance) {
   max-width: 100%;
   object-fit: cover;

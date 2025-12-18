@@ -2419,6 +2419,16 @@
           "id": "AAr1crmiKl6Y",
           "name": "ap.png",
           "filePath": "../public/plasmic/katibe/images/apPng.png"
+        },
+        {
+          "id": "G5ojYFYYq1tk",
+          "name": "8103876.png",
+          "filePath": "../public/plasmic/katibe/images/_8103876Png.png"
+        },
+        {
+          "id": "XxCsgtxm11V7",
+          "name": "share.webp",
+          "filePath": "../public/plasmic/katibe/images/shareWebp.webp"
         }
       ],
       "indirect": false,
