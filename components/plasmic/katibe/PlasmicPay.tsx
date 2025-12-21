@@ -2901,7 +2901,9 @@ function PlasmicPay__RenderFunc(props: {
                                         "&type=" +
                                         $state.paymentsMethod.value +
                                         "&uuid=" +
-                                        Date.now()
+                                        Date.now() +
+                                        "&payment_method=" +
+                                        $state.paymentsMethod.value
                                       );
                                     } catch (e) {
                                       if (
