@@ -2879,12 +2879,18 @@ function PlasmicPay__RenderFunc(props: {
                                   (() => {
                                     try {
                                       return (
-                                        "https://apigw.paziresh24.com/katibe/v1/check-balance-or-pay?amount=" +
+                                        "https://apigw.paziresh24.com/katibe/v1/topups?amount=" +
                                         ($ctx.query.amount || 0) +
                                         "&returnlink=" +
-                                        ($ctx.query.returnlink || "") +
+                                        (globalThis.encodeURIComponent(
+                                          globalThis.atob($ctx.query.returnlink)
+                                        ) || "") +
                                         "&cancel_returnlink=" +
-                                        ($ctx.query.cancel_returnlink || "") +
+                                        (globalThis.encodeURIComponent(
+                                          globalThis.atob(
+                                            $ctx.query.cancel_returnlink
+                                          )
+                                        ) || "") +
                                         "&receipt_id=" +
                                         ($ctx.query.receipt_id || "") +
                                         "&center_id=" +
