@@ -2449,6 +2449,11 @@
           "id": "0BZ6bWElJjdr",
           "name": "link2.svg",
           "filePath": "../public/plasmic/katibe/images/link2Svg.svg"
+        },
+        {
+          "id": "5usirVzqcMs2",
+          "name": "stripe.webp",
+          "filePath": "../public/plasmic/katibe/images/stripeWebp.webp"
         }
       ],
       "indirect": false,
