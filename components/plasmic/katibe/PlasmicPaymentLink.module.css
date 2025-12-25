@@ -121,7 +121,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__kSkIp {
     animation: none;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
   }
 }
@@ -135,7 +135,7 @@
   margin-right: 0px;
   padding-right: 0px;
   text-align: center;
-  font-size: 20px;
+  font-size: var(--token-5Ye_3XTSaP9X);
   padding-bottom: 0px;
   font-family: var(--iran-sans-x);
   font-style: normal;
@@ -151,7 +151,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text___3IayL {
     animation: none;
-    font-size: 18px;
+    font-size: var(--token-5Ye_3XTSaP9X);
     text-align: center;
     width: auto;
     color: #535353;
@@ -566,4 +566,8 @@
   .sideEffectPageLoad:global(.__wab_instance) {
     animation: none;
   }
+}
+.embedHtml:global(.__wab_instance) {
+  max-width: 100%;
+  object-fit: cover;
 }

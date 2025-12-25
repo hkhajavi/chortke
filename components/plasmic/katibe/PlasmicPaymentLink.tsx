@@ -62,6 +62,7 @@ import {
 import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
 import Button from "../../Button"; // plasmic-import: 0wu_ZE1f8SuT/component
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
+import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/styleTokensProvider
 
@@ -98,6 +99,7 @@ export type PlasmicPaymentLink__OverridesType = {
   btnOverseasePayRemitation?: Flex__<typeof Button>;
   button?: Flex__<typeof Button>;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
+  embedHtml?: Flex__<typeof Embed>;
 };
 
 export interface DefaultPaymentLinkProps {}
@@ -268,7 +270,7 @@ function PlasmicPaymentLink__RenderFunc(props: {
                         )}
                       >
                         {
-                          "\u0634\u0627\u0631\u0698 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0628\u0627 \u0627\u0631\u0633\u0627\u0644 \u0644\u06cc\u0646\u06a9 \u067e\u0631\u062f\u0627\u062e\u062a \u0628\u0631\u0627\u06cc \u062f\u06cc\u06af\u0631\u0627\u0646"
+                          "\u067e\u0631\u062f\u0627\u062e\u062a \u062a\u0648\u0633\u0637 \u062f\u06cc\u06af\u0631\u0627\u0646"
                         }
                       </div>
                       {(() => {
@@ -903,6 +905,15 @@ function PlasmicPaymentLink__RenderFunc(props: {
               }
             }}
           />
+
+          <Embed
+            data-plasmic-name={"embedHtml"}
+            data-plasmic-override={overrides.embedHtml}
+            className={classNames("__wab_instance", sty.embedHtml)}
+            code={
+              '<script type="text/javascript">\r\n    (function(c,l,a,r,i,t,y){\r\n        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\r\n        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;\r\n        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);\r\n    })(window, document, "clarity", "script", "rr61es0fkb");\r\n</script>'
+            }
+          />
         </div>
       </div>
     </React.Fragment>
@@ -917,7 +928,8 @@ const PlasmicDescendants = {
     "txtPaymentLink",
     "btnOverseasePayRemitation",
     "button",
-    "sideEffectPageLoad"
+    "sideEffectPageLoad",
+    "embedHtml"
   ],
   section: [
     "section",
@@ -930,7 +942,8 @@ const PlasmicDescendants = {
   txtPaymentLink: ["txtPaymentLink"],
   btnOverseasePayRemitation: ["btnOverseasePayRemitation"],
   button: ["button"],
-  sideEffectPageLoad: ["sideEffectPageLoad"]
+  sideEffectPageLoad: ["sideEffectPageLoad"],
+  embedHtml: ["embedHtml"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -943,6 +956,7 @@ type NodeDefaultElementType = {
   btnOverseasePayRemitation: typeof Button;
   button: typeof Button;
   sideEffectPageLoad: typeof SideEffect;
+  embedHtml: typeof Embed;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1013,6 +1027,7 @@ export const PlasmicPaymentLink = Object.assign(
     btnOverseasePayRemitation: makeNodeComponent("btnOverseasePayRemitation"),
     button: makeNodeComponent("button"),
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
+    embedHtml: makeNodeComponent("embedHtml"),
 
     // Metadata about props expected for PlasmicPaymentLink
     internalVariantProps: PlasmicPaymentLink__VariantProps,
