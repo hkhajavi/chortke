@@ -2483,6 +2483,16 @@
           "id": "KH4rmsd6BNtC",
           "name": "visamaster.png 2",
           "filePath": "../public/plasmic/katibe/images/visamasterPng2.png"
+        },
+        {
+          "id": "O9HP0tVauHM8",
+          "name": "mastervisacard.png",
+          "filePath": "../public/plasmic/katibe/images/mastervisacardPng.png"
+        },
+        {
+          "id": "pFIMvnjDFAJ2",
+          "name": "visamastercard.png",
+          "filePath": "../public/plasmic/katibe/images/visamastercardPng.png"
         }
       ],
       "indirect": false,

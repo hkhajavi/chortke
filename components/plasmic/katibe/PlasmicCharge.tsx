@@ -1374,6 +1374,24 @@ function PlasmicCharge__RenderFunc(props: {
                         aspectRatio: undefined
                       }}
                     />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img___1Hhs9)}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/katibe/images/visamastercardPng.png",
+                        fullWidth: 300,
+                        fullHeight: 298,
+                        aspectRatio: undefined
+                      }}
+                    />
                   </div>
                 </div>
               ) : null}
