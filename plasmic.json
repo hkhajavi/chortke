@@ -2116,6 +2116,11 @@
           "id": "XghkAcf2gugo",
           "name": "Icon57Icon",
           "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon57.tsx"
+        },
+        {
+          "id": "MnaaH4eG1eMW",
+          "name": "VisamasterSvgIcon",
+          "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__VisamasterSvg.tsx"
         }
       ],
       "images": [
@@ -2473,6 +2478,11 @@
           "id": "5usirVzqcMs2",
           "name": "stripe.webp",
           "filePath": "../public/plasmic/katibe/images/stripeWebp.webp"
+        },
+        {
+          "id": "KH4rmsd6BNtC",
+          "name": "visamaster.png 2",
+          "filePath": "../public/plasmic/katibe/images/visamasterPng2.png"
         }
       ],
       "indirect": false,

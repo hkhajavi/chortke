@@ -76,6 +76,7 @@ import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: VZ6
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
 import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
 import Icon14Icon from "./icons/PlasmicIcon__Icon14"; // plasmic-import: mHP_U4hM0IP3/icon
+import VisamasterSvgIcon from "./icons/PlasmicIcon__VisamasterSvg"; // plasmic-import: MnaaH4eG1eMW/icon
 
 createPlasmicElementProxy;
 
@@ -1347,6 +1348,29 @@ function PlasmicCharge__RenderFunc(props: {
                         src: "/plasmic/katibe/images/stripeWebp.webp",
                         fullWidth: 256,
                         fullHeight: 256,
+                        aspectRatio: undefined
+                      }}
+                    />
+
+                    <VisamasterSvgIcon
+                      className={classNames(projectcss.all, sty.svg__mFawF)}
+                      role={"img"}
+                    />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__iuNnk)}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/katibe/images/visamasterPng2.png",
+                        fullWidth: 593,
+                        fullHeight: 153,
                         aspectRatio: undefined
                       }}
                     />

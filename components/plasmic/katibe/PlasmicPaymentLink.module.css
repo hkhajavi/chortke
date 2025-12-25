@@ -22,6 +22,11 @@
 .root > * {
   grid-column: 4;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .root > * {
+    grid-column: 4;
+  }
+}
 .section {
   animation: none;
   display: grid;
@@ -116,6 +121,8 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__kSkIp {
     animation: none;
+    justify-content: center;
+    align-items: center;
   }
 }
 .text___3IayL {
@@ -145,7 +152,7 @@
   .text___3IayL {
     animation: none;
     font-size: 18px;
-    text-align: right;
+    text-align: center;
     width: auto;
     color: #535353;
   }
