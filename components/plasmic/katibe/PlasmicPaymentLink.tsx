@@ -381,78 +381,160 @@ function PlasmicPaymentLink__RenderFunc(props: {
                   <div
                     className={classNames(projectcss.all, sty.freeBox__yd9Cn)}
                   >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__d8MK9
-                      )}
-                    >
-                      {hasVariant(globalVariants, "screen", "mobileOnly") ? (
-                        <React.Fragment>
-                          <span
-                            className={
-                              "plasmic_default__all plasmic_default__span"
-                            }
-                            style={{ color: "var(--token-HEGGDBNcnkKS)" }}
-                          >
-                            {
-                              "\u0644\u06cc\u0646\u06a9 \u0632\u06cc\u0631 \u0631\u0627 \u0628\u0631\u0627\u06cc \u062f\u06cc\u06af\u0631\u0627\u0646 \u0627\u0631\u0633\u0627\u0644 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u0628\u0631\u0627\u06cc \u0634\u0645\u0627 \u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0646\u0646\u062f. \u0633\u067e\u0633\u060c \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0634\u0627\u0631\u0698 \u0634\u062f\u0647 \u0648 "
-                            }
-                          </span>
-                          <React.Fragment>{""}</React.Fragment>
-                          <span
-                            className={
-                              "plasmic_default__all plasmic_default__span"
-                            }
-                            style={{
-                              color: "var(--token-HEGGDBNcnkKS)",
-                              fontWeight: 700
-                            }}
-                          >
-                            {
-                              "\u0644\u0627\u0632\u0645 \u0627\u0633\u062a \u062f\u06a9\u0645\u0647 \u062a\u0627\u06cc\u06cc\u062f \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f."
-                            }
-                          </span>
-                        </React.Fragment>
-                      ) : (
-                        <React.Fragment>
-                          <span
-                            className={
-                              "plasmic_default__all plasmic_default__span"
-                            }
-                            style={{ color: "var(--token-HEGGDBNcnkKS)" }}
-                          >
-                            {
-                              "\u0644\u06cc\u0646\u06a9 \u0632\u06cc\u0631 \u0631\u0627 \u0628\u0631\u0627\u06cc \u062f\u06cc\u06af\u0631\u0627\u0646 \u0627\u0631\u0633\u0627\u0644 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u0628\u0631\u0627\u06cc \u0634\u0645\u0627 \u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0646\u0646\u062f. \u0633\u067e\u0633\u060c \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0634\u0627\u0631\u0698 \u0634\u062f\u0647 \u0648 "
-                            }
-                          </span>
-                          <React.Fragment>{""}</React.Fragment>
-                          <span
-                            className={
-                              "plasmic_default__all plasmic_default__span"
-                            }
-                            style={{
-                              color: "var(--token-HEGGDBNcnkKS)",
-                              fontWeight: 700
-                            }}
-                          >
-                            {
-                              "\u0644\u0627\u0632\u0645 \u0627\u0633\u062a \u062f\u06a9\u0645\u0647 \u062a\u0627\u06cc\u06cc\u062f \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f"
-                            }
-                          </span>
-                          <React.Fragment>{""}</React.Fragment>
-                          <span
-                            className={
-                              "plasmic_default__all plasmic_default__span"
-                            }
-                            style={{ color: "var(--token-HEGGDBNcnkKS)" }}
-                          >
-                            {":"}
-                          </span>
-                        </React.Fragment>
-                      )}
-                    </div>
+                    {(() => {
+                      try {
+                        return (
+                          !$ctx.query.type ||
+                          $ctx.query.type == undefined ||
+                          $ctx.query.type == "" ||
+                          $ctx.query.type.length == 0
+                        );
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
+                        }
+                        throw e;
+                      }
+                    })() ? (
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text__d8MK9
+                        )}
+                      >
+                        {hasVariant(globalVariants, "screen", "mobileOnly") ? (
+                          <React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{ color: "var(--token-HEGGDBNcnkKS)" }}
+                            >
+                              {
+                                "\u0644\u06cc\u0646\u06a9 \u0632\u06cc\u0631 \u0631\u0627 \u0628\u0631\u0627\u06cc \u062f\u06cc\u06af\u0631\u0627\u0646 \u0627\u0631\u0633\u0627\u0644 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u0628\u0631\u0627\u06cc \u0634\u0645\u0627 \u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0646\u0646\u062f. \u0633\u067e\u0633\u060c \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0634\u0627\u0631\u0698 \u0634\u062f\u0647 \u0648 "
+                              }
+                            </span>
+                            <React.Fragment>{""}</React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{
+                                color: "var(--token-HEGGDBNcnkKS)",
+                                fontWeight: 700
+                              }}
+                            >
+                              {
+                                "\u0644\u0627\u0632\u0645 \u0627\u0633\u062a \u062f\u06a9\u0645\u0647 \u062a\u0627\u06cc\u06cc\u062f \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f."
+                              }
+                            </span>
+                          </React.Fragment>
+                        ) : (
+                          <React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{ color: "var(--token-HEGGDBNcnkKS)" }}
+                            >
+                              {
+                                "\u0644\u06cc\u0646\u06a9 \u0632\u06cc\u0631 \u0631\u0627 \u0628\u0631\u0627\u06cc \u062f\u06cc\u06af\u0631\u0627\u0646 \u0627\u0631\u0633\u0627\u0644 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u0628\u0631\u0627\u06cc \u0634\u0645\u0627 \u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0646\u0646\u062f. \u0633\u067e\u0633\u060c \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0634\u0627\u0631\u0698 \u0634\u062f\u0647 \u0648 "
+                              }
+                            </span>
+                            <React.Fragment>{""}</React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{
+                                color: "var(--token-HEGGDBNcnkKS)",
+                                fontWeight: 700
+                              }}
+                            >
+                              {
+                                "\u0644\u0627\u0632\u0645 \u0627\u0633\u062a \u062f\u06a9\u0645\u0647 \u062a\u0627\u06cc\u06cc\u062f \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f"
+                              }
+                            </span>
+                            <React.Fragment>{""}</React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{ color: "var(--token-HEGGDBNcnkKS)" }}
+                            >
+                              {":"}
+                            </span>
+                          </React.Fragment>
+                        )}
+                      </div>
+                    ) : null}
+                    {(() => {
+                      try {
+                        return $ctx.query.type == "check-link";
+                      } catch (e) {
+                        if (
+                          e instanceof TypeError ||
+                          e?.plasmicType === "PlasmicUndefinedDataError"
+                        ) {
+                          return true;
+                        }
+                        throw e;
+                      }
+                    })() ? (
+                      <div
+                        className={classNames(
+                          projectcss.all,
+                          projectcss.__wab_text,
+                          sty.text___0Bbeu
+                        )}
+                      >
+                        {hasVariant(globalVariants, "screen", "mobileOnly") ? (
+                          <React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{ color: "var(--token-HEGGDBNcnkKS)" }}
+                            >
+                              {
+                                "\u0644\u06cc\u0646\u06a9 \u0632\u06cc\u0631 \u0631\u0627 \u0628\u0631\u0627\u06cc \u062f\u06cc\u06af\u0631\u0627\u0646 \u0627\u0631\u0633\u0627\u0644 \u06a9\u0646\u06cc\u062f \u062a\u0627 \u0628\u0631\u0627\u06cc \u0634\u0645\u0627 \u067e\u0631\u062f\u0627\u062e\u062a \u06a9\u0646\u0646\u062f. \u0633\u067e\u0633\u060c \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0634\u0627\u0631\u0698 \u0634\u062f\u0647 \u0648 "
+                              }
+                            </span>
+                            <React.Fragment>{""}</React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{
+                                color: "var(--token-HEGGDBNcnkKS)",
+                                fontWeight: 700
+                              }}
+                            >
+                              {
+                                "\u0644\u0627\u0632\u0645 \u0627\u0633\u062a \u062f\u06a9\u0645\u0647 \u062a\u0627\u06cc\u06cc\u062f \u067e\u0631\u062f\u0627\u062e\u062a \u0631\u0627 \u0628\u0632\u0646\u06cc\u062f."
+                              }
+                            </span>
+                          </React.Fragment>
+                        ) : (
+                          <React.Fragment>
+                            <span
+                              className={
+                                "plasmic_default__all plasmic_default__span"
+                              }
+                              style={{ color: "var(--token-HEGGDBNcnkKS)" }}
+                            >
+                              {
+                                "\u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0634\u0645\u0627 \u0641\u0627\u0642\u062f \u0645\u0648\u062c\u0648\u062f\u06cc \u0628\u0647 \u0645\u06cc\u0632\u0627\u0646 \u06a9\u0627\u0641\u06cc \u0645\u06cc\u200c\u0628\u0627\u0634\u062f. \u0644\u0637\u0641\u0627 \u0644\u06cc\u0646\u06a9 \u0632\u06cc\u0631 \u0631\u0627 \u0628\u0631\u0627\u06cc \u062f\u06cc\u06af\u0631\u0627\u0646 \u0627\u0631\u0633\u0627\u0644 \u06a9\u0646\u06cc\u062f."
+                              }
+                            </span>
+                          </React.Fragment>
+                        )}
+                      </div>
+                    ) : null}
                     <div
                       className={classNames(projectcss.all, sty.freeBox__aXlfR)}
                     >
@@ -592,7 +674,7 @@ function PlasmicPaymentLink__RenderFunc(props: {
                                       ($ctx.query.refund_timeout || 60) +
                                       "&uuid=" +
                                       Date.now() +
-                                      "&payment_method=link"
+                                      "&payment_method=link&type=check-link"
                                     );
                                   } catch (e) {
                                     if (

@@ -355,6 +355,38 @@
     padding-top: 0px;
   }
 }
+.text___0Bbeu {
+  animation: none;
+  position: relative;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  padding-bottom: 0px;
+  text-align: right;
+  color: #ff0000;
+  font-size: var(--token-5Ye_3XTSaP9X);
+  font-family: var(--iran-sans-x);
+  font-weight: 400;
+  font-style: normal;
+  text-transform: none;
+  line-height: 1.5;
+  letter-spacing: normal;
+  white-space: pre-wrap;
+  user-select: text;
+  text-decoration-line: none;
+  text-overflow: clip;
+  margin: 0px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text___0Bbeu {
+    animation: none;
+    font-size: var(--token-VrIY9r5RDQZ_);
+    padding-right: 10px;
+    margin-right: 0px;
+    padding-left: 10px;
+    padding-top: 0px;
+  }
+}
 .freeBox__aXlfR {
   animation: none;
   display: flex;
