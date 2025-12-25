@@ -290,7 +290,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicInvoiceDetails__VariantsArgs;
     args?: PlasmicInvoiceDetails__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicInvoiceDetails__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicInvoiceDetails__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicInvoiceDetails__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

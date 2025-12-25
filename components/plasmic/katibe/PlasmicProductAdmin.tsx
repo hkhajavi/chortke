@@ -820,9 +820,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                           typeof $steps["updatePageNumber2"] === "object" &&
                           typeof $steps["updatePageNumber2"].then === "function"
                         ) {
-                          $steps["updatePageNumber2"] = await $steps[
-                            "updatePageNumber2"
-                          ];
+                          $steps["updatePageNumber2"] =
+                            await $steps["updatePageNumber2"];
                         }
 
                         $steps["clearInvoiceList"] = true
@@ -856,9 +855,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                           typeof $steps["clearInvoiceList"] === "object" &&
                           typeof $steps["clearInvoiceList"].then === "function"
                         ) {
-                          $steps["clearInvoiceList"] = await $steps[
-                            "clearInvoiceList"
-                          ];
+                          $steps["clearInvoiceList"] =
+                            await $steps["clearInvoiceList"];
                         }
 
                         $steps["getInvoiceList"] = true
@@ -901,9 +899,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                           typeof $steps["getInvoiceList"] === "object" &&
                           typeof $steps["getInvoiceList"].then === "function"
                         ) {
-                          $steps["getInvoiceList"] = await $steps[
-                            "getInvoiceList"
-                          ];
+                          $steps["getInvoiceList"] =
+                            await $steps["getInvoiceList"];
                         }
 
                         $steps["updateInvoicelist"] =
@@ -939,9 +936,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                           typeof $steps["updateInvoicelist"] === "object" &&
                           typeof $steps["updateInvoicelist"].then === "function"
                         ) {
-                          $steps["updateInvoicelist"] = await $steps[
-                            "updateInvoicelist"
-                          ];
+                          $steps["updateInvoicelist"] =
+                            await $steps["updateInvoicelist"];
                         }
 
                         $steps["hideWaiting"] = true
@@ -1165,9 +1161,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               typeof $steps["showWaiting"] === "object" &&
                               typeof $steps["showWaiting"].then === "function"
                             ) {
-                              $steps["showWaiting"] = await $steps[
-                                "showWaiting"
-                              ];
+                              $steps["showWaiting"] =
+                                await $steps["showWaiting"];
                             }
 
                             $steps["updateOffset"] = true
@@ -1201,9 +1196,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               typeof $steps["updateOffset"] === "object" &&
                               typeof $steps["updateOffset"].then === "function"
                             ) {
-                              $steps["updateOffset"] = await $steps[
-                                "updateOffset"
-                              ];
+                              $steps["updateOffset"] =
+                                await $steps["updateOffset"];
                             }
 
                             $steps["clearInvoiceList"] = true
@@ -1238,9 +1232,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               typeof $steps["clearInvoiceList"].then ===
                                 "function"
                             ) {
-                              $steps["clearInvoiceList"] = await $steps[
-                                "clearInvoiceList"
-                              ];
+                              $steps["clearInvoiceList"] =
+                                await $steps["clearInvoiceList"];
                             }
 
                             $steps["getInvoiceList"] = true
@@ -1286,9 +1279,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               typeof $steps["getInvoiceList"].then ===
                                 "function"
                             ) {
-                              $steps["getInvoiceList"] = await $steps[
-                                "getInvoiceList"
-                              ];
+                              $steps["getInvoiceList"] =
+                                await $steps["getInvoiceList"];
                             }
 
                             $steps["updateInvoicelist"] =
@@ -1326,9 +1318,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               typeof $steps["updateInvoicelist"].then ===
                                 "function"
                             ) {
-                              $steps["updateInvoicelist"] = await $steps[
-                                "updateInvoicelist"
-                              ];
+                              $steps["updateInvoicelist"] =
+                                await $steps["updateInvoicelist"];
                             }
 
                             $steps["hideWaiting"] = true
@@ -1362,9 +1353,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               typeof $steps["hideWaiting"] === "object" &&
                               typeof $steps["hideWaiting"].then === "function"
                             ) {
-                              $steps["hideWaiting"] = await $steps[
-                                "hideWaiting"
-                              ];
+                              $steps["hideWaiting"] =
+                                await $steps["hideWaiting"];
                             }
 
                             $steps["showMoreBtn1"] = true
@@ -1392,9 +1382,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               typeof $steps["showMoreBtn1"] === "object" &&
                               typeof $steps["showMoreBtn1"].then === "function"
                             ) {
-                              $steps["showMoreBtn1"] = await $steps[
-                                "showMoreBtn1"
-                              ];
+                              $steps["showMoreBtn1"] =
+                                await $steps["showMoreBtn1"];
                             }
                           }}
                           size={
@@ -1513,9 +1502,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                           typeof $steps["showWaiting"].then ===
                                             "function"
                                         ) {
-                                          $steps["showWaiting"] = await $steps[
-                                            "showWaiting"
-                                          ];
+                                          $steps["showWaiting"] =
+                                            await $steps["showWaiting"];
                                         }
 
                                         $steps["setUserToNull"] = true
@@ -1587,9 +1575,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                           typeof $steps["final"].then ===
                                             "function"
                                         ) {
-                                          $steps["final"] = await $steps[
-                                            "final"
-                                          ];
+                                          $steps["final"] =
+                                            await $steps["final"];
                                         }
 
                                         $steps["getUserInfoApi"] =
@@ -1729,9 +1716,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                           typeof $steps["hideWaiting"].then ===
                                             "function"
                                         ) {
-                                          $steps["hideWaiting"] = await $steps[
-                                            "hideWaiting"
-                                          ];
+                                          $steps["hideWaiting"] =
+                                            await $steps["hideWaiting"];
                                         }
                                       }).apply(null, eventArgs);
                                     }}
@@ -1914,8 +1900,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                           !_par
                                             ? []
                                             : Array.isArray(_par)
-                                            ? _par
-                                            : [_par])(
+                                              ? _par
+                                              : [_par])(
                                           (() => {
                                             try {
                                               return $state.productList
@@ -2012,8 +1998,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 !_par
                                   ? []
                                   : Array.isArray(_par)
-                                  ? _par
-                                  : [_par])(
+                                    ? _par
+                                    : [_par])(
                                 (() => {
                                   try {
                                     return $state.newInvoiceServices;
@@ -2451,9 +2437,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               typeof $steps["runCode"].then ===
                                                 "function"
                                             ) {
-                                              $steps["runCode"] = await $steps[
-                                                "runCode"
-                                              ];
+                                              $steps["runCode"] =
+                                                await $steps["runCode"];
                                             }
                                           }}
                                         />
@@ -2507,9 +2492,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               typeof $steps["runCode"].then ===
                                                 "function"
                                             ) {
-                                              $steps["runCode"] = await $steps[
-                                                "runCode"
-                                              ];
+                                              $steps["runCode"] =
+                                                await $steps["runCode"];
                                             }
                                           }}
                                         />
@@ -2929,9 +2913,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         typeof $steps["errUser"].then ===
                                           "function"
                                       ) {
-                                        $steps["errUser"] = await $steps[
-                                          "errUser"
-                                        ];
+                                        $steps["errUser"] =
+                                          await $steps["errUser"];
                                       }
 
                                       $steps["errorMyProduct"] =
@@ -2958,9 +2941,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         typeof $steps["errorMyProduct"].then ===
                                           "function"
                                       ) {
-                                        $steps["errorMyProduct"] = await $steps[
-                                          "errorMyProduct"
-                                        ];
+                                        $steps["errorMyProduct"] =
+                                          await $steps["errorMyProduct"];
                                       }
 
                                       $steps["showWaiting"] = true
@@ -3001,9 +2983,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         typeof $steps["showWaiting"].then ===
                                           "function"
                                       ) {
-                                        $steps["showWaiting"] = await $steps[
-                                          "showWaiting"
-                                        ];
+                                        $steps["showWaiting"] =
+                                          await $steps["showWaiting"];
                                       }
 
                                       $steps["registerInvoiceApi"] =
@@ -3130,9 +3111,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         typeof $steps["hideWaiting"].then ===
                                           "function"
                                       ) {
-                                        $steps["hideWaiting"] = await $steps[
-                                          "hideWaiting"
-                                        ];
+                                        $steps["hideWaiting"] =
+                                          await $steps["hideWaiting"];
                                       }
 
                                       $steps["updateApiMessage"] =
@@ -3210,9 +3190,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         typeof $steps["alertSucess"].then ===
                                           "function"
                                       ) {
-                                        $steps["alertSucess"] = await $steps[
-                                          "alertSucess"
-                                        ];
+                                        $steps["alertSucess"] =
+                                          await $steps["alertSucess"];
                                       }
 
                                       $steps["alertError"] =
@@ -3254,9 +3233,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         typeof $steps["alertError"].then ===
                                           "function"
                                       ) {
-                                        $steps["alertError"] = await $steps[
-                                          "alertError"
-                                        ];
+                                        $steps["alertError"] =
+                                          await $steps["alertError"];
                                       }
 
                                       $steps["final"] =
@@ -3283,8 +3261,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                     $state.txtRegisterInvoiceDiscountPercent.value = 0;
                                                     $state.txtRegisterinvoiceDescription.value =
                                                       "";
-                                                    $state.waitingInvoice =
-                                                      false;
+                                                    $state.waitingInvoice = false;
                                                     $state.newInvoiceServices =
                                                       [
                                                         {
@@ -3364,9 +3341,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         typeof $steps["getInvoiceList"].then ===
                                           "function"
                                       ) {
-                                        $steps["getInvoiceList"] = await $steps[
-                                          "getInvoiceList"
-                                        ];
+                                        $steps["getInvoiceList"] =
+                                          await $steps["getInvoiceList"];
                                       }
 
                                       $steps["updateInvoicelist"] =
@@ -3410,8 +3386,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                       .data.length !=
                                                       $state.limit
                                                   )
-                                                    return ($state.showMoreBtn =
-                                                      false);
+                                                    return ($state.showMoreBtn = false);
                                                 })();
                                               }
                                             };
@@ -3427,9 +3402,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         typeof $steps["showMoreBtn1"].then ===
                                           "function"
                                       ) {
-                                        $steps["showMoreBtn1"] = await $steps[
-                                          "showMoreBtn1"
-                                        ];
+                                        $steps["showMoreBtn1"] =
+                                          await $steps["showMoreBtn1"];
                                       }
 
                                       $steps["closeModal"] =
@@ -3437,8 +3411,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                           ? (() => {
                                               const actionArgs = {
                                                 customFunction: async () => {
-                                                  return ($state.dialogRegisterInvoice.open =
-                                                    false);
+                                                  return ($state.dialogRegisterInvoice.open = false);
                                                 }
                                               };
                                               return (({ customFunction }) => {
@@ -3453,9 +3426,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         typeof $steps["closeModal"].then ===
                                           "function"
                                       ) {
-                                        $steps["closeModal"] = await $steps[
-                                          "closeModal"
-                                        ];
+                                        $steps["closeModal"] =
+                                          await $steps["closeModal"];
                                       }
 
                                       $steps["updateWaiting"] = true
@@ -3496,9 +3468,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         typeof $steps["updateWaiting"].then ===
                                           "function"
                                       ) {
-                                        $steps["updateWaiting"] = await $steps[
-                                          "updateWaiting"
-                                        ];
+                                        $steps["updateWaiting"] =
+                                          await $steps["updateWaiting"];
                                       }
                                     }}
                                   />
@@ -3518,8 +3489,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         ? (() => {
                                             const actionArgs = {
                                               customFunction: async () => {
-                                                return ($state.dialogRegisterInvoice.open =
-                                                  false);
+                                                return ($state.dialogRegisterInvoice.open = false);
                                               }
                                             };
                                             return (({ customFunction }) => {
@@ -3534,9 +3504,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         typeof $steps["closeDialog"].then ===
                                           "function"
                                       ) {
-                                        $steps["closeDialog"] = await $steps[
-                                          "closeDialog"
-                                        ];
+                                        $steps["closeDialog"] =
+                                          await $steps["closeDialog"];
                                       }
                                     }}
                                   />
@@ -3884,8 +3853,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         !_par
                                           ? []
                                           : Array.isArray(_par)
-                                          ? _par
-                                          : [_par])(
+                                            ? _par
+                                            : [_par])(
                                         (() => {
                                           try {
                                             return $state.p24Products.filter(
@@ -4117,9 +4086,10 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "updateRegisterInvoiceFinal"
-                                                      ] = await $steps[
-                                                        "updateRegisterInvoiceFinal"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "updateRegisterInvoiceFinal"
+                                                        ];
                                                     }
 
                                                     $steps["runCode"] = true
@@ -4162,8 +4132,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                           const actionArgs = {
                                                             customFunction:
                                                               async () => {
-                                                                return ($state.dialogSelectProduct.open =
-                                                                  false);
+                                                                return ($state.dialogSelectProduct.open = false);
                                                               }
                                                           };
                                                           return (({
@@ -4270,9 +4239,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       typeof $steps["txtUserMobile"].then ===
                                         "function"
                                     ) {
-                                      $steps["txtUserMobile"] = await $steps[
-                                        "txtUserMobile"
-                                      ];
+                                      $steps["txtUserMobile"] =
+                                        await $steps["txtUserMobile"];
                                     }
 
                                     $steps["showWaiting"] =
@@ -4314,9 +4282,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       typeof $steps["showWaiting"].then ===
                                         "function"
                                     ) {
-                                      $steps["showWaiting"] = await $steps[
-                                        "showWaiting"
-                                      ];
+                                      $steps["showWaiting"] =
+                                        await $steps["showWaiting"];
                                     }
 
                                     $steps["getp24Products"] =
@@ -4342,9 +4309,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       typeof $steps["getp24Products"].then ===
                                         "function"
                                     ) {
-                                      $steps["getp24Products"] = await $steps[
-                                        "getp24Products"
-                                      ];
+                                      $steps["getp24Products"] =
+                                        await $steps["getp24Products"];
                                     }
 
                                     $steps["updateP24Products"] =
@@ -4430,9 +4396,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       typeof $steps["hideWaiting"].then ===
                                         "function"
                                     ) {
-                                      $steps["hideWaiting"] = await $steps[
-                                        "hideWaiting"
-                                      ];
+                                      $steps["hideWaiting"] =
+                                        await $steps["hideWaiting"];
                                     }
 
                                     $steps["updateDialogSelectProductOpen"] =
@@ -5952,8 +5917,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   !_par
                                     ? []
                                     : Array.isArray(_par)
-                                    ? _par
-                                    : [_par])(
+                                      ? _par
+                                      : [_par])(
                                   (() => {
                                     try {
                                       return $state.detailsDataApiRequest[
@@ -7248,9 +7213,10 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "updateWaitingLoading"
-                                                      ] = await $steps[
-                                                        "updateWaitingLoading"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "updateWaitingLoading"
+                                                        ];
                                                     }
 
                                                     $steps["accept"] = true
@@ -7393,9 +7359,10 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "invokeGlobalAction"
-                                                      ] = await $steps[
-                                                        "invokeGlobalAction"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "invokeGlobalAction"
+                                                        ];
                                                     }
 
                                                     $steps[
@@ -7450,9 +7417,10 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "updateWaitingLoading2"
-                                                      ] = await $steps[
-                                                        "updateWaitingLoading2"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "updateWaitingLoading2"
+                                                        ];
                                                     }
 
                                                     $steps[
@@ -7487,9 +7455,10 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                     ) {
                                                       $steps[
                                                         "invokeGlobalAction2"
-                                                      ] = await $steps[
-                                                        "invokeGlobalAction2"
-                                                      ];
+                                                      ] =
+                                                        await $steps[
+                                                          "invokeGlobalAction2"
+                                                        ];
                                                     }
                                                   }}
                                                 />
@@ -7895,9 +7864,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                         typeof $steps["updateWaitingLoading"].then ===
                           "function"
                       ) {
-                        $steps["updateWaitingLoading"] = await $steps[
-                          "updateWaitingLoading"
-                        ];
+                        $steps["updateWaitingLoading"] =
+                          await $steps["updateWaitingLoading"];
                       }
 
                       $steps["runCode"] = true
@@ -7961,9 +7929,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                         typeof $steps["getInvoiceList"] === "object" &&
                         typeof $steps["getInvoiceList"].then === "function"
                       ) {
-                        $steps["getInvoiceList"] = await $steps[
-                          "getInvoiceList"
-                        ];
+                        $steps["getInvoiceList"] =
+                          await $steps["getInvoiceList"];
                       }
 
                       $steps["updateInvoicesList"] =
@@ -7987,9 +7954,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                         typeof $steps["updateInvoicesList"] === "object" &&
                         typeof $steps["updateInvoicesList"].then === "function"
                       ) {
-                        $steps["updateInvoicesList"] = await $steps[
-                          "updateInvoicesList"
-                        ];
+                        $steps["updateInvoicesList"] =
+                          await $steps["updateInvoicesList"];
                       }
 
                       $steps["updateWaitingLoading2"] = true
@@ -8024,9 +7990,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                         typeof $steps["updateWaitingLoading2"].then ===
                           "function"
                       ) {
-                        $steps["updateWaitingLoading2"] = await $steps[
-                          "updateWaitingLoading2"
-                        ];
+                        $steps["updateWaitingLoading2"] =
+                          await $steps["updateWaitingLoading2"];
                       }
 
                       $steps["showMoreBtn"] = true
@@ -8195,9 +8160,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                 typeof $steps["setProductListVariable"] === "object" &&
                 typeof $steps["setProductListVariable"].then === "function"
               ) {
-                $steps["setProductListVariable"] = await $steps[
-                  "setProductListVariable"
-                ];
+                $steps["setProductListVariable"] =
+                  await $steps["setProductListVariable"];
               }
 
               $steps["urlproductid"] = false
@@ -8247,9 +8211,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                 typeof $steps["selectFirstProduct"] === "object" &&
                 typeof $steps["selectFirstProduct"].then === "function"
               ) {
-                $steps["selectFirstProduct"] = await $steps[
-                  "selectFirstProduct"
-                ];
+                $steps["selectFirstProduct"] =
+                  await $steps["selectFirstProduct"];
               }
 
               $steps["getInvoiceList"] = true
@@ -8708,7 +8671,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicProductAdmin__VariantsArgs;
     args?: PlasmicProductAdmin__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicProductAdmin__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicProductAdmin__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicProductAdmin__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

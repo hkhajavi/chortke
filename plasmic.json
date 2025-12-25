@@ -1765,6 +1765,20 @@
           "scheme": "blackbox",
           "componentType": "page",
           "path": "/charge"
+        },
+        {
+          "id": "JVC9z8DD26EI",
+          "name": "PaymentLink",
+          "type": "managed",
+          "projectId": "afXULSfGYmou2jFpEc2QWJ",
+          "renderModuleFilePath": "plasmic/katibe/PlasmicPaymentLink.tsx",
+          "importSpec": {
+            "modulePath": "../src/pages/payment-link.tsx"
+          },
+          "cssFilePath": "plasmic/katibe/PlasmicPaymentLink.module.css",
+          "scheme": "blackbox",
+          "componentType": "page",
+          "path": "/payment-link"
         }
       ],
       "icons": [
@@ -2097,6 +2111,11 @@
           "id": "yLnbozaRO0lR",
           "name": "Icon56Icon",
           "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon56.tsx"
+        },
+        {
+          "id": "XghkAcf2gugo",
+          "name": "Icon57Icon",
+          "moduleFilePath": "plasmic/katibe/icons/PlasmicIcon__Icon57.tsx"
         }
       ],
       "images": [
@@ -2583,6 +2602,6 @@
   "nextjsConfig": {
     "pagesDir": "../src/pages"
   },
-  "cliVersion": "0.1.348",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.348/dist/plasmic.schema.json"
+  "cliVersion": "0.1.349",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.349/dist/plasmic.schema.json"
 }

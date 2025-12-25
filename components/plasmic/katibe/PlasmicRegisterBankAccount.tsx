@@ -442,9 +442,8 @@ function PlasmicRegisterBankAccount__RenderFunc(props: {
                   typeof $steps["updateInsertAccountMessage"].then ===
                     "function"
                 ) {
-                  $steps["updateInsertAccountMessage"] = await $steps[
-                    "updateInsertAccountMessage"
-                  ];
+                  $steps["updateInsertAccountMessage"] =
+                    await $steps["updateInsertAccountMessage"];
                 }
 
                 $steps["invokeGlobalAction"] =
@@ -467,9 +466,8 @@ function PlasmicRegisterBankAccount__RenderFunc(props: {
                   typeof $steps["invokeGlobalAction"] === "object" &&
                   typeof $steps["invokeGlobalAction"].then === "function"
                 ) {
-                  $steps["invokeGlobalAction"] = await $steps[
-                    "invokeGlobalAction"
-                  ];
+                  $steps["invokeGlobalAction"] =
+                    await $steps["invokeGlobalAction"];
                 }
 
                 $steps["invokeGlobalAction2"] =
@@ -504,9 +502,8 @@ function PlasmicRegisterBankAccount__RenderFunc(props: {
                   typeof $steps["invokeGlobalAction2"] === "object" &&
                   typeof $steps["invokeGlobalAction2"].then === "function"
                 ) {
-                  $steps["invokeGlobalAction2"] = await $steps[
-                    "invokeGlobalAction2"
-                  ];
+                  $steps["invokeGlobalAction2"] =
+                    await $steps["invokeGlobalAction2"];
                 }
               }}
               size={
@@ -572,7 +569,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicRegisterBankAccount__VariantsArgs;
     args?: PlasmicRegisterBankAccount__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicRegisterBankAccount__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicRegisterBankAccount__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicRegisterBankAccount__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

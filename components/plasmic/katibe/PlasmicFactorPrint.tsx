@@ -1678,9 +1678,8 @@ function PlasmicFactorPrint__RenderFunc(props: {
                         typeof $steps["updateIsPrint2"] === "object" &&
                         typeof $steps["updateIsPrint2"].then === "function"
                       ) {
-                        $steps["updateIsPrint2"] = await $steps[
-                          "updateIsPrint2"
-                        ];
+                        $steps["updateIsPrint2"] =
+                          await $steps["updateIsPrint2"];
                       }
                     }}
                   />
@@ -1824,9 +1823,8 @@ function PlasmicFactorPrint__RenderFunc(props: {
                 typeof $steps["updateFactorDetails"] === "object" &&
                 typeof $steps["updateFactorDetails"].then === "function"
               ) {
-                $steps["updateFactorDetails"] = await $steps[
-                  "updateFactorDetails"
-                ];
+                $steps["updateFactorDetails"] =
+                  await $steps["updateFactorDetails"];
               }
 
               $steps["getCustomerDetails"] =
@@ -1867,9 +1865,8 @@ function PlasmicFactorPrint__RenderFunc(props: {
                 typeof $steps["getCustomerDetails"] === "object" &&
                 typeof $steps["getCustomerDetails"].then === "function"
               ) {
-                $steps["getCustomerDetails"] = await $steps[
-                  "getCustomerDetails"
-                ];
+                $steps["getCustomerDetails"] =
+                  await $steps["getCustomerDetails"];
               }
 
               $steps["updateFactorDetails2"] =
@@ -1904,9 +1901,8 @@ function PlasmicFactorPrint__RenderFunc(props: {
                 typeof $steps["updateFactorDetails2"] === "object" &&
                 typeof $steps["updateFactorDetails2"].then === "function"
               ) {
-                $steps["updateFactorDetails2"] = await $steps[
-                  "updateFactorDetails2"
-                ];
+                $steps["updateFactorDetails2"] =
+                  await $steps["updateFactorDetails2"];
               }
 
               $steps["updateFactorDetails3"] = true
@@ -1935,9 +1931,8 @@ function PlasmicFactorPrint__RenderFunc(props: {
                 typeof $steps["updateFactorDetails3"] === "object" &&
                 typeof $steps["updateFactorDetails3"].then === "function"
               ) {
-                $steps["updateFactorDetails3"] = await $steps[
-                  "updateFactorDetails3"
-                ];
+                $steps["updateFactorDetails3"] =
+                  await $steps["updateFactorDetails3"];
               }
 
               $steps["updateFactorDetails4"] = true
@@ -1959,9 +1954,8 @@ function PlasmicFactorPrint__RenderFunc(props: {
                 typeof $steps["updateFactorDetails4"] === "object" &&
                 typeof $steps["updateFactorDetails4"].then === "function"
               ) {
-                $steps["updateFactorDetails4"] = await $steps[
-                  "updateFactorDetails4"
-                ];
+                $steps["updateFactorDetails4"] =
+                  await $steps["updateFactorDetails4"];
               }
 
               $steps["print"] =
@@ -2056,7 +2050,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicFactorPrint__VariantsArgs;
     args?: PlasmicFactorPrint__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicFactorPrint__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicFactorPrint__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicFactorPrint__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

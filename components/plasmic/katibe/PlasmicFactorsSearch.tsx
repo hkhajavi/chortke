@@ -769,9 +769,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                           typeof $steps["goToHttpsPaziresh24Com"].then ===
                             "function"
                         ) {
-                          $steps["goToHttpsPaziresh24Com"] = await $steps[
-                            "goToHttpsPaziresh24Com"
-                          ];
+                          $steps["goToHttpsPaziresh24Com"] =
+                            await $steps["goToHttpsPaziresh24Com"];
                         }
                       }}
                       role={"img"}
@@ -938,9 +937,10 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                         ) {
                           $steps[
                             "goToHttpsPaziresh24ComLogoutUrlHttpsChortkePaziresh24Com"
-                          ] = await $steps[
-                            "goToHttpsPaziresh24ComLogoutUrlHttpsChortkePaziresh24Com"
-                          ];
+                          ] =
+                            await $steps[
+                              "goToHttpsPaziresh24ComLogoutUrlHttpsChortkePaziresh24Com"
+                            ];
                         }
                       }}
                       platform={"nextjs"}
@@ -1101,9 +1101,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                             typeof $steps["updateUpdatewallet"].then ===
                               "function"
                           ) {
-                            $steps["updateUpdatewallet"] = await $steps[
-                              "updateUpdatewallet"
-                            ];
+                            $steps["updateUpdatewallet"] =
+                              await $steps["updateUpdatewallet"];
                           }
 
                           $steps["updateFirstRequestCount"] = true
@@ -1146,9 +1145,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                             typeof $steps["updateFirstRequestCount"].then ===
                               "function"
                           ) {
-                            $steps["updateFirstRequestCount"] = await $steps[
-                              "updateFirstRequestCount"
-                            ];
+                            $steps["updateFirstRequestCount"] =
+                              await $steps["updateFirstRequestCount"];
                           }
 
                           $steps["runCode"] = true
@@ -1445,8 +1443,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       !_par
                                         ? []
                                         : Array.isArray(_par)
-                                        ? _par
-                                        : [_par])(
+                                          ? _par
+                                          : [_par])(
                                       (() => {
                                         try {
                                           return $state.increaseButtonList;
@@ -1699,9 +1697,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                           typeof $steps["runCode"].then ===
                                             "function"
                                         ) {
-                                          $steps["runCode"] = await $steps[
-                                            "runCode"
-                                          ];
+                                          $steps["runCode"] =
+                                            await $steps["runCode"];
                                         }
                                       }}
                                       startIcon={
@@ -2208,9 +2205,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                         typeof $steps["paymentRequest"].then ===
                                           "function"
                                       ) {
-                                        $steps["paymentRequest"] = await $steps[
-                                          "paymentRequest"
-                                        ];
+                                        $steps["paymentRequest"] =
+                                          await $steps["paymentRequest"];
                                       }
 
                                       $steps["updatePaymentLink"] =
@@ -2300,9 +2296,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                         typeof $steps["redirectUser"].then ===
                                           "function"
                                       ) {
-                                        $steps["redirectUser"] = await $steps[
-                                          "redirectUser"
-                                        ];
+                                        $steps["redirectUser"] =
+                                          await $steps["redirectUser"];
                                       }
 
                                       $steps["hideWaitingPayment"] = true
@@ -2652,9 +2647,10 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                         ) {
                                           $steps[
                                             "updateRequestSettlementMessage"
-                                          ] = await $steps[
-                                            "updateRequestSettlementMessage"
-                                          ];
+                                          ] =
+                                            await $steps[
+                                              "updateRequestSettlementMessage"
+                                            ];
                                         }
 
                                         $steps["invokeGlobalAction"] =
@@ -2738,8 +2734,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                                       $state.firstRequestCount =
                                                         $state.firstRequestCount +
                                                         1;
-                                                      return ($state.dialogIncreaseRemaining.open =
-                                                        false);
+                                                      return ($state.dialogIncreaseRemaining.open = false);
                                                     })();
                                                   }
                                                 };
@@ -2757,9 +2752,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                           typeof $steps["runCode"].then ===
                                             "function"
                                         ) {
-                                          $steps["runCode"] = await $steps[
-                                            "runCode"
-                                          ];
+                                          $steps["runCode"] =
+                                            await $steps["runCode"];
                                         }
                                       }}
                                       outline={true}
@@ -3091,9 +3085,10 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                           ) {
                                             $steps[
                                               "updateRequestSettlementMessage"
-                                            ] = await $steps[
-                                              "updateRequestSettlementMessage"
-                                            ];
+                                            ] =
+                                              await $steps[
+                                                "updateRequestSettlementMessage"
+                                              ];
                                           }
 
                                           $steps["invokeGlobalAction"] =
@@ -3182,8 +3177,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                                           $state.firstRequestCount =
                                                             $state.firstRequestCount +
                                                             1;
-                                                          return ($state.dialogIncreaseRemaining.open =
-                                                            false);
+                                                          return ($state.dialogIncreaseRemaining.open = false);
                                                         })();
                                                       }
                                                   };
@@ -3201,9 +3195,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                             typeof $steps["runCode"].then ===
                                               "function"
                                           ) {
-                                            $steps["runCode"] = await $steps[
-                                              "runCode"
-                                            ];
+                                            $steps["runCode"] =
+                                              await $steps["runCode"];
                                           }
                                         }}
                                         outline={true}
@@ -3467,9 +3460,10 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                         ) {
                                           $steps[
                                             "updateRequestSettlementMessage"
-                                          ] = await $steps[
-                                            "updateRequestSettlementMessage"
-                                          ];
+                                          ] =
+                                            await $steps[
+                                              "updateRequestSettlementMessage"
+                                            ];
                                         }
 
                                         $steps["invokeGlobalAction"] =
@@ -3553,8 +3547,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                                       $state.firstRequestCount =
                                                         $state.firstRequestCount +
                                                         1;
-                                                      return ($state.dialogIncreaseRemaining.open =
-                                                        false);
+                                                      return ($state.dialogIncreaseRemaining.open = false);
                                                     })();
                                                   }
                                                 };
@@ -3572,9 +3565,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                           typeof $steps["runCode"].then ===
                                             "function"
                                         ) {
-                                          $steps["runCode"] = await $steps[
-                                            "runCode"
-                                          ];
+                                          $steps["runCode"] =
+                                            await $steps["runCode"];
                                         }
                                       }}
                                       size={"compact"}
@@ -3801,8 +3793,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                                     )
                                                   : $state
                                                       .increaseButtonListBase[0];
-                                              return ($state.showSelectPriceGrid =
-                                                true);
+                                              return ($state.showSelectPriceGrid = true);
                                             })();
                                           }
                                         };
@@ -3817,9 +3808,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                     typeof $steps["buttonList"].then ===
                                       "function"
                                   ) {
-                                    $steps["buttonList"] = await $steps[
-                                      "buttonList"
-                                    ];
+                                    $steps["buttonList"] =
+                                      await $steps["buttonList"];
                                   }
 
                                   $steps["runCode"] = true
@@ -3833,13 +3823,10 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                                       $state.reminderWallet
                                                     )
                                                   : $state.reminderWallet;
-                                              $state.showSelectPriceGrid =
-                                                false;
+                                              $state.showSelectPriceGrid = false;
                                               if ($state.reminderWallet >= 0)
-                                                $state.showSelectPriceGrid =
-                                                  true;
-                                              return ($state.showMyAmount =
-                                                true);
+                                                $state.showSelectPriceGrid = true;
+                                              return ($state.showMyAmount = true);
                                             })();
                                           }
                                         };
@@ -3876,9 +3863,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                     typeof $steps["balanceP24"].then ===
                                       "function"
                                   ) {
-                                    $steps["balanceP24"] = await $steps[
-                                      "balanceP24"
-                                    ];
+                                    $steps["balanceP24"] =
+                                      await $steps["balanceP24"];
                                   }
 
                                   $steps["updateBalance"] =
@@ -3923,9 +3909,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                     typeof $steps["updateBalance"].then ===
                                       "function"
                                   ) {
-                                    $steps["updateBalance"] = await $steps[
-                                      "updateBalance"
-                                    ];
+                                    $steps["updateBalance"] =
+                                      await $steps["updateBalance"];
                                   }
 
                                   $steps["balanceCenter"] = $state.userData
@@ -3971,9 +3956,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                     typeof $steps["balanceCenter"].then ===
                                       "function"
                                   ) {
-                                    $steps["balanceCenter"] = await $steps[
-                                      "balanceCenter"
-                                    ];
+                                    $steps["balanceCenter"] =
+                                      await $steps["balanceCenter"];
                                   }
 
                                   $steps["updateCenterBalance"] =
@@ -4740,8 +4724,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                 !_par
                                   ? []
                                   : Array.isArray(_par)
-                                  ? _par
-                                  : [_par])(
+                                    ? _par
+                                    : [_par])(
                                 (() => {
                                   try {
                                     return $state.detailsDataApiRequest[
@@ -6025,9 +6009,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                           typeof $steps["updateWaitingLoading"].then ===
                             "function"
                         ) {
-                          $steps["updateWaitingLoading"] = await $steps[
-                            "updateWaitingLoading"
-                          ];
+                          $steps["updateWaitingLoading"] =
+                            await $steps["updateWaitingLoading"];
                         }
 
                         $steps["updatePageNumber"] = true
@@ -6064,9 +6047,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                           typeof $steps["updatePageNumber"] === "object" &&
                           typeof $steps["updatePageNumber"].then === "function"
                         ) {
-                          $steps["updatePageNumber"] = await $steps[
-                            "updatePageNumber"
-                          ];
+                          $steps["updatePageNumber"] =
+                            await $steps["updatePageNumber"];
                         }
 
                         $steps["getInvoiceList"] = true
@@ -6109,9 +6091,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                           typeof $steps["getInvoiceList"] === "object" &&
                           typeof $steps["getInvoiceList"].then === "function"
                         ) {
-                          $steps["getInvoiceList"] = await $steps[
-                            "getInvoiceList"
-                          ];
+                          $steps["getInvoiceList"] =
+                            await $steps["getInvoiceList"];
                         }
 
                         $steps["runCode"] =
@@ -6198,9 +6179,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                           typeof $steps["updateWaitingLoading2"].then ===
                             "function"
                         ) {
-                          $steps["updateWaitingLoading2"] = await $steps[
-                            "updateWaitingLoading2"
-                          ];
+                          $steps["updateWaitingLoading2"] =
+                            await $steps["updateWaitingLoading2"];
                         }
                       }}
                       size={"compact"}
@@ -6499,9 +6479,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                   typeof $steps["isLoadAccountTrue"] === "object" &&
                   typeof $steps["isLoadAccountTrue"].then === "function"
                 ) {
-                  $steps["isLoadAccountTrue"] = await $steps[
-                    "isLoadAccountTrue"
-                  ];
+                  $steps["isLoadAccountTrue"] =
+                    await $steps["isLoadAccountTrue"];
                 }
 
                 $steps["updateFirstRequestCount"] = true
@@ -6535,9 +6514,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                   typeof $steps["updateFirstRequestCount"] === "object" &&
                   typeof $steps["updateFirstRequestCount"].then === "function"
                 ) {
-                  $steps["updateFirstRequestCount"] = await $steps[
-                    "updateFirstRequestCount"
-                  ];
+                  $steps["updateFirstRequestCount"] =
+                    await $steps["updateFirstRequestCount"];
                 }
               }}
             />
@@ -6692,9 +6670,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                   typeof $steps["updateInvoicelist"] === "object" &&
                   typeof $steps["updateInvoicelist"].then === "function"
                 ) {
-                  $steps["updateInvoicelist"] = await $steps[
-                    "updateInvoicelist"
-                  ];
+                  $steps["updateInvoicelist"] =
+                    await $steps["updateInvoicelist"];
                 }
 
                 $steps["runCode2"] = $state.isLoadAccount
@@ -6895,9 +6872,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                   typeof $steps["updateReminderWallet"] === "object" &&
                   typeof $steps["updateReminderWallet"].then === "function"
                 ) {
-                  $steps["updateReminderWallet"] = await $steps[
-                    "updateReminderWallet"
-                  ];
+                  $steps["updateReminderWallet"] =
+                    await $steps["updateReminderWallet"];
                 }
 
                 $steps["runCode3"] = true
@@ -7131,7 +7107,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicFactorsSearch__VariantsArgs;
     args?: PlasmicFactorsSearch__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicFactorsSearch__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicFactorsSearch__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicFactorsSearch__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

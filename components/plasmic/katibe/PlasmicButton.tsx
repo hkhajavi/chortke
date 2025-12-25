@@ -439,8 +439,8 @@ function PlasmicButton__RenderFunc(props: {
         hasVariant($state, "showStartIcon", "showStartIcon")
           ? false
           : hasVariant($state, "showStartIcon", "showStartIcon")
-          ? true
-          : false
+            ? true
+            : false
       ) ? (
         <div
           data-plasmic-name={"startIconContainer"}
@@ -756,8 +756,8 @@ function PlasmicButton__RenderFunc(props: {
         hasVariant($state, "showEndIcon", "showEndIcon")
           ? false
           : hasVariant($state, "showEndIcon", "showEndIcon")
-          ? true
-          : false
+            ? true
+            : false
       ) ? (
         <div
           data-plasmic-name={"endIconContainer"}
@@ -923,7 +923,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicButton__VariantsArgs;
     args?: PlasmicButton__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicButton__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicButton__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicButton__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props

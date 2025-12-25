@@ -333,9 +333,8 @@ function PlasmicReport__RenderFunc(props: {
                         typeof $steps["updateRefreshCount"] === "object" &&
                         typeof $steps["updateRefreshCount"].then === "function"
                       ) {
-                        $steps["updateRefreshCount"] = await $steps[
-                          "updateRefreshCount"
-                        ];
+                        $steps["updateRefreshCount"] =
+                          await $steps["updateRefreshCount"];
                       }
                     }).apply(null, eventArgs);
                   }}
@@ -1162,9 +1161,8 @@ function PlasmicReport__RenderFunc(props: {
                 typeof $steps["transactionsP24IncomeMonthly"].then ===
                   "function"
               ) {
-                $steps["transactionsP24IncomeMonthly"] = await $steps[
-                  "transactionsP24IncomeMonthly"
-                ];
+                $steps["transactionsP24IncomeMonthly"] =
+                  await $steps["transactionsP24IncomeMonthly"];
               }
 
               $steps["updateWaiting2"] =
@@ -1291,7 +1289,9 @@ type NodeComponentProps<T extends NodeNameType> =
     variants?: PlasmicReport__VariantsArgs;
     args?: PlasmicReport__ArgsType;
     overrides?: NodeOverridesType<T>;
-  } & Omit<PlasmicReport__VariantsArgs, ReservedPropsType> & // Specify variants directly as props
+  } &
+    // Specify variants directly as props
+    Omit<PlasmicReport__VariantsArgs, ReservedPropsType> &
     // Specify args directly as props
     Omit<PlasmicReport__ArgsType, ReservedPropsType> &
     // Specify overrides for each element directly as props
