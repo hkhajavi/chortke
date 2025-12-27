@@ -170,7 +170,7 @@ function PlasmicCharge__RenderFunc(props: {
               })()
             : (() => {
                 try {
-                  return $ctx.query.amount;
+                  return $ctx.query.amount / 10;
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
@@ -502,7 +502,7 @@ function PlasmicCharge__RenderFunc(props: {
                                     })()
                                   : (() => {
                                       try {
-                                        return $ctx.query.amount;
+                                        return $ctx.query.amount / 10;
                                       } catch (e) {
                                         if (
                                           e instanceof TypeError ||
