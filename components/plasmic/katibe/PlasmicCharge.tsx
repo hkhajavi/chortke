@@ -824,7 +824,7 @@ function PlasmicCharge__RenderFunc(props: {
                           <React.Fragment>
                             <React.Fragment>
                               {
-                                "\u06a9\u0627\u0631\u0628\u0631 \u06af\u0631\u0627\u0645\u06cc\u060c \u0644\u0637\u0641\u0627 \u0645\u0637\u0645\u0626\u0646 \u0634\u0648\u06cc\u062f \u06a9\u0647 "
+                                "\u0644\u0637\u0641\u0627 \u0645\u0637\u0645\u0626\u0646 \u0634\u0648\u06cc\u062f \u06a9\u0647 "
                               }
                             </React.Fragment>
                             <span
