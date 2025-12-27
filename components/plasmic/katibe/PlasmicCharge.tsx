@@ -770,7 +770,7 @@ function PlasmicCharge__RenderFunc(props: {
                                   }
                                   return (
                                     numberToPersianWords(
-                                      $state.txtAmount.value / 10
+                                      $state.txtAmount.value
                                     ) + " تومان"
                                   );
                                 })();
