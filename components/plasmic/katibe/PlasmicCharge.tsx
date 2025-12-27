@@ -157,7 +157,7 @@ function PlasmicCharge__RenderFunc(props: {
           hasVariant(globalVariants, "screen", "mobileOnly")
             ? (() => {
                 try {
-                  return $ctx.query.amount;
+                  return $ctx.query.amount / 10;
                 } catch (e) {
                   if (
                     e instanceof TypeError ||
@@ -488,7 +488,7 @@ function PlasmicCharge__RenderFunc(props: {
                                 )
                                   ? (() => {
                                       try {
-                                        return $ctx.query.amount;
+                                        return $ctx.query.amount / 10;
                                       } catch (e) {
                                         if (
                                           e instanceof TypeError ||
@@ -533,128 +533,259 @@ function PlasmicCharge__RenderFunc(props: {
                           sty.text___04YF
                         )}
                       >
-                        <React.Fragment>
-                          {(() => {
-                            try {
-                              return (() => {
-                                function numberToPersianWords(num) {
-                                  if (
-                                    num == "" ||
-                                    num == 0 ||
-                                    num == "0" ||
-                                    num == "NaN"
-                                  ) {
-                                    return "صفر";
-                                  }
-                                  const yekan = [
-                                    "",
-                                    "یک",
-                                    "دو",
-                                    "سه",
-                                    "چهار",
-                                    "پنج",
-                                    "شش",
-                                    "هفت",
-                                    "هشت",
-                                    "نه"
-                                  ];
-
-                                  const dahgan = [
-                                    "",
-                                    "ده",
-                                    "بیست",
-                                    "سی",
-                                    "چهل",
-                                    "پنجاه",
-                                    "شصت",
-                                    "هفتاد",
-                                    "هشتاد",
-                                    "نود"
-                                  ];
-
-                                  const sadgan = [
-                                    "",
-                                    "صد",
-                                    "دویست",
-                                    "سیصد",
-                                    "چهارصد",
-                                    "پانصد",
-                                    "ششصد",
-                                    "هفتصد",
-                                    "هشتصد",
-                                    "نهصد"
-                                  ];
-
-                                  const dah = [
-                                    "ده",
-                                    "یازده",
-                                    "دوازده",
-                                    "سیزده",
-                                    "چهارده",
-                                    "پانزده",
-                                    "شانزده",
-                                    "هفده",
-                                    "هجده",
-                                    "نوزده"
-                                  ];
-
-                                  const parts = [
-                                    "",
-                                    "هزار",
-                                    "میلیون",
-                                    "میلیارد",
-                                    "تریلیون"
-                                  ];
-
-                                  if (num === 0) return "صفر";
-                                  num = Math.floor(num);
-                                  const groups = [];
-                                  while (num > 0) {
-                                    groups.push(num % 1000);
-                                    num = Math.floor(num / 1000);
-                                  }
-                                  const convertThreeDigits = n => {
-                                    let words = [];
-                                    let s = Math.floor(n / 100);
-                                    let d = Math.floor((n % 100) / 10);
-                                    let y = n % 10;
-                                    if (s > 0) words.push(sadgan[s]);
-                                    if (d === 1 && y > 0) {
-                                      words.push(dah[y]);
-                                    } else {
-                                      if (d > 0) words.push(dahgan[d]);
-                                      if (y > 0) words.push(yekan[y]);
+                        {hasVariant(globalVariants, "screen", "mobileOnly") ? (
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return (() => {
+                                  function numberToPersianWords(num) {
+                                    if (
+                                      num == "" ||
+                                      num == 0 ||
+                                      num == "0" ||
+                                      num == "NaN"
+                                    ) {
+                                      return "صفر";
                                     }
-                                    return words.join(" و ");
-                                  };
-                                  const result = [];
-                                  for (let i = 0; i < groups.length; i++) {
-                                    if (groups[i] !== 0) {
-                                      let words = convertThreeDigits(groups[i]);
-                                      if (parts[i]) {
-                                        words += " " + parts[i];
+                                    const yekan = [
+                                      "",
+                                      "یک",
+                                      "دو",
+                                      "سه",
+                                      "چهار",
+                                      "پنج",
+                                      "شش",
+                                      "هفت",
+                                      "هشت",
+                                      "نه"
+                                    ];
+
+                                    const dahgan = [
+                                      "",
+                                      "ده",
+                                      "بیست",
+                                      "سی",
+                                      "چهل",
+                                      "پنجاه",
+                                      "شصت",
+                                      "هفتاد",
+                                      "هشتاد",
+                                      "نود"
+                                    ];
+
+                                    const sadgan = [
+                                      "",
+                                      "صد",
+                                      "دویست",
+                                      "سیصد",
+                                      "چهارصد",
+                                      "پانصد",
+                                      "ششصد",
+                                      "هفتصد",
+                                      "هشتصد",
+                                      "نهصد"
+                                    ];
+
+                                    const dah = [
+                                      "ده",
+                                      "یازده",
+                                      "دوازده",
+                                      "سیزده",
+                                      "چهارده",
+                                      "پانزده",
+                                      "شانزده",
+                                      "هفده",
+                                      "هجده",
+                                      "نوزده"
+                                    ];
+
+                                    const parts = [
+                                      "",
+                                      "هزار",
+                                      "میلیون",
+                                      "میلیارد",
+                                      "تریلیون"
+                                    ];
+
+                                    if (num === 0) return "صفر";
+                                    num = Math.floor(num);
+                                    const groups = [];
+                                    while (num > 0) {
+                                      groups.push(num % 1000);
+                                      num = Math.floor(num / 1000);
+                                    }
+                                    const convertThreeDigits = n => {
+                                      let words = [];
+                                      let s = Math.floor(n / 100);
+                                      let d = Math.floor((n % 100) / 10);
+                                      let y = n % 10;
+                                      if (s > 0) words.push(sadgan[s]);
+                                      if (d === 1 && y > 0) {
+                                        words.push(dah[y]);
+                                      } else {
+                                        if (d > 0) words.push(dahgan[d]);
+                                        if (y > 0) words.push(yekan[y]);
                                       }
-                                      result.unshift(words);
+                                      return words.join(" و ");
+                                    };
+                                    const result = [];
+                                    for (let i = 0; i < groups.length; i++) {
+                                      if (groups[i] !== 0) {
+                                        let words = convertThreeDigits(
+                                          groups[i]
+                                        );
+                                        if (parts[i]) {
+                                          words += " " + parts[i];
+                                        }
+                                        result.unshift(words);
+                                      }
                                     }
+                                    return result.join(" و ");
                                   }
-                                  return result.join(" و ");
+                                  return (
+                                    numberToPersianWords(
+                                      $state.txtAmount.value
+                                    ) + " تومان"
+                                  );
+                                })();
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "\u0631\u06cc\u0627\u0644";
                                 }
-                                return (
-                                  numberToPersianWords($state.txtAmount.value) +
-                                  " ریال"
-                                );
-                              })();
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return "\u0631\u06cc\u0627\u0644";
+                                throw e;
                               }
-                              throw e;
-                            }
-                          })()}
-                        </React.Fragment>
+                            })()}
+                          </React.Fragment>
+                        ) : (
+                          <React.Fragment>
+                            {(() => {
+                              try {
+                                return (() => {
+                                  function numberToPersianWords(num) {
+                                    if (
+                                      num == "" ||
+                                      num == 0 ||
+                                      num == "0" ||
+                                      num == "NaN"
+                                    ) {
+                                      return "صفر";
+                                    }
+                                    const yekan = [
+                                      "",
+                                      "یک",
+                                      "دو",
+                                      "سه",
+                                      "چهار",
+                                      "پنج",
+                                      "شش",
+                                      "هفت",
+                                      "هشت",
+                                      "نه"
+                                    ];
+
+                                    const dahgan = [
+                                      "",
+                                      "ده",
+                                      "بیست",
+                                      "سی",
+                                      "چهل",
+                                      "پنجاه",
+                                      "شصت",
+                                      "هفتاد",
+                                      "هشتاد",
+                                      "نود"
+                                    ];
+
+                                    const sadgan = [
+                                      "",
+                                      "صد",
+                                      "دویست",
+                                      "سیصد",
+                                      "چهارصد",
+                                      "پانصد",
+                                      "ششصد",
+                                      "هفتصد",
+                                      "هشتصد",
+                                      "نهصد"
+                                    ];
+
+                                    const dah = [
+                                      "ده",
+                                      "یازده",
+                                      "دوازده",
+                                      "سیزده",
+                                      "چهارده",
+                                      "پانزده",
+                                      "شانزده",
+                                      "هفده",
+                                      "هجده",
+                                      "نوزده"
+                                    ];
+
+                                    const parts = [
+                                      "",
+                                      "هزار",
+                                      "میلیون",
+                                      "میلیارد",
+                                      "تریلیون"
+                                    ];
+
+                                    if (num === 0) return "صفر";
+                                    num = Math.floor(num);
+                                    const groups = [];
+                                    while (num > 0) {
+                                      groups.push(num % 1000);
+                                      num = Math.floor(num / 1000);
+                                    }
+                                    const convertThreeDigits = n => {
+                                      let words = [];
+                                      let s = Math.floor(n / 100);
+                                      let d = Math.floor((n % 100) / 10);
+                                      let y = n % 10;
+                                      if (s > 0) words.push(sadgan[s]);
+                                      if (d === 1 && y > 0) {
+                                        words.push(dah[y]);
+                                      } else {
+                                        if (d > 0) words.push(dahgan[d]);
+                                        if (y > 0) words.push(yekan[y]);
+                                      }
+                                      return words.join(" و ");
+                                    };
+                                    const result = [];
+                                    for (let i = 0; i < groups.length; i++) {
+                                      if (groups[i] !== 0) {
+                                        let words = convertThreeDigits(
+                                          groups[i]
+                                        );
+                                        if (parts[i]) {
+                                          words += " " + parts[i];
+                                        }
+                                        result.unshift(words);
+                                      }
+                                    }
+                                    return result.join(" و ");
+                                  }
+                                  return (
+                                    numberToPersianWords(
+                                      $state.txtAmount.value / 10
+                                    ) + " تومان"
+                                  );
+                                })();
+                              } catch (e) {
+                                if (
+                                  e instanceof TypeError ||
+                                  e?.plasmicType === "PlasmicUndefinedDataError"
+                                ) {
+                                  return "\u0631\u06cc\u0627\u0644";
+                                }
+                                throw e;
+                              }
+                            })()}
+                          </React.Fragment>
+                        )}
                       </div>
                     </div>
                   </div>
@@ -768,7 +899,7 @@ function PlasmicCharge__RenderFunc(props: {
                                           "http://apigw.paziresh24.com/katibe/v1/payment/p24/" +
                                           $ctx.query.userid +
                                           "/" +
-                                          $state.txtAmount.value +
+                                          $state.txtAmount.value * 10 +
                                           "/?time=" +
                                           new Date().toISOString()
                                         );

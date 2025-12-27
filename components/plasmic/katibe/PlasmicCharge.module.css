@@ -393,6 +393,11 @@
   font-size: var(--token-5Ye_3XTSaP9X);
   min-width: 0;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .text___04YF {
+    font-size: var(--token-VrIY9r5RDQZ_);
+  }
+}
 .freeBox__u3FHn {
   animation: none;
   display: flex;
