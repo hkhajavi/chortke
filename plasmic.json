@@ -2493,6 +2493,16 @@
           "id": "pFIMvnjDFAJ2",
           "name": "visamastercard.png",
           "filePath": "../public/plasmic/katibe/images/visamastercardPng.png"
+        },
+        {
+          "id": "AYYAfGyQc0Is",
+          "name": "wallet.png",
+          "filePath": "../public/plasmic/katibe/images/walletPng.png"
+        },
+        {
+          "id": "ncUJin7Jx0xq",
+          "name": "wallet.png 2",
+          "filePath": "../public/plasmic/katibe/images/walletPng2.png"
         }
       ],
       "indirect": false,

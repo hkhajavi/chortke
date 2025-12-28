@@ -1523,6 +1523,24 @@ function PlasmicCharge__RenderFunc(props: {
                         aspectRatio: undefined
                       }}
                     />
+
+                    <PlasmicImg__
+                      alt={""}
+                      className={classNames(sty.img__qzkBg)}
+                      displayHeight={"auto"}
+                      displayMaxHeight={"none"}
+                      displayMaxWidth={"100%"}
+                      displayMinHeight={"0"}
+                      displayMinWidth={"0"}
+                      displayWidth={"auto"}
+                      loading={"lazy"}
+                      src={{
+                        src: "/plasmic/katibe/images/walletPng2.png",
+                        fullWidth: 50,
+                        fullHeight: 50,
+                        aspectRatio: undefined
+                      }}
+                    />
                   </div>
                 </div>
               ) : null}
