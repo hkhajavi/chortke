@@ -100,6 +100,7 @@ export type PlasmicPaymentLink__OverridesType = {
   button?: Flex__<typeof Button>;
   sideEffectPageLoad?: Flex__<typeof SideEffect>;
   embedHtml?: Flex__<typeof Embed>;
+  checkLogin?: Flex__<typeof SideEffect>;
 };
 
 export interface DefaultPaymentLinkProps {}
@@ -181,6 +182,12 @@ function PlasmicPaymentLink__RenderFunc(props: {
         type: "private",
         variableType: "text",
         initFunc: ({ $props, $state, $queries, $ctx }) => ""
+      },
+      {
+        path: "me",
+        type: "private",
+        variableType: "object",
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
       }
     ],
     [$props, $ctx, $refs]
@@ -898,6 +905,122 @@ function PlasmicPaymentLink__RenderFunc(props: {
               '<script type="text/javascript">\r\n    (function(c,l,a,r,i,t,y){\r\n        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\r\n        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;\r\n        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);\r\n    })(window, document, "clarity", "script", "rr61es0fkb");\r\n</script>'
             }
           />
+
+          <SideEffect
+            data-plasmic-name={"checkLogin"}
+            data-plasmic-override={overrides.checkLogin}
+            className={classNames("__wab_instance", sty.checkLogin)}
+            onMount={async () => {
+              const $steps = {};
+
+              $steps["getMe"] = true
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        undefined,
+                        "https://apigw.paziresh24.com/v1/auth/me"
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
+              if (
+                $steps["getMe"] != null &&
+                typeof $steps["getMe"] === "object" &&
+                typeof $steps["getMe"].then === "function"
+              ) {
+                $steps["getMe"] = await $steps["getMe"];
+              }
+
+              $steps["updateMe"] =
+                $steps.getMe.status == 200
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["me"]
+                        },
+                        operation: 0,
+                        value: $steps.getMe.data
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["updateMe"] != null &&
+                typeof $steps["updateMe"] === "object" &&
+                typeof $steps["updateMe"].then === "function"
+              ) {
+                $steps["updateMe"] = await $steps["updateMe"];
+              }
+
+              $steps["redirectToLogin"] =
+                $steps.getMe.status != 200
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          (() => {
+                            try {
+                              return (
+                                "https://www.paziresh24.com/login/?redirect_url=" +
+                                globalThis.encodeURIComponent(
+                                  "https://katibe.paziresh24.com/payment-link/?amount=" +
+                                    $ctx.query.amount +
+                                    "&receipt_id=" +
+                                    $ctx.query.receipt_id +
+                                    "&center_id=" +
+                                    $ctx.query.center_id +
+                                    "&return_link=" +
+                                    $ctx.query.returnlink +
+                                    "&cancel_returnlink=" +
+                                    $ctx.query.cancel_returnlink +
+                                    "&refund_timeout=" +
+                                    $ctx.query.refund_timeout +
+                                    "&type" +
+                                    $ctx.query.type
+                                )
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        ]
+                      };
+                      return $globalActions["Hamdast.openLink"]?.apply(null, [
+                        ...actionArgs.args
+                      ]);
+                    })()
+                  : undefined;
+              if (
+                $steps["redirectToLogin"] != null &&
+                typeof $steps["redirectToLogin"] === "object" &&
+                typeof $steps["redirectToLogin"].then === "function"
+              ) {
+                $steps["redirectToLogin"] = await $steps["redirectToLogin"];
+              }
+            }}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -913,7 +1036,8 @@ const PlasmicDescendants = {
     "btnOverseasePayRemitation",
     "button",
     "sideEffectPageLoad",
-    "embedHtml"
+    "embedHtml",
+    "checkLogin"
   ],
   section: [
     "section",
@@ -927,7 +1051,8 @@ const PlasmicDescendants = {
   btnOverseasePayRemitation: ["btnOverseasePayRemitation"],
   button: ["button"],
   sideEffectPageLoad: ["sideEffectPageLoad"],
-  embedHtml: ["embedHtml"]
+  embedHtml: ["embedHtml"],
+  checkLogin: ["checkLogin"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -941,6 +1066,7 @@ type NodeDefaultElementType = {
   button: typeof Button;
   sideEffectPageLoad: typeof SideEffect;
   embedHtml: typeof Embed;
+  checkLogin: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1012,6 +1138,7 @@ export const PlasmicPaymentLink = Object.assign(
     button: makeNodeComponent("button"),
     sideEffectPageLoad: makeNodeComponent("sideEffectPageLoad"),
     embedHtml: makeNodeComponent("embedHtml"),
+    checkLogin: makeNodeComponent("checkLogin"),
 
     // Metadata about props expected for PlasmicPaymentLink
     internalVariantProps: PlasmicPaymentLink__VariantProps,
