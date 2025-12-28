@@ -62,6 +62,7 @@ import {
 import TextInput from "../../TextInput"; // plasmic-import: SePhlRlvEn3n/component
 import Button from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
+import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { _useGlobalVariants } from "./plasmic"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectModule
 import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/styleTokensProvider
 
@@ -94,6 +95,7 @@ export type PlasmicCharge__OverridesType = {
   txtAmount?: Flex__<typeof TextInput>;
   sideeffectPageload?: Flex__<typeof SideEffect>;
   onLoad?: Flex__<typeof SideEffect>;
+  embedHtml?: Flex__<typeof Embed>;
 };
 
 export interface DefaultChargeProps {}
@@ -1766,6 +1768,15 @@ function PlasmicCharge__RenderFunc(props: {
               }
             }}
           />
+
+          <Embed
+            data-plasmic-name={"embedHtml"}
+            data-plasmic-override={overrides.embedHtml}
+            className={classNames("__wab_instance", sty.embedHtml)}
+            code={
+              '<script type="text/javascript">\r\n    (function(c,l,a,r,i,t,y){\r\n        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\r\n        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;\r\n        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);\r\n    })(window, document, "clarity", "script", "rr61es0fkb");\r\n</script>'
+            }
+          />
         </div>
       </div>
     </React.Fragment>
@@ -1773,10 +1784,11 @@ function PlasmicCharge__RenderFunc(props: {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "txtAmount", "sideeffectPageload", "onLoad"],
+  root: ["root", "txtAmount", "sideeffectPageload", "onLoad", "embedHtml"],
   txtAmount: ["txtAmount"],
   sideeffectPageload: ["sideeffectPageload"],
-  onLoad: ["onLoad"]
+  onLoad: ["onLoad"],
+  embedHtml: ["embedHtml"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -1786,6 +1798,7 @@ type NodeDefaultElementType = {
   txtAmount: typeof TextInput;
   sideeffectPageload: typeof SideEffect;
   onLoad: typeof SideEffect;
+  embedHtml: typeof Embed;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -1853,6 +1866,7 @@ export const PlasmicCharge = Object.assign(
     txtAmount: makeNodeComponent("txtAmount"),
     sideeffectPageload: makeNodeComponent("sideeffectPageload"),
     onLoad: makeNodeComponent("onLoad"),
+    embedHtml: makeNodeComponent("embedHtml"),
 
     // Metadata about props expected for PlasmicCharge
     internalVariantProps: PlasmicCharge__VariantProps,
