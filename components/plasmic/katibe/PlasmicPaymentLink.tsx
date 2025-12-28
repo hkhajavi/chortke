@@ -766,7 +766,7 @@ function PlasmicPaymentLink__RenderFunc(props: {
             onMount={async () => {
               const $steps = {};
 
-              $steps["updateWaiting"] = true
+              $steps["updateWaiting"] = false
                 ? (() => {
                     const actionArgs = {
                       variable: {
@@ -795,7 +795,7 @@ function PlasmicPaymentLink__RenderFunc(props: {
                 $steps["updateWaiting"] = await $steps["updateWaiting"];
               }
 
-              $steps["getLink"] = true
+              $steps["getLink"] = false
                 ? (() => {
                     const actionArgs = {
                       args: [
@@ -831,33 +831,27 @@ function PlasmicPaymentLink__RenderFunc(props: {
                 $steps["getLink"] = await $steps["getLink"];
               }
 
-              $steps["updateMyLink"] =
-                $steps.getLink.status == 200
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["myLink"]
-                        },
-                        operation: 0,
-                        value: $steps.getLink.data.data.link
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
+              $steps["updateMyLink"] = false
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["myLink"]
+                      },
+                      operation: 0,
+                      value: $steps.getLink.data.data.link
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
 
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
               if (
                 $steps["updateMyLink"] != null &&
                 typeof $steps["updateMyLink"] === "object" &&
@@ -866,7 +860,7 @@ function PlasmicPaymentLink__RenderFunc(props: {
                 $steps["updateMyLink"] = await $steps["updateMyLink"];
               }
 
-              $steps["updateWaiting2"] = true
+              $steps["updateWaiting2"] = false
                 ? (() => {
                     const actionArgs = {
                       variable: {
@@ -1031,6 +1025,39 @@ function PlasmicPaymentLink__RenderFunc(props: {
                 typeof $steps["redirectToLogin"].then === "function"
               ) {
                 $steps["redirectToLogin"] = await $steps["redirectToLogin"];
+              }
+
+              $steps["updateMyLink"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["myLink"]
+                      },
+                      operation: 0,
+                      value:
+                        "https://katibe.paziresh24.com/charge/?userid=" +
+                        $state.me.users[0].id +
+                        "&amount=" +
+                        $ctx.query.amount
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateMyLink"] != null &&
+                typeof $steps["updateMyLink"] === "object" &&
+                typeof $steps["updateMyLink"].then === "function"
+              ) {
+                $steps["updateMyLink"] = await $steps["updateMyLink"];
               }
             }}
           />
