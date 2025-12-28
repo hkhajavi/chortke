@@ -910,6 +910,19 @@ function PlasmicPaymentLink__RenderFunc(props: {
             data-plasmic-name={"checkLogin"}
             data-plasmic-override={overrides.checkLogin}
             className={classNames("__wab_instance", sty.checkLogin)}
+            deps={(() => {
+              try {
+                return [$ctx.query.amount];
+              } catch (e) {
+                if (
+                  e instanceof TypeError ||
+                  e?.plasmicType === "PlasmicUndefinedDataError"
+                ) {
+                  return undefined;
+                }
+                throw e;
+              }
+            })()}
             onMount={async () => {
               const $steps = {};
 
