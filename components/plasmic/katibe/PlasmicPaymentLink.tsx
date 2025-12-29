@@ -75,6 +75,7 @@ import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLur
 import SearchSvgIcon from "./icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
 import Icon48Icon from "./icons/PlasmicIcon__Icon48"; // plasmic-import: ApzBD_j9CWGg/icon
+import Icon57Icon from "./icons/PlasmicIcon__Icon57"; // plasmic-import: XghkAcf2gugo/icon
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
 import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
 
@@ -613,6 +614,48 @@ function PlasmicPaymentLink__RenderFunc(props: {
                           ) {
                             $steps["invokeGlobalAction"] =
                               await $steps["invokeGlobalAction"];
+                          }
+                        }}
+                        role={"img"}
+                      />
+
+                      <Icon57Icon
+                        className={classNames(projectcss.all, sty.svg__ytirU)}
+                        onClick={async event => {
+                          const $steps = {};
+
+                          $steps["runCode"] = true
+                            ? (() => {
+                                const actionArgs = {
+                                  customFunction: async () => {
+                                    return (() => {
+                                      const shareData = {
+                                        title:
+                                          "پرداخت " +
+                                          $ctx.query.amount / 10 +
+                                          " تومان",
+                                        text:
+                                          $ctx.query.amount / 10 +
+                                          " تومان از طریق لینک زیر پرداخت کنید: ",
+                                        url: $state.txtPaymentLink.value
+                                      };
+                                      return globalThis.navigator.share(
+                                        shareData
+                                      );
+                                    })();
+                                  }
+                                };
+                                return (({ customFunction }) => {
+                                  return customFunction();
+                                })?.apply(null, [actionArgs]);
+                              })()
+                            : undefined;
+                          if (
+                            $steps["runCode"] != null &&
+                            typeof $steps["runCode"] === "object" &&
+                            typeof $steps["runCode"].then === "function"
+                          ) {
+                            $steps["runCode"] = await $steps["runCode"];
                           }
                         }}
                         role={"img"}

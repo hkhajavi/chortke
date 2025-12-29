@@ -416,7 +416,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .txtPaymentLink:global(.__wab_instance) {
     animation: none;
-    width: 309px;
+    width: 247px;
     flex-shrink: 0;
   }
 }
@@ -433,6 +433,16 @@
   height: 1em;
 }
 .svg__z1QZd {
+  object-fit: cover;
+  max-width: 100%;
+  color: var(--token-K7dwex6Q3HrV);
+  margin-right: 10px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.svg__ytirU {
   object-fit: cover;
   max-width: 100%;
   color: var(--token-K7dwex6Q3HrV);
