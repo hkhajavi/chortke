@@ -1129,6 +1129,71 @@ function PlasmicCharge__RenderFunc(props: {
                     <div
                       className={classNames(projectcss.all, sty.freeBox__fOzUo)}
                     >
+                      {(() => {
+                        try {
+                          return $state.user.users[0].id == 15594550;
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return false;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <Button
+                          children2={
+                            "\u0627\u0631\u0633\u0627\u0644 \u0631\u0633\u06cc\u062f \u067e\u0631\u062f\u0627\u062e\u062a"
+                          }
+                          className={classNames(
+                            "__wab_instance",
+                            sty.button___0EZ9F
+                          )}
+                          onClick={async event => {
+                            const $steps = {};
+
+                            $steps["runCode"] = true
+                              ? (() => {
+                                  const actionArgs = {
+                                    customFunction: async () => {
+                                      return (() => {
+                                        const shareData = {
+                                          title:
+                                            "پرداخت موفق به مبلغ " +
+                                            $ctx.query.amount / 10 +
+                                            " تومان",
+                                          text: "پرداخت با موفقیت انجام شد. لطفا نوبت خود را نهایی کنید.",
+                                          url:
+                                            "https://katibe.paziresh24.com/charge/?userid=" +
+                                            $ctx.query.userid +
+                                            "&amount=" +
+                                            $ctx.query.amount +
+                                            "&type=payment-success&factorid=" +
+                                            $ctx.query.factorid
+                                        };
+                                        return globalThis.navigator.share(
+                                          shareData
+                                        );
+                                      })();
+                                    }
+                                  };
+                                  return (({ customFunction }) => {
+                                    return customFunction();
+                                  })?.apply(null, [actionArgs]);
+                                })()
+                              : undefined;
+                            if (
+                              $steps["runCode"] != null &&
+                              typeof $steps["runCode"] === "object" &&
+                              typeof $steps["runCode"].then === "function"
+                            ) {
+                              $steps["runCode"] = await $steps["runCode"];
+                            }
+                          }}
+                          size={"compact"}
+                        />
+                      ) : null}
                       <Button
                         children2={
                           "\u0628\u0627\u0632\u06af\u0634\u062a \u0628\u0647 \u067e\u0630\u06cc\u0631\u063424"
@@ -1137,10 +1202,23 @@ function PlasmicCharge__RenderFunc(props: {
                           "__wab_instance",
                           sty.button___45H5S
                         )}
+                        isDisabled={(() => {
+                          try {
+                            return $state.waiting;
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return [];
+                            }
+                            throw e;
+                          }
+                        })()}
                         onClick={async event => {
                           const $steps = {};
 
-                          $steps["updateWaiting"] = false
+                          $steps["updateWaiting"] = true
                             ? (() => {
                                 const actionArgs = {
                                   variable: {
@@ -1194,6 +1272,7 @@ function PlasmicCharge__RenderFunc(props: {
                               await $steps["updateWaiting3"];
                           }
                         }}
+                        outline={true}
                         size={"compact"}
                       />
                     </div>
