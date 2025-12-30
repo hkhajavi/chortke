@@ -903,7 +903,14 @@ function PlasmicCharge__RenderFunc(props: {
                                           "/" +
                                           $state.txtAmount.value * 10 +
                                           "/?time=" +
-                                          new Date().toISOString()
+                                          new Date().toISOString() +
+                                          "&timezone=" +
+                                          Intl.DateTimeFormat().resolvedOptions()
+                                            .timeZone +
+                                          "&center_id=" +
+                                          $ctx.query.center_id +
+                                          "&receipt_id=" +
+                                          $ctx.query.receipt_id
                                         );
                                       } catch (e) {
                                         if (
