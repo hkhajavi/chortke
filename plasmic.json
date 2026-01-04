@@ -2503,6 +2503,11 @@
           "id": "ncUJin7Jx0xq",
           "name": "wallet.png 2",
           "filePath": "../public/plasmic/katibe/images/walletPng2.png"
+        },
+        {
+          "id": "Jt4tWf5dwamj",
+          "name": "images.png",
+          "filePath": "../public/plasmic/katibe/images/imagesPng.png"
         }
       ],
       "indirect": false,
