@@ -1082,7 +1082,11 @@ function PlasmicPaymentLink__RenderFunc(props: {
                         "https://katibe.paziresh24.com/charge/?userid=" +
                         $state.me.users[0].id +
                         "&amount=" +
-                        $ctx.query.amount
+                        $ctx.query.amount +
+                        "&receipt_id=" +
+                        ($ctx.query.receipt_id || "") +
+                        "&center_id=" +
+                        ($ctx.query.center_id || "")
                     };
                     return (({ variable, value, startIndex, deleteCount }) => {
                       if (!variable) {
