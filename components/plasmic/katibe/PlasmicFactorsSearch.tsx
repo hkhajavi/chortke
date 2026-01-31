@@ -662,12 +662,12 @@ function PlasmicFactorsSearch__RenderFunc(props: {
         />
         <meta
           key="twitter:title"
-          name="twitter:title"
+          property="twitter:title"
           content={PlasmicFactorsSearch.pageMetadata.title}
         />
         <meta
           key="description"
-          name="description"
+          property="description"
           content={PlasmicFactorsSearch.pageMetadata.description}
         />
         <meta
@@ -677,7 +677,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
         />
         <meta
           key="twitter:description"
-          name="twitter:description"
+          property="twitter:description"
           content={PlasmicFactorsSearch.pageMetadata.description}
         />
         <meta
@@ -687,7 +687,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
         />
         <meta
           key="twitter:image"
-          name="twitter:image"
+          property="twitter:image"
           content={PlasmicFactorsSearch.pageMetadata.ogImageSrc}
         />
       </Head>

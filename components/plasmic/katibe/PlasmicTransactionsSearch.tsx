@@ -89,7 +89,6 @@ import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"
 import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
 import Icon54Icon from "./icons/PlasmicIcon__Icon54"; // plasmic-import: N3q4_1KLSfUU/icon
 import Icon52Icon from "./icons/PlasmicIcon__Icon52"; // plasmic-import: fl1ZOZIHaI_u/icon
-import Icon56Icon from "./icons/PlasmicIcon__Icon56"; // plasmic-import: yLnbozaRO0lR/icon
 import Icon47Icon from "./icons/PlasmicIcon__Icon47"; // plasmic-import: MwxnRV3Jbx5Y/icon
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
 import SearchSvgIcon from "./icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
@@ -725,7 +724,44 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
         path: "userData",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $ctx }) => ({
+          status: 1,
+          message: "",
+          result: {
+            id: "0",
+            username: "-",
+            last_reset_password: "0",
+            name: "",
+            family: "",
+            gender: null,
+            national_code: "",
+            is_foreigner: "0",
+            date_birth: null,
+            father_name: null,
+            cell: "",
+            country_code_id: "",
+            number_of_enter_code: "0",
+            email: null,
+            province_id: null,
+            city_id: null,
+            created_at: "",
+            updated_at: "",
+            has_letschat_user: "",
+            country_code_prefix: "",
+            vip: null,
+            turn_status: "0",
+            wallet_id: null,
+            turn_status_enable: null,
+            turn_status_disable: null,
+            turn_status_disable_from: null,
+            turn_status_disable_to: null,
+            image: "",
+            isDoctor: false,
+            static_password: null,
+            is_foreigner_web: false
+          },
+          isDoctor: false
+        })
       },
       {
         path: "settlementMessage",
@@ -900,12 +936,12 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
         />
         <meta
           key="twitter:title"
-          name="twitter:title"
+          property="twitter:title"
           content={PlasmicTransactionsSearch.pageMetadata.title}
         />
         <meta
           key="description"
-          name="description"
+          property="description"
           content={PlasmicTransactionsSearch.pageMetadata.description}
         />
         <meta
@@ -915,7 +951,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
         />
         <meta
           key="twitter:description"
-          name="twitter:description"
+          property="twitter:description"
           content={PlasmicTransactionsSearch.pageMetadata.description}
         />
         <meta
@@ -925,7 +961,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
         />
         <meta
           key="twitter:image"
-          name="twitter:image"
+          property="twitter:image"
           content={PlasmicTransactionsSearch.pageMetadata.ogImageSrc}
         />
       </Head>
@@ -2563,90 +2599,6 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     />
                   </div>
                 ) : null}
-                {(
-                  hasVariant(globalVariants, "screen", "mobileOnly")
-                    ? (() => {
-                        try {
-                          return (
-                            $ctx.GrowthBook.features["katibe:escrow_payment"] &&
-                            false
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })()
-                    : (() => {
-                        try {
-                          return (
-                            $ctx.GrowthBook.features["katibe:escrow_payment"] &&
-                            new Date(
-                              $state.firstEscrowTransaction.register_date
-                            ) >
-                              new Date(
-                                new Date().setMonth(new Date().getMonth() - 1)
-                              )
-
-                            /*&& false*/
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })()
-                ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___0FHxp)}
-                  >
-                    <Icon56Icon
-                      className={classNames(projectcss.all, sty.svg__f1Za4)}
-                      role={"img"}
-                    />
-
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
-                        sty.text__yuRto
-                      )}
-                    >
-                      <React.Fragment>
-                        {(() => {
-                          try {
-                            return (
-                              ($state?.firstEscrowTransaction?.transactionid
-                                ? "پزشک گرامی، از تاریخ " +
-                                  new Date(
-                                    $state.firstEscrowTransaction.register_date
-                                  ).toLocaleDateString("fa-IR") +
-                                  " "
-                                : "") +
-                              "مبلغ پرداختی نوبت‌ها در زمان ویزیت بیمار ثبت می‌شود."
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return "";
-                            }
-                            throw e;
-                          }
-                        })()}
-                      </React.Fragment>
-                    </div>
-                  </div>
-                ) : null}
               </div>
             ) : null}
             <section className={classNames(projectcss.all, sty.section__jlUjK)}>
@@ -3191,7 +3143,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                           e instanceof TypeError ||
                           e?.plasmicType === "PlasmicUndefinedDataError"
                         ) {
-                          return true;
+                          return false;
                         }
                         throw e;
                       }
@@ -5001,7 +4953,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   "katibe:escrow_payment"
                                 ] &&
                                 $state.userData.isDoctor &&
-                                $state.btnRegisterSettlementShow
+                                $state.btnRegisterSettlementShow &&
+                                false
                               );
                             } catch (e) {
                               if (
@@ -10525,10 +10478,13 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 $steps["showWaiting"] = await $steps["showWaiting"];
               }
 
-              $steps["getUsers"] = true
+              $steps["me"] = true
                 ? (() => {
                     const actionArgs = {
-                      args: ["POST", "https://www.paziresh24.com/api/getUser"]
+                      args: [
+                        undefined,
+                        "https://apigw.paziresh24.com/v1/auth/me"
+                      ]
                     };
                     return $globalActions["Fragment.apiRequest"]?.apply(null, [
                       ...actionArgs.args
@@ -10536,23 +10492,23 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                   })()
                 : undefined;
               if (
-                $steps["getUsers"] != null &&
-                typeof $steps["getUsers"] === "object" &&
-                typeof $steps["getUsers"].then === "function"
+                $steps["me"] != null &&
+                typeof $steps["me"] === "object" &&
+                typeof $steps["me"].then === "function"
               ) {
-                $steps["getUsers"] = await $steps["getUsers"];
+                $steps["me"] = await $steps["me"];
               }
 
-              $steps["updateUserData"] =
-                $steps.getUsers.status == 200
+              $steps["updateMe"] =
+                $steps.me.status == 200
                   ? (() => {
                       const actionArgs = {
                         variable: {
                           objRoot: $state,
-                          variablePath: ["userData"]
+                          variablePath: ["user"]
                         },
                         operation: 0,
-                        value: $steps.getUsers.data
+                        value: $steps.me.data
                       };
                       return (({
                         variable,
@@ -10571,11 +10527,11 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     })()
                   : undefined;
               if (
-                $steps["updateUserData"] != null &&
-                typeof $steps["updateUserData"] === "object" &&
-                typeof $steps["updateUserData"].then === "function"
+                $steps["updateMe"] != null &&
+                typeof $steps["updateMe"] === "object" &&
+                typeof $steps["updateMe"].then === "function"
               ) {
-                $steps["updateUserData"] = await $steps["updateUserData"];
+                $steps["updateMe"] = await $steps["updateMe"];
               }
 
               $steps["getUserAccounts"] = true
@@ -10587,8 +10543,12 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                           try {
                             return (
                               "https://apigw.paziresh24.com/katibe-useraccounts?user_id=" +
-                              ($state.userData?.result?.id ||
-                                Math.random().toString(36).substring(2, 15))
+                              ($state.user &&
+                              $state.user.users &&
+                              $state.user.users[0] &&
+                              $state.user.users[0].id
+                                ? $state.user.users[0].id.toString()
+                                : Math.random().toString(36).substring(2, 15))
                             );
                           } catch (e) {
                             if (
@@ -10644,14 +10604,14 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         customFunction: async () => {
                           return ($state.accounts = [
                             {
-                              id: $state.userData.result.id,
+                              id: $state.user.users[0].id,
                               name:
-                                $state.userData.result.name +
+                                $state.user.users[0].name +
                                 " " +
-                                $state.userData.result.family,
+                                $state.user.users[0].family,
                               type: "userid",
                               account: "p24",
-                              uniqueid: "p24" + $state.userData.result.id
+                              uniqueid: "p24" + $state.user.users[0].id
                             }
                           ]);
                         }
@@ -10667,35 +10627,6 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 typeof $steps["userAccount200"].then === "function"
               ) {
                 $steps["userAccount200"] = await $steps["userAccount200"];
-              }
-
-              $steps["updateUserData"] =
-                $steps.getUsers.status == 200
-                  ? (() => {
-                      const actionArgs = {
-                        customFunction: async () => {
-                          return (() => {
-                            if ($steps.getUsers.data.isDoctor == true) {
-                              return $state.accounts.forEach(item => {
-                                if (item.account === "p24") {
-                                  item.name = "ویزیت آنلاین " + item.name;
-                                }
-                              });
-                            }
-                          })();
-                        }
-                      };
-                      return (({ customFunction }) => {
-                        return customFunction();
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-              if (
-                $steps["updateUserData"] != null &&
-                typeof $steps["updateUserData"] === "object" &&
-                typeof $steps["updateUserData"].then === "function"
-              ) {
-                $steps["updateUserData"] = await $steps["updateUserData"];
               }
 
               $steps["runCode2"] = true
@@ -10751,6 +10682,95 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 typeof $steps["isLoadAccountTrue"].then === "function"
               ) {
                 $steps["isLoadAccountTrue"] = await $steps["isLoadAccountTrue"];
+              }
+
+              $steps["getUsers"] = false
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        "POST",
+                        "https://www.paziresh24.com/api/getUser",
+                        undefined,
+                        undefined,
+                        {}
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
+              if (
+                $steps["getUsers"] != null &&
+                typeof $steps["getUsers"] === "object" &&
+                typeof $steps["getUsers"].then === "function"
+              ) {
+                $steps["getUsers"] = await $steps["getUsers"];
+              }
+
+              $steps["updateUserData"] = false
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["userData"]
+                      },
+                      operation: 0,
+                      value: $steps.getUsers.data
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateUserData"] != null &&
+                typeof $steps["updateUserData"] === "object" &&
+                typeof $steps["updateUserData"].then === "function"
+              ) {
+                $steps["updateUserData"] = await $steps["updateUserData"];
+              }
+
+              $steps["updateAccountName"] = true
+                ? (() => {
+                    const actionArgs = {
+                      customFunction: async () => {
+                        return (() => {
+                          var matab = false;
+                          if ($state.accounts.length > 1) {
+                            $state.accounts.forEach(item => {
+                              if (item.name.includes("مطب")) {
+                                matab = true;
+                              }
+                            });
+                          }
+                          if (matab) {
+                            return $state.accounts.forEach(item => {
+                              if (item.account === "p24") {
+                                item.name = "ویزیت آنلاین " + item.name;
+                              }
+                            });
+                          }
+                        })();
+                      }
+                    };
+                    return (({ customFunction }) => {
+                      return customFunction();
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateAccountName"] != null &&
+                typeof $steps["updateAccountName"] === "object" &&
+                typeof $steps["updateAccountName"].then === "function"
+              ) {
+                $steps["updateAccountName"] = await $steps["updateAccountName"];
               }
 
               $steps["updateFirstRequestCount"] = true
@@ -11041,232 +11061,6 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                   await $steps["updateReminderWallet"];
               }
 
-              $steps["getEscrow"] = true
-                ? (() => {
-                    const actionArgs = {
-                      args: [
-                        undefined,
-                        (() => {
-                          try {
-                            return (
-                              "https://apigw.paziresh24.com/katibe/v1/transactions/balance/p24?account=escrow" +
-                              ($state.currentAccountType == "centerid"
-                                ? "?centerid=" + $state.currentAccountId
-                                : "")
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
-                            }
-                            throw e;
-                          }
-                        })()
-                      ]
-                    };
-                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                      ...actionArgs.args
-                    ]);
-                  })()
-                : undefined;
-              if (
-                $steps["getEscrow"] != null &&
-                typeof $steps["getEscrow"] === "object" &&
-                typeof $steps["getEscrow"].then === "function"
-              ) {
-                $steps["getEscrow"] = await $steps["getEscrow"];
-              }
-
-              $steps["updateEscrowbalance"] =
-                $steps.getEscrow.status == 200
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["escrowbalance"]
-                        },
-                        operation: 0,
-                        value: $steps.getEscrow.data.data.balance
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-              if (
-                $steps["updateEscrowbalance"] != null &&
-                typeof $steps["updateEscrowbalance"] === "object" &&
-                typeof $steps["updateEscrowbalance"].then === "function"
-              ) {
-                $steps["updateEscrowbalance"] =
-                  await $steps["updateEscrowbalance"];
-              }
-
-              $steps["firstEscrow"] = (
-                $state?.firstEscrowTransaction?.transactionid ? false : true
-              )
-                ? (() => {
-                    const actionArgs = {
-                      args: [
-                        undefined,
-                        (() => {
-                          try {
-                            return (
-                              "https://apigw.paziresh24.com/katibe/v1/transactions/search/p24/first-escrow" +
-                              ($state.currentAccountType == "centerid"
-                                ? "?centerid=" + $state.currentAccountId
-                                : "")
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
-                            }
-                            throw e;
-                          }
-                        })()
-                      ]
-                    };
-                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                      ...actionArgs.args
-                    ]);
-                  })()
-                : undefined;
-              if (
-                $steps["firstEscrow"] != null &&
-                typeof $steps["firstEscrow"] === "object" &&
-                typeof $steps["firstEscrow"].then === "function"
-              ) {
-                $steps["firstEscrow"] = await $steps["firstEscrow"];
-              }
-
-              $steps["updateFirstEscrowTransaction"] = (
-                $state?.firstEscrowTransaction?.transactionid
-                  ? false
-                  : true && $steps.firstEscrow.status == 200
-              )
-                ? (() => {
-                    const actionArgs = {
-                      variable: {
-                        objRoot: $state,
-                        variablePath: ["firstEscrowTransaction"]
-                      },
-                      operation: 0,
-                      value: $steps.firstEscrow.data.data
-                    };
-                    return (({ variable, value, startIndex, deleteCount }) => {
-                      if (!variable) {
-                        return;
-                      }
-                      const { objRoot, variablePath } = variable;
-
-                      $stateSet(objRoot, variablePath, value);
-                      return value;
-                    })?.apply(null, [actionArgs]);
-                  })()
-                : undefined;
-              if (
-                $steps["updateFirstEscrowTransaction"] != null &&
-                typeof $steps["updateFirstEscrowTransaction"] === "object" &&
-                typeof $steps["updateFirstEscrowTransaction"].then ===
-                  "function"
-              ) {
-                $steps["updateFirstEscrowTransaction"] =
-                  await $steps["updateFirstEscrowTransaction"];
-              }
-
-              $steps["getTransactionsReport"] = true
-                ? (() => {
-                    const actionArgs = {
-                      args: [
-                        undefined,
-                        (() => {
-                          try {
-                            return (
-                              "https://apigw.paziresh24.com/katibe/v1/transactions/report/p24?book_date=" +
-                              $state.bookDate +
-                              ($state.currentAccountType == "centerid"
-                                ? "&centerid=" + $state.currentAccountId
-                                : "")
-                            );
-                          } catch (e) {
-                            if (
-                              e instanceof TypeError ||
-                              e?.plasmicType === "PlasmicUndefinedDataError"
-                            ) {
-                              return undefined;
-                            }
-                            throw e;
-                          }
-                        })()
-                      ]
-                    };
-                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
-                      ...actionArgs.args
-                    ]);
-                  })()
-                : undefined;
-              if (
-                $steps["getTransactionsReport"] != null &&
-                typeof $steps["getTransactionsReport"] === "object" &&
-                typeof $steps["getTransactionsReport"].then === "function"
-              ) {
-                $steps["getTransactionsReport"] =
-                  await $steps["getTransactionsReport"];
-              }
-
-              $steps["updateTransactionsReport"] =
-                $steps.getTransactionsReport.status == 200
-                  ? /*
-              && $state.userData?.isDoctor*/ (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["transactionsReport"]
-                        },
-                        operation: 0,
-                        value: $steps.getTransactionsReport.data
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
-
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
-              if (
-                $steps["updateTransactionsReport"] != null &&
-                typeof $steps["updateTransactionsReport"] === "object" &&
-                typeof $steps["updateTransactionsReport"].then === "function"
-              ) {
-                $steps["updateTransactionsReport"] =
-                  await $steps["updateTransactionsReport"];
-              }
-
               $steps["getInvoiceList"] = $state.isLoadAccount
                 ? (() => {
                     const actionArgs = {
@@ -11421,36 +11215,34 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 $steps["runCode3"] = await $steps["runCode3"];
               }
 
-              $steps["getCentersInfo"] =
-                $state.currentAccountType == "centerid"
-                  ? (() => {
-                      const actionArgs = {
-                        args: [
-                          undefined,
-                          (() => {
-                            try {
-                              return (
-                                "https://apigw.paziresh24.com/v1/centers/" +
-                                $state.currentAccountId
-                              );
-                            } catch (e) {
-                              if (
-                                e instanceof TypeError ||
-                                e?.plasmicType === "PlasmicUndefinedDataError"
-                              ) {
-                                return undefined;
-                              }
-                              throw e;
+              $steps["getCentersInfo"] = false
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        undefined,
+                        (() => {
+                          try {
+                            return (
+                              "https://apigw.paziresh24.com/v1/centers/" +
+                              $state.currentAccountId
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return undefined;
                             }
-                          })()
-                        ]
-                      };
-                      return $globalActions["Fragment.apiRequest"]?.apply(
-                        null,
-                        [...actionArgs.args]
-                      );
-                    })()
-                  : undefined;
+                            throw e;
+                          }
+                        })()
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
               if (
                 $steps["getCentersInfo"] != null &&
                 typeof $steps["getCentersInfo"] === "object" &&
@@ -11459,33 +11251,27 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 $steps["getCentersInfo"] = await $steps["getCentersInfo"];
               }
 
-              $steps["updateCenterInfo"] =
-                $steps.getCentersInfo.status == 200
-                  ? (() => {
-                      const actionArgs = {
-                        variable: {
-                          objRoot: $state,
-                          variablePath: ["centerInfo"]
-                        },
-                        operation: 0,
-                        value: $steps.getCentersInfo.data
-                      };
-                      return (({
-                        variable,
-                        value,
-                        startIndex,
-                        deleteCount
-                      }) => {
-                        if (!variable) {
-                          return;
-                        }
-                        const { objRoot, variablePath } = variable;
+              $steps["updateCenterInfo"] = false
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["centerInfo"]
+                      },
+                      operation: 0,
+                      value: $steps.getCentersInfo.data
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
 
-                        $stateSet(objRoot, variablePath, value);
-                        return value;
-                      })?.apply(null, [actionArgs]);
-                    })()
-                  : undefined;
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
               if (
                 $steps["updateCenterInfo"] != null &&
                 typeof $steps["updateCenterInfo"] === "object" &&
@@ -11494,9 +11280,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 $steps["updateCenterInfo"] = await $steps["updateCenterInfo"];
               }
 
-              $steps["updateFirstEscrowTransaction2"] = (
-                $state?.firstEscrowTransaction?.transactionid ? false : true
-              )
+              $steps["updateFirstEscrowTransaction2"] = false
                 ? (() => {
                     const actionArgs = {
                       variable: {
@@ -11535,7 +11319,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
             className={classNames("__wab_instance", sty.growthBook)}
             deps={(() => {
               try {
-                return [$ctx.GrowthBook.isReady, $state.firstRequestCount];
+                return [$state.isLoadAccount];
               } catch (e) {
                 if (
                   e instanceof TypeError ||

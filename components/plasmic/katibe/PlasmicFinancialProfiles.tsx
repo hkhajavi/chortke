@@ -694,7 +694,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         />
         <meta
           key="twitter:title"
-          name="twitter:title"
+          property="twitter:title"
           content={PlasmicFinancialProfiles.pageMetadata.title}
         />
       </Head>
