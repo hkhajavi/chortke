@@ -2662,10 +2662,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                   hasVariant(globalVariants, "screen", "mobileOnly")
                     ? (() => {
                         try {
-                          return (
-                            !$state.waiting &&
-                            !$ctx.GrowthBook.features["financial-report"]
-                          );
+                          return !$state.waiting;
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
@@ -2678,10 +2675,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       })()
                     : (() => {
                         try {
-                          return (
-                            !$state.waiting &&
-                            !$ctx.GrowthBook.features["financial-report"]
-                          );
+                          return !$state.waiting;
                         } catch (e) {
                           if (
                             e instanceof TypeError ||
