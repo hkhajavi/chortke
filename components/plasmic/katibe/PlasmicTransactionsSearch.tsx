@@ -61,9 +61,9 @@ import {
 
 import Button from "../../Button"; // plasmic-import: 0wu_ZE1f8SuT/component
 import Select from "../../Select"; // plasmic-import: 7wkEfmUYAcMf/component
-import Button2 from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
 import Dialog from "../../Dialog"; // plasmic-import: FJiI2-N1is_F/component
 import { DatePicker } from "@/fragment/components/date-picker"; // plasmic-import: BigXM4fJwC8U/codeComponent
+import Button2 from "../../Button"; // plasmic-import: oVzoHzMf1TLl/component
 import RadioGroup from "../../RadioGroup"; // plasmic-import: tqHTZfyBziuN/component
 import Radio from "../../Radio"; // plasmic-import: Cbq_rTXOD16b/component
 import FinancialReports from "../../FinancialReports"; // plasmic-import: T-TncP4LAmu0/component
@@ -116,8 +116,6 @@ export type PlasmicTransactionsSearch__OverridesType = {
   btnLogout?: Flex__<"a"> & Partial<LinkProps>;
   btnLogin?: Flex__<typeof Button>;
   cbAccounts?: Flex__<typeof Select>;
-  btnFilter?: Flex__<typeof Button2>;
-  btnFilterClear?: Flex__<typeof Button2>;
   dialogFilter?: Flex__<typeof Dialog>;
   dialogFilterDate?: Flex__<typeof Dialog>;
   datePicker?: Flex__<typeof DatePicker>;
@@ -1503,213 +1501,6 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                   <div
                     className={classNames(projectcss.all, sty.freeBox__uosbZ)}
                   >
-                    {(() => {
-                      try {
-                        return $state.bookDate == "" && false;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return true;
-                        }
-                        throw e;
-                      }
-                    })() ? (
-                      <Button2
-                        data-plasmic-name={"btnFilter"}
-                        data-plasmic-override={overrides.btnFilter}
-                        children2={
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___8KUms
-                            )}
-                          >
-                            {
-                              "\u0645\u0631\u0627\u062c\u0639\u06cc\u0646 \u0627\u0645\u0631\u0648\u0632"
-                            }
-                          </div>
-                        }
-                        className={classNames("__wab_instance", sty.btnFilter)}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["runCode"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  customFunction: async () => {
-                                    return ($state.bookDate = new Date()
-                                      .toISOString()
-                                      .split("T")[0]);
-                                  }
-                                };
-                                return (({ customFunction }) => {
-                                  return customFunction();
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["runCode"] != null &&
-                            typeof $steps["runCode"] === "object" &&
-                            typeof $steps["runCode"].then === "function"
-                          ) {
-                            $steps["runCode"] = await $steps["runCode"];
-                          }
-
-                          $steps["updateFirstRequestCount"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["firstRequestCount"]
-                                  },
-                                  operation: 2
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
-
-                                  const oldValue = $stateGet(
-                                    objRoot,
-                                    variablePath
-                                  );
-                                  $stateSet(
-                                    objRoot,
-                                    variablePath,
-                                    oldValue + 1
-                                  );
-                                  return oldValue + 1;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["updateFirstRequestCount"] != null &&
-                            typeof $steps["updateFirstRequestCount"] ===
-                              "object" &&
-                            typeof $steps["updateFirstRequestCount"].then ===
-                              "function"
-                          ) {
-                            $steps["updateFirstRequestCount"] =
-                              await $steps["updateFirstRequestCount"];
-                          }
-                        }}
-                        size={"compact"}
-                      />
-                    ) : null}
-                    {(() => {
-                      try {
-                        return $state.bookDate != "" && false;
-                      } catch (e) {
-                        if (
-                          e instanceof TypeError ||
-                          e?.plasmicType === "PlasmicUndefinedDataError"
-                        ) {
-                          return true;
-                        }
-                        throw e;
-                      }
-                    })() ? (
-                      <Button2
-                        data-plasmic-name={"btnFilterClear"}
-                        data-plasmic-override={overrides.btnFilterClear}
-                        children2={
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
-                              sty.text___1V2NI
-                            )}
-                          >
-                            {
-                              "\u0646\u0645\u0627\u06cc\u0634 \u0647\u0645\u0647"
-                            }
-                          </div>
-                        }
-                        className={classNames(
-                          "__wab_instance",
-                          sty.btnFilterClear
-                        )}
-                        onClick={async event => {
-                          const $steps = {};
-
-                          $steps["runCode"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  customFunction: async () => {
-                                    return (() => {
-                                      return ($state.bookDate = "");
-                                    })();
-                                  }
-                                };
-                                return (({ customFunction }) => {
-                                  return customFunction();
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["runCode"] != null &&
-                            typeof $steps["runCode"] === "object" &&
-                            typeof $steps["runCode"].then === "function"
-                          ) {
-                            $steps["runCode"] = await $steps["runCode"];
-                          }
-
-                          $steps["updateFirstRequestCount"] = true
-                            ? (() => {
-                                const actionArgs = {
-                                  variable: {
-                                    objRoot: $state,
-                                    variablePath: ["firstRequestCount"]
-                                  },
-                                  operation: 2
-                                };
-                                return (({
-                                  variable,
-                                  value,
-                                  startIndex,
-                                  deleteCount
-                                }) => {
-                                  if (!variable) {
-                                    return;
-                                  }
-                                  const { objRoot, variablePath } = variable;
-
-                                  const oldValue = $stateGet(
-                                    objRoot,
-                                    variablePath
-                                  );
-                                  $stateSet(
-                                    objRoot,
-                                    variablePath,
-                                    oldValue + 1
-                                  );
-                                  return oldValue + 1;
-                                })?.apply(null, [actionArgs]);
-                              })()
-                            : undefined;
-                          if (
-                            $steps["updateFirstRequestCount"] != null &&
-                            typeof $steps["updateFirstRequestCount"] ===
-                              "object" &&
-                            typeof $steps["updateFirstRequestCount"].then ===
-                              "function"
-                          ) {
-                            $steps["updateFirstRequestCount"] =
-                              await $steps["updateFirstRequestCount"];
-                          }
-                        }}
-                        size={"compact"}
-                      />
-                    ) : null}
                     <Dialog
                       data-plasmic-name={"dialogFilter"}
                       data-plasmic-override={overrides.dialogFilter}
@@ -11414,8 +11205,6 @@ const PlasmicDescendants = {
     "btnLogout",
     "btnLogin",
     "cbAccounts",
-    "btnFilter",
-    "btnFilterClear",
     "dialogFilter",
     "dialogFilterDate",
     "datePicker",
@@ -11463,8 +11252,6 @@ const PlasmicDescendants = {
   btnLogout: ["btnLogout"],
   btnLogin: ["btnLogin"],
   cbAccounts: ["cbAccounts"],
-  btnFilter: ["btnFilter"],
-  btnFilterClear: ["btnFilterClear"],
   dialogFilter: [
     "dialogFilter",
     "dialogFilterDate",
@@ -11583,8 +11370,6 @@ type NodeDefaultElementType = {
   btnLogout: "a";
   btnLogin: typeof Button;
   cbAccounts: typeof Select;
-  btnFilter: typeof Button2;
-  btnFilterClear: typeof Button2;
   dialogFilter: typeof Dialog;
   dialogFilterDate: typeof Dialog;
   datePicker: typeof DatePicker;
@@ -11695,8 +11480,6 @@ export const PlasmicTransactionsSearch = Object.assign(
     btnLogout: makeNodeComponent("btnLogout"),
     btnLogin: makeNodeComponent("btnLogin"),
     cbAccounts: makeNodeComponent("cbAccounts"),
-    btnFilter: makeNodeComponent("btnFilter"),
-    btnFilterClear: makeNodeComponent("btnFilterClear"),
     dialogFilter: makeNodeComponent("dialogFilter"),
     dialogFilterDate: makeNodeComponent("dialogFilterDate"),
     datePicker: makeNodeComponent("datePicker"),
