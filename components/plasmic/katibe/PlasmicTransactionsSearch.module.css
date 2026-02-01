@@ -3714,7 +3714,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .freeBox__s68Rn {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     width: 100%;
     height: auto;
     max-width: 100%;
@@ -3759,6 +3759,11 @@
   object-fit: cover;
   width: auto;
   height: 1em;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__y3UPu {
+    margin: 5px 10px;
+  }
 }
 .svg___6IgAc {
   position: relative;

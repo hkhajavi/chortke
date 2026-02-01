@@ -8592,7 +8592,17 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                             >
                                               <Button2
                                                 children2={
-                                                  "\u0642\u0628\u0636 \u0646\u0648\u0628\u062a"
+                                                  <div
+                                                    className={classNames(
+                                                      projectcss.all,
+                                                      projectcss.__wab_text,
+                                                      sty.text__y3UPu
+                                                    )}
+                                                  >
+                                                    {
+                                                      "\u0642\u0628\u0636 \u0646\u0648\u0628\u062a"
+                                                    }
+                                                  </div>
                                                 }
                                                 className={classNames(
                                                   "__wab_instance",
@@ -8653,7 +8663,15 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                       ];
                                                   }
                                                 }}
-                                                size={"compact"}
+                                                size={
+                                                  hasVariant(
+                                                    globalVariants,
+                                                    "screen",
+                                                    "mobileOnly"
+                                                  )
+                                                    ? "minimal"
+                                                    : "compact"
+                                                }
                                               />
                                             </PlasmicLink__>
                                           </div>
