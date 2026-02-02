@@ -9649,7 +9649,11 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                               "&page=" +
                                               $state.pageNumber +
                                               "&account=" +
-                                              $state.currentAccountAccount
+                                              $state.currentAccountAccount +
+                                              "&book_date=" +
+                                              $state.bookDate +
+                                              "&transaction_type=" +
+                                              $state.filterTransactionType
                                             );
                                           else
                                             return (
@@ -9658,7 +9662,11 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                               "&page=" +
                                               $state.pageNumber +
                                               "&account=" +
-                                              $state.currentAccountAccount
+                                              $state.currentAccountAccount +
+                                              "&book_date=" +
+                                              $state.bookDate +
+                                              "&transaction_type=" +
+                                              $state.filterTransactionType
                                             );
                                         })();
                                       } catch (e) {
