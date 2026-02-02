@@ -2727,6 +2727,11 @@
   max-width: 100%;
   margin-top: 10px;
 }
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__uq0XS {
+    font-size: var(--token-VrIY9r5RDQZ_);
+  }
+}
 .text__dlkwU {
   position: relative;
   width: 100%;

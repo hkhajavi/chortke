@@ -6726,9 +6726,17 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                             }).apply(null, eventArgs);
                           }}
                         >
-                          {
-                            "\u0627\u0637\u0644\u0627\u0639 \u0631\u0633\u0627\u0646\u06cc \u0628\u0627 \u067e\u06cc\u0627\u0645\u06a9 \u0628\u0631\u0627\u06cc \u0647\u0631 \u062a\u0633\u0648\u06cc\u0647"
-                          }
+                          <div
+                            className={classNames(
+                              projectcss.all,
+                              projectcss.__wab_text,
+                              sty.text__uq0XS
+                            )}
+                          >
+                            {
+                              "\u0627\u0637\u0644\u0627\u0639 \u0631\u0633\u0627\u0646\u06cc \u0628\u0627 \u067e\u06cc\u0627\u0645\u06a9 \u0628\u0631\u0627\u06cc \u0647\u0631 \u062a\u0633\u0648\u06cc\u0647"
+                            }
+                          </div>
                         </Checkbox>
                       ) : null}
                       {(() => {
