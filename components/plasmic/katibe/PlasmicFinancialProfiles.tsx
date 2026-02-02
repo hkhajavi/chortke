@@ -69,6 +69,7 @@ import { TabButton } from "@plasmicpkgs/plasmic-tabs";
 import { TabUnderline } from "@plasmicpkgs/plasmic-tabs";
 import { TabContent } from "@plasmicpkgs/plasmic-tabs";
 import { SideEffect } from "@plasmicpkgs/plasmic-basic-components";
+import Checkbox from "../../Checkbox"; // plasmic-import: aziC0C3kJR0h/component
 import { AntdRadioGroup } from "@plasmicpkgs/antd5/skinny/registerRadio";
 import { Embed } from "@plasmicpkgs/plasmic-basic-components";
 import { Fetcher } from "@plasmicapp/react-web/lib/data-sources";
@@ -126,6 +127,7 @@ export type PlasmicFinancialProfiles__OverridesType = {
   txtIbanPaymentNumber?: Flex__<typeof TextInput>;
   sideEffectGetCardInquiry2?: Flex__<typeof SideEffect>;
   sideEffectGetIbanInquiry?: Flex__<typeof SideEffect>;
+  cbRecuringSettlementSms?: Flex__<typeof Checkbox>;
   accountSettlement?: Flex__<typeof AntdRadioGroup>;
   txtPaymentNumber?: Flex__<typeof TextInput>;
   btnActiveRecuringSettlement?: Flex__<typeof Button>;
@@ -669,6 +671,30 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         type: "private",
         variableType: "object",
         initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+      },
+      {
+        path: "cbRecuringSettlementSms.isChecked",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $ctx }) =>
+          (() => {
+            try {
+              return (
+                $state.recurringSettlementList &&
+                $state.recurringSettlementList[0] &&
+                $state.recurringSettlementList[0].metadata &&
+                $state.recurringSettlementList[0].metadata.sms_alert
+              );
+            } catch (e) {
+              if (
+                e instanceof TypeError ||
+                e?.plasmicType === "PlasmicUndefinedDataError"
+              ) {
+                return [];
+              }
+              throw e;
+            }
+          })()
       }
     ],
     [$props, $ctx, $refs]
@@ -6406,6 +6432,309 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         try {
                           return (
                             $state.recurringSettlementList.length > 0 &&
+                            $state.recurringSettlementList[0].accountid > 0
+                          );
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return true;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <div
+                          className={classNames(
+                            projectcss.all,
+                            projectcss.__wab_text,
+                            sty.text___1CR2O
+                          )}
+                        >
+                          {
+                            "\u062f\u0631\u0622\u0645\u062f \u0634\u0645\u0627 \u0647\u0631 \u0634\u0628 \u0628\u0647 \u062d\u0633\u0627\u0628 \u0628\u0627\u0646\u06a9\u06cc\u200c\u062a\u0627\u0646 \u0648\u0627\u0631\u06cc\u0632 \u0645\u06cc\u200c\u0634\u0648\u062f."
+                          }
+                        </div>
+                      ) : null}
+                      {(() => {
+                        try {
+                          return (
+                            $state.recurringSettlementList.length > 0 &&
+                            $state.recurringSettlementList[0].accountid > 0
+                          );
+                        } catch (e) {
+                          if (
+                            e instanceof TypeError ||
+                            e?.plasmicType === "PlasmicUndefinedDataError"
+                          ) {
+                            return false;
+                          }
+                          throw e;
+                        }
+                      })() ? (
+                        <Checkbox
+                          data-plasmic-name={"cbRecuringSettlementSms"}
+                          data-plasmic-override={
+                            overrides.cbRecuringSettlementSms
+                          }
+                          className={classNames(
+                            "__wab_instance",
+                            sty.cbRecuringSettlementSms
+                          )}
+                          isChecked={
+                            generateStateValueProp($state, [
+                              "cbRecuringSettlementSms",
+                              "isChecked"
+                            ]) ?? false
+                          }
+                          onChange={async (...eventArgs: any) => {
+                            ((...eventArgs) => {
+                              generateStateOnChangeProp($state, [
+                                "cbRecuringSettlementSms",
+                                "isChecked"
+                              ])(eventArgs[0]);
+                            }).apply(null, eventArgs);
+
+                            if (
+                              eventArgs.length > 1 &&
+                              eventArgs[1] &&
+                              eventArgs[1]._plasmic_state_init_
+                            ) {
+                              return;
+                            }
+
+                            (async isChecked => {
+                              const $steps = {};
+
+                              $steps["updateWaitingSettlement"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["waitingSettlement"]
+                                      },
+                                      operation: 0,
+                                      value: true
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateWaitingSettlement"] != null &&
+                                typeof $steps["updateWaitingSettlement"] ===
+                                  "object" &&
+                                typeof $steps["updateWaitingSettlement"]
+                                  .then === "function"
+                              ) {
+                                $steps["updateWaitingSettlement"] =
+                                  await $steps["updateWaitingSettlement"];
+                              }
+
+                              $steps["invokeGlobalAction"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      args: [
+                                        "PUT",
+                                        (() => {
+                                          try {
+                                            return (
+                                              "https://apigw.paziresh24.com/ganjname/v1/settlements/" +
+                                              $state.recurringSettlementList[0]
+                                                .settlementrequestid
+                                            );
+                                          } catch (e) {
+                                            if (
+                                              e instanceof TypeError ||
+                                              e?.plasmicType ===
+                                                "PlasmicUndefinedDataError"
+                                            ) {
+                                              return undefined;
+                                            }
+                                            throw e;
+                                          }
+                                        })(),
+                                        undefined,
+                                        {
+                                          sms_alert:
+                                            $state.cbRecuringSettlementSms
+                                              .isChecked
+                                        }
+                                      ]
+                                    };
+                                    return $globalActions[
+                                      "Fragment.apiRequest"
+                                    ]?.apply(null, [...actionArgs.args]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["invokeGlobalAction"] != null &&
+                                typeof $steps["invokeGlobalAction"] ===
+                                  "object" &&
+                                typeof $steps["invokeGlobalAction"].then ===
+                                  "function"
+                              ) {
+                                $steps["invokeGlobalAction"] =
+                                  await $steps["invokeGlobalAction"];
+                              }
+
+                              $steps["invokeGlobalAction2"] =
+                                $steps.invokeGlobalAction.status == 200
+                                  ? (() => {
+                                      const actionArgs = {
+                                        args: [
+                                          undefined,
+                                          (() => {
+                                            try {
+                                              return (
+                                                "اطلاع رسانی با پیامک " +
+                                                ($state.cbRecuringSettlementSms
+                                                  .isChecked
+                                                  ? "فعال"
+                                                  : "غیرفعال") +
+                                                " شد."
+                                              );
+                                            } catch (e) {
+                                              if (
+                                                e instanceof TypeError ||
+                                                e?.plasmicType ===
+                                                  "PlasmicUndefinedDataError"
+                                              ) {
+                                                return undefined;
+                                              }
+                                              throw e;
+                                            }
+                                          })()
+                                        ]
+                                      };
+                                      return $globalActions[
+                                        "Fragment.showToast"
+                                      ]?.apply(null, [...actionArgs.args]);
+                                    })()
+                                  : undefined;
+                              if (
+                                $steps["invokeGlobalAction2"] != null &&
+                                typeof $steps["invokeGlobalAction2"] ===
+                                  "object" &&
+                                typeof $steps["invokeGlobalAction2"].then ===
+                                  "function"
+                              ) {
+                                $steps["invokeGlobalAction2"] =
+                                  await $steps["invokeGlobalAction2"];
+                              }
+
+                              $steps["updateWaitingSettlement2"] = true
+                                ? (() => {
+                                    const actionArgs = {
+                                      variable: {
+                                        objRoot: $state,
+                                        variablePath: ["waitingSettlement"]
+                                      },
+                                      operation: 0,
+                                      value: false
+                                    };
+                                    return (({
+                                      variable,
+                                      value,
+                                      startIndex,
+                                      deleteCount
+                                    }) => {
+                                      if (!variable) {
+                                        return;
+                                      }
+                                      const { objRoot, variablePath } =
+                                        variable;
+
+                                      $stateSet(objRoot, variablePath, value);
+                                      return value;
+                                    })?.apply(null, [actionArgs]);
+                                  })()
+                                : undefined;
+                              if (
+                                $steps["updateWaitingSettlement2"] != null &&
+                                typeof $steps["updateWaitingSettlement2"] ===
+                                  "object" &&
+                                typeof $steps["updateWaitingSettlement2"]
+                                  .then === "function"
+                              ) {
+                                $steps["updateWaitingSettlement2"] =
+                                  await $steps["updateWaitingSettlement2"];
+                              }
+
+                              $steps["updateRecuringSetlementCount"] =
+                                $steps.invokeGlobalAction.status != 200
+                                  ? (() => {
+                                      const actionArgs = {
+                                        variable: {
+                                          objRoot: $state,
+                                          variablePath: [
+                                            "recuringSetlementCount"
+                                          ]
+                                        },
+                                        operation: 2
+                                      };
+                                      return (({
+                                        variable,
+                                        value,
+                                        startIndex,
+                                        deleteCount
+                                      }) => {
+                                        if (!variable) {
+                                          return;
+                                        }
+                                        const { objRoot, variablePath } =
+                                          variable;
+
+                                        const oldValue = $stateGet(
+                                          objRoot,
+                                          variablePath
+                                        );
+                                        $stateSet(
+                                          objRoot,
+                                          variablePath,
+                                          oldValue + 1
+                                        );
+                                        return oldValue + 1;
+                                      })?.apply(null, [actionArgs]);
+                                    })()
+                                  : undefined;
+                              if (
+                                $steps["updateRecuringSetlementCount"] !=
+                                  null &&
+                                typeof $steps[
+                                  "updateRecuringSetlementCount"
+                                ] === "object" &&
+                                typeof $steps["updateRecuringSetlementCount"]
+                                  .then === "function"
+                              ) {
+                                $steps["updateRecuringSetlementCount"] =
+                                  await $steps["updateRecuringSetlementCount"];
+                              }
+                            }).apply(null, eventArgs);
+                          }}
+                        >
+                          {
+                            "\u0627\u0637\u0644\u0627\u0639 \u0631\u0633\u0627\u0646\u06cc \u0628\u0627 \u067e\u06cc\u0627\u0645\u06a9 \u0628\u0631\u0627\u06cc \u0647\u0631 \u062a\u0633\u0648\u06cc\u0647"
+                          }
+                        </Checkbox>
+                      ) : null}
+                      {(() => {
+                        try {
+                          return (
+                            $state.recurringSettlementList.length > 0 &&
                             $state.recurringSettlementList.accountid !=
                               undefined
                           );
@@ -6428,34 +6757,6 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         >
                           {
                             "\u0631\u0648\u0632\u0627\u0646\u0647 7\u0635\u0628\u062d \u06a9\u0644 \u0645\u0648\u062c\u0648\u062f\u06cc \u062d\u0633\u0627\u0628 \u0628\u0647\u200c\u0635\u0648\u0631\u062a \u067e\u0627\u06cc\u0627 \u0628\u0631\u0627\u06cc \u0634\u0645\u0627 \u0648\u0627\u0631\u06cc\u0632 \u0645\u06cc\u200c\u0634\u0648\u062f"
-                          }
-                        </div>
-                      ) : null}
-                      {(() => {
-                        try {
-                          return (
-                            $state.recurringSettlementList.length > 0 &&
-                            $state.recurringSettlementList[0].accountid > 0
-                          );
-                        } catch (e) {
-                          if (
-                            e instanceof TypeError ||
-                            e?.plasmicType === "PlasmicUndefinedDataError"
-                          ) {
-                            return true;
-                          }
-                          throw e;
-                        }
-                      })() ? (
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
-                            sty.text___1CR2O
-                          )}
-                        >
-                          {
-                            "\u062f\u0631\u0622\u0645\u062f \u0634\u0645\u0627 \u0647\u0631 \u0634\u0628 \u0628\u0647 \u062d\u0633\u0627\u0628 \u0628\u0627\u0646\u06a9\u06cc\u200c\u062a\u0627\u0646 \u0648\u0627\u0631\u06cc\u0632 \u0645\u06cc\u200c\u0634\u0648\u062f."
                           }
                         </div>
                       ) : null}
@@ -8448,6 +8749,7 @@ const PlasmicDescendants = {
     "txtIbanPaymentNumber",
     "sideEffectGetCardInquiry2",
     "sideEffectGetIbanInquiry",
+    "cbRecuringSettlementSms",
     "accountSettlement",
     "txtPaymentNumber",
     "btnActiveRecuringSettlement",
@@ -8482,6 +8784,7 @@ const PlasmicDescendants = {
     "txtIbanPaymentNumber",
     "sideEffectGetCardInquiry2",
     "sideEffectGetIbanInquiry",
+    "cbRecuringSettlementSms",
     "accountSettlement",
     "txtPaymentNumber",
     "btnActiveRecuringSettlement",
@@ -8535,6 +8838,7 @@ const PlasmicDescendants = {
   txtIbanPaymentNumber: ["txtIbanPaymentNumber"],
   sideEffectGetCardInquiry2: ["sideEffectGetCardInquiry2"],
   sideEffectGetIbanInquiry: ["sideEffectGetIbanInquiry"],
+  cbRecuringSettlementSms: ["cbRecuringSettlementSms"],
   accountSettlement: ["accountSettlement"],
   txtPaymentNumber: ["txtPaymentNumber"],
   btnActiveRecuringSettlement: ["btnActiveRecuringSettlement"],
@@ -8573,6 +8877,7 @@ type NodeDefaultElementType = {
   txtIbanPaymentNumber: typeof TextInput;
   sideEffectGetCardInquiry2: typeof SideEffect;
   sideEffectGetIbanInquiry: typeof SideEffect;
+  cbRecuringSettlementSms: typeof Checkbox;
   accountSettlement: typeof AntdRadioGroup;
   txtPaymentNumber: typeof TextInput;
   btnActiveRecuringSettlement: typeof Button;
@@ -8669,6 +8974,7 @@ export const PlasmicFinancialProfiles = Object.assign(
     txtIbanPaymentNumber: makeNodeComponent("txtIbanPaymentNumber"),
     sideEffectGetCardInquiry2: makeNodeComponent("sideEffectGetCardInquiry2"),
     sideEffectGetIbanInquiry: makeNodeComponent("sideEffectGetIbanInquiry"),
+    cbRecuringSettlementSms: makeNodeComponent("cbRecuringSettlementSms"),
     accountSettlement: makeNodeComponent("accountSettlement"),
     txtPaymentNumber: makeNodeComponent("txtPaymentNumber"),
     btnActiveRecuringSettlement: makeNodeComponent(
