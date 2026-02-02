@@ -1487,7 +1487,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 </div>
                 {(() => {
                   try {
-                    return $state.userData?.isDoctor && !$state.waiting;
+                    return $state.currentAccountAccount == "organization";
                   } catch (e) {
                     if (
                       e instanceof TypeError ||
