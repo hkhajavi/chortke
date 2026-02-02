@@ -1487,7 +1487,9 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 </div>
                 {(() => {
                   try {
-                    return $state.currentAccountAccount == "organization";
+                    return (
+                      $state.currentAccountAccount == "organization" || true
+                    );
                   } catch (e) {
                     if (
                       e instanceof TypeError ||
