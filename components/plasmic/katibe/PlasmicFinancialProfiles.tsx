@@ -136,6 +136,7 @@ export type PlasmicFinancialProfiles__OverridesType = {
   loadProfile?: Flex__<typeof SideEffect>;
   refreshRecuringSettlement?: Flex__<typeof SideEffect>;
   embedHtml?: Flex__<typeof Embed>;
+  growthBook?: Flex__<typeof SideEffect>;
 };
 
 export interface DefaultFinancialProfilesProps {}
@@ -6333,7 +6334,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                     )}
                   >
                     {
-                      "\u062a\u0633\u0648\u06cc\u0647 \u062e\u0648\u062f\u06a9\u0627\u0631 \u0631\u0648\u0632\u0627\u0646\u0647"
+                      "\u062a\u0633\u0648\u06cc\u0647 \u062e\u0648\u062f\u06a9\u0627\u0631"
                     }
                   </div>
                   {(() => {
@@ -6459,6 +6460,9 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                       {(() => {
                         try {
                           return (
+                            !$ctx.GrowthBook.features[
+                              "katibe-settlement-sms-alert"
+                            ].hide &&
                             $state.recurringSettlementList.length > 0 &&
                             $state.recurringSettlementList[0].accountid > 0
                           );
@@ -6467,7 +6471,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                             e instanceof TypeError ||
                             e?.plasmicType === "PlasmicUndefinedDataError"
                           ) {
-                            return false;
+                            return true;
                           }
                           throw e;
                         }
@@ -8724,6 +8728,57 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
               '<script type="text/javascript">\r\n    (function(c,l,a,r,i,t,y){\r\n        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};\r\n        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;\r\n        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);\r\n    })(window, document, "clarity", "script", "pq37fqev3s");\r\n</script>'
             }
           />
+
+          <SideEffect
+            data-plasmic-name={"growthBook"}
+            data-plasmic-override={overrides.growthBook}
+            className={classNames("__wab_instance", sty.growthBook)}
+            deps={[$state.userData]}
+            onMount={async () => {
+              const $steps = {};
+
+              $steps["me"] = true
+                ? (() => {
+                    const actionArgs = {
+                      args: [
+                        undefined,
+                        "https://apigw.paziresh24.com/v1/auth/me"
+                      ]
+                    };
+                    return $globalActions["Fragment.apiRequest"]?.apply(null, [
+                      ...actionArgs.args
+                    ]);
+                  })()
+                : undefined;
+              if (
+                $steps["me"] != null &&
+                typeof $steps["me"] === "object" &&
+                typeof $steps["me"].then === "function"
+              ) {
+                $steps["me"] = await $steps["me"];
+              }
+
+              $steps["invokeGlobalAction"] = true
+                ? (() => {
+                    const actionArgs = {
+                      args: [{ user_id: $steps.me.data.users[0].id }]
+                    };
+                    return $globalActions["GrowthBook.setAttributes"]?.apply(
+                      null,
+                      [...actionArgs.args]
+                    );
+                  })()
+                : undefined;
+              if (
+                $steps["invokeGlobalAction"] != null &&
+                typeof $steps["invokeGlobalAction"] === "object" &&
+                typeof $steps["invokeGlobalAction"].then === "function"
+              ) {
+                $steps["invokeGlobalAction"] =
+                  await $steps["invokeGlobalAction"];
+              }
+            }}
+          />
         </div>
       </div>
     </React.Fragment>
@@ -8765,7 +8820,8 @@ const PlasmicDescendants = {
     "sideEffectPageLoad",
     "loadProfile",
     "refreshRecuringSettlement",
-    "embedHtml"
+    "embedHtml",
+    "growthBook"
   ],
   section: [
     "section",
@@ -8854,7 +8910,8 @@ const PlasmicDescendants = {
   sideEffectPageLoad: ["sideEffectPageLoad"],
   loadProfile: ["loadProfile"],
   refreshRecuringSettlement: ["refreshRecuringSettlement"],
-  embedHtml: ["embedHtml"]
+  embedHtml: ["embedHtml"],
+  growthBook: ["growthBook"]
 } as const;
 type NodeNameType = keyof typeof PlasmicDescendants;
 type DescendantsType<T extends NodeNameType> =
@@ -8894,6 +8951,7 @@ type NodeDefaultElementType = {
   loadProfile: typeof SideEffect;
   refreshRecuringSettlement: typeof SideEffect;
   embedHtml: typeof Embed;
+  growthBook: typeof SideEffect;
 };
 
 type ReservedPropsType = "variants" | "args" | "overrides";
@@ -8995,6 +9053,7 @@ export const PlasmicFinancialProfiles = Object.assign(
     loadProfile: makeNodeComponent("loadProfile"),
     refreshRecuringSettlement: makeNodeComponent("refreshRecuringSettlement"),
     embedHtml: makeNodeComponent("embedHtml"),
+    growthBook: makeNodeComponent("growthBook"),
 
     // Metadata about props expected for PlasmicFinancialProfiles
     internalVariantProps: PlasmicFinancialProfiles__VariantProps,
