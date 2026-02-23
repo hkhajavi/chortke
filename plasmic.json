@@ -36,7 +36,8 @@
       "styleTokensProviderFilePath": "plasmic/nanoid/PlasmicStyleTokensProvider.tsx",
       "projectModuleFilePath": "plasmic/nanoid/plasmic.tsx",
       "codeComponents": [],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "8PtdGodUbexNYgkuyBUcWu",
@@ -60,7 +61,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-embed-css"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "caTPwKxj5ZrD9LQ7DMdK4Z",
@@ -120,7 +122,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-basic-components"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "oBJtsp5RgVpcN6KCrDTuQT",
@@ -272,7 +275,8 @@
           "componentImportPath": "@plasmicapp/react-web/lib/data-sources"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "sqPBLwEBBKHA2WDuGb17eV",
@@ -364,7 +368,8 @@
           "componentImportPath": "@plasmicpkgs/radix-ui"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "kS7YGZfVr6mU43XDQjXELc",
@@ -388,7 +393,8 @@
           "componentImportPath": "@plasmicpkgs/react-chartjs-2"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "aEHVN5v6mfM4eovDsL8Z7d",
@@ -405,7 +411,8 @@
       "styleTokensProviderFilePath": "plasmic/copy_to_clipboard/PlasmicStyleTokensProvider.tsx",
       "projectModuleFilePath": "plasmic/copy_to_clipboard/plasmic.tsx",
       "codeComponents": [],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "gmeH6XgPaBtkt51HunAo4g",
@@ -615,7 +622,8 @@
           "componentImportPath": "@plasmicpkgs/react-aria/skinny/registerDialog"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "vqeFwpZFQ6buChy6T9PGwQ",
@@ -643,7 +651,8 @@
           }
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "gLnoj82AzKVVT7qXiqAbHD",
@@ -711,7 +720,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-tabs"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "h9Dbk9ygddw7UVEq1NNhKi",
@@ -860,7 +870,8 @@
           "componentImportPath": "@plasmicapp/react-web/lib/data-sources"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "YUiM7yqBWAqsh8KSnrdj7",
@@ -890,7 +901,8 @@
           "componentImportPath": "@plasmicpkgs/plasmic-query"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "jkU633o1Cz7HrJdwdxhVHk",
@@ -946,7 +958,8 @@
           }
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "ohDidvG9XsCeFumugENU3J",
@@ -1348,7 +1361,8 @@
           "componentImportPath": "@plasmicpkgs/antd5/skinny/registerBreadcrumb"
         }
       ],
-      "customFunctions": []
+      "customFunctions": [],
+      "dataTokensFilePath": ""
     },
     {
       "projectId": "afXULSfGYmou2jFpEc2QWJ",
@@ -2638,6 +2652,6 @@
   "nextjsConfig": {
     "pagesDir": "../src/pages"
   },
-  "cliVersion": "0.1.355",
-  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.355/dist/plasmic.schema.json"
+  "cliVersion": "0.1.359",
+  "$schema": "https://unpkg.com/@plasmicapp/cli@0.1.359/dist/plasmic.schema.json"
 }

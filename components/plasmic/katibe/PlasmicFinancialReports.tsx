@@ -152,7 +152,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
         path: "apiGetBookCount.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiGetBookCount"
       },
@@ -160,7 +160,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
         path: "apiGetBookCount.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiGetBookCount"
       },
@@ -168,7 +168,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
         path: "apiGetBookCount.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiGetBookCount"
       },
@@ -176,7 +176,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
         path: "apiGetIncome.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiGetIncome"
       },
@@ -184,7 +184,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
         path: "apiGetIncome.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiGetIncome"
       },
@@ -192,7 +192,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
         path: "apiGetIncome.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiGetIncome"
       },
@@ -200,7 +200,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
         path: "apiGetbalance.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiGetbalance"
       },
@@ -208,7 +208,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
         path: "apiGetbalance.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiGetbalance"
       },
@@ -216,7 +216,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
         path: "apiGetbalance.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiGetbalance"
       },
@@ -224,7 +224,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
         path: "apiGetTotal.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiGetTotal"
       },
@@ -232,7 +232,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
         path: "apiGetTotal.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiGetTotal"
       },
@@ -240,7 +240,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
         path: "apiGetTotal.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiGetTotal"
       },
@@ -248,7 +248,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
         path: "apiGetBalanceOnlineVisit.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiGetBalanceOnlineVisit"
       },
@@ -256,7 +256,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
         path: "apiGetBalanceOnlineVisit.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiGetBalanceOnlineVisit"
       },
@@ -264,7 +264,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
         path: "apiGetBalanceOnlineVisit.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiGetBalanceOnlineVisit"
       },
@@ -272,7 +272,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
         path: "apiGetTotalOnlineVisit.data",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiGetTotalOnlineVisit"
       },
@@ -280,7 +280,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
         path: "apiGetTotalOnlineVisit.error",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiGetTotalOnlineVisit"
       },
@@ -288,7 +288,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
         path: "apiGetTotalOnlineVisit.loading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined,
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined,
 
         refName: "apiGetTotalOnlineVisit"
       }
@@ -299,6 +299,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
 

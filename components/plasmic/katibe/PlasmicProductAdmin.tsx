@@ -90,6 +90,35 @@ import Icon30Icon from "./icons/PlasmicIcon__Icon30"; // plasmic-import: b5udc-7
 import Icon40Icon from "./icons/PlasmicIcon__Icon40"; // plasmic-import: HLD8_-PsRU_m/icon
 import Icon41Icon from "./icons/PlasmicIcon__Icon41"; // plasmic-import: vWaZXlBhSJ2b/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "تراکنش های مالی مدیر محصول",
+
+    openGraph: {
+      title: "تراکنش های مالی مدیر محصول"
+    },
+    twitter: {
+      card: "summary",
+      title: "تراکنش های مالی مدیر محصول"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicProductAdmin__VariantMembers = {};
@@ -196,7 +225,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
         path: "txtSearch.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "dialogInvoiceDetails[].open",
@@ -228,7 +257,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
         path: "productList",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => [
           {
             productid: 0,
             name: "\u0644\u0637\u0641\u0627 \u0627\u0646\u062a\u062e\u0627\u0628 \u0646\u0645\u0627\u06cc\u06cc\u062f",
@@ -240,61 +269,61 @@ function PlasmicProductAdmin__RenderFunc(props: {
         path: "invoicelist",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => []
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => []
       },
       {
         path: "invoiceDetials",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "invoiceHasOnlinePayment",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => true
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => true
       },
       {
         path: "waitingInvoiceDetails",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "waitingPayment",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "paymentAmount",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "showMyAmount",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "isShowPaymentButton",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "reminderWallet",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "increaseButtonListBase",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => [
           2000000, 3500000, 5000000
         ]
       },
@@ -302,13 +331,13 @@ function PlasmicProductAdmin__RenderFunc(props: {
         path: "showSelectPriceGrid",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => true
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => true
       },
       {
         path: "cbProductlist.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return (() => {
@@ -329,13 +358,13 @@ function PlasmicProductAdmin__RenderFunc(props: {
         path: "waiting",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "productListBox",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => true
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => true
       },
       {
         path: "dialogCancelInvoice[].open",
@@ -351,37 +380,37 @@ function PlasmicProductAdmin__RenderFunc(props: {
         path: "cancelInvoiceWaiting",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "dialogRegisterInvoice.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "txtUserMobile.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "txtRegisterinvoiceDescription.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "txtRegisterInvoiceDiscountPercent.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "0"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "0"
       },
       {
         path: "txtRegisterInvoiceVatPercent.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "0"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "0"
       },
       {
         path: "txtServiceName[].value",
@@ -402,7 +431,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
         path: "newInvoiceServices",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => [
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => [
           { name: "", count: 0, price: 0 }
         ]
       },
@@ -410,109 +439,109 @@ function PlasmicProductAdmin__RenderFunc(props: {
         path: "waitingInvoice",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "txtRegisterInvoiceTitle.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "waitingUser",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "registerinvoiceUserid",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "registerinvoiceUserinfo",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "txtFinalPrice.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "0"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "0"
       },
       {
         path: "txtInvoiceId.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => "0"
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => "0"
       },
       {
         path: "registerInvoiceFinal",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "servicesToRegister",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => []
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => []
       },
       {
         path: "limit",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 20
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 20
       },
       {
         path: "offset",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "waitingLoading",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "showMoreBtn",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => true
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => true
       },
       {
         path: "dialogSelectProduct.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "p24Products",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => []
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => []
       },
       {
         path: "txtProductFilter.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "pageNumber",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 1
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 1
       },
       {
         path: "radioGroup.value",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "dialogAcceptInvoice[].open",
@@ -523,7 +552,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
         path: "apiMessage",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -532,8 +561,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -541,16 +576,12 @@ function PlasmicProductAdmin__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicProductAdmin.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicProductAdmin.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
           property="twitter:title"
-          content={PlasmicProductAdmin.pageMetadata.title}
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -654,6 +685,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                       ? ""
                       : undefined
                   }
+                  legacyBehavior={false}
                   platform={"nextjs"}
                 >
                   {"\u062e\u0631\u0648\u062c"}
@@ -2119,7 +2151,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               initFunc: ({
                                                 $props,
                                                 $state,
-                                                $queries
+                                                $queries,
+                                                $q
                                               }) =>
                                                 (() => {
                                                   try {
@@ -2245,7 +2278,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               initFunc: ({
                                                 $props,
                                                 $state,
-                                                $queries
+                                                $queries,
+                                                $q
                                               }) => ""
                                             }
                                           ],
@@ -2359,7 +2393,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               initFunc: ({
                                                 $props,
                                                 $state,
-                                                $queries
+                                                $queries,
+                                                $q
                                               }) => ""
                                             }
                                           ],
@@ -6521,7 +6556,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                       initFunc: ({
                                                         $props,
                                                         $state,
-                                                        $queries
+                                                        $queries,
+                                                        $q
                                                       }) => ""
                                                     }
                                                   ],
@@ -7036,7 +7072,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                             initFunc: ({
                                               $props,
                                               $state,
-                                              $queries
+                                              $queries,
+                                              $q
                                             }) => false
                                           }
                                         ],
@@ -7638,7 +7675,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                             initFunc: ({
                                               $props,
                                               $state,
-                                              $queries
+                                              $queries,
+                                              $q
                                             }) => undefined
                                           }
                                         ],
@@ -7766,7 +7804,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                             [
                               {
                                 name: "dialogInvoiceDetails[].open",
-                                initFunc: ({ $props, $state, $queries }) =>
+                                initFunc: ({ $props, $state, $queries, $q }) =>
                                   hasVariant(
                                     globalVariants,
                                     "screen",
@@ -8374,6 +8412,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                         )}
                         component={Link}
                         href={"https://t.me/hojatkhajavi"}
+                        legacyBehavior={false}
                         platform={"nextjs"}
                       >
                         {"@hojatkhajavi"}
@@ -8403,6 +8442,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                         )}
                         component={Link}
                         href={"https://t.me/hojatkhajavi"}
+                        legacyBehavior={false}
                         platform={"nextjs"}
                       >
                         {"@hojatkhajavi"}
@@ -8773,13 +8813,11 @@ export const PlasmicProductAdmin = Object.assign(
     internalVariantProps: PlasmicProductAdmin__VariantProps,
     internalArgProps: PlasmicProductAdmin__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "تراکنش های مالی مدیر محصول",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/productAdmin",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

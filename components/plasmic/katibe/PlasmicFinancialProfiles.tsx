@@ -89,6 +89,35 @@ import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; 
 import Icon22Icon from "./icons/PlasmicIcon__Icon22"; // plasmic-import: BJgqZU7jDRod/icon
 import Icon23Icon from "./icons/PlasmicIcon__Icon23"; // plasmic-import: uRGFXzJKMzcg/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "اطلاعات مالی",
+
+    openGraph: {
+      title: "اطلاعات مالی"
+    },
+    twitter: {
+      card: "summary",
+      title: "اطلاعات مالی"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicFinancialProfiles__VariantMembers = {};
@@ -190,7 +219,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         path: "cbAccounts.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.accounts[0].id;
@@ -209,25 +238,25 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         path: "waiting",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "accounts",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => []
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => []
       },
       {
         path: "currentAccountType",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "txtName.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.profile.name;
@@ -246,7 +275,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         path: "txtNationalId.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.profile.national_id;
@@ -265,7 +294,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         path: "txtRegistrationNumber.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.profile.registration_number;
@@ -284,7 +313,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         path: "txtEconomicCode.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.profile.economic_code;
@@ -303,7 +332,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         path: "txtPostalCode.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.profile.postal_code;
@@ -322,7 +351,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         path: "txtPhone.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.profile.phone;
@@ -341,7 +370,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         path: "txtAddress.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.profile.address;
@@ -360,43 +389,43 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         path: "loadProfileCount",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "currentAccountId",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "profile",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "message",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "dialog2.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "txtCardNumber.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "txtCardownerName.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.cardInquiry.deposit_owners[0];
@@ -415,7 +444,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         path: "txtcardIban.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.cardInquiry.IBAN;
@@ -434,7 +463,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         path: "txtcardBank.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.cardInquiry.bank_name;
@@ -458,37 +487,37 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         path: "useraccounts",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => []
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => []
       },
       {
         path: "waitingRegister",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "cardInquiry",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "currentAccountTitle",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "insertAccountMessage",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "accountSettlement.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.recurringSettlementList[0].accountid;
@@ -507,7 +536,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         path: "txtPaymentNumber.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.recurringSettlementList[0].payment_number || "";
@@ -526,61 +555,61 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         path: "recurringSettlementList",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => []
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => []
       },
       {
         path: "waitingProfile",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "waitingUserAccount",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "waitingSettlement",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "recurringSettlementMessage",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "recuringSetlementCount",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "userData",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "completeLoad",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "txtIban.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "txtibanownerName.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return (
@@ -603,7 +632,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         path: "txtIbanaccountNumber.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.ibanInquiry.data.account_number;
@@ -622,7 +651,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         path: "txtIbaNbankName.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.ibanInquiry.data.bank_name;
@@ -641,43 +670,43 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         path: "ibanInquiry",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "ibanInquiryCount",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "txtIbanPaymentNumber.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ``
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ``
       },
       {
         path: "centerInfo",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "editProfileShow",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "profileData",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "cbRecuringSettlementSms.isChecked",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return (
@@ -704,8 +733,14 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -713,16 +748,12 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicFinancialProfiles.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicFinancialProfiles.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
           property="twitter:title"
-          content={PlasmicFinancialProfiles.pageMetadata.title}
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -2706,7 +2737,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                       initFunc: ({
                                         $props,
                                         $state,
-                                        $queries
+                                        $queries,
+                                        $q
                                       }) => undefined
                                     }
                                   ],
@@ -3106,6 +3138,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                 sty.link__rbCfp
                                               )}
                                               component={Link}
+                                              legacyBehavior={false}
                                               onClick={async event => {
                                                 const $steps = {};
 
@@ -6460,9 +6493,6 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                       {(() => {
                         try {
                           return (
-                            !$ctx.GrowthBook.features[
-                              "katibe-settlement-sms-alert"
-                            ].hide &&
                             $state.recurringSettlementList.length > 0 &&
                             $state.recurringSettlementList[0].accountid > 0
                           );
@@ -7614,6 +7644,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         )}
                         component={Link}
                         href={""}
+                        legacyBehavior={false}
                         onClick={async event => {
                           const $steps = {};
 
@@ -8737,7 +8768,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
             onMount={async () => {
               const $steps = {};
 
-              $steps["me"] = true
+              $steps["me"] = false
                 ? (() => {
                     const actionArgs = {
                       args: [
@@ -8758,7 +8789,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 $steps["me"] = await $steps["me"];
               }
 
-              $steps["invokeGlobalAction"] = true
+              $steps["invokeGlobalAction"] = false
                 ? (() => {
                     const actionArgs = {
                       args: [{ user_id: $steps.me.data.users[0].id }]
@@ -9059,13 +9090,11 @@ export const PlasmicFinancialProfiles = Object.assign(
     internalVariantProps: PlasmicFinancialProfiles__VariantProps,
     internalArgProps: PlasmicFinancialProfiles__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "اطلاعات مالی",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/financial-profiles",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

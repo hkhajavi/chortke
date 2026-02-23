@@ -80,6 +80,35 @@ import Icon28Icon from "./icons/PlasmicIcon__Icon28"; // plasmic-import: 0EP3x6e
 import SearchSvgIcon from "./icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
 import CheckSvgIcon from "./icons/PlasmicIcon__CheckSvg"; // plasmic-import: VZ6Vl-sB0jLM/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "api پرداخت، کیف پول و تسهیم",
+
+    openGraph: {
+      title: "api پرداخت، کیف پول و تسهیم"
+    },
+    twitter: {
+      card: "summary",
+      title: "api پرداخت، کیف پول و تسهیم"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicHomePage__VariantMembers = {};
@@ -174,7 +203,7 @@ function PlasmicHomePage__RenderFunc(props: {
         path: "textInput.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -183,8 +212,14 @@ function PlasmicHomePage__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -192,16 +227,12 @@ function PlasmicHomePage__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicHomePage.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicHomePage.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
           property="twitter:title"
-          content={PlasmicHomePage.pageMetadata.title}
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -242,6 +273,7 @@ function PlasmicHomePage__RenderFunc(props: {
                     )}
                     component={Link}
                     href={"https://www.paziresh24.com"}
+                    legacyBehavior={false}
                     platform={"nextjs"}
                     target={"_blank"}
                   >
@@ -279,6 +311,7 @@ function PlasmicHomePage__RenderFunc(props: {
                     )}
                     component={Link}
                     href={"#"}
+                    legacyBehavior={false}
                     platform={"nextjs"}
                   >
                     {"Log in"}
@@ -292,6 +325,7 @@ function PlasmicHomePage__RenderFunc(props: {
                     )}
                     component={Link}
                     href={"tel:+989157405770"}
+                    legacyBehavior={false}
                     platform={"nextjs"}
                     target={undefined}
                   >
@@ -308,6 +342,7 @@ function PlasmicHomePage__RenderFunc(props: {
                     href={
                       "https://www.apidog.com/apidoc/shared/6f3a7605-05e6-4d8c-9c9a-72ab01518afb"
                     }
+                    legacyBehavior={false}
                     platform={"nextjs"}
                     target={"_blank"}
                   >
@@ -322,6 +357,7 @@ function PlasmicHomePage__RenderFunc(props: {
                     )}
                     component={Link}
                     href={"#pricing"}
+                    legacyBehavior={false}
                     onClick={async event => {
                       const $steps = {};
 
@@ -369,6 +405,7 @@ function PlasmicHomePage__RenderFunc(props: {
                     )}
                     component={Link}
                     href={"#"}
+                    legacyBehavior={false}
                     platform={"nextjs"}
                   >
                     {"FAQs"}
@@ -465,6 +502,7 @@ function PlasmicHomePage__RenderFunc(props: {
                       href={
                         "https://www.apidog.com/apidoc/shared-6f3a7605-05e6-4d8c-9c9a-72ab01518afb"
                       }
+                      legacyBehavior={false}
                       platform={"nextjs"}
                       target={"_blank"}
                     />
@@ -538,6 +576,7 @@ function PlasmicHomePage__RenderFunc(props: {
                       )}
                       component={Link}
                       href={"tel:+989157405770"}
+                      legacyBehavior={false}
                       platform={"nextjs"}
                     />
 
@@ -1071,6 +1110,7 @@ function PlasmicHomePage__RenderFunc(props: {
                     )}
                     component={Link}
                     href={"#"}
+                    legacyBehavior={false}
                     platform={"nextjs"}
                   >
                     {hasVariant(globalVariants, "screen", "mobileOnly")
@@ -1817,6 +1857,7 @@ function PlasmicHomePage__RenderFunc(props: {
                                 )}
                                 component={Link}
                                 href={"https://t.me/hojatkhajavi"}
+                                legacyBehavior={false}
                                 platform={"nextjs"}
                                 target={
                                   hasVariant(
@@ -1859,6 +1900,7 @@ function PlasmicHomePage__RenderFunc(props: {
                                 )}
                                 component={Link}
                                 href={"https://t.me/hojatkhajavi"}
+                                legacyBehavior={false}
                                 platform={"nextjs"}
                                 target={"_blank"}
                               >
@@ -2687,6 +2729,7 @@ function PlasmicHomePage__RenderFunc(props: {
                             href={
                               "https://www.apidog.com/apidoc/shared/6f3a7605-05e6-4d8c-9c9a-72ab01518afb/api-15342183"
                             }
+                            legacyBehavior={false}
                             platform={"nextjs"}
                             target={"_blank"}
                           >
@@ -2764,6 +2807,7 @@ function PlasmicHomePage__RenderFunc(props: {
                             href={
                               "https://www.apidog.com/apidoc/shared/6f3a7605-05e6-4d8c-9c9a-72ab01518afb/api-11523872"
                             }
+                            legacyBehavior={false}
                             platform={"nextjs"}
                             target={"_blank"}
                           >
@@ -2837,6 +2881,7 @@ function PlasmicHomePage__RenderFunc(props: {
                             href={
                               "https://www.apidog.com/apidoc/shared/6f3a7605-05e6-4d8c-9c9a-72ab01518afb/api-11329779"
                             }
+                            legacyBehavior={false}
                             platform={"nextjs"}
                             target={"_blank"}
                           >
@@ -2912,6 +2957,7 @@ function PlasmicHomePage__RenderFunc(props: {
                             href={
                               "https://www.apidog.com/apidoc/shared/6f3a7605-05e6-4d8c-9c9a-72ab01518afb/api-11500282"
                             }
+                            legacyBehavior={false}
                             platform={"nextjs"}
                             target={"_blank"}
                           >
@@ -2989,6 +3035,7 @@ function PlasmicHomePage__RenderFunc(props: {
                             href={
                               "https://www.apidog.com/apidoc/shared/6f3a7605-05e6-4d8c-9c9a-72ab01518afb/api-11328802"
                             }
+                            legacyBehavior={false}
                             platform={"nextjs"}
                             target={"_blank"}
                           >
@@ -3055,6 +3102,7 @@ function PlasmicHomePage__RenderFunc(props: {
                             href={
                               "https://apidog.com/apidoc/shared/6f3a7605-05e6-4d8c-9c9a-72ab01518afb/api-14321077"
                             }
+                            legacyBehavior={false}
                             platform={"nextjs"}
                             target={"_blank"}
                           >
@@ -3587,6 +3635,7 @@ function PlasmicHomePage__RenderFunc(props: {
                   )}
                   component={Link}
                   href={"#"}
+                  legacyBehavior={false}
                   platform={"nextjs"}
                 >
                   {"How it work"}
@@ -3600,6 +3649,7 @@ function PlasmicHomePage__RenderFunc(props: {
                   )}
                   component={Link}
                   href={"#"}
+                  legacyBehavior={false}
                   platform={"nextjs"}
                 >
                   {"Pricing"}
@@ -3613,6 +3663,7 @@ function PlasmicHomePage__RenderFunc(props: {
                   )}
                   component={Link}
                   href={"#"}
+                  legacyBehavior={false}
                   platform={"nextjs"}
                 >
                   {"FAQs"}
@@ -3638,6 +3689,7 @@ function PlasmicHomePage__RenderFunc(props: {
                   )}
                   component={Link}
                   href={"#"}
+                  legacyBehavior={false}
                   platform={"nextjs"}
                 >
                   {"Privacy and Policy"}
@@ -3651,6 +3703,7 @@ function PlasmicHomePage__RenderFunc(props: {
                   )}
                   component={Link}
                   href={"#"}
+                  legacyBehavior={false}
                   platform={"nextjs"}
                 >
                   {"Terms of Use"}
@@ -4007,13 +4060,11 @@ export const PlasmicHomePage = Object.assign(
     internalVariantProps: PlasmicHomePage__VariantProps,
     internalArgProps: PlasmicHomePage__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "api پرداخت، کیف پول و تسهیم",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

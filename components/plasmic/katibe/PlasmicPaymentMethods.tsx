@@ -87,6 +87,30 @@ import Icon48Icon from "./icons/PlasmicIcon__Icon48"; // plasmic-import: ApzBD_j
 
 import __lib_copyToClipboard from "copy-to-clipboard";
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    openGraph: {},
+    twitter: {
+      card: "summary"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicPaymentMethods__VariantMembers = {};
@@ -168,25 +192,25 @@ function PlasmicPaymentMethods__RenderFunc(props: {
         path: "waiting",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "balance",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "paymentLink",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "accordion.activePanelId",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.balance >= $ctx.query.amount ? 0 : 1;
@@ -210,26 +234,26 @@ function PlasmicPaymentMethods__RenderFunc(props: {
         path: "me",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "verifyResponse",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "textShowIban.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           "340600481979808994170001"
       },
       {
         path: "txtShowRpey.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.me.users[0].id;
@@ -248,19 +272,19 @@ function PlasmicPaymentMethods__RenderFunc(props: {
         path: "dialog.open",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => undefined
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
       },
       {
         path: "txtPayaRpey.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "txtShowAmount.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return (() => {
@@ -283,25 +307,25 @@ function PlasmicPaymentMethods__RenderFunc(props: {
         path: "iplocation",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "cardToCardRequest",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "waitingcardtocard",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "txtShowRpey2.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.cardToCardRequest.new_price;
@@ -320,7 +344,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
         path: "txtShowRpey3.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.cardToCardRequest.cardid;
@@ -339,25 +363,25 @@ function PlasmicPaymentMethods__RenderFunc(props: {
         path: "hasCardToCardRequest",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "cardToCardVerify",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "cardToCardHasVerify",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "cardToCardAutoCheck",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
@@ -366,8 +390,14 @@ function PlasmicPaymentMethods__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -2002,6 +2032,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                         )}
                                         component={Link}
                                         href={"tel:09384487404"}
+                                        legacyBehavior={false}
                                         platform={"nextjs"}
                                       >
                                         {"09384487404"}
@@ -2746,7 +2777,12 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                                 [
                                   {
                                     name: "txtShowAmount.value",
-                                    initFunc: ({ $props, $state, $queries }) =>
+                                    initFunc: ({
+                                      $props,
+                                      $state,
+                                      $queries,
+                                      $q
+                                    }) =>
                                       (() => {
                                         try {
                                           return (() => {
@@ -3485,6 +3521,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                       }
                     }).apply(null, eventArgs);
                   },
+                  rotationAngle: 90,
                   size: "middle"
                 };
                 initializeCodeComponentStates(
@@ -3504,7 +3541,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                   [
                     {
                       name: "accordion.activePanelId",
-                      initFunc: ({ $props, $state, $queries }) =>
+                      initFunc: ({ $props, $state, $queries, $q }) =>
                         (() => {
                           try {
                             return $state.balance >= $ctx.query.amount ? 0 : 1;
@@ -3540,6 +3577,7 @@ function PlasmicPaymentMethods__RenderFunc(props: {
                     sty.link__oh8Vp
                   )}
                   component={Link}
+                  legacyBehavior={false}
                   platform={"nextjs"}
                 >
                   <Button
@@ -3995,13 +4033,11 @@ export const PlasmicPaymentMethods = Object.assign(
     internalVariantProps: PlasmicPaymentMethods__VariantProps,
     internalArgProps: PlasmicPaymentMethods__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/payment-methods",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

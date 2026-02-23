@@ -72,6 +72,35 @@ import sty from "./PlasmicIpgMessage.module.css"; // plasmic-import: MmniM6bNfP8
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
 import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; // plasmic-import: r9Upp9NbiZkf/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "درگاه پرداخت",
+
+    openGraph: {
+      title: "درگاه پرداخت"
+    },
+    twitter: {
+      card: "summary",
+      title: "درگاه پرداخت"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicIpgMessage__VariantMembers = {};
@@ -134,22 +163,23 @@ function PlasmicIpgMessage__RenderFunc(props: {
 
   const $globalActions = useGlobalActions?.();
 
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
+
   const styleTokensClassNames = _useStyleTokens();
 
   return (
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicIpgMessage.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicIpgMessage.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
           property="twitter:title"
-          content={PlasmicIpgMessage.pageMetadata.title}
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -193,6 +223,7 @@ function PlasmicIpgMessage__RenderFunc(props: {
             className={classNames(projectcss.all, projectcss.a, sty.link)}
             component={Link}
             href={"https://www.paziresh24.com"}
+            legacyBehavior={false}
             platform={"nextjs"}
           >
             <Button
@@ -357,13 +388,11 @@ export const PlasmicIpgMessage = Object.assign(
     internalVariantProps: PlasmicIpgMessage__VariantProps,
     internalArgProps: PlasmicIpgMessage__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "درگاه پرداخت",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/ipg-message",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

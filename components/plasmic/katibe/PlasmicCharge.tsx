@@ -79,6 +79,35 @@ import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; 
 import Icon14Icon from "./icons/PlasmicIcon__Icon14"; // plasmic-import: mHP_U4hM0IP3/icon
 import VisamasterSvgIcon from "./icons/PlasmicIcon__VisamasterSvg"; // plasmic-import: MnaaH4eG1eMW/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "شارژ کیف پول",
+
+    openGraph: {
+      title: "شارژ کیف پول"
+    },
+    twitter: {
+      card: "summary",
+      title: "شارژ کیف پول"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicCharge__VariantMembers = {};
@@ -149,13 +178,13 @@ function PlasmicCharge__RenderFunc(props: {
         path: "waiting",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "txtAmount.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           hasVariant(globalVariants, "screen", "mobileOnly")
             ? (() => {
                 try {
@@ -188,19 +217,19 @@ function PlasmicCharge__RenderFunc(props: {
         path: "user",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "iplocation",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "paymentFactor",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       }
     ],
     [$props, $ctx, $refs]
@@ -209,8 +238,14 @@ function PlasmicCharge__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -218,16 +253,12 @@ function PlasmicCharge__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicCharge.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicCharge.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
           property="twitter:title"
-          content={PlasmicCharge.pageMetadata.title}
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -482,7 +513,7 @@ function PlasmicCharge__RenderFunc(props: {
                           [
                             {
                               name: "txtAmount.value",
-                              initFunc: ({ $props, $state, $queries }) =>
+                              initFunc: ({ $props, $state, $queries, $q }) =>
                                 hasVariant(
                                   globalVariants,
                                   "screen",
@@ -1963,13 +1994,11 @@ export const PlasmicCharge = Object.assign(
     internalVariantProps: PlasmicCharge__VariantProps,
     internalArgProps: PlasmicCharge__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "شارژ کیف پول",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/charge",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

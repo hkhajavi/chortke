@@ -81,6 +81,35 @@ import ChevronLeftIcon from "../fragment_icons/icons/PlasmicIcon__ChevronLeft"; 
 
 import __lib_copyToClipboard from "copy-to-clipboard";
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    title: "پرداخت با اشتراک گذاری لینک",
+
+    openGraph: {
+      title: "پرداخت با اشتراک گذاری لینک"
+    },
+    twitter: {
+      card: "summary",
+      title: "پرداخت با اشتراک گذاری لینک"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicPaymentLink__VariantMembers = {};
@@ -157,7 +186,7 @@ function PlasmicPaymentLink__RenderFunc(props: {
         path: "txtPaymentLink.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.myLink;
@@ -176,19 +205,19 @@ function PlasmicPaymentLink__RenderFunc(props: {
         path: "waiting",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "myLink",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "me",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       }
     ],
     [$props, $ctx, $refs]
@@ -197,8 +226,14 @@ function PlasmicPaymentLink__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -206,16 +241,12 @@ function PlasmicPaymentLink__RenderFunc(props: {
     <React.Fragment>
       <Head>
         <meta name="twitter:card" content="summary" />
-        <title key="title">{PlasmicPaymentLink.pageMetadata.title}</title>
-        <meta
-          key="og:title"
-          property="og:title"
-          content={PlasmicPaymentLink.pageMetadata.title}
-        />
+        <title key="title">{pageMetadata.title}</title>
+        <meta key="og:title" property="og:title" content={pageMetadata.title} />
         <meta
           key="twitter:title"
           property="twitter:title"
-          content={PlasmicPaymentLink.pageMetadata.title}
+          content={pageMetadata.title}
         />
       </Head>
 
@@ -379,6 +410,7 @@ function PlasmicPaymentLink__RenderFunc(props: {
                           )}
                           component={Link}
                           href={"tel:09384487404"}
+                          legacyBehavior={false}
                           platform={"nextjs"}
                           target={"_blank"}
                         >
@@ -1231,13 +1263,11 @@ export const PlasmicPaymentLink = Object.assign(
     internalVariantProps: PlasmicPaymentLink__VariantProps,
     internalArgProps: PlasmicPaymentLink__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "پرداخت با اشتراک گذاری لینک",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/payment-link",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 

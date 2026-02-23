@@ -73,6 +73,30 @@ import sty from "./PlasmicReport.module.css"; // plasmic-import: a-KvfqLme6-r/cs
 
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
 
+const emptyProxy: any = new Proxy(() => "", {
+  get(_, prop) {
+    return prop === Symbol.toPrimitive ? () => "" : emptyProxy;
+  }
+});
+
+function wrapQueriesWithLoadingProxy($q: any): any {
+  return new Proxy($q, {
+    get(target, queryName) {
+      const query = target[queryName];
+      return !query || query.isLoading || !query.data ? emptyProxy : query;
+    }
+  });
+}
+
+export function generateDynamicMetadata($q: any, $ctx: any) {
+  return {
+    openGraph: {},
+    twitter: {
+      card: "summary"
+    }
+  };
+}
+
 createPlasmicElementProxy;
 
 export type PlasmicReport__VariantMembers = {};
@@ -146,19 +170,19 @@ function PlasmicReport__RenderFunc(props: {
         path: "waiting",
         type: "private",
         variableType: "boolean",
-        initFunc: ({ $props, $state, $queries, $ctx }) => false
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       },
       {
         path: "userData",
         type: "private",
         variableType: "object",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ({})
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ({})
       },
       {
         path: "cbAccounts.value",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) =>
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) =>
           (() => {
             try {
               return $state.accounts[0].id;
@@ -177,37 +201,37 @@ function PlasmicReport__RenderFunc(props: {
         path: "accounts",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => []
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => []
       },
       {
         path: "refreshCount",
         type: "private",
         variableType: "number",
-        initFunc: ({ $props, $state, $queries, $ctx }) => 0
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       },
       {
         path: "chartdata",
         type: "private",
         variableType: "array",
-        initFunc: ({ $props, $state, $queries, $ctx }) => []
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => []
       },
       {
         path: "currentAccountTitle",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "currentAccountId",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       },
       {
         path: "currentAccountType",
         type: "private",
         variableType: "text",
-        initFunc: ({ $props, $state, $queries, $ctx }) => ""
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => ""
       }
     ],
     [$props, $ctx, $refs]
@@ -216,8 +240,14 @@ function PlasmicReport__RenderFunc(props: {
     $props,
     $ctx,
     $queries: {},
+    $q: {},
     $refs
   });
+
+  const pageMetadata = generateDynamicMetadata(
+    wrapQueriesWithLoadingProxy({}),
+    $ctx
+  );
 
   const styleTokensClassNames = _useStyleTokens();
 
@@ -561,6 +591,7 @@ function PlasmicReport__RenderFunc(props: {
                             )}
                             component={Link}
                             href={""}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {hasVariant(globalVariants, "screen", "mobileOnly")
@@ -592,6 +623,7 @@ function PlasmicReport__RenderFunc(props: {
                             )}
                             component={Link}
                             href={""}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {hasVariant(globalVariants, "screen", "mobileOnly")
@@ -647,6 +679,7 @@ function PlasmicReport__RenderFunc(props: {
                             )}
                             component={Link}
                             href={""}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {hasVariant(globalVariants, "screen", "mobileOnly")
@@ -738,6 +771,7 @@ function PlasmicReport__RenderFunc(props: {
                             )}
                             component={Link}
                             href={""}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {hasVariant(globalVariants, "screen", "mobileOnly")
@@ -784,6 +818,7 @@ function PlasmicReport__RenderFunc(props: {
                             )}
                             component={Link}
                             href={""}
+                            legacyBehavior={false}
                             platform={"nextjs"}
                           >
                             {hasVariant(globalVariants, "screen", "mobileOnly")
@@ -1352,13 +1387,11 @@ export const PlasmicReport = Object.assign(
     internalVariantProps: PlasmicReport__VariantProps,
     internalArgProps: PlasmicReport__ArgProps,
 
-    // Page metadata
-    pageMetadata: {
-      title: "",
-      description: "",
-      ogImageSrc: "",
-      canonical: ""
-    }
+    pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pagePath: "/report",
+      searchParams: {},
+      params: {}
+    })
   }
 );
 
