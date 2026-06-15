@@ -69,7 +69,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicPay.module.css"; // plasmic-import: fXYKZYfose53/css
 
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
@@ -96,7 +95,14 @@ function wrapQueriesWithLoadingProxy($q: any): any {
   });
 }
 
-export function generateDynamicMetadata($q: any, $ctx: any) {
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
   return {
     title: "پرداخت",
 
@@ -104,7 +110,7 @@ export function generateDynamicMetadata($q: any, $ctx: any) {
       title: "پرداخت"
     },
     twitter: {
-      card: "summary",
+      card: "summary" as const,
       title: "پرداخت"
     }
   };
@@ -178,10 +184,6 @@ function PlasmicPay__RenderFunc(props: {
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
-
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
 
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
@@ -345,6 +347,11 @@ function PlasmicPay__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
@@ -355,7 +362,7 @@ function PlasmicPay__RenderFunc(props: {
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
-    $ctx
+    $ctx as PageCtx
   );
 
   const styleTokensClassNames = _useStyleTokens();
@@ -379,17 +386,17 @@ function PlasmicPay__RenderFunc(props: {
         }
       `}</style>
 
-      <div className={projectcss.plasmic_page_wrapper}>
+      <div className={"plasmic_page_wrapper"}>
         <div
           data-plasmic-name={"pay"}
           data-plasmic-override={overrides.pay}
           data-plasmic-root={true}
           data-plasmic-for-node={forNode}
           className={classNames(
-            projectcss.all,
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
+            "all",
+            "root_reset_afXULSfGYmou2jFpEc2QWJ",
+            "plasmic_default_styles",
+            "plasmic_mixins",
             styleTokensClassNames,
             sty.pay
           )}
@@ -947,21 +954,15 @@ function PlasmicPay__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <section className={classNames(projectcss.all, sty.section__oAyiu)}>
-              <div className={classNames(projectcss.all, sty.freeBox__jXecp)}>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___4R2IR)}
-                >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__oYsmD)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__yksnC)}
-                    >
+            <section className={classNames("all", sty.section__oAyiu)}>
+              <div className={classNames("all", sty.freeBox__jXecp)}>
+                <div className={classNames("all", sty.freeBox___4R2IR)}>
+                  <div className={classNames("all", sty.freeBox__oYsmD)}>
+                    <div className={classNames("all", sty.freeBox__yksnC)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___7Zz0
                         )}
                       >
@@ -983,7 +984,7 @@ function PlasmicPay__RenderFunc(props: {
                         }
                       })() ? (
                         <Icon2Icon
-                          className={classNames(projectcss.all, sty.svg__atjJf)}
+                          className={classNames("all", sty.svg__atjJf)}
                           role={"img"}
                         />
                       ) : null}
@@ -1017,16 +1018,11 @@ function PlasmicPay__RenderFunc(props: {
                             }
                           })()
                     ) ? (
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___7R92Y
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox___7R92Y)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__xy6SS
                           )}
                         >
@@ -1037,12 +1033,8 @@ function PlasmicPay__RenderFunc(props: {
                       </div>
                     ) : null}
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__qhNqD)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__g6Dgg)}
-                    >
+                  <div className={classNames("all", sty.freeBox__qhNqD)}>
+                    <div className={classNames("all", sty.freeBox__g6Dgg)}>
                       <RadioGroup
                         data-plasmic-name={"paymentsMethod"}
                         data-plasmic-override={overrides.paymentsMethod}
@@ -1234,10 +1226,7 @@ function PlasmicPay__RenderFunc(props: {
                         }}
                         options={
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__xZoDo
-                            )}
+                            className={classNames("all", sty.freeBox__xZoDo)}
                           >
                             {(() => {
                               try {
@@ -1257,7 +1246,7 @@ function PlasmicPay__RenderFunc(props: {
                             })() ? (
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__yd9Hy
                                 )}
                                 onClick={async event => {
@@ -1362,8 +1351,8 @@ function PlasmicPay__RenderFunc(props: {
                                   label={
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__fd1Xz
                                       )}
                                     >
@@ -1377,8 +1366,8 @@ function PlasmicPay__RenderFunc(props: {
 
                                 <div
                                   className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
+                                    "all",
+                                    "__wab_text",
                                     sty.text__ggPlb
                                   )}
                                 >
@@ -1416,10 +1405,7 @@ function PlasmicPay__RenderFunc(props: {
                               </div>
                             ) : null}
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__mpUom
-                              )}
+                              className={classNames("all", sty.freeBox__mpUom)}
                               onClick={async event => {
                                 const $steps = {};
 
@@ -1511,8 +1497,8 @@ function PlasmicPay__RenderFunc(props: {
                                 label={
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__dzhSk
                                     )}
                                   >
@@ -1526,8 +1512,8 @@ function PlasmicPay__RenderFunc(props: {
 
                               <div
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
+                                  "all",
+                                  "__wab_text",
                                   sty.text__j0Sd1
                                 )}
                               >
@@ -1584,7 +1570,7 @@ function PlasmicPay__RenderFunc(props: {
                             })() ? (
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox___0OfLn
                                 )}
                                 onClick={async event => {
@@ -1689,8 +1675,8 @@ function PlasmicPay__RenderFunc(props: {
                                   label={
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__wCfBy
                                       )}
                                     >
@@ -1733,8 +1719,8 @@ function PlasmicPay__RenderFunc(props: {
 
                                 <div
                                   className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
+                                    "all",
+                                    "__wab_text",
                                     sty.text__gykjM
                                   )}
                                 >
@@ -1794,7 +1780,7 @@ function PlasmicPay__RenderFunc(props: {
                             })() ? (
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox___5Ktal
                                 )}
                                 onClick={async event => {
@@ -1899,8 +1885,8 @@ function PlasmicPay__RenderFunc(props: {
                                   label={
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__iKYsP
                                       )}
                                     >
@@ -1943,8 +1929,8 @@ function PlasmicPay__RenderFunc(props: {
 
                                 <div
                                   className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
+                                    "all",
+                                    "__wab_text",
                                     sty.text___5PrJn
                                   )}
                                 >
@@ -2005,7 +1991,7 @@ function PlasmicPay__RenderFunc(props: {
                             })() ? (
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__ikZki
                                 )}
                                 onClick={async event => {
@@ -2110,8 +2096,8 @@ function PlasmicPay__RenderFunc(props: {
                                   label={
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__wtpR
                                       )}
                                     >
@@ -2154,8 +2140,8 @@ function PlasmicPay__RenderFunc(props: {
 
                                 <div
                                   className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
+                                    "all",
+                                    "__wab_text",
                                     sty.text__riWr
                                   )}
                                 >
@@ -2217,7 +2203,7 @@ function PlasmicPay__RenderFunc(props: {
                             })() ? (
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__wgbWc
                                 )}
                                 onClick={async event => {
@@ -2282,8 +2268,8 @@ function PlasmicPay__RenderFunc(props: {
                                   label={
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__gpOAn
                                       )}
                                     >
@@ -2297,8 +2283,8 @@ function PlasmicPay__RenderFunc(props: {
 
                                 <div
                                   className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
+                                    "all",
+                                    "__wab_text",
                                     sty.text__sQtw6
                                   )}
                                 >
@@ -2328,14 +2314,10 @@ function PlasmicPay__RenderFunc(props: {
                   </div>
                 </div>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__j1DeF)}>
-                <div className={classNames(projectcss.all, sty.freeBox__dWXnV)}>
+              <div className={classNames("all", sty.freeBox__j1DeF)}>
+                <div className={classNames("all", sty.freeBox__dWXnV)}>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__gdxeS
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__gdxeS)}
                   >
                     <React.Fragment>
                       <React.Fragment>
@@ -2348,10 +2330,11 @@ function PlasmicPay__RenderFunc(props: {
                           data-plasmic-name={"link"}
                           data-plasmic-override={overrides.link}
                           className={classNames(
-                            projectcss.all,
-                            projectcss.a,
-                            projectcss.__wab_text,
-                            projectcss.plasmic_default__inline,
+                            "all",
+                            "a",
+                            "a__afXUL",
+                            "__wab_text",
+                            "plasmic_default__inline",
                             sty.link
                           )}
                           component={Link}
@@ -2384,8 +2367,8 @@ function PlasmicPay__RenderFunc(props: {
                   })() ? (
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text___1QMqa
                       )}
                     >
@@ -2393,7 +2376,7 @@ function PlasmicPay__RenderFunc(props: {
                         <React.Fragment>
                           <span
                             className={
-                              "plasmic_default__all plasmic_default__span"
+                              "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                             }
                             style={{ color: "var(--token-HEGGDBNcnkKS)" }}
                           >
@@ -2404,7 +2387,7 @@ function PlasmicPay__RenderFunc(props: {
                           <React.Fragment>{""}</React.Fragment>
                           <span
                             className={
-                              "plasmic_default__all plasmic_default__span"
+                              "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                             }
                             style={{ color: "#5B2525" }}
                           >
@@ -2413,7 +2396,7 @@ function PlasmicPay__RenderFunc(props: {
                           <React.Fragment>{""}</React.Fragment>
                           <span
                             className={
-                              "plasmic_default__all plasmic_default__span"
+                              "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                             }
                             style={{ fontWeight: 700 }}
                           >
@@ -2422,7 +2405,7 @@ function PlasmicPay__RenderFunc(props: {
                           <React.Fragment>{""}</React.Fragment>
                           <span
                             className={
-                              "plasmic_default__all plasmic_default__span"
+                              "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                             }
                             style={{ color: "#000000" }}
                           >
@@ -2431,7 +2414,7 @@ function PlasmicPay__RenderFunc(props: {
                           <React.Fragment>{""}</React.Fragment>
                           <span
                             className={
-                              "plasmic_default__all plasmic_default__span"
+                              "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                             }
                             style={{ color: "var(--token-HEGGDBNcnkKS)" }}
                           >
@@ -2444,7 +2427,7 @@ function PlasmicPay__RenderFunc(props: {
                         <React.Fragment>
                           <span
                             className={
-                              "plasmic_default__all plasmic_default__span"
+                              "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                             }
                             style={{ color: "var(--token-HEGGDBNcnkKS)" }}
                           >
@@ -2455,7 +2438,7 @@ function PlasmicPay__RenderFunc(props: {
                           <React.Fragment>{""}</React.Fragment>
                           <span
                             className={
-                              "plasmic_default__all plasmic_default__span"
+                              "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                             }
                             style={{ color: "#535353" }}
                           >
@@ -2464,7 +2447,7 @@ function PlasmicPay__RenderFunc(props: {
                           <React.Fragment>{""}</React.Fragment>
                           <span
                             className={
-                              "plasmic_default__all plasmic_default__span"
+                              "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                             }
                             style={{ fontWeight: 700 }}
                           >
@@ -2475,7 +2458,7 @@ function PlasmicPay__RenderFunc(props: {
                           <React.Fragment>{""}</React.Fragment>
                           <span
                             className={
-                              "plasmic_default__all plasmic_default__span"
+                              "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                             }
                             style={{ color: "#000000" }}
                           >
@@ -2484,7 +2467,7 @@ function PlasmicPay__RenderFunc(props: {
                           <React.Fragment>{""}</React.Fragment>
                           <span
                             className={
-                              "plasmic_default__all plasmic_default__span"
+                              "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                             }
                             style={{ color: "var(--token-HEGGDBNcnkKS)" }}
                           >
@@ -2516,8 +2499,8 @@ function PlasmicPay__RenderFunc(props: {
                   })() ? (
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__ebyrI
                       )}
                     >
@@ -2525,7 +2508,7 @@ function PlasmicPay__RenderFunc(props: {
                         <React.Fragment>
                           <span
                             className={
-                              "plasmic_default__all plasmic_default__span"
+                              "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                             }
                             style={{ color: "#000000" }}
                           >
@@ -2536,7 +2519,7 @@ function PlasmicPay__RenderFunc(props: {
                           <React.Fragment>{""}</React.Fragment>
                           <span
                             className={
-                              "plasmic_default__all plasmic_default__span"
+                              "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                             }
                             style={{ color: "#000000", fontWeight: 700 }}
                           >
@@ -2545,7 +2528,7 @@ function PlasmicPay__RenderFunc(props: {
                           <React.Fragment>{""}</React.Fragment>
                           <span
                             className={
-                              "plasmic_default__all plasmic_default__span"
+                              "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                             }
                             style={{ color: "#000000" }}
                           >
@@ -2558,7 +2541,7 @@ function PlasmicPay__RenderFunc(props: {
                         <React.Fragment>
                           <span
                             className={
-                              "plasmic_default__all plasmic_default__span"
+                              "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                             }
                             style={{ color: "var(--token-HEGGDBNcnkKS)" }}
                           >
@@ -2569,7 +2552,7 @@ function PlasmicPay__RenderFunc(props: {
                           <React.Fragment>{""}</React.Fragment>
                           <span
                             className={
-                              "plasmic_default__all plasmic_default__span"
+                              "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                             }
                             style={{ color: "#535353" }}
                           >
@@ -2578,7 +2561,7 @@ function PlasmicPay__RenderFunc(props: {
                           <React.Fragment>{""}</React.Fragment>
                           <span
                             className={
-                              "plasmic_default__all plasmic_default__span"
+                              "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                             }
                             style={{ color: "#535353", fontWeight: 700 }}
                           >
@@ -2587,7 +2570,7 @@ function PlasmicPay__RenderFunc(props: {
                           <React.Fragment>{""}</React.Fragment>
                           <span
                             className={
-                              "plasmic_default__all plasmic_default__span"
+                              "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                             }
                             style={{ color: "#535353" }}
                           >
@@ -2596,7 +2579,7 @@ function PlasmicPay__RenderFunc(props: {
                           <React.Fragment>{""}</React.Fragment>
                           <span
                             className={
-                              "plasmic_default__all plasmic_default__span"
+                              "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                             }
                             style={{ color: "var(--token-HEGGDBNcnkKS)" }}
                           >
@@ -2621,13 +2604,11 @@ function PlasmicPay__RenderFunc(props: {
                       throw e;
                     }
                   })() ? (
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__wtKIy)}
-                    >
+                    <div className={classNames("all", sty.freeBox__wtKIy)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__ax2KL
                         )}
                       >
@@ -2635,7 +2616,7 @@ function PlasmicPay__RenderFunc(props: {
                           <React.Fragment>
                             <span
                               className={
-                                "plasmic_default__all plasmic_default__span"
+                                "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                               }
                               style={{ color: "var(--token-HEGGDBNcnkKS)" }}
                             >
@@ -2646,7 +2627,7 @@ function PlasmicPay__RenderFunc(props: {
                             <React.Fragment>{""}</React.Fragment>
                             <span
                               className={
-                                "plasmic_default__all plasmic_default__span"
+                                "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                               }
                               style={{
                                 color: "var(--token-HEGGDBNcnkKS)",
@@ -2662,7 +2643,7 @@ function PlasmicPay__RenderFunc(props: {
                           <React.Fragment>
                             <span
                               className={
-                                "plasmic_default__all plasmic_default__span"
+                                "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                               }
                               style={{ color: "var(--token-HEGGDBNcnkKS)" }}
                             >
@@ -2673,7 +2654,7 @@ function PlasmicPay__RenderFunc(props: {
                             <React.Fragment>{""}</React.Fragment>
                             <span
                               className={
-                                "plasmic_default__all plasmic_default__span"
+                                "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                               }
                               style={{
                                 color: "var(--token-HEGGDBNcnkKS)",
@@ -2687,7 +2668,7 @@ function PlasmicPay__RenderFunc(props: {
                             <React.Fragment>{""}</React.Fragment>
                             <span
                               className={
-                                "plasmic_default__all plasmic_default__span"
+                                "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                               }
                               style={{ color: "var(--token-HEGGDBNcnkKS)" }}
                             >
@@ -2696,12 +2677,7 @@ function PlasmicPay__RenderFunc(props: {
                           </React.Fragment>
                         )}
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__lsZ4P
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__lsZ4P)}>
                         <TextInput
                           data-plasmic-name={"txtPaymentLink"}
                           data-plasmic-override={overrides.txtPaymentLink}
@@ -2737,10 +2713,7 @@ function PlasmicPay__RenderFunc(props: {
                         />
 
                         <Icon48Icon
-                          className={classNames(
-                            projectcss.all,
-                            sty.svg___5PzpN
-                          )}
+                          className={classNames("all", sty.svg___5PzpN)}
                           onClick={async event => {
                             const $steps = {};
 
@@ -2815,7 +2788,7 @@ function PlasmicPay__RenderFunc(props: {
                     </div>
                   ) : null}
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__x9B2M)}>
+                <div className={classNames("all", sty.freeBox__x9B2M)}>
                   {(() => {
                     try {
                       return (
@@ -3711,13 +3684,13 @@ function PlasmicPay__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <section className={classNames(projectcss.all, sty.section__rASm2)}>
-              <div className={classNames(projectcss.all, sty.freeBox__iQOx)}>
-                <div className={classNames(projectcss.all, sty.freeBox__hixcx)}>
+            <section className={classNames("all", sty.section__rASm2)}>
+              <div className={classNames("all", sty.freeBox__iQOx)}>
+                <div className={classNames("all", sty.freeBox__hixcx)}>
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text___0I38Y
                     )}
                   >
@@ -3729,8 +3702,8 @@ function PlasmicPay__RenderFunc(props: {
                     children2={
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__xczzb
                         )}
                       >
@@ -3921,9 +3894,10 @@ export const PlasmicPay = Object.assign(
     internalArgProps: PlasmicPay__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/pay",
       pagePath: "/pay",
-      searchParams: {},
-      params: {}
+      params: {},
+      query: {}
     })
   }
 );

@@ -65,7 +65,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicRadio.module.css"; // plasmic-import: Cbq_rTXOD16b/css
 
 createPlasmicElementProxy;
@@ -179,9 +178,9 @@ function PlasmicRadio__RenderFunc(props: {
       autoFocus={args.autoFocus}
       className={classNames(
         "__wab_instance",
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "root_reset_afXULSfGYmou2jFpEc2QWJ",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.ariaRadio
       )}
@@ -189,8 +188,8 @@ function PlasmicRadio__RenderFunc(props: {
       plasmicUpdateVariant={updateVariant}
       value={args.value}
     >
-      <div className={classNames(projectcss.all, sty.freeBox__dX9Ql)}>
-        <div className={classNames(projectcss.all, sty.freeBox__kCsv5)} />
+      <div className={classNames("all", sty.freeBox__dX9Ql)}>
+        <div className={classNames("all", sty.freeBox__kCsv5)} />
       </div>
       {renderPlasmicSlot({
         defaultContents: "Option",
@@ -199,7 +198,7 @@ function PlasmicRadio__RenderFunc(props: {
       <section
         data-plasmic-name={"section"}
         data-plasmic-override={overrides.section}
-        className={classNames(projectcss.all, sty.section)}
+        className={classNames("all", sty.section)}
       />
     </BaseRadio>
   ) as React.ReactElement | null;

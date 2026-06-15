@@ -69,7 +69,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicDialog.module.css"; // plasmic-import: nYtkLnbqtkXY/css
 
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
@@ -163,8 +162,6 @@ function PlasmicDialog__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -184,6 +181,9 @@ function PlasmicDialog__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
@@ -202,9 +202,9 @@ function PlasmicDialog__RenderFunc(props: {
       data-plasmic-for-node={forNode}
       className={classNames(
         "__wab_instance",
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "root_reset_afXULSfGYmou2jFpEc2QWJ",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.dialog,
         { [sty.dialognoTrigger]: hasVariant($state, "noTrigger", "noTrigger") }
@@ -225,9 +225,9 @@ function PlasmicDialog__RenderFunc(props: {
         [sty["pcls_zR9Pw9jddwi_"]]: true
       })}
       themeResetClass={classNames(
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "root_reset_afXULSfGYmou2jFpEc2QWJ",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames
       )}
       triggerSlot={
@@ -238,8 +238,8 @@ function PlasmicDialog__RenderFunc(props: {
                   children2={
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__k04R3
                       )}
                     >
@@ -248,13 +248,13 @@ function PlasmicDialog__RenderFunc(props: {
                   }
                   endIcon={
                     <ChevronLeftIcon
-                      className={classNames(projectcss.all, sty.svg__ftb4R)}
+                      className={classNames("all", sty.svg__ftb4R)}
                       role={"img"}
                     />
                   }
                   startIcon={
                     <ChevronRightIcon
-                      className={classNames(projectcss.all, sty.svg___20GJ)}
+                      className={classNames("all", sty.svg___20GJ)}
                       role={"img"}
                     />
                   }
@@ -271,16 +271,13 @@ function PlasmicDialog__RenderFunc(props: {
         data-plasmic-override={overrides.dialogContent}
         className={classNames("__wab_instance", sty.dialogContent)}
         themeResetClass={classNames(
-          projectcss.root_reset,
-          projectcss.plasmic_default_styles,
-          projectcss.plasmic_mixins,
+          "root_reset_afXULSfGYmou2jFpEc2QWJ",
+          "plasmic_default_styles",
+          "plasmic_mixins",
           styleTokensClassNames
         )}
       >
-        <div
-          className={classNames(projectcss.all, sty.freeBox___2BryD)}
-          dir={"rtl"}
-        >
+        <div className={classNames("all", sty.freeBox___2BryD)} dir={"rtl"}>
           <DialogTitle
             data-plasmic-name={"dialogTitle"}
             data-plasmic-override={overrides.dialogTitle}
@@ -289,7 +286,7 @@ function PlasmicDialog__RenderFunc(props: {
             <h5
               data-plasmic-name={"h5"}
               data-plasmic-override={overrides.h5}
-              className={classNames(projectcss.all, projectcss.h5, sty.h5)}
+              className={classNames("all", "h5", "h5__afXUL", sty.h5)}
             >
               {renderPlasmicSlot({
                 defaultContents: "Dialog title",
@@ -299,19 +296,10 @@ function PlasmicDialog__RenderFunc(props: {
             </h5>
           </DialogTitle>
         </div>
-        <div
-          className={classNames(projectcss.all, sty.freeBox__oO1SK)}
-          dir={"rtl"}
-        >
+        <div className={classNames("all", sty.freeBox__oO1SK)} dir={"rtl"}>
           {renderPlasmicSlot({
             defaultContents: (
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__xGgak
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__xGgak)}>
                 {"You can insert dialog body content here in this slot."}
               </div>
             ),
@@ -326,7 +314,7 @@ function PlasmicDialog__RenderFunc(props: {
           <XIcon
             data-plasmic-name={"svg"}
             data-plasmic-override={overrides.svg}
-            className={classNames(projectcss.all, sty.svg)}
+            className={classNames("all", sty.svg)}
             role={"img"}
           />
         </DialogClose>

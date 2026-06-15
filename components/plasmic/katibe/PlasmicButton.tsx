@@ -66,7 +66,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicButton.module.css"; // plasmic-import: 0wu_ZE1f8SuT/css
 
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
@@ -291,6 +290,7 @@ function PlasmicButton__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
@@ -316,11 +316,12 @@ function PlasmicButton__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        projectcss.all,
-        projectcss.button,
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "all",
+        "button",
+        "button__afXUL",
+        "root_reset_afXULSfGYmou2jFpEc2QWJ",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.root,
         {
@@ -447,7 +448,7 @@ function PlasmicButton__RenderFunc(props: {
         <div
           data-plasmic-name={"startIconContainer"}
           data-plasmic-override={overrides.startIconContainer}
-          className={classNames(projectcss.all, sty.startIconContainer, {
+          className={classNames("all", sty.startIconContainer, {
             [sty.startIconContainercolor_blue]: hasVariant(
               $state,
               "color",
@@ -469,7 +470,7 @@ function PlasmicButton__RenderFunc(props: {
           {renderPlasmicSlot({
             defaultContents: (
               <ChevronRightIcon
-                className={classNames(projectcss.all, sty.svg___9Sue4)}
+                className={classNames("all", sty.svg___9Sue4)}
                 role={"img"}
               />
             ),
@@ -555,7 +556,7 @@ function PlasmicButton__RenderFunc(props: {
         <div
           data-plasmic-name={"contentContainer"}
           data-plasmic-override={overrides.contentContainer}
-          className={classNames(projectcss.all, sty.contentContainer, {
+          className={classNames("all", sty.contentContainer, {
             [sty.contentContainer___focusVisibleWithin]:
               triggers.focusVisibleWithin_root,
             [sty.contentContainercolor_clear]: hasVariant(
@@ -587,7 +588,7 @@ function PlasmicButton__RenderFunc(props: {
           <Icon21Icon
             data-plasmic-name={"svg"}
             data-plasmic-override={overrides.svg}
-            className={classNames(projectcss.all, sty.svg, "loader", {
+            className={classNames("all", sty.svg, "loader", {
               [sty.svgcolor_clear]: hasVariant($state, "color", "clear"),
               [sty.svgloading]: hasVariant($state, "loading", "loading"),
               [sty.svgloading_color_link]:
@@ -764,7 +765,7 @@ function PlasmicButton__RenderFunc(props: {
         <div
           data-plasmic-name={"endIconContainer"}
           data-plasmic-override={overrides.endIconContainer}
-          className={classNames(projectcss.all, sty.endIconContainer, {
+          className={classNames("all", sty.endIconContainer, {
             [sty.endIconContainercolor_white]: hasVariant(
               $state,
               "color",
@@ -796,7 +797,7 @@ function PlasmicButton__RenderFunc(props: {
           {renderPlasmicSlot({
             defaultContents: (
               <ChevronLeftIcon
-                className={classNames(projectcss.all, sty.svg__jUtwO)}
+                className={classNames("all", sty.svg__jUtwO)}
                 role={"img"}
               />
             ),

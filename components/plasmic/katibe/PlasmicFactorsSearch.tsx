@@ -73,7 +73,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicFactorsSearch.module.css"; // plasmic-import: E5TSAr0YUe-f/css
 
 import Icon11Icon from "./icons/PlasmicIcon__Icon11"; // plasmic-import: sdf49AtFp7I6/icon
@@ -101,7 +100,14 @@ function wrapQueriesWithLoadingProxy($q: any): any {
   });
 }
 
-export function generateDynamicMetadata($q: any, $ctx: any) {
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
   return {
     title: "کتیبه، لیست فاکتورها",
     description: "لیست تراکنش ها و عملیات حساب",
@@ -113,7 +119,7 @@ export function generateDynamicMetadata($q: any, $ctx: any) {
       ]
     },
     twitter: {
-      card: "summary_large_image",
+      card: "summary_large_image" as const,
       title: "کتیبه، لیست فاکتورها",
       description: "لیست تراکنش ها و عملیات حساب",
       images: [
@@ -212,10 +218,6 @@ function PlasmicFactorsSearch__RenderFunc(props: {
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
-
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
 
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
@@ -678,6 +680,11 @@ function PlasmicFactorsSearch__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
@@ -688,7 +695,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
-    $ctx
+    $ctx as PageCtx
   );
 
   const styleTokensClassNames = _useStyleTokens();
@@ -737,7 +744,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
         }
       `}</style>
 
-      <div className={projectcss.plasmic_page_wrapper}>
+      <div className={"plasmic_page_wrapper"}>
         {(() => {
           try {
             return true;
@@ -757,28 +764,24 @@ function PlasmicFactorsSearch__RenderFunc(props: {
             data-plasmic-root={true}
             data-plasmic-for-node={forNode}
             className={classNames(
-              projectcss.all,
-              projectcss.root_reset,
-              projectcss.plasmic_default_styles,
-              projectcss.plasmic_mixins,
+              "all",
+              "root_reset_afXULSfGYmou2jFpEc2QWJ",
+              "plasmic_default_styles",
+              "plasmic_mixins",
               styleTokensClassNames,
               sty.root
             )}
             dir={"rtl"}
           >
-            <div className={classNames(projectcss.all, sty.freeBox__hs2Ll)}>
-              <div className={classNames(projectcss.all, sty.freeBox__sTOlA)}>
-                <div className={classNames(projectcss.all, sty.freeBox__h4KSm)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___12WMj)}
-                  />
+            <div className={classNames("all", sty.freeBox__hs2Ll)}>
+              <div className={classNames("all", sty.freeBox__sTOlA)}>
+                <div className={classNames("all", sty.freeBox__h4KSm)}>
+                  <div className={classNames("all", sty.freeBox___12WMj)} />
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__cB4Sk)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__gBcOa)}
-                  >
+                <div className={classNames("all", sty.freeBox__cB4Sk)}>
+                  <div className={classNames("all", sty.freeBox__gBcOa)}>
                     <Icon11Icon
-                      className={classNames(projectcss.all, sty.svg__uhViw)}
+                      className={classNames("all", sty.svg__uhViw)}
                       onClick={async event => {
                         const $steps = {};
 
@@ -819,9 +822,10 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                       data-plasmic-name={"h1"}
                       data-plasmic-override={overrides.h1}
                       className={classNames(
-                        projectcss.all,
-                        projectcss.h1,
-                        projectcss.__wab_text,
+                        "all",
+                        "h1",
+                        "h1__afXUL",
+                        "__wab_text",
                         sty.h1
                       )}
                     >
@@ -831,13 +835,11 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                     </h1>
                   </div>
                 </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___91IpR)}
-                >
+                <div className={classNames("all", sty.freeBox___91IpR)}>
                   <div
                     data-plasmic-name={"btnDashboard3"}
                     data-plasmic-override={overrides.btnDashboard3}
-                    className={classNames(projectcss.all, sty.btnDashboard3)}
+                    className={classNames("all", sty.btnDashboard3)}
                     onClick={async event => {
                       const $steps = {};
 
@@ -867,14 +869,14 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                     }}
                   >
                     <Icon6Icon
-                      className={classNames(projectcss.all, sty.svg__zfu9B)}
+                      className={classNames("all", sty.svg__zfu9B)}
                       role={"img"}
                     />
 
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__mgRWy
                       )}
                     >
@@ -884,15 +886,11 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                     </div>
                   </div>
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__dxlWt)}>
+                <div className={classNames("all", sty.freeBox__dxlWt)}>
                   <div
                     data-plasmic-name={"lblUser"}
                     data-plasmic-override={overrides.lblUser}
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.lblUser
-                    )}
+                    className={classNames("all", "__wab_text", sty.lblUser)}
                   >
                     <React.Fragment>
                       {(() => {
@@ -927,9 +925,10 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                       data-plasmic-name={"btnLogout"}
                       data-plasmic-override={overrides.btnLogout}
                       className={classNames(
-                        projectcss.all,
-                        projectcss.a,
-                        projectcss.__wab_text,
+                        "all",
+                        "a",
+                        "a__afXUL",
+                        "__wab_text",
                         sty.btnLogout
                       )}
                       component={Link}
@@ -1007,8 +1006,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                       children2={
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__mzIiF
                           )}
                         >
@@ -1018,7 +1017,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                       className={classNames("__wab_instance", sty.btnLogin)}
                       endIcon={
                         <ChevronLeftIcon
-                          className={classNames(projectcss.all, sty.svg__c0F6)}
+                          className={classNames("all", sty.svg__c0F6)}
                           role={"img"}
                         />
                       }
@@ -1028,7 +1027,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                       outline={true}
                       startIcon={
                         <ChevronRightIcon
-                          className={classNames(projectcss.all, sty.svg___3HFq)}
+                          className={classNames("all", sty.svg___3HFq)}
                           role={"img"}
                         />
                       }
@@ -1040,7 +1039,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
             <section
               data-plasmic-name={"section"}
               data-plasmic-override={overrides.section}
-              className={classNames(projectcss.all, sty.section)}
+              className={classNames("all", sty.section)}
               dir={"rtl"}
             >
               {(() => {
@@ -1056,14 +1055,12 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                   throw e;
                 }
               })() ? (
-                <div className={classNames(projectcss.all, sty.freeBox__exYj1)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__fdL2R)}
-                  >
+                <div className={classNames("all", sty.freeBox__exYj1)}>
+                  <div className={classNames("all", sty.freeBox__fdL2R)}>
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__xnleN
                       )}
                     >
@@ -1229,8 +1226,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                       placeholder={
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__vDca2
                           )}
                         >
@@ -1271,40 +1268,26 @@ function PlasmicFactorsSearch__RenderFunc(props: {
               <div
                 data-plasmic-name={"gridCalculator2"}
                 data-plasmic-override={overrides.gridCalculator2}
-                className={classNames(projectcss.all, sty.gridCalculator2)}
+                className={classNames("all", sty.gridCalculator2)}
               >
                 <div
                   className={classNames(
-                    projectcss.all,
+                    "all",
                     sty.freeBox__pgfVd,
                     "grid_calculator"
                   )}
                   id={"grid_calculator"}
                 >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___5EkhP)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__nBfbu)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__z6KHi
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox___103Mt
-                          )}
-                        >
+                  <div className={classNames("all", sty.freeBox___5EkhP)}>
+                    <div className={classNames("all", sty.freeBox__nBfbu)}>
+                      <div className={classNames("all", sty.freeBox__z6KHi)}>
+                        <div className={classNames("all", sty.freeBox___103Mt)}>
                           <div
                             data-plasmic-name={"txtRemainingText"}
                             data-plasmic-override={overrides.txtRemainingText}
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
+                              "all",
+                              "__wab_text",
                               sty.txtRemainingText
                             )}
                           >
@@ -1329,8 +1312,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                             data-plasmic-name={"txtRemainingValue"}
                             data-plasmic-override={overrides.txtRemainingValue}
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
+                              "all",
+                              "__wab_text",
                               sty.txtRemainingValue
                             )}
                           >
@@ -1397,9 +1380,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                         </div>
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__r8Zok)}
-                    >
+                    <div className={classNames("all", sty.freeBox__r8Zok)}>
                       {(() => {
                         try {
                           return $state.waiting;
@@ -1414,14 +1395,12 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                         }
                       })() ? (
                         <Icon2Icon
-                          className={classNames(projectcss.all, sty.svg__foOee)}
+                          className={classNames("all", sty.svg__foOee)}
                           role={"img"}
                         />
                       ) : null}
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__fyOo)}
-                    >
+                    <div className={classNames("all", sty.freeBox__fyOo)}>
                       {(() => {
                         try {
                           return true;
@@ -1444,7 +1423,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                             <React.Fragment>
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__rik8F
                                 )}
                               />
@@ -1469,13 +1448,13 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                     overrides.gridSelectprice
                                   }
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.gridSelectprice
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__si8Xx
                                     )}
                                   >
@@ -1514,8 +1493,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                             children2={
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
-                                                  projectcss.__wab_text,
+                                                  "all",
+                                                  "__wab_text",
                                                   sty.text___6RoEf
                                                 )}
                                               >
@@ -1586,7 +1565,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                             endIcon={
                                               <ChevronLeftIcon
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.svg__mfzMj
                                                 )}
                                                 role={"img"}
@@ -1688,7 +1667,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                             startIcon={
                                               <ChevronRightIcon
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.svg__sDl9R
                                                 )}
                                                 role={"img"}
@@ -1708,7 +1687,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       endIcon={
                                         <ChevronLeftIcon
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.svg__qw8Lg
                                           )}
                                           role={"img"}
@@ -1744,7 +1723,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       startIcon={
                                         <ChevronRightIcon
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.svg__jlU2S
                                           )}
                                           role={"img"}
@@ -1780,13 +1759,13 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                   data-plasmic-name={"gridMyAmount"}
                                   data-plasmic-override={overrides.gridMyAmount}
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.gridMyAmount
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__dXhUe
                                     )}
                                   />
@@ -1815,7 +1794,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                   ) ? (
                                     <div
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.freeBox__xUjDx
                                       )}
                                       dir={"rtl"}
@@ -1923,8 +1902,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
 
                                       <div
                                         className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
+                                          "all",
+                                          "__wab_text",
                                           sty.text__vBkpO
                                         )}
                                       >
@@ -2076,7 +2055,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                   ) : null}
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__lTay
                                     )}
                                   />
@@ -2084,13 +2063,13 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                               ) : null}
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__y1Fq6
                                 )}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__aFKta
                                   )}
                                 >
@@ -2098,8 +2077,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                     children2={
                                       <div
                                         className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
+                                          "all",
+                                          "__wab_text",
                                           sty.text__qJNlu
                                         )}
                                       >
@@ -2128,7 +2107,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                     endIcon={
                                       <ChevronLeftIcon
                                         className={classNames(
-                                          projectcss.all,
+                                          "all",
                                           sty.svg__oI8Go
                                         )}
                                         role={"img"}
@@ -2386,7 +2365,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                     startIcon={
                                       <ChevronRightIcon
                                         className={classNames(
-                                          projectcss.all,
+                                          "all",
                                           sty.svg__xbjAy
                                         )}
                                         role={"img"}
@@ -2413,7 +2392,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                 })() ? (
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__eGuaD
                                     )}
                                   >
@@ -2429,8 +2408,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                             overrides.txtpayWithWallet
                                           }
                                           className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
+                                            "all",
+                                            "__wab_text",
                                             sty.txtpayWithWallet
                                           )}
                                         >
@@ -2466,7 +2445,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       endIcon={
                                         <ChevronLeftIcon
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.svg__sEi9
                                           )}
                                           role={"img"}
@@ -2801,7 +2780,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       startIcon={
                                         <ChevronRightIcon
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.svg___7Rhix
                                           )}
                                           role={"img"}
@@ -2843,8 +2822,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                               overrides.txtpayWithWallet3
                                             }
                                             className={classNames(
-                                              projectcss.all,
-                                              projectcss.__wab_text,
+                                              "all",
+                                              "__wab_text",
                                               sty.txtpayWithWallet3
                                             )}
                                           >
@@ -2890,7 +2869,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                         endIcon={
                                           <ChevronLeftIcon
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.svg__hFm9M
                                             )}
                                             role={"img"}
@@ -3244,7 +3223,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                         startIcon={
                                           <ChevronRightIcon
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.svg__eFpDo
                                             )}
                                             role={"img"}
@@ -3266,8 +3245,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                             overrides.txtpayWithWallet2
                                           }
                                           className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
+                                            "all",
+                                            "__wab_text",
                                             sty.txtpayWithWallet2
                                           )}
                                         >
@@ -3283,7 +3262,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       endIcon={
                                         <ChevronLeftIcon
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.svg__xt1S6
                                           )}
                                           role={"img"}
@@ -3613,7 +3592,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                       startIcon={
                                         <ChevronRightIcon
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.svg__hwzFh
                                           )}
                                           role={"img"}
@@ -3649,27 +3628,24 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                           ])}
                           title={
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__u5Nl
-                              )}
+                              className={classNames("all", sty.freeBox__u5Nl)}
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox___5JIpI
                                 )}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__sssw1
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__lEv
                                     )}
                                   >
@@ -3695,14 +3671,14 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                 </div>
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox___93Zy
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__ldZ7
                                     )}
                                   >
@@ -3726,7 +3702,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                   })() ? (
                                     <Icon2Icon
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.svg___869BU
                                       )}
                                       role={"img"}
@@ -3756,8 +3732,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                 children2={
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text___5QmkT
                                     )}
                                   >
@@ -3804,7 +3780,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                 endIcon={
                                   <ChevronLeftIcon
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.svg__c8Xih
                                     )}
                                     role={"img"}
@@ -4028,10 +4004,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                 }}
                                 startIcon={
                                   <ChevronRightIcon
-                                    className={classNames(
-                                      projectcss.all,
-                                      sty.svg__fZ85
-                                    )}
+                                    className={classNames("all", sty.svg__fZ85)}
                                     role={"img"}
                                   />
                                 }
@@ -4047,11 +4020,11 @@ function PlasmicFactorsSearch__RenderFunc(props: {
               <div
                 data-plasmic-name={"gridInvoice1"}
                 data-plasmic-override={overrides.gridInvoice1}
-                className={classNames(projectcss.all, sty.gridInvoice1)}
+                className={classNames("all", sty.gridInvoice1)}
               >
                 <div
                   className={classNames(
-                    projectcss.all,
+                    "all",
                     sty.freeBox__lXi5W,
                     "grid_calculator"
                   )}
@@ -4059,8 +4032,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                 >
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text___6TGn5
                     )}
                   >
@@ -4069,18 +4042,14 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                 </div>
                 <div
                   className={classNames(
-                    projectcss.all,
+                    "all",
                     sty.freeBox__iamNw,
                     "grid_calculator"
                   )}
                   id={"grid_calculator"}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__hzIok
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__hzIok)}
                   >
                     {
                       "\u0634\u0645\u0627\u0631\u0647 \u0641\u0627\u06a9\u062a\u0648\u0631"
@@ -4089,7 +4058,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                 </div>
                 <div
                   className={classNames(
-                    projectcss.all,
+                    "all",
                     sty.freeBox__ysfQm,
                     "grid_calculator"
                   )}
@@ -4097,8 +4066,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                 >
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text___1Mo6W
                     )}
                   >
@@ -4107,7 +4076,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                 </div>
                 <div
                   className={classNames(
-                    projectcss.all,
+                    "all",
                     sty.freeBox__ocUk8,
                     "grid_calculator"
                   )}
@@ -4116,29 +4085,21 @@ function PlasmicFactorsSearch__RenderFunc(props: {
 
                 <div
                   className={classNames(
-                    projectcss.all,
+                    "all",
                     sty.freeBox__miJrA,
                     "grid_calculator"
                   )}
                   id={"grid_calculator"}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__gSvRz
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__gSvRz)}
                   >
                     {hasVariant(globalVariants, "screen", "mobileOnly")
                       ? "\u0645\u0628\u0644\u063a "
                       : "\u0645\u0628\u0644\u063a "}
                   </div>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__iBLfO
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__iBLfO)}
                   >
                     {hasVariant(globalVariants, "screen", "mobileOnly")
                       ? "(\u0631\u06cc\u0627\u0644)"
@@ -4147,18 +4108,14 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                 </div>
                 <div
                   className={classNames(
-                    projectcss.all,
+                    "all",
                     sty.freeBox__ddNa2,
                     "grid_calculator"
                   )}
                   id={"grid_calculator"}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__pNNbe
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__pNNbe)}
                   >
                     {hasVariant(globalVariants, "screen", "mobileOnly")
                       ? "\u0648\u0636\u0639\u06cc\u062a"
@@ -4184,11 +4141,11 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                 <div
                   data-plasmic-name={"gridNoData"}
                   data-plasmic-override={overrides.gridNoData}
-                  className={classNames(projectcss.all, sty.gridNoData)}
+                  className={classNames("all", sty.gridNoData)}
                 >
                   <div
                     className={classNames(
-                      projectcss.all,
+                      "all",
                       sty.freeBox__eoANt,
                       "grid_calculator"
                     )}
@@ -4196,8 +4153,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__hb1Ec
                       )}
                     >
@@ -4229,12 +4186,12 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                   <div
                     data-plasmic-name={"gridInvoice12"}
                     data-plasmic-override={overrides.gridInvoice12}
-                    className={classNames(projectcss.all, sty.gridInvoice12)}
+                    className={classNames("all", sty.gridInvoice12)}
                     key={currentIndex}
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
+                        "all",
                         sty.freeBox__pZmWf,
                         "grid_calculator"
                       )}
@@ -4257,10 +4214,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                         }
                       })() ? (
                         <Icon39Icon
-                          className={classNames(
-                            projectcss.all,
-                            sty.svg___9PpKj
-                          )}
+                          className={classNames("all", sty.svg___9PpKj)}
                           role={"img"}
                         />
                       ) : null}
@@ -4281,17 +4235,14 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                         }
                       })() ? (
                         <Icon39Icon
-                          className={classNames(
-                            projectcss.all,
-                            sty.svg___7MvoK
-                          )}
+                          className={classNames("all", sty.svg___7MvoK)}
                           role={"img"}
                         />
                       ) : null}
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__rnKjw
                         )}
                       >
@@ -4302,9 +4253,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                 "" +
                                 (() => {
                                   const gregorianDate = new Date(
-                                    $state.invoicelist[
-                                      currentIndex
-                                    ].registerdate
+                                    $state.invoicelist[currentIndex]
+                                      .registerdate
                                   );
                                   const persianDate = new Intl.DateTimeFormat(
                                     "fa-IR"
@@ -4327,7 +4277,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                     </div>
                     <div
                       className={classNames(
-                        projectcss.all,
+                        "all",
                         sty.freeBox__oEbja,
                         "grid_calculator"
                       )}
@@ -4335,8 +4285,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                     >
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__jaZw
                         )}
                       >
@@ -4359,7 +4309,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                     </div>
                     <div
                       className={classNames(
-                        projectcss.all,
+                        "all",
                         sty.freeBox__pDrd,
                         "grid_calculator"
                       )}
@@ -4367,8 +4317,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                     >
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__lMDq0
                         )}
                       >
@@ -4391,7 +4341,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                     </div>
                     <div
                       className={classNames(
-                        projectcss.all,
+                        "all",
                         sty.freeBox__aqxnx,
                         "grid_calculator"
                       )}
@@ -4412,8 +4362,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                               errorDisplay={
                                 <div
                                   className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
+                                    "all",
+                                    "__wab_text",
                                     sty.text___06YZ
                                   )}
                                 >
@@ -4440,7 +4390,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                   data-plasmic-name={"waitingIcon3"}
                                   data-plasmic-override={overrides.waitingIcon3}
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.waitingIcon3
                                   )}
                                   role={"img"}
@@ -4490,21 +4440,18 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                               })()}
                             >
                               <div
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.freeBox__wrQq
-                                )}
+                                className={classNames("all", sty.freeBox__wrQq)}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__wVFlB
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__j6ZDp
                                     )}
                                   >
@@ -4531,20 +4478,20 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                               </div>
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__yoqU0
                                 )}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox___5GPiz
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__g1XPb
                                     )}
                                   >
@@ -4571,20 +4518,20 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                               </div>
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox___6Oe4O
                                 )}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__wsB5
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__sv9VP
                                     )}
                                   >
@@ -4599,14 +4546,14 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                 </div>
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__s62K5
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text___6Yx0D
                                     )}
                                   >
@@ -4657,14 +4604,14 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                 </div>
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__qojuG
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__wbUqu
                                     )}
                                   >
@@ -4679,14 +4626,14 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                 </div>
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__hufPd
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text___6ZrQw
                                     )}
                                   >
@@ -4788,7 +4735,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                 return (
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__lssOr
                                     )}
                                     dir={"rtl"}
@@ -4796,14 +4743,14 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.freeBox__znLpG
                                       )}
                                     >
                                       <div
                                         className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
+                                          "all",
+                                          "__wab_text",
                                           sty.text__ruM1
                                         )}
                                       >
@@ -4827,14 +4774,14 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                     </div>
                                     <div
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.freeBox__v6YM
                                       )}
                                     >
                                       <div
                                         className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
+                                          "all",
+                                          "__wab_text",
                                           sty.text__qQFly
                                         )}
                                         dir={"rtl"}
@@ -4870,14 +4817,14 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                     </div>
                                     <div
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.freeBox__nrB7
                                       )}
                                     >
                                       <div
                                         className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
+                                          "all",
+                                          "__wab_text",
                                           sty.text__iAKee
                                         )}
                                       >
@@ -4886,14 +4833,14 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                     </div>
                                     <div
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.freeBox___9HQjo
                                       )}
                                     >
                                       <div
                                         className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
+                                          "all",
+                                          "__wab_text",
                                           sty.text__ycl6R
                                         )}
                                       >
@@ -4957,20 +4904,20 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                               })}
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__alAzC
                                 )}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__rlJdT
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__uFm0
                                     )}
                                   >
@@ -4979,14 +4926,14 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                 </div>
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__rMmas
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__w8JWd
                                     )}
                                   >
@@ -5047,14 +4994,14 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                 </div>
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__shPoA
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__s39It
                                     )}
                                   >
@@ -5063,14 +5010,14 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                 </div>
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__wx06L
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text___5XsQ
                                     )}
                                   >
@@ -5132,20 +5079,20 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                               </div>
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__byfzB
                                 )}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox___3EawY
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__iNqT8
                                     )}
                                   >
@@ -5154,14 +5101,14 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                 </div>
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__yu16
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__ieppI
                                     )}
                                   >
@@ -5222,34 +5169,34 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                 </div>
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__odgIv
                                   )}
                                 />
 
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox___7Canf
                                   )}
                                 />
                               </div>
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox___5NsrZ
                                 )}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__e45IP
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__cMhtF
                                     )}
                                   >
@@ -5259,8 +5206,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                   </div>
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__apVoQ
                                     )}
                                   >
@@ -5346,20 +5293,20 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                               })() ? (
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__b8IFd
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox___4GXv
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__ifqdx
                                       )}
                                     >
@@ -5370,14 +5317,14 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                   </div>
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__m03Nc
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__n3Yvn
                                       )}
                                     >
@@ -5432,13 +5379,13 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                               ) : null}
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__kNras
                                 )}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__pxhR
                                   )}
                                 >
@@ -5489,8 +5436,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                   ) ? (
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__uiljD
                                       )}
                                     >
@@ -5546,8 +5493,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                   ) ? (
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__hgc8G
                                       )}
                                     >
@@ -5631,8 +5578,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                                   })() ? (
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__gq91D
                                       )}
                                     >
@@ -5671,14 +5618,11 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                           ]),
                           title: (
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__hoFqI
-                              )}
+                              className={classNames("all", sty.freeBox__hoFqI)}
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__td6Cz,
                                   ``
                                 )}
@@ -5686,8 +5630,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
+                                    "all",
+                                    "__wab_text",
                                     sty.text__xad3K
                                   )}
                                 >
@@ -5705,8 +5649,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                               children2={
                                 <div
                                   className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
+                                    "all",
+                                    "__wab_text",
                                     sty.text__xFw74
                                   )}
                                 >
@@ -5720,10 +5664,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                               color={"clear"}
                               endIcon={
                                 <ChevronLeftIcon
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.svg__tD6Gx
-                                  )}
+                                  className={classNames("all", sty.svg__tD6Gx)}
                                   role={"img"}
                                 />
                               }
@@ -5741,10 +5682,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                               }
                               startIcon={
                                 <ChevronRightIcon
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.svg__yjWpJ
-                                  )}
+                                  className={classNames("all", sty.svg__yjWpJ)}
                                   role={"img"}
                                 />
                               }
@@ -5776,11 +5714,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                       <PlasmicLink__
                         data-plasmic-name={"link"}
                         data-plasmic-override={overrides.link}
-                        className={classNames(
-                          projectcss.all,
-                          projectcss.a,
-                          sty.link
-                        )}
+                        className={classNames("all", "a", "a__afXUL", sty.link)}
                         component={Link}
                         href={(() => {
                           try {
@@ -5807,14 +5741,14 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                         target={"_blank"}
                       >
                         <Icon43Icon
-                          className={classNames(projectcss.all, sty.svg__iQb5C)}
+                          className={classNames("all", sty.svg__iQb5C)}
                           role={"img"}
                         />
                       </PlasmicLink__>
                     </div>
                     <div
                       className={classNames(
-                        projectcss.all,
+                        "all",
                         sty.freeBox___8Q2Zh,
                         "grid_calculator"
                       )}
@@ -5822,8 +5756,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                     >
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___1ASlo
                         )}
                       >
@@ -5848,7 +5782,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                     </div>
                     <div
                       className={classNames(
-                        projectcss.all,
+                        "all",
                         sty.freeBox__vBvC,
                         "grid_calculator"
                       )}
@@ -5872,8 +5806,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                       })() ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__eyqDw
                           )}
                         >
@@ -5902,8 +5836,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                       })() ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__buV3U
                           )}
                         >
@@ -5952,8 +5886,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                       })() ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__tra4Y
                           )}
                         >
@@ -5969,11 +5903,11 @@ function PlasmicFactorsSearch__RenderFunc(props: {
               <div
                 data-plasmic-name={"gridNoData2"}
                 data-plasmic-override={overrides.gridNoData2}
-                className={classNames(projectcss.all, sty.gridNoData2)}
+                className={classNames("all", sty.gridNoData2)}
               >
                 <div
                   className={classNames(
-                    projectcss.all,
+                    "all",
                     sty.freeBox__sRmEd,
                     "grid_calculator"
                   )}
@@ -6001,8 +5935,8 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                       children2={
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__yDKqg
                           )}
                         >
@@ -6242,7 +6176,7 @@ function PlasmicFactorsSearch__RenderFunc(props: {
                     }
                   })() ? (
                     <Icon2Icon
-                      className={classNames(projectcss.all, sty.svg___6TmRf)}
+                      className={classNames("all", sty.svg___6TmRf)}
                       role={"img"}
                     />
                   ) : null}
@@ -7240,9 +7174,10 @@ export const PlasmicFactorsSearch = Object.assign(
     internalArgProps: PlasmicFactorsSearch__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/factors-search",
       pagePath: "/factors-search",
-      searchParams: {},
-      params: {}
+      params: {},
+      query: {}
     })
   }
 );

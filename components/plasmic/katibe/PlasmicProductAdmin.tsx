@@ -75,7 +75,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicProductAdmin.module.css"; // plasmic-import: xi8G6lqOVIEm/css
 
 import Icon11Icon from "./icons/PlasmicIcon__Icon11"; // plasmic-import: sdf49AtFp7I6/icon
@@ -105,7 +104,14 @@ function wrapQueriesWithLoadingProxy($q: any): any {
   });
 }
 
-export function generateDynamicMetadata($q: any, $ctx: any) {
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
   return {
     title: "تراکنش های مالی مدیر محصول",
 
@@ -113,7 +119,7 @@ export function generateDynamicMetadata($q: any, $ctx: any) {
       title: "تراکنش های مالی مدیر محصول"
     },
     twitter: {
-      card: "summary",
+      card: "summary" as const,
       title: "تراکنش های مالی مدیر محصول"
     }
   };
@@ -214,10 +220,6 @@ function PlasmicProductAdmin__RenderFunc(props: {
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
-
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
 
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
@@ -557,6 +559,11 @@ function PlasmicProductAdmin__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
@@ -567,7 +574,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
-    $ctx
+    $ctx as PageCtx
   );
 
   const styleTokensClassNames = _useStyleTokens();
@@ -591,32 +598,30 @@ function PlasmicProductAdmin__RenderFunc(props: {
         }
       `}</style>
 
-      <div className={projectcss.plasmic_page_wrapper}>
+      <div className={"plasmic_page_wrapper"}>
         <div
           data-plasmic-name={"root"}
           data-plasmic-override={overrides.root}
           data-plasmic-root={true}
           data-plasmic-for-node={forNode}
           className={classNames(
-            projectcss.all,
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
+            "all",
+            "root_reset_afXULSfGYmou2jFpEc2QWJ",
+            "plasmic_default_styles",
+            "plasmic_mixins",
             styleTokensClassNames,
             sty.root
           )}
         >
-          <div className={classNames(projectcss.all, sty.freeBox___3MEh4)}>
-            <div className={classNames(projectcss.all, sty.freeBox__qX32Y)}>
-              <div className={classNames(projectcss.all, sty.freeBox__ttFn)}>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__n0VmW)}
-                />
+          <div className={classNames("all", sty.freeBox___3MEh4)}>
+            <div className={classNames("all", sty.freeBox__qX32Y)}>
+              <div className={classNames("all", sty.freeBox__ttFn)}>
+                <div className={classNames("all", sty.freeBox__n0VmW)} />
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__ahZv0)}>
-                <div className={classNames(projectcss.all, sty.freeBox__vait3)}>
+              <div className={classNames("all", sty.freeBox__ahZv0)}>
+                <div className={classNames("all", sty.freeBox__vait3)}>
                   <Icon11Icon
-                    className={classNames(projectcss.all, sty.svg__xtIhG)}
+                    className={classNames("all", sty.svg__xtIhG)}
                     role={"img"}
                   />
 
@@ -624,9 +629,10 @@ function PlasmicProductAdmin__RenderFunc(props: {
                     data-plasmic-name={"h1"}
                     data-plasmic-override={overrides.h1}
                     className={classNames(
-                      projectcss.all,
-                      projectcss.h1,
-                      projectcss.__wab_text,
+                      "all",
+                      "h1",
+                      "h1__afXUL",
+                      "__wab_text",
                       sty.h1
                     )}
                   >
@@ -636,37 +642,29 @@ function PlasmicProductAdmin__RenderFunc(props: {
                   </h1>
                 </div>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__a86Ss)}>
+              <div className={classNames("all", sty.freeBox__a86Ss)}>
                 <div
                   data-plasmic-name={"btnDashboard3"}
                   data-plasmic-override={overrides.btnDashboard3}
-                  className={classNames(projectcss.all, sty.btnDashboard3)}
+                  className={classNames("all", sty.btnDashboard3)}
                 >
                   <Icon6Icon
-                    className={classNames(projectcss.all, sty.svg__mQqXy)}
+                    className={classNames("all", sty.svg__mQqXy)}
                     role={"img"}
                   />
 
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__fVfib
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__fVfib)}
                   >
                     {"\u0645\u0627\u0634\u06cc\u0646 \u062d\u0633\u0627\u0628"}
                   </div>
                 </div>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__bbg7V)}>
+              <div className={classNames("all", sty.freeBox__bbg7V)}>
                 <div
                   data-plasmic-name={"lblUser"}
                   data-plasmic-override={overrides.lblUser}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.lblUser
-                  )}
+                  className={classNames("all", "__wab_text", sty.lblUser)}
                 >
                   {""}
                 </div>
@@ -674,9 +672,10 @@ function PlasmicProductAdmin__RenderFunc(props: {
                   data-plasmic-name={"btnLogout"}
                   data-plasmic-override={overrides.btnLogout}
                   className={classNames(
-                    projectcss.all,
-                    projectcss.a,
-                    projectcss.__wab_text,
+                    "all",
+                    "a",
+                    "a__afXUL",
+                    "__wab_text",
                     sty.btnLogout
                   )}
                   component={Link}
@@ -696,8 +695,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                   children2={
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__mDn3L
                       )}
                     >
@@ -707,7 +706,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                   className={classNames("__wab_instance", sty.btnLogin)}
                   endIcon={
                     <ChevronLeftIcon
-                      className={classNames(projectcss.all, sty.svg__miaRo)}
+                      className={classNames("all", sty.svg__miaRo)}
                       role={"img"}
                     />
                   }
@@ -717,7 +716,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                   outline={true}
                   startIcon={
                     <ChevronRightIcon
-                      className={classNames(projectcss.all, sty.svg__xqCc4)}
+                      className={classNames("all", sty.svg__xqCc4)}
                       role={"img"}
                     />
                   }
@@ -728,13 +727,13 @@ function PlasmicProductAdmin__RenderFunc(props: {
           <section
             data-plasmic-name={"section"}
             data-plasmic-override={overrides.section}
-            className={classNames(projectcss.all, sty.section)}
+            className={classNames("all", sty.section)}
             dir={"rtl"}
           >
             <div
               data-plasmic-name={"gridCalculator2"}
               data-plasmic-override={overrides.gridCalculator2}
-              className={classNames(projectcss.all, sty.gridCalculator2)}
+              className={classNames("all", sty.gridCalculator2)}
             >
               {(
                 hasVariant(globalVariants, "screen", "mobileOnly")
@@ -755,7 +754,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
               ) ? (
                 <div
                   className={classNames(
-                    projectcss.all,
+                    "all",
                     sty.freeBox__i9IV,
                     "grid_calculator"
                   )}
@@ -1054,8 +1053,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                     placeholder={
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__jw7BD
                         )}
                       >
@@ -1104,36 +1103,24 @@ function PlasmicProductAdmin__RenderFunc(props: {
               ) : null}
               <div
                 className={classNames(
-                  projectcss.all,
+                  "all",
                   sty.freeBox__bvP,
                   "grid_calculator"
                 )}
                 id={"grid_calculator"}
               >
-                <div className={classNames(projectcss.all, sty.freeBox__ybpJy)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__jG9An)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___37BKk
-                      )}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__veYrr
-                        )}
-                      >
+                <div className={classNames("all", sty.freeBox__ybpJy)}>
+                  <div className={classNames("all", sty.freeBox__jG9An)}>
+                    <div className={classNames("all", sty.freeBox___37BKk)}>
+                      <div className={classNames("all", sty.freeBox__veYrr)}>
                         <Button
                           data-plasmic-name={"btnSearch"}
                           data-plasmic-override={overrides.btnSearch}
                           children2={
                             <div
                               className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
+                                "all",
+                                "__wab_text",
                                 sty.text__nigBt
                               )}
                             >
@@ -1152,10 +1139,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                           )}
                           endIcon={
                             <ChevronLeftIcon
-                              className={classNames(
-                                projectcss.all,
-                                sty.svg__csP55
-                              )}
+                              className={classNames("all", sty.svg__csP55)}
                               role={"img"}
                             />
                           }
@@ -1425,10 +1409,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                           }
                           startIcon={
                             <ChevronRightIcon
-                              className={classNames(
-                                projectcss.all,
-                                sty.svg__rpykZ
-                              )}
+                              className={classNames("all", sty.svg__rpykZ)}
                               role={"img"}
                             />
                           }
@@ -1442,14 +1423,11 @@ function PlasmicProductAdmin__RenderFunc(props: {
                           body={
                             <React.Fragment>
                               <div
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.freeBox__yGyb
-                                )}
+                                className={classNames("all", sty.freeBox__yGyb)}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox___4UX9K
                                   )}
                                 >
@@ -1759,7 +1737,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     startIcon={
                                       <SearchSvgIcon
                                         className={classNames(
-                                          projectcss.all,
+                                          "all",
                                           sty.svg__wyVcR
                                         )}
                                         role={"img"}
@@ -1776,20 +1754,20 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               </div>
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__eWfmw
                                 )}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__ajrVe
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__bqk0A
                                     )}
                                   >
@@ -1798,7 +1776,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 </div>
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__ki4Vy
                                   )}
                                 >
@@ -1848,20 +1826,20 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               </div>
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__oXgaj
                                 )}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__nPb0X
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__wdXg4
                                     )}
                                   >
@@ -1871,8 +1849,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   </div>
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__x9Wz2
                                     )}
                                   >
@@ -1896,7 +1874,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 </div>
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__v7BBh
                                   )}
                                 >
@@ -1924,7 +1902,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     options={
                                       <div
                                         className={classNames(
-                                          projectcss.all,
+                                          "all",
                                           sty.freeBox___5Qw7Y
                                         )}
                                       >
@@ -1978,8 +1956,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                 label={
                                                   <div
                                                     className={classNames(
-                                                      projectcss.all,
-                                                      projectcss.__wab_text,
+                                                      "all",
+                                                      "__wab_text",
                                                       sty.text__f7ZN
                                                     )}
                                                   >
@@ -2052,14 +2030,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 return (
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__oyQrd
                                     )}
                                     key={currentIndex}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.freeBox__o8S49
                                       )}
                                     >
@@ -2185,7 +2163,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     </div>
                                     <div
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.freeBox___8VvBh
                                       )}
                                     >
@@ -2300,7 +2278,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     </div>
                                     <div
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.freeBox__oWttc
                                       )}
                                     >
@@ -2415,7 +2393,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     </div>
                                     <div
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.freeBox__aoh2Q
                                       )}
                                     >
@@ -2539,20 +2517,20 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               })}
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__n4Agk
                                 )}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__ntWeu
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__mQnEl
                                     )}
                                   >
@@ -2563,7 +2541,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 </div>
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__cfCVy
                                   )}
                                 >
@@ -2613,20 +2591,20 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               </div>
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__ka9Qe
                                 )}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__hZa7
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__axDC
                                     )}
                                   >
@@ -2637,7 +2615,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 </div>
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__f6W70
                                   )}
                                 >
@@ -2687,14 +2665,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 </div>
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox___4OfQ3
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__bgk1J
                                     )}
                                   >
@@ -2705,7 +2683,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 </div>
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__zcG
                                   )}
                                 >
@@ -2770,20 +2748,20 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               })() ? (
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__u1HY
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__gzZr4
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text___6Mmu5
                                       )}
                                     >
@@ -2794,7 +2772,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   </div>
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__cD60U
                                     )}
                                   >
@@ -2840,14 +2818,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   </div>
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__zltcX
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__tuIg0
                                       )}
                                     >
@@ -2856,7 +2834,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   </div>
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox___57YXp
                                     )}
                                   >
@@ -2906,13 +2884,13 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               ) : null}
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__sybWd
                                 )}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__kOmyn
                                   )}
                                 >
@@ -3562,19 +3540,19 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               })() ? (
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__ySbWl
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__e7W
                                     )}
                                   >
                                     <Icon2Icon
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.svg___3D8SZ
                                       )}
                                       role={"img"}
@@ -3608,21 +3586,15 @@ function PlasmicProductAdmin__RenderFunc(props: {
                           ])}
                           title={
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__e0UzX
-                              )}
+                              className={classNames("all", sty.freeBox__e0UzX)}
                             >
                               <div
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.freeBox__gu0Y
-                                )}
+                                className={classNames("all", sty.freeBox__gu0Y)}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
+                                    "all",
+                                    "__wab_text",
                                     sty.text__jGFp
                                   )}
                                 >
@@ -3672,7 +3644,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       overrides.waitingIcon5
                                     }
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.waitingIcon5
                                     )}
                                     role={"img"}
@@ -3681,14 +3653,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               </div>
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__fyKvO
                                 )}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
+                                    "all",
+                                    "__wab_text",
                                     sty.text__ucOxr
                                   )}
                                 >
@@ -3699,7 +3671,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               </div>
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox___3STz1
                                 )}
                               >
@@ -3712,13 +3684,13 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     <React.Fragment>
                                       <div
                                         className={classNames(
-                                          projectcss.all,
+                                          "all",
                                           sty.freeBox__sDRo
                                         )}
                                       >
                                         <div
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.freeBox__yws2Z
                                           )}
                                         >
@@ -3771,20 +3743,20 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       </div>
                                       <div
                                         className={classNames(
-                                          projectcss.all,
+                                          "all",
                                           sty.freeBox__eSkOy
                                         )}
                                       >
                                         <div
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.freeBox__oUzO5
                                           )}
                                         >
                                           <div
                                             className={classNames(
-                                              projectcss.all,
-                                              projectcss.__wab_text,
+                                              "all",
+                                              "__wab_text",
                                               sty.text___8SwmW
                                             )}
                                           >
@@ -3793,14 +3765,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         </div>
                                         <div
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.freeBox__mH8So
                                           )}
                                         >
                                           <div
                                             className={classNames(
-                                              projectcss.all,
-                                              projectcss.__wab_text,
+                                              "all",
+                                              "__wab_text",
                                               sty.text__yb4Ue
                                             )}
                                           >
@@ -3809,14 +3781,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         </div>
                                         <div
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.freeBox__olBzp
                                           )}
                                         >
                                           <div
                                             className={classNames(
-                                              projectcss.all,
-                                              projectcss.__wab_text,
+                                              "all",
+                                              "__wab_text",
                                               sty.text__yrBex
                                             )}
                                           >
@@ -3834,14 +3806,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         ) ? (
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox__vNHzI
                                             )}
                                           >
                                             <div
                                               className={classNames(
-                                                projectcss.all,
-                                                projectcss.__wab_text,
+                                                "all",
+                                                "__wab_text",
                                                 sty.text__iXQh
                                               )}
                                             >
@@ -3851,14 +3823,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         ) : null}
                                         <div
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.freeBox___76ENc
                                           )}
                                         >
                                           <div
                                             className={classNames(
-                                              projectcss.all,
-                                              projectcss.__wab_text,
+                                              "all",
+                                              "__wab_text",
                                               sty.text__hziUl
                                             )}
                                           >
@@ -3867,14 +3839,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         </div>
                                         <div
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.freeBox__kSAfa
                                           )}
                                         >
                                           <div
                                             className={classNames(
-                                              projectcss.all,
-                                              projectcss.__wab_text,
+                                              "all",
+                                              "__wab_text",
                                               sty.text__dDh1T
                                             )}
                                           >
@@ -3918,21 +3890,21 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                           return (
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__jlIb4
                                               )}
                                               key={currentIndex}
                                             >
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__aOnMr
                                                 )}
                                               >
                                                 <div
                                                   className={classNames(
-                                                    projectcss.all,
-                                                    projectcss.__wab_text,
+                                                    "all",
+                                                    "__wab_text",
                                                     sty.text__qmaws
                                                   )}
                                                 >
@@ -3957,14 +3929,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               </div>
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__uFiL
                                                 )}
                                               >
                                                 <div
                                                   className={classNames(
-                                                    projectcss.all,
-                                                    projectcss.__wab_text,
+                                                    "all",
+                                                    "__wab_text",
                                                     sty.text___0ZZxn
                                                   )}
                                                 >
@@ -3989,14 +3961,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               </div>
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__jFCfw
                                                 )}
                                               >
                                                 <div
                                                   className={classNames(
-                                                    projectcss.all,
-                                                    projectcss.__wab_text,
+                                                    "all",
+                                                    "__wab_text",
                                                     sty.text__luXj
                                                   )}
                                                 >
@@ -4021,14 +3993,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               </div>
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__ujEqk
                                                 )}
                                               >
                                                 <div
                                                   className={classNames(
-                                                    projectcss.all,
-                                                    projectcss.__wab_text,
+                                                    "all",
+                                                    "__wab_text",
                                                     sty.text__f3SeD
                                                   )}
                                                 >
@@ -4053,7 +4025,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               </div>
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__q5VaH
                                                 )}
                                               >
@@ -4228,8 +4200,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   title={
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__jz33O
                                       )}
                                     >
@@ -4496,8 +4468,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               children2={
                                 <div
                                   className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
+                                    "all",
+                                    "__wab_text",
                                     sty.text__nixpH
                                   )}
                                 >
@@ -4609,12 +4581,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                           throw e;
                         }
                       })() ? (
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__vNrRc
-                          )}
-                        >
+                        <div className={classNames("all", sty.freeBox__vNrRc)}>
                           {(
                             hasVariant(globalVariants, "screen", "mobileOnly")
                               ? (() => {
@@ -4636,10 +4603,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                             <Icon2Icon
                               data-plasmic-name={"waitingIcon4"}
                               data-plasmic-override={overrides.waitingIcon4}
-                              className={classNames(
-                                projectcss.all,
-                                sty.waitingIcon4
-                              )}
+                              className={classNames("all", sty.waitingIcon4)}
                               role={"img"}
                             />
                           ) : null}
@@ -4653,40 +4617,32 @@ function PlasmicProductAdmin__RenderFunc(props: {
             <div
               data-plasmic-name={"gridInvoice1"}
               data-plasmic-override={overrides.gridInvoice1}
-              className={classNames(projectcss.all, sty.gridInvoice1)}
+              className={classNames("all", sty.gridInvoice1)}
             >
               <div
                 className={classNames(
-                  projectcss.all,
+                  "all",
                   sty.freeBox__wTwXr,
                   "grid_calculator"
                 )}
                 id={"grid_calculator"}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___8Uc0H
-                  )}
+                  className={classNames("all", "__wab_text", sty.text___8Uc0H)}
                 >
                   {"\u062a\u0627\u0631\u06cc\u062e"}
                 </div>
               </div>
               <div
                 className={classNames(
-                  projectcss.all,
+                  "all",
                   sty.freeBox__ouM3,
                   "grid_calculator"
                 )}
                 id={"grid_calculator"}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__uiGqY
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__uiGqY)}
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly")
                     ? "\u0631\u062f\u06cc\u0641"
@@ -4695,36 +4651,28 @@ function PlasmicProductAdmin__RenderFunc(props: {
               </div>
               <div
                 className={classNames(
-                  projectcss.all,
+                  "all",
                   sty.freeBox__u7LdY,
                   "grid_calculator"
                 )}
                 id={"grid_calculator"}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__deHlE
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__deHlE)}
                 >
                   {"\u0639\u0646\u0648\u0627\u0646"}
                 </div>
               </div>
               <div
                 className={classNames(
-                  projectcss.all,
+                  "all",
                   sty.freeBox___5IsZb,
                   "grid_calculator"
                 )}
                 id={"grid_calculator"}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__uQz0Q
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__uQz0Q)}
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly")
                     ? "\u0642\u06cc\u0645\u062a "
@@ -4733,47 +4681,35 @@ function PlasmicProductAdmin__RenderFunc(props: {
               </div>
               <div
                 className={classNames(
-                  projectcss.all,
+                  "all",
                   sty.freeBox__pt18H,
                   "grid_calculator"
                 )}
                 id={"grid_calculator"}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__nE06S
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__nE06S)}
                 >
                   {"\u0645\u0627\u0646\u062f\u0647"}
                 </div>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox___1Ww71)}>
+              <div className={classNames("all", sty.freeBox___1Ww71)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__nscf8
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__nscf8)}
                 >
                   {"\u0648\u0636\u0639\u06cc\u062a"}
                 </div>
               </div>
               <div
                 className={classNames(
-                  projectcss.all,
+                  "all",
                   sty.freeBox___9Bj4F,
                   "grid_calculator"
                 )}
                 id={"grid_calculator"}
               >
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__d2UUt
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__d2UUt)}
                 >
                   {"\u062c\u0632\u0626\u06cc\u0627\u062a"}
                 </div>
@@ -4797,22 +4733,18 @@ function PlasmicProductAdmin__RenderFunc(props: {
               <div
                 data-plasmic-name={"gridNoData"}
                 data-plasmic-override={overrides.gridNoData}
-                className={classNames(projectcss.all, sty.gridNoData)}
+                className={classNames("all", sty.gridNoData)}
               >
                 <div
                   className={classNames(
-                    projectcss.all,
+                    "all",
                     sty.freeBox___6MvXg,
                     "grid_calculator"
                   )}
                   id={"grid_calculator"}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__eQpif
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__eQpif)}
                   >
                     {
                       "\u0645\u062d\u062a\u0648\u0627\u06cc\u06cc \u062c\u0647\u062a \u0646\u0645\u0627\u06cc\u0634 \u0648\u062c\u0648\u062f \u0646\u062f\u0627\u0631\u062f."
@@ -4842,12 +4774,12 @@ function PlasmicProductAdmin__RenderFunc(props: {
                 <div
                   data-plasmic-name={"gridInvoice12"}
                   data-plasmic-override={overrides.gridInvoice12}
-                  className={classNames(projectcss.all, sty.gridInvoice12)}
+                  className={classNames("all", sty.gridInvoice12)}
                   key={currentIndex}
                 >
                   <div
                     className={classNames(
-                      projectcss.all,
+                      "all",
                       sty.freeBox__dtv0I,
                       "grid_calculator"
                     )}
@@ -4855,8 +4787,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__nN9RS
                       )}
                     >
@@ -4887,7 +4819,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                   </div>
                   <div
                     className={classNames(
-                      projectcss.all,
+                      "all",
                       sty.freeBox__h0Ls,
                       "grid_calculator"
                     )}
@@ -4895,8 +4827,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__rJzBr
                       )}
                     >
@@ -4948,7 +4880,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                   </div>
                   <div
                     className={classNames(
-                      projectcss.all,
+                      "all",
                       sty.freeBox___1Ej7T,
                       "grid_calculator"
                     )}
@@ -4956,8 +4888,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__cvRXd
                       )}
                     >
@@ -4980,7 +4912,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                   </div>
                   <div
                     className={classNames(
-                      projectcss.all,
+                      "all",
                       sty.freeBox__bQjO,
                       "grid_calculator"
                     )}
@@ -4988,8 +4920,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text___8LKhl
                       )}
                     >
@@ -5027,7 +4959,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                       }
                     })() ? (
                       <Icon29Icon
-                        className={classNames(projectcss.all, sty.svg__yAkO)}
+                        className={classNames("all", sty.svg__yAkO)}
                         role={"img"}
                       />
                     ) : null}
@@ -5047,14 +4979,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                       }
                     })() ? (
                       <Icon30Icon
-                        className={classNames(projectcss.all, sty.svg__sJKnb)}
+                        className={classNames("all", sty.svg__sJKnb)}
                         role={"img"}
                       />
                     ) : null}
                   </div>
                   <div
                     className={classNames(
-                      projectcss.all,
+                      "all",
                       sty.freeBox__oh4Xc,
                       "grid_calculator"
                     )}
@@ -5062,8 +4994,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__cnOYp
                       )}
                       direction={``}
@@ -5085,9 +5017,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                       </React.Fragment>
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__ob1Bq)}
-                  >
+                  <div className={classNames("all", sty.freeBox__ob1Bq)}>
                     {(() => {
                       try {
                         return (
@@ -5105,7 +5035,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                       }
                     })() ? (
                       <Icon40Icon
-                        className={classNames(projectcss.all, sty.svg__hNaHd)}
+                        className={classNames("all", sty.svg__hNaHd)}
                         role={"img"}
                       />
                     ) : null}
@@ -5125,7 +5055,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                       }
                     })() ? (
                       <Icon41Icon
-                        className={classNames(projectcss.all, sty.svg__hKdfv)}
+                        className={classNames("all", sty.svg__hKdfv)}
                         role={"img"}
                       />
                     ) : null}
@@ -5151,8 +5081,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                     ) ? (
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__mzIY
                         )}
                       >
@@ -5183,8 +5113,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                     ) ? (
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__yw8
                         )}
                       >
@@ -5194,7 +5124,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                   </div>
                   <div
                     className={classNames(
-                      projectcss.all,
+                      "all",
                       sty.freeBox__v5Tt4,
                       "grid_calculator"
                     )}
@@ -5234,8 +5164,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 errorDisplay={
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__fj2Q1
                                     )}
                                   >
@@ -5264,7 +5194,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       overrides.waitingIcon3
                                     }
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.waitingIcon3
                                     )}
                                     role={"img"}
@@ -5315,20 +5245,20 @@ function PlasmicProductAdmin__RenderFunc(props: {
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__kbVZy
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__rGyb
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__ibknp
                                       )}
                                     >
@@ -5354,14 +5284,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   </div>
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__qUrxf
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__e1MbJ
                                       )}
                                     >
@@ -5429,20 +5359,20 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 </div>
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox___4W7Tn
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__koPra
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__kHayS
                                       )}
                                     >
@@ -5457,14 +5387,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   </div>
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__htNxj
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__uePsd
                                       )}
                                     >
@@ -5491,20 +5421,20 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 </div>
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox___29R3K
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__fT3V
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__ofQsQ
                                       )}
                                     >
@@ -5536,14 +5466,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   </div>
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox___3Yz1Y
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text___8WX78
                                       )}
                                     >
@@ -5596,14 +5526,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   </div>
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__nkyHb
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__x8Vno
                                       )}
                                     >
@@ -5645,20 +5575,20 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 </div>
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__vajZ0
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox___321Hg
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__coLp8
                                       )}
                                     >
@@ -5690,14 +5620,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   </div>
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__uz1X
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__pB0Es
                                       )}
                                     >
@@ -5750,14 +5680,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   </div>
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__bAhjQ
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__a89Uw
                                       )}
                                     >
@@ -5766,14 +5696,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   </div>
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__jWnaw
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__o0VQa
                                       )}
                                     >
@@ -5809,20 +5739,20 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 ) ? (
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__z15Pf
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.freeBox___1XNel
                                       )}
                                     >
                                       <div
                                         className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
+                                          "all",
+                                          "__wab_text",
                                           sty.text__qUh9Y
                                         )}
                                       >
@@ -5859,14 +5789,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     </div>
                                     <div
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.freeBox__uTamH
                                       )}
                                     >
                                       <div
                                         className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
+                                          "all",
+                                          "__wab_text",
                                           sty.text__uSe43
                                         )}
                                       >
@@ -5893,14 +5823,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     </div>
                                     <div
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.freeBox__gdDn4
                                       )}
                                     >
                                       <div
                                         className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
+                                          "all",
+                                          "__wab_text",
                                           sty.text__rwI2
                                         )}
                                       >
@@ -5915,14 +5845,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     </div>
                                     <div
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.freeBox__mxLj
                                       )}
                                     >
                                       <div
                                         className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
+                                          "all",
+                                          "__wab_text",
                                           sty.text__cAv8
                                         )}
                                       >
@@ -5976,7 +5906,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   return (
                                     <div
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.freeBox__beOtg
                                       )}
                                       dir={"rtl"}
@@ -5984,14 +5914,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     >
                                       <div
                                         className={classNames(
-                                          projectcss.all,
+                                          "all",
                                           sty.freeBox__q3QtH
                                         )}
                                       >
                                         <div
                                           className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
+                                            "all",
+                                            "__wab_text",
                                             sty.text__kdPP
                                           )}
                                         >
@@ -6015,14 +5945,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       </div>
                                       <div
                                         className={classNames(
-                                          projectcss.all,
+                                          "all",
                                           sty.freeBox__wJi8Q
                                         )}
                                       >
                                         <div
                                           className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
+                                            "all",
+                                            "__wab_text",
                                             sty.text__rjDeQ
                                           )}
                                           dir={"rtl"}
@@ -6058,14 +5988,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       </div>
                                       <div
                                         className={classNames(
-                                          projectcss.all,
+                                          "all",
                                           sty.freeBox__fYid
                                         )}
                                       >
                                         <div
                                           className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
+                                            "all",
+                                            "__wab_text",
                                             sty.text__lrifO
                                           )}
                                         >
@@ -6074,14 +6004,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                       </div>
                                       <div
                                         className={classNames(
-                                          projectcss.all,
+                                          "all",
                                           sty.freeBox__tU2Tn
                                         )}
                                       >
                                         <div
                                           className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
+                                            "all",
+                                            "__wab_text",
                                             sty.text__w743F
                                           )}
                                         >
@@ -6117,20 +6047,20 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 })}
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__uqde1
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__ksfKe
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__gQaj
                                       )}
                                     >
@@ -6139,14 +6069,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   </div>
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__cjFxx
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__eIqS
                                       )}
                                     >
@@ -6178,14 +6108,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   </div>
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__o9LBi
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__tkrcU
                                       )}
                                     >
@@ -6194,14 +6124,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   </div>
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__dj2NQ
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__vBXwl
                                       )}
                                     >
@@ -6234,20 +6164,20 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 </div>
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__rQhmZ
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__dyGp5
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text___0Oa16
                                       )}
                                     >
@@ -6256,14 +6186,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   </div>
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__jth4Y
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__qeSa
                                       )}
                                     >
@@ -6295,14 +6225,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   </div>
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__qIiVm
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text___5Fs61
                                       )}
                                     >
@@ -6313,14 +6243,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                   </div>
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox___4Oeqg
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text___3PGZt
                                       )}
                                     >
@@ -6375,20 +6305,20 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 })() ? (
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__lOiI
                                     )}
                                   >
                                     <div
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.freeBox___6GtW1
                                       )}
                                     >
                                       <div
                                         className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
+                                          "all",
+                                          "__wab_text",
                                           sty.text__qVvT4
                                         )}
                                       >
@@ -6399,14 +6329,14 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                     </div>
                                     <div
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.freeBox___0TGl3
                                       )}
                                     >
                                       <div
                                         className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
+                                          "all",
+                                          "__wab_text",
                                           sty.text___9MWuN
                                         )}
                                       >
@@ -6435,13 +6365,13 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 ) : null}
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__dMbl1
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__h9QN0
                                     )}
                                   >
@@ -6450,20 +6380,20 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         body: (
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox__dDsil
                                             )}
                                           >
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__vv53U
                                               )}
                                             >
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
-                                                  projectcss.__wab_text,
+                                                  "all",
+                                                  "__wab_text",
                                                   sty.text__tiinb
                                                 )}
                                               >
@@ -6495,7 +6425,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                             </div>
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__s05W0
                                               )}
                                             >
@@ -6578,7 +6508,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                             </div>
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__fcDhe
                                               )}
                                             >
@@ -6631,8 +6561,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                                 children2={
                                                   <div
                                                     className={classNames(
-                                                      projectcss.all,
-                                                      projectcss.__wab_text,
+                                                      "all",
+                                                      "__wab_text",
                                                       sty.text___6Km6
                                                     )}
                                                   >
@@ -6926,7 +6856,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                             </div>
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__id22
                                               )}
                                             >
@@ -6946,7 +6876,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               })() ? (
                                                 <Icon2Icon
                                                   className={classNames(
-                                                    projectcss.all,
+                                                    "all",
                                                     sty.svg___00Vgp
                                                   )}
                                                   role={"img"}
@@ -7012,8 +6942,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                             children2={
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
-                                                  projectcss.__wab_text,
+                                                  "all",
+                                                  "__wab_text",
                                                   sty.text__mwHwc
                                                 )}
                                               >
@@ -7044,7 +6974,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                             endIcon={
                                               <ChevronLeftIcon
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.svg___5Mxi
                                                 )}
                                                 role={"img"}
@@ -7054,7 +6984,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                             startIcon={
                                               <ChevronRightIcon
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.svg__howIx
                                                 )}
                                                 role={"img"}
@@ -7097,20 +7027,20 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                           <React.Fragment>
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__pmp8L
                                               )}
                                             >
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__l8MHi
                                                 )}
                                               >
                                                 <div
                                                   className={classNames(
-                                                    projectcss.all,
-                                                    projectcss.__wab_text,
+                                                    "all",
+                                                    "__wab_text",
                                                     sty.text__ofLe8
                                                   )}
                                                 >
@@ -7122,13 +7052,13 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                             </div>
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox___8AqAl
                                               )}
                                             >
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__yBnc
                                                 )}
                                               >
@@ -7182,7 +7112,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               </div>
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__bE4F5
                                                 )}
                                               >
@@ -7532,20 +7462,20 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                         title: (
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox__nyhpt
                                             )}
                                           >
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__jZdmx
                                               )}
                                             >
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
-                                                  projectcss.__wab_text,
+                                                  "all",
+                                                  "__wab_text",
                                                   sty.text___2DDoN
                                                 )}
                                               >
@@ -7591,7 +7521,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                               })() ? (
                                                 <Icon2Icon
                                                   className={classNames(
-                                                    projectcss.all,
+                                                    "all",
                                                     sty.svg__lyWzv
                                                   )}
                                                   role={"img"}
@@ -7629,8 +7559,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                             children2={
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
-                                                  projectcss.__wab_text,
+                                                  "all",
+                                                  "__wab_text",
                                                   sty.text___5PLu
                                                 )}
                                               >
@@ -7647,7 +7577,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                             endIcon={
                                               <ChevronLeftIcon
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.svg__ch3Tb
                                                 )}
                                                 role={"img"}
@@ -7657,7 +7587,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                             startIcon={
                                               <ChevronRightIcon
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.svg___8HyVr
                                                 )}
                                                 role={"img"}
@@ -7725,13 +7655,13 @@ function PlasmicProductAdmin__RenderFunc(props: {
                             title: (
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__j3Geg
                                 )}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__mEzG7,
                                     ``
                                   )}
@@ -7739,8 +7669,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__ccP8D
                                     )}
                                   >
@@ -7758,8 +7688,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 children2={
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__eufZz
                                     )}
                                   >
@@ -7780,7 +7710,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 endIcon={
                                   <ChevronLeftIcon
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.svg___1NaG
                                     )}
                                     role={"img"}
@@ -7789,7 +7719,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                                 startIcon={
                                   <ChevronRightIcon
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.svg__bhMor
                                     )}
                                     role={"img"}
@@ -7831,8 +7761,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                 </div>
               );
             })}
-            <div className={classNames(projectcss.all, sty.freeBox__xvA9A)}>
-              <div className={classNames(projectcss.all, sty.freeBox__lGdRe)}>
+            <div className={classNames("all", sty.freeBox__xvA9A)}>
+              <div className={classNames("all", sty.freeBox__lGdRe)}>
                 {(() => {
                   try {
                     return (
@@ -7855,8 +7785,8 @@ function PlasmicProductAdmin__RenderFunc(props: {
                     children2={
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___2CdV
                         )}
                       >
@@ -8079,7 +8009,7 @@ function PlasmicProductAdmin__RenderFunc(props: {
                   <Icon2Icon
                     data-plasmic-name={"waitingIcon6"}
                     data-plasmic-override={overrides.waitingIcon6}
-                    className={classNames(projectcss.all, sty.waitingIcon6)}
+                    className={classNames("all", sty.waitingIcon6)}
                     role={"img"}
                   />
                 ) : null}
@@ -8385,15 +8315,9 @@ function PlasmicProductAdmin__RenderFunc(props: {
             }}
           />
 
-          <div className={classNames(projectcss.all, sty.freeBox__zLrYr)}>
-            <div className={classNames(projectcss.all, sty.freeBox__pvi8Y)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__yrB4Y
-                )}
-              >
+          <div className={classNames("all", sty.freeBox__zLrYr)}>
+            <div className={classNames("all", sty.freeBox__pvi8Y)}>
+              <div className={classNames("all", "__wab_text", sty.text__yrB4Y)}>
                 {hasVariant(globalVariants, "screen", "mobileOnly") ? (
                   <React.Fragment>
                     <React.Fragment>
@@ -8404,10 +8328,11 @@ function PlasmicProductAdmin__RenderFunc(props: {
                     {
                       <PlasmicLink__
                         className={classNames(
-                          projectcss.all,
-                          projectcss.a,
-                          projectcss.__wab_text,
-                          projectcss.plasmic_default__inline,
+                          "all",
+                          "a",
+                          "a__afXUL",
+                          "__wab_text",
+                          "plasmic_default__inline",
                           sty.link__fwOm
                         )}
                         component={Link}
@@ -8434,10 +8359,11 @@ function PlasmicProductAdmin__RenderFunc(props: {
                     {
                       <PlasmicLink__
                         className={classNames(
-                          projectcss.all,
-                          projectcss.a,
-                          projectcss.__wab_text,
-                          projectcss.plasmic_default__inline,
+                          "all",
+                          "a",
+                          "a__afXUL",
+                          "__wab_text",
+                          "plasmic_default__inline",
                           sty.link__mdh75
                         )}
                         component={Link}
@@ -8814,9 +8740,10 @@ export const PlasmicProductAdmin = Object.assign(
     internalArgProps: PlasmicProductAdmin__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/productAdmin",
       pagePath: "/productAdmin",
-      searchParams: {},
-      params: {}
+      params: {},
+      query: {}
     })
   }
 );

@@ -78,7 +78,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicFinancialProfiles.module.css"; // plasmic-import: N2OZ5reJWy2r/css
 
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
@@ -104,7 +103,14 @@ function wrapQueriesWithLoadingProxy($q: any): any {
   });
 }
 
-export function generateDynamicMetadata($q: any, $ctx: any) {
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
   return {
     title: "اطلاعات مالی",
 
@@ -112,7 +118,7 @@ export function generateDynamicMetadata($q: any, $ctx: any) {
       title: "اطلاعات مالی"
     },
     twitter: {
-      card: "summary",
+      card: "summary" as const,
       title: "اطلاعات مالی"
     }
   };
@@ -208,10 +214,6 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
-
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
 
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
@@ -729,6 +731,11 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
@@ -739,7 +746,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
-    $ctx
+    $ctx as PageCtx
   );
 
   const styleTokensClassNames = _useStyleTokens();
@@ -763,17 +770,17 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
         }
       `}</style>
 
-      <div className={projectcss.plasmic_page_wrapper}>
+      <div className={"plasmic_page_wrapper"}>
         <div
           data-plasmic-name={"root"}
           data-plasmic-override={overrides.root}
           data-plasmic-root={true}
           data-plasmic-for-node={forNode}
           className={classNames(
-            projectcss.all,
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
+            "all",
+            "root_reset_afXULSfGYmou2jFpEc2QWJ",
+            "plasmic_default_styles",
+            "plasmic_mixins",
             styleTokensClassNames,
             sty.root
           )}
@@ -781,7 +788,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
           <section
             data-plasmic-name={"section"}
             data-plasmic-override={overrides.section}
-            className={classNames(projectcss.all, sty.section)}
+            className={classNames("all", sty.section)}
           >
             {(() => {
               try {
@@ -796,14 +803,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 throw e;
               }
             })() ? (
-              <div className={classNames(projectcss.all, sty.freeBox__qe33O)}>
-                <div className={classNames(projectcss.all, sty.freeBox__gV9Nh)}>
+              <div className={classNames("all", sty.freeBox__qe33O)}>
+                <div className={classNames("all", sty.freeBox__gV9Nh)}>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__gE6BR
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__gE6BR)}
                   >
                     <React.Fragment>
                       {(() => {
@@ -867,8 +870,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                     placeholder={
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__kJlzb
                         )}
                       >
@@ -915,7 +918,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
               }
             })() ? (
               <Icon2Icon
-                className={classNames(projectcss.all, sty.svg__t7By0)}
+                className={classNames("all", sty.svg__t7By0)}
                 role={"img"}
               />
             ) : null}
@@ -936,14 +939,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 throw e;
               }
             })() ? (
-              <div className={classNames(projectcss.all, sty.freeBox__q6TzB)}>
-                <div className={classNames(projectcss.all, sty.freeBox__uNz82)}>
+              <div className={classNames("all", sty.freeBox__q6TzB)}>
+                <div className={classNames("all", sty.freeBox__uNz82)}>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__m52Md
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__m52Md)}
                   >
                     <React.Fragment>
                       {(() => {
@@ -977,22 +976,18 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                     }
                   })() ? (
                     <Icon2Icon
-                      className={classNames(projectcss.all, sty.svg__djJm)}
+                      className={classNames("all", sty.svg__djJm)}
                       role={"img"}
                     />
                   ) : null}
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__clHzs)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__btbzD)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__akwEi)}
-                    >
+                <div className={classNames("all", sty.freeBox__clHzs)}>
+                  <div className={classNames("all", sty.freeBox__btbzD)}>
+                    <div className={classNames("all", sty.freeBox__akwEi)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___7ZJLe
                         )}
                       >
@@ -1054,13 +1049,11 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         />
                       ) : null}
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__qgZry)}
-                    >
+                    <div className={classNames("all", sty.freeBox__qgZry)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__jaktj
                         )}
                       >
@@ -1113,13 +1106,11 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         }
                       />
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__a4Il)}
-                    >
+                    <div className={classNames("all", sty.freeBox__a4Il)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__bboMg
                         )}
                       >
@@ -1172,13 +1163,11 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         }
                       />
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__z8RSz)}
-                    >
+                    <div className={classNames("all", sty.freeBox__z8RSz)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__jGnrG
                         )}
                       >
@@ -1220,13 +1209,11 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         }
                       />
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__iWlLl)}
-                    >
+                    <div className={classNames("all", sty.freeBox__iWlLl)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__kap5T
                         )}
                       >
@@ -1264,13 +1251,11 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         }
                       />
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__eo2Sw)}
-                    >
+                    <div className={classNames("all", sty.freeBox__eo2Sw)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__wYbLn
                         )}
                       >
@@ -1309,13 +1294,11 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         }
                       />
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__tHhs1)}
-                    >
+                    <div className={classNames("all", sty.freeBox__tHhs1)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__o4Bni
                         )}
                       >
@@ -1350,9 +1333,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         }
                       />
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__kTuJp)}
-                    >
+                    <div className={classNames("all", sty.freeBox__kTuJp)}>
                       <Button
                         children2={"\u0630\u062e\u06cc\u0631\u0647"}
                         className={classNames(
@@ -1616,18 +1597,20 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 throw e;
               }
             })() ? (
-              <div className={classNames(projectcss.all, sty.freeBox___15Ck)}>
-                <div className={classNames(projectcss.all, sty.freeBox__mj5P8)}>
+              <div className={classNames("all", sty.freeBox___15Ck)}>
+                <div className={classNames("all", sty.freeBox__mj5P8)}>
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text___7I04V
                     )}
                   >
                     <React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ fontWeight: 700 }}
                       >
                         {
@@ -1650,35 +1633,29 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                     }
                   })() ? (
                     <Icon2Icon
-                      className={classNames(projectcss.all, sty.svg__xXws3)}
+                      className={classNames("all", sty.svg__xXws3)}
                       role={"img"}
                     />
                   ) : null}
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__baNf7)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__jD3Nw)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__lzAfw)}
-                    >
+                <div className={classNames("all", sty.freeBox__baNf7)}>
+                  <div className={classNames("all", sty.freeBox__jD3Nw)}>
+                    <div className={classNames("all", sty.freeBox__lzAfw)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__oQcJp
                         )}
                       >
                         {"\u0631\u062f\u06cc\u0641"}
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__diaSf)}
-                    >
+                    <div className={classNames("all", sty.freeBox__diaSf)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__lfrTu
                         )}
                       >
@@ -1687,13 +1664,11 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           : "\u0646\u0627\u0645 \u0648 \u0646\u0627\u0645 \u062e\u0627\u0646\u0648\u0627\u062f\u06af\u06cc"}
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__sKyv)}
-                    >
+                    <div className={classNames("all", sty.freeBox__sKyv)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__vmIS
                         )}
                       >
@@ -1702,39 +1677,33 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           : "\u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a"}
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__j9Ap)}
-                    >
+                    <div className={classNames("all", sty.freeBox__j9Ap)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___4ED8K
                         )}
                       >
                         {"\u0634\u0628\u0627"}
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__xw5Di)}
-                    >
+                    <div className={classNames("all", sty.freeBox__xw5Di)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__tmwA
                         )}
                       >
                         {"\u0628\u0627\u0646\u06a9"}
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__rx8Up)}
-                    >
+                    <div className={classNames("all", sty.freeBox__rx8Up)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__q4JGd
                         )}
                       >
@@ -1775,22 +1744,16 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         const currentIndex = __plasmic_idx_0;
                         return (
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__fpaOm
-                            )}
+                            className={classNames("all", sty.freeBox__fpaOm)}
                             key={currentIndex}
                           >
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__wdX7Q
-                              )}
+                              className={classNames("all", sty.freeBox__wdX7Q)}
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
+                                  "all",
+                                  "__wab_text",
                                   sty.text___3VIc
                                 )}
                               >
@@ -1813,15 +1776,12 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               </div>
                             </div>
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__eFv2S
-                              )}
+                              className={classNames("all", sty.freeBox__eFv2S)}
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
+                                  "all",
+                                  "__wab_text",
                                   sty.text___32MUc
                                 )}
                               >
@@ -1846,15 +1806,12 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               </div>
                             </div>
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__cnwCz
-                              )}
+                              className={classNames("all", sty.freeBox__cnwCz)}
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
+                                  "all",
+                                  "__wab_text",
                                   sty.text___9Ps1A
                                 )}
                               >
@@ -1877,15 +1834,12 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               </div>
                             </div>
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__bPtGr
-                              )}
+                              className={classNames("all", sty.freeBox__bPtGr)}
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
+                                  "all",
+                                  "__wab_text",
                                   sty.text__pZwhh
                                 )}
                               >
@@ -1908,8 +1862,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               </div>
                               <div
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
+                                  "all",
+                                  "__wab_text",
                                   sty.text__zVtgy
                                 )}
                               >
@@ -1935,15 +1889,12 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               </div>
                             </div>
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__rkbui
-                              )}
+                              className={classNames("all", sty.freeBox__rkbui)}
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
+                                  "all",
+                                  "__wab_text",
                                   sty.text__i0UXx
                                 )}
                               >
@@ -1966,10 +1917,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               </div>
                             </div>
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__psIIa
-                              )}
+                              className={classNames("all", sty.freeBox__psIIa)}
                             >
                               {(() => {
                                 const child$Props = {
@@ -1977,8 +1925,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                     <React.Fragment>
                                       <div
                                         className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
+                                          "all",
+                                          "__wab_text",
                                           sty.text__xwp9J
                                         )}
                                       >
@@ -2006,13 +1954,13 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                       </div>
                                       <div
                                         className={classNames(
-                                          projectcss.all,
+                                          "all",
                                           sty.freeBox___58Gi6
                                         )}
                                       >
                                         <div
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.freeBox__k5LAd
                                           )}
                                         >
@@ -2020,8 +1968,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                             children2={
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
-                                                  projectcss.__wab_text,
+                                                  "all",
+                                                  "__wab_text",
                                                   sty.text___2HF2E
                                                 )}
                                               >
@@ -2037,7 +1985,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                             endIcon={
                                               <ChevronLeftIcon
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.svg__qmf1M
                                                 )}
                                                 role={"img"}
@@ -2080,7 +2028,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                             startIcon={
                                               <ChevronRightIcon
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.svg___7J28Q
                                                 )}
                                                 role={"img"}
@@ -2090,7 +2038,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                         </div>
                                         <div
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.freeBox___7HBXd
                                           )}
                                         >
@@ -2098,8 +2046,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                             children2={
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
-                                                  projectcss.__wab_text,
+                                                  "all",
+                                                  "__wab_text",
                                                   sty.text__y16O
                                                 )}
                                               >
@@ -2116,7 +2064,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                             endIcon={
                                               <ChevronLeftIcon
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.svg__siu6R
                                                 )}
                                                 role={"img"}
@@ -2607,7 +2555,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                             startIcon={
                                               <ChevronRightIcon
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.svg__liHY
                                                 )}
                                                 role={"img"}
@@ -2645,14 +2593,14 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                   title: (
                                     <div
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.freeBox__oyH8W
                                       )}
                                     >
                                       <div
                                         className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
+                                          "all",
+                                          "__wab_text",
                                           sty.text__nk75G
                                         )}
                                       >
@@ -2676,7 +2624,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                       })() ? (
                                         <Icon2Icon
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.svg___3B5P4
                                           )}
                                           role={"img"}
@@ -2689,8 +2637,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                       children2={
                                         <div
                                           className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
+                                            "all",
+                                            "__wab_text",
                                             sty.text__tlPyl
                                           )}
                                         >
@@ -2701,7 +2649,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                       endIcon={
                                         <Icon23Icon
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.svg__syrlI
                                           )}
                                           role={"img"}
@@ -2719,7 +2667,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                       startIcon={
                                         <Icon22Icon
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.svg__wIGq
                                           )}
                                           role={"img"}
@@ -2775,19 +2723,12 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                       throw e;
                     }
                   })() ? (
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox___3QYm)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__t18Be
-                        )}
-                      >
+                    <div className={classNames("all", sty.freeBox___3QYm)}>
+                      <div className={classNames("all", sty.freeBox__t18Be)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__ipDnc
                           )}
                         >
@@ -2798,12 +2739,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                       </div>
                     </div>
                   ) : null}
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__uDu3K)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__x8S5E)}
-                    >
+                  <div className={classNames("all", sty.freeBox__uDu3K)}>
+                    <div className={classNames("all", sty.freeBox__x8S5E)}>
                       {(() => {
                         try {
                           return $state.centerInfo.type_id != 2;
@@ -2822,10 +2759,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           data-plasmic-override={overrides.dialog2}
                           body={
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__mUrgQ
-                              )}
+                              className={classNames("all", sty.freeBox__mUrgQ)}
                             >
                               <TabsContainer
                                 data-plasmic-name={"tabsContainer"}
@@ -2836,7 +2770,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                   {$ctx => (
                                     <div
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.freeBox__k5Ywt
                                       )}
                                     >
@@ -2856,7 +2790,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                       })() ? (
                                         <div
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.freeBox__brxRe
                                           )}
                                         >
@@ -2871,8 +2805,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                               children2={
                                                 <div
                                                   className={classNames(
-                                                    projectcss.all,
-                                                    projectcss.__wab_text,
+                                                    "all",
+                                                    "__wab_text",
                                                     sty.text__vTzm4
                                                   )}
                                                 >
@@ -2956,8 +2890,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                               children2={
                                                 <div
                                                   className={classNames(
-                                                    projectcss.all,
-                                                    projectcss.__wab_text,
+                                                    "all",
+                                                    "__wab_text",
                                                     sty.text__eHdgV
                                                   )}
                                                 >
@@ -3044,7 +2978,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                       ) : null}
                                       <div
                                         className={classNames(
-                                          projectcss.all,
+                                          "all",
                                           sty.freeBox__t8Ns
                                         )}
                                       >
@@ -3057,14 +2991,14 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                         >
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox__ohFki
                                             )}
                                           >
                                             <div
                                               className={classNames(
-                                                projectcss.all,
-                                                projectcss.__wab_text,
+                                                "all",
+                                                "__wab_text",
                                                 sty.text__sDeeX
                                               )}
                                             >
@@ -3132,9 +3066,10 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                             </div>
                                             <PlasmicLink__
                                               className={classNames(
-                                                projectcss.all,
-                                                projectcss.a,
-                                                projectcss.__wab_text,
+                                                "all",
+                                                "a",
+                                                "a__afXUL",
+                                                "__wab_text",
                                                 sty.link__rbCfp
                                               )}
                                               component={Link}
@@ -3183,7 +3118,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                           </div>
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox__oa20O
                                             )}
                                           >
@@ -3256,8 +3191,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                             })() ? (
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
-                                                  projectcss.__wab_text,
+                                                  "all",
+                                                  "__wab_text",
                                                   sty.text__zhA6H
                                                 )}
                                               >
@@ -3288,20 +3223,20 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                           })() ? (
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__nhyck
                                               )}
                                             >
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__vgFel
                                                 )}
                                               >
                                                 <div
                                                   className={classNames(
-                                                    projectcss.all,
-                                                    projectcss.__wab_text,
+                                                    "all",
+                                                    "__wab_text",
                                                     sty.text__tWdBi
                                                   )}
                                                 >
@@ -3312,7 +3247,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                               </div>
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__zYrqJ
                                                 )}
                                               >
@@ -3391,20 +3326,20 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                           })() ? (
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__g86Xw
                                               )}
                                             >
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__fHzWg
                                                 )}
                                               >
                                                 <div
                                                   className={classNames(
-                                                    projectcss.all,
-                                                    projectcss.__wab_text,
+                                                    "all",
+                                                    "__wab_text",
                                                     sty.text__kOgxM
                                                   )}
                                                 >
@@ -3413,7 +3348,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                               </div>
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox___1R0Cu
                                                 )}
                                               >
@@ -3486,20 +3421,20 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                           })() ? (
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__kYd2A
                                               )}
                                             >
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__cZe6
                                                 )}
                                               >
                                                 <div
                                                   className={classNames(
-                                                    projectcss.all,
-                                                    projectcss.__wab_text,
+                                                    "all",
+                                                    "__wab_text",
                                                     sty.text__zeO8T
                                                   )}
                                                 >
@@ -3508,7 +3443,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                               </div>
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__utCf6
                                                 )}
                                               >
@@ -3583,20 +3518,20 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                           })() ? (
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__lTa1E
                                               )}
                                             >
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__xYSuX
                                                 )}
                                               />
 
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox___2XlgH
                                                 )}
                                               >
@@ -3604,8 +3539,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                   children2={
                                                     <div
                                                       className={classNames(
-                                                        projectcss.all,
-                                                        projectcss.__wab_text,
+                                                        "all",
+                                                        "__wab_text",
                                                         sty.text__jwjI6
                                                       )}
                                                     >
@@ -3619,7 +3554,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                   endIcon={
                                                     <ChevronLeftIcon
                                                       className={classNames(
-                                                        projectcss.all,
+                                                        "all",
                                                         sty.svg__bKfwR
                                                       )}
                                                       role={"img"}
@@ -4297,7 +4232,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                   startIcon={
                                                     <ChevronRightIcon
                                                       className={classNames(
-                                                        projectcss.all,
+                                                        "all",
                                                         sty.svg__bnKsf
                                                       )}
                                                       role={"img"}
@@ -4307,7 +4242,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                               </div>
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__ydYu9
                                                 )}
                                               />
@@ -4323,13 +4258,13 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                         >
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox__yq0Zf
                                             )}
                                           >
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__jdqCr
                                               )}
                                             >
@@ -4442,8 +4377,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
 
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
-                                                  projectcss.__wab_text,
+                                                  "all",
+                                                  "__wab_text",
                                                   sty.text__a1APy
                                                 )}
                                               >
@@ -4452,7 +4387,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                             </div>
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__qfMli
                                               )}
                                             >
@@ -4608,20 +4543,20 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                           })() ? (
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__oVfr
                                               )}
                                             >
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__nAenQ
                                                 )}
                                               >
                                                 <div
                                                   className={classNames(
-                                                    projectcss.all,
-                                                    projectcss.__wab_text,
+                                                    "all",
+                                                    "__wab_text",
                                                     sty.text__ilSfp
                                                   )}
                                                 >
@@ -4632,7 +4567,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                               </div>
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__zApL7
                                                 )}
                                               >
@@ -4709,20 +4644,20 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                           })() ? (
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__eDnh1
                                               )}
                                             >
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox___7X7K
                                                 )}
                                               >
                                                 <div
                                                   className={classNames(
-                                                    projectcss.all,
-                                                    projectcss.__wab_text,
+                                                    "all",
+                                                    "__wab_text",
                                                     sty.text__yhQsw
                                                   )}
                                                 >
@@ -4733,7 +4668,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                               </div>
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__pzPCw
                                                 )}
                                               >
@@ -4810,20 +4745,20 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                           })() ? (
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox___0BCy3
                                               )}
                                             >
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__kFeIn
                                                 )}
                                               >
                                                 <div
                                                   className={classNames(
-                                                    projectcss.all,
-                                                    projectcss.__wab_text,
+                                                    "all",
+                                                    "__wab_text",
                                                     sty.text__a5F1K
                                                   )}
                                                 >
@@ -4832,7 +4767,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                               </div>
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__eHjT5
                                                 )}
                                               >
@@ -4909,20 +4844,20 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                           })() ? (
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__qc7VY
                                               )}
                                             >
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox___1YzRs
                                                 )}
                                               >
                                                 <div
                                                   className={classNames(
-                                                    projectcss.all,
-                                                    projectcss.__wab_text,
+                                                    "all",
+                                                    "__wab_text",
                                                     sty.text__suAvn
                                                   )}
                                                 >
@@ -4933,7 +4868,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                               </div>
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__hswDl
                                                 )}
                                               >
@@ -5012,20 +4947,20 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                           })() ? (
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__c5G1I
                                               )}
                                             >
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__k5P1L
                                                 )}
                                               />
 
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__uLwA
                                                 )}
                                               >
@@ -5033,8 +4968,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                   children2={
                                                     <div
                                                       className={classNames(
-                                                        projectcss.all,
-                                                        projectcss.__wab_text,
+                                                        "all",
+                                                        "__wab_text",
                                                         sty.text__lTxlH
                                                       )}
                                                     >
@@ -5048,7 +4983,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                   endIcon={
                                                     <ChevronLeftIcon
                                                       className={classNames(
-                                                        projectcss.all,
+                                                        "all",
                                                         sty.svg__dItAy
                                                       )}
                                                       role={"img"}
@@ -5591,7 +5526,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                   startIcon={
                                                     <ChevronRightIcon
                                                       className={classNames(
-                                                        projectcss.all,
+                                                        "all",
                                                         sty.svg__oLjHe
                                                       )}
                                                       role={"img"}
@@ -5601,7 +5536,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                               </div>
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__pvw2
                                                 )}
                                               />
@@ -5636,15 +5571,12 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           ])}
                           title={
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__mEVje
-                              )}
+                              className={classNames("all", sty.freeBox__mEVje)}
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
+                                  "all",
+                                  "__wab_text",
                                   sty.text__ucIxy
                                 )}
                               >
@@ -5686,10 +5618,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                 }
                               })() ? (
                                 <Icon2Icon
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.svg__gOLu4
-                                  )}
+                                  className={classNames("all", sty.svg__gOLu4)}
                                   role={"img"}
                                 />
                               ) : null}
@@ -5700,8 +5629,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               children2={
                                 <div
                                   className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
+                                    "all",
+                                    "__wab_text",
                                     sty.text__de3
                                   )}
                                 >
@@ -5716,10 +5645,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               )}
                               endIcon={
                                 <Icon23Icon
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.svg___1RvSh
-                                  )}
+                                  className={classNames("all", sty.svg___1RvSh)}
                                   role={"img"}
                                 />
                               }
@@ -5767,10 +5693,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                               size={"compact"}
                               startIcon={
                                 <Icon22Icon
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.svg__wPfF
-                                  )}
+                                  className={classNames("all", sty.svg__wPfF)}
                                   role={"img"}
                                 />
                               }
@@ -6357,12 +6280,12 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 throw e;
               }
             })() ? (
-              <div className={classNames(projectcss.all, sty.freeBox__vXn0U)}>
-                <div className={classNames(projectcss.all, sty.freeBox__hGHti)}>
+              <div className={classNames("all", sty.freeBox__vXn0U)}>
+                <div className={classNames("all", sty.freeBox__hGHti)}>
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text___5PkPs
                     )}
                   >
@@ -6384,22 +6307,18 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                     }
                   })() ? (
                     <Icon2Icon
-                      className={classNames(projectcss.all, sty.svg___8BmBs)}
+                      className={classNames("all", sty.svg___8BmBs)}
                       role={"img"}
                     />
                   ) : null}
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox___1CP)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__qwE5F)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__cTeH0)}
-                    >
+                <div className={classNames("all", sty.freeBox___1CP)}>
+                  <div className={classNames("all", sty.freeBox__qwE5F)}>
+                    <div className={classNames("all", sty.freeBox__cTeH0)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__ihKmx
                         )}
                       >
@@ -6452,8 +6371,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                       })() ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__mmoVa
                           )}
                         >
@@ -6480,8 +6399,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                       })() ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text___1CR2O
                           )}
                         >
@@ -6762,8 +6681,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         >
                           <div
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
+                              "all",
+                              "__wab_text",
                               sty.text__uq0XS
                             )}
                           >
@@ -6792,8 +6711,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                       })() ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__dlkwU
                           )}
                         >
@@ -6803,13 +6722,11 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         </div>
                       ) : null}
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__u4WOp)}
-                    >
+                    <div className={classNames("all", sty.freeBox__u4WOp)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___75Lbt
                         )}
                       >
@@ -6865,13 +6782,11 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         ])}
                       />
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__vfGbM)}
-                    >
+                    <div className={classNames("all", sty.freeBox__vfGbM)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__qoBx8
                         )}
                       >
@@ -6914,12 +6829,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                         }
                       />
                     </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___2TmJ5
-                      )}
-                    >
+                    <div className={classNames("all", sty.freeBox___2TmJ5)}>
                       {(() => {
                         try {
                           return (
@@ -6945,8 +6855,8 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                           children2={
                             <div
                               className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
+                                "all",
+                                "__wab_text",
                                 sty.text__mYa5N
                               )}
                             >
@@ -7607,15 +7517,9 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                 </div>
               </div>
             ) : null}
-            <div className={classNames(projectcss.all, sty.freeBox__kIGjG)}>
-              <div className={classNames(projectcss.all, sty.freeBox__frGpM)}>
-                <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__k9Y
-                  )}
-                >
+            <div className={classNames("all", sty.freeBox__kIGjG)}>
+              <div className={classNames("all", sty.freeBox__frGpM)}>
+                <div className={classNames("all", "__wab_text", sty.text__k9Y)}>
                   <React.Fragment>
                     <React.Fragment>
                       {
@@ -7623,7 +7527,9 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                       }
                     </React.Fragment>
                     <span
-                      className={"plasmic_default__all plasmic_default__span"}
+                      className={
+                        "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                      }
                       style={{ fontWeight: 700 }}
                     >
                       {
@@ -7636,10 +7542,11 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                     {
                       <PlasmicLink__
                         className={classNames(
-                          projectcss.all,
-                          projectcss.a,
-                          projectcss.__wab_text,
-                          projectcss.plasmic_default__inline,
+                          "all",
+                          "a",
+                          "a__afXUL",
+                          "__wab_text",
+                          "plasmic_default__inline",
                           sty.link__ej7Dt
                         )}
                         component={Link}
@@ -9091,9 +8998,10 @@ export const PlasmicFinancialProfiles = Object.assign(
     internalArgProps: PlasmicFinancialProfiles__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/financial-profiles",
       pagePath: "/financial-profiles",
-      searchParams: {},
-      params: {}
+      params: {},
+      query: {}
     })
   }
 );

@@ -66,7 +66,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicIpgMessage.module.css"; // plasmic-import: MmniM6bNfP8F/css
 
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
@@ -87,7 +86,14 @@ function wrapQueriesWithLoadingProxy($q: any): any {
   });
 }
 
-export function generateDynamicMetadata($q: any, $ctx: any) {
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
   return {
     title: "درگاه پرداخت",
 
@@ -95,7 +101,7 @@ export function generateDynamicMetadata($q: any, $ctx: any) {
       title: "درگاه پرداخت"
     },
     twitter: {
-      card: "summary",
+      card: "summary" as const,
       title: "درگاه پرداخت"
     }
   };
@@ -165,7 +171,7 @@ function PlasmicIpgMessage__RenderFunc(props: {
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
-    $ctx
+    $ctx as PageCtx
   );
 
   const styleTokensClassNames = _useStyleTokens();
@@ -189,17 +195,17 @@ function PlasmicIpgMessage__RenderFunc(props: {
         }
       `}</style>
 
-      <div className={projectcss.plasmic_page_wrapper}>
+      <div className={"plasmic_page_wrapper"}>
         <div
           data-plasmic-name={"root"}
           data-plasmic-override={overrides.root}
           data-plasmic-root={true}
           data-plasmic-for-node={forNode}
           className={classNames(
-            projectcss.all,
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
+            "all",
+            "root_reset_afXULSfGYmou2jFpEc2QWJ",
+            "plasmic_default_styles",
+            "plasmic_mixins",
             styleTokensClassNames,
             sty.root
           )}
@@ -207,11 +213,7 @@ function PlasmicIpgMessage__RenderFunc(props: {
           <div
             data-plasmic-name={"text"}
             data-plasmic-override={overrides.text}
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text
-            )}
+            className={classNames("all", "__wab_text", sty.text)}
           >
             {
               "\u062e\u0637\u0627\u06cc\u06cc \u0628\u0648\u062c\u0648\u062f \u0622\u0645\u062f\u0647 \u0627\u0633\u062a."
@@ -220,7 +222,7 @@ function PlasmicIpgMessage__RenderFunc(props: {
           <PlasmicLink__
             data-plasmic-name={"link"}
             data-plasmic-override={overrides.link}
-            className={classNames(projectcss.all, projectcss.a, sty.link)}
+            className={classNames("all", "a", "a__afXUL", sty.link)}
             component={Link}
             href={"https://www.paziresh24.com"}
             legacyBehavior={false}
@@ -389,9 +391,10 @@ export const PlasmicIpgMessage = Object.assign(
     internalArgProps: PlasmicIpgMessage__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/ipg-message",
       pagePath: "/ipg-message",
-      searchParams: {},
-      params: {}
+      params: {},
+      query: {}
     })
   }
 );

@@ -66,7 +66,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicRegisterBankAccount.module.css"; // plasmic-import: E9Ce2L3VJnq0/css
 
 import SearchSvgIcon from "./icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
@@ -144,10 +143,6 @@ function PlasmicRegisterBankAccount__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -179,6 +174,11 @@ function PlasmicRegisterBankAccount__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
@@ -196,16 +196,16 @@ function PlasmicRegisterBankAccount__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        projectcss.all,
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "all",
+        "root_reset_afXULSfGYmou2jFpEc2QWJ",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.root
       )}
     >
-      <div className={classNames(projectcss.all, sty.freeBox__dUf0J)}>
-        <div className={classNames(projectcss.all, sty.freeBox__e9PY)}>
+      <div className={classNames("all", sty.freeBox__dUf0J)}>
+        <div className={classNames("all", sty.freeBox__e9PY)}>
           <TextInput
             data-plasmic-name={"txtCardNumber"}
             data-plasmic-override={overrides.txtCardNumber}
@@ -250,31 +250,21 @@ function PlasmicRegisterBankAccount__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__fQvE
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text__fQvE)}>
               {
                 "\u0644\u0637\u0641\u0627 \u0634\u0645\u0627\u0631\u0647 \u06a9\u0627\u0631\u062a \u0631\u0627 \u0628\u0647\u200c\u0635\u0648\u0631\u062a \u0635\u062d\u06cc\u062d \u0648\u0627\u0631\u062f \u06a9\u0646\u06cc\u062f."
               }
             </div>
           ) : null}
         </div>
-        <div className={classNames(projectcss.all, sty.freeBox___1P9Wx)}>
-          <div className={classNames(projectcss.all, sty.freeBox__l8Jrc)}>
+        <div className={classNames("all", sty.freeBox___1P9Wx)}>
+          <div className={classNames("all", sty.freeBox__l8Jrc)}>
             <Button
               data-plasmic-name={"button"}
               data-plasmic-override={overrides.button}
               children2={
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text___2JuRy
-                  )}
+                  className={classNames("all", "__wab_text", sty.text___2JuRy)}
                 >
                   {"\u062b\u0628\u062a"}
                 </div>
@@ -282,7 +272,7 @@ function PlasmicRegisterBankAccount__RenderFunc(props: {
               className={classNames("__wab_instance", sty.button)}
               endIcon={
                 <ChevronLeftIcon
-                  className={classNames(projectcss.all, sty.svg___5TB1J)}
+                  className={classNames("all", sty.svg___5TB1J)}
                   role={"img"}
                 />
               }
@@ -514,7 +504,7 @@ function PlasmicRegisterBankAccount__RenderFunc(props: {
               }
               startIcon={
                 <ChevronRightIcon
-                  className={classNames(projectcss.all, sty.svg__fiSJu)}
+                  className={classNames("all", sty.svg__fiSJu)}
                   role={"img"}
                 />
               }
@@ -534,7 +524,7 @@ function PlasmicRegisterBankAccount__RenderFunc(props: {
               }
             })() ? (
               <Icon2Icon
-                className={classNames(projectcss.all, sty.svg__hmdAp)}
+                className={classNames("all", sty.svg__hmdAp)}
                 role={"img"}
               />
             ) : null}

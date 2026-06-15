@@ -65,7 +65,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicFinancialReports.module.css"; // plasmic-import: T-TncP4LAmu0/css
 
 createPlasmicElementProxy;
@@ -295,6 +294,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
@@ -312,10 +312,10 @@ function PlasmicFinancialReports__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        projectcss.all,
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "all",
+        "root_reset_afXULSfGYmou2jFpEc2QWJ",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.root
       )}
@@ -325,13 +325,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
         data-plasmic-override={overrides.apiGetBookCount}
         className={classNames("__wab_instance", sty.apiGetBookCount)}
         errorDisplay={
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__mstIv
-            )}
-          >
+          <div className={classNames("all", "__wab_text", sty.text__mstIv)}>
             {"Error fetching data"}
           </div>
         }
@@ -382,24 +376,12 @@ function PlasmicFinancialReports__RenderFunc(props: {
         data-plasmic-override={overrides.apiGetIncome}
         className={classNames("__wab_instance", sty.apiGetIncome)}
         errorDisplay={
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__smXhf
-            )}
-          >
+          <div className={classNames("all", "__wab_text", sty.text__smXhf)}>
             {"Error fetching data"}
           </div>
         }
         loadingDisplay={
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__l3HZb
-            )}
-          >
+          <div className={classNames("all", "__wab_text", sty.text__l3HZb)}>
             {"Loading..."}
           </div>
         }
@@ -449,24 +431,12 @@ function PlasmicFinancialReports__RenderFunc(props: {
         data-plasmic-override={overrides.apiGetbalance}
         className={classNames("__wab_instance", sty.apiGetbalance)}
         errorDisplay={
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__uHaQx
-            )}
-          >
+          <div className={classNames("all", "__wab_text", sty.text__uHaQx)}>
             {"Error fetching data"}
           </div>
         }
         loadingDisplay={
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text___8B58
-            )}
-          >
+          <div className={classNames("all", "__wab_text", sty.text___8B58)}>
             {"Loading..."}
           </div>
         }
@@ -512,24 +482,12 @@ function PlasmicFinancialReports__RenderFunc(props: {
         data-plasmic-override={overrides.apiGetBalanceOnlineVisit}
         className={classNames("__wab_instance", sty.apiGetBalanceOnlineVisit)}
         errorDisplay={
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__kEb08
-            )}
-          >
+          <div className={classNames("all", "__wab_text", sty.text__kEb08)}>
             {"Error fetching data"}
           </div>
         }
         loadingDisplay={
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__eu4V
-            )}
-          >
+          <div className={classNames("all", "__wab_text", sty.text__eu4V)}>
             {"Loading..."}
           </div>
         }
@@ -577,24 +535,12 @@ function PlasmicFinancialReports__RenderFunc(props: {
         data-plasmic-override={overrides.apiGetTotalOnlineVisit}
         className={classNames("__wab_instance", sty.apiGetTotalOnlineVisit)}
         errorDisplay={
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__n9Auy
-            )}
-          >
+          <div className={classNames("all", "__wab_text", sty.text__n9Auy)}>
             {"Error fetching data"}
           </div>
         }
         loadingDisplay={
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__mvrIb
-            )}
-          >
+          <div className={classNames("all", "__wab_text", sty.text__mvrIb)}>
             {"Loading..."}
           </div>
         }
@@ -642,24 +588,12 @@ function PlasmicFinancialReports__RenderFunc(props: {
         data-plasmic-override={overrides.apiGetTotal}
         className={classNames("__wab_instance", sty.apiGetTotal)}
         errorDisplay={
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text___6M1J
-            )}
-          >
+          <div className={classNames("all", "__wab_text", sty.text___6M1J)}>
             {"Error fetching data"}
           </div>
         }
         loadingDisplay={
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__nPsL
-            )}
-          >
+          <div className={classNames("all", "__wab_text", sty.text__nPsL)}>
             {"Loading..."}
           </div>
         }
@@ -703,20 +637,14 @@ function PlasmicFinancialReports__RenderFunc(props: {
       <div
         data-plasmic-name={"freeBox"}
         data-plasmic-override={overrides.freeBox}
-        className={classNames(projectcss.all, sty.freeBox)}
+        className={classNames("all", sty.freeBox)}
       >
         <div
           data-plasmic-name={"bookcount"}
           data-plasmic-override={overrides.bookcount}
-          className={classNames(projectcss.all, sty.bookcount)}
+          className={classNames("all", sty.bookcount)}
         >
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__eRKc
-            )}
-          >
+          <div className={classNames("all", "__wab_text", sty.text__eRKc)}>
             {
               "\u062a\u0639\u062f\u0627\u062f \u0646\u0648\u0628\u062a \u0627\u0645\u0631\u0648\u0632"
             }
@@ -734,13 +662,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__jiBx
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text__jiBx)}>
               <React.Fragment>
                 {(() => {
                   try {
@@ -762,15 +684,9 @@ function PlasmicFinancialReports__RenderFunc(props: {
         <div
           data-plasmic-name={"income"}
           data-plasmic-override={overrides.income}
-          className={classNames(projectcss.all, sty.income)}
+          className={classNames("all", sty.income)}
         >
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text___0DqjS
-            )}
-          >
+          <div className={classNames("all", "__wab_text", sty.text___0DqjS)}>
             {
               "\u062f\u0631\u0622\u0645\u062f \u0627\u0645\u0631\u0648\u0632 \u062a\u0627 \u0627\u06cc\u0646 \u0644\u062d\u0638\u0647"
             }
@@ -788,13 +704,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__t7Gc
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text__t7Gc)}>
               <React.Fragment>
                 {(() => {
                   try {
@@ -820,15 +730,9 @@ function PlasmicFinancialReports__RenderFunc(props: {
         <div
           data-plasmic-name={"balance"}
           data-plasmic-override={overrides.balance}
-          className={classNames(projectcss.all, sty.balance)}
+          className={classNames("all", sty.balance)}
         >
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__weLyW
-            )}
-          >
+          <div className={classNames("all", "__wab_text", sty.text__weLyW)}>
             {"\u0645\u0648\u062c\u0648\u062f\u06cc"}
           </div>
           {(() => {
@@ -847,13 +751,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__kNakX
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text__kNakX)}>
               <React.Fragment>
                 {(() => {
                   try {
@@ -891,13 +789,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__v2UJf
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text__v2UJf)}>
               <React.Fragment>
                 {(() => {
                   try {
@@ -923,15 +815,9 @@ function PlasmicFinancialReports__RenderFunc(props: {
         <div
           data-plasmic-name={"totalincome"}
           data-plasmic-override={overrides.totalincome}
-          className={classNames(projectcss.all, sty.totalincome)}
+          className={classNames("all", sty.totalincome)}
         >
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__rg0Gp
-            )}
-          >
+          <div className={classNames("all", "__wab_text", sty.text__rg0Gp)}>
             {
               "\u06a9\u0644 \u062f\u0631\u0627\u0645\u062f \u0627\u0632 \u0634\u0631\u0648\u0639 \u0647\u0645\u06a9\u0627\u0631\u06cc"
             }
@@ -949,13 +835,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text__xv0Oz
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text__xv0Oz)}>
               <React.Fragment>
                 {(() => {
                   try {
@@ -990,13 +870,7 @@ function PlasmicFinancialReports__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <div
-              className={classNames(
-                projectcss.all,
-                projectcss.__wab_text,
-                sty.text___6MFma
-              )}
-            >
+            <div className={classNames("all", "__wab_text", sty.text___6MFma)}>
               <React.Fragment>
                 {(() => {
                   try {

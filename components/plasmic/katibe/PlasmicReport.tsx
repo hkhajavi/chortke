@@ -68,7 +68,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicReport.module.css"; // plasmic-import: a-KvfqLme6-r/css
 
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
@@ -88,11 +87,18 @@ function wrapQueriesWithLoadingProxy($q: any): any {
   });
 }
 
-export function generateDynamicMetadata($q: any, $ctx: any) {
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
   return {
     openGraph: {},
     twitter: {
-      card: "summary"
+      card: "summary" as const
     }
   };
 }
@@ -159,10 +165,6 @@ function PlasmicReport__RenderFunc(props: {
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
-
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
 
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
@@ -236,6 +238,11 @@ function PlasmicReport__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
@@ -246,7 +253,7 @@ function PlasmicReport__RenderFunc(props: {
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
-    $ctx
+    $ctx as PageCtx
   );
 
   const styleTokensClassNames = _useStyleTokens();
@@ -261,17 +268,17 @@ function PlasmicReport__RenderFunc(props: {
         }
       `}</style>
 
-      <div className={projectcss.plasmic_page_wrapper}>
+      <div className={"plasmic_page_wrapper"}>
         <div
           data-plasmic-name={"root"}
           data-plasmic-override={overrides.root}
           data-plasmic-root={true}
           data-plasmic-for-node={forNode}
           className={classNames(
-            projectcss.all,
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
+            "all",
+            "root_reset_afXULSfGYmou2jFpEc2QWJ",
+            "plasmic_default_styles",
+            "plasmic_mixins",
             styleTokensClassNames,
             sty.root
           )}
@@ -279,16 +286,12 @@ function PlasmicReport__RenderFunc(props: {
           <section
             data-plasmic-name={"section"}
             data-plasmic-override={overrides.section}
-            className={classNames(projectcss.all, sty.section)}
+            className={classNames("all", sty.section)}
           >
-            <div className={classNames(projectcss.all, sty.freeBox__uz8V)}>
-              <div className={classNames(projectcss.all, sty.freeBox__t8L4J)}>
+            <div className={classNames("all", sty.freeBox__uz8V)}>
+              <div className={classNames("all", sty.freeBox__t8L4J)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__wDmEi
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__wDmEi)}
                 >
                   <React.Fragment>
                     {(() => {
@@ -390,8 +393,8 @@ function PlasmicReport__RenderFunc(props: {
                   placeholder={
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__sTwgy
                       )}
                     >
@@ -436,8 +439,8 @@ function PlasmicReport__RenderFunc(props: {
                 throw e;
               }
             })() ? (
-              <div className={classNames(projectcss.all, sty.freeBox__hYyDj)}>
-                <div className={classNames(projectcss.all, sty.freeBox__bRMnq)}>
+              <div className={classNames("all", sty.freeBox__hYyDj)}>
+                <div className={classNames("all", sty.freeBox__bRMnq)}>
                   <Chart
                     data-plasmic-name={"fragmentChart"}
                     data-plasmic-override={overrides.fragmentChart}
@@ -538,14 +541,12 @@ function PlasmicReport__RenderFunc(props: {
                 throw e;
               }
             })() ? (
-              <div className={classNames(projectcss.all, sty.freeBox___9N3Pb)}>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___8HgSs)}
-                >
+              <div className={classNames("all", sty.freeBox___9N3Pb)}>
+                <div className={classNames("all", sty.freeBox___8HgSs)}>
                   <Icon2Icon
                     data-plasmic-name={"svg"}
                     data-plasmic-override={overrides.svg}
-                    className={classNames(projectcss.all, sty.svg)}
+                    className={classNames("all", sty.svg)}
                     role={"img"}
                   />
                 </div>
@@ -564,14 +565,10 @@ function PlasmicReport__RenderFunc(props: {
                 throw e;
               }
             })() ? (
-              <div className={classNames(projectcss.all, sty.freeBox__reMvs)}>
-                <div className={classNames(projectcss.all, sty.freeBox__yI94Y)}>
+              <div className={classNames("all", sty.freeBox__reMvs)}>
+                <div className={classNames("all", sty.freeBox__yI94Y)}>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__q7S9S
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__q7S9S)}
                   >
                     {hasVariant(globalVariants, "screen", "mobileOnly") ? (
                       <React.Fragment>
@@ -583,10 +580,11 @@ function PlasmicReport__RenderFunc(props: {
                         {
                           <PlasmicLink__
                             className={classNames(
-                              projectcss.all,
-                              projectcss.a,
-                              projectcss.__wab_text,
-                              projectcss.plasmic_default__inline,
+                              "all",
+                              "a",
+                              "a__afXUL",
+                              "__wab_text",
+                              "plasmic_default__inline",
                               sty.link___6GTw
                             )}
                             component={Link}
@@ -615,10 +613,11 @@ function PlasmicReport__RenderFunc(props: {
                         {
                           <PlasmicLink__
                             className={classNames(
-                              projectcss.all,
-                              projectcss.a,
-                              projectcss.__wab_text,
-                              projectcss.plasmic_default__inline,
+                              "all",
+                              "a",
+                              "a__afXUL",
+                              "__wab_text",
+                              "plasmic_default__inline",
                               sty.link__up84V
                             )}
                             component={Link}
@@ -640,11 +639,7 @@ function PlasmicReport__RenderFunc(props: {
                     )}
                   </div>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__qFCng
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__qFCng)}
                   >
                     {hasVariant(globalVariants, "screen", "mobileOnly") ? (
                       <React.Fragment>
@@ -655,7 +650,7 @@ function PlasmicReport__RenderFunc(props: {
                         </React.Fragment>
                         <span
                           className={
-                            "plasmic_default__all plasmic_default__span"
+                            "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                           }
                           style={{ fontWeight: 700 }}
                         >
@@ -671,10 +666,11 @@ function PlasmicReport__RenderFunc(props: {
                         {
                           <PlasmicLink__
                             className={classNames(
-                              projectcss.all,
-                              projectcss.a,
-                              projectcss.__wab_text,
-                              projectcss.plasmic_default__inline,
+                              "all",
+                              "a",
+                              "a__afXUL",
+                              "__wab_text",
+                              "plasmic_default__inline",
                               sty.link__czSy
                             )}
                             component={Link}
@@ -702,7 +698,7 @@ function PlasmicReport__RenderFunc(props: {
                         </React.Fragment>
                         <span
                           className={
-                            "plasmic_default__all plasmic_default__span"
+                            "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                           }
                           style={{ fontWeight: 700 }}
                         >
@@ -717,7 +713,7 @@ function PlasmicReport__RenderFunc(props: {
                         </React.Fragment>
                         <span
                           className={
-                            "plasmic_default__all plasmic_default__span"
+                            "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                           }
                           style={{ fontWeight: 700 }}
                         >
@@ -733,8 +729,8 @@ function PlasmicReport__RenderFunc(props: {
                   </div>
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text___7WdPo
                     )}
                   >
@@ -747,7 +743,7 @@ function PlasmicReport__RenderFunc(props: {
                         </React.Fragment>
                         <span
                           className={
-                            "plasmic_default__all plasmic_default__span"
+                            "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                           }
                           style={{ fontWeight: 700 }}
                         >
@@ -763,10 +759,11 @@ function PlasmicReport__RenderFunc(props: {
                         {
                           <PlasmicLink__
                             className={classNames(
-                              projectcss.all,
-                              projectcss.a,
-                              projectcss.__wab_text,
-                              projectcss.plasmic_default__inline,
+                              "all",
+                              "a",
+                              "a__afXUL",
+                              "__wab_text",
+                              "plasmic_default__inline",
                               sty.link__esMfV
                             )}
                             component={Link}
@@ -794,7 +791,7 @@ function PlasmicReport__RenderFunc(props: {
                         </React.Fragment>
                         <span
                           className={
-                            "plasmic_default__all plasmic_default__span"
+                            "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                           }
                           style={{ fontWeight: 700 }}
                         >
@@ -810,10 +807,11 @@ function PlasmicReport__RenderFunc(props: {
                         {
                           <PlasmicLink__
                             className={classNames(
-                              projectcss.all,
-                              projectcss.a,
-                              projectcss.__wab_text,
-                              projectcss.plasmic_default__inline,
+                              "all",
+                              "a",
+                              "a__afXUL",
+                              "__wab_text",
+                              "plasmic_default__inline",
                               sty.link__wcpez
                             )}
                             component={Link}
@@ -1388,9 +1386,10 @@ export const PlasmicReport = Object.assign(
     internalArgProps: PlasmicReport__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/report",
       pagePath: "/report",
-      searchParams: {},
-      params: {}
+      params: {},
+      query: {}
     })
   }
 );

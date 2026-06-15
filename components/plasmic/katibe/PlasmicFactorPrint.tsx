@@ -68,7 +68,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicFactorPrint.module.css"; // plasmic-import: Y4-ibBMrkvma/css
 
 import ChevronRightIcon from "../fragment_icons/icons/PlasmicIcon__ChevronRight"; // plasmic-import: GHdF3hS-oP_3/icon
@@ -90,7 +89,14 @@ function wrapQueriesWithLoadingProxy($q: any): any {
   });
 }
 
-export function generateDynamicMetadata($q: any, $ctx: any) {
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
   return {
     title: "چاپ فاکتور",
 
@@ -98,7 +104,7 @@ export function generateDynamicMetadata($q: any, $ctx: any) {
       title: "چاپ فاکتور"
     },
     twitter: {
-      card: "summary",
+      card: "summary" as const,
       title: "چاپ فاکتور"
     }
   };
@@ -164,10 +170,6 @@ function PlasmicFactorPrint__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -197,6 +199,11 @@ function PlasmicFactorPrint__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
@@ -207,7 +214,7 @@ function PlasmicFactorPrint__RenderFunc(props: {
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
-    $ctx
+    $ctx as PageCtx
   );
 
   const styleTokensClassNames = _useStyleTokens();
@@ -231,17 +238,17 @@ function PlasmicFactorPrint__RenderFunc(props: {
         }
       `}</style>
 
-      <div className={projectcss.plasmic_page_wrapper}>
+      <div className={"plasmic_page_wrapper"}>
         <div
           data-plasmic-name={"factorPrint"}
           data-plasmic-override={overrides.factorPrint}
           data-plasmic-root={true}
           data-plasmic-for-node={forNode}
           className={classNames(
-            projectcss.all,
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
+            "all",
+            "root_reset_afXULSfGYmou2jFpEc2QWJ",
+            "plasmic_default_styles",
+            "plasmic_mixins",
             styleTokensClassNames,
             sty.factorPrint,
             ``
@@ -250,11 +257,11 @@ function PlasmicFactorPrint__RenderFunc(props: {
           <section
             data-plasmic-name={"holderPrint"}
             data-plasmic-override={overrides.holderPrint}
-            className={classNames(projectcss.all, sty.holderPrint)}
+            className={classNames("all", sty.holderPrint)}
             id={"holderPrint"}
           >
-            <div className={classNames(projectcss.all, sty.freeBox__nz3Y7)}>
-              <div className={classNames(projectcss.all, sty.freeBox__rtplh)}>
+            <div className={classNames("all", sty.freeBox__nz3Y7)}>
+              <div className={classNames("all", sty.freeBox__rtplh)}>
                 <PlasmicImg__
                   alt={""}
                   className={classNames(sty.img__xY1H3)}
@@ -273,13 +280,9 @@ function PlasmicFactorPrint__RenderFunc(props: {
                   }}
                 />
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__pLoip)}>
+              <div className={classNames("all", sty.freeBox__pLoip)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__uGtiH
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__uGtiH)}
                 >
                   <React.Fragment>
                     {(() => {
@@ -305,24 +308,15 @@ function PlasmicFactorPrint__RenderFunc(props: {
                   </React.Fragment>
                 </div>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__yhjD0)}>
-                <div className={classNames(projectcss.all, sty.freeBox__p9Vwk)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___5YOgQ)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__ct617)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__k2UiI
-                        )}
-                      >
+              <div className={classNames("all", sty.freeBox__yhjD0)}>
+                <div className={classNames("all", sty.freeBox__p9Vwk)}>
+                  <div className={classNames("all", sty.freeBox___5YOgQ)}>
+                    <div className={classNames("all", sty.freeBox__ct617)}>
+                      <div className={classNames("all", sty.freeBox__k2UiI)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__gMqA5
                           )}
                         >
@@ -331,16 +325,11 @@ function PlasmicFactorPrint__RenderFunc(props: {
                           }
                         </div>
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__w3I7D
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__w3I7D)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__xThtd
                           )}
                         >
@@ -362,35 +351,23 @@ function PlasmicFactorPrint__RenderFunc(props: {
                         </div>
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__p7Lea)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__kgHmk
-                        )}
-                      >
+                    <div className={classNames("all", sty.freeBox__p7Lea)}>
+                      <div className={classNames("all", sty.freeBox__kgHmk)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text___2D5Ib
                           )}
                         >
                           {"\u062a\u0627\u0631\u06cc\u062e:"}
                         </div>
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__sf6G2
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__sf6G2)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__nXeW5
                           )}
                         >
@@ -424,25 +401,16 @@ function PlasmicFactorPrint__RenderFunc(props: {
                 </div>
               </div>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__i2DwM)}>
-              <div className={classNames(projectcss.all, sty.freeBox__fva9V)}>
-                <div className={classNames(projectcss.all, sty.freeBox__vaYOy)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__bk4Ln)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__zDyuQ)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__om05V
-                        )}
-                      >
+            <div className={classNames("all", sty.freeBox__i2DwM)}>
+              <div className={classNames("all", sty.freeBox__fva9V)}>
+                <div className={classNames("all", sty.freeBox__vaYOy)}>
+                  <div className={classNames("all", sty.freeBox__bk4Ln)}>
+                    <div className={classNames("all", sty.freeBox__zDyuQ)}>
+                      <div className={classNames("all", sty.freeBox__om05V)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text___5Xrb
                           )}
                         >
@@ -452,8 +420,8 @@ function PlasmicFactorPrint__RenderFunc(props: {
                         </div>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__nuIoW
                           )}
                         >
@@ -474,16 +442,11 @@ function PlasmicFactorPrint__RenderFunc(props: {
                           </React.Fragment>
                         </div>
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__j8QJn
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__j8QJn)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__mEYy
                           )}
                         >
@@ -491,8 +454,8 @@ function PlasmicFactorPrint__RenderFunc(props: {
                         </div>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__t1SNh
                           )}
                         >
@@ -526,18 +489,14 @@ function PlasmicFactorPrint__RenderFunc(props: {
                 </div>
               </div>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__eHnT2)}>
-              <div className={classNames(projectcss.all, sty.freeBox___3R9Zx)}>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___97R6D)}
-                >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__fIgT0)}
-                  >
+            <div className={classNames("all", sty.freeBox__eHnT2)}>
+              <div className={classNames("all", sty.freeBox___3R9Zx)}>
+                <div className={classNames("all", sty.freeBox___97R6D)}>
+                  <div className={classNames("all", sty.freeBox__fIgT0)}>
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text___8801M
                       )}
                     >
@@ -546,22 +505,13 @@ function PlasmicFactorPrint__RenderFunc(props: {
                       }
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__uXztw)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__qhDUj)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__fItva
-                        )}
-                      >
+                  <div className={classNames("all", sty.freeBox__uXztw)}>
+                    <div className={classNames("all", sty.freeBox__qhDUj)}>
+                      <div className={classNames("all", sty.freeBox__fItva)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text___8SsVs
                           )}
                         >
@@ -570,16 +520,11 @@ function PlasmicFactorPrint__RenderFunc(props: {
                           }
                         </div>
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__r8FDr
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__r8FDr)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__lDu4Z
                           )}
                         >
@@ -588,16 +533,11 @@ function PlasmicFactorPrint__RenderFunc(props: {
                           }
                         </div>
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___0ML5
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox___0ML5)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__jhSe7
                           )}
                         >
@@ -606,16 +546,11 @@ function PlasmicFactorPrint__RenderFunc(props: {
                           }
                         </div>
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__jVe7E
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__jVe7E)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__q0WkU
                           )}
                         >
@@ -625,51 +560,34 @@ function PlasmicFactorPrint__RenderFunc(props: {
                         </div>
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__ws3IP)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__lcXbd
-                        )}
-                      >
+                    <div className={classNames("all", sty.freeBox__ws3IP)}>
+                      <div className={classNames("all", sty.freeBox__lcXbd)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__lx1Sz
                           )}
                         >
                           {" \u06a9\u062f\u067e\u0633\u062a\u06cc: 8917697998"}
                         </div>
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__rxSXw
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__rxSXw)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__jWpiq
                           )}
                         >
                           {" \u062a\u0644\u0641\u0646: 36286033"}
                         </div>
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__oCXyV
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__oCXyV)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__x12E2
                           )}
                         >
@@ -678,16 +596,11 @@ function PlasmicFactorPrint__RenderFunc(props: {
                           }
                         </div>
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__hJ3K
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__hJ3K)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text___7HkYf
                           )}
                         >
@@ -699,16 +612,14 @@ function PlasmicFactorPrint__RenderFunc(props: {
                 </div>
               </div>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__ytz6)}>
-              <div className={classNames(projectcss.all, sty.freeBox__iUuzy)}>
-                <div className={classNames(projectcss.all, sty.freeBox__kxLxa)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__ycOLi)}
-                  >
+            <div className={classNames("all", sty.freeBox__ytz6)}>
+              <div className={classNames("all", sty.freeBox__iUuzy)}>
+                <div className={classNames("all", sty.freeBox__kxLxa)}>
+                  <div className={classNames("all", sty.freeBox__ycOLi)}>
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text___3F4Cs
                       )}
                     >
@@ -717,22 +628,13 @@ function PlasmicFactorPrint__RenderFunc(props: {
                       }
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__ate3W)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__rnSxy)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__yVqVx
-                        )}
-                      >
+                  <div className={classNames("all", sty.freeBox__ate3W)}>
+                    <div className={classNames("all", sty.freeBox__rnSxy)}>
+                      <div className={classNames("all", sty.freeBox__yVqVx)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__e49S9
                           )}
                         >
@@ -740,8 +642,8 @@ function PlasmicFactorPrint__RenderFunc(props: {
                         </div>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__wspCn
                           )}
                         >
@@ -762,16 +664,11 @@ function PlasmicFactorPrint__RenderFunc(props: {
                           </React.Fragment>
                         </div>
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__mt1EL
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__mt1EL)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text___6Jfxo
                           )}
                         >
@@ -781,8 +678,8 @@ function PlasmicFactorPrint__RenderFunc(props: {
                         </div>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__rbo33
                           )}
                         >
@@ -804,16 +701,11 @@ function PlasmicFactorPrint__RenderFunc(props: {
                           </React.Fragment>
                         </div>
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__keAJl
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__keAJl)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__eTz26
                           )}
                         >
@@ -823,8 +715,8 @@ function PlasmicFactorPrint__RenderFunc(props: {
                         </div>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__wxUXq
                           )}
                         >
@@ -847,19 +739,12 @@ function PlasmicFactorPrint__RenderFunc(props: {
                         </div>
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__qUer)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__aI2Im
-                        )}
-                      >
+                    <div className={classNames("all", sty.freeBox__qUer)}>
+                      <div className={classNames("all", sty.freeBox__aI2Im)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__x9PLo
                           )}
                         >
@@ -869,8 +754,8 @@ function PlasmicFactorPrint__RenderFunc(props: {
                         </div>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__ycq73
                           )}
                         >
@@ -891,16 +776,11 @@ function PlasmicFactorPrint__RenderFunc(props: {
                           </React.Fragment>
                         </div>
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__erYrA
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__erYrA)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__x4Zfj
                           )}
                         >
@@ -908,8 +788,8 @@ function PlasmicFactorPrint__RenderFunc(props: {
                         </div>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__cvTpF
                           )}
                         >
@@ -930,16 +810,11 @@ function PlasmicFactorPrint__RenderFunc(props: {
                           </React.Fragment>
                         </div>
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__di802
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__di802)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__frW0T
                           )}
                         >
@@ -947,8 +822,8 @@ function PlasmicFactorPrint__RenderFunc(props: {
                         </div>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__rM4Ez
                           )}
                         >
@@ -969,16 +844,11 @@ function PlasmicFactorPrint__RenderFunc(props: {
                           </React.Fragment>
                         </div>
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__x3Ru
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__x3Ru)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text___2Fv8U
                           )}
                         >
@@ -986,8 +856,8 @@ function PlasmicFactorPrint__RenderFunc(props: {
                         </div>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__cBtqW
                           )}
                         >
@@ -1008,16 +878,11 @@ function PlasmicFactorPrint__RenderFunc(props: {
                           </React.Fragment>
                         </div>
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__zpZ0I
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__zpZ0I)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__puxAg
                           )}
                         >
@@ -1029,16 +894,14 @@ function PlasmicFactorPrint__RenderFunc(props: {
                 </div>
               </div>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__aeShn)}>
-              <div className={classNames(projectcss.all, sty.freeBox__mkpRo)}>
-                <div className={classNames(projectcss.all, sty.freeBox__owYb9)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__lmrCx)}
-                  >
+            <div className={classNames("all", sty.freeBox__aeShn)}>
+              <div className={classNames("all", sty.freeBox__mkpRo)}>
+                <div className={classNames("all", sty.freeBox__owYb9)}>
+                  <div className={classNames("all", sty.freeBox__lmrCx)}>
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__wxlud
                       )}
                     >
@@ -1047,70 +910,46 @@ function PlasmicFactorPrint__RenderFunc(props: {
                       }
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__oobK)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__wh0Xe)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__usDvd
-                        )}
-                      >
+                  <div className={classNames("all", sty.freeBox__oobK)}>
+                    <div className={classNames("all", sty.freeBox__wh0Xe)}>
+                      <div className={classNames("all", sty.freeBox__usDvd)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__xszIy
                           )}
                         >
                           {"\u0631\u062f\u06cc\u0641"}
                         </div>
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__hzXRf
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__hzXRf)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__bCaWg
                           )}
                         >
                           {"\u0639\u0646\u0648\u0627\u0646"}
                         </div>
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__zO4Bh
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__zO4Bh)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__bxEwb
                           )}
                         >
                           {"\u062a\u0639\u062f\u0627\u062f"}
                         </div>
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___7GdFh
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox___7GdFh)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__l4333
                           )}
                         >
@@ -1119,16 +958,11 @@ function PlasmicFactorPrint__RenderFunc(props: {
                             : "\u0645\u0628\u0644\u063a \u0647\u0631 \u0648\u0627\u062d\u062f (\u0631\u06cc\u0627\u0644)"}
                         </div>
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__snl67
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__snl67)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__tUxA
                           )}
                         >
@@ -1158,22 +992,16 @@ function PlasmicFactorPrint__RenderFunc(props: {
                       const currentIndex = __plasmic_idx_0;
                       return (
                         <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__sG6Kz
-                          )}
+                          className={classNames("all", sty.freeBox__sG6Kz)}
                           key={currentIndex}
                         >
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__oNka8
-                            )}
+                            className={classNames("all", sty.freeBox__oNka8)}
                           >
                             <div
                               className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
+                                "all",
+                                "__wab_text",
                                 sty.text__i6Tee
                               )}
                             >
@@ -1196,15 +1024,12 @@ function PlasmicFactorPrint__RenderFunc(props: {
                             </div>
                           </div>
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__dbpwn
-                            )}
+                            className={classNames("all", sty.freeBox__dbpwn)}
                           >
                             <div
                               className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
+                                "all",
+                                "__wab_text",
                                 sty.text__hDiRo
                               )}
                             >
@@ -1227,15 +1052,12 @@ function PlasmicFactorPrint__RenderFunc(props: {
                             </div>
                           </div>
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__cXg3O
-                            )}
+                            className={classNames("all", sty.freeBox__cXg3O)}
                           >
                             <div
                               className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
+                                "all",
+                                "__wab_text",
                                 sty.text__bCxNm
                               )}
                             >
@@ -1260,15 +1082,12 @@ function PlasmicFactorPrint__RenderFunc(props: {
                             </div>
                           </div>
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__dccvf
-                            )}
+                            className={classNames("all", sty.freeBox__dccvf)}
                           >
                             <div
                               className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
+                                "all",
+                                "__wab_text",
                                 sty.text__snw3H
                               )}
                             >
@@ -1293,15 +1112,12 @@ function PlasmicFactorPrint__RenderFunc(props: {
                             </div>
                           </div>
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__ot1Bh
-                            )}
+                            className={classNames("all", sty.freeBox__ot1Bh)}
                           >
                             <div
                               className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
+                                "all",
+                                "__wab_text",
                                 sty.text___2LJQf
                               )}
                             >
@@ -1330,19 +1146,12 @@ function PlasmicFactorPrint__RenderFunc(props: {
                         </div>
                       );
                     })}
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__dEThx)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__vzXkG
-                        )}
-                      >
+                    <div className={classNames("all", sty.freeBox__dEThx)}>
+                      <div className={classNames("all", sty.freeBox__vzXkG)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__bf9Oj
                           )}
                         >
@@ -1369,16 +1178,11 @@ function PlasmicFactorPrint__RenderFunc(props: {
                           </React.Fragment>
                         </div>
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__gFsK7
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__gFsK7)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__jawms
                           )}
                         >
@@ -1405,16 +1209,11 @@ function PlasmicFactorPrint__RenderFunc(props: {
                           </React.Fragment>
                         </div>
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___1VFyU
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox___1VFyU)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__aQa9R
                           )}
                         >
@@ -1442,19 +1241,12 @@ function PlasmicFactorPrint__RenderFunc(props: {
                         </div>
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__cy7P6)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___7A877
-                        )}
-                      >
+                    <div className={classNames("all", sty.freeBox__cy7P6)}>
+                      <div className={classNames("all", sty.freeBox___7A877)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text___136Ni
                           )}
                         >
@@ -1496,8 +1288,8 @@ function PlasmicFactorPrint__RenderFunc(props: {
                         })() ? (
                           <div
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
+                              "all",
+                              "__wab_text",
                               sty.text__lUh
                             )}
                           >
@@ -1537,14 +1329,10 @@ function PlasmicFactorPrint__RenderFunc(props: {
                 </div>
               </div>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__nTtl7)}>
-              <div className={classNames(projectcss.all, sty.freeBox__tw2B3)}>
+            <div className={classNames("all", sty.freeBox__nTtl7)}>
+              <div className={classNames("all", sty.freeBox__tw2B3)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__nUvDh
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__nUvDh)}
                 >
                   {
                     "\u0645\u0647\u0631 \u0648 \u0627\u0645\u0636\u0627\u06cc \u0641\u0631\u0648\u0634\u0646\u062f\u0647"
@@ -1586,13 +1374,9 @@ function PlasmicFactorPrint__RenderFunc(props: {
                   />
                 ) : null}
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__gyA7Q)}>
+              <div className={classNames("all", sty.freeBox__gyA7Q)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__vWKij
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__vWKij)}
                 >
                   {
                     "\u0645\u0647\u0631 \u0648 \u0627\u0645\u0636\u0627\u06cc \u062e\u0631\u06cc\u062f\u0627\u0631"
@@ -1613,8 +1397,8 @@ function PlasmicFactorPrint__RenderFunc(props: {
                 throw e;
               }
             })() ? (
-              <div className={classNames(projectcss.all, sty.freeBox__o3T1)}>
-                <div className={classNames(projectcss.all, sty.freeBox__zePl)}>
+              <div className={classNames("all", sty.freeBox__o3T1)}>
+                <div className={classNames("all", sty.freeBox__zePl)}>
                   <Button
                     children2={
                       "\u0686\u0627\u067e \u0641\u0627\u06a9\u062a\u0648\u0631"
@@ -1731,9 +1515,9 @@ function PlasmicFactorPrint__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <section className={classNames(projectcss.all, sty.section__llxZs)}>
-              <div className={classNames(projectcss.all, sty.freeBox__fAUpA)}>
-                <div className={classNames(projectcss.all, sty.freeBox__fkvIo)}>
+            <section className={classNames("all", sty.section__llxZs)}>
+              <div className={classNames("all", sty.freeBox__fAUpA)}>
+                <div className={classNames("all", sty.freeBox__fkvIo)}>
                   <Button
                     children2={
                       "\u0686\u0627\u067e \u0641\u0627\u06a9\u062a\u0648\u0631"
@@ -2037,11 +1821,11 @@ function PlasmicFactorPrint__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <section className={classNames(projectcss.all, sty.section__n5Noq)}>
+            <section className={classNames("all", sty.section__n5Noq)}>
               <Icon2Icon
                 data-plasmic-name={"svg"}
                 data-plasmic-override={overrides.svg}
-                className={classNames(projectcss.all, sty.svg)}
+                className={classNames("all", sty.svg)}
                 role={"img"}
               />
             </section>
@@ -2142,9 +1926,10 @@ export const PlasmicFactorPrint = Object.assign(
     internalArgProps: PlasmicFactorPrint__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/factor-print",
       pagePath: "/factor-print",
-      searchParams: {},
-      params: {}
+      params: {},
+      query: {}
     })
   }
 );

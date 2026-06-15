@@ -68,7 +68,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicCharge.module.css"; // plasmic-import: JQeoqLZhfAOP/css
 
 import Icon2Icon from "./icons/PlasmicIcon__Icon2"; // plasmic-import: eeiQdsLura6L/icon
@@ -94,7 +93,14 @@ function wrapQueriesWithLoadingProxy($q: any): any {
   });
 }
 
-export function generateDynamicMetadata($q: any, $ctx: any) {
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
   return {
     title: "شارژ کیف پول",
 
@@ -102,7 +108,7 @@ export function generateDynamicMetadata($q: any, $ctx: any) {
       title: "شارژ کیف پول"
     },
     twitter: {
-      card: "summary",
+      card: "summary" as const,
       title: "شارژ کیف پول"
     }
   };
@@ -168,10 +174,6 @@ function PlasmicCharge__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -234,6 +236,11 @@ function PlasmicCharge__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
@@ -244,7 +251,7 @@ function PlasmicCharge__RenderFunc(props: {
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
-    $ctx
+    $ctx as PageCtx
   );
 
   const styleTokensClassNames = _useStyleTokens();
@@ -268,17 +275,17 @@ function PlasmicCharge__RenderFunc(props: {
         }
       `}</style>
 
-      <div className={projectcss.plasmic_page_wrapper}>
+      <div className={"plasmic_page_wrapper"}>
         <div
           data-plasmic-name={"root"}
           data-plasmic-override={overrides.root}
           data-plasmic-root={true}
           data-plasmic-for-node={forNode}
           className={classNames(
-            projectcss.all,
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
+            "all",
+            "root_reset_afXULSfGYmou2jFpEc2QWJ",
+            "plasmic_default_styles",
+            "plasmic_mixins",
             styleTokensClassNames,
             sty.root
           )}
@@ -322,9 +329,9 @@ function PlasmicCharge__RenderFunc(props: {
                   }
                 })()
           ) ? (
-            <section className={classNames(projectcss.all, sty.section__el71G)}>
-              <div className={classNames(projectcss.all, sty.freeBox___4W513)}>
-                <div className={classNames(projectcss.all, sty.freeBox__zpczd)}>
+            <section className={classNames("all", sty.section__el71G)}>
+              <div className={classNames("all", sty.freeBox___4W513)}>
+                <div className={classNames("all", sty.freeBox__zpczd)}>
                   <PlasmicImg__
                     alt={""}
                     className={classNames(sty.img__s7A3I)}
@@ -352,11 +359,7 @@ function PlasmicCharge__RenderFunc(props: {
                   />
 
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__tt10U
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__tt10U)}
                   >
                     {"\u067e\u0630\u06cc\u0631\u063424"}
                   </div>
@@ -374,25 +377,18 @@ function PlasmicCharge__RenderFunc(props: {
                     }
                   })() ? (
                     <Icon2Icon
-                      className={classNames(projectcss.all, sty.svg__ywAn8)}
+                      className={classNames("all", sty.svg__ywAn8)}
                       role={"img"}
                     />
                   ) : null}
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__e545Y)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__mgza5)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___8Qwum
-                      )}
-                    >
+                <div className={classNames("all", sty.freeBox__e545Y)}>
+                  <div className={classNames("all", sty.freeBox__mgza5)}>
+                    <div className={classNames("all", sty.freeBox___8Qwum)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__hdkXn
                         )}
                       >
@@ -433,16 +429,11 @@ function PlasmicCharge__RenderFunc(props: {
                         throw e;
                       }
                     })() ? (
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__f1XqE
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__f1XqE)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__gSthV
                           )}
                         >
@@ -454,29 +445,20 @@ function PlasmicCharge__RenderFunc(props: {
                     ) : null}
                   </div>
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__qSd5)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___8DxW)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__bu3Bj)}
-                    >
+                <div className={classNames("all", sty.freeBox__qSd5)}>
+                  <div className={classNames("all", sty.freeBox___8DxW)}>
+                    <div className={classNames("all", sty.freeBox__bu3Bj)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__q0X5N
                         )}
                       >
                         {"\u0645\u0628\u0644\u063a:"}
                       </div>
                     </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___77Tb1
-                      )}
-                    >
+                    <div className={classNames("all", sty.freeBox___77Tb1)}>
                       {(() => {
                         const child$Props = {
                           className: classNames(
@@ -561,8 +543,8 @@ function PlasmicCharge__RenderFunc(props: {
                       })()}
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___04YF
                         )}
                       >
@@ -823,13 +805,9 @@ function PlasmicCharge__RenderFunc(props: {
                     </div>
                   </div>
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__u3FHn)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__om7Cg)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__eTbjJ)}
-                    >
+                <div className={classNames("all", sty.freeBox__u3FHn)}>
+                  <div className={classNames("all", sty.freeBox__om7Cg)}>
+                    <div className={classNames("all", sty.freeBox__eTbjJ)}>
                       {(() => {
                         try {
                           return (
@@ -849,8 +827,8 @@ function PlasmicCharge__RenderFunc(props: {
                       })() ? (
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__b13Ug
                           )}
                         >
@@ -862,7 +840,7 @@ function PlasmicCharge__RenderFunc(props: {
                             </React.Fragment>
                             <span
                               className={
-                                "plasmic_default__all plasmic_default__span"
+                                "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                               }
                               style={{ color: "#FF0000" }}
                             >
@@ -1007,9 +985,9 @@ function PlasmicCharge__RenderFunc(props: {
                   }
                 })()
           ) ? (
-            <section className={classNames(projectcss.all, sty.section__wJDgg)}>
-              <div className={classNames(projectcss.all, sty.freeBox__qq8I)}>
-                <div className={classNames(projectcss.all, sty.freeBox__zWeDv)}>
+            <section className={classNames("all", sty.section__wJDgg)}>
+              <div className={classNames("all", sty.freeBox__qq8I)}>
+                <div className={classNames("all", sty.freeBox__zWeDv)}>
                   <PlasmicImg__
                     alt={""}
                     className={classNames(sty.img__sK1Hf)}
@@ -1037,11 +1015,7 @@ function PlasmicCharge__RenderFunc(props: {
                   />
 
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__c0Lxz
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__c0Lxz)}
                   >
                     {"\u067e\u0630\u06cc\u0631\u063424"}
                   </div>
@@ -1059,27 +1033,23 @@ function PlasmicCharge__RenderFunc(props: {
                     }
                   })() ? (
                     <Icon2Icon
-                      className={classNames(projectcss.all, sty.svg__zq7QO)}
+                      className={classNames("all", sty.svg__zq7QO)}
                       role={"img"}
                     />
                   ) : null}
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__csl4K)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___3YjQ2)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__htNqZ)}
-                    >
+                <div className={classNames("all", sty.freeBox__csl4K)}>
+                  <div className={classNames("all", sty.freeBox___3YjQ2)}>
+                    <div className={classNames("all", sty.freeBox__htNqZ)}>
                       <Icon14Icon
-                        className={classNames(projectcss.all, sty.svg__cySms)}
+                        className={classNames("all", sty.svg__cySms)}
                         role={"img"}
                       />
 
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__xU50
                         )}
                       >
@@ -1120,16 +1090,11 @@ function PlasmicCharge__RenderFunc(props: {
                             }
                           })()
                     ) ? (
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__ticJa
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__ticJa)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__dYzuo
                           )}
                         >
@@ -1160,13 +1125,9 @@ function PlasmicCharge__RenderFunc(props: {
                     ) : null}
                   </div>
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__kR2Ra)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__jDaK0)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__fOzUo)}
-                    >
+                <div className={classNames("all", sty.freeBox__kR2Ra)}>
+                  <div className={classNames("all", sty.freeBox__jDaK0)}>
+                    <div className={classNames("all", sty.freeBox__fOzUo)}>
                       <Button
                         children2={
                           "\u0627\u0631\u0633\u0627\u0644 \u0631\u0633\u06cc\u062f \u067e\u0631\u062f\u0627\u062e\u062a"
@@ -1319,7 +1280,7 @@ function PlasmicCharge__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <section className={classNames(projectcss.all, sty.section__zwP9V)}>
+            <section className={classNames("all", sty.section__zwP9V)}>
               {(() => {
                 try {
                   return true;
@@ -1333,10 +1294,8 @@ function PlasmicCharge__RenderFunc(props: {
                   throw e;
                 }
               })() ? (
-                <div className={classNames(projectcss.all, sty.freeBox__csEvg)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__imbei)}
-                  >
+                <div className={classNames("all", sty.freeBox__csEvg)}>
+                  <div className={classNames("all", sty.freeBox__imbei)}>
                     {(() => {
                       try {
                         return $state.waiting;
@@ -1351,7 +1310,7 @@ function PlasmicCharge__RenderFunc(props: {
                       }
                     })() ? (
                       <Icon2Icon
-                        className={classNames(projectcss.all, sty.svg__clk1D)}
+                        className={classNames("all", sty.svg__clk1D)}
                         role={"img"}
                       />
                     ) : null}
@@ -1590,7 +1549,7 @@ function PlasmicCharge__RenderFunc(props: {
                     />
 
                     <VisamasterSvgIcon
-                      className={classNames(projectcss.all, sty.svg__mFawF)}
+                      className={classNames("all", sty.svg__mFawF)}
                       role={"img"}
                     />
 
@@ -1995,9 +1954,10 @@ export const PlasmicCharge = Object.assign(
     internalArgProps: PlasmicCharge__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/charge",
       pagePath: "/charge",
-      searchParams: {},
-      params: {}
+      params: {},
+      query: {}
     })
   }
 );

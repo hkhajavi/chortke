@@ -65,7 +65,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicInvoiceDetails.module.css"; // plasmic-import: FYVyu1h3mPQf/css
 
 createPlasmicElementProxy;
@@ -174,35 +173,23 @@ function PlasmicInvoiceDetails__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        projectcss.all,
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "all",
+        "root_reset_afXULSfGYmou2jFpEc2QWJ",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.root
       )}
       dir={"rtl"}
     >
-      <div className={classNames(projectcss.all, sty.freeBox__tgQrp)}>
-        <div className={classNames(projectcss.all, sty.freeBox__az5V8)}>
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__d3Cm6
-            )}
-          >
+      <div className={classNames("all", sty.freeBox__tgQrp)}>
+        <div className={classNames("all", sty.freeBox__az5V8)}>
+          <div className={classNames("all", "__wab_text", sty.text__d3Cm6)}>
             {"\u0639\u0646\u0648\u0627\u0646:"}
           </div>
         </div>
-        <div className={classNames(projectcss.all, sty.freeBox___9HUjv)}>
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__s3Bc
-            )}
-          >
+        <div className={classNames("all", sty.freeBox___9HUjv)}>
+          <div className={classNames("all", "__wab_text", sty.text__s3Bc)}>
             <React.Fragment>
               {(() => {
                 try {
@@ -220,25 +207,13 @@ function PlasmicInvoiceDetails__RenderFunc(props: {
             </React.Fragment>
           </div>
         </div>
-        <div className={classNames(projectcss.all, sty.freeBox__vYu08)}>
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__fWm4C
-            )}
-          >
+        <div className={classNames("all", sty.freeBox__vYu08)}>
+          <div className={classNames("all", "__wab_text", sty.text__fWm4C)}>
             {"\u062a\u0627\u0631\u06cc\u062e:"}
           </div>
         </div>
-        <div className={classNames(projectcss.all, sty.freeBox__gy31H)}>
-          <div
-            className={classNames(
-              projectcss.all,
-              projectcss.__wab_text,
-              sty.text__r2B3
-            )}
-          >
+        <div className={classNames("all", sty.freeBox__gy31H)}>
+          <div className={classNames("all", "__wab_text", sty.text__r2B3)}>
             <React.Fragment>
               {(() => {
                 try {

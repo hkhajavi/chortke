@@ -69,7 +69,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicTransferToAnotherWallet.module.css"; // plasmic-import: y7cY5QHMxpPK/css
 
 import SearchSvgIcon from "./icons/PlasmicIcon__SearchSvg"; // plasmic-import: fjupp6w2fUeo/icon
@@ -158,10 +157,6 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -243,6 +238,11 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
@@ -260,10 +260,10 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
       data-plasmic-root={true}
       data-plasmic-for-node={forNode}
       className={classNames(
-        projectcss.all,
-        projectcss.root_reset,
-        projectcss.plasmic_default_styles,
-        projectcss.plasmic_mixins,
+        "all",
+        "root_reset_afXULSfGYmou2jFpEc2QWJ",
+        "plasmic_default_styles",
+        "plasmic_mixins",
         styleTokensClassNames,
         sty.root
       )}
@@ -281,8 +281,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
           throw e;
         }
       })() ? (
-        <div className={classNames(projectcss.all, sty.freeBox__voMn)}>
-          <div className={classNames(projectcss.all, sty.freeBox__od0Gj)}>
+        <div className={classNames("all", sty.freeBox__voMn)}>
+          <div className={classNames("all", sty.freeBox__od0Gj)}>
             <TextInput
               data-plasmic-name={"txtTransferMobile"}
               data-plasmic-override={overrides.txtTransferMobile}
@@ -375,8 +375,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
           throw e;
         }
       })() ? (
-        <div className={classNames(projectcss.all, sty.freeBox__txVq)}>
-          <div className={classNames(projectcss.all, sty.freeBox__rxprk)}>
+        <div className={classNames("all", sty.freeBox__txVq)}>
+          <div className={classNames("all", sty.freeBox__rxprk)}>
             <TextInput
               data-plasmic-name={"txtTransferPrice"}
               data-plasmic-override={overrides.txtTransferPrice}
@@ -451,7 +451,7 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
               }
             />
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__gItPc)}>
+          <div className={classNames("all", sty.freeBox__gItPc)}>
             {(() => {
               try {
                 return (
@@ -468,13 +468,7 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                 throw e;
               }
             })() ? (
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__cQdI
-                )}
-              >
+              <div className={classNames("all", "__wab_text", sty.text__cQdI)}>
                 <React.Fragment>
                   {(() => {
                     try {
@@ -615,8 +609,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
           throw e;
         }
       })() ? (
-        <div className={classNames(projectcss.all, sty.freeBox__a90Vq)}>
-          <div className={classNames(projectcss.all, sty.freeBox__pmfMq)}>
+        <div className={classNames("all", sty.freeBox__a90Vq)}>
+          <div className={classNames("all", sty.freeBox__pmfMq)}>
             <TextInput
               data-plasmic-name={"txtTitle"}
               data-plasmic-override={overrides.txtTitle}
@@ -670,8 +664,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
           throw e;
         }
       })() ? (
-        <div className={classNames(projectcss.all, sty.freeBox__lEKcZ)}>
-          <div className={classNames(projectcss.all, sty.freeBox__umaNh)}>
+        <div className={classNames("all", sty.freeBox__lEKcZ)}>
+          <div className={classNames("all", sty.freeBox__umaNh)}>
             <TextInput
               data-plasmic-name={"txtTransferCode"}
               data-plasmic-override={overrides.txtTransferCode}
@@ -714,14 +708,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <div className={classNames(projectcss.all, sty.freeBox__yXoKs)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__mHneo
-                )}
-              >
+            <div className={classNames("all", sty.freeBox__yXoKs)}>
+              <div className={classNames("all", "__wab_text", sty.text__mHneo)}>
                 <React.Fragment>
                   {(() => {
                     try {
@@ -755,16 +743,12 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
           throw e;
         }
       })() ? (
-        <div className={classNames(projectcss.all, sty.freeBox__yyv)}>
-          <div className={classNames(projectcss.all, sty.freeBox__bEjdf)}>
-            <div className={classNames(projectcss.all, sty.freeBox__iIom)}>
-              <div className={classNames(projectcss.all, sty.freeBox__oOk1)}>
+        <div className={classNames("all", sty.freeBox__yyv)}>
+          <div className={classNames("all", sty.freeBox__bEjdf)}>
+            <div className={classNames("all", sty.freeBox__iIom)}>
+              <div className={classNames("all", sty.freeBox__oOk1)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__j9AWu
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__j9AWu)}
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly") ? (
                     <React.Fragment>
@@ -774,7 +758,9 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                         }
                       </React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ fontWeight: 700 }}
                       >
                         {
@@ -787,7 +773,9 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                         }
                       </React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ fontWeight: 700 }}
                       >
                         {
@@ -800,7 +788,9 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                         }
                       </React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ fontWeight: 700 }}
                       >
                         {
@@ -809,7 +799,9 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                       </span>
                       <React.Fragment>{".\n*"}</React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ fontWeight: 700 }}
                       >
                         {"\u067e\u0630\u06cc\u0631\u063424"}
@@ -820,7 +812,9 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                         }
                       </React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ fontWeight: 700 }}
                       >
                         {
@@ -833,7 +827,9 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                         }
                       </React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ fontWeight: 700 }}
                       >
                         {
@@ -846,7 +842,9 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                         }
                       </React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ fontWeight: 700 }}
                       >
                         {"\u06a9\u062f \u062a\u0623\u06cc\u06cc\u062f"}
@@ -865,7 +863,9 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                         }
                       </React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ fontWeight: 700 }}
                       >
                         {
@@ -878,7 +878,9 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                         }
                       </React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ fontWeight: 700 }}
                       >
                         {
@@ -891,7 +893,9 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                         }
                       </React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ fontWeight: 700 }}
                       >
                         {
@@ -900,7 +904,9 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                       </span>
                       <React.Fragment>{".\n*"}</React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ fontWeight: 700 }}
                       >
                         {"\u067e\u0630\u06cc\u0631\u063424"}
@@ -911,7 +917,9 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                         }
                       </React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ fontWeight: 700 }}
                       >
                         {
@@ -924,7 +932,9 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                         }
                       </React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ fontWeight: 700 }}
                       >
                         {
@@ -937,7 +947,9 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                         }
                       </React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ fontWeight: 700 }}
                       >
                         {"\u06a9\u062f \u062a\u0623\u06cc\u06cc\u062f"}
@@ -951,13 +963,9 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                   )}
                 </div>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__d3ZKu)}>
+              <div className={classNames("all", sty.freeBox__d3ZKu)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__nwPe0
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__nwPe0)}
                 >
                   <React.Fragment>
                     {(() => {
@@ -995,19 +1003,12 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                   data-plasmic-name={"dialog"}
                   data-plasmic-override={overrides.dialog}
                   body={
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__ifEu2)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__hooZ
-                        )}
-                      >
+                    <div className={classNames("all", sty.freeBox__ifEu2)}>
+                      <div className={classNames("all", sty.freeBox__hooZ)}>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__fCcHp
                           )}
                         >
@@ -1017,8 +1018,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                         </div>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text___7HSVr
                           )}
                         >
@@ -1028,8 +1029,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                         </div>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__dyLmt
                           )}
                         >
@@ -1039,8 +1040,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                         </div>
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__bW7I
                           )}
                         >
@@ -1072,7 +1073,7 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                   }
                   trigger={
                     <Icon47Icon
-                      className={classNames(projectcss.all, sty.svg___5GyiH)}
+                      className={classNames("all", sty.svg___5GyiH)}
                       role={"img"}
                     />
                   }
@@ -1082,8 +1083,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
           </div>
         </div>
       ) : null}
-      <div className={classNames(projectcss.all, sty.freeBox__bnmjF)}>
-        <div className={classNames(projectcss.all, sty.freeBox__bVeXq)}>
+      <div className={classNames("all", sty.freeBox__bnmjF)}>
+        <div className={classNames("all", sty.freeBox__bVeXq)}>
           {(() => {
             try {
               return $state.requestTransferid > 0;
@@ -1097,14 +1098,14 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
               throw e;
             }
           })() ? (
-            <div className={classNames(projectcss.all, sty.freeBox__tIjIe)}>
-              <div className={classNames(projectcss.all, sty.freeBox__quMdf)}>
+            <div className={classNames("all", sty.freeBox__tIjIe)}>
+              <div className={classNames("all", sty.freeBox__quMdf)}>
                 <Button
                   children2={
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__spKn
                       )}
                     >
@@ -1421,8 +1422,8 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
                     children2={
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___2TLeQ
                         )}
                       >
@@ -1840,7 +1841,7 @@ function PlasmicTransferToAnotherWallet__RenderFunc(props: {
             }
           })() ? (
             <Icon2Icon
-              className={classNames(projectcss.all, sty.svg__rqrJz)}
+              className={classNames("all", sty.svg__rqrJz)}
               role={"img"}
             />
           ) : null}

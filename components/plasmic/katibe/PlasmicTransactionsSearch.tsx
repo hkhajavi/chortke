@@ -80,7 +80,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicTransactionsSearch.module.css"; // plasmic-import: X-9VpIiu6hFS/css
 
 import Icon11Icon from "./icons/PlasmicIcon__Icon11"; // plasmic-import: sdf49AtFp7I6/icon
@@ -111,7 +110,14 @@ function wrapQueriesWithLoadingProxy($q: any): any {
   });
 }
 
-export function generateDynamicMetadata($q: any, $ctx: any) {
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
   return {
     title: "کتیبه، مدیریت امور مالی",
     description: "لیست تراکنش ها و عملیات حساب",
@@ -123,7 +129,7 @@ export function generateDynamicMetadata($q: any, $ctx: any) {
       ]
     },
     twitter: {
-      card: "summary_large_image",
+      card: "summary_large_image" as const,
       title: "کتیبه، مدیریت امور مالی",
       description: "لیست تراکنش ها و عملیات حساب",
       images: [
@@ -162,6 +168,7 @@ export type PlasmicTransactionsSearch__OverridesType = {
   financialReports?: Flex__<typeof FinancialReports>;
   gridInvoice1?: Flex__<"div">;
   txtRemainingText?: Flex__<"div">;
+  txtRemainingText3?: Flex__<"div">;
   txtRemainingText2?: Flex__<"div">;
   dialog?: Flex__<typeof Dialog>;
   btnSettlement?: Flex__<typeof Button2>;
@@ -235,10 +242,6 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
   const $ctx = useDataEnv?.() || {};
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
-
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
 
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
@@ -944,10 +947,21 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
         type: "private",
         variableType: "boolean",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => undefined
+      },
+      {
+        path: "depositSum",
+        type: "private",
+        variableType: "number",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
       }
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
@@ -958,7 +972,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
-    $ctx
+    $ctx as PageCtx
   );
 
   const styleTokensClassNames = _useStyleTokens();
@@ -1007,33 +1021,31 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
         }
       `}</style>
 
-      <div className={projectcss.plasmic_page_wrapper}>
+      <div className={"plasmic_page_wrapper"}>
         <div
           data-plasmic-name={"root"}
           data-plasmic-override={overrides.root}
           data-plasmic-root={true}
           data-plasmic-for-node={forNode}
           className={classNames(
-            projectcss.all,
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
+            "all",
+            "root_reset_afXULSfGYmou2jFpEc2QWJ",
+            "plasmic_default_styles",
+            "plasmic_mixins",
             styleTokensClassNames,
             sty.root
           )}
           dir={"rtl"}
         >
-          <div className={classNames(projectcss.all, sty.freeBox___0BxGx)}>
-            <div className={classNames(projectcss.all, sty.freeBox__y5Grx)}>
-              <div className={classNames(projectcss.all, sty.freeBox__jEgD)}>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox__q8MvT)}
-                />
+          <div className={classNames("all", sty.freeBox___0BxGx)}>
+            <div className={classNames("all", sty.freeBox__y5Grx)}>
+              <div className={classNames("all", sty.freeBox__jEgD)}>
+                <div className={classNames("all", sty.freeBox__q8MvT)} />
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__fpqZv)}>
-                <div className={classNames(projectcss.all, sty.freeBox__khmc1)}>
+              <div className={classNames("all", sty.freeBox__fpqZv)}>
+                <div className={classNames("all", sty.freeBox__khmc1)}>
                   <Icon11Icon
-                    className={classNames(projectcss.all, sty.svg__qPlax)}
+                    className={classNames("all", sty.svg__qPlax)}
                     onClick={async event => {
                       const $steps = {};
 
@@ -1073,9 +1085,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     data-plasmic-name={"h1"}
                     data-plasmic-override={overrides.h1}
                     className={classNames(
-                      projectcss.all,
-                      projectcss.h1,
-                      projectcss.__wab_text,
+                      "all",
+                      "h1",
+                      "h1__afXUL",
+                      "__wab_text",
                       sty.h1
                     )}
                   >
@@ -1085,11 +1098,11 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                   </h1>
                 </div>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__e3R7O)}>
+              <div className={classNames("all", sty.freeBox__e3R7O)}>
                 <div
                   data-plasmic-name={"btnDashboard3"}
                   data-plasmic-override={overrides.btnDashboard3}
-                  className={classNames(projectcss.all, sty.btnDashboard3)}
+                  className={classNames("all", sty.btnDashboard3)}
                   onClick={async event => {
                     const $steps = {};
 
@@ -1119,30 +1132,22 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                   }}
                 >
                   <Icon6Icon
-                    className={classNames(projectcss.all, sty.svg__r4NNk)}
+                    className={classNames("all", sty.svg__r4NNk)}
                     role={"img"}
                   />
 
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__pcCnb
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__pcCnb)}
                   >
                     {"\u0645\u0627\u0634\u06cc\u0646 \u062d\u0633\u0627\u0628"}
                   </div>
                 </div>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__hNpFn)}>
+              <div className={classNames("all", sty.freeBox__hNpFn)}>
                 <div
                   data-plasmic-name={"lblUser"}
                   data-plasmic-override={overrides.lblUser}
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.lblUser
-                  )}
+                  className={classNames("all", "__wab_text", sty.lblUser)}
                 >
                   <React.Fragment>
                     {(() => {
@@ -1177,9 +1182,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     data-plasmic-name={"btnLogout"}
                     data-plasmic-override={overrides.btnLogout}
                     className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
+                      "all",
+                      "a",
+                      "a__afXUL",
+                      "__wab_text",
                       sty.btnLogout
                     )}
                     component={Link}
@@ -1257,8 +1263,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     children2={
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__gk1Iw
                         )}
                       >
@@ -1268,7 +1274,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     className={classNames("__wab_instance", sty.btnLogin)}
                     endIcon={
                       <ChevronLeftIcon
-                        className={classNames(projectcss.all, sty.svg__zwSy)}
+                        className={classNames("all", sty.svg__zwSy)}
                         role={"img"}
                       />
                     }
@@ -1278,7 +1284,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     outline={true}
                     startIcon={
                       <ChevronRightIcon
-                        className={classNames(projectcss.all, sty.svg__qnVpq)}
+                        className={classNames("all", sty.svg__qnVpq)}
                         role={"img"}
                       />
                     }
@@ -1288,7 +1294,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
             </div>
           </div>
           <section
-            className={classNames(projectcss.all, sty.section__eFgfC)}
+            className={classNames("all", sty.section__eFgfC)}
             dir={"rtl"}
           >
             {(
@@ -1320,12 +1326,12 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     }
                   })()
             ) ? (
-              <div className={classNames(projectcss.all, sty.freeBox__j6IZb)}>
-                <div className={classNames(projectcss.all, sty.freeBox__vgEv)}>
+              <div className={classNames("all", sty.freeBox__j6IZb)}>
+                <div className={classNames("all", sty.freeBox__vgEv)}>
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text___3QZsH
                     )}
                   >
@@ -1491,8 +1497,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     placeholder={
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__ohlL8
                         )}
                       >
@@ -1538,30 +1544,22 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     throw e;
                   }
                 })() ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__uosbZ)}
-                  >
+                  <div className={classNames("all", sty.freeBox__uosbZ)}>
                     <Dialog
                       data-plasmic-name={"dialogFilter"}
                       data-plasmic-override={overrides.dialogFilter}
                       body={
                         <React.Fragment>
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__yHwP4
-                            )}
+                            className={classNames("all", sty.freeBox__yHwP4)}
                           >
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__tOsh
-                              )}
+                              className={classNames("all", sty.freeBox__tOsh)}
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
+                                  "all",
+                                  "__wab_text",
                                   sty.text__jrWo4
                                 )}
                               >
@@ -1571,10 +1569,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               </div>
                             </div>
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox___4K79L
-                              )}
+                              className={classNames("all", sty.freeBox___4K79L)}
                             >
                               {(() => {
                                 try {
@@ -1601,13 +1596,13 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   body={
                                     <div
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.freeBox__zilth
                                       )}
                                     >
                                       <div
                                         className={classNames(
-                                          projectcss.all,
+                                          "all",
                                           sty.freeBox__wvlQ
                                         )}
                                       >
@@ -1831,7 +1826,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       </div>
                                       <div
                                         className={classNames(
-                                          projectcss.all,
+                                          "all",
                                           sty.freeBox__m1NbQ
                                         )}
                                       >
@@ -1856,8 +1851,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                             children2={
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
-                                                  projectcss.__wab_text,
+                                                  "all",
+                                                  "__wab_text",
                                                   sty.text__ut8L
                                                 )}
                                               >
@@ -2050,8 +2045,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   title={
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__sCnav
                                       )}
                                     >
@@ -2064,7 +2059,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     <React.Fragment>
                                       <Icon52Icon
                                         className={classNames(
-                                          projectcss.all,
+                                          "all",
                                           sty.svg___0U5Lk
                                         )}
                                         role={"img"}
@@ -2072,8 +2067,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
 
                                       <div
                                         className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
+                                          "all",
+                                          "__wab_text",
                                           sty.text__pTlv0
                                         )}
                                       >
@@ -2114,21 +2109,15 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             </div>
                           </div>
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox___8NoMp
-                            )}
+                            className={classNames("all", sty.freeBox___8NoMp)}
                           >
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox___9Bjhg
-                              )}
+                              className={classNames("all", sty.freeBox___9Bjhg)}
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
+                                  "all",
+                                  "__wab_text",
                                   sty.text__duFu
                                 )}
                               >
@@ -2138,10 +2127,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               </div>
                             </div>
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__vuqUr
-                              )}
+                              className={classNames("all", sty.freeBox__vuqUr)}
                             >
                               <RadioGroup
                                 data-plasmic-name={"radioTransactionType"}
@@ -2317,7 +2303,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 options={
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__qGr8R
                                     )}
                                   >
@@ -2333,8 +2319,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       label={
                                         <div
                                           className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
+                                            "all",
+                                            "__wab_text",
                                             sty.text__ehmCk
                                           )}
                                         >
@@ -2358,8 +2344,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       label={
                                         <div
                                           className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
+                                            "all",
+                                            "__wab_text",
                                             sty.text__moO2K
                                           )}
                                         >
@@ -2377,16 +2363,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             </div>
                           </div>
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__yvQrv
-                            )}
+                            className={classNames("all", sty.freeBox__yvQrv)}
                           >
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__bQTfH
-                              )}
+                              className={classNames("all", sty.freeBox__bQTfH)}
                             >
                               <Button2
                                 children2={"\u0627\u0639\u0645\u0627\u0644"}
@@ -2423,7 +2403,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       }
                       trigger={
                         <Icon54Icon
-                          className={classNames(projectcss.all, sty.svg__qbMpi)}
+                          className={classNames("all", sty.svg__qbMpi)}
                           role={"img"}
                         />
                       }
@@ -2432,7 +2412,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 ) : null}
               </div>
             ) : null}
-            <section className={classNames(projectcss.all, sty.section__jlUjK)}>
+            <section className={classNames("all", sty.section__jlUjK)}>
               {(() => {
                 try {
                   return (
@@ -2487,7 +2467,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
               <div
                 data-plasmic-name={"gridInvoice1"}
                 data-plasmic-override={overrides.gridInvoice1}
-                className={classNames(projectcss.all, sty.gridInvoice1)}
+                className={classNames("all", sty.gridInvoice1)}
               >
                 {(
                   hasVariant(globalVariants, "screen", "mobileOnly")
@@ -2518,18 +2498,9 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         }
                       })()
                 ) ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__nQf7B)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__mEDh)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__sthvV
-                        )}
-                      >
+                  <div className={classNames("all", sty.freeBox__nQf7B)}>
+                    <div className={classNames("all", sty.freeBox__mEDh)}>
+                      <div className={classNames("all", sty.freeBox__sthvV)}>
                         {(() => {
                           try {
                             return !$state.waiting;
@@ -2547,8 +2518,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             data-plasmic-name={"txtRemainingText"}
                             data-plasmic-override={overrides.txtRemainingText}
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
+                              "all",
+                              "__wab_text",
                               sty.txtRemainingText
                             )}
                           >
@@ -2589,6 +2560,56 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             </React.Fragment>
                           </div>
                         ) : null}
+                        {(() => {
+                          try {
+                            return (
+                              !$state.waiting &&
+                              $state.currentAccountAccount == "organization" &&
+                              $state.bookDate.length > 0
+                            );
+                          } catch (e) {
+                            if (
+                              e instanceof TypeError ||
+                              e?.plasmicType === "PlasmicUndefinedDataError"
+                            ) {
+                              return true;
+                            }
+                            throw e;
+                          }
+                        })() ? (
+                          <div
+                            data-plasmic-name={"txtRemainingText3"}
+                            data-plasmic-override={overrides.txtRemainingText3}
+                            className={classNames(
+                              "all",
+                              "__wab_text",
+                              sty.txtRemainingText3
+                            )}
+                          >
+                            <React.Fragment>
+                              {(() => {
+                                try {
+                                  return (
+                                    "جمع پرداختی: " +
+                                    ($state.depositSum
+                                      .toString()
+                                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
+                                      " ریال")
+                                  );
+                                } catch (e) {
+                                  if (
+                                    e instanceof TypeError ||
+                                    e?.plasmicType ===
+                                      "PlasmicUndefinedDataError"
+                                  ) {
+                                    return "\u0645\u0627\u0646\u062f\u0647 \u0628\u062f\u0647\u06cc:";
+                                  }
+                                  throw e;
+                                }
+                              })()}
+                            </React.Fragment>
+                          </div>
+                        ) : null}
                       </div>
                       {(() => {
                         try {
@@ -2607,18 +2628,13 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                           throw e;
                         }
                       })() ? (
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox___7QmHl
-                          )}
-                        >
+                        <div className={classNames("all", sty.freeBox___7QmHl)}>
                           <div
                             data-plasmic-name={"txtRemainingText2"}
                             data-plasmic-override={overrides.txtRemainingText2}
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
+                              "all",
+                              "__wab_text",
                               sty.txtRemainingText2
                             )}
                           >
@@ -2656,20 +2672,20 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             body={
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__d4KUt
                                 )}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__aLyvO
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__sl7Tt
                                     )}
                                   >
@@ -2681,7 +2697,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                               ?.transactionid
                                               ? "پزشک گرامی، از تاریخ " +
                                                 new Date(
-                                                  $state.firstEscrowTransaction.register_date
+                                                  $state.firstEscrowTransaction
+                                                    .register_date
                                                 ).toLocaleDateString("fa-IR") +
                                                 " "
                                               : "") +
@@ -2725,10 +2742,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             title={null}
                             trigger={
                               <Icon47Icon
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.svg___84Boo
-                                )}
+                                className={classNames("all", sty.svg___84Boo)}
                                 role={"img"}
                               />
                             }
@@ -2755,13 +2769,11 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     throw e;
                   }
                 })() ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___2BtoD)}
-                  >
+                  <div className={classNames("all", sty.freeBox___2BtoD)}>
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__wQg70
                       )}
                     >
@@ -2847,8 +2859,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     ) ? (
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__aa1Jv
                         )}
                       >
@@ -2928,11 +2940,9 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     throw e;
                   }
                 })() ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__wkNii)}
-                  >
+                  <div className={classNames("all", sty.freeBox__wkNii)}>
                     <Icon2Icon
-                      className={classNames(projectcss.all, sty.svg__dWtdr)}
+                      className={classNames("all", sty.svg__dWtdr)}
                       role={"img"}
                     />
                   </div>
@@ -2950,9 +2960,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     throw e;
                   }
                 })() ? (
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__udl9H)}
-                  >
+                  <div className={classNames("all", sty.freeBox__udl9H)}>
                     {(() => {
                       try {
                         return (
@@ -2979,8 +2987,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         children2={
                           <div
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
+                              "all",
+                              "__wab_text",
                               sty.text__h471K
                             )}
                           >
@@ -3615,8 +3623,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       title={
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text___690FN
                           )}
                         >
@@ -3654,8 +3662,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             children2={
                               <div
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
+                                  "all",
+                                  "__wab_text",
                                   sty.text___7Ujb5
                                 )}
                               >
@@ -3680,10 +3688,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       body={
                         <React.Fragment>
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox___5Ra34
-                            )}
+                            className={classNames("all", sty.freeBox___5Ra34)}
                           />
 
                           {(() => {
@@ -3702,14 +3707,11 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             <div
                               data-plasmic-name={"gridSelectprice"}
                               data-plasmic-override={overrides.gridSelectprice}
-                              className={classNames(
-                                projectcss.all,
-                                sty.gridSelectprice
-                              )}
+                              className={classNames("all", sty.gridSelectprice)}
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__iELjq
                                 )}
                               >
@@ -3745,8 +3747,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       children2={
                                         <div
                                           className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
+                                            "all",
+                                            "__wab_text",
                                             sty.text___9A7K
                                           )}
                                         >
@@ -3813,7 +3815,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       endIcon={
                                         <ChevronLeftIcon
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.svg__olLfk
                                           )}
                                           role={"img"}
@@ -3903,7 +3905,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       startIcon={
                                         <ChevronRightIcon
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.svg__k1MVm
                                           )}
                                           role={"img"}
@@ -3922,7 +3924,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   endIcon={
                                     <ChevronLeftIcon
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.svg__u7A3K
                                       )}
                                       role={"img"}
@@ -3957,7 +3959,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   startIcon={
                                     <ChevronRightIcon
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.svg__elrey
                                       )}
                                       role={"img"}
@@ -3988,21 +3990,18 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             <div
                               data-plasmic-name={"gridMyAmount"}
                               data-plasmic-override={overrides.gridMyAmount}
-                              className={classNames(
-                                projectcss.all,
-                                sty.gridMyAmount
-                              )}
+                              className={classNames("all", sty.gridMyAmount)}
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox___9GsoM
                                 )}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
+                                    "all",
+                                    "__wab_text",
                                     sty.text__gAzRa
                                   )}
                                 >
@@ -4039,7 +4038,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               ) ? (
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__szxXd
                                   )}
                                   dir={"rtl"}
@@ -4143,30 +4142,24 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               ) : null}
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__vSgg6
                                 )}
                               />
                             </div>
                           ) : null}
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__cxN5E
-                            )}
+                            className={classNames("all", sty.freeBox__cxN5E)}
                           >
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__xgkdy
-                              )}
+                              className={classNames("all", sty.freeBox__xgkdy)}
                             >
                               <Button
                                 children2={
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__qlqQs
                                     )}
                                   >
@@ -4201,7 +4194,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 endIcon={
                                   <ChevronLeftIcon
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.svg__cwIAc
                                     )}
                                     role={"img"}
@@ -4440,7 +4433,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 startIcon={
                                   <ChevronRightIcon
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.svg___29Eq1
                                     )}
                                     role={"img"}
@@ -4463,10 +4456,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 }
                               })() ? (
                                 <Icon2Icon
-                                  className={classNames(
-                                    projectcss.all,
-                                    sty.svg__iPSqa
-                                  )}
+                                  className={classNames("all", sty.svg__iPSqa)}
                                   role={"img"}
                                 />
                               ) : null}
@@ -4497,16 +4487,11 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         "open"
                       ])}
                       title={
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__gV9Mg
-                          )}
-                        >
+                        <div className={classNames("all", sty.freeBox__gV9Mg)}>
                           <div
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
+                              "all",
+                              "__wab_text",
                               sty.text__mpy3V
                             )}
                           >
@@ -4549,8 +4534,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                           ) ? (
                             <div
                               className={classNames(
-                                projectcss.all,
-                                projectcss.__wab_text,
+                                "all",
+                                "__wab_text",
                                 sty.text__rnEqz
                               )}
                             >
@@ -4581,8 +4566,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             children2={
                               <div
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
+                                  "all",
+                                  "__wab_text",
                                   sty.text__y1NHg
                                 )}
                               >
@@ -4608,10 +4593,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             color={"green"}
                             endIcon={
                               <ChevronLeftIcon
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.svg__wqT5N
-                                )}
+                                className={classNames("all", sty.svg__wqT5N)}
                                 role={"img"}
                               />
                             }
@@ -4726,10 +4708,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             }}
                             startIcon={
                               <ChevronRightIcon
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.svg__mDlZz
-                                )}
+                                className={classNames("all", sty.svg__mDlZz)}
                                 role={"img"}
                               />
                             }
@@ -4745,8 +4724,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         <React.Fragment>
                           <div
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
+                              "all",
+                              "__wab_text",
                               sty.text__w6Bk
                             )}
                           >
@@ -4792,21 +4771,15 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             }
                           })() ? (
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__jSfY0
-                              )}
+                              className={classNames("all", sty.freeBox__jSfY0)}
                             >
                               <div
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.freeBox__uEnf
-                                )}
+                                className={classNames("all", sty.freeBox__uEnf)}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
+                                    "all",
+                                    "__wab_text",
                                     sty.text___2SH
                                   )}
                                 >
@@ -4841,7 +4814,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               </div>
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox___3Lq9Z
                                 )}
                               >
@@ -4853,8 +4826,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
-                                      projectcss.__wab_text,
+                                      "all",
+                                      "__wab_text",
                                       sty.text__ulkvi
                                     )}
                                   >
@@ -4891,21 +4864,15 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             </div>
                           ) : null}
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__aqI40
-                            )}
+                            className={classNames("all", sty.freeBox__aqI40)}
                           >
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__xRlAx
-                              )}
+                              className={classNames("all", sty.freeBox__xRlAx)}
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.__wab_text,
+                                  "all",
+                                  "__wab_text",
                                   sty.text__pwtOu
                                 )}
                               >
@@ -4915,10 +4882,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               </div>
                             </div>
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox___6CzsP
-                              )}
+                              className={classNames("all", sty.freeBox___6CzsP)}
                             >
                               <TabContent
                                 className={classNames(
@@ -4928,8 +4892,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
+                                    "all",
+                                    "__wab_text",
                                     sty.text__rbd2K
                                   )}
                                 >
@@ -4977,21 +4941,18 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             }
                           })() ? (
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__zdrI4
-                              )}
+                              className={classNames("all", sty.freeBox__zdrI4)}
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__xyeo2
                                 )}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
+                                    "all",
+                                    "__wab_text",
                                     sty.text__yCfYe
                                   )}
                                 >
@@ -4999,10 +4960,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 </div>
                               </div>
                               <div
-                                className={classNames(
-                                  projectcss.all,
-                                  sty.freeBox__ebw
-                                )}
+                                className={classNames("all", sty.freeBox__ebw)}
                               >
                                 <TabContent
                                   className={classNames(
@@ -5120,21 +5078,18 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             }
                           })() ? (
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__um9GR
-                              )}
+                              className={classNames("all", sty.freeBox__um9GR)}
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__pyAb5
                                 )}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
+                                    "all",
+                                    "__wab_text",
                                     sty.text__mbh1C
                                   )}
                                 >
@@ -5144,7 +5099,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 </div>
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__iSxgv
                                   )}
                                 >
@@ -5157,13 +5112,13 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       <React.Fragment>
                                         <div
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.freeBox__n1VDq
                                           )}
                                         >
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox__d9GVi
                                             )}
                                           >
@@ -5264,7 +5219,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                           </div>
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox__u34Ms
                                             )}
                                           >
@@ -5291,8 +5246,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                 children2={
                                                   <div
                                                     className={classNames(
-                                                      projectcss.all,
-                                                      projectcss.__wab_text,
+                                                      "all",
+                                                      "__wab_text",
                                                       sty.text__k2T0O
                                                     )}
                                                   >
@@ -5558,20 +5513,20 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         })() ? (
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox___1WXy8
                                             )}
                                           >
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__d7Oa
                                               )}
                                             >
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
-                                                  projectcss.__wab_text,
+                                                  "all",
+                                                  "__wab_text",
                                                   sty.text__xeWse
                                                 )}
                                               >
@@ -5582,7 +5537,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                             </div>
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__qcRj
                                               )}
                                             >
@@ -5654,20 +5609,20 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         })() ? (
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox__hyJej
                                             )}
                                           >
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox___9HWsb
                                               )}
                                             >
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
-                                                  projectcss.__wab_text,
+                                                  "all",
+                                                  "__wab_text",
                                                   sty.text__loGkD
                                                 )}
                                               >
@@ -5678,7 +5633,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                             </div>
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__v0Jgd
                                               )}
                                             >
@@ -5750,20 +5705,20 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         })() ? (
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox__bR1To
                                             )}
                                           >
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__vJk8H
                                               )}
                                             >
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
-                                                  projectcss.__wab_text,
+                                                  "all",
+                                                  "__wab_text",
                                                   sty.text__j6Dgj
                                                 )}
                                               >
@@ -5772,7 +5727,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                             </div>
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__lYcw
                                               )}
                                             >
@@ -5847,13 +5802,13 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         })() ? (
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox__iZivb
                                             )}
                                           >
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__ks2Tm
                                               )}
                                             >
@@ -6346,8 +6301,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       <React.Fragment>
                                         <div
                                           className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
+                                            "all",
+                                            "__wab_text",
                                             sty.text__bD9E
                                           )}
                                         >
@@ -6371,7 +6326,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         })() ? (
                                           <Icon2Icon
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.svg__jGyD
                                             )}
                                             role={"img"}
@@ -6384,8 +6339,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         children2={
                                           <div
                                             className={classNames(
-                                              projectcss.all,
-                                              projectcss.__wab_text,
+                                              "all",
+                                              "__wab_text",
                                               sty.text___3P0Tt
                                             )}
                                           >
@@ -6407,19 +6362,19 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               </div>
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox___0J2IS
                                 )}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
+                                    "all",
                                     sty.freeBox__s5MKb
                                   )}
                                 >
                                   <div
                                     className={classNames(
-                                      projectcss.all,
+                                      "all",
                                       sty.freeBox__hRemA
                                     )}
                                   >
@@ -6441,8 +6396,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     })() ? (
                                       <div
                                         className={classNames(
-                                          projectcss.all,
-                                          projectcss.__wab_text,
+                                          "all",
+                                          "__wab_text",
                                           sty.text__yN2Xi
                                         )}
                                       >
@@ -6497,8 +6452,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         children2={
                                           <div
                                             className={classNames(
-                                              projectcss.all,
-                                              projectcss.__wab_text,
+                                              "all",
+                                              "__wab_text",
                                               sty.text__wu0Yc
                                             )}
                                           >
@@ -6609,16 +6564,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             </div>
                           ) : null}
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__tKosu
-                            )}
+                            className={classNames("all", sty.freeBox__tKosu)}
                           >
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__uiHf2
-                              )}
+                              className={classNames("all", sty.freeBox__uiHf2)}
                             >
                               {(() => {
                                 try {
@@ -6639,8 +6588,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               })() ? (
                                 <div
                                   className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
+                                    "all",
+                                    "__wab_text",
                                     sty.text__xfGwz
                                   )}
                                 >
@@ -6667,8 +6616,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   children2={
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text__w6Eu
                                       )}
                                     >
@@ -7525,8 +7474,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     overrides.txtSettlementResult
                                   }
                                   className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
+                                    "all",
+                                    "__wab_text",
                                     sty.txtSettlementResult
                                   )}
                                 >
@@ -7568,14 +7517,14 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             })() ? (
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__fsk0R
                                 )}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
+                                    "all",
+                                    "__wab_text",
                                     sty.text__qtFsi
                                   )}
                                 >
@@ -7591,8 +7540,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   children2={
                                     <div
                                       className={classNames(
-                                        projectcss.all,
-                                        projectcss.__wab_text,
+                                        "all",
+                                        "__wab_text",
                                         sty.text___5MXq
                                       )}
                                     >
@@ -7651,21 +7600,18 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             }
                           })() ? (
                             <div
-                              className={classNames(
-                                projectcss.all,
-                                sty.freeBox__gad6C
-                              )}
+                              className={classNames("all", sty.freeBox__gad6C)}
                             >
                               <div
                                 className={classNames(
-                                  projectcss.all,
+                                  "all",
                                   sty.freeBox__uIkZw
                                 )}
                               >
                                 <div
                                   className={classNames(
-                                    projectcss.all,
-                                    projectcss.__wab_text,
+                                    "all",
+                                    "__wab_text",
                                     sty.text__ii5A3
                                   )}
                                 >
@@ -7717,8 +7663,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         <React.Fragment>
                           <div
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
+                              "all",
+                              "__wab_text",
                               sty.text__oJpQ
                             )}
                           >
@@ -7740,10 +7686,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             }
                           })() ? (
                             <Icon2Icon
-                              className={classNames(
-                                projectcss.all,
-                                sty.svg__juwXn
-                              )}
+                              className={classNames("all", sty.svg__juwXn)}
                               role={"img"}
                             />
                           ) : null}
@@ -7757,109 +7700,87 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
               <div
                 data-plasmic-name={"gridInvoice13"}
                 data-plasmic-override={overrides.gridInvoice13}
-                className={classNames(projectcss.all, sty.gridInvoice13)}
+                className={classNames("all", sty.gridInvoice13)}
               >
                 <div
                   className={classNames(
-                    projectcss.all,
+                    "all",
                     sty.freeBox__wCEa,
                     "grid_calculator"
                   )}
                   id={"grid_calculator"}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__jgywZ
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__jgywZ)}
                   >
                     {"\u0631\u062f\u06cc\u0641"}
                   </div>
                 </div>
                 <div
                   className={classNames(
-                    projectcss.all,
+                    "all",
                     sty.freeBox__hmBj5,
                     "grid_calculator"
                   )}
                   id={"grid_calculator"}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__hlRy9
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__hlRy9)}
                   >
                     {"\u062a\u0627\u0631\u06cc\u062e"}
                   </div>
                 </div>
                 <div
                   className={classNames(
-                    projectcss.all,
+                    "all",
                     sty.freeBox__pItef,
                     "grid_calculator"
                   )}
                   id={"grid_calculator"}
                 >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__mbCvb)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__rnFbu)}
-                    >
+                  <div className={classNames("all", sty.freeBox__mbCvb)}>
+                    <div className={classNames("all", sty.freeBox__rnFbu)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__a7Zen
                         )}
                       >
                         {"\u0639\u0646\u0648\u0627\u0646"}
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__baC4H)}
-                    />
+                    <div className={classNames("all", sty.freeBox__baC4H)} />
                   </div>
                 </div>
                 <div
                   className={classNames(
-                    projectcss.all,
+                    "all",
                     sty.freeBox__juTKa,
                     "grid_calculator"
                   )}
                   id={"grid_calculator"}
                 >
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__gxD4N
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__gxD4N)}
                   >
                     {"\u0645\u0628\u0644\u063a "}
                   </div>
                 </div>
                 <div
                   className={classNames(
-                    projectcss.all,
+                    "all",
                     sty.freeBox__ti8Db,
                     "grid_calculator"
                   )}
                   id={"grid_calculator"}
                 >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__yhUa4)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__dHjY2)}
-                    >
+                  <div className={classNames("all", sty.freeBox__yhUa4)}>
+                    <div className={classNames("all", sty.freeBox__dHjY2)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__egtYl
                         )}
                       >
@@ -7869,8 +7790,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       </div>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__yvEUs
                         )}
                       >
@@ -7879,9 +7800,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                           : " (\u0631\u06cc\u0627\u0644)"}
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__yTpnk)}
-                    />
+                    <div className={classNames("all", sty.freeBox__yTpnk)} />
                   </div>
                 </div>
               </div>
@@ -7906,12 +7825,12 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                   <div
                     data-plasmic-name={"gridInvoice12"}
                     data-plasmic-override={overrides.gridInvoice12}
-                    className={classNames(projectcss.all, sty.gridInvoice12)}
+                    className={classNames("all", sty.gridInvoice12)}
                     key={currentIndex}
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
+                        "all",
                         sty.freeBox___79Fi3,
                         "grid_calculator"
                       )}
@@ -7919,8 +7838,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     >
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__dnCW
                         )}
                       >
@@ -7950,7 +7869,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     </div>
                     <div
                       className={classNames(
-                        projectcss.all,
+                        "all",
                         sty.freeBox___9AGe,
                         "grid_calculator"
                       )}
@@ -7958,8 +7877,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     >
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__xt3H4
                         )}
                       >
@@ -7970,9 +7889,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                 "" +
                                 (() => {
                                   const gregorianDate = new Date(
-                                    $state.invoicelist[
-                                      currentIndex
-                                    ].register_date
+                                    $state.invoicelist[currentIndex]
+                                      .register_date
                                   );
                                   const persianDate = new Intl.DateTimeFormat(
                                     "fa-IR"
@@ -7995,28 +7913,18 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     </div>
                     <div
                       className={classNames(
-                        projectcss.all,
+                        "all",
                         sty.freeBox__sDrrB,
                         "grid_calculator"
                       )}
                       id={"grid_calculator"}
                     >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__oq7Ka
-                        )}
-                      >
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__vw0BX
-                          )}
-                        >
+                      <div className={classNames("all", sty.freeBox__oq7Ka)}>
+                        <div className={classNames("all", sty.freeBox__vw0BX)}>
                           <div
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
+                              "all",
+                              "__wab_text",
                               sty.text__eRfYh
                             )}
                           >
@@ -8038,12 +7946,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                             </React.Fragment>
                           </div>
                         </div>
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__vypev
-                          )}
-                        >
+                        <div className={classNames("all", sty.freeBox__vypev)}>
                           {(() => {
                             try {
                               return (
@@ -8078,8 +7981,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       errorDisplay={
                                         <div
                                           className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
+                                            "all",
+                                            "__wab_text",
                                             sty.text__yw4
                                           )}
                                         >
@@ -8108,7 +8011,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                             overrides.waitingIcon3
                                           }
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.waitingIcon3
                                           )}
                                           role={"img"}
@@ -8160,20 +8063,20 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                     >
                                       <div
                                         className={classNames(
-                                          projectcss.all,
+                                          "all",
                                           sty.freeBox__h3IzX
                                         )}
                                       >
                                         <div
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.freeBox___0Yj7
                                           )}
                                         >
                                           <div
                                             className={classNames(
-                                              projectcss.all,
-                                              projectcss.__wab_text,
+                                              "all",
+                                              "__wab_text",
                                               sty.text__cz8TE
                                             )}
                                           >
@@ -8228,7 +8131,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                           return (
                                             <div
                                               className={classNames(
-                                                projectcss.all,
+                                                "all",
                                                 sty.freeBox__ljqV8
                                               )}
                                               dir={"rtl"}
@@ -8236,14 +8139,14 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                             >
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__b7Bz3
                                                 )}
                                               >
                                                 <div
                                                   className={classNames(
-                                                    projectcss.all,
-                                                    projectcss.__wab_text,
+                                                    "all",
+                                                    "__wab_text",
                                                     sty.text__bThOo
                                                   )}
                                                 >
@@ -8268,14 +8171,14 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                               </div>
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__g5Zyu
                                                 )}
                                               >
                                                 <div
                                                   className={classNames(
-                                                    projectcss.all,
-                                                    projectcss.__wab_text,
+                                                    "all",
+                                                    "__wab_text",
                                                     sty.text__pl20H
                                                   )}
                                                   dir={"rtl"}
@@ -8313,14 +8216,14 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                               </div>
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__hklwu
                                                 )}
                                               >
                                                 <div
                                                   className={classNames(
-                                                    projectcss.all,
-                                                    projectcss.__wab_text,
+                                                    "all",
+                                                    "__wab_text",
                                                     sty.text___4ZDte
                                                   )}
                                                 >
@@ -8329,14 +8232,14 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                               </div>
                                               <div
                                                 className={classNames(
-                                                  projectcss.all,
+                                                  "all",
                                                   sty.freeBox__eiK6X
                                                 )}
                                               >
                                                 <div
                                                   className={classNames(
-                                                    projectcss.all,
-                                                    projectcss.__wab_text,
+                                                    "all",
+                                                    "__wab_text",
                                                     sty.text__txDbl
                                                   )}
                                                 >
@@ -8374,20 +8277,20 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       )}
                                       <div
                                         className={classNames(
-                                          projectcss.all,
+                                          "all",
                                           sty.freeBox__k3Ell
                                         )}
                                       >
                                         <div
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.freeBox__kGqd1
                                           )}
                                         >
                                           <div
                                             className={classNames(
-                                              projectcss.all,
-                                              projectcss.__wab_text,
+                                              "all",
+                                              "__wab_text",
                                               sty.text__mzAi
                                             )}
                                           >
@@ -8398,14 +8301,14 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         </div>
                                         <div
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.freeBox__ni1DC
                                           )}
                                         >
                                           <div
                                             className={classNames(
-                                              projectcss.all,
-                                              projectcss.__wab_text,
+                                              "all",
+                                              "__wab_text",
                                               sty.text__pkPec
                                             )}
                                           >
@@ -8423,9 +8326,11 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                       ].data.data.created_time +
                                                         " " +
                                                         new Date(
-                                                          $state.detailsDataApiRequest[
+                                                          $state
+                                                            .detailsDataApiRequest[
                                                             currentIndex
-                                                          ].data.data.created_date
+                                                          ].data.data
+                                                            .created_date
                                                         ).toLocaleDateString(
                                                           "fa-IR"
                                                         )
@@ -8435,9 +8340,11 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                       ].data.data.registertime +
                                                         " " +
                                                         new Date(
-                                                          $state.detailsDataApiRequest[
+                                                          $state
+                                                            .detailsDataApiRequest[
                                                             currentIndex
-                                                          ].data.data.registerdate
+                                                          ].data.data
+                                                            .registerdate
                                                         ).toLocaleDateString(
                                                           "fa-IR"
                                                         );
@@ -8476,20 +8383,20 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       })() ? (
                                         <div
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.freeBox__uL7Ud
                                           )}
                                         >
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox___4Ddl4
                                             )}
                                           >
                                             <div
                                               className={classNames(
-                                                projectcss.all,
-                                                projectcss.__wab_text,
+                                                "all",
+                                                "__wab_text",
                                                 sty.text__txu5
                                               )}
                                             >
@@ -8500,14 +8407,14 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                           </div>
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox___2B2H5
                                             )}
                                           >
                                             <div
                                               className={classNames(
-                                                projectcss.all,
-                                                projectcss.__wab_text,
+                                                "all",
+                                                "__wab_text",
                                                 sty.text__kwCg
                                               )}
                                             >
@@ -8582,20 +8489,21 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       })() ? (
                                         <div
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.freeBox__s68Rn
                                           )}
                                         >
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox__xqvX7
                                             )}
                                           >
                                             <PlasmicLink__
                                               className={classNames(
-                                                projectcss.all,
-                                                projectcss.a,
+                                                "all",
+                                                "a",
+                                                "a__afXUL",
                                                 sty.link__ht0H0
                                               )}
                                               component={Link}
@@ -8635,8 +8543,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                 children2={
                                                   <div
                                                     className={classNames(
-                                                      projectcss.all,
-                                                      projectcss.__wab_text,
+                                                      "all",
+                                                      "__wab_text",
                                                       sty.text__y3UPu
                                                     )}
                                                   >
@@ -8718,14 +8626,15 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                           </div>
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox___6EQl
                                             )}
                                           >
                                             <PlasmicLink__
                                               className={classNames(
-                                                projectcss.all,
-                                                projectcss.a,
+                                                "all",
+                                                "a",
+                                                "a__afXUL",
                                                 sty.link__oE7Ki
                                               )}
                                               component={Link}
@@ -8797,20 +8706,20 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       })() ? (
                                         <div
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.freeBox__g3Huk
                                           )}
                                         >
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox__munBy
                                             )}
                                           >
                                             <div
                                               className={classNames(
-                                                projectcss.all,
-                                                projectcss.__wab_text,
+                                                "all",
+                                                "__wab_text",
                                                 sty.text___2H3Dy
                                               )}
                                             >
@@ -8821,14 +8730,14 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                           </div>
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox__dpCpu
                                             )}
                                           >
                                             <div
                                               className={classNames(
-                                                projectcss.all,
-                                                projectcss.__wab_text,
+                                                "all",
+                                                "__wab_text",
                                                 sty.text__amr4N
                                               )}
                                             >
@@ -8879,20 +8788,20 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       })() ? (
                                         <div
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.freeBox__tcQ6F
                                           )}
                                         >
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox__m7LLb
                                             )}
                                           >
                                             <div
                                               className={classNames(
-                                                projectcss.all,
-                                                projectcss.__wab_text,
+                                                "all",
+                                                "__wab_text",
                                                 sty.text___0W17O
                                               )}
                                             >
@@ -8903,14 +8812,14 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                           </div>
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox__dahuW
                                             )}
                                           >
                                             <div
                                               className={classNames(
-                                                projectcss.all,
-                                                projectcss.__wab_text,
+                                                "all",
+                                                "__wab_text",
                                                 sty.text__n7Ue0
                                               )}
                                             >
@@ -8960,20 +8869,20 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       })() ? (
                                         <div
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.freeBox__qnnOv
                                           )}
                                         >
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox__jJr
                                             )}
                                           >
                                             <div
                                               className={classNames(
-                                                projectcss.all,
-                                                projectcss.__wab_text,
+                                                "all",
+                                                "__wab_text",
                                                 sty.text__kFztQ
                                               )}
                                             >
@@ -8984,7 +8893,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                           </div>
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox__fnOgw
                                             )}
                                           >
@@ -9010,8 +8919,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                 children2={
                                                   <div
                                                     className={classNames(
-                                                      projectcss.all,
-                                                      projectcss.__wab_text,
+                                                      "all",
+                                                      "__wab_text",
                                                       sty.text___9Zmh
                                                     )}
                                                   >
@@ -9059,8 +8968,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                 children2={
                                                   <div
                                                     className={classNames(
-                                                      projectcss.all,
-                                                      projectcss.__wab_text,
+                                                      "all",
+                                                      "__wab_text",
                                                       sty.text__pIPpq
                                                     )}
                                                   >
@@ -9104,8 +9013,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                                 children2={
                                                   <div
                                                     className={classNames(
-                                                      projectcss.all,
-                                                      projectcss.__wab_text,
+                                                      "all",
+                                                      "__wab_text",
                                                       sty.text__oszHz
                                                     )}
                                                   >
@@ -9127,20 +9036,20 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       ) : null}
                                       <div
                                         className={classNames(
-                                          projectcss.all,
+                                          "all",
                                           sty.freeBox__ffrgj
                                         )}
                                       >
                                         <div
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.freeBox__cvdzv
                                           )}
                                         >
                                           <div
                                             className={classNames(
-                                              projectcss.all,
-                                              projectcss.__wab_text,
+                                              "all",
+                                              "__wab_text",
                                               sty.text__k4GR
                                             )}
                                           >
@@ -9151,14 +9060,14 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         </div>
                                         <div
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.freeBox__qMemg
                                           )}
                                         >
                                           <div
                                             className={classNames(
-                                              projectcss.all,
-                                              projectcss.__wab_text,
+                                              "all",
+                                              "__wab_text",
                                               sty.text__v5YEk
                                             )}
                                           >
@@ -9220,20 +9129,20 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       })() ? (
                                         <div
                                           className={classNames(
-                                            projectcss.all,
+                                            "all",
                                             sty.freeBox__ePzDe
                                           )}
                                         >
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox__fuMq
                                             )}
                                           >
                                             <div
                                               className={classNames(
-                                                projectcss.all,
-                                                projectcss.__wab_text,
+                                                "all",
+                                                "__wab_text",
                                                 sty.text__rwal
                                               )}
                                             >
@@ -9244,14 +9153,14 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                           </div>
                                           <div
                                             className={classNames(
-                                              projectcss.all,
+                                              "all",
                                               sty.freeBox__fZvD
                                             )}
                                           >
                                             <div
                                               className={classNames(
-                                                projectcss.all,
-                                                projectcss.__wab_text,
+                                                "all",
+                                                "__wab_text",
                                                 sty.text__lza2H
                                               )}
                                             >
@@ -9335,13 +9244,13 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   title: (
                                     <div
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.freeBox__s2Pz
                                       )}
                                     >
                                       <div
                                         className={classNames(
-                                          projectcss.all,
+                                          "all",
                                           sty.freeBox__dt8V1,
                                           ``
                                         )}
@@ -9349,8 +9258,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                       >
                                         <div
                                           className={classNames(
-                                            projectcss.all,
-                                            projectcss.__wab_text,
+                                            "all",
+                                            "__wab_text",
                                             sty.text__sEqkN
                                           )}
                                         >
@@ -9364,7 +9273,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                   trigger: (
                                     <Icon47Icon
                                       className={classNames(
-                                        projectcss.all,
+                                        "all",
                                         sty.svg__nUmde
                                       )}
                                       role={"img"}
@@ -9405,7 +9314,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     </div>
                     <div
                       className={classNames(
-                        projectcss.all,
+                        "all",
                         sty.freeBox___0NIcW,
                         "grid_calculator"
                       )}
@@ -9413,8 +9322,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     >
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__iZkK
                         )}
                       >
@@ -9450,7 +9359,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         }
                       })() ? (
                         <Icon44Icon
-                          className={classNames(projectcss.all, sty.svg__miQg)}
+                          className={classNames("all", sty.svg__miQg)}
                           role={"img"}
                         />
                       ) : null}
@@ -9468,14 +9377,14 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         }
                       })() ? (
                         <Icon45Icon
-                          className={classNames(projectcss.all, sty.svg__dWf9Y)}
+                          className={classNames("all", sty.svg__dWf9Y)}
                           role={"img"}
                         />
                       ) : null}
                     </div>
                     <div
                       className={classNames(
-                        projectcss.all,
+                        "all",
                         sty.freeBox__uNzEt,
                         "grid_calculator"
                       )}
@@ -9483,8 +9392,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     >
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__uT85B
                         )}
                       >
@@ -9552,11 +9461,11 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 <div
                   data-plasmic-name={"gridNoData2"}
                   data-plasmic-override={overrides.gridNoData2}
-                  className={classNames(projectcss.all, sty.gridNoData2)}
+                  className={classNames("all", sty.gridNoData2)}
                 >
                   <div
                     className={classNames(
-                      projectcss.all,
+                      "all",
                       sty.freeBox__pepAw,
                       "grid_calculator"
                     )}
@@ -9595,8 +9504,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         children2={
                           <div
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
+                              "all",
+                              "__wab_text",
                               sty.text__vVwD4
                             )}
                           >
@@ -9845,7 +9754,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                       }
                     })() ? (
                       <Icon2Icon
-                        className={classNames(projectcss.all, sty.svg__uYAd)}
+                        className={classNames("all", sty.svg__uYAd)}
                         role={"img"}
                       />
                     ) : null}
@@ -9872,11 +9781,11 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 <div
                   data-plasmic-name={"gridNoData"}
                   data-plasmic-override={overrides.gridNoData}
-                  className={classNames(projectcss.all, sty.gridNoData)}
+                  className={classNames("all", sty.gridNoData)}
                 >
                   <div
                     className={classNames(
-                      projectcss.all,
+                      "all",
                       sty.freeBox__sZh3Z,
                       "grid_calculator"
                     )}
@@ -9884,8 +9793,8 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                   >
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__x2Zjy
                       )}
                     >
@@ -9910,14 +9819,10 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 throw e;
               }
             })() ? (
-              <div className={classNames(projectcss.all, sty.freeBox___9VWgP)}>
-                <div className={classNames(projectcss.all, sty.freeBox__cR6Zz)}>
+              <div className={classNames("all", sty.freeBox___9VWgP)}>
+                <div className={classNames("all", sty.freeBox__cR6Zz)}>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text___6Eou
-                    )}
+                    className={classNames("all", "__wab_text", sty.text___6Eou)}
                   >
                     {hasVariant(globalVariants, "screen", "mobileOnly") ? (
                       <React.Fragment>
@@ -9929,10 +9834,11 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         {
                           <PlasmicLink__
                             className={classNames(
-                              projectcss.all,
-                              projectcss.a,
-                              projectcss.__wab_text,
-                              projectcss.plasmic_default__inline,
+                              "all",
+                              "a",
+                              "a__afXUL",
+                              "__wab_text",
+                              "plasmic_default__inline",
                               sty.link__okEcB
                             )}
                             component={Link}
@@ -9987,10 +9893,11 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         {
                           <PlasmicLink__
                             className={classNames(
-                              projectcss.all,
-                              projectcss.a,
-                              projectcss.__wab_text,
-                              projectcss.plasmic_default__inline,
+                              "all",
+                              "a",
+                              "a__afXUL",
+                              "__wab_text",
+                              "plasmic_default__inline",
                               sty.link__okEcB
                             )}
                             component={Link}
@@ -10038,11 +9945,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     )}
                   </div>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__nTaMo
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__nTaMo)}
                   >
                     {hasVariant(globalVariants, "screen", "mobileOnly") ? (
                       <React.Fragment>
@@ -10053,7 +9956,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         </React.Fragment>
                         <span
                           className={
-                            "plasmic_default__all plasmic_default__span"
+                            "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                           }
                           style={{ fontWeight: 700 }}
                         >
@@ -10069,10 +9972,11 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         {
                           <PlasmicLink__
                             className={classNames(
-                              projectcss.all,
-                              projectcss.a,
-                              projectcss.__wab_text,
-                              projectcss.plasmic_default__inline,
+                              "all",
+                              "a",
+                              "a__afXUL",
+                              "__wab_text",
+                              "plasmic_default__inline",
                               sty.link__thlGx
                             )}
                             component={Link}
@@ -10121,7 +10025,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         </React.Fragment>
                         <span
                           className={
-                            "plasmic_default__all plasmic_default__span"
+                            "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                           }
                           style={{ fontWeight: 700 }}
                         >
@@ -10136,7 +10040,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         </React.Fragment>
                         <span
                           className={
-                            "plasmic_default__all plasmic_default__span"
+                            "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                           }
                           style={{ fontWeight: 700 }}
                         >
@@ -10151,11 +10055,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                     )}
                   </div>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__wtKMd
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__wtKMd)}
                   >
                     {hasVariant(globalVariants, "screen", "mobileOnly") ? (
                       <React.Fragment>
@@ -10166,7 +10066,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         </React.Fragment>
                         <span
                           className={
-                            "plasmic_default__all plasmic_default__span"
+                            "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                           }
                           style={{ fontWeight: 700 }}
                         >
@@ -10182,10 +10082,11 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         {
                           <PlasmicLink__
                             className={classNames(
-                              projectcss.all,
-                              projectcss.a,
-                              projectcss.__wab_text,
-                              projectcss.plasmic_default__inline,
+                              "all",
+                              "a",
+                              "a__afXUL",
+                              "__wab_text",
+                              "plasmic_default__inline",
                               sty.link__kvcEd
                             )}
                             component={Link}
@@ -10235,7 +10136,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         </React.Fragment>
                         <span
                           className={
-                            "plasmic_default__all plasmic_default__span"
+                            "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                           }
                           style={{ fontWeight: 700 }}
                         >
@@ -10251,10 +10152,11 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         {
                           <PlasmicLink__
                             className={classNames(
-                              projectcss.all,
-                              projectcss.a,
-                              projectcss.__wab_text,
-                              projectcss.plasmic_default__inline,
+                              "all",
+                              "a",
+                              "a__afXUL",
+                              "__wab_text",
+                              "plasmic_default__inline",
                               sty.link__kvcEd
                             )}
                             component={Link}
@@ -10401,7 +10303,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         (() => {
                           try {
                             return (
-                              "https://apigw.paziresh24.com/katibe-useraccounts?user_id=" +
+                              "https://apigw.paziresh24.com/katibe/v1/useraccounts?user_id=" +
                               ($state.user &&
                               $state.user.users &&
                               $state.user.users[0] &&
@@ -10708,6 +10610,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                           $state.escrowbalance = 0;
                           $state.waiting = true;
                           $state.blockedamount = 0;
+                          $state.depositSum = 0;
                           $state.centerInfo = {};
                           $state.recurringSettlement = [];
                           if ($state.updatewallet) {
@@ -11169,6 +11072,88 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 $steps["updateFirstEscrowTransaction2"] =
                   await $steps["updateFirstEscrowTransaction2"];
               }
+
+              $steps["getDepositSum"] =
+                $state.currentAccountAccount == "organization" &&
+                $state.bookDate.length > 0
+                  ? (() => {
+                      const actionArgs = {
+                        args: [
+                          undefined,
+                          (() => {
+                            try {
+                              return (
+                                "https://apigw.paziresh24.com/katibe/v1/transactions/deposit/p24?centerid=" +
+                                $state.currentAccountId +
+                                "&account=" +
+                                $state.currentAccountAccount +
+                                "&start_date=" +
+                                $state.bookDate +
+                                "&end_date=" +
+                                $state.bookDate
+                              );
+                            } catch (e) {
+                              if (
+                                e instanceof TypeError ||
+                                e?.plasmicType === "PlasmicUndefinedDataError"
+                              ) {
+                                return undefined;
+                              }
+                              throw e;
+                            }
+                          })()
+                        ]
+                      };
+                      return $globalActions["Fragment.apiRequest"]?.apply(
+                        null,
+                        [...actionArgs.args]
+                      );
+                    })()
+                  : undefined;
+              if (
+                $steps["getDepositSum"] != null &&
+                typeof $steps["getDepositSum"] === "object" &&
+                typeof $steps["getDepositSum"].then === "function"
+              ) {
+                $steps["getDepositSum"] = await $steps["getDepositSum"];
+              }
+
+              $steps["setDepositSum"] =
+                $steps.getDepositSum.status == 200 &&
+                $state.currentAccountAccount == "organization" &&
+                $state.bookDate.length > 0
+                  ? (() => {
+                      const actionArgs = {
+                        variable: {
+                          objRoot: $state,
+                          variablePath: ["depositSum"]
+                        },
+                        operation: 0,
+                        value: $steps.getDepositSum.data.data.sum
+                      };
+                      return (({
+                        variable,
+                        value,
+                        startIndex,
+                        deleteCount
+                      }) => {
+                        if (!variable) {
+                          return;
+                        }
+                        const { objRoot, variablePath } = variable;
+
+                        $stateSet(objRoot, variablePath, value);
+                        return value;
+                      })?.apply(null, [actionArgs]);
+                    })()
+                  : undefined;
+              if (
+                $steps["setDepositSum"] != null &&
+                typeof $steps["setDepositSum"] === "object" &&
+                typeof $steps["setDepositSum"].then === "function"
+              ) {
+                $steps["setDepositSum"] = await $steps["setDepositSum"];
+              }
             }}
           />
 
@@ -11288,6 +11273,7 @@ const PlasmicDescendants = {
     "financialReports",
     "gridInvoice1",
     "txtRemainingText",
+    "txtRemainingText3",
     "txtRemainingText2",
     "dialog",
     "btnSettlement",
@@ -11347,6 +11333,7 @@ const PlasmicDescendants = {
   gridInvoice1: [
     "gridInvoice1",
     "txtRemainingText",
+    "txtRemainingText3",
     "txtRemainingText2",
     "dialog",
     "btnSettlement",
@@ -11369,6 +11356,7 @@ const PlasmicDescendants = {
     "txtSettlementResult"
   ],
   txtRemainingText: ["txtRemainingText"],
+  txtRemainingText3: ["txtRemainingText3"],
   txtRemainingText2: ["txtRemainingText2"],
   dialog: ["dialog"],
   btnSettlement: ["btnSettlement"],
@@ -11453,6 +11441,7 @@ type NodeDefaultElementType = {
   financialReports: typeof FinancialReports;
   gridInvoice1: "div";
   txtRemainingText: "div";
+  txtRemainingText3: "div";
   txtRemainingText2: "div";
   dialog: typeof Dialog;
   btnSettlement: typeof Button2;
@@ -11563,6 +11552,7 @@ export const PlasmicTransactionsSearch = Object.assign(
     financialReports: makeNodeComponent("financialReports"),
     gridInvoice1: makeNodeComponent("gridInvoice1"),
     txtRemainingText: makeNodeComponent("txtRemainingText"),
+    txtRemainingText3: makeNodeComponent("txtRemainingText3"),
     txtRemainingText2: makeNodeComponent("txtRemainingText2"),
     dialog: makeNodeComponent("dialog"),
     btnSettlement: makeNodeComponent("btnSettlement"),
@@ -11600,9 +11590,10 @@ export const PlasmicTransactionsSearch = Object.assign(
     internalArgProps: PlasmicTransactionsSearch__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/transactions-search",
       pagePath: "/transactions-search",
-      searchParams: {},
-      params: {}
+      params: {},
+      query: {}
     })
   }
 );

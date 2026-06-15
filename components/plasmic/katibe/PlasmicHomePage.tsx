@@ -67,7 +67,6 @@ import { _useStyleTokens } from "./PlasmicStyleTokensProvider"; // plasmic-impor
 
 import "@plasmicapp/react-web/lib/plasmic.css";
 
-import projectcss from "./plasmic.module.css"; // plasmic-import: afXULSfGYmou2jFpEc2QWJ/projectcss
 import sty from "./PlasmicHomePage.module.css"; // plasmic-import: M6YdBfvgHP0a/css
 
 import CircleIcon from "./icons/PlasmicIcon__Circle"; // plasmic-import: mwPyen4LrNG1/icon
@@ -95,7 +94,14 @@ function wrapQueriesWithLoadingProxy($q: any): any {
   });
 }
 
-export function generateDynamicMetadata($q: any, $ctx: any) {
+export type PageCtx = {
+  pageRoute: string;
+  pagePath: string;
+  params: Record<string, string | string[] | undefined>;
+  query: Record<string, string | string[] | undefined>;
+};
+
+export function generateDynamicMetadata($q: any, $ctx: PageCtx) {
   return {
     title: "api پرداخت، کیف پول و تسهیم",
 
@@ -103,7 +109,7 @@ export function generateDynamicMetadata($q: any, $ctx: any) {
       title: "api پرداخت، کیف پول و تسهیم"
     },
     twitter: {
-      card: "summary",
+      card: "summary" as const,
       title: "api پرداخت، کیف پول و تسهیم"
     }
   };
@@ -193,10 +199,6 @@ function PlasmicHomePage__RenderFunc(props: {
   const refsRef = React.useRef({});
   const $refs = refsRef.current;
 
-  const globalVariants = _useGlobalVariants();
-
-  const $globalActions = useGlobalActions?.();
-
   const stateSpecs: Parameters<typeof useDollarState>[0] = React.useMemo(
     () => [
       {
@@ -208,6 +210,11 @@ function PlasmicHomePage__RenderFunc(props: {
     ],
     [$props, $ctx, $refs]
   );
+
+  const globalVariants = _useGlobalVariants();
+
+  const $globalActions = useGlobalActions?.();
+
   const $state = useDollarState(stateSpecs, {
     $props,
     $ctx,
@@ -218,7 +225,7 @@ function PlasmicHomePage__RenderFunc(props: {
 
   const pageMetadata = generateDynamicMetadata(
     wrapQueriesWithLoadingProxy({}),
-    $ctx
+    $ctx as PageCtx
   );
 
   const styleTokensClassNames = _useStyleTokens();
@@ -242,17 +249,17 @@ function PlasmicHomePage__RenderFunc(props: {
         }
       `}</style>
 
-      <div className={projectcss.plasmic_page_wrapper}>
+      <div className={"plasmic_page_wrapper"}>
         <div
           data-plasmic-name={"root"}
           data-plasmic-override={overrides.root}
           data-plasmic-root={true}
           data-plasmic-for-node={forNode}
           className={classNames(
-            projectcss.all,
-            projectcss.root_reset,
-            projectcss.plasmic_default_styles,
-            projectcss.plasmic_mixins,
+            "all",
+            "root_reset_afXULSfGYmou2jFpEc2QWJ",
+            "plasmic_default_styles",
+            "plasmic_mixins",
             styleTokensClassNames,
             sty.root
           )}
@@ -260,15 +267,16 @@ function PlasmicHomePage__RenderFunc(props: {
           <div
             data-plasmic-name={"headerHeroSection"}
             data-plasmic-override={overrides.headerHeroSection}
-            className={classNames(projectcss.all, sty.headerHeroSection)}
+            className={classNames("all", sty.headerHeroSection)}
           >
-            <div className={classNames(projectcss.all, sty.freeBox___9DxvJ)}>
-              <div className={classNames(projectcss.all, sty.freeBox__uSt)}>
-                <div className={classNames(projectcss.all, sty.freeBox__nJHt)}>
+            <div className={classNames("all", sty.freeBox___9DxvJ)}>
+              <div className={classNames("all", sty.freeBox__uSt)}>
+                <div className={classNames("all", sty.freeBox__nJHt)}>
                   <PlasmicLink__
                     className={classNames(
-                      projectcss.all,
-                      projectcss.a,
+                      "all",
+                      "a",
+                      "a__afXUL",
                       sty.link__dcOVa
                     )}
                     component={Link}
@@ -304,9 +312,10 @@ function PlasmicHomePage__RenderFunc(props: {
                   </PlasmicLink__>
                   <PlasmicLink__
                     className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
+                      "all",
+                      "a",
+                      "a__afXUL",
+                      "__wab_text",
                       sty.link__aJmpr
                     )}
                     component={Link}
@@ -318,9 +327,10 @@ function PlasmicHomePage__RenderFunc(props: {
                   </PlasmicLink__>
                   <PlasmicLink__
                     className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
+                      "all",
+                      "a",
+                      "a__afXUL",
+                      "__wab_text",
                       sty.link__puCeb
                     )}
                     component={Link}
@@ -333,9 +343,10 @@ function PlasmicHomePage__RenderFunc(props: {
                   </PlasmicLink__>
                   <PlasmicLink__
                     className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
+                      "all",
+                      "a",
+                      "a__afXUL",
+                      "__wab_text",
                       sty.link__pLcOx
                     )}
                     component={Link}
@@ -350,9 +361,10 @@ function PlasmicHomePage__RenderFunc(props: {
                   </PlasmicLink__>
                   <PlasmicLink__
                     className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
+                      "all",
+                      "a",
+                      "a__afXUL",
+                      "__wab_text",
                       sty.link__tTbvG
                     )}
                     component={Link}
@@ -398,9 +410,10 @@ function PlasmicHomePage__RenderFunc(props: {
                   </PlasmicLink__>
                   <PlasmicLink__
                     className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
+                      "all",
+                      "a",
+                      "a__afXUL",
+                      "__wab_text",
                       sty.link__nopkA
                     )}
                     component={Link}
@@ -413,15 +426,16 @@ function PlasmicHomePage__RenderFunc(props: {
                 </div>
               </div>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__dktZb)}>
-              <div className={classNames(projectcss.all, sty.freeBox__ntog8)}>
+            <div className={classNames("all", sty.freeBox__dktZb)}>
+              <div className={classNames("all", sty.freeBox__ntog8)}>
                 <h1
                   data-plasmic-name={"h1"}
                   data-plasmic-override={overrides.h1}
                   className={classNames(
-                    projectcss.all,
-                    projectcss.h1,
-                    projectcss.__wab_text,
+                    "all",
+                    "h1",
+                    "h1__afXUL",
+                    "__wab_text",
                     sty.h1
                   )}
                 >
@@ -430,17 +444,13 @@ function PlasmicHomePage__RenderFunc(props: {
                     : "\u06a9\u062a\u06cc\u0628\u0647: \u0633\u0631\u0648\u06cc\u0633 \u067e\u0631\u062f\u0627\u062e\u062a \u0648 \u06a9\u06cc\u0641 \u067e\u0648\u0644"}
                 </h1>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__s54Hx
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__s54Hx)}
                 >
                   {
                     "\u0628\u062f\u0648\u0646 \u0646\u06cc\u0627\u0632 \u0628\u0647 \u062a\u0648\u0633\u0639\u0647\u060c \u0633\u06cc\u0633\u062a\u0645 \u0645\u0627\u0644\u06cc \u067e\u0644\u062a\u0641\u0631\u0645 \u062e\u0648\u062f \u0631\u0627 \u062f\u0631 \u06a9\u0645\u062a\u0631\u06cc\u0646 \u0632\u0645\u0627\u0646 \u0631\u0627\u0647\u200c\u0627\u0646\u062f\u0627\u0632\u06cc \u06a9\u0646\u06cc\u062f!"
                   }
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__xunWi)}>
+                <div className={classNames("all", sty.freeBox__xunWi)}>
                   <BaseButton
                     className={classNames(
                       "__wab_instance",
@@ -477,25 +487,23 @@ function PlasmicHomePage__RenderFunc(props: {
                       <div
                         data-plasmic-name={"softBackground3"}
                         data-plasmic-override={overrides.softBackground3}
-                        className={classNames(
-                          projectcss.all,
-                          sty.softBackground3
-                        )}
+                        className={classNames("all", sty.softBackground3)}
                       />
                     ) : null}
                     {false ? (
                       <div
                         data-plasmic-name={"border3"}
                         data-plasmic-override={overrides.border3}
-                        className={classNames(projectcss.all, sty.border3)}
+                        className={classNames("all", sty.border3)}
                       />
                     ) : null}
                     <PlasmicLink__
                       data-plasmic-name={"interactionEffect3"}
                       data-plasmic-override={overrides.interactionEffect3}
                       className={classNames(
-                        projectcss.all,
-                        projectcss.a,
+                        "all",
+                        "a",
+                        "a__afXUL",
                         sty.interactionEffect3
                       )}
                       component={Link}
@@ -507,35 +515,23 @@ function PlasmicHomePage__RenderFunc(props: {
                       target={"_blank"}
                     />
 
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__wIPg)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__kn84U
-                        )}
-                      >
+                    <div className={classNames("all", sty.freeBox__wIPg)}>
+                      <div className={classNames("all", sty.freeBox__kn84U)}>
                         <CircleIcon
-                          className={classNames(projectcss.all, sty.svg__mRnQs)}
+                          className={classNames("all", sty.svg__mRnQs)}
                           role={"img"}
                         />
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__f3HoF
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox__f3HoF)}>
                         <Icon46Icon
-                          className={classNames(projectcss.all, sty.svg__eaQzr)}
+                          className={classNames("all", sty.svg__eaQzr)}
                           role={"img"}
                         />
                       </div>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__oorKb
                         )}
                       >
@@ -554,24 +550,22 @@ function PlasmicHomePage__RenderFunc(props: {
                       <div
                         data-plasmic-name={"softBackground4"}
                         data-plasmic-override={overrides.softBackground4}
-                        className={classNames(
-                          projectcss.all,
-                          sty.softBackground4
-                        )}
+                        className={classNames("all", sty.softBackground4)}
                       />
                     ) : null}
                     <div
                       data-plasmic-name={"border4"}
                       data-plasmic-override={overrides.border4}
-                      className={classNames(projectcss.all, sty.border4)}
+                      className={classNames("all", sty.border4)}
                     />
 
                     <PlasmicLink__
                       data-plasmic-name={"interactionEffect4"}
                       data-plasmic-override={overrides.interactionEffect4}
                       className={classNames(
-                        projectcss.all,
-                        projectcss.a,
+                        "all",
+                        "a",
+                        "a__afXUL",
                         sty.interactionEffect4
                       )}
                       component={Link}
@@ -580,37 +574,25 @@ function PlasmicHomePage__RenderFunc(props: {
                       platform={"nextjs"}
                     />
 
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__r3Jiq)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__m0Ves
-                        )}
-                      >
+                    <div className={classNames("all", sty.freeBox__r3Jiq)}>
+                      <div className={classNames("all", sty.freeBox__m0Ves)}>
                         <CircleIcon
-                          className={classNames(projectcss.all, sty.svg__rx0Rj)}
+                          className={classNames("all", sty.svg__rx0Rj)}
                           role={"img"}
                         />
                       </div>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__iTiFi
                         )}
                       >
                         {"\u062a\u0645\u0627\u0633 \u0628\u0627 \u0645\u0627"}
                       </div>
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___9Pm18
-                        )}
-                      >
+                      <div className={classNames("all", sty.freeBox___9Pm18)}>
                         <ChevronDownIcon
-                          className={classNames(projectcss.all, sty.svg__xplr8)}
+                          className={classNames("all", sty.svg__xplr8)}
                           role={"img"}
                         />
                       </div>
@@ -631,71 +613,53 @@ function PlasmicHomePage__RenderFunc(props: {
                     <div
                       data-plasmic-name={"softBackground2"}
                       data-plasmic-override={overrides.softBackground2}
-                      className={classNames(
-                        projectcss.all,
-                        sty.softBackground2
-                      )}
+                      className={classNames("all", sty.softBackground2)}
                     />
                   ) : null}
                   {false ? (
                     <div
                       data-plasmic-name={"border2"}
                       data-plasmic-override={overrides.border2}
-                      className={classNames(projectcss.all, sty.border2)}
+                      className={classNames("all", sty.border2)}
                     />
                   ) : null}
                   <div
                     data-plasmic-name={"interactionEffect2"}
                     data-plasmic-override={overrides.interactionEffect2}
-                    className={classNames(
-                      projectcss.all,
-                      sty.interactionEffect2
-                    )}
+                    className={classNames("all", sty.interactionEffect2)}
                   />
 
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__axC1E)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__rygCh)}
-                    >
+                  <div className={classNames("all", sty.freeBox__axC1E)}>
+                    <div className={classNames("all", sty.freeBox__rygCh)}>
                       <CircleIcon
-                        className={classNames(projectcss.all, sty.svg__j8QmL)}
+                        className={classNames("all", sty.svg__j8QmL)}
                         role={"img"}
                       />
                     </div>
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__qW8Lb
                       )}
                     >
                       {"\u0645\u0633\u062a\u0646\u062f\u0627\u062a"}
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__hu9Rk)}
-                    >
+                    <div className={classNames("all", sty.freeBox__hu9Rk)}>
                       <ChevronDownIcon
-                        className={classNames(projectcss.all, sty.svg__u9Nu)}
+                        className={classNames("all", sty.svg__u9Nu)}
                         role={"img"}
                       />
                     </div>
                   </div>
                 </BaseButton>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___1Rm0Y)}
-                >
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__pwhuw)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__fEwzJ)}
-                    >
+                <div className={classNames("all", sty.freeBox___1Rm0Y)}>
+                  <div className={classNames("all", sty.freeBox__pwhuw)}>
+                    <div className={classNames("all", sty.freeBox__fEwzJ)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__nuglj
                         )}
                       >
@@ -708,13 +672,14 @@ function PlasmicHomePage__RenderFunc(props: {
                 </div>
               </div>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__krxVf)}>
-              <div className={classNames(projectcss.all, sty.freeBox__luFh9)}>
+            <div className={classNames("all", sty.freeBox__krxVf)}>
+              <div className={classNames("all", sty.freeBox__luFh9)}>
                 <h2
                   className={classNames(
-                    projectcss.all,
-                    projectcss.h2,
-                    projectcss.__wab_text,
+                    "all",
+                    "h2",
+                    "h2__afXUL",
+                    "__wab_text",
                     sty.h2__oPWvP
                   )}
                 >
@@ -723,23 +688,15 @@ function PlasmicHomePage__RenderFunc(props: {
                     : "\u0628\u0627 \u06a9\u062a\u06cc\u0628\u0647: \u0641\u0631\u0648\u0634\u06af\u0627\u0647 \u0627\u06cc\u0646\u062a\u0631\u0646\u062a\u06cc \u0648 \u067e\u0644\u062a\u0641\u0631\u0645 \u062e\u0648\u062f\u062a \u0631\u0648 \u0628\u0647 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0645\u062a\u0635\u0644 \u06a9\u0646 \u0648 \u0628\u0647\u200c\u0635\u0648\u0631\u062a \u062e\u0648\u062f\u06a9\u0627\u0631 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0648 \u062f\u0631\u0622\u0645\u062f \u0641\u0631\u0648\u0634\u0646\u062f\u06af\u0627\u0646 \u0631\u0648 \u0645\u062f\u06cc\u0631\u06cc\u062a \u06a9\u0646!"}
                 </h2>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__l97Dm
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__l97Dm)}
                 >
                   {
                     "\u2705\u0628\u0647 \u0631\u0627\u062d\u062a\u06cc \u06a9\u0627\u0631\u0628\u0631\u062a\u0648 \u0628\u0641\u0631\u0633\u062a \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0648 \u0627\u0632\u0634 \u067e\u0648\u0644 \u0628\u06af\u06cc\u0631\n\u2705\u0628\u0627 \u0641\u0631\u0627\u062e\u0648\u0627\u0646\u06cc \u06cc\u06a9 api\u060c \u067e\u0631\u062f\u0627\u062e\u062a \u0627\u0645\u0627\u0646\u06cc \u0648 \u062a\u0633\u0647\u06cc\u0645 \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634 \u0648 \u062f\u0647\u200c\u0647\u0627 \u062a\u0631\u0627\u06a9\u0646\u0634 \u0631\u0648 \u062e\u0648\u062f\u06a9\u0627\u0631 \u0645\u062f\u06cc\u0631\u06cc\u062a \u06a9\u0646\n\u2705\u0628\u0647 \u0633\u0627\u062f\u06af\u06cc \u0627\u0632 \u0645\u0632\u0627\u06cc\u0627\u06cc \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u06a9\u0646\n\u2705\u062a\u0645\u0627\u0645 \u06af\u0632\u0627\u0631\u0634\u200c\u0647\u0627\u06cc \u062d\u0633\u0627\u0628\u062f\u0627\u0631\u06cc \u0648 \u0645\u0627\u0644\u06cc\u0627\u062a \u0648 \u062f\u0631\u0622\u0645\u062f \u0631\u0648 \u062f\u0627\u0634\u062a\u0647 \u0628\u0627\u0634\n\r"
                   }
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__osPy3)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__krWvr)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__aPmTk)}
-                    >
+                <div className={classNames("all", sty.freeBox__osPy3)}>
+                  <div className={classNames("all", sty.freeBox__krWvr)}>
+                    <div className={classNames("all", sty.freeBox__aPmTk)}>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img__dWv5A)}
@@ -760,18 +717,17 @@ function PlasmicHomePage__RenderFunc(props: {
 
                       <h5
                         className={classNames(
-                          projectcss.all,
-                          projectcss.h5,
-                          projectcss.__wab_text,
+                          "all",
+                          "h5",
+                          "h5__afXUL",
+                          "__wab_text",
                           sty.h5___37IFg
                         )}
                       >
                         {"Newsletters"}
                       </h5>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__g5Zi4)}
-                    >
+                    <div className={classNames("all", sty.freeBox__g5Zi4)}>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img__ct3Pt)}
@@ -792,18 +748,17 @@ function PlasmicHomePage__RenderFunc(props: {
 
                       <h5
                         className={classNames(
-                          projectcss.all,
-                          projectcss.h5,
-                          projectcss.__wab_text,
+                          "all",
+                          "h5",
+                          "h5__afXUL",
+                          "__wab_text",
                           sty.h5__asaSo
                         )}
                       >
                         {"Messaging"}
                       </h5>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__rfoos)}
-                    >
+                    <div className={classNames("all", sty.freeBox__rfoos)}>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img__d8WiA)}
@@ -824,18 +779,17 @@ function PlasmicHomePage__RenderFunc(props: {
 
                       <h5
                         className={classNames(
-                          projectcss.all,
-                          projectcss.h5,
-                          projectcss.__wab_text,
+                          "all",
+                          "h5",
+                          "h5__afXUL",
+                          "__wab_text",
                           sty.h5__x9VvQ
                         )}
                       >
                         {"Dashboard"}
                       </h5>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__nbibh)}
-                    >
+                    <div className={classNames("all", sty.freeBox__nbibh)}>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img___8GXkV)}
@@ -856,9 +810,10 @@ function PlasmicHomePage__RenderFunc(props: {
 
                       <h5
                         className={classNames(
-                          projectcss.all,
-                          projectcss.h5,
-                          projectcss.__wab_text,
+                          "all",
+                          "h5",
+                          "h5__afXUL",
+                          "__wab_text",
                           sty.h5___5NfPr
                         )}
                       >
@@ -866,12 +821,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </h5>
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__i2Lgo)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__cUz8M)}
-                    >
+                  <div className={classNames("all", sty.freeBox__i2Lgo)}>
+                    <div className={classNames("all", sty.freeBox__cUz8M)}>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img__gVnNg)}
@@ -892,18 +843,17 @@ function PlasmicHomePage__RenderFunc(props: {
 
                       <h5
                         className={classNames(
-                          projectcss.all,
-                          projectcss.h5,
-                          projectcss.__wab_text,
+                          "all",
+                          "h5",
+                          "h5__afXUL",
+                          "__wab_text",
                           sty.h5__a1AlC
                         )}
                       >
                         {"Modals"}
                       </h5>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__mLdG2)}
-                    >
+                    <div className={classNames("all", sty.freeBox__mLdG2)}>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img___26NSp)}
@@ -924,18 +874,17 @@ function PlasmicHomePage__RenderFunc(props: {
 
                       <h5
                         className={classNames(
-                          projectcss.all,
-                          projectcss.h5,
-                          projectcss.__wab_text,
+                          "all",
+                          "h5",
+                          "h5__afXUL",
+                          "__wab_text",
                           sty.h5___0ESCb
                         )}
                       >
                         {"User Flow"}
                       </h5>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__kiOxY)}
-                    >
+                    <div className={classNames("all", sty.freeBox__kiOxY)}>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img__zh44F)}
@@ -956,9 +905,10 @@ function PlasmicHomePage__RenderFunc(props: {
 
                       <h5
                         className={classNames(
-                          projectcss.all,
-                          projectcss.h5,
-                          projectcss.__wab_text,
+                          "all",
+                          "h5",
+                          "h5__afXUL",
+                          "__wab_text",
                           sty.h5__vqUlt
                         )}
                       >
@@ -966,15 +916,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </h5>
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__uYuiV)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___9HK5F
-                      )}
-                    >
+                  <div className={classNames("all", sty.freeBox__uYuiV)}>
+                    <div className={classNames("all", sty.freeBox___9HK5F)}>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img__zPi1H)}
@@ -995,18 +938,17 @@ function PlasmicHomePage__RenderFunc(props: {
 
                       <h5
                         className={classNames(
-                          projectcss.all,
-                          projectcss.h5,
-                          projectcss.__wab_text,
+                          "all",
+                          "h5",
+                          "h5__afXUL",
+                          "__wab_text",
                           sty.h5__radNo
                         )}
                       >
                         {"Archive"}
                       </h5>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__caId)}
-                    >
+                    <div className={classNames("all", sty.freeBox__caId)}>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img__jnPGd)}
@@ -1027,18 +969,17 @@ function PlasmicHomePage__RenderFunc(props: {
 
                       <h5
                         className={classNames(
-                          projectcss.all,
-                          projectcss.h5,
-                          projectcss.__wab_text,
+                          "all",
+                          "h5",
+                          "h5__afXUL",
+                          "__wab_text",
                           sty.h5__oPHcF
                         )}
                       >
                         {"Analytics"}
                       </h5>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__hsOlH)}
-                    >
+                    <div className={classNames("all", sty.freeBox__hsOlH)}>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img__wwdXx)}
@@ -1059,18 +1000,17 @@ function PlasmicHomePage__RenderFunc(props: {
 
                       <h5
                         className={classNames(
-                          projectcss.all,
-                          projectcss.h5,
-                          projectcss.__wab_text,
+                          "all",
+                          "h5",
+                          "h5__afXUL",
+                          "__wab_text",
                           sty.h5__ciGpB
                         )}
                       >
                         {"Search"}
                       </h5>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox___8WTm)}
-                    >
+                    <div className={classNames("all", sty.freeBox___8WTm)}>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img__k0WLi)}
@@ -1091,9 +1031,10 @@ function PlasmicHomePage__RenderFunc(props: {
 
                       <h5
                         className={classNames(
-                          projectcss.all,
-                          projectcss.h5,
-                          projectcss.__wab_text,
+                          "all",
+                          "h5",
+                          "h5__afXUL",
+                          "__wab_text",
                           sty.h5__dkEDd
                         )}
                       >
@@ -1103,9 +1044,10 @@ function PlasmicHomePage__RenderFunc(props: {
                   </div>
                   <PlasmicLink__
                     className={classNames(
-                      projectcss.all,
-                      projectcss.a,
-                      projectcss.__wab_text,
+                      "all",
+                      "a",
+                      "a__afXUL",
+                      "__wab_text",
                       sty.link__uAjbW
                     )}
                     component={Link}
@@ -1121,16 +1063,12 @@ function PlasmicHomePage__RenderFunc(props: {
               </div>
             </div>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__x1YlM)}>
-            <div className={classNames(projectcss.all, sty.freeBox__npZ6Z)}>
-              <div className={classNames(projectcss.all, sty.freeBox__kxbe7)}>
-                <div className={classNames(projectcss.all, sty.freeBox__zWuV9)}>
+          <div className={classNames("all", sty.freeBox__x1YlM)}>
+            <div className={classNames("all", sty.freeBox__npZ6Z)}>
+              <div className={classNames("all", sty.freeBox__kxbe7)}>
+                <div className={classNames("all", sty.freeBox__zWuV9)}>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__d4Qfj
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__d4Qfj)}
                   >
                     {
                       "\u0641\u0631\u0648\u0634\u06af\u0627\u0647 \u0627\u06cc\u0646\u062a\u0631\u0646\u062a\u06cc \u0648 \u067e\u0644\u062a\u0641\u0631\u0645 \u062e\u0648\u062f\u062a \u0631\u0648 \u0628\u0647 \u062f\u0631\u06af\u0627\u0647 \u067e\u0631\u062f\u0627\u062e\u062a \u0645\u062a\u0635\u0644 \u06a9\u0646 \u0648 \u0628\u0647\u200c\u0635\u0648\u0631\u062a \u062e\u0648\u062f\u06a9\u0627\u0631 \u06a9\u06cc\u0641 \u067e\u0648\u0644 \u0648 \u062f\u0631\u0622\u0645\u062f \u0641\u0631\u0648\u0634\u0646\u062f\u06af\u0627\u0646 \u0631\u0648 \u0645\u062f\u06cc\u0631\u06cc\u062a \u06a9\u0646!"
@@ -1140,13 +1078,11 @@ function PlasmicHomePage__RenderFunc(props: {
               </div>
             </div>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__b3AVb)}>
-            <div className={classNames(projectcss.all, sty.freeBox__caCcW)}>
-              <div className={classNames(projectcss.all, sty.freeBox__dlVjj)}>
-                <div className={classNames(projectcss.all, sty.columns__ua77)}>
-                  <div
-                    className={classNames(projectcss.all, sty.column__tgneu)}
-                  >
+          <div className={classNames("all", sty.freeBox__b3AVb)}>
+            <div className={classNames("all", sty.freeBox__caCcW)}>
+              <div className={classNames("all", sty.freeBox__dlVjj)}>
+                <div className={classNames("all", sty.columns__ua77)}>
+                  <div className={classNames("all", sty.column__tgneu)}>
                     <PlasmicImg__
                       alt={""}
                       className={classNames(sty.img__e1H7)}
@@ -1169,18 +1105,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       }}
                     />
 
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___90Vv0
-                      )}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___5Q8CS
-                        )}
-                      >
+                    <div className={classNames("all", sty.freeBox___90Vv0)}>
+                      <div className={classNames("all", sty.freeBox___5Q8CS)}>
                         <PlasmicImg__
                           alt={""}
                           className={classNames(sty.img__kkEUf)}
@@ -1201,8 +1127,8 @@ function PlasmicHomePage__RenderFunc(props: {
 
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__ofYP
                           )}
                         >
@@ -1213,18 +1139,9 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.column__wr3Qi)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__fbNBs)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__jDxXo
-                        )}
-                      >
+                  <div className={classNames("all", sty.column__wr3Qi)}>
+                    <div className={classNames("all", sty.freeBox__fbNBs)}>
+                      <div className={classNames("all", sty.freeBox__jDxXo)}>
                         <PlasmicImg__
                           alt={""}
                           className={classNames(sty.img__lxkBv)}
@@ -1245,9 +1162,10 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                       <h3
                         className={classNames(
-                          projectcss.all,
-                          projectcss.h3,
-                          projectcss.__wab_text,
+                          "all",
+                          "h3",
+                          "h3__afXUL",
+                          "__wab_text",
                           sty.h3__vivqC
                         )}
                       >
@@ -1257,8 +1175,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </h3>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__sLzqe
                         )}
                       >
@@ -1277,52 +1195,35 @@ function PlasmicHomePage__RenderFunc(props: {
                           <div
                             data-plasmic-name={"softBackground5"}
                             data-plasmic-override={overrides.softBackground5}
-                            className={classNames(
-                              projectcss.all,
-                              sty.softBackground5
-                            )}
+                            className={classNames("all", sty.softBackground5)}
                           />
                         ) : null}
                         {false ? (
                           <div
                             data-plasmic-name={"border5"}
                             data-plasmic-override={overrides.border5}
-                            className={classNames(projectcss.all, sty.border5)}
+                            className={classNames("all", sty.border5)}
                           />
                         ) : null}
                         <div
                           data-plasmic-name={"interactionEffect5"}
                           data-plasmic-override={overrides.interactionEffect5}
-                          className={classNames(
-                            projectcss.all,
-                            sty.interactionEffect5
-                          )}
+                          className={classNames("all", sty.interactionEffect5)}
                         />
 
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__e2Z6F
-                          )}
-                        >
+                        <div className={classNames("all", sty.freeBox__e2Z6F)}>
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__zqh8G
-                            )}
+                            className={classNames("all", sty.freeBox__zqh8G)}
                           >
                             <CircleIcon
-                              className={classNames(
-                                projectcss.all,
-                                sty.svg__tv5Na
-                              )}
+                              className={classNames("all", sty.svg__tv5Na)}
                               role={"img"}
                             />
                           </div>
                           <div
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
+                              "all",
+                              "__wab_text",
                               sty.text___4KQnw
                             )}
                           >
@@ -1331,16 +1232,10 @@ function PlasmicHomePage__RenderFunc(props: {
                             }
                           </div>
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__kbaOw
-                            )}
+                            className={classNames("all", sty.freeBox__kbaOw)}
                           >
                             <ChevronDownIcon
-                              className={classNames(
-                                projectcss.all,
-                                sty.svg__eYzi
-                              )}
+                              className={classNames("all", sty.svg__eYzi)}
                               role={"img"}
                             />
                           </div>
@@ -1350,20 +1245,11 @@ function PlasmicHomePage__RenderFunc(props: {
                   </div>
                 </div>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox___9YWBm)}>
-                <div className={classNames(projectcss.all, sty.columns__nz9SP)}>
-                  <div
-                    className={classNames(projectcss.all, sty.column__k9YYl)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__zeF1)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox___1IfZ7
-                        )}
-                      >
+              <div className={classNames("all", sty.freeBox___9YWBm)}>
+                <div className={classNames("all", sty.columns__nz9SP)}>
+                  <div className={classNames("all", sty.column__k9YYl)}>
+                    <div className={classNames("all", sty.freeBox__zeF1)}>
+                      <div className={classNames("all", sty.freeBox___1IfZ7)}>
                         <PlasmicImg__
                           alt={""}
                           className={classNames(sty.img__txXu)}
@@ -1384,9 +1270,10 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                       <h3
                         className={classNames(
-                          projectcss.all,
-                          projectcss.h3,
-                          projectcss.__wab_text,
+                          "all",
+                          "h3",
+                          "h3__afXUL",
+                          "__wab_text",
                           sty.h3__vmxRp
                         )}
                       >
@@ -1394,8 +1281,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </h3>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__u6Ug
                         )}
                       >
@@ -1414,52 +1301,33 @@ function PlasmicHomePage__RenderFunc(props: {
                           <div
                             data-plasmic-name={"softBackground6"}
                             data-plasmic-override={overrides.softBackground6}
-                            className={classNames(
-                              projectcss.all,
-                              sty.softBackground6
-                            )}
+                            className={classNames("all", sty.softBackground6)}
                           />
                         ) : null}
                         {false ? (
                           <div
                             data-plasmic-name={"border6"}
                             data-plasmic-override={overrides.border6}
-                            className={classNames(projectcss.all, sty.border6)}
+                            className={classNames("all", sty.border6)}
                           />
                         ) : null}
                         <div
                           data-plasmic-name={"interactionEffect6"}
                           data-plasmic-override={overrides.interactionEffect6}
-                          className={classNames(
-                            projectcss.all,
-                            sty.interactionEffect6
-                          )}
+                          className={classNames("all", sty.interactionEffect6)}
                         />
 
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__qrJrD
-                          )}
-                        >
-                          <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__bWlC
-                            )}
-                          >
+                        <div className={classNames("all", sty.freeBox__qrJrD)}>
+                          <div className={classNames("all", sty.freeBox__bWlC)}>
                             <CircleIcon
-                              className={classNames(
-                                projectcss.all,
-                                sty.svg__yLofs
-                              )}
+                              className={classNames("all", sty.svg__yLofs)}
                               role={"img"}
                             />
                           </div>
                           <div
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
+                              "all",
+                              "__wab_text",
                               sty.text__fE9Kb
                             )}
                           >
@@ -1468,16 +1336,10 @@ function PlasmicHomePage__RenderFunc(props: {
                             }
                           </div>
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__bffCg
-                            )}
+                            className={classNames("all", sty.freeBox__bffCg)}
                           >
                             <ChevronDownIcon
-                              className={classNames(
-                                projectcss.all,
-                                sty.svg__e7Dnx
-                              )}
+                              className={classNames("all", sty.svg__e7Dnx)}
                               role={"img"}
                             />
                           </div>
@@ -1485,9 +1347,7 @@ function PlasmicHomePage__RenderFunc(props: {
                       </BaseButton>
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.column__tHoL1)}
-                  >
+                  <div className={classNames("all", sty.column__tHoL1)}>
                     <PlasmicImg__
                       alt={""}
                       className={classNames(sty.img__jLngZ)}
@@ -1514,15 +1374,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       }}
                     />
 
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__el13A)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__uEjPu
-                        )}
-                      >
+                    <div className={classNames("all", sty.freeBox__el13A)}>
+                      <div className={classNames("all", sty.freeBox__uEjPu)}>
                         <PlasmicImg__
                           alt={""}
                           className={classNames(sty.img__ldJ2D)}
@@ -1543,8 +1396,8 @@ function PlasmicHomePage__RenderFunc(props: {
 
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text___3At7G
                           )}
                         >
@@ -1557,11 +1410,9 @@ function PlasmicHomePage__RenderFunc(props: {
                   </div>
                 </div>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__vp8Wv)}>
-                <div className={classNames(projectcss.all, sty.columns__kiTe4)}>
-                  <div
-                    className={classNames(projectcss.all, sty.column__tiJjt)}
-                  >
+              <div className={classNames("all", sty.freeBox__vp8Wv)}>
+                <div className={classNames("all", sty.columns__kiTe4)}>
+                  <div className={classNames("all", sty.column__tiJjt)}>
                     <PlasmicImg__
                       alt={""}
                       className={classNames(sty.img__qqcOa)}
@@ -1584,18 +1435,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       }}
                     />
 
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___3WBaC
-                      )}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__atJTj
-                        )}
-                      >
+                    <div className={classNames("all", sty.freeBox___3WBaC)}>
+                      <div className={classNames("all", sty.freeBox__atJTj)}>
                         <PlasmicImg__
                           alt={""}
                           className={classNames(sty.img__xaLvs)}
@@ -1616,8 +1457,8 @@ function PlasmicHomePage__RenderFunc(props: {
 
                         <div
                           className={classNames(
-                            projectcss.all,
-                            projectcss.__wab_text,
+                            "all",
+                            "__wab_text",
                             sty.text__lPX
                           )}
                         >
@@ -1628,18 +1469,9 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.column__eZiPm)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__poDb4)}
-                    >
-                      <div
-                        className={classNames(
-                          projectcss.all,
-                          sty.freeBox__agBhz
-                        )}
-                      >
+                  <div className={classNames("all", sty.column__eZiPm)}>
+                    <div className={classNames("all", sty.freeBox__poDb4)}>
+                      <div className={classNames("all", sty.freeBox__agBhz)}>
                         <PlasmicImg__
                           alt={""}
                           className={classNames(sty.img__eYaEl)}
@@ -1660,9 +1492,10 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                       <h3
                         className={classNames(
-                          projectcss.all,
-                          projectcss.h3,
-                          projectcss.__wab_text,
+                          "all",
+                          "h3",
+                          "h3__afXUL",
+                          "__wab_text",
                           sty.h3__an51
                         )}
                       >
@@ -1672,8 +1505,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </h3>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__bywm
                         )}
                       >
@@ -1692,68 +1525,45 @@ function PlasmicHomePage__RenderFunc(props: {
                           <div
                             data-plasmic-name={"softBackground7"}
                             data-plasmic-override={overrides.softBackground7}
-                            className={classNames(
-                              projectcss.all,
-                              sty.softBackground7
-                            )}
+                            className={classNames("all", sty.softBackground7)}
                           />
                         ) : null}
                         {false ? (
                           <div
                             data-plasmic-name={"border7"}
                             data-plasmic-override={overrides.border7}
-                            className={classNames(projectcss.all, sty.border7)}
+                            className={classNames("all", sty.border7)}
                           />
                         ) : null}
                         <div
                           data-plasmic-name={"interactionEffect7"}
                           data-plasmic-override={overrides.interactionEffect7}
-                          className={classNames(
-                            projectcss.all,
-                            sty.interactionEffect7
-                          )}
+                          className={classNames("all", sty.interactionEffect7)}
                         />
 
-                        <div
-                          className={classNames(
-                            projectcss.all,
-                            sty.freeBox__cgOzv
-                          )}
-                        >
+                        <div className={classNames("all", sty.freeBox__cgOzv)}>
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__ny8Hm
-                            )}
+                            className={classNames("all", sty.freeBox__ny8Hm)}
                           >
                             <CircleIcon
-                              className={classNames(
-                                projectcss.all,
-                                sty.svg___6ZoTj
-                              )}
+                              className={classNames("all", sty.svg___6ZoTj)}
                               role={"img"}
                             />
                           </div>
                           <div
                             className={classNames(
-                              projectcss.all,
-                              projectcss.__wab_text,
+                              "all",
+                              "__wab_text",
                               sty.text___8Z2A
                             )}
                           >
                             {"lorem Ipsum"}
                           </div>
                           <div
-                            className={classNames(
-                              projectcss.all,
-                              sty.freeBox__j2ASv
-                            )}
+                            className={classNames("all", sty.freeBox__j2ASv)}
                           >
                             <ChevronDownIcon
-                              className={classNames(
-                                projectcss.all,
-                                sty.svg__nLt8R
-                              )}
+                              className={classNames("all", sty.svg__nLt8R)}
                               role={"img"}
                             />
                           </div>
@@ -1765,15 +1575,16 @@ function PlasmicHomePage__RenderFunc(props: {
               </div>
             </div>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__wo91)}>
-            <div className={classNames(projectcss.all, sty.freeBox__vlPE)}>
-              <div className={classNames(projectcss.all, sty.freeBox__sSzdY)}>
-                <div className={classNames(projectcss.all, sty.freeBox___8P54)}>
+          <div className={classNames("all", sty.freeBox__wo91)}>
+            <div className={classNames("all", sty.freeBox__vlPE)}>
+              <div className={classNames("all", sty.freeBox__sSzdY)}>
+                <div className={classNames("all", sty.freeBox___8P54)}>
                   <h2
                     className={classNames(
-                      projectcss.all,
-                      projectcss.h2,
-                      projectcss.__wab_text,
+                      "all",
+                      "h2",
+                      "h2__afXUL",
+                      "__wab_text",
                       sty.h2__d5Qk
                     )}
                   >
@@ -1782,22 +1593,14 @@ function PlasmicHomePage__RenderFunc(props: {
                       : "\u0627\u0632 \u06a9\u062c\u0627 \u0634\u0631\u0648\u0639 \u06a9\u0646\u0645\u061f"}
                   </h2>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__pFtEh
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__pFtEh)}
                   >
                     {hasVariant(globalVariants, "screen", "mobileOnly")
                       ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex."
                       : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex."}
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__roi1)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__wp3Wn)}
-                    >
+                  <div className={classNames("all", sty.freeBox__roi1)}>
+                    <div className={classNames("all", sty.freeBox__wp3Wn)}>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img__eKK8)}
@@ -1828,16 +1631,11 @@ function PlasmicHomePage__RenderFunc(props: {
                         }}
                       />
                     </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___9PPvx
-                      )}
-                    >
+                    <div className={classNames("all", sty.freeBox___9PPvx)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___5XbS
                         )}
                       >
@@ -1849,10 +1647,11 @@ function PlasmicHomePage__RenderFunc(props: {
                             {
                               <PlasmicLink__
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.a,
-                                  projectcss.__wab_text,
-                                  projectcss.plasmic_default__inline,
+                                  "all",
+                                  "a",
+                                  "a__afXUL",
+                                  "__wab_text",
+                                  "plasmic_default__inline",
                                   sty.link__iqmSz
                                 )}
                                 component={Link}
@@ -1892,10 +1691,11 @@ function PlasmicHomePage__RenderFunc(props: {
                             {
                               <PlasmicLink__
                                 className={classNames(
-                                  projectcss.all,
-                                  projectcss.a,
-                                  projectcss.__wab_text,
-                                  projectcss.plasmic_default__inline,
+                                  "all",
+                                  "a",
+                                  "a__afXUL",
+                                  "__wab_text",
+                                  "plasmic_default__inline",
                                   sty.link__k4LPb
                                 )}
                                 component={Link}
@@ -1923,12 +1723,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__gjnIe)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__lxBil)}
-                    >
+                  <div className={classNames("all", sty.freeBox__gjnIe)}>
+                    <div className={classNames("all", sty.freeBox__lxBil)}>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img__yiG9Y)}
@@ -1959,16 +1755,11 @@ function PlasmicHomePage__RenderFunc(props: {
                         }}
                       />
                     </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___2Mb4I
-                      )}
-                    >
+                    <div className={classNames("all", sty.freeBox___2Mb4I)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___4Gz23
                         )}
                       >
@@ -1978,12 +1769,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__ch8Yp)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__dfzym)}
-                    >
+                  <div className={classNames("all", sty.freeBox__ch8Yp)}>
+                    <div className={classNames("all", sty.freeBox__dfzym)}>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img__woSM)}
@@ -2014,13 +1801,11 @@ function PlasmicHomePage__RenderFunc(props: {
                         }}
                       />
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__prToj)}
-                    >
+                    <div className={classNames("all", sty.freeBox__prToj)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__qQsKx
                         )}
                       >
@@ -2034,25 +1819,22 @@ function PlasmicHomePage__RenderFunc(props: {
               </div>
             </div>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__g2Rxr)}>
-            <div className={classNames(projectcss.all, sty.freeBox__jJOvH)}>
-              <div className={classNames(projectcss.all, sty.freeBox__lLSb7)}>
+          <div className={classNames("all", sty.freeBox__g2Rxr)}>
+            <div className={classNames("all", sty.freeBox__jJOvH)}>
+              <div className={classNames("all", sty.freeBox__lLSb7)}>
                 <h2
                   className={classNames(
-                    projectcss.all,
-                    projectcss.h2,
-                    projectcss.__wab_text,
+                    "all",
+                    "h2",
+                    "h2__afXUL",
+                    "__wab_text",
                     sty.h2__yliwg
                   )}
                 >
                   {"Lorem Ipsum"}
                 </h2>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__g9LlM
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__g9LlM)}
                 >
                   {hasVariant(globalVariants, "screen", "mobileOnly")
                     ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex."
@@ -2069,68 +1851,49 @@ function PlasmicHomePage__RenderFunc(props: {
                     <div
                       data-plasmic-name={"softBackground8"}
                       data-plasmic-override={overrides.softBackground8}
-                      className={classNames(
-                        projectcss.all,
-                        sty.softBackground8
-                      )}
+                      className={classNames("all", sty.softBackground8)}
                     />
                   ) : null}
                   {false ? (
                     <div
                       data-plasmic-name={"border8"}
                       data-plasmic-override={overrides.border8}
-                      className={classNames(projectcss.all, sty.border8)}
+                      className={classNames("all", sty.border8)}
                     />
                   ) : null}
                   <div
                     data-plasmic-name={"interactionEffect8"}
                     data-plasmic-override={overrides.interactionEffect8}
-                    className={classNames(
-                      projectcss.all,
-                      sty.interactionEffect8
-                    )}
+                    className={classNames("all", sty.interactionEffect8)}
                   />
 
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__kdAex)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__e8Enx)}
-                    >
+                  <div className={classNames("all", sty.freeBox__kdAex)}>
+                    <div className={classNames("all", sty.freeBox__e8Enx)}>
                       <CircleIcon
-                        className={classNames(projectcss.all, sty.svg__hTfCy)}
+                        className={classNames("all", sty.svg__hTfCy)}
                         role={"img"}
                       />
                     </div>
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text___3Wixt
                       )}
                     >
                       {"lorem Ipsum"}
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__uLwph)}
-                    >
+                    <div className={classNames("all", sty.freeBox__uLwph)}>
                       <ChevronDownIcon
-                        className={classNames(projectcss.all, sty.svg___4L6Mz)}
+                        className={classNames("all", sty.svg___4L6Mz)}
                         role={"img"}
                       />
                     </div>
                   </div>
                 </BaseButton>
-                <div className={classNames(projectcss.all, sty.freeBox__z0SUm)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__w88Wt)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___9Txpu
-                      )}
-                    >
+                <div className={classNames("all", sty.freeBox__z0SUm)}>
+                  <div className={classNames("all", sty.freeBox__w88Wt)}>
+                    <div className={classNames("all", sty.freeBox___9Txpu)}>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img__s38C9)}
@@ -2151,8 +1914,8 @@ function PlasmicHomePage__RenderFunc(props: {
 
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__aRvwx
                         )}
                       >
@@ -2160,8 +1923,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___3M2Ix
                         )}
                       >
@@ -2169,8 +1932,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__itrrX
                         )}
                       >
@@ -2180,12 +1943,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__nMnwa)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__sp4Wi)}
-                    >
+                  <div className={classNames("all", sty.freeBox__nMnwa)}>
+                    <div className={classNames("all", sty.freeBox__sp4Wi)}>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img__ppbti)}
@@ -2206,8 +1965,8 @@ function PlasmicHomePage__RenderFunc(props: {
 
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___2DwPc
                         )}
                       >
@@ -2215,8 +1974,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__n7AVo
                         )}
                       >
@@ -2224,8 +1983,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__qarx6
                         )}
                       >
@@ -2235,12 +1994,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__xta0Y)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__pqkEz)}
-                    >
+                  <div className={classNames("all", sty.freeBox__xta0Y)}>
+                    <div className={classNames("all", sty.freeBox__pqkEz)}>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img__qTj8)}
@@ -2261,8 +2016,8 @@ function PlasmicHomePage__RenderFunc(props: {
 
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__qw6FF
                         )}
                       >
@@ -2270,8 +2025,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__hWmXl
                         )}
                       >
@@ -2279,8 +2034,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__ucPQe
                         )}
                       >
@@ -2290,12 +2045,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__h1FOf)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__apFa)}
-                    >
+                  <div className={classNames("all", sty.freeBox__h1FOf)}>
+                    <div className={classNames("all", sty.freeBox__apFa)}>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img__oV36K)}
@@ -2316,8 +2067,8 @@ function PlasmicHomePage__RenderFunc(props: {
 
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__m0Ye8
                         )}
                       >
@@ -2325,8 +2076,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__sjMah
                         )}
                       >
@@ -2334,8 +2085,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__udF3N
                         )}
                       >
@@ -2345,12 +2096,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__psMxu)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__h3Yx1)}
-                    >
+                  <div className={classNames("all", sty.freeBox__psMxu)}>
+                    <div className={classNames("all", sty.freeBox__h3Yx1)}>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img__gYMo)}
@@ -2371,8 +2118,8 @@ function PlasmicHomePage__RenderFunc(props: {
 
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___63CtQ
                         )}
                       >
@@ -2380,8 +2127,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___5Vsy
                         )}
                       >
@@ -2389,8 +2136,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__g5WM9
                         )}
                       >
@@ -2400,12 +2147,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__t3Shp)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__ihDpd)}
-                    >
+                  <div className={classNames("all", sty.freeBox__t3Shp)}>
+                    <div className={classNames("all", sty.freeBox__ihDpd)}>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img__ubn9C)}
@@ -2426,8 +2169,8 @@ function PlasmicHomePage__RenderFunc(props: {
 
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__uZx95
                         )}
                       >
@@ -2435,8 +2178,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__dCcNv
                         )}
                       >
@@ -2444,8 +2187,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__rXvn9
                         )}
                       >
@@ -2459,16 +2202,12 @@ function PlasmicHomePage__RenderFunc(props: {
               </div>
             </div>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__tfqBl)}>
-            <div className={classNames(projectcss.all, sty.freeBox__tv8PD)}>
-              <div className={classNames(projectcss.all, sty.freeBox__x7G30)}>
-                <div className={classNames(projectcss.all, sty.freeBox__lZJkP)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__hij5Z)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__ePoJe)}
-                    >
+          <div className={classNames("all", sty.freeBox__tfqBl)}>
+            <div className={classNames("all", sty.freeBox__tv8PD)}>
+              <div className={classNames("all", sty.freeBox__x7G30)}>
+                <div className={classNames("all", sty.freeBox__lZJkP)}>
+                  <div className={classNames("all", sty.freeBox__hij5Z)}>
+                    <div className={classNames("all", sty.freeBox__ePoJe)}>
                       <PlasmicImg__
                         alt={""}
                         className={classNames(sty.img__bjPRb)}
@@ -2489,9 +2228,10 @@ function PlasmicHomePage__RenderFunc(props: {
 
                       <h6
                         className={classNames(
-                          projectcss.all,
-                          projectcss.h6,
-                          projectcss.__wab_text,
+                          "all",
+                          "h6",
+                          "h6__afXUL",
+                          "__wab_text",
                           sty.h6__npR5V
                         )}
                       >
@@ -2500,8 +2240,8 @@ function PlasmicHomePage__RenderFunc(props: {
                     </div>
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__bTGvr
                       )}
                     >
@@ -2510,17 +2250,14 @@ function PlasmicHomePage__RenderFunc(props: {
                       }
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__w6Th2)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__qU7Vv)}
-                    >
+                  <div className={classNames("all", sty.freeBox__w6Th2)}>
+                    <div className={classNames("all", sty.freeBox__qU7Vv)}>
                       <h6
                         className={classNames(
-                          projectcss.all,
-                          projectcss.h6,
-                          projectcss.__wab_text,
+                          "all",
+                          "h6",
+                          "h6__afXUL",
+                          "__wab_text",
                           sty.h6__kGGq
                         )}
                       >
@@ -2545,17 +2282,14 @@ function PlasmicHomePage__RenderFunc(props: {
                       />
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__ldBht)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__ebSq9)}
-                    >
+                  <div className={classNames("all", sty.freeBox__ldBht)}>
+                    <div className={classNames("all", sty.freeBox__ebSq9)}>
                       <h6
                         className={classNames(
-                          projectcss.all,
-                          projectcss.h6,
-                          projectcss.__wab_text,
+                          "all",
+                          "h6",
+                          "h6__afXUL",
+                          "__wab_text",
                           sty.h6__bAF
                         )}
                       >
@@ -2580,17 +2314,14 @@ function PlasmicHomePage__RenderFunc(props: {
                       />
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__lqsAp)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__e4Frb)}
-                    >
+                  <div className={classNames("all", sty.freeBox__lqsAp)}>
+                    <div className={classNames("all", sty.freeBox__e4Frb)}>
                       <h6
                         className={classNames(
-                          projectcss.all,
-                          projectcss.h6,
-                          projectcss.__wab_text,
+                          "all",
+                          "h6",
+                          "h6__afXUL",
+                          "__wab_text",
                           sty.h6__mgbYt
                         )}
                       >
@@ -2615,17 +2346,14 @@ function PlasmicHomePage__RenderFunc(props: {
                       />
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__cyLnS)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__hrxo6)}
-                    >
+                  <div className={classNames("all", sty.freeBox__cyLnS)}>
+                    <div className={classNames("all", sty.freeBox__hrxo6)}>
                       <h6
                         className={classNames(
-                          projectcss.all,
-                          projectcss.h6,
-                          projectcss.__wab_text,
+                          "all",
+                          "h6",
+                          "h6__afXUL",
+                          "__wab_text",
                           sty.h6__bWcxP
                         )}
                       >
@@ -2651,21 +2379,18 @@ function PlasmicHomePage__RenderFunc(props: {
                     </div>
                   </div>
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__vhL8S)}>
+                <div className={classNames("all", sty.freeBox__vhL8S)}>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__oYoKj
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__oYoKj)}
                   >
                     {"Lorem Ipsum"}
                   </div>
                   <h2
                     className={classNames(
-                      projectcss.all,
-                      projectcss.h2,
-                      projectcss.__wab_text,
+                      "all",
+                      "h2",
+                      "h2__afXUL",
+                      "__wab_text",
                       sty.h2__iqBEa
                     )}
                   >
@@ -2674,11 +2399,7 @@ function PlasmicHomePage__RenderFunc(props: {
                     }
                   </h2>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__h1KOg
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__h1KOg)}
                   >
                     {
                       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
@@ -2688,14 +2409,15 @@ function PlasmicHomePage__RenderFunc(props: {
               </div>
             </div>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__uzsrg)}>
-            <div className={classNames(projectcss.all, sty.freeBox__aqmOw)}>
-              <div className={classNames(projectcss.all, sty.freeBox__zScvn)}>
+          <div className={classNames("all", sty.freeBox__uzsrg)}>
+            <div className={classNames("all", sty.freeBox__aqmOw)}>
+              <div className={classNames("all", sty.freeBox__zScvn)}>
                 <h2
                   className={classNames(
-                    projectcss.all,
-                    projectcss.h2,
-                    projectcss.__wab_text,
+                    "all",
+                    "h2",
+                    "h2__afXUL",
+                    "__wab_text",
                     sty.h2__hevIn
                   )}
                 >
@@ -2703,11 +2425,11 @@ function PlasmicHomePage__RenderFunc(props: {
                     ? "\u0648\u0628\u200c\u0633\u0631\u0648\u06cc\u0633\u200c\u0647\u0627:"
                     : "\u0648\u0628\u200c\u0633\u0631\u0648\u06cc\u0633\u200c\u0647\u0627"}
                 </h2>
-                <div className={classNames(projectcss.all, sty.freeBox__urwpU)}>
+                <div className={classNames("all", sty.freeBox__urwpU)}>
                   <div
                     className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
+                      "all",
+                      "__wab_text",
                       sty.text___7J81L
                     )}
                   >
@@ -2719,10 +2441,11 @@ function PlasmicHomePage__RenderFunc(props: {
                         {
                           <PlasmicLink__
                             className={classNames(
-                              projectcss.all,
-                              projectcss.a,
-                              projectcss.__wab_text,
-                              projectcss.plasmic_default__inline,
+                              "all",
+                              "a",
+                              "a__afXUL",
+                              "__wab_text",
+                              "plasmic_default__inline",
                               sty.link__y7Z6G
                             )}
                             component={Link}
@@ -2736,7 +2459,7 @@ function PlasmicHomePage__RenderFunc(props: {
                             <React.Fragment>
                               <span
                                 className={
-                                  "plasmic_default__all plasmic_default__span"
+                                  "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                                 }
                                 style={{ fontWeight: 700 }}
                               >
@@ -2752,15 +2475,13 @@ function PlasmicHomePage__RenderFunc(props: {
                     )}
                   </div>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__vw6Id
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__vw6Id)}
                   >
                     <React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ color: "#000000" }}
                       >
                         {
@@ -2769,7 +2490,9 @@ function PlasmicHomePage__RenderFunc(props: {
                       </span>
                       <React.Fragment>{"\n"}</React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ color: "#000000" }}
                       >
                         {
@@ -2779,15 +2502,9 @@ function PlasmicHomePage__RenderFunc(props: {
                     </React.Fragment>
                   </div>
                 </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___4BDCr)}
-                >
+                <div className={classNames("all", sty.freeBox___4BDCr)}>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__gNeXi
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__gNeXi)}
                   >
                     {hasVariant(globalVariants, "screen", "mobileOnly") ? (
                       "\u00a0\u00a0\ud83d\udd39\u062a\u0633\u0647\u06cc\u0645:\u00a0\u00a0"
@@ -2797,10 +2514,11 @@ function PlasmicHomePage__RenderFunc(props: {
                         {
                           <PlasmicLink__
                             className={classNames(
-                              projectcss.all,
-                              projectcss.a,
-                              projectcss.__wab_text,
-                              projectcss.plasmic_default__inline,
+                              "all",
+                              "a",
+                              "a__afXUL",
+                              "__wab_text",
+                              "plasmic_default__inline",
                               sty.link__w1ANc
                             )}
                             component={Link}
@@ -2814,7 +2532,7 @@ function PlasmicHomePage__RenderFunc(props: {
                             <React.Fragment>
                               <span
                                 className={
-                                  "plasmic_default__all plasmic_default__span"
+                                  "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                                 }
                                 style={{ fontWeight: 700 }}
                               >
@@ -2828,15 +2546,13 @@ function PlasmicHomePage__RenderFunc(props: {
                     )}
                   </div>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__fl6R7
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__fl6R7)}
                   >
                     <React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ color: "#000000" }}
                       >
                         {
@@ -2845,7 +2561,9 @@ function PlasmicHomePage__RenderFunc(props: {
                       </span>
                       <React.Fragment>{"\n"}</React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ color: "#000000" }}
                       >
                         {
@@ -2855,13 +2573,9 @@ function PlasmicHomePage__RenderFunc(props: {
                     </React.Fragment>
                   </div>
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__r4Gzk)}>
+                <div className={classNames("all", sty.freeBox__r4Gzk)}>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__ayJr9
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__ayJr9)}
                   >
                     {hasVariant(globalVariants, "screen", "mobileOnly") ? (
                       "\u00a0\u00a0\ud83d\udd39\u06a9\u06cc\u0641 \u067e\u0648\u0644:\u00a0\u00a0"
@@ -2871,10 +2585,11 @@ function PlasmicHomePage__RenderFunc(props: {
                         {
                           <PlasmicLink__
                             className={classNames(
-                              projectcss.all,
-                              projectcss.a,
-                              projectcss.__wab_text,
-                              projectcss.plasmic_default__inline,
+                              "all",
+                              "a",
+                              "a__afXUL",
+                              "__wab_text",
+                              "plasmic_default__inline",
                               sty.link___5KIu
                             )}
                             component={Link}
@@ -2888,7 +2603,7 @@ function PlasmicHomePage__RenderFunc(props: {
                             <React.Fragment>
                               <span
                                 className={
-                                  "plasmic_default__all plasmic_default__span"
+                                  "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                                 }
                                 style={{ fontWeight: 700 }}
                               >
@@ -2904,15 +2619,13 @@ function PlasmicHomePage__RenderFunc(props: {
                     )}
                   </div>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__nyKLk
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__nyKLk)}
                   >
                     <React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ color: "#000000" }}
                       >
                         {
@@ -2921,7 +2634,9 @@ function PlasmicHomePage__RenderFunc(props: {
                       </span>
                       <React.Fragment>{"\n"}</React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ color: "#000000" }}
                       >
                         {
@@ -2931,13 +2646,9 @@ function PlasmicHomePage__RenderFunc(props: {
                     </React.Fragment>
                   </div>
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__ncl3)}>
+                <div className={classNames("all", sty.freeBox__ncl3)}>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__xnsf
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__xnsf)}
                   >
                     {hasVariant(globalVariants, "screen", "mobileOnly") ? (
                       "\u00a0\u00a0\ud83d\udd39\u0641\u0627\u06a9\u062a\u0648\u0631:\u00a0\u00a0"
@@ -2947,10 +2658,11 @@ function PlasmicHomePage__RenderFunc(props: {
                         {
                           <PlasmicLink__
                             className={classNames(
-                              projectcss.all,
-                              projectcss.a,
-                              projectcss.__wab_text,
-                              projectcss.plasmic_default__inline,
+                              "all",
+                              "a",
+                              "a__afXUL",
+                              "__wab_text",
+                              "plasmic_default__inline",
                               sty.link__naQ2E
                             )}
                             component={Link}
@@ -2964,7 +2676,7 @@ function PlasmicHomePage__RenderFunc(props: {
                             <React.Fragment>
                               <span
                                 className={
-                                  "plasmic_default__all plasmic_default__span"
+                                  "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                                 }
                                 style={{ fontWeight: 700 }}
                               >
@@ -2980,15 +2692,13 @@ function PlasmicHomePage__RenderFunc(props: {
                     )}
                   </div>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__ttYtQ
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__ttYtQ)}
                   >
                     <React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ color: "#000000" }}
                       >
                         {
@@ -2997,7 +2707,9 @@ function PlasmicHomePage__RenderFunc(props: {
                       </span>
                       <React.Fragment>{"\n"}</React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ color: "#000000" }}
                       >
                         {
@@ -3007,15 +2719,9 @@ function PlasmicHomePage__RenderFunc(props: {
                     </React.Fragment>
                   </div>
                 </div>
-                <div
-                  className={classNames(projectcss.all, sty.freeBox___4MQcH)}
-                >
+                <div className={classNames("all", sty.freeBox___4MQcH)}>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__uaqzq
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__uaqzq)}
                   >
                     {hasVariant(globalVariants, "screen", "mobileOnly") ? (
                       "\u00a0\u00a0\ud83d\udd39\u062a\u0631\u0627\u06a9\u0646\u0634:\u00a0\u00a0"
@@ -3025,10 +2731,11 @@ function PlasmicHomePage__RenderFunc(props: {
                         {
                           <PlasmicLink__
                             className={classNames(
-                              projectcss.all,
-                              projectcss.a,
-                              projectcss.__wab_text,
-                              projectcss.plasmic_default__inline,
+                              "all",
+                              "a",
+                              "a__afXUL",
+                              "__wab_text",
+                              "plasmic_default__inline",
                               sty.link__yjJyk
                             )}
                             component={Link}
@@ -3042,7 +2749,7 @@ function PlasmicHomePage__RenderFunc(props: {
                             <React.Fragment>
                               <span
                                 className={
-                                  "plasmic_default__all plasmic_default__span"
+                                  "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                                 }
                                 style={{ fontWeight: 700 }}
                               >
@@ -3058,15 +2765,13 @@ function PlasmicHomePage__RenderFunc(props: {
                     )}
                   </div>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__sTq1Q
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__sTq1Q)}
                   >
                     <React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ color: "#000000" }}
                       >
                         {
@@ -3076,13 +2781,9 @@ function PlasmicHomePage__RenderFunc(props: {
                     </React.Fragment>
                   </div>
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__peSor)}>
+                <div className={classNames("all", sty.freeBox__peSor)}>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__vt4HD
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__vt4HD)}
                   >
                     {hasVariant(globalVariants, "screen", "mobileOnly") ? (
                       "\u00a0\u00a0\ud83d\udd39\u0631\u06cc\u0641\u0627\u0646\u062f:\u00a0\u00a0"
@@ -3092,10 +2793,11 @@ function PlasmicHomePage__RenderFunc(props: {
                         {
                           <PlasmicLink__
                             className={classNames(
-                              projectcss.all,
-                              projectcss.a,
-                              projectcss.__wab_text,
-                              projectcss.plasmic_default__inline,
+                              "all",
+                              "a",
+                              "a__afXUL",
+                              "__wab_text",
+                              "plasmic_default__inline",
                               sty.link__nw1ID
                             )}
                             component={Link}
@@ -3109,7 +2811,7 @@ function PlasmicHomePage__RenderFunc(props: {
                             <React.Fragment>
                               <span
                                 className={
-                                  "plasmic_default__all plasmic_default__span"
+                                  "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
                                 }
                                 style={{ fontWeight: 700 }}
                               >
@@ -3125,15 +2827,13 @@ function PlasmicHomePage__RenderFunc(props: {
                     )}
                   </div>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__pOyw
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__pOyw)}
                   >
                     <React.Fragment>
                       <span
-                        className={"plasmic_default__all plasmic_default__span"}
+                        className={
+                          "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                        }
                         style={{ color: "#000000" }}
                       >
                         {
@@ -3146,8 +2846,8 @@ function PlasmicHomePage__RenderFunc(props: {
               </div>
             </div>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__ez8PI)}>
-            <div className={classNames(projectcss.all, sty.freeBox__ma29N)}>
+          <div className={classNames("all", sty.freeBox__ez8PI)}>
+            <div className={classNames("all", sty.freeBox__ma29N)}>
               <PlasmicImg__
                 alt={""}
                 className={classNames(sty.img__qAcuk)}
@@ -3166,19 +2866,22 @@ function PlasmicHomePage__RenderFunc(props: {
                 }}
               />
 
-              <div className={classNames(projectcss.all, sty.freeBox__xNrNf)}>
+              <div className={classNames("all", sty.freeBox__xNrNf)}>
                 <h2
                   className={classNames(
-                    projectcss.all,
-                    projectcss.h2,
-                    projectcss.__wab_text,
+                    "all",
+                    "h2",
+                    "h2__afXUL",
+                    "__wab_text",
                     sty.h2__w7Hg6,
                     "pricing"
                   )}
                 >
                   <React.Fragment>
                     <span
-                      className={"plasmic_default__all plasmic_default__span"}
+                      className={
+                        "plasmic_default__all plasmic_default__span plasmic_default__span__afXUL"
+                      }
                       style={{ fontWeight: 700 }}
                     >
                       {"\u062a\u0639\u0631\u0641\u0647\u200c\u0647\u0627"}
@@ -3186,27 +2889,19 @@ function PlasmicHomePage__RenderFunc(props: {
                   </React.Fragment>
                 </h2>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__oYwO
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__oYwO)}
                 >
                   {
                     "\u0634\u0645\u0627 \u0645\u06cc\u200c\u062a\u0648\u0627\u0646\u06cc\u062f \u062a\u0627 \u06cc\u06a9\u200c\u0645\u0627\u0647 \u0627\u0632 \u0633\u0631\u0648\u06cc\u0633\u200c\u0647\u0627 \u0628\u0647\u200c\u0635\u0648\u0631\u062a \u0631\u0627\u06cc\u06af\u0627\u0646 \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u06a9\u0646\u06cc\u062f \u0648 \u067e\u0633 \u0627\u0632 \u0622\u0646\u060c \u062a\u0639\u0631\u0641\u0647\u200c\u0647\u0627 \u0628\u0647\u200c\u0635\u0648\u0631\u062a payAsYouGo \u0648 \u0628\u0647\u200c\u0646\u0633\u0628\u062a \u0627\u0633\u062a\u0641\u0627\u062f\u0647 \u0627\u0632 \u0633\u0631\u0648\u06cc\u0633\u200c\u0647\u0627 \u0637\u0628\u0642 \u062c\u062f\u0648\u0644 \u0632\u06cc\u0631 \u062f\u0631 \u0646\u0638\u0631 \u06af\u0631\u0641\u062a\u0647 \u062e\u0648\u0627\u0647\u062f \u0634\u062f."
                   }
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__oyTn)}>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__agid2)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__ecdDp)}
-                    >
+                <div className={classNames("all", sty.freeBox__oyTn)}>
+                  <div className={classNames("all", sty.freeBox__agid2)}>
+                    <div className={classNames("all", sty.freeBox__ecdDp)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__zbxDh
                         )}
                       >
@@ -3215,13 +2910,11 @@ function PlasmicHomePage__RenderFunc(props: {
                         }
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__ml7F)}
-                    >
+                    <div className={classNames("all", sty.freeBox__ml7F)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__elJYz
                         )}
                       >
@@ -3231,29 +2924,23 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__deCsC)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__y9Yws)}
-                    >
+                  <div className={classNames("all", sty.freeBox__deCsC)}>
+                    <div className={classNames("all", sty.freeBox__y9Yws)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__tk30D
                         )}
                       >
                         {"\u062a\u0633\u0647\u06cc\u0645:"}
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__lsFm)}
-                    >
+                    <div className={classNames("all", sty.freeBox__lsFm)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___60AG
                         )}
                       >
@@ -3263,32 +2950,23 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___0IfEh)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___6SzSw
-                      )}
-                    >
+                  <div className={classNames("all", sty.freeBox___0IfEh)}>
+                    <div className={classNames("all", sty.freeBox___6SzSw)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__kiBz8
                         )}
                       >
                         {"\u0641\u0627\u06a9\u062a\u0648\u0631:"}
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__mxwJk)}
-                    >
+                    <div className={classNames("all", sty.freeBox__mxwJk)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__sNqhh
                         )}
                       >
@@ -3298,32 +2976,23 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__et1P)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___1SpDs
-                      )}
-                    >
+                  <div className={classNames("all", sty.freeBox__et1P)}>
+                    <div className={classNames("all", sty.freeBox___1SpDs)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__dfvTj
                         )}
                       >
                         {"\u06a9\u06cc\u0641 \u067e\u0648\u0644:"}
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__powL)}
-                    >
+                    <div className={classNames("all", sty.freeBox__powL)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__mbkEc
                         )}
                       >
@@ -3331,16 +3000,12 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__jvrBy)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__iu3Zf)}
-                    >
+                  <div className={classNames("all", sty.freeBox__jvrBy)}>
+                    <div className={classNames("all", sty.freeBox__iu3Zf)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__nyOlq
                         )}
                       >
@@ -3349,13 +3014,11 @@ function PlasmicHomePage__RenderFunc(props: {
                         }
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__uVxDe)}
-                    >
+                    <div className={classNames("all", sty.freeBox__uVxDe)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__m6Gvy
                         )}
                       >
@@ -3363,16 +3026,12 @@ function PlasmicHomePage__RenderFunc(props: {
                       </div>
                     </div>
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___6Cjlm)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.freeBox__cp9Nm)}
-                    >
+                  <div className={classNames("all", sty.freeBox___6Cjlm)}>
+                    <div className={classNames("all", sty.freeBox__cp9Nm)}>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__zUlwR
                         )}
                       >
@@ -3385,7 +3044,7 @@ function PlasmicHomePage__RenderFunc(props: {
                 </div>
               </div>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox___2MgZs)}>
+            <div className={classNames("all", sty.freeBox___2MgZs)}>
               <PlasmicImg__
                 alt={""}
                 className={classNames(sty.img___7OzLs)}
@@ -3404,19 +3063,16 @@ function PlasmicHomePage__RenderFunc(props: {
                 }}
               />
 
-              <div className={classNames(projectcss.all, sty.freeBox__fPges)}>
-                <div className={classNames(projectcss.all, sty.freeBox__cgGq9)}>
-                  <div
-                    className={classNames(projectcss.all, sty.columns___8F5Sa)}
-                  >
-                    <div
-                      className={classNames(projectcss.all, sty.column__yHiAl)}
-                    >
+              <div className={classNames("all", sty.freeBox__fPges)}>
+                <div className={classNames("all", sty.freeBox__cgGq9)}>
+                  <div className={classNames("all", sty.columns___8F5Sa)}>
+                    <div className={classNames("all", sty.column__yHiAl)}>
                       <h3
                         className={classNames(
-                          projectcss.all,
-                          projectcss.h3,
-                          projectcss.__wab_text,
+                          "all",
+                          "h3",
+                          "h3__afXUL",
+                          "__wab_text",
                           sty.h3__opBzY
                         )}
                       >
@@ -3424,8 +3080,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </h3>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__oSfao
                         )}
                       >
@@ -3434,14 +3090,13 @@ function PlasmicHomePage__RenderFunc(props: {
                         }
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.column__ewiUo)}
-                    >
+                    <div className={classNames("all", sty.column__ewiUo)}>
                       <h3
                         className={classNames(
-                          projectcss.all,
-                          projectcss.h3,
-                          projectcss.__wab_text,
+                          "all",
+                          "h3",
+                          "h3__afXUL",
+                          "__wab_text",
                           sty.h3__lo78Q
                         )}
                       >
@@ -3451,8 +3106,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </h3>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text___0Yort
                         )}
                       >
@@ -3461,14 +3116,13 @@ function PlasmicHomePage__RenderFunc(props: {
                           : "\u0631\u0648\u0634\u200c\u0647\u0627\u06cc \u067e\u0631\u062f\u0627\u062e\u062a"}
                       </div>
                     </div>
-                    <div
-                      className={classNames(projectcss.all, sty.column__nhyIs)}
-                    >
+                    <div className={classNames("all", sty.column__nhyIs)}>
                       <h3
                         className={classNames(
-                          projectcss.all,
-                          projectcss.h3,
-                          projectcss.__wab_text,
+                          "all",
+                          "h3",
+                          "h3__afXUL",
+                          "__wab_text",
                           sty.h3__qfZf
                         )}
                       >
@@ -3476,8 +3130,8 @@ function PlasmicHomePage__RenderFunc(props: {
                       </h3>
                       <div
                         className={classNames(
-                          projectcss.all,
-                          projectcss.__wab_text,
+                          "all",
+                          "__wab_text",
                           sty.text__gi023
                         )}
                       >
@@ -3488,21 +3142,15 @@ function PlasmicHomePage__RenderFunc(props: {
                     </div>
                   </div>
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__nQrd)}>
+                <div className={classNames("all", sty.freeBox__nQrd)}>
                   <div
-                    className={classNames(
-                      projectcss.all,
-                      projectcss.__wab_text,
-                      sty.text__giI2B
-                    )}
+                    className={classNames("all", "__wab_text", sty.text__giI2B)}
                   >
                     {
                       "Our design partners include the world\u2019s leading product-led companies"
                     }
                   </div>
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox___4YlwH)}
-                  >
+                  <div className={classNames("all", sty.freeBox___4YlwH)}>
                     <PlasmicImg__
                       alt={""}
                       className={classNames(sty.img__lW9RE)}
@@ -3579,48 +3227,45 @@ function PlasmicHomePage__RenderFunc(props: {
               </div>
             </div>
           </div>
-          <div className={classNames(projectcss.all, sty.freeBox__ilyRg)}>
-            <div className={classNames(projectcss.all, sty.freeBox__e0Jbj)}>
-              <div className={classNames(projectcss.all, sty.freeBox__vclds)}>
+          <div className={classNames("all", sty.freeBox__ilyRg)}>
+            <div className={classNames("all", sty.freeBox__e0Jbj)}>
+              <div className={classNames("all", sty.freeBox__vclds)}>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__cY6Vh
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__cY6Vh)}
                 >
                   {
                     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor"
                   }
                 </div>
-                <div className={classNames(projectcss.all, sty.freeBox__epOwT)}>
+                <div className={classNames("all", sty.freeBox__epOwT)}>
                   <Icon25Icon
-                    className={classNames(projectcss.all, sty.svg__dbm00)}
+                    className={classNames("all", sty.svg__dbm00)}
                     role={"img"}
                   />
 
                   <Icon26Icon
-                    className={classNames(projectcss.all, sty.svg___6Fuxa)}
+                    className={classNames("all", sty.svg___6Fuxa)}
                     role={"img"}
                   />
 
                   <Icon27Icon
-                    className={classNames(projectcss.all, sty.svg__i0N4)}
+                    className={classNames("all", sty.svg__i0N4)}
                     role={"img"}
                   />
 
                   <Icon28Icon
-                    className={classNames(projectcss.all, sty.svg__lrkFw)}
+                    className={classNames("all", sty.svg__lrkFw)}
                     role={"img"}
                   />
                 </div>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox__to5Cu)}>
+              <div className={classNames("all", sty.freeBox__to5Cu)}>
                 <h4
                   className={classNames(
-                    projectcss.all,
-                    projectcss.h4,
-                    projectcss.__wab_text,
+                    "all",
+                    "h4",
+                    "h4__afXUL",
+                    "__wab_text",
                     sty.h4__eOdmb
                   )}
                 >
@@ -3628,9 +3273,10 @@ function PlasmicHomePage__RenderFunc(props: {
                 </h4>
                 <PlasmicLink__
                   className={classNames(
-                    projectcss.all,
-                    projectcss.a,
-                    projectcss.__wab_text,
+                    "all",
+                    "a",
+                    "a__afXUL",
+                    "__wab_text",
                     sty.link__dnOkt
                   )}
                   component={Link}
@@ -3642,9 +3288,10 @@ function PlasmicHomePage__RenderFunc(props: {
                 </PlasmicLink__>
                 <PlasmicLink__
                   className={classNames(
-                    projectcss.all,
-                    projectcss.a,
-                    projectcss.__wab_text,
+                    "all",
+                    "a",
+                    "a__afXUL",
+                    "__wab_text",
                     sty.link__uhwL
                   )}
                   component={Link}
@@ -3656,9 +3303,10 @@ function PlasmicHomePage__RenderFunc(props: {
                 </PlasmicLink__>
                 <PlasmicLink__
                   className={classNames(
-                    projectcss.all,
-                    projectcss.a,
-                    projectcss.__wab_text,
+                    "all",
+                    "a",
+                    "a__afXUL",
+                    "__wab_text",
                     sty.link__nsy1K
                   )}
                   component={Link}
@@ -3669,12 +3317,13 @@ function PlasmicHomePage__RenderFunc(props: {
                   {"FAQs"}
                 </PlasmicLink__>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox___4Fusw)}>
+              <div className={classNames("all", sty.freeBox___4Fusw)}>
                 <h4
                   className={classNames(
-                    projectcss.all,
-                    projectcss.h4,
-                    projectcss.__wab_text,
+                    "all",
+                    "h4",
+                    "h4__afXUL",
+                    "__wab_text",
                     sty.h4__kaVba
                   )}
                 >
@@ -3682,9 +3331,10 @@ function PlasmicHomePage__RenderFunc(props: {
                 </h4>
                 <PlasmicLink__
                   className={classNames(
-                    projectcss.all,
-                    projectcss.a,
-                    projectcss.__wab_text,
+                    "all",
+                    "a",
+                    "a__afXUL",
+                    "__wab_text",
                     sty.link__cStF4
                   )}
                   component={Link}
@@ -3696,9 +3346,10 @@ function PlasmicHomePage__RenderFunc(props: {
                 </PlasmicLink__>
                 <PlasmicLink__
                   className={classNames(
-                    projectcss.all,
-                    projectcss.a,
-                    projectcss.__wab_text,
+                    "all",
+                    "a",
+                    "a__afXUL",
+                    "__wab_text",
                     sty.link__yuExt
                   )}
                   component={Link}
@@ -3709,23 +3360,20 @@ function PlasmicHomePage__RenderFunc(props: {
                   {"Terms of Use"}
                 </PlasmicLink__>
               </div>
-              <div className={classNames(projectcss.all, sty.freeBox___2FiPi)}>
+              <div className={classNames("all", sty.freeBox___2FiPi)}>
                 <h4
                   className={classNames(
-                    projectcss.all,
-                    projectcss.h4,
-                    projectcss.__wab_text,
+                    "all",
+                    "h4",
+                    "h4__afXUL",
+                    "__wab_text",
                     sty.h4__rs9Sl
                   )}
                 >
                   {"Company"}
                 </h4>
                 <div
-                  className={classNames(
-                    projectcss.all,
-                    projectcss.__wab_text,
-                    sty.text__ii35F
-                  )}
+                  className={classNames("all", "__wab_text", sty.text__ii35F)}
                 >
                   {"Lorem ipsum dolor sit amet, consectetur."}
                 </div>
@@ -3735,7 +3383,7 @@ function PlasmicHomePage__RenderFunc(props: {
                   className={classNames("__wab_instance", sty.textInput)}
                   endIcon={
                     <CheckSvgIcon
-                      className={classNames(projectcss.all, sty.svg__qyd4P)}
+                      className={classNames("all", sty.svg__qyd4P)}
                       role={"img"}
                     />
                   }
@@ -3756,7 +3404,7 @@ function PlasmicHomePage__RenderFunc(props: {
                   }}
                   startIcon={
                     <SearchSvgIcon
-                      className={classNames(projectcss.all, sty.svg__raJUv)}
+                      className={classNames("all", sty.svg__raJUv)}
                       role={"img"}
                     />
                   }
@@ -3772,56 +3420,41 @@ function PlasmicHomePage__RenderFunc(props: {
                   <div
                     data-plasmic-name={"softBackground"}
                     data-plasmic-override={overrides.softBackground}
-                    className={classNames(projectcss.all, sty.softBackground)}
+                    className={classNames("all", sty.softBackground)}
                   />
 
                   {false ? (
                     <div
                       data-plasmic-name={"border"}
                       data-plasmic-override={overrides.border}
-                      className={classNames(projectcss.all, sty.border)}
+                      className={classNames("all", sty.border)}
                     />
                   ) : null}
                   <div
                     data-plasmic-name={"interactionEffect"}
                     data-plasmic-override={overrides.interactionEffect}
-                    className={classNames(
-                      projectcss.all,
-                      sty.interactionEffect
-                    )}
+                    className={classNames("all", sty.interactionEffect)}
                   />
 
-                  <div
-                    className={classNames(projectcss.all, sty.freeBox__egpwy)}
-                  >
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___9MRg3
-                      )}
-                    >
+                  <div className={classNames("all", sty.freeBox__egpwy)}>
+                    <div className={classNames("all", sty.freeBox___9MRg3)}>
                       <CircleIcon
-                        className={classNames(projectcss.all, sty.svg__y6X4H)}
+                        className={classNames("all", sty.svg__y6X4H)}
                         role={"img"}
                       />
                     </div>
                     <div
                       className={classNames(
-                        projectcss.all,
-                        projectcss.__wab_text,
+                        "all",
+                        "__wab_text",
                         sty.text__l6Kat
                       )}
                     >
                       {"Subscribe"}
                     </div>
-                    <div
-                      className={classNames(
-                        projectcss.all,
-                        sty.freeBox___3NOv0
-                      )}
-                    >
+                    <div className={classNames("all", sty.freeBox___3NOv0)}>
                       <ChevronDownIcon
-                        className={classNames(projectcss.all, sty.svg__j3N)}
+                        className={classNames("all", sty.svg__j3N)}
                         role={"img"}
                       />
                     </div>
@@ -3829,14 +3462,8 @@ function PlasmicHomePage__RenderFunc(props: {
                 </BaseButton>
               </div>
             </div>
-            <div className={classNames(projectcss.all, sty.freeBox__p6LgI)}>
-              <div
-                className={classNames(
-                  projectcss.all,
-                  projectcss.__wab_text,
-                  sty.text__iuQ6N
-                )}
-              >
+            <div className={classNames("all", sty.freeBox__p6LgI)}>
+              <div className={classNames("all", "__wab_text", sty.text__iuQ6N)}>
                 {
                   "\u0637\u0631\u0627\u062d\u06cc \u0634\u062f\u0647 \u0628\u0627 \u2661 - 1404"
                 }
@@ -4061,9 +3688,10 @@ export const PlasmicHomePage = Object.assign(
     internalArgProps: PlasmicHomePage__ArgProps,
 
     pageMetadata: generateDynamicMetadata(wrapQueriesWithLoadingProxy({}), {
+      pageRoute: "/",
       pagePath: "/",
-      searchParams: {},
-      params: {}
+      params: {},
+      query: {}
     })
   }
 );
