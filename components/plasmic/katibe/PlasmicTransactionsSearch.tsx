@@ -6467,6 +6467,9 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                           sty.button__y0Pj8
                                         )}
                                         color={"softBlue"}
+                                        link={
+                                          "https://www.paziresh24.com/dashboard/apps/katibe/setting/"
+                                        }
                                         onClick={async event => {
                                           const $steps = {};
 
@@ -6500,6 +6503,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                           }
                                         }}
                                         size={"minimal"}
+                                        target={false}
                                       />
                                     ) : null}
                                   </div>
