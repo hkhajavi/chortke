@@ -953,6 +953,12 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
         type: "private",
         variableType: "number",
         initFunc: ({ $props, $state, $queries, $q, $ctx }) => 0
+      },
+      {
+        path: "waiting2",
+        type: "private",
+        variableType: "boolean",
+        initFunc: ({ $props, $state, $queries, $q, $ctx }) => false
       }
     ],
     [$props, $ctx, $refs]
@@ -2563,7 +2569,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                         {(() => {
                           try {
                             return (
-                              !$state.waiting &&
+                              !$state.waiting2 &&
                               $state.currentAccountAccount == "organization" &&
                               $state.bookDate.length > 0
                             );
@@ -11130,6 +11136,35 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                   await $steps["updateFirstEscrowTransaction2"];
               }
 
+              $steps["updateWaiting2"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["waiting2"]
+                      },
+                      operation: 0,
+                      value: true
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateWaiting2"] != null &&
+                typeof $steps["updateWaiting2"] === "object" &&
+                typeof $steps["updateWaiting2"].then === "function"
+              ) {
+                $steps["updateWaiting2"] = await $steps["updateWaiting2"];
+              }
+
               $steps["getDepositSum"] =
                 $state.currentAccountAccount == "organization" &&
                 $state.bookDate.length > 0
@@ -11210,6 +11245,35 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                 typeof $steps["setDepositSum"].then === "function"
               ) {
                 $steps["setDepositSum"] = await $steps["setDepositSum"];
+              }
+
+              $steps["updateWaiting22"] = true
+                ? (() => {
+                    const actionArgs = {
+                      variable: {
+                        objRoot: $state,
+                        variablePath: ["waiting2"]
+                      },
+                      operation: 0,
+                      value: false
+                    };
+                    return (({ variable, value, startIndex, deleteCount }) => {
+                      if (!variable) {
+                        return;
+                      }
+                      const { objRoot, variablePath } = variable;
+
+                      $stateSet(objRoot, variablePath, value);
+                      return value;
+                    })?.apply(null, [actionArgs]);
+                  })()
+                : undefined;
+              if (
+                $steps["updateWaiting22"] != null &&
+                typeof $steps["updateWaiting22"] === "object" &&
+                typeof $steps["updateWaiting22"].then === "function"
+              ) {
+                $steps["updateWaiting22"] = await $steps["updateWaiting22"];
               }
             }}
           />
