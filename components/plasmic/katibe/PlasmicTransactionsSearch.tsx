@@ -2586,28 +2586,81 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                               sty.txtRemainingText3
                             )}
                           >
-                            <React.Fragment>
-                              {(() => {
-                                try {
-                                  return (
-                                    "جمع پرداختی: " +
-                                    ($state.depositSum
-                                      .toString()
-                                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
-                                      " ریال")
-                                  );
-                                } catch (e) {
-                                  if (
-                                    e instanceof TypeError ||
-                                    e?.plasmicType ===
-                                      "PlasmicUndefinedDataError"
-                                  ) {
-                                    return "\u0645\u0627\u0646\u062f\u0647 \u0628\u062f\u0647\u06cc:";
+                            {hasVariant(
+                              globalVariants,
+                              "screen",
+                              "mobileOnly"
+                            ) ? (
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return (
+                                      "جمع پرداختی " +
+                                      ("" +
+                                        (() => {
+                                          const gregorianDate = new Date(
+                                            $state.bookDate
+                                          );
+                                          const persianDate =
+                                            new Intl.DateTimeFormat(
+                                              "fa-IR"
+                                            ).format(gregorianDate);
+                                          return persianDate;
+                                        })()) +
+                                      ": " +
+                                      ($state.depositSum
+                                        .toString()
+                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
+                                        " ریال")
+                                    );
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "\u0645\u0627\u0646\u062f\u0647 \u0628\u062f\u0647\u06cc:";
+                                    }
+                                    throw e;
                                   }
-                                  throw e;
-                                }
-                              })()}
-                            </React.Fragment>
+                                })()}
+                              </React.Fragment>
+                            ) : (
+                              <React.Fragment>
+                                {(() => {
+                                  try {
+                                    return (
+                                      "جمع پرداختی " +
+                                      ("" +
+                                        (() => {
+                                          const gregorianDate = new Date(
+                                            $state.bookDate
+                                          );
+                                          const persianDate =
+                                            new Intl.DateTimeFormat(
+                                              "fa-IR"
+                                            ).format(gregorianDate);
+                                          return persianDate;
+                                        })()) +
+                                      ": " +
+                                      ($state.depositSum
+                                        .toString()
+                                        .replace(/\B(?=(\d{3})+(?!\d))/g, ",") +
+                                        " ریال")
+                                    );
+                                  } catch (e) {
+                                    if (
+                                      e instanceof TypeError ||
+                                      e?.plasmicType ===
+                                        "PlasmicUndefinedDataError"
+                                    ) {
+                                      return "\u0645\u0627\u0646\u062f\u0647 \u0628\u062f\u0647\u06cc:";
+                                    }
+                                    throw e;
+                                  }
+                                })()}
+                              </React.Fragment>
+                            )}
                           </div>
                         ) : null}
                       </div>
