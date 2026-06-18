@@ -393,7 +393,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text___3QZsH {
-    font-size: var(--token-VrIY9r5RDQZ_);
+    font-size: 11px;
     white-space: pre;
   }
 }
@@ -870,7 +870,7 @@
     height: auto;
     max-width: 100%;
     padding-bottom: 0px;
-    font-size: var(--token-VrIY9r5RDQZ_);
+    font-size: 11px;
     text-align: center;
     left: auto;
     top: auto;
@@ -907,7 +907,7 @@
     height: auto;
     max-width: 100%;
     padding-bottom: 0px;
-    font-size: var(--token-VrIY9r5RDQZ_);
+    font-size: 11px;
     text-align: center;
     left: auto;
     top: auto;
@@ -3096,7 +3096,6 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__xt3H4 {
-    font-size: var(--token-VrIY9r5RDQZ_);
     width: auto;
     height: auto;
     max-width: 100%;
@@ -3115,6 +3114,7 @@
     text-decoration-line: none;
     text-overflow: clip;
     align-self: center;
+    font-size: 11px;
   }
 }
 .freeBox__sDrrB {
@@ -3181,7 +3181,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__eRfYh {
-    font-size: var(--token-VrIY9r5RDQZ_);
+    font-size: 12px;
     align-self: center;
     width: auto;
     height: auto;
@@ -3254,6 +3254,11 @@
     align-items: center;
     padding-top: 0px;
     padding-bottom: 0px;
+  }
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__sEqkN {
+    font-size: 13px;
   }
 }
 .detailsDataApiRequest:global(.__wab_instance) {
@@ -3340,7 +3345,7 @@
     height: auto;
     max-width: 100%;
     margin-top: 3px;
-    font-size: var(--token-VrIY9r5RDQZ_);
+    font-size: 13px;
     text-align: right;
     min-width: 0;
   }
@@ -3594,7 +3599,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text__mzAi {
     margin-top: 3px;
-    font-size: var(--token-VrIY9r5RDQZ_);
+    font-size: 13px;
     width: 100%;
     height: auto;
     max-width: 100%;
@@ -3641,7 +3646,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text__pkPec {
     margin-top: 3px;
-    font-size: var(--token-VrIY9r5RDQZ_);
+    font-size: 13px;
     width: 100%;
     height: auto;
     max-width: 100%;
@@ -3941,7 +3946,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text___2H3Dy {
     margin-top: 3px;
-    font-size: var(--token-VrIY9r5RDQZ_);
+    font-size: 13px;
     width: 100%;
     height: auto;
     max-width: 100%;
@@ -3988,7 +3993,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text__amr4N {
     margin-top: 3px;
-    font-size: var(--token-VrIY9r5RDQZ_);
+    font-size: 13px;
     width: 100%;
     height: auto;
     max-width: 100%;
@@ -4056,7 +4061,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text__gXeDe {
     margin-top: 3px;
-    font-size: var(--token-VrIY9r5RDQZ_);
+    font-size: 13px;
     width: 100%;
     height: auto;
     max-width: 100%;
@@ -4103,7 +4108,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text__mCSkJ {
     margin-top: 3px;
-    font-size: var(--token-VrIY9r5RDQZ_);
+    font-size: 13px;
     width: 100%;
     height: auto;
     max-width: 100%;
@@ -4171,7 +4176,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text___0W17O {
     margin-top: 3px;
-    font-size: var(--token-VrIY9r5RDQZ_);
+    font-size: 13px;
     width: 100%;
     height: auto;
     max-width: 100%;
@@ -4218,7 +4223,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text__n7Ue0 {
     margin-top: 3px;
-    font-size: var(--token-VrIY9r5RDQZ_);
+    font-size: 13px;
     width: 100%;
     height: auto;
     max-width: 100%;
@@ -4286,7 +4291,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .text__kFztQ {
     margin-top: 3px;
-    font-size: var(--token-VrIY9r5RDQZ_);
+    font-size: 13px;
     width: 100%;
     height: auto;
     max-width: 100%;
@@ -4632,7 +4637,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__iZkK {
-    font-size: var(--token-VrIY9r5RDQZ_);
+    font-size: 12px;
     align-self: center;
     width: auto;
     height: auto;

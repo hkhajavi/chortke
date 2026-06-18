@@ -1697,7 +1697,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__sDeeX {
-    font-size: var(--token-VrIY9r5RDQZ_);
+    font-size: 12px;
   }
 }
 .link__rbCfp {
@@ -1708,6 +1708,7 @@
 @media (min-width: 0px) and (max-width: 768px) {
   .link__rbCfp {
     margin-right: 1px;
+    color: #0070f3;
   }
 }
 .freeBox__oa20O {
