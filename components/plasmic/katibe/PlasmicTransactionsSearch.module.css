@@ -870,7 +870,7 @@
     height: auto;
     max-width: 100%;
     padding-bottom: 0px;
-    font-size: 11px;
+    font-size: 12px;
     text-align: center;
     left: auto;
     top: auto;
@@ -907,7 +907,7 @@
     height: auto;
     max-width: 100%;
     padding-bottom: 0px;
-    font-size: 11px;
+    font-size: 12px;
     text-align: center;
     left: auto;
     top: auto;
@@ -1826,7 +1826,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__yCfYe {
-    font-size: var(--token-VrIY9r5RDQZ_);
+    font-size: 12px;
   }
 }
 .freeBox__ebw {
@@ -1918,7 +1918,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__mbh1C {
-    font-size: var(--token-VrIY9r5RDQZ_);
+    font-size: 12px;
     white-space: pre;
   }
 }
@@ -2340,7 +2340,7 @@
 }
 @media (min-width: 0px) and (max-width: 768px) {
   .text__yN2Xi {
-    font-size: var(--token-VrIY9r5RDQZ_);
+    font-size: 11px;
   }
 }
 .button__y0Pj8:global(.__wab_instance) {
