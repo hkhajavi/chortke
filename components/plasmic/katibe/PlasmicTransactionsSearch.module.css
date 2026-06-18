@@ -3996,6 +3996,121 @@
     min-width: 0;
   }
 }
+.freeBox__uqUc {
+  display: grid;
+  position: relative;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  min-width: 0;
+  padding: 0px 8px;
+  border-width: 1px;
+  border-style: solid;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__uqUc {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    min-width: 0;
+    padding: 0px 8px;
+  }
+}
+.freeBox__qana2 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  min-width: 0;
+  padding: 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__qana2 {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 0px;
+    min-width: 0;
+    padding: 2px;
+  }
+}
+.text__gXeDe {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  text-align: left;
+  padding-bottom: 0px;
+  font-size: var(--token-5Ye_3XTSaP9X);
+  min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__gXeDe {
+    margin-top: 3px;
+    font-size: var(--token-VrIY9r5RDQZ_);
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+.freeBox__p2PG7 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+  grid-column-end: span 2;
+  border-left-style: solid;
+  min-width: 0;
+  padding: 8px;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .freeBox__p2PG7 {
+    grid-column-end: span 3;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    column-gap: 0px;
+    min-width: 0;
+    padding: 2px;
+  }
+}
+.text__mCSkJ {
+  position: relative;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  font-size: var(--token-5Ye_3XTSaP9X);
+  text-align: right;
+  min-width: 0;
+}
+@media (min-width: 0px) and (max-width: 768px) {
+  .text__mCSkJ {
+    margin-top: 3px;
+    font-size: var(--token-VrIY9r5RDQZ_);
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    text-align: center;
+    min-width: 0;
+  }
+}
 .freeBox__tcQ6F {
   display: grid;
   position: relative;

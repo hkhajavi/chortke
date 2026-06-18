@@ -8852,6 +8852,91 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         <div
                                           className={classNames(
                                             "all",
+                                            sty.freeBox__uqUc
+                                          )}
+                                        >
+                                          <div
+                                            className={classNames(
+                                              "all",
+                                              sty.freeBox__qana2
+                                            )}
+                                          >
+                                            <div
+                                              className={classNames(
+                                                "all",
+                                                "__wab_text",
+                                                sty.text__gXeDe
+                                              )}
+                                            >
+                                              {"\u0628\u0627\u0646\u06a9:"}
+                                            </div>
+                                          </div>
+                                          <div
+                                            className={classNames(
+                                              "all",
+                                              sty.freeBox__p2PG7
+                                            )}
+                                          >
+                                            <div
+                                              className={classNames(
+                                                "all",
+                                                "__wab_text",
+                                                sty.text__mCSkJ
+                                              )}
+                                            >
+                                              <React.Fragment>
+                                                {(() => {
+                                                  try {
+                                                    return (
+                                                      $state
+                                                        .detailsDataApiRequest[
+                                                        currentIndex
+                                                      ].data.data.bank +
+                                                        " - " +
+                                                        $state
+                                                          .detailsDataApiRequest[
+                                                          currentIndex
+                                                        ].data.data.cardid ||
+                                                      "-"
+                                                    );
+                                                  } catch (e) {
+                                                    if (
+                                                      e instanceof TypeError ||
+                                                      e?.plasmicType ===
+                                                        "PlasmicUndefinedDataError"
+                                                    ) {
+                                                      return "";
+                                                    }
+                                                    throw e;
+                                                  }
+                                                })()}
+                                              </React.Fragment>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      ) : null}
+                                      {(() => {
+                                        try {
+                                          return (
+                                            $state.detailsDataApiRequest[
+                                              currentIndex
+                                            ].data.transaction_type ==
+                                            "settlement"
+                                          );
+                                        } catch (e) {
+                                          if (
+                                            e instanceof TypeError ||
+                                            e?.plasmicType ===
+                                              "PlasmicUndefinedDataError"
+                                          ) {
+                                            return true;
+                                          }
+                                          throw e;
+                                        }
+                                      })() ? (
+                                        <div
+                                          className={classNames(
+                                            "all",
                                             sty.freeBox__tcQ6F
                                           )}
                                         >
