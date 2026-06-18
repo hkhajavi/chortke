@@ -6562,7 +6562,15 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                           }
                                         }}
                                         size={"minimal"}
-                                        target={false}
+                                        target={
+                                          hasVariant(
+                                            globalVariants,
+                                            "screen",
+                                            "mobileOnly"
+                                          )
+                                            ? true
+                                            : false
+                                        }
                                       />
                                     ) : null}
                                   </div>
