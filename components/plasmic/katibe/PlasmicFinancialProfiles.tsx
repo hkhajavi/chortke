@@ -3081,7 +3081,7 @@ function PlasmicFinancialProfiles__RenderFunc(props: {
                                                 const $steps = {};
 
                                                 $steps["invokeGlobalAction"] =
-                                                  true
+                                                  false
                                                     ? (() => {
                                                         const actionArgs = {
                                                           args: [

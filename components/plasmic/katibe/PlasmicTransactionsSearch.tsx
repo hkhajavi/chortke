@@ -6532,7 +6532,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                         onClick={async event => {
                                           const $steps = {};
 
-                                          $steps["invokeGlobalAction"] = true
+                                          $steps["invokeGlobalAction"] = false
                                             ? (() => {
                                                 const actionArgs = {
                                                   args: [
@@ -6569,7 +6569,7 @@ function PlasmicTransactionsSearch__RenderFunc(props: {
                                             "mobileOnly"
                                           )
                                             ? true
-                                            : false
+                                            : true
                                         }
                                       />
                                     ) : null}
